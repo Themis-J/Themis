@@ -1,0 +1,16 @@
+target/
+bin/
+*.log
+*.log.*
+*.iml
+*.ipr
+*.iws
+.DS_Store
+.idea/
+.classpath
+.project
+.settings/
+*.pyc
+*.dat
+*.lck
+*.ctrl
