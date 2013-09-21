@@ -175,6 +175,13 @@ public class DealerReportCalculator {
 		return this;
 	}
 	
+	/**
+	 * Adjust the expense by using denominator. 
+	 * 
+	 * This has to be called after "prepareDenominators" function is called. 
+	 * 
+	 * @return
+	 */
 	public DealerReportCalculator adjustExpenseByDenominator() {
 		if (this.denominatorOption.isNone()) {
 			return this;
@@ -193,6 +200,13 @@ public class DealerReportCalculator {
 		return this;
 	}
 	
+	/**
+	 * Adjust the margin by using denominator. 
+	 * 
+	 * This has to be called after "prepareDenominators" function is called. 
+	 * 
+	 * @return
+	 */
 	public DealerReportCalculator adjustMarginByDenominator() {
 		if (this.denominatorOption.isNone()) {
 			return this;
@@ -211,6 +225,13 @@ public class DealerReportCalculator {
 		return this;
 	}
 	
+	/**
+	 * Adjust the operational profit by using denominator. 
+	 * 
+	 * This has to be called after "prepareDenominators" function is called. 
+	 * 
+	 * @return
+	 */
 	public DealerReportCalculator adjustOpProfitByDenominator() {
 		if (this.denominatorOption.isNone()) {
 			return this;
@@ -229,6 +250,13 @@ public class DealerReportCalculator {
 		return this;
 	}
 	
+	/**
+	 * Adjust the net profit by using denominator. 
+	 * 
+	 * This has to be called after "prepareDenominators" function is called. 
+	 * 
+	 * @return
+	 */
 	public DealerReportCalculator adjustNetProfitByDenominator() {
 		if (this.denominatorOption.isNone()) {
 			return this;
@@ -270,6 +298,13 @@ public class DealerReportCalculator {
 		return this;
 	}
 	
+	/**
+	 * Calculate the margin. 
+	 * 
+	 * @param dealerRevenueFacts
+	 * @param op
+	 * @return
+	 */
 	public DealerReportCalculator calcMargins(
 			final ImmutableListMultimap<Integer, DealerIncomeRevenueFact> dealerRevenueFacts,
 			final JournalOp op) {
@@ -301,6 +336,13 @@ public class DealerReportCalculator {
 		return this;
 	}
 	
+	/**
+	 * Calculate the revenues.
+	 * 
+	 * @param dealerRevenueFacts
+	 * @param op
+	 * @return
+	 */
 	public DealerReportCalculator calcRevenues(
 			final ImmutableListMultimap<Integer, DealerIncomeRevenueFact> dealerRevenueFacts,
 			final JournalOp op) {
