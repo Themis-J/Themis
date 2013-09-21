@@ -8,9 +8,20 @@ angular.module('overallAbs.controllers', [])
     		{text:'营业额', display:false},
     		{text:'费用', display:false},
     		{text:'毛利', display:false}];
-    	//var queryReportService = restClient.queryOverallIncomeReport;
-    	//var queryReportService = restClient.localQueryYearlyOverallIncomeReport;
-    	var queryReportService = restClient.localQueryMonthlyOverallIncomeReport;
+    	var services = [
+        	{
+        		queryDepartments: restClient.localQueryDepartments, 
+        		queryReportService: restClient.localQueryYearlyOverallIncomeReport, 
+        	},
+        	{
+        		queryDepartments: restClient.queryDepartments, 
+        		queryReportService: restClient.queryOverallIncomeReport, 
+        	},
+        ];
+        var local = services[0];
+        var normal = services[1];
+		// var restService = normal;
+    	var restService = local;
     	
     	$scope.yearOptions = [];
   		var currentDate = new Date();
@@ -57,7 +68,7 @@ angular.module('overallAbs.controllers', [])
         	}
         	for ( var i=0; i< $scope.charts.length;i++ ) {
         		if ( $scope.charts[i].display == true ) {
-        			reportService.drawAbsOverallIncomeReport(queryReportService, params, i);
+        			reportService.drawAbsOverallIncomeReport(restService.queryReportService, params, i);
         		} 
         	}
         	

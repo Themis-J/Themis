@@ -9,6 +9,8 @@ angular.module('masterApp.services', ['ngResource'])
             queryOverallIncomeReport: {method: 'GET', params: {path: 'query', subpath:'overallIncomeReport'}, isArray: false},
             localQueryMonthlyOverallIncomeReport: {method: 'GET', params: {path: '', subpath:'queryMonthlyIncomeReport.json'}, isArray: false},
             localQueryYearlyOverallIncomeReport: {method: 'GET', params: {path: '', subpath:'queryYearlyIncomeReport.json'}, isArray: false},
+            queryDepartments: {method: 'GET', params: {path: '', subpath:'department'}, isArray: false},
+            localQueryDepartments: {method: 'GET', params: {path: '', subpath:'departments.json'}, isArray: false},
         });
     }
     ]).
@@ -26,6 +28,15 @@ angular.module('masterApp.services', ['ngResource'])
         	},
         	setFullScreen: function(flag){
         		isFullScreen = flag;
+        	},
+        	getDepartments: function(restClient, params, callback) {
+        		restClient(params, function(data) {
+        			var departments = [];
+        			for ( var i = 1; i < data.items.length; i++ ) {
+        				departments[i-1]=data.items[i];
+        			}
+        			callback(departments);
+        		});
         	},
             drawAbsOverallIncomeReport: function (restClient, params, index)
 			{
@@ -853,8 +864,6 @@ angular.module('masterApp.services', ['ngResource'])
             	var previousMarginReference = [];
             	var previousOpProfit = [];
             	var previousOpProfitReference = [];
-            	var previousNetProfit = [];
-            	var previousNetProfitReference = [];
 				for ( var i in previousDetail ) {
             		dealers[i] = previousDetail[i].code;
             		previousRevenue[i] = previousDetail[i].revenue.amount;
@@ -865,8 +874,6 @@ angular.module('masterApp.services', ['ngResource'])
             		previousMarginReference[i] = previousDetail[i].margin.reference;
             		previousOpProfit[i] = previousDetail[i].opProfit.amount;
             		previousOpProfitReference[i] = previousDetail[i].opProfit.reference;
-            		previousNetProfit[i] = previousDetail[i].netProfit.amount;
-            		previousNetProfitReference[i] = previousDetail[i].netProfit.reference;
             	};
 				chartCategories[0].categories = dealers;
 				
@@ -884,9 +891,6 @@ angular.module('masterApp.services', ['ngResource'])
 				var currentOpProfit = [];
             	var currentOpProfitPercentage = [];
             	var currentOpProfitReference = [];
-				var currentNetProfit = [];
-            	var currentNetProfitPercentage = [];
-            	var currentNetProfitReference = [];
 				for ( var i in currentDetail ) {
             		currentRevenue[i] = currentDetail[i].revenue.amount;
             		currentRevenueReference[i] = currentDetail[i].revenue.reference;
@@ -900,9 +904,6 @@ angular.module('masterApp.services', ['ngResource'])
             		currentOpProfit[i] = currentDetail[i].opProfit.amount;
             		currentOpProfitPercentage[i] = currentDetail[i].opProfit.percentage * 100;
             		currentOpProfitReference[i] = currentDetail[i].opProfit.reference;
-            		currentNetProfit[i] = currentDetail[i].netProfit.amount;
-            		currentNetProfitPercentage[i] = currentDetail[i].netProfit.percentage * 100;
-            		currentNetProfitReference[i] = currentDetail[i].netProfit.reference;
             	};
             	var chartSubtitle = '年度对比';
             	if ( monthOfYear != -1 ) {
@@ -945,28 +946,6 @@ angular.module('masterApp.services', ['ngResource'])
 		                    },
 		                    {
 		                        data: currentOpProfitPercentage
-		                    }
-		                ]
-		        	},
-		        	{
-		        		id: 'report_netProfit',
-		        		title: '税前尽利润',
-		        		yAxisTitle: '税前尽利润',
-		        		series: [
-		                    {
-		                        data: previousNetProfit
-		                    },
-		                    {
-		                        data: currentNetProfit
-		                    },
-		                    {
-		                        data: previousNetProfitReference
-		                    },
-		                    {
-		                        data: currentNetProfitReference
-		                    },
-		                    {
-		                        data: currentNetProfitPercentage
 		                    }
 		                ]
 		        	},
@@ -1093,7 +1072,7 @@ angular.module('masterApp.services', ['ngResource'])
 		                    	point: {
 			                        events: {
 			                            click: function() {
-			                            	//window.alert(1);
+			                            	window.alert('drilldown is not implemented yet');
 			                                var drilldown = this.drilldown;
 			                                if (drilldown) { // drill down
 			                                    setChart(drilldown.name, drilldown.categories, drilldown.data, drilldown.color);

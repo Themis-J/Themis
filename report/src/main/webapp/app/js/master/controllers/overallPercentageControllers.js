@@ -7,9 +7,20 @@ angular.module('overallPercentage.controllers', [])
     		{text:'税前尽利润', display:true},
     		{text:'费用', display:false},
     		{text:'毛利', display:false}];
-    	//var queryReportService = restClient.queryOverallIncomeReport;
-    	//var queryReportService = restClient.localQueryYearlyOverallIncomeReport;
-    	var queryReportService = restClient.localQueryMonthlyOverallIncomeReport;
+    	var services = [
+        	{
+        		queryDepartments: restClient.localQueryDepartments, 
+        		queryReportService: restClient.localQueryYearlyOverallIncomeReport, 
+        	},
+        	{
+        		queryDepartments: restClient.queryDepartments, 
+        		queryReportService: restClient.queryOverallIncomeReport, 
+        	},
+        ];
+        var local = services[0];
+        var normal = services[1];
+		// var restService = normal;
+    	var restService = local;
     	
     	$scope.yearOptions = [];
   		var currentDate = new Date();
@@ -66,7 +77,7 @@ angular.module('overallPercentage.controllers', [])
         	}
         	for ( var i=0; i< $scope.charts.length;i++ ) {
         		if ( $scope.charts[i].display == true ) {
-        			reportService.drawPercentageOverallIncomeReport(queryReportService, params, i);
+        			reportService.drawPercentageOverallIncomeReport(restService.queryReportService, params, i);
         		} 
         	}
         };

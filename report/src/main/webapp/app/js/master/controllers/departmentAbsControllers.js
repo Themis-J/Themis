@@ -7,9 +7,21 @@ angular.module('departmentAbs.controllers', [])
     		{text:'营业额', display:false},
     		{text:'费用', display:false},
     		{text:'毛利', display:false}];
-    	//var queryReportService = restClient.queryOverallIncomeReport;
-    	//var queryReportService = restClient.localQueryYearlyOverallIncomeReport;
-    	var queryReportService = restClient.localQueryMonthlyOverallIncomeReport;
+        
+        var services = [
+        	{
+        		queryDepartments: restClient.localQueryDepartments, 
+        		queryReportService: restClient.localQueryYearlyOverallIncomeReport, 
+        	},
+        	{
+        		queryDepartments: restClient.queryDepartments, 
+        		queryReportService: restClient.queryOverallIncomeReport, 
+        	},
+        ];
+        var local = services[0];
+        var normal = services[1];
+		// var restService = normal;
+    	var restService = local;
     	
     	$scope.yearOptions = [];
   		var currentDate = new Date();
@@ -41,11 +53,14 @@ angular.module('departmentAbs.controllers', [])
     		$scope.selectTime($scope.selectedTime);
     	};
     	
-    	$scope.departmentOptions = [
-    		{name:'新车部', id:1}, 
-    		{name:'二手车部', id:2},
-    	];
-		$scope.selectedDepartmentOption = $scope.departmentOptions[0];
+    	$scope.departmentOptions = [];
+    	reportService.getDepartments(restService.queryDepartments, {}, function(departments) {
+    		$scope.departmentOptions = departments;
+    		$scope.selectedDepartmentOption = $scope.departmentOptions[0];
+	    		
+			// called on page is loaded
+			$scope.showReport();
+		});
 		
 		$scope.selectReportDepartment = function() {
 			$scope.showReport();
@@ -66,7 +81,7 @@ angular.module('departmentAbs.controllers', [])
         	}
         	for ( var i=0; i< $scope.charts.length;i++ ) {
         		if ( $scope.charts[i].display == true ) {
-        			reportService.drawAbsDepartmentIncomeReport(queryReportService, params, i);
+        			reportService.drawAbsDepartmentIncomeReport(restService.queryReportService, params, i);
         		} 
         	}
         	
@@ -125,8 +140,6 @@ angular.module('departmentAbs.controllers', [])
             }
         };
 
-		// called on page is loaded
-		$scope.showReport();
   }])
 
   .controller('viewCtrl', ['$scope',function($scope) {
