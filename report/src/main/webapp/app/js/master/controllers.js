@@ -21,7 +21,7 @@ angular.module('masterApp.controllers', [])
         $scope.$on('$includeContentLoaded', function () {
         });
         
-        $scope.subpage = 'partials/master/' + $scope.items[0] + '.html';
+        $scope.subpage = 'partials/master/' + $scope.items[2] + '.html';
 
   }])
 
