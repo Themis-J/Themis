@@ -8,10 +8,12 @@ import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 
+import org.codehaus.jackson.map.annotate.JsonDeserialize;
 import org.codehaus.jackson.map.annotate.JsonSerialize;
 
 import com.jdc.themis.common.jaxb.adaptor.JaxbCalendarInstantAdaptor;
 import com.jdc.themis.common.json.adaptor.JsonCalendarInstantSerializer;
+import com.jdc.themis.common.json.adaptor.JsonCalendarInstantDeserializer;
 
 /**
  * Response to show the save operation result. 
@@ -45,6 +47,7 @@ public class GeneralResponse implements Serializable{
 	public Instant getTimestamp() {
 		return timestamp;
 	}
+	@JsonDeserialize(using = JsonCalendarInstantDeserializer.class)
 	public void setTimestamp(Instant timestamp) {
 		this.timestamp = timestamp;
 	}

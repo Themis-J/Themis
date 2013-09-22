@@ -73,6 +73,8 @@ public class TestDealerIncomeReportServiceImpl {
 		
 		service.importReportData(request);
 	}
+	private final static String[] revenueCategories = new String[] {"新轿车零售", "新货车零售",
+			"附加产品业务", "二手车零售", "维修收入", "配件收入", "钣喷收入", "新车其它收入", "二手车其它收入", "维修其它收入", "维修其它收入", "钣喷其它收入", "租恁收入"};
 	
 	@Test
 	public void queryYearlyOverallIncomeReport() {
@@ -188,22 +190,24 @@ public class TestDealerIncomeReportServiceImpl {
 		fact5.setAmount(new BigDecimal("220.0"));
 		fact5.setMargin(new BigDecimal("330.0"));
 		fact5.setCount(40);
-		
 		//skip timestamp and time end
 		when(dal.getDealerIncomeRevenueFacts(2013, Lists.newArrayList(new Integer[]{}), 
 				Lists.newArrayList(new Integer[]{}), 
 				Lists.newArrayList(new Integer[]{}), 
-				Lists.newArrayList(new String[]{"新轿车零售", "新货车零售", "附加产品业务", "二手车零售", "工时", "配件收入"}), 
+				Lists.newArrayList(revenueCategories), 
+				Lists.newArrayList(new Integer[]{}), 
 				Lists.newArrayList(new Integer[]{}))).thenReturn(Lists.newArrayList(fact1, fact2, fact3, fact6));
 		when(dal.getDealerIncomeRevenueFacts(2013, Lists.newArrayList(new Integer[]{8}), 
 				Lists.newArrayList(new Integer[]{}), 
 				Lists.newArrayList(new Integer[]{}), 
-				Lists.newArrayList(new String[]{"新轿车零售", "新货车零售", "附加产品业务", "二手车零售", "工时", "配件收入"}), 
+				Lists.newArrayList(revenueCategories), 
+				Lists.newArrayList(new Integer[]{}), 
 				Lists.newArrayList(new Integer[]{}))).thenReturn(Lists.newArrayList(fact1, fact2));
 		when(dal.getDealerIncomeRevenueFacts(2012, Lists.newArrayList(new Integer[]{}), 
 				Lists.newArrayList(new Integer[]{}), 
 				Lists.newArrayList(new Integer[]{}), 
-				Lists.newArrayList(new String[]{"新轿车零售", "新货车零售", "附加产品业务", "二手车零售", "工时", "配件收入"}), 
+				Lists.newArrayList(revenueCategories), 
+				Lists.newArrayList(new Integer[]{}), 
 				Lists.newArrayList(new Integer[]{}))).thenReturn(Lists.newArrayList(fact4, fact5));
 		final ReportItem item1 = new ReportItem();
 		item1.setId(1L);
@@ -353,17 +357,20 @@ public class TestDealerIncomeReportServiceImpl {
 		when(dal.getDealerIncomeRevenueFacts(2013, Lists.newArrayList(new Integer[]{}), 
 				Lists.newArrayList(new Integer[]{}), 
 				Lists.newArrayList(new Integer[]{}), 
-				Lists.newArrayList(new String[]{"新轿车零售", "新货车零售", "附加产品业务", "二手车零售", "工时", "配件收入"}), 
+				Lists.newArrayList(revenueCategories), 
+				Lists.newArrayList(new Integer[]{}), 
 				Lists.newArrayList(new Integer[]{}))).thenReturn(Lists.newArrayList(fact1, fact2, fact3, fact6));
 		when(dal.getDealerIncomeRevenueFacts(2013, Lists.newArrayList(new Integer[]{8}), 
 				Lists.newArrayList(new Integer[]{}), 
 				Lists.newArrayList(new Integer[]{}), 
-				Lists.newArrayList(new String[]{"新轿车零售", "新货车零售", "附加产品业务", "二手车零售", "工时", "配件收入"}), 
+				Lists.newArrayList(revenueCategories), 
+				Lists.newArrayList(new Integer[]{}), 
 				Lists.newArrayList(new Integer[]{}))).thenReturn(Lists.newArrayList(fact1, fact2));
 		when(dal.getDealerIncomeRevenueFacts(2012, Lists.newArrayList(new Integer[]{}), 
 				Lists.newArrayList(new Integer[]{}), 
 				Lists.newArrayList(new Integer[]{}), 
-				Lists.newArrayList(new String[]{"新轿车零售", "新货车零售", "附加产品业务", "二手车零售", "工时", "配件收入"}), 
+				Lists.newArrayList(revenueCategories), 
+				Lists.newArrayList(new Integer[]{}), 
 				Lists.newArrayList(new Integer[]{}))).thenReturn(Lists.newArrayList(fact4, fact5));
 		final ReportItem item1 = new ReportItem();
 		item1.setId(1L);
