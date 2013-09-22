@@ -49,7 +49,7 @@ angular.module('overallPercentage.controllers', [])
         	}
         	for ( var i=0; i< $scope.charts.length;i++ ) {
         		if ( $scope.charts[i].display == true ) {
-        			$scope.draw(restClient(config.currentMode).queryOverallIncomeReport, params, i);
+        			$scope.draw(restClient(config.currentMode).queryOverallPercentageIncomeReport, params, i);
         		} 
         	}
         };
@@ -65,31 +65,31 @@ angular.module('overallPercentage.controllers', [])
             	var chartData = [
 				        	{
 				        		id: 'report_opProfit',
-				        		title: '运营利润',
+				        		title: '运营利润' + '/' + $scope.selectedDenominatorOption.name,
 				        		yAxisTitle: '运营利润',
 				        		series: series
 				        	},
 				        	{
 				        		id: 'report_netProfit',
-				        		title: '税前尽利润',
+				        		title: '税前尽利润' + '/' + $scope.selectedDenominatorOption.name,
 				        		yAxisTitle: '税前尽利润',
 				        		series: series
 				        	},
 				        	{
 				        		id: 'report_revenue',
-				        		title: '营业额',
+				        		title: '营业额' + '/' + $scope.selectedDenominatorOption.name,
 				        		yAxisTitle: '营业额',
 				        		series: series
 				        	}, 
 				        	{
 				        		id: 'report_expense',
-				        		title: '费用',
+				        		title: '费用' + '/' + $scope.selectedDenominatorOption.name,
 				        		yAxisTitle: '费用',
 				        		series: series
 				        	}, 
 				        	{
 				        		id: 'report_margin',
-				        		title: '毛利',
+				        		title: '毛利' + '/' + $scope.selectedDenominatorOption.name,
 				        		yAxisTitle: '毛利',
 				        		series: series
 				        	}
@@ -100,39 +100,39 @@ angular.module('overallPercentage.controllers', [])
             	var previousDetail = data.detail[0].detail;
 	            	for ( var i in previousDetail ) {
 	            		dealers[i] = previousDetail[i].code;
-	            		chartData[0].series.previous[i] = previousDetail[i].opProfit.amount;
-	            		chartData[0].series.previousReference[i] = previousDetail[i].opProfit.reference;
+	            		chartData[0].series.previous[i] = previousDetail[i].opProfit.amount * 100;
+	            		chartData[0].series.previousReference[i] = previousDetail[i].opProfit.reference * 100;
 	            		
-	            		chartData[1].series.previous[i] = previousDetail[i].netProfit.amount;
-	            		chartData[1].series.previousReference[i] = previousDetail[i].netProfit.reference;
+	            		chartData[1].series.previous[i] = previousDetail[i].netProfit.amount * 100;
+	            		chartData[1].series.previousReference[i] = previousDetail[i].netProfit.reference * 100;
 	            		
-	            		chartData[2].series.previous[i] = previousDetail[i].revenue.amount;
-	            		chartData[2].series.previousReference[i] = previousDetail[i].revenue.reference;
+	            		chartData[2].series.previous[i] = previousDetail[i].revenue.amount * 100;
+	            		chartData[2].series.previousReference[i] = previousDetail[i].revenue.reference * 100;
 	            		
-	            		chartData[3].series.previous[i] = previousDetail[i].expense.amount;
-	            		chartData[3].series.previousReference[i] = previousDetail[i].expense.reference;
+	            		chartData[3].series.previous[i] = previousDetail[i].expense.amount * 100;
+	            		chartData[3].series.previousReference[i] = previousDetail[i].expense.reference * 100;
 	            		
-	            		chartData[4].series.previous[i] = previousDetail[i].margin.amount;
-	            		chartData[4].series.previousReference[i] = previousDetail[i].margin.reference;
+	            		chartData[4].series.previous[i] = previousDetail[i].margin.amount * 100;
+	            		chartData[4].series.previousReference[i] = previousDetail[i].margin.reference * 100;
 	            	};
 	            	
 					chartCategories[0].categories = dealers;
 					var currentDetail = data.detail[1].detail;
 					for ( var i in currentDetail ) {
-	            		chartData[0].series.current[i] = currentDetail[i].opProfit.amount;
-	            		chartData[0].series.currentReference[i] = currentDetail[i].opProfit.reference;
+	            		chartData[0].series.current[i] = currentDetail[i].opProfit.amount * 100;
+	            		chartData[0].series.currentReference[i] = currentDetail[i].opProfit.reference * 100;
 	            		
-	            		chartData[1].series.current[i] = currentDetail[i].netProfit.amount;
-	            		chartData[1].series.currentReference[i] = currentDetail[i].netProfit.reference;
+	            		chartData[1].series.current[i] = currentDetail[i].netProfit.amount * 100;
+	            		chartData[1].series.currentReference[i] = currentDetail[i].netProfit.reference * 100;
 	            		
-	            		chartData[2].series.current[i] = currentDetail[i].revenue.amount;
-	            		chartData[2].series.currentReference[i] = currentDetail[i].revenue.reference;
+	            		chartData[2].series.current[i] = currentDetail[i].revenue.amount * 100;
+	            		chartData[2].series.currentReference[i] = currentDetail[i].revenue.reference * 100;
 	            		
-	            		chartData[3].series.current[i] = currentDetail[i].expense.amount;
-	            		chartData[3].series.currentReference[i] = currentDetail[i].expense.reference;
+	            		chartData[3].series.current[i] = currentDetail[i].expense.amount * 100;
+	            		chartData[3].series.currentReference[i] = currentDetail[i].expense.reference * 100;
 	            		
-	            		chartData[4].series.current[i] = currentDetail[i].margin.amount;
-	            		chartData[4].series.currentReference[i] = currentDetail[i].margin.reference;
+	            		chartData[4].series.current[i] = currentDetail[i].margin.amount * 100;
+	            		chartData[4].series.currentReference[i] = currentDetail[i].margin.reference * 100;
 		            };
 		            	
 	            	var chartSubtitle = '年度对比';
@@ -180,15 +180,13 @@ angular.module('overallPercentage.controllers', [])
 			                xAxis: chartCategories,
 			                yAxis: [{
 			                    title: {
-			                        text: currentData.yAxisTitle
+			                        text: currentData.yAxisTitle + '百分比 (%)'
 			                    },
-			                    min:-10000
 			                },
-		                    
 							],
 			                tooltip: {
 			                    formatter: function() {
-			                        var tooltip = this.series.name +': '+ this.y +'<br/>';
+			                        var tooltip = this.series.name +': '+ this.y + '%' +'<br/>';
 			                        return  tooltip;
 			                    },
 			                    useHTML: true

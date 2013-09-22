@@ -8,11 +8,13 @@ angular.module('masterApp.services', ['ngResource'])
 	        	remote: $resource(
 		        	config.service.url + '/:path/:subpath', {}, {
 		            queryOverallIncomeReport: {method: 'GET', params: {path: 'query', subpath:'overallIncomeReport'}, isArray: false},
+		            queryOverallPercentageIncomeReport: {method: 'GET', params: {path: 'query', subpath:'overallIncomeReport'}, isArray: false},
 		            queryDepartments: {method: 'GET', params: {path: '', subpath:'department'}, isArray: false},
 		        }),
 	        	local: $resource(
 		        	config.service.localUrl + '/:path/:subpath', {}, {
 		            queryOverallIncomeReport: {method: 'GET', params: {path: '', subpath:'queryYearlyIncomeReport.json'}, isArray: false},
+		            queryOverallPercentageIncomeReport: {method: 'GET', params: {path: '', subpath:'queryYearlyPercentageIncomeReport.json'}, isArray: false},
 		            queryDepartments: {method: 'GET', params: {path: '', subpath:'departments.json'}, isArray: false},
 		        })
 	        };
