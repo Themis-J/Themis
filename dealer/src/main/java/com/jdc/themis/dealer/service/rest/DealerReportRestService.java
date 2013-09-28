@@ -93,7 +93,7 @@ public class DealerReportRestService {
 		return Response.ok(
 				dealerIncomeReportService.queryDepartmentIncomeReport(
 						year, 
-						dealerID, 
+						Option.fromNull(dealerID), 
 						Option.fromNull(monthOfYear))).build();
 	}
 }

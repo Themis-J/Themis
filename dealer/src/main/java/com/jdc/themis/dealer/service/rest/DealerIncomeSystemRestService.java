@@ -68,6 +68,19 @@ public class DealerIncomeSystemRestService {
 	 * @return
 	 */
 	@GET
+	@Path("/list")
+	@Produces({ "application/json", "application/xml" })
+	@RestServiceErrorHandler
+	public Response getDealers() {
+		return Response.ok(this.refDataQueryService.getDealers()).build();
+	}
+	
+	/**
+	 * Get all deparment details.
+	 * 
+	 * @return
+	 */
+	@GET
 	@Path("/department")
 	@Produces({ "application/json", "application/xml" })
 	@RestServiceErrorHandler

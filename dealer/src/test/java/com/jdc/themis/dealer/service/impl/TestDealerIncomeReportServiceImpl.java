@@ -25,6 +25,7 @@ import com.jdc.themis.dealer.domain.ReportItem;
 import com.jdc.themis.dealer.domain.ReportTime;
 import com.jdc.themis.dealer.service.RefDataQueryService;
 import com.jdc.themis.dealer.web.domain.DealerDetail;
+import com.jdc.themis.dealer.web.domain.GetDealerResponse;
 import com.jdc.themis.dealer.web.domain.ImportReportDataRequest;
 import com.jdc.themis.dealer.web.domain.QueryReportDataResponse;
 
@@ -115,7 +116,9 @@ public class TestDealerIncomeReportServiceImpl {
 		dealer12.setId(12);
 		dealer12.setName("Dealer12");
 		
-		when(refDataDAL.getDealers()).thenReturn(Lists.newArrayList(dealer1, dealer2, dealer3, dealer4, dealer5, dealer6, dealer7, dealer8, dealer9, dealer10, dealer11, dealer12));
+		final GetDealerResponse dealers = new GetDealerResponse();
+		dealers.getItems().addAll(Lists.newArrayList(dealer1, dealer2, dealer3, dealer4, dealer5, dealer6, dealer7, dealer8, dealer9, dealer10, dealer11, dealer12));
+		when(refDataDAL.getDealers()).thenReturn(dealers);
 		
 		final ReportTime time201308 = new ReportTime();
 		time201308.setId(1L);
@@ -277,7 +280,9 @@ public class TestDealerIncomeReportServiceImpl {
 		dealer12.setId(12);
 		dealer12.setName("Dealer12");
 		
-		when(refDataDAL.getDealers()).thenReturn(Lists.newArrayList(dealer1, dealer2, dealer3, dealer4, dealer5, dealer6, dealer7, dealer8, dealer9, dealer10, dealer11, dealer12));
+		final GetDealerResponse dealers = new GetDealerResponse();
+		dealers.getItems().addAll(Lists.newArrayList(dealer1, dealer2, dealer3, dealer4, dealer5, dealer6, dealer7, dealer8, dealer9, dealer10, dealer11, dealer12));
+		when(refDataDAL.getDealers()).thenReturn(dealers);
 		
 		final ReportTime time201308 = new ReportTime();
 		time201308.setId(1L);

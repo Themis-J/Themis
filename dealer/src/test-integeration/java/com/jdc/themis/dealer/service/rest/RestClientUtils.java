@@ -17,7 +17,7 @@ public abstract class RestClientUtils {
 		int i = 0;
 		for (final String param : params) {
 			final String[] value = param.split("\\:");
-			if (i == 0) {
+			if (i++ == 0) {
 				url += "?";
 			} else {
 				url += "&";
