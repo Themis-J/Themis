@@ -8,7 +8,7 @@ angular.module('masterApp.config', []).constant(
 		currentMode: 'local',
 		//currentMode: 'remote',
 		service : {
-			url : '/themis/dealer/report', 
+			url : '/themis', 
 			localUrl : 'reports'
 		},
 		highChartsTheme: {

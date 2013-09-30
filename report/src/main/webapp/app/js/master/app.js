@@ -9,7 +9,10 @@ angular.module('masterApp',
 		'masterApp.controllers', 
 		'overallAbs.controllers', 
 		'overallPercentage.controllers', 
-		'departmentAbs.controllers']).
+		'departmentOp.controllers', 
+		'departmentAbs.controllers', 
+		'departmentOpComp.controllers', 
+		'departmentPercentage.controllers']).
     config(['$routeProvider', function($routeProvider) {
     	$routeProvider.when('/report', {templateUrl: 'partials/master/edit.html', controller: 'editCtrl'});
         $routeProvider.otherwise({redirectTo: '/report'});

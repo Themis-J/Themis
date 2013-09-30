@@ -276,6 +276,7 @@ CREATE TABLE SalesServiceJournalItem
    name varchar(100), 
    categoryID integer,
    journalType integer,
+   description text,
    timestamp timestamp without time zone, 
    CONSTRAINT SSJLI_PK PRIMARY KEY (id),
    CONSTRAINT SSJLI_Unique UNIQUE (name, categoryID),

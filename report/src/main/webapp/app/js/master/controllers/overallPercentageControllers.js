@@ -61,37 +61,36 @@ angular.module('overallPercentage.controllers', [])
             var highchartsOptions = Highcharts.setOptions(Highcharts.theme); 
  			
             restClient(params, function(data) {
-            	var series = { previous:[], current:[], previousReference:[], currentReference:[], currentPercentage:[], };
             	var chartData = [
 				        	{
 				        		id: 'report_opProfit',
 				        		title: '运营利润' + '/' + $scope.selectedDenominatorOption.name,
 				        		yAxisTitle: '运营利润',
-				        		series: series
+				        		series: { previous:[], current:[], previousReference:[], currentReference:[], currentPercentage:[], }
 				        	},
 				        	{
 				        		id: 'report_netProfit',
 				        		title: '税前尽利润' + '/' + $scope.selectedDenominatorOption.name,
 				        		yAxisTitle: '税前尽利润',
-				        		series: series
+				        		series: { previous:[], current:[], previousReference:[], currentReference:[], currentPercentage:[], }
 				        	},
 				        	{
 				        		id: 'report_revenue',
 				        		title: '营业额' + '/' + $scope.selectedDenominatorOption.name,
 				        		yAxisTitle: '营业额',
-				        		series: series
+				        		series: { previous:[], current:[], previousReference:[], currentReference:[], currentPercentage:[], }
 				        	}, 
 				        	{
 				        		id: 'report_expense',
 				        		title: '费用' + '/' + $scope.selectedDenominatorOption.name,
 				        		yAxisTitle: '费用',
-				        		series: series
+				        		series: { previous:[], current:[], previousReference:[], currentReference:[], currentPercentage:[], }
 				        	}, 
 				        	{
 				        		id: 'report_margin',
 				        		title: '毛利' + '/' + $scope.selectedDenominatorOption.name,
 				        		yAxisTitle: '毛利',
-				        		series: series
+				        		series: { previous:[], current:[], previousReference:[], currentReference:[], currentPercentage:[], }
 				        	}
 				]; 
 				    
@@ -161,7 +160,7 @@ angular.module('overallPercentage.controllers', [])
 			        if ( reportService.getFullScreen() ) {
 			        	chartWidth = $(window).width();
 					}
-			        for (var i=0;i<=chartData.length;i++) 
+			        for (var i=0;i<chartData.length;i++) 
 	  				{
 			        	var currentData = chartData[i];
 			        

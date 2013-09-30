@@ -21,7 +21,7 @@ CREATE TABLE TaxJournalItem (id integer, name varchar(100), timestamp timestamp)
 
 CREATE TABLE SalesServiceJournalCategory (    id integer,    name varchar(100),     timestamp timestamp, CONSTRAINT SSJI_PK PRIMARY KEY (id))
 
-CREATE TABLE SalesServiceJournalItem (id integer, name varchar(100), categoryID integer, journalType integer, timestamp timestamp)
+CREATE TABLE SalesServiceJournalItem (id integer, name varchar(100), categoryID integer, journalType integer, description varchar(100), timestamp timestamp)
 
 CREATE TABLE TaxJournal (timestamp timestamp, timeEnd timestamp, validDate date, dealerID integer, id integer, version integer, amount double, updatedBy varchar(50))
 ALTER TABLE TaxJournal ALTER COLUMN timestamp SET NOT NULL

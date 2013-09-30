@@ -1,8 +1,14 @@
 'use strict';
 
 angular.module('masterApp.controllers', [])
-	.controller('editCtrl', ['$scope', '$http', '$route','$location', 'ReportRestClient', 'ReportService', function($scope, $http, $route, $location, restClient, reportService) {
-		$scope.items = ['overallAbs','overallPercentage','departmentAbs'];
+	.controller('editCtrl', ['$scope', '$http', '$route','$location', 'ReportRestClient', 'ReportService', 
+	function($scope, $http, $route, $location, restClient, reportService) {
+		$scope.items = ['overallAbs',
+						'overallPercentage',
+						'departmentOp', 
+						'departmentAbs', 
+						'departmentPercentage', 
+						'departmentOpComp', ];
         
 		$scope.goto = function(itemId)
         {
@@ -21,7 +27,7 @@ angular.module('masterApp.controllers', [])
         $scope.$on('$includeContentLoaded', function () {
         });
         
-        $scope.subpage = 'partials/master/' + $scope.items[2] + '.html';
+        $scope.subpage = 'partials/master/' + $scope.items[4] + '.html';
 
   }])
 

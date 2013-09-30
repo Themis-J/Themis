@@ -1,10 +1,9 @@
 'use strict';
 
-angular.module('overallAbs.controllers', [])
-	.controller('overallAbsCtrl', ['$scope', '$http', 'ReportRestClient', 'ReportService', 'config', function($scope, $http, restClient, reportService, config) {
+angular.module('departmentOp.controllers', [])
+	.controller('departmentOpCtrl', ['$scope', '$http', 'ReportRestClient', 'ReportService', 'config', function($scope, $http, restClient, reportService, config) {
 		$scope.charts = [
     		{text:'运营利润', display:true},
-    		{text:'税前尽利润', display:true},
     		{text:'营业额', display:false},
     		{text:'费用', display:false},
     		{text:'毛利', display:false}];
@@ -41,7 +40,7 @@ angular.module('overallAbs.controllers', [])
         	}
         	for ( var i=0; i< $scope.charts.length;i++ ) {
         		if ( $scope.charts[i].display == true ) {
-        			$scope.draw(restClient(config.currentMode).queryOverallIncomeReport, params, i);
+        			$scope.draw(restClient(config.currentMode).queryDepartmentIncomeReport, params, i);
         		} 
         	}
         	
@@ -58,12 +57,6 @@ angular.module('overallAbs.controllers', [])
 				        		id: 'report_opProfit',
 				        		title: '运营利润',
 				        		yAxisTitle: '运营利润',
-				        		series: { previous:[], current:[], previousReference:[], currentReference:[], currentPercentage:[], }
-				        	},
-				        	{
-				        		id: 'report_netProfit',
-				        		title: '税前尽利润',
-				        		yAxisTitle: '税前尽利润',
 				        		series: { previous:[], current:[], previousReference:[], currentReference:[], currentPercentage:[], }
 				        	},
 				        	{
@@ -86,48 +79,37 @@ angular.module('overallAbs.controllers', [])
 				        	}
 				    ]; 
 	            	var chartCategories = [{ categories: null }];
-	            	var dealers = [];
-	            	var previousDetail = data.detail[0].detail;
+	            	var departments = [];
+	            	var previousDetail = data.detail[0].departmentDetail;
 	            	for ( var i in previousDetail ) {
-	            		dealers[i] = previousDetail[i].code;
-	            		chartData[0].series.previous[i] = previousDetail[i].opProfit.amount;
-	            		chartData[0].series.previousReference[i] = previousDetail[i].opProfit.reference;
-	            		
-	            		chartData[1].series.previous[i] = previousDetail[i].netProfit.amount;
-	            		chartData[1].series.previousReference[i] = previousDetail[i].netProfit.reference;
-	            		
-	            		chartData[2].series.previous[i] = previousDetail[i].revenue.amount;
-	            		chartData[2].series.previousReference[i] = previousDetail[i].revenue.reference;
-	            		
-	            		chartData[3].series.previous[i] = previousDetail[i].expense.amount;
-	            		chartData[3].series.previousReference[i] = previousDetail[i].expense.reference;
-	            		
-	            		chartData[4].series.previous[i] = previousDetail[i].margin.amount;
-	            		chartData[4].series.previousReference[i] = previousDetail[i].margin.reference;
+	            		if (i == 0) {
+	            			// nothing
+	            		} else {
+	            		departments[i-1] = previousDetail[i].name;
+	            		chartData[0].series.previous[i-1] = previousDetail[i].opProfit.amount;
+	            		chartData[1].series.previous[i-1] = previousDetail[i].revenue.amount;
+	            		chartData[2].series.previous[i-1] = previousDetail[i].expense.amount;
+	            		chartData[3].series.previous[i-1] = previousDetail[i].margin.amount;
+	            		}
 	            	};
-	            	
-					chartCategories[0].categories = dealers;
-					var currentDetail = data.detail[1].detail;
+	            	chartCategories[0].categories = departments;
+					var currentDetail = data.detail[1].departmentDetail;
 					for ( var i in currentDetail ) {
-	            		chartData[0].series.current[i] = currentDetail[i].opProfit.amount;
-	            		chartData[0].series.currentPercentage[i] = currentDetail[i].opProfit.percentage * 100;
-	            		chartData[0].series.currentReference[i] = currentDetail[i].opProfit.reference;
+						if (i == 0) {
+	            			// nothing
+	            		} else {
+	            		chartData[0].series.current[i-1] = currentDetail[i].opProfit.amount;
+	            		chartData[0].series.currentPercentage[i-1] = currentDetail[i].opProfit.percentage * 100;
+
+	            		chartData[1].series.current[i-1] = currentDetail[i].revenue.amount;
+	            		chartData[1].series.currentPercentage[i-1] = currentDetail[i].revenue.percentage * 100;
 	            		
-	            		chartData[1].series.current[i] = currentDetail[i].netProfit.amount;
-	            		chartData[1].series.currentPercentage[i] = currentDetail[i].netProfit.percentage * 100;
-	            		chartData[1].series.currentReference[i] = currentDetail[i].netProfit.reference;
+	            		chartData[2].series.current[i-1] = currentDetail[i].expense.amount;
+	            		chartData[2].series.currentPercentage[i-1] = currentDetail[i].expense.percentage * 100;
 	            		
-	            		chartData[2].series.current[i] = currentDetail[i].revenue.amount;
-	            		chartData[2].series.currentReference[i] = currentDetail[i].revenue.reference;
-	            		chartData[2].series.currentPercentage[i] = currentDetail[i].revenue.percentage * 100;
-	            		
-	            		chartData[3].series.current[i] = currentDetail[i].expense.amount;
-	            		chartData[3].series.currentReference[i] = currentDetail[i].expense.reference;
-	            		chartData[3].series.currentPercentage[i] = currentDetail[i].expense.percentage * 100;
-	            		
-	            		chartData[4].series.current[i] = currentDetail[i].margin.amount;
-	            		chartData[4].series.currentReference[i] = currentDetail[i].margin.reference;
-	            		chartData[4].series.currentPercentage[i] = currentDetail[i].margin.percentage * 100;
+	            		chartData[3].series.current[i-1] = currentDetail[i].margin.amount;
+	            		chartData[3].series.currentPercentage[i-1] = currentDetail[i].margin.percentage * 100;
+	            		}
 	            	};
 	            	
 	            	var chartSubtitle = '年度对比';
@@ -216,16 +198,6 @@ angular.module('overallAbs.controllers', [])
 			                        type: 'column',
 			                        name: chartColumnCurrent,
 			                        data: currentData.series.current
-			                    },
-			                    {
-			                        type: 'spline',
-			                        name: chartColumnPreviousRef,
-			                        data: currentData.series.previousReference
-			                    },
-			                    {
-			                        type: 'spline',
-			                        name: chartColumnCurrentRef,
-			                        data: currentData.series.currentReference
 			                    },
 			                    {
 			                        type: 'spline',
