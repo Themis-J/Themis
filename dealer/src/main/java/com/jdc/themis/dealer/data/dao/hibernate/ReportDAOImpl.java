@@ -468,6 +468,7 @@ public class ReportDAOImpl implements ReportDAO {
 							isPersisted = true;
 						}
 					}
+					session.flush();
 				} else {
 					// this is a new journal
 					session.save(newJournal);
@@ -584,6 +585,7 @@ public class ReportDAOImpl implements ReportDAO {
 							isPersisted = true;
 						}
 					}
+					session.flush();
 				} else {
 					session.save(newJournal);
 				}
