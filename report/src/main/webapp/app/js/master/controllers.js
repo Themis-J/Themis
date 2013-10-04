@@ -8,7 +8,8 @@ angular.module('masterApp.controllers', [])
 						'departmentOp', 
 						'departmentAbs', 
 						'departmentPercentage', 
-						'departmentOpComp', ];
+						'departmentOpComp', 
+						'salesAbs', ];
         
 		$scope.goto = function(itemId)
         {
