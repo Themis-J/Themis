@@ -1,8 +1,8 @@
 'use strict';
 
 angular.module('masterApp.controllers', [])
-	.controller('editCtrl', ['$scope', '$http', '$route','$location', 'ReportRestClient', 'ReportService', 
-	function($scope, $http, $route, $location, restClient, reportService) {
+	.controller('editCtrl', ['$scope', 
+	function($scope) {
 		$scope.items = ['overallAbs',
 						'overallPercentage',
 						'departmentOp', 
@@ -27,10 +27,6 @@ angular.module('masterApp.controllers', [])
         $scope.$on('$includeContentLoaded', function () {
         });
         
-        $scope.subpage = 'partials/master/' + $scope.items[4] + '.html';
-
-  }])
-
-  .controller('viewCtrl', ['$scope',function($scope) {
+        $scope.subpage = 'partials/master/' + $scope.items[0] + '.html';
 
   }]);

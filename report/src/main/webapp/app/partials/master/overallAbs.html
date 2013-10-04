@@ -23,20 +23,8 @@
 		       </div>
             </div>
 
-			<div id="chartsDisplay">
-				<div id="report_opProfit" ng-show="charts[0].display">
-	            </div>
-	            
-	            <div id="report_netProfit" ng-show="charts[1].display">
-	            </div>
-	            
-	            <div id="report_revenue" ng-show="charts[2].display">
-	            </div>
-	            
-	            <div id="report_expense" ng-show="charts[3].display">
-	            </div>
-	            
-	            <div id="report_margin" ng-show="charts[4].display">
+			<div id="chartsDisplay" ng-repeat="chart in charts">
+				<div id="{{chart.id}}" ng-show="chart.display">
 	            </div>
 			</div>
 		

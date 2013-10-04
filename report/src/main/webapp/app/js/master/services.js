@@ -2,8 +2,8 @@
 
 /* Services */
 angular.module('masterApp.services', ['ngResource'])
-	.factory('ReportRestClient', ['$resource', 'config', function ($resource, config) {
-        return function(mode) {
+	.factory('ReportRestClient', ['$resource', 'config', function ($resource, config) {		
+		return function(mode) {
         	var services = {
 	        	remote: $resource(
 		        	config.service.url + '/:root/:path/:subpath', {}, {
@@ -58,19 +58,18 @@ angular.module('masterApp.services', ['ngResource'])
         	getDepartments: function(restClient, params, callback) {
         		restClient(params, function(data) {
         			var departments = [];
-        			for ( var i = 1; i < data.items.length; i++ ) {
-        				departments[i-1]=data.items[i];
+        			var j = 0;
+        			for ( var i = 0; i < data.items.length; i++) {
+        				if (data.items[i].id != 0) {
+        					departments[j++]=data.items[i];        					
+        				}
         			}
         			callback(departments);
         		});
         	},
         	getDealers: function(restClient, params, callback) {
         		restClient(params, function(data) {
-        			var dealers = [];
-        			for ( var i = 0; i < data.items.length; i++ ) {
-        				dealers[i]=data.items[i];
-        			}
-        			callback(dealers);
+        			callback(data.items);
         		});
         	},
         	getMonthList: function() {

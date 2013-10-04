@@ -3,11 +3,11 @@
 angular.module('overallAbs.controllers', [])
 	.controller('overallAbsCtrl', ['$scope', '$http', 'ReportRestClient', 'ReportService', 'config', function($scope, $http, restClient, reportService, config) {
 		$scope.charts = [
-    		{text:'运营利润', display:true},
-    		{text:'税前尽利润', display:true},
-    		{text:'营业额', display:false},
-    		{text:'费用', display:false},
-    		{text:'毛利', display:false}];
+    		{id: 'report_opProfit', text:'运营利润', display:true},
+    		{id: 'report_netProfit', text:'税前净利润', display:true},
+    		{id: 'report_revenue', text:'营业额', display:false},
+    		{id: 'report_expense', text:'费用', display:false},
+    		{id: 'report_margin', text:'毛利', display:false}];
     	
     	var currentDate = new Date();
   		reportService.setCurrentYear(currentDate.getFullYear());
@@ -161,7 +161,7 @@ angular.module('overallAbs.controllers', [])
 			        for (var i=0;i<chartData.length;i++) 
 	  				{
 			        	var currentData = chartData[i];
-			        	var chart = $('#' + currentData.id).highcharts({
+			        	$('#' + currentData.id).highcharts({
 			                chart: {
 			                	zoomType: 'xy',
 			                    height:$(window).height()*0.60,
@@ -234,7 +234,7 @@ angular.module('overallAbs.controllers', [])
 			                        data: currentData.series.currentPercentage
 			                    }
 			                ]
-			        	}).highcharts();
+			        	});
 		        	}
 		        
 			  });
