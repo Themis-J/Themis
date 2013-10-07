@@ -1,5 +1,6 @@
 package com.jdc.themis.dealer.service;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.time.Instant;
 
 import org.springframework.transaction.annotation.Transactional;
@@ -28,4 +29,9 @@ public interface UserService {
 	@Transactional(readOnly=true)
 	GetUserInfoResponse getUser(String username);
 	
+	@Transactional
+	boolean authVerity(final String username, final String password);
+
+	@Transactional
+	GetUserInfoResponse getCurrentUser(HttpServletRequest req);
 }

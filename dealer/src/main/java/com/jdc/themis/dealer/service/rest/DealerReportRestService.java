@@ -1,5 +1,6 @@
 package com.jdc.themis.dealer.service.rest;
 
+import javax.annotation.security.RolesAllowed;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
@@ -13,6 +14,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.jdc.themis.dealer.service.DealerIncomeReportService;
+import com.jdc.themis.dealer.utils.Constant;
 import com.jdc.themis.dealer.utils.RestServiceErrorHandler;
 import com.jdc.themis.dealer.utils.Utils;
 import com.jdc.themis.dealer.web.domain.GeneralResponse;
@@ -21,6 +23,7 @@ import com.jdc.themis.dealer.web.domain.ImportReportDataRequest;
 import fj.data.Option;
 
 @Service
+@RolesAllowed({Constant.HEAD_ROLE, Constant.ADMIN_ROLE, Constant.SUPER_ROLE})
 public class DealerReportRestService {
 
 	@Autowired

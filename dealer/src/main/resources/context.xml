@@ -48,6 +48,7 @@
     <!-- RESTFUL services definitions -->
 	<bean id="dealerRestService" class="com.jdc.themis.dealer.service.rest.DealerIncomeSystemRestService" />
     <bean id="userRestService" class="com.jdc.themis.dealer.service.rest.UserRestService" />
+    <bean id="GuestRestService" class="com.jdc.themis.dealer.service.rest.GuestRestService" />
     <bean id="reportRestService" class="com.jdc.themis.dealer.service.rest.DealerReportRestService" />
 
 	<jaxrs:server id="dealerEntryServer" address="/dealer">

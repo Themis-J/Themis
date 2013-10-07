@@ -1,5 +1,10 @@
 package com.jdc.themis.dealer.service.impl;
 
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 import javax.time.Instant;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -48,7 +53,7 @@ public class UserServiceImpl implements UserService {
 		
 		final UserInfo user = new UserInfo();
 		user.setUsername(request.getUsername());
-		user.setPassword(request.getPassword());
+		user.setPassword(hashPassword(request.getPassword()));
 		user.setActive(Boolean.TRUE);
 		if ( request.getDealerID() != null ) {
 			user.setDealerID(refDataQueryDAL.getDealer(request.getDealerID()).getId());
@@ -83,6 +88,18 @@ public class UserServiceImpl implements UserService {
 	}
 
 	@Override
+	@Performance
+	public boolean authVerity(final String username, final String password) {
+	    Preconditions.checkNotNull(username, "username can't be null");
+	    Preconditions.checkNotNull(password, "password can't be null");
+	    Preconditions.checkArgument(userDAL.getUser(username).isSome(), "unknown user name");
+
+	    final UserInfo user = userDAL.getUser(username).some();
+	    
+	    return user.getPassword().equals(hashPassword(password));
+	}
+	   
+	@Override
 	public Instant enableUser(final String username) {
 		Preconditions.checkNotNull(username, "username can't be null");
 		Preconditions.checkNotNull(userDAL.getUser(username).isSome(), "unknown user name");
@@ -104,7 +121,7 @@ public class UserServiceImpl implements UserService {
 				"password doesn't match");
 		
 		final UserInfo user = userDAL.getUser(request.getUsername()).some();
-		user.setPassword(request.getNewPassword());
+		user.setPassword(hashPassword(request.getNewPassword()));
 		return userDAL.saveOrUpdateUser(user);
 	}
 
@@ -113,7 +130,7 @@ public class UserServiceImpl implements UserService {
 		Preconditions.checkNotNull(request.getUsername(), "user name can't be null");
 		Preconditions.checkNotNull(request.getPassword(), "password can't be null");
 		Preconditions.checkArgument(userDAL.getUser(request.getUsername()).isSome(), "user name does not exists");
-		Preconditions.checkArgument(request.getPassword().equals(userDAL.getUser(request.getUsername()).some().getPassword()), 
+		Preconditions.checkArgument(hashPassword(request.getPassword()).equals(userDAL.getUser(request.getUsername()).some().getPassword()), 
 				"password doesn't match");
 		
 		final UserInfo user = userDAL.getUser(request.getUsername()).some();
@@ -124,4 +141,22 @@ public class UserServiceImpl implements UserService {
 		return userDAL.saveOrUpdateUser(user);
 	}
 
+	@Override
+	public GetUserInfoResponse getCurrentUser(HttpServletRequest req) {
+	    HttpSession session = req.getSession(false);
+	    String userAlias = (null == session) ? null : (String) session.getAttribute("userAlias");
+
+	    return (null == userAlias) ? null : getUser(userAlias);
+	}
+	
+	private String hashPassword(String password) {
+	  byte[] passHash = null;
+      try {
+        MessageDigest sha256 = MessageDigest.getInstance("SHA-256");
+        passHash = sha256.digest(password.getBytes());
+      } catch (NoSuchAlgorithmException e) {
+        throw new RuntimeException(e);
+      }        
+	  return new String(passHash);
+	}
 }
