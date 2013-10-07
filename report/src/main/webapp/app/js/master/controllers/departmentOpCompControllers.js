@@ -1,11 +1,10 @@
 'use strict';
 
-angular.module('overallPercentage.controllers', [])
-	.controller('overallPercentageCtrl', ['$scope', '$http', 'ReportRestClient', 'ReportService', 'config', function($scope, $http, restClient, reportService, config) {
+angular.module('departmentOpComp.controllers', [])
+	.controller('departmentOpCompCtrl', ['$scope', '$http', 'ReportRestClient', 'ReportService', 'config', function($scope, $http, restClient, reportService, config) {
 		$scope.charts = [
     		{text:'运营利润', display:true},
-    		{text:'税前尽利润', display:true},
-    		{text:'费用', display:false},
+    		{text:'营业额', display:false},
     		{text:'毛利', display:false}];
     	
     	var currentDate = new Date();
@@ -17,8 +16,6 @@ angular.module('overallPercentage.controllers', [])
 		reportService.setMonthOfYear(currentDate.getMonth());
 		$scope.monthOptions = reportService.getMonthList();
 		$scope.selectedMonthOption = $scope.monthOptions[reportService.getMonthOfYear()-1];
-    	
-    	$scope.selectedTime = 0;
     	
     	$scope.selectReportYear = function() {
     		reportService.setCurrentYear($scope.selectedYearOption.id);
@@ -37,16 +34,23 @@ angular.module('overallPercentage.controllers', [])
     	$scope.selectReportDenominotor = function() {
     		$scope.showReport();
     	};
-    	
+    	    	
+    	$scope.departmentOptions = [];
+    	reportService.getDepartments(restClient(config.currentMode).queryDepartments, {}, function(departments) {
+    		$scope.departmentOptions = departments;
+    		$scope.selectedDepartmentOption = $scope.departmentOptions[0];
+			// called on page is loaded
+			$scope.showReport();
+		});
+		
+		$scope.selectReportDepartment = function() {
+			$scope.showReport();
+		};
+		
     	$scope.showReport = function()
         {
         	var params = null;
-        	if ( $scope.selectedTime == 0 ) {
-        		params = {year: reportService.getCurrentYear(), denominator: $scope.selectedDenominatorOption.id};
-        	}
-        	if ( $scope.selectedTime == 1 ) {
-        		params = {year: reportService.getCurrentYear(), monthOfYear: reportService.getMonthOfYear(), denominator: $scope.selectedDenominatorOption.id};
-        	}
+        	params = {year: reportService.getCurrentYear(), departmentID: $scope.selectedDepartmentOption.id, monthOfYear: reportService.getMonthOfYear(), denominator: $scope.selectedDenominatorOption.id};
         	for ( var i=0; i< $scope.charts.length;i++ ) {
         		if ( $scope.charts[i].display == true ) {
         			$scope.draw(restClient(config.currentMode).queryOverallPercentageIncomeReport, params, i);
@@ -69,21 +73,9 @@ angular.module('overallPercentage.controllers', [])
 				        		series: { previous:[], current:[], previousReference:[], currentReference:[], currentPercentage:[], }
 				        	},
 				        	{
-				        		id: 'report_netProfit',
-				        		title: '税前尽利润' + '/' + $scope.selectedDenominatorOption.name,
-				        		yAxisTitle: '税前尽利润',
-				        		series: { previous:[], current:[], previousReference:[], currentReference:[], currentPercentage:[], }
-				        	},
-				        	{
 				        		id: 'report_revenue',
 				        		title: '营业额' + '/' + $scope.selectedDenominatorOption.name,
 				        		yAxisTitle: '营业额',
-				        		series: { previous:[], current:[], previousReference:[], currentReference:[], currentPercentage:[], }
-				        	}, 
-				        	{
-				        		id: 'report_expense',
-				        		title: '费用' + '/' + $scope.selectedDenominatorOption.name,
-				        		yAxisTitle: '费用',
 				        		series: { previous:[], current:[], previousReference:[], currentReference:[], currentPercentage:[], }
 				        	}, 
 				        	{
@@ -224,21 +216,6 @@ angular.module('overallPercentage.controllers', [])
 			  });
 		};
 
-		$scope.times = [
-    		{text:'年', value:0, isDefault: true},
-    		{text:'月', value:1, isDefault: false}];
-    	
-    	$scope.selectTime = function(x) {
-    		if ( x == 0 ) { // year
-    			$scope.selectedTime = 0;
-    			$scope.showReport();
-    		}
-    		if ( x == 1 ) { // month
-    			$scope.selectedTime = 1;
-    			$scope.showReport();
-    		}
-    	};
-    	
         reportService.setFullScreen(false);
 
         $scope.toggleFullScreen = function()
@@ -267,8 +244,5 @@ angular.module('overallPercentage.controllers', [])
                 $scope.showReport();
             }
         };
-
-		// called on page is loaded
-		$scope.showReport();
 
   }]);

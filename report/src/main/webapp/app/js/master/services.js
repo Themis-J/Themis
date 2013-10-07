@@ -2,20 +2,26 @@
 
 /* Services */
 angular.module('masterApp.services', ['ngResource'])
-	.factory('ReportRestClient', ['$resource', 'config', function ($resource, config) {
-        return function(mode) {
+	.factory('ReportRestClient', ['$resource', 'config', function ($resource, config) {		
+		return function(mode) {
         	var services = {
 	        	remote: $resource(
-		        	config.service.url + '/:path/:subpath', {}, {
-		            queryOverallIncomeReport: {method: 'GET', params: {path: 'query', subpath:'overallIncomeReport'}, isArray: false},
-		            queryOverallPercentageIncomeReport: {method: 'GET', params: {path: 'query', subpath:'overallIncomeReport'}, isArray: false},
-		            queryDepartments: {method: 'GET', params: {path: '', subpath:'department'}, isArray: false},
+		        	config.service.url + '/:root/:path/:subpath', {}, {
+		            queryOverallIncomeReport: {method: 'GET', params: {root:'report', path: 'query', subpath:'overallIncomeReport'}, isArray: false},
+		            queryOverallPercentageIncomeReport: {method: 'GET', params: {root:'report', path: 'query', subpath:'overallIncomeReport'}, isArray: false},
+		            queryDepartmentIncomeReport: {method: 'GET', params: {root:'report', path: 'query', subpath:'departmentIncomeReport'}, isArray: false},
+		            queryDealerSalesReport: {method: 'GET', params: {root:'report', path: 'query', subpath:'salesReport'}, isArray: false},
+		            queryDepartments: {method: 'GET', params: {root:'dealer', path: 'department', subpath:''}, isArray: false},
+		            queryDealers: {method: 'GET', params: {root:'dealer', path: 'list', subpath:''}, isArray: false},
 		        }),
 	        	local: $resource(
 		        	config.service.localUrl + '/:path/:subpath', {}, {
 		            queryOverallIncomeReport: {method: 'GET', params: {path: '', subpath:'queryYearlyIncomeReport.json'}, isArray: false},
 		            queryOverallPercentageIncomeReport: {method: 'GET', params: {path: '', subpath:'queryYearlyPercentageIncomeReport.json'}, isArray: false},
+		            queryDepartmentIncomeReport: {method: 'GET', params: {path: '', subpath:'queryDepartmentIncomeReport.json'}, isArray: false},
+		            queryDealerSalesReport: {method: 'GET', params: {path: '', subpath:'queryDealerSalesReport.json'}, isArray: false},
 		            queryDepartments: {method: 'GET', params: {path: '', subpath:'departments.json'}, isArray: false},
+		            queryDealers: {method: 'GET', params: {path: '', subpath:'dealers.json'}, isArray: false},
 		        })
 	        };
 	        if ( mode == 'local' ) {
@@ -25,7 +31,7 @@ angular.module('masterApp.services', ['ngResource'])
         };
     }
     ]).
-    factory('ReportService', ['config', function(config){
+    factory('ReportService', [function(){
     	var monthOfYear = -1;
     	var currentYear = -1;
     	var charts = [];
@@ -52,10 +58,18 @@ angular.module('masterApp.services', ['ngResource'])
         	getDepartments: function(restClient, params, callback) {
         		restClient(params, function(data) {
         			var departments = [];
-        			for ( var i = 1; i < data.items.length; i++ ) {
-        				departments[i-1]=data.items[i];
+        			var j = 0;
+        			for ( var i = 0; i < data.items.length; i++) {
+        				if (data.items[i].id != 0) {
+        					departments[j++]=data.items[i];        					
+        				}
         			}
         			callback(departments);
+        		});
+        	},
+        	getDealers: function(restClient, params, callback) {
+        		restClient(params, function(data) {
+        			callback(data.items);
         		});
         	},
         	getMonthList: function() {

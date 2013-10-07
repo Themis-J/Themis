@@ -3,10 +3,10 @@
 angular.module('departmentAbs.controllers', [])
 	.controller('departmentAbsCtrl', ['$scope', '$http', 'ReportRestClient', 'ReportService', 'config', function($scope, $http, restClient, reportService, config) {
 		$scope.charts = [
-			{text:'营业额', display:false},
-    		{text:'毛利', display:false},
-    		{text:'费用', display:false},
-    		{text:'运营利润', display:true},
+			{text:'营业额', display:false, chart:null},
+    		{text:'毛利', display:false, chart:null},
+    		{text:'费用', display:false, chart:null},
+    		{text:'运营利润', display:true, chart:null},
     		];
         
     	var currentDate = new Date();
@@ -57,38 +57,169 @@ angular.module('departmentAbs.controllers', [])
         	}
         	
         };
-        $scope.draw = function (restClient, params, index) {
-			Highcharts.theme = config.highChartsTheme;
-			
-            // Apply the theme
-            var highchartsOptions = Highcharts.setOptions(Highcharts.theme); 
- 			
-            restClient(params, function(data) {
-            	var series = { previous:[], current:[], previousReference:[], currentReference:[], currentPercentage:[], };
-            	var chartData = [
+        $scope.drawDrilldown = function (pRestClient, pDealerName, pDealerID, index) {
+        	var params = null;
+        	if ( $scope.selectedTime == 0 ) {
+        		params = {year: reportService.getCurrentYear(), dealerID: pDealerID, departmentID: $scope.selectedDepartmentOption.id};
+        	}
+        	if ( $scope.selectedTime == 1 ) {
+        		params = {year: reportService.getCurrentYear(), monthOfYear: reportService.getMonthOfYear(), dealerID: pDealerID, departmentID: $scope.selectedDepartmentOption.id};
+        	}
+        	pRestClient(params, function(data) {
+        		var chartData = [
 				        	{
 				        		id: 'report_revenue',
 				        		title: '营业额',
 				        		yAxisTitle: '营业额',
-				        		series: series
+				        		series: { previous:[], current:[]}
 				        	}, 
 				        	{
 				        		id: 'report_margin',
 				        		title: '毛利',
 				        		yAxisTitle: '毛利',
-				        		series: series
+				        		series: { previous:[], current:[]}
 				        	},
 				        	{
 				        		id: 'report_expense',
 				        		title: '费用',
 				        		yAxisTitle: '费用',
-				        		series: series
+				        		series: { previous:[], current:[]}
 				        	}, 
 				        	{
 				        		id: 'report_opProfit',
 				        		title: '运营利润',
 				        		yAxisTitle: '运营利润',
-				        		series: series
+				        		series: { previous:[], current:[]}
+				        	},
+
+				    ]; 
+	            	var chartCategories = [{ categories: null }];
+	            	var departments = [];
+					for (var j = 0; j < $scope.departmentOptions.length; j++) {
+						departments[j] = $scope.departmentOptions[j].name;
+					}
+					
+					var previousDetail = data.detail[0].departmentDetail;
+	            	for ( var i in previousDetail ) {
+	            		if (i == 0) {
+	            			// nothing
+	            		} else {
+	            		chartData[0].series.previous[i-1] = previousDetail[i].revenue.amount;
+	            		chartData[1].series.previous[i-1] = previousDetail[i].margin.amount;
+	            		chartData[2].series.previous[i-1] = previousDetail[i].expense.amount;
+	            		chartData[3].series.previous[i-1] = previousDetail[i].opProfit.amount;
+	            		}
+	            	};
+	            	chartCategories[0].categories = departments;
+					var currentDetail = data.detail[1].departmentDetail;
+					for ( var i in currentDetail ) {
+						if (i == 0) {
+	            			// nothing
+	            		} else {
+						chartData[0].series.current[i-1] = currentDetail[i].revenue.amount;
+	            		chartData[1].series.current[i-1] = currentDetail[i].margin.amount;
+	            		chartData[2].series.current[i-1] = currentDetail[i].expense.amount;
+	            		chartData[3].series.current[i-1] = currentDetail[i].opProfit.amount;
+	            		}
+	            	};
+	            	
+			        var chartWidth = $(window).width() * 0.60;
+			        if ( reportService.getFullScreen() ) {
+			        	chartWidth = $(window).width();
+					}
+			        var chartColumnCurrent = '今年';
+	            	if ( $scope.selectedTime == 1 ) {
+	            		chartColumnCurrent = '当月';
+	            	}
+			       	var currentData = chartData[index];
+			       	$scope.charts[index].chart = $('#' + currentData.id).highcharts({
+			                chart: {
+			                	zoomType: 'xy',
+			                    height:$(window).height()*0.60,
+			                    width: chartWidth,
+			                },
+			                title: {
+			                    text: pDealerName + '-' + currentData.title
+			                },
+			                subtitle: {
+			                    text: '部门对比 (再次点击回到上一级)'
+			                },
+			                xAxis: chartCategories,
+			                yAxis: [{
+			                    title: {
+			                        text: currentData.yAxisTitle
+			                    },
+			                    min:-10000
+			                }
+							],
+			                tooltip: {
+			                    formatter: function() {
+			                        var tooltip = this.series.name +': '+ this.y +'<br/>';
+			                        return  tooltip;
+			                    },
+			                    useHTML: true
+			                },
+			                plotOptions: {
+			                    column: {
+			                    	cursor: 'pointer',
+			                    	point: {
+				                        events: {
+				                            click: function() {
+				                            	var params = null;
+									        	if ( $scope.selectedTime == 0 ) {
+									        		params = {year: reportService.getCurrentYear(), departmentID: $scope.selectedDepartmentOption.id};
+									        	}
+									        	if ( $scope.selectedTime == 1 ) {
+									        		params = {year: reportService.getCurrentYear(), monthOfYear: reportService.getMonthOfYear(), departmentID: $scope.selectedDepartmentOption.id};
+									        	}
+				                            	$scope.draw(restClient(config.currentMode).queryOverallIncomeReport, params, index); 
+				                            }
+				                        }
+				                    },
+			                    }
+			                },
+			                series: [
+				                    {
+				                        type: 'column',
+				                        name: chartColumnCurrent,
+				                        data: chartData[index].series.current
+				                    },
+				            ]
+			        	}).highcharts();
+			    
+			  });
+		};
+        $scope.draw = function (pRestClient, params, index) {
+			Highcharts.theme = config.highChartsTheme;
+			
+            // Apply the theme
+            var highchartsOptions = Highcharts.setOptions(Highcharts.theme); 
+ 			
+            pRestClient(params, function(data) {
+            	var chartData = [
+				        	{
+				        		id: 'report_revenue',
+				        		title: '营业额',
+				        		yAxisTitle: '营业额',
+				        		series: { previous:[], current:[], previousReference:[], currentReference:[], currentPercentage:[], }
+				        	}, 
+				        	{
+				        		id: 'report_margin',
+				        		title: '毛利',
+				        		yAxisTitle: '毛利',
+				        		series: { previous:[], current:[], previousReference:[], currentReference:[], currentPercentage:[], }
+				        	},
+				        	{
+				        		id: 'report_expense',
+				        		title: '费用',
+				        		yAxisTitle: '费用',
+				        		series: { previous:[], current:[], previousReference:[], currentReference:[], currentPercentage:[], }
+				        	}, 
+				        	{
+				        		id: 'report_opProfit',
+				        		title: '运营利润',
+				        		yAxisTitle: '运营利润',
+				        		series: { previous:[], current:[], previousReference:[], currentReference:[], currentPercentage:[], }
 				        	},
 
 				    ]; 
@@ -98,42 +229,42 @@ angular.module('departmentAbs.controllers', [])
 	            	var previousYear = data.detail[0].year;
 	            	for ( var i in previousDetail ) {
 	            		dealers[i] = previousDetail[i].code;
-	            		chartData[0].series.previous[i] = {y: previousDetail[i].revenue.amount, drilldown:{name: previousDetail[i].id, type: 'revenue'}};
+	            		chartData[0].series.previous[i] = {y: previousDetail[i].revenue.amount, detail: previousDetail[i], drilldown:{dealerID: previousDetail[i].id, type: 'revenue', index:0}};
 	            		chartData[0].series.previousReference[i] = previousDetail[i].revenue.reference;
 	            		
-	            		chartData[1].series.previous[i] = {y: previousDetail[i].margin.amount, drilldown:{name: previousDetail[i].id, type: 'margin'}};
+	            		chartData[1].series.previous[i] = {y: previousDetail[i].margin.amount, detail: previousDetail[i], drilldown:{dealerID: previousDetail[i].id, type: 'margin', index:1}};
 	            		chartData[1].series.previousReference[i] = previousDetail[i].margin.reference;
 
-	            		chartData[2].series.previous[i] = {y: previousDetail[i].expense.amount, drilldown:{name: previousDetail[i].id, type: 'expense'}};
+	            		chartData[2].series.previous[i] = {y: previousDetail[i].expense.amount, detail: previousDetail[i], drilldown:{dealerID: previousDetail[i].id, type: 'expense', index:2}};
 	            		chartData[2].series.previousReference[i] = previousDetail[i].expense.reference;
 	            		
-	            		chartData[3].series.previous[i] = {y: previousDetail[i].opProfit.amount, drilldown:{name: previousDetail[i].id, type: 'opProfit'}};
+	            		chartData[3].series.previous[i] = {y: previousDetail[i].opProfit.amount, detail: previousDetail[i], drilldown:{dealerID: previousDetail[i].id, type: 'opProfit', index:3}};
 	            		chartData[3].series.previousReference[i] = previousDetail[i].opProfit.reference;
 	            	};
 	            	
 					chartCategories[0].categories = dealers;
 					var currentDetail = data.detail[1].detail;
 					for ( var i in currentDetail ) {
-	            		chartData[0].series.current[i] = currentDetail[i].revenue.amount;
+	            		chartData[0].series.current[i] = {y: currentDetail[i].revenue.amount, detail: currentDetail[i], drilldown:{dealerID: currentDetail[i].id, type: 'revenue', index:0}};
 	            		chartData[0].series.currentReference[i] = currentDetail[i].revenue.reference;
 	            		chartData[0].series.currentPercentage[i] = currentDetail[i].revenue.percentage * 100;
 	            		
-	            		chartData[1].series.current[i] = currentDetail[i].margin.amount;
+	            		chartData[1].series.current[i] = {y: currentDetail[i].margin.amount, detail: currentDetail[i], drilldown:{dealerID: currentDetail[i].id, type: 'margin', index:1}};
 	            		chartData[1].series.currentReference[i] = currentDetail[i].margin.reference;
 	            		chartData[1].series.currentPercentage[i] = currentDetail[i].margin.percentage * 100;
 	            		
-	            		chartData[2].series.current[i] = currentDetail[i].expense.amount;
+	            		chartData[2].series.current[i] = {y: currentDetail[i].expense.amount, detail: currentDetail[i], drilldown:{dealerID: currentDetail[i].id, type: 'expense', index:2}};
 	            		chartData[2].series.currentReference[i] = currentDetail[i].expense.reference;
 	            		chartData[2].series.currentPercentage[i] = currentDetail[i].expense.percentage * 100;
 	            		
-	            		chartData[3].series.current[i] = currentDetail[i].opProfit.amount;
+	            		chartData[3].series.current[i] = {y: currentDetail[i].opProfit.amount, detail: currentDetail[i], drilldown:{dealerID: currentDetail[i].id, type: 'opProfit', index:3}};
 	            		chartData[3].series.currentPercentage[i] = currentDetail[i].opProfit.percentage * 100;
 	            		chartData[3].series.currentReference[i] = currentDetail[i].opProfit.reference;
 	            	};
 	            	
-	            	var chartSubtitle = '年度对比';
+	            	var chartSubtitle = '年度对比（点击柱子进入此列经销商该年部门对比）';
 	            	if ( $scope.selectedTime == 1 ) {
-	            		chartSubtitle = '月对比';
+	            		chartSubtitle = '月对比（点击柱子进入此列经销商该月部门对比）';
 	            	}
 	            	
 	            	var chartColumnPrevious = '去年';
@@ -160,10 +291,10 @@ angular.module('departmentAbs.controllers', [])
 			                    		
 			        chartData = [chartData[index]];
 			        
-		        	for (var i=0;i<=chartData.length;i++) 
+		        	for (var i=0;i<chartData.length;i++) 
 	  				{
 			        	var currentData = chartData[i];
-			        	var chart = $('#' + currentData.id).highcharts({
+			        	$scope.charts[index].chart = $('#' + currentData.id).highcharts({
 			                chart: {
 			                	zoomType: 'xy',
 			                    height:$(window).height()*0.60,
@@ -210,13 +341,9 @@ angular.module('departmentAbs.controllers', [])
 				                        events: {
 				                            click: function() {
 				                            	var drilldown = this.drilldown;
-				                                window.alert(drilldown.name);
 				                                if (drilldown) { // drill down
-				                                    // TODO: generate drilldown data
-				                                    setChart(drilldown.name, drilldown.categories, drilldown.data, drilldown.color);
-				                                } else { // restore
-				                                    setChart(name, categories, data);
-				                                }
+				                                    $scope.drawDrilldown(restClient(config.currentMode).queryDepartmentIncomeReport, this.detail.name, drilldown.dealerID, drilldown.index);
+					                            } 
 				                            }
 				                        }
 				                    },
@@ -257,8 +384,8 @@ angular.module('departmentAbs.controllers', [])
 		};
 
 		$scope.times = [
-    		{text:'月', value:1, isDefault: true}, 
-    		{text:'年', value:0, isDefault: false},];
+    		{text:'年', value:0, isDefault: true},
+    		{text:'月', value:1, isDefault: false}];
     	
     	$scope.selectTime = function(x) {
     		if ( x == 0 ) { // year

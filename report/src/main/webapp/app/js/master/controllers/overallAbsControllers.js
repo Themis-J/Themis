@@ -3,11 +3,11 @@
 angular.module('overallAbs.controllers', [])
 	.controller('overallAbsCtrl', ['$scope', '$http', 'ReportRestClient', 'ReportService', 'config', function($scope, $http, restClient, reportService, config) {
 		$scope.charts = [
-    		{text:'运营利润', display:true},
-    		{text:'税前尽利润', display:true},
-    		{text:'营业额', display:false},
-    		{text:'费用', display:false},
-    		{text:'毛利', display:false}];
+    		{id: 'report_opProfit', text:'运营利润', display:true},
+    		{id: 'report_netProfit', text:'税前净利润', display:true},
+    		{id: 'report_revenue', text:'营业额', display:false},
+    		{id: 'report_expense', text:'费用', display:false},
+    		{id: 'report_margin', text:'毛利', display:false}];
     	
     	var currentDate = new Date();
   		reportService.setCurrentYear(currentDate.getFullYear());
@@ -53,37 +53,36 @@ angular.module('overallAbs.controllers', [])
 	            var highchartsOptions = Highcharts.setOptions(Highcharts.theme); 
 	 			
 	            restClient(params, function(data) {
-	            	var series = { previous:[], current:[], previousReference:[], currentReference:[], currentPercentage:[], };
 	            	var chartData = [
 				        	{
 				        		id: 'report_opProfit',
 				        		title: '运营利润',
 				        		yAxisTitle: '运营利润',
-				        		series: series
+				        		series: { previous:[], current:[], previousReference:[], currentReference:[], currentPercentage:[], }
 				        	},
 				        	{
 				        		id: 'report_netProfit',
 				        		title: '税前尽利润',
 				        		yAxisTitle: '税前尽利润',
-				        		series: series
+				        		series: { previous:[], current:[], previousReference:[], currentReference:[], currentPercentage:[], }
 				        	},
 				        	{
 				        		id: 'report_revenue',
 				        		title: '营业额',
 				        		yAxisTitle: '营业额',
-				        		series: series
+				        		series: { previous:[], current:[], previousReference:[], currentReference:[], currentPercentage:[], }
 				        	}, 
 				        	{
 				        		id: 'report_expense',
 				        		title: '费用',
 				        		yAxisTitle: '费用',
-				        		series: series
+				        		series: { previous:[], current:[], previousReference:[], currentReference:[], currentPercentage:[], }
 				        	}, 
 				        	{
 				        		id: 'report_margin',
 				        		title: '毛利',
 				        		yAxisTitle: '毛利',
-				        		series: series
+				        		series: { previous:[], current:[], previousReference:[], currentReference:[], currentPercentage:[], }
 				        	}
 				    ]; 
 	            	var chartCategories = [{ categories: null }];
@@ -155,14 +154,14 @@ angular.module('overallAbs.controllers', [])
 
 			        var chartWidth = $(window).width() * 0.60;
 			        if ( reportService.getFullScreen() ) {
-			        	chartWidth = $(window).width();
+			        	chartWidth = $(window).width() * 0.90;
 					}
 			        
 			        chartData = [chartData[index]];
-			        for (var i=0;i<=chartData.length;i++) 
+			        for (var i=0;i<chartData.length;i++) 
 	  				{
 			        	var currentData = chartData[i];
-			        	var chart = $('#' + currentData.id).highcharts({
+			        	$('#' + currentData.id).highcharts({
 			                chart: {
 			                	zoomType: 'xy',
 			                    height:$(window).height()*0.60,
@@ -235,7 +234,7 @@ angular.module('overallAbs.controllers', [])
 			                        data: currentData.series.currentPercentage
 			                    }
 			                ]
-			        	}).highcharts();
+			        	});
 		        	}
 		        
 			  });

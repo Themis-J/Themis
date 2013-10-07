@@ -1,4 +1,4 @@
-<div id="report_div" class="span9 row-fluid" style="padding-left: 60px" ng-controller="overallAbsCtrl">
+<div id="report_div" class="span9 row-fluid" style="padding-left: 60px" ng-controller="departmentOpCtrl">
         <div class="span11">
             <div>
             	<div id="date_div" style="padding-bottom: 10px">
@@ -23,8 +23,17 @@
 		       </div>
             </div>
 
-			<div id="chartsDisplay" ng-repeat="chart in charts">
-				<div id="{{chart.id}}" ng-show="chart.display">
+			<div id="chartsDisplay">
+				<div id="report_opProfit" ng-show="charts[0].display">
+	            </div>
+
+	            <div id="report_revenue" ng-show="charts[1].display">
+	            </div>
+	            
+	            <div id="report_expense" ng-show="charts[2].display">
+	            </div>
+	            
+	            <div id="report_margin" ng-show="charts[3].display">
 	            </div>
 			</div>
 		
