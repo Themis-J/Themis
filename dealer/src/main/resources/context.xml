@@ -48,10 +48,27 @@
     <!-- RESTFUL services definitions -->
 	<bean id="dealerRestService" class="com.jdc.themis.dealer.service.rest.DealerIncomeSystemRestService" />
     <bean id="userRestService" class="com.jdc.themis.dealer.service.rest.UserRestService" />
-    <bean id="GuestRestService" class="com.jdc.themis.dealer.service.rest.GuestRestService" />
     <bean id="reportRestService" class="com.jdc.themis.dealer.service.rest.DealerReportRestService" />
+    <bean id="authRestService" class="com.jdc.themis.dealer.service.rest.AuthRestService" />
+    
+    <!-- secure interceptors -->
+    <bean id="dealerInterceptor" class="org.apache.cxf.interceptor.security.SecureAnnotationsInterceptor">
+	   <property name="securedObject" ref="dealerRestService"/>
+	</bean>
+	<bean id="userInterceptor" class="org.apache.cxf.interceptor.security.SecureAnnotationsInterceptor">
+	   <property name="securedObject" ref="userRestService"/>
+	</bean>
+    <bean id="reportInterceptor" class="org.apache.cxf.interceptor.security.SecureAnnotationsInterceptor">
+	   <property name="securedObject" ref="reportRestService"/>
+	</bean>
+	<bean id="authInterceptor" class="org.apache.cxf.interceptor.security.SecureAnnotationsInterceptor">
+	   <property name="securedObject" ref="authRestService"/>
+	</bean>
 
 	<jaxrs:server id="dealerEntryServer" address="/dealer">
+		<jaxrs:inInterceptors>
+	   		<ref bean="dealerInterceptor"/>
+	 	</jaxrs:inInterceptors>
 		<jaxrs:serviceBeans>
       		<ref bean="dealerRestService" />
     	</jaxrs:serviceBeans>
@@ -61,6 +78,9 @@
 		</jaxrs:providers>
 	</jaxrs:server>
 	<jaxrs:server id="userServer" address="/user">
+	    <jaxrs:inInterceptors>
+	   		<ref bean="userInterceptor"/>
+	 	</jaxrs:inInterceptors>
         <jaxrs:serviceBeans>
             <ref bean="userRestService" />
         </jaxrs:serviceBeans>
@@ -70,8 +90,23 @@
         </jaxrs:providers>
     </jaxrs:server>
     <jaxrs:server id="reportServer" address="/report">
+    	<jaxrs:inInterceptors>
+	   		<ref bean="reportInterceptor"/>
+	 	</jaxrs:inInterceptors>
         <jaxrs:serviceBeans>
             <ref bean="reportRestService" />
+        </jaxrs:serviceBeans>
+        <jaxrs:providers>
+            <ref bean="jsonProvider" />
+            <ref bean="jaxbProvider" />
+        </jaxrs:providers>
+    </jaxrs:server>
+    <jaxrs:server id="authService" address="/auth">
+	    <jaxrs:inInterceptors>
+	   		<ref bean="authInterceptor"/>
+	 	</jaxrs:inInterceptors>
+        <jaxrs:serviceBeans>
+            <ref bean="authRestService" />
         </jaxrs:serviceBeans>
         <jaxrs:providers>
             <ref bean="jsonProvider" />

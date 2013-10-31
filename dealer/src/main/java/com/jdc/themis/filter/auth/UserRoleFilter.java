@@ -11,11 +11,7 @@ import javax.servlet.ServletResponse;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
-import org.apache.log4j.Logger;
-
 public class UserRoleFilter implements Filter {
-
-  Logger logger = Logger.getLogger(UserRoleFilter.class);
 
   @Override
   public void init(FilterConfig arg0) throws ServletException {

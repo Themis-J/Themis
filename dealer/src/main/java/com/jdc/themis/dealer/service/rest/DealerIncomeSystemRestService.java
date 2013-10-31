@@ -38,7 +38,7 @@ import fj.data.Option;
  * 
  */
 @Service
-@RolesAllowed({Constant.DEALER_ROLE, Constant.ADMIN_ROLE, Constant.SUPER_ROLE})
+@RolesAllowed({Constant.DEALER_ROLE})
 public class DealerIncomeSystemRestService {
 
 	@Autowired

@@ -12,11 +12,4 @@
       		<security:jdbc-user-service data-source-ref="dataSource"/>
    	 	</security:authentication-provider>
   	</security:authentication-manager>
-  
-	<security:http pattern="/login.htm*" security="none"/>
-	<security:http auto-config='true'>
-		<security:intercept-url pattern="/**" access="ROLE_USER" />
-	    <security:form-login login-page='/login.html'/>
-	</security:http>
-
 </beans>

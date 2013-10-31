@@ -54,10 +54,11 @@ public class UserServiceImpl implements UserService {
 		final UserInfo user = new UserInfo();
 		user.setUsername(request.getUsername());
 		user.setPassword(hashPassword(request.getPassword()));
-		user.setActive(Boolean.TRUE);
+		user.setUserRoleID(request.getUserRole());
 		if ( request.getDealerID() != null ) {
 			user.setDealerID(refDataQueryDAL.getDealer(request.getDealerID()).getId());
 		} 
+		user.setActive(Boolean.TRUE);
 		return userDAL.saveOrUpdateUser(user);
 	}
 
@@ -96,7 +97,8 @@ public class UserServiceImpl implements UserService {
 
 	    final UserInfo user = userDAL.getUser(username).some();
 	    
-	    return user.getPassword().equals(hashPassword(password));
+	    return user.getPassword().equals(password);
+//	    return user.getPassword().equals(hashPassword(password));
 	}
 	   
 	@Override
@@ -111,14 +113,14 @@ public class UserServiceImpl implements UserService {
 
 	@Override
 	public Instant resetPassword(final ResetPasswordRequest request) {
-		Preconditions.checkNotNull(request.getUsername(), "user name can't be null");
-		Preconditions.checkNotNull(request.getOldPassword(), "old password can't be null");
-		Preconditions.checkNotNull(request.getNewPassword(), "new password can't be null");
-		Preconditions.checkArgument(userDAL.getUser(request.getUsername()).isSome(), "user name does not exists");
-		Preconditions.checkArgument(!request.getNewPassword().equals(request.getOldPassword()), 
-				"old password equals to the new password");
-		Preconditions.checkArgument(request.getOldPassword().equals(userDAL.getUser(request.getUsername()).some().getPassword()), 
-				"password doesn't match");
+//		Preconditions.checkNotNull(request.getUsername(), "user name can't be null");
+//		Preconditions.checkNotNull(request.getOldPassword(), "old password can't be null");
+//		Preconditions.checkNotNull(request.getNewPassword(), "new password can't be null");
+//		Preconditions.checkArgument(userDAL.getUser(request.getUsername()).isSome(), "user name does not exists");
+//		Preconditions.checkArgument(!request.getNewPassword().equals(request.getOldPassword()), 
+//				"old password equals to the new password");
+//		Preconditions.checkArgument(request.getOldPassword().equals(userDAL.getUser(request.getUsername()).some().getPassword()), 
+//				"password doesn't match");
 		
 		final UserInfo user = userDAL.getUser(request.getUsername()).some();
 		user.setPassword(hashPassword(request.getNewPassword()));

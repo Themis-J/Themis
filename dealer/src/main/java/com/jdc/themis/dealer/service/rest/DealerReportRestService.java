@@ -23,7 +23,7 @@ import com.jdc.themis.dealer.web.domain.ImportReportDataRequest;
 import fj.data.Option;
 
 @Service
-@RolesAllowed({Constant.HEAD_ROLE, Constant.ADMIN_ROLE, Constant.SUPER_ROLE})
+@RolesAllowed({Constant.HEAD_ROLE})
 public class DealerReportRestService {
 
 	@Autowired
