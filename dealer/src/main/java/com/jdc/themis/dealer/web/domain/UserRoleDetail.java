@@ -6,22 +6,16 @@ import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlRootElement;
 
-/**
- * The item of the general income journal. 
- * 
- * @author Kai Chen
- *
- */
+import org.apache.commons.lang.builder.ToStringBuilder;
+import org.apache.commons.lang.builder.ToStringStyle;
+
 @XmlRootElement
 @XmlAccessorType(XmlAccessType.FIELD)
-public class AccountReceivableDurationItemDetail implements Serializable{
+public class UserRoleDetail implements Serializable{
 
 	private static final long serialVersionUID = 1L;
-
 	private Integer id;
 	private String name;
-	private String tooltip;
-	
 	public Integer getId() {
 		return id;
 	}
@@ -34,11 +28,9 @@ public class AccountReceivableDurationItemDetail implements Serializable{
 	public void setName(String name) {
 		this.name = name;
 	}
-    public String getTooltip() {
-      return tooltip;
-    }
-    public void setTooltip(String tooltip) {
-      this.tooltip = tooltip;
-    }
-	
+	public String toString() {
+		return new ToStringBuilder(this, ToStringStyle.MULTI_LINE_STYLE).append("id", id)
+				.append("name", name)
+				.getStringBuffer().toString();
+	}
 }

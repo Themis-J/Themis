@@ -23,6 +23,7 @@ public class GeneralJournalItemDetail implements Serializable{
 	private String category;
 	private Integer categoryID;
 	private String journalType;
+	private String tooltip;
 	
 	public String getJournalType() {
 		return journalType;
@@ -55,5 +56,11 @@ public class GeneralJournalItemDetail implements Serializable{
 	public void setName(String name) {
 		this.name = name;
 	}
+    public String getTooltip() {
+      return tooltip;
+    }
+    public void setTooltip(String tooltip) {
+      this.tooltip = tooltip;
+    }
 	
 }

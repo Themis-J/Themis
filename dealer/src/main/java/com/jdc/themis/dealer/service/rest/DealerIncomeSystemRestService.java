@@ -73,6 +73,7 @@ public class DealerIncomeSystemRestService {
 	@GET
 	@Path("/list")
 	@Produces({ "application/json", "application/xml" })
+	@RolesAllowed({Constant.DEALER_ROLE, Constant.ADMIN_ROLE, Constant.SUPER_ROLE})
 	@RestServiceErrorHandler
 	public Response getDealers() {
 		return Response.ok(this.refDataQueryService.getDealers()).build();

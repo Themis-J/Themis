@@ -16,6 +16,7 @@ public class AccountReceivableDurationItem implements Serializable {
 	
 	private Integer id;
 	private String name;
+	private String tooltip;
 	
 	@Id
 	public Integer getId() {
@@ -35,7 +36,13 @@ public class AccountReceivableDurationItem implements Serializable {
 				.append("name", name)
 				.getStringBuffer().toString();
 	}
-	public boolean equals(Object other) {
+	public String getTooltip() {
+    return tooltip;
+    }
+    public void setTooltip(String tooltip) {
+      this.tooltip = tooltip;
+    }
+    public boolean equals(Object other) {
 		return EqualsBuilder.reflectionEquals(this, other);
 	}
 	public int hashCode() {

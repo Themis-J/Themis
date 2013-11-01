@@ -42,6 +42,20 @@ public class UserRestService {
 	 * @return
 	 */
 	@GET
+	@Path("/roles")
+	@Produces({ "application/json", "application/xml" })
+	@RestServiceErrorHandler
+	public Response getUserRoles() {
+		return Response.ok(userService.getUserRoles()).build();
+	}
+	
+	/**
+	 * Query user information.
+	 * 
+	 * @param username
+	 * @return
+	 */
+	@GET
 	@Path("/info")
 	@Produces({ "application/json", "application/xml" })
 	@RestServiceErrorHandler
@@ -61,7 +75,7 @@ public class UserRestService {
 		response.setSuccess(true);
 		userService.addNewUser(request);
 		response.setTimestamp(Utils.currentTimestamp());
-		return Response.ok().build();
+		return Response.ok(response).build();
 	}
 
 	@POST
@@ -76,7 +90,7 @@ public class UserRestService {
 		response.setSuccess(true);
 		userService.resetPassword(request);
 		response.setTimestamp(Utils.currentTimestamp());
-		return Response.ok().build();
+		return Response.ok(response).build();
 	}
 
 	@POST

@@ -15,13 +15,13 @@ import com.google.common.collect.Lists;
 
 @XmlRootElement
 @XmlAccessorType(XmlAccessType.FIELD)
-public class QueryReportDataResponse implements Serializable{
+public class QueryDealerSalesResponse implements Serializable{
 
 	private static final long serialVersionUID = 1L;
 	
 	private String reportName;
 	@XmlElement(name = "report")
-	private List<ReportDataDetail> detail = Lists.newArrayList();
+	private List<ReportDealerSalesDataList> detail = Lists.newArrayList();
 	
 	public String getReportName() {
 		return reportName;
@@ -29,7 +29,7 @@ public class QueryReportDataResponse implements Serializable{
 	public void setReportName(String reportName) {
 		this.reportName = reportName;
 	}
-	public List<ReportDataDetail> getDetail() {
+	public List<ReportDealerSalesDataList> getDetail() {
 		return detail;
 	}
 	public String toString() {

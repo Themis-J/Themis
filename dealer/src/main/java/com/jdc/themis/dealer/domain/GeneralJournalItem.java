@@ -33,6 +33,7 @@ public class GeneralJournalItem implements Serializable {
 	private String name;
 	private Integer categoryID;
 	private Integer journalType;
+	private String tooltip;
 	
 	public Integer getJournalType() {
 		return journalType;
@@ -57,18 +58,29 @@ public class GeneralJournalItem implements Serializable {
 	public Integer getCategoryID() {
 		return categoryID;
 	}
-	public void setCategoryID(Integer categoryID) {
-		this.categoryID = categoryID;
-	}
-	public String toString() {
-		return new ToStringBuilder(this).append("id", id)
-				.append("name", name)
-				.getStringBuffer().toString();
-	}
-	public boolean equals(Object other) {
-		return EqualsBuilder.reflectionEquals(this, other);
-	}
-	public int hashCode() {
-		return HashCodeBuilder.reflectionHashCode(this);
-	}
+
+    public void setCategoryID(Integer categoryID) {
+      this.categoryID = categoryID;
+    }
+  
+    public String getTooltip() {
+      return tooltip;
+    }
+  
+    public void setTooltip(String tooltip) {
+      this.tooltip = tooltip;
+    }
+  
+    public String toString() {
+      return new ToStringBuilder(this).append("id", id).append("name", name).getStringBuffer()
+          .toString();
+    }
+  
+    public boolean equals(Object other) {
+      return EqualsBuilder.reflectionEquals(this, other);
+    }
+  
+    public int hashCode() {
+      return HashCodeBuilder.reflectionHashCode(this);
+    }
 }

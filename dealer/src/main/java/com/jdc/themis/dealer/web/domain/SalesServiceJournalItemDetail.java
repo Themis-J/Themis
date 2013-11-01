@@ -17,6 +17,7 @@ public class SalesServiceJournalItemDetail implements Serializable{
 	private String category;
 	private Integer categoryID;
 	private String journalType;
+	private String tooltip;
 	
 	public Integer getId() {
 		return id;
@@ -49,5 +50,10 @@ public class SalesServiceJournalItemDetail implements Serializable{
 	public void setCategory(String category) {
 		this.category = category;
 	}
-	
+    public String getTooltip() {
+      return tooltip;
+    }
+    public void setTooltip(String tooltip) {
+      this.tooltip = tooltip;
+    }
 }

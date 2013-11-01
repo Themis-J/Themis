@@ -33,6 +33,7 @@ public class SalesServiceJournalItem implements Serializable {
 	private Integer categoryID;
 	private Integer journalType;
 	private String description;
+	private String tooltip;
 	
 	public String getDescription() {
 		return description;
@@ -65,7 +66,13 @@ public class SalesServiceJournalItem implements Serializable {
 	public void setCategoryID(Integer categoryID) {
 		this.categoryID = categoryID;
 	}
-	public String toString() {
+  	public String getTooltip() {
+      return tooltip;
+    }
+    public void setTooltip(String tooltip) {
+      this.tooltip = tooltip;
+    }
+    public String toString() {
 		return new ToStringBuilder(this).append("id", id)
 				.append("name", name)
 				.append("categoryID", categoryID)

@@ -154,6 +154,7 @@ public class RefDataQueryServiceImpl implements RefDataQueryService {
 			} else if ( ssj.getJournalType().equals(revenueJournalType) ) {
 				item.setJournalType("Revenue");
 			} 
+			item.setTooltip(ssj.getTooltip());
 			response.getItems().add(item);
 		}
 		return response;
@@ -175,6 +176,7 @@ public class RefDataQueryServiceImpl implements RefDataQueryService {
 			} else if ( gji.getJournalType().equals(revenueJournalType) ) {
 				item.setJournalType("Revenue");
 			} 
+			item.setTooltip(gji.getTooltip());
 			response.getItems().add(item);
 		}
 		return response;
@@ -343,6 +345,7 @@ public class RefDataQueryServiceImpl implements RefDataQueryService {
 			final InventoryDurationItemDetail item = new InventoryDurationItemDetail();
 			item.setId(gji.getId());
 			item.setName(gji.getName());
+			item.setTooltip(gji.getTooltip());
 			response.getItems().add(item);
 		}
 		return response;
@@ -356,6 +359,8 @@ public class RefDataQueryServiceImpl implements RefDataQueryService {
 			final AccountReceivableDurationItemDetail item = new AccountReceivableDurationItemDetail();
 			item.setId(gji.getId());
 			item.setName(gji.getName());
+			item.setTooltip(gji.getTooltip());
+			
 			response.getItems().add(item);
 		}
 		return response;
@@ -382,6 +387,7 @@ public class RefDataQueryServiceImpl implements RefDataQueryService {
 			final EmployeeFeeSummaryItemDetail item = new EmployeeFeeSummaryItemDetail();
 			item.setId(gji.getId());
 			item.setName(gji.getName());
+			item.setTooltip(gji.getTooltip());
 			response.getItems().add(item);
 		}
 		return response;

@@ -45,7 +45,7 @@ public class AuthRestService {
       }
 
       if (!userService.authVerity(loginRequest.getUsername(), loginRequest.getPassword())) {
-        return Response.status(Status.FORBIDDEN).build();
+        return Response.status(Status.INTERNAL_SERVER_ERROR).build();
       }
 
       HttpSession session = req.getSession(true);

@@ -18,35 +18,34 @@ import org.hibernate.annotations.Type;
 
 @FilterDefs(
 		{
-			@org.hibernate.annotations.FilterDef(name="difFilter", 
+			@org.hibernate.annotations.FilterDef(name="dihraFilter", 
 					parameters = {
 					@org.hibernate.annotations.ParamDef(name="referenceTime", type="com.jdc.themis.dealer.data.hibernate.type.PersistentTimestamp"), 
 					@org.hibernate.annotations.ParamDef(name="timeID", type="long"), 
 					@org.hibernate.annotations.ParamDef(name="dealerID", type="integer"), 
-					@org.hibernate.annotations.ParamDef(name="durationID", type="integer"), 
 					@org.hibernate.annotations.ParamDef(name="itemID", type="long"), 
 					@org.hibernate.annotations.ParamDef(name="departmentID", type="integer")}), 
-			@org.hibernate.annotations.FilterDef(name="difAllFilter", 
+			@org.hibernate.annotations.FilterDef(name="dihraAllFilter", 
 					parameters = {
 					@org.hibernate.annotations.ParamDef(name="referenceTime", type="com.jdc.themis.dealer.data.hibernate.type.PersistentTimestamp"), 
 					@org.hibernate.annotations.ParamDef(name="timeID", type="long"), 
 					}), 
-			@org.hibernate.annotations.FilterDef(name="difRefTimeFilter", 
+			@org.hibernate.annotations.FilterDef(name="dihraRefTimeFilter", 
 					parameters = {
 					@org.hibernate.annotations.ParamDef(name="referenceTime", type="com.jdc.themis.dealer.data.hibernate.type.PersistentTimestamp"), 
 					}), 
 		}
 		)
 @Filters( {
-    @Filter(name="difFilter", condition="timeID = :timeID and durationID = :durationID and dealerID = :dealerID and itemID = :itemID and departmentID = :departmentID and timestamp < :referenceTime and timeEnd >= :referenceTime"), 
-    @Filter(name="difAllFilter", condition="timeID = :timeID and timestamp < :referenceTime and timeEnd >= :referenceTime"), 
-    @Filter(name="deffRefTimeFilter", condition="timestamp < :referenceTime and timeEnd >= :referenceTime"), 
+    @Filter(name="dihraFilter", condition="timeID = :timeID and dealerID = :dealerID and itemID = :itemID and departmentID = :departmentID and timestamp < :referenceTime and timeEnd >= :referenceTime"), 
+    @Filter(name="dihraAllFilter", condition="timeID = :timeID and timestamp < :referenceTime and timeEnd >= :referenceTime"), 
+    @Filter(name="dihraRefTimeFilter", condition="timestamp < :referenceTime and timeEnd >= :referenceTime"), 
 } )
 @Entity
-public class DealerInventoryFact implements Serializable, TemporalEntity {
-	public static final String FILTER = "difFilter";
-	public static final String FILTER_ALL = "difAllFilter";
-	public static final String FILTER_REFTIME = "difRefTimeFilter";
+public class DealerHRAllocationFact implements Serializable, TemporalEntity {
+	public static final String FILTER = "diefFilter";
+	public static final String FILTER_ALL = "diefAllFilter";
+	public static final String FILTER_REFTIME = "diefRefTimeFilter";
 
 	private static final long serialVersionUID = 1L;
 
@@ -58,24 +57,13 @@ public class DealerInventoryFact implements Serializable, TemporalEntity {
 	private Integer departmentID;
 	@Id
 	private Long itemID;
-	@Id
-	private Integer durationID;
-	private BigDecimal amount;
+	private BigDecimal allocation;
 	@Id
 	@Type(type = "datetime")
 	private Instant timestamp;
 	@Type(type = "datetime")
 	private Instant timeEnd;
 	private Integer version;
-
-	@Id
-	public Integer getDurationID() {
-		return durationID;
-	}
-
-	public void setDurationID(Integer durationID) {
-		this.durationID = durationID;
-	}
 
 	 @Version
 	public Integer getVersion() {
@@ -134,19 +122,18 @@ public class DealerInventoryFact implements Serializable, TemporalEntity {
 	public void setItemID(Long itemID) {
 		this.itemID = itemID;
 	}
-	public BigDecimal getAmount() {
-		return amount;
+	public BigDecimal getAllocation() {
+		return allocation;
 	}
-	public void setAmount(BigDecimal amount) {
-		this.amount = amount;
+	public void setAllocation(BigDecimal allocation) {
+		this.allocation = allocation;
 	}
 	public String toString() {
 		return new ToStringBuilder(this).append("timeID", timeID)
 				.append("dealerID", dealerID)
 				.append("itemID", itemID)
 				.append("departmentID", departmentID)
-				.append("durationID", durationID)
-				.append("amount", amount)
+				.append("allocation", allocation)
 				.append("timestamp", timestamp)
 				.append("timeEnd", timeEnd)
 				.getStringBuffer().toString();

@@ -30,7 +30,7 @@ public class JobPosition implements Serializable {
 	public void setName(String name) {
 		this.name = name;
 	}
-	public String toString() {
+    public String toString() {
 		return new ToStringBuilder(this).append("id", id)
 				.append("name", name)
 				.getStringBuffer().toString();

@@ -33,5 +33,4 @@ public class HumanResourceAllocationItemDetail implements Serializable{
 	public void setName(String name) {
 		this.name = name;
 	}
-	
 }

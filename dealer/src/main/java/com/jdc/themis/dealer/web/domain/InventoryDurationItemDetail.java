@@ -20,6 +20,7 @@ public class InventoryDurationItemDetail implements Serializable{
 
 	private Integer id;
 	private String name;
+	private String tooltip;
 	
 	public Integer getId() {
 		return id;
@@ -32,6 +33,11 @@ public class InventoryDurationItemDetail implements Serializable{
 	}
 	public void setName(String name) {
 		this.name = name;
-	}
-	
+  	}
+    public String getTooltip() {
+      return tooltip;
+    }
+    public void setTooltip(String tooltip) {
+      this.tooltip = tooltip;
+    }
 }
