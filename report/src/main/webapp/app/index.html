@@ -1,43 +1,66 @@
 <!doctype html>
-<html lang="en" ng-app="masterApp">
+<html lang="en" ng-app="themis">
 <head>
     <meta charset="utf-8">
     <title>广汽集团报表系统</title>
 
+    <link rel="stylesheet" href="lib/jquery-ui/css/jquery-ui.css">
     <link rel="stylesheet" href="lib/bootstrap/css/bootstrap.min.css">
     <link rel="stylesheet" href="lib/bootstrap/css/bootstrap-responsive.min.css">
     <link rel="stylesheet" href="lib/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="lib/jquery/qtip/css/jquery.qtip.min.css">
     <link rel="stylesheet" href="css/app.css"/>
 </head>
-<body style="font-family: '"Helvetica Neue", Helvetica, Arial, "Microsoft Yahei UI", "Microsoft YaHei", SimHei, "\5B8B\4F53", simsun, sans-serif">
+<body style="font-family: '" Helvetica Neue
+", Helvetica, Arial, "Microsoft Yahei UI", "Microsoft YaHei", SimHei, "\5B8B\4F53", simsun, sans-serif">
 <div ng-view></div>
 
-<!-- In production use:
-<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.0.7/angular.min.js"></script>
--->
-
-<script src="lib/angular/angular.min.js"></script>
-<script src="lib/angular/angular-route.min.js"></script>
-<script src="lib/angular/angular-resource.min.js"></script>
-<script src="lib/angular/angular-animate.min.js"></script>
-
-<script src="js/master/app.js"></script>
-<script src="js/master/config.js"></script>
-<script src="js/master/services.js"></script>
-<script src="js/master/controllers.js"></script>
-<script src="js/master/controllers/overallAbsControllers.js"></script>
-<script src="js/master/controllers/overallPercentageControllers.js"></script>
-<script src="js/master/controllers/departmentOpControllers.js"></script>
-<script src="js/master/controllers/departmentAbsControllers.js"></script>
-<script src="js/master/controllers/departmentPercentageControllers.js"></script>
-<script src="js/master/controllers/departmentOpCompControllers.js"></script>
-<script src="js/master/controllers/salesAbsControllers.js"></script>
-<script src="js/master/filters.js"></script>
-<script src="js/master/directives.js"></script>
-
 <script src="lib/jquery/jquery-2.0.2.min.js"></script>
+<script src="lib/jquery-ui/js/jquery-ui.js"></script>
+<script src="lib/jquery/qtip/js/jquery.qtip.min.js"></script>
 <script src="lib/bootstrap/js/bootstrap.min.js"></script>
+
+<script src="lib/angular/angular.js"></script>
+<script src="lib/angular/angular-route.js"></script>
+<script src="lib/angular/angular-resource.js"></script>
+<script src="lib/angular/angular-cookies.js"></script>
+<script src="lib/angular/angular-animate.js"></script>
+<script src="lib/angular-sanitize/angular-sanitize.js"></script>
+
+<script src="js/app.js"></script>
+<script src="js/config.js"></script>
+<script src="js/directives.js"></script>
+<script src="js/controllers.js"></script>
+<script src="js/services.js"></script>
+<script src="js/guest/controllers.js"></script>
+
+<script src="js/branch/services.js"></script>
+<script src="js/branch/controllers.js"></script>
+<script src="js/branch/Controllers/lirunControllers.js"></script>
+<script src="js/branch/Controllers/jingyingController.js"></script>
+<script src="js/branch/Controllers/fenhongController.js"></script>
+<script src="js/branch/Controllers/kucunController.js"></script>
+<script src="js/branch/Controllers/zhangkuanController.js"></script>
+<script src="js/branch/Controllers/sunyiController.js"></script>
+<script src="js/branch/Controllers/renyuanController.js"></script>
+<script src="js/branch/Controllers/taxController.js"></script>
+
+<script src="js/admin/controllers.js"></script>
+<script src="js/admin/services.js"></script>
+
+<script src="js/head/config.js"></script>
+<script src="js/head/controllers.js"></script>
+<script src="js/head/services.js"></script>
+<script src="js/head/controllers/overallAbsControllers.js"></script>
+<script src="js/head/controllers/overallPercentageControllers.js"></script>
+<script src="js/head/controllers/departmentOpControllers.js"></script>
+<script src="js/head/controllers/departmentAbsControllers.js"></script>
+<script src="js/head/controllers/departmentPercentageControllers.js"></script>
+<script src="js/head/controllers/departmentOpCompControllers.js"></script>
+<script src="js/head/controllers/salesAbsControllers.js"></script>
 
 <script src="lib/highchart/highcharts.js"></script>
 <script src="lib/highchart/exporting.js"></script>
+
 </body>
+</html>

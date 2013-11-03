@@ -34,3 +34,56 @@
     top: 0;
     left: 0;
 }
+
+.item_tr{
+    padding-top: 10px;
+}
+
+.hide{
+    display: none;
+}
+
+input.ng-invalid {
+    border: 1px solid darkred;
+}
+input.ng-valid {
+    border: 1px solid green;
+}
+.green{
+    color: green;
+}
+
+.red{
+    color: darkred;
+}
+
+td{
+    padding-bottom: 15px
+}
+
+form{
+    margin-bottom: 0px
+}
+
+.ui-datepicker-calendar {
+    display: none;
+}
+
+.ui-tooltip, .qtip{
+    max-width: 500px; /* Change this? */
+    min-width: 50px; /* ...and this! */
+}
+
+.qtip-content div div div{
+    width: 470px;
+}
+
+.qtip-content div div div table {
+    width: 460px;
+    table-layout:fixed
+}
+.qtip-content .hidden {
+    display:block;
+    visibility: visible;
+}
+
