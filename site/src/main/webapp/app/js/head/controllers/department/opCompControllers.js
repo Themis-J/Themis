@@ -2,67 +2,30 @@
 
 angular.module('departmentOpComp.controllers', [])
 	.controller('departmentOpCompCtrl', ['$scope', '$http', 'ReportRestClient', 'ReportService', 'config', function($scope, $http, restClient, reportService, config) {
-		$scope.charts = [
-    		{text:'运营利润', display:true},
-    		{text:'营业额', display:false},
-    		{text:'毛利', display:false}];
-    	
-    	var currentDate = new Date();
-  		reportService.setCurrentYear(currentDate.getFullYear());
-  		$scope.yearOptions = reportService.getYearList();
-		$scope.selectedYearOption = $scope.yearOptions[0];
-		
-		$scope.monthOptions = [];
-		reportService.setMonthOfYear(currentDate.getMonth());
-		$scope.monthOptions = reportService.getMonthList();
-		$scope.selectedMonthOption = $scope.monthOptions[reportService.getMonthOfYear()-1];
-    	
-    	$scope.selectReportYear = function() {
-    		reportService.setCurrentYear($scope.selectedYearOption.id);
-    		$scope.selectTime($scope.selectedTime);
-    	};
-		$scope.selectReportMonth = function() {
-    		reportService.setMonthOfYear($scope.selectedMonthOption.id);
-    		$scope.selectTime($scope.selectedTime);
-    	};
-    	
-    	$scope.currentDenominator = 0;
-    	$scope.denominatorOptions = [
-    		{name:'营业额', id:0},
-    		{name:'毛利', id:1}];
-    	$scope.selectedDenominatorOption = $scope.denominatorOptions[$scope.currentDenominator];
-    	$scope.selectReportDenominotor = function() {
+		$scope.selectReportDenominotor = function() {
     		$scope.showReport();
     	};
     	    	
-    	$scope.departmentOptions = [];
-    	reportService.getDepartments(restClient(config.currentMode).queryDepartments, {}, function(departments) {
-    		$scope.departmentOptions = departments;
-    		$scope.selectedDepartmentOption = $scope.departmentOptions[0];
-			// called on page is loaded
-			$scope.showReport();
-		});
-		
-		$scope.selectReportDepartment = function() {
+    	$scope.selectReportDepartment = function() {
 			$scope.showReport();
 		};
 		
     	$scope.showReport = function()
         {
-        	var params = null;
-        	params = {year: reportService.getCurrentYear(), departmentID: $scope.selectedDepartmentOption.id, monthOfYear: reportService.getMonthOfYear(), denominator: $scope.selectedDenominatorOption.id};
+        	var params = {year: reportService.getCurrentYear(), 
+        					departmentID: $scope.selectedDepartmentOption.id, 
+        					monthOfYear: reportService.getMonthOfYear(), 
+        					denominator: $scope.selectedDenominatorOption.id};
         	for ( var i=0; i< $scope.charts.length;i++ ) {
         		if ( $scope.charts[i].display == true ) {
-        			$scope.draw(restClient(config.currentMode).queryOverallPercentageIncomeReport, params, i);
+        			$scope.draw(restClient(config.currentMode).queryDepartmentIncomePercentageReport, params, i);
         		} 
         	}
         };
         
         $scope.draw = function (restClient, params, index) {
 	        Highcharts.theme = config.highChartsTheme;
-
-            // Apply the theme
-            var highchartsOptions = Highcharts.setOptions(Highcharts.theme); 
+			Highcharts.setOptions(Highcharts.theme); 
  			
             restClient(params, function(data) {
             	var chartData = [
@@ -94,17 +57,11 @@ angular.module('departmentOpComp.controllers', [])
 	            		chartData[0].series.previous[i] = previousDetail[i].opProfit.amount * 100;
 	            		chartData[0].series.previousReference[i] = previousDetail[i].opProfit.reference * 100;
 	            		
-	            		chartData[1].series.previous[i] = previousDetail[i].netProfit.amount * 100;
-	            		chartData[1].series.previousReference[i] = previousDetail[i].netProfit.reference * 100;
+	            		chartData[1].series.previous[i] = previousDetail[i].revenue.amount * 100;
+	            		chartData[1].series.previousReference[i] = previousDetail[i].revenue.reference * 100;
 	            		
-	            		chartData[2].series.previous[i] = previousDetail[i].revenue.amount * 100;
-	            		chartData[2].series.previousReference[i] = previousDetail[i].revenue.reference * 100;
-	            		
-	            		chartData[3].series.previous[i] = previousDetail[i].expense.amount * 100;
-	            		chartData[3].series.previousReference[i] = previousDetail[i].expense.reference * 100;
-	            		
-	            		chartData[4].series.previous[i] = previousDetail[i].margin.amount * 100;
-	            		chartData[4].series.previousReference[i] = previousDetail[i].margin.reference * 100;
+	            		chartData[2].series.previous[i] = previousDetail[i].margin.amount * 100;
+	            		chartData[2].series.previousReference[i] = previousDetail[i].margin.reference * 100;
 	            	};
 	            	
 					chartCategories[0].categories = dealers;
@@ -113,50 +70,26 @@ angular.module('departmentOpComp.controllers', [])
 	            		chartData[0].series.current[i] = currentDetail[i].opProfit.amount * 100;
 	            		chartData[0].series.currentReference[i] = currentDetail[i].opProfit.reference * 100;
 	            		
-	            		chartData[1].series.current[i] = currentDetail[i].netProfit.amount * 100;
-	            		chartData[1].series.currentReference[i] = currentDetail[i].netProfit.reference * 100;
+	            		chartData[1].series.current[i] = currentDetail[i].revenue.amount * 100;
+	            		chartData[1].series.currentReference[i] = currentDetail[i].revenue.reference * 100;
 	            		
-	            		chartData[2].series.current[i] = currentDetail[i].revenue.amount * 100;
-	            		chartData[2].series.currentReference[i] = currentDetail[i].revenue.reference * 100;
-	            		
-	            		chartData[3].series.current[i] = currentDetail[i].expense.amount * 100;
-	            		chartData[3].series.currentReference[i] = currentDetail[i].expense.reference * 100;
-	            		
-	            		chartData[4].series.current[i] = currentDetail[i].margin.amount * 100;
-	            		chartData[4].series.currentReference[i] = currentDetail[i].margin.reference * 100;
+	            		chartData[2].series.current[i] = currentDetail[i].margin.amount * 100;
+	            		chartData[2].series.currentReference[i] = currentDetail[i].margin.reference * 100;
 		            };
 		            	
-	            	var chartSubtitle = '年度对比';
-	            	if ( $scope.selectedTime == 1 ) {
-	            		chartSubtitle = '月对比';
-	            	}
+	            	var chartSubtitle = '月对比';
+	            	var chartColumnPrevious = '月均';
+	            	var chartColumnCurrent = '当月';
+	            	var chartColumnPreviousRef = '月均参考值';
+	            	var chartColumnCurrentRef = '当月参考值';
 	            	
-	            	var chartColumnPrevious = '去年';
-	            	if ( $scope.selectedTime == 1 ) {
-	            		chartColumnPrevious = '月均';
-	            	}
-	            	var chartColumnCurrent = '今年';
-	            	if ( $scope.selectedTime == 1 ) {
-	            		chartColumnCurrent = '当月';
-	            	}
-	            	var chartColumnPreviousRef = '去年参考值';
-	            	if ( $scope.selectedTime == 1 ) {
-	            		chartColumnPreviousRef = '月均参考值';
-	            	}
-	            	var chartColumnCurrentRef = '今年参考值';
-	            	if ( $scope.selectedTime == 1 ) {
-	            		chartColumnCurrentRef = '当月参考值';
-	            	}
-			        chartData = [chartData[index]];
 			        var chartWidth = $(window).width() * 0.60;
 			        if ( reportService.getFullScreen() ) {
 			        	chartWidth = $(window).width();
 					}
-			        for (var i=0;i<chartData.length;i++) 
-	  				{
-			        	var currentData = chartData[i];
 			        
-	            		var chart = $('#' + currentData.id).highcharts({
+			        var currentData = chartData[index];
+			        $('#' + currentData.id).highcharts({
 			                chart: {
 			                    zoomType: 'xy',
 			                    height:$(window).height()*0.60,
@@ -209,14 +142,10 @@ angular.module('departmentOpComp.controllers', [])
 			                        data: currentData.series.currentReference
 			                    }
 			                ]
-			        	}).highcharts();
-		            
-			        }
+			        	});
 		        
 			  });
 		};
-
-        reportService.setFullScreen(false);
 
         $scope.toggleFullScreen = function()
         {
@@ -244,5 +173,43 @@ angular.module('departmentOpComp.controllers', [])
                 $scope.showReport();
             }
         };
+        
+    	$scope.selectReportYear = function() {
+    		reportService.setCurrentYear($scope.selectedYearOption.id);
+    		$scope.showReport();
+    	};
+		$scope.selectReportMonth = function() {
+    		reportService.setMonthOfYear($scope.selectedMonthOption.id);
+    		$scope.showReport();
+    	};
+    	
+        reportService.setFullScreen(false);
 
+		$scope.charts = [
+    		{id: 'report_opProfit', display:true},
+    		{id: 'report_revenue', display:false},
+    		{id: 'report_margin', display:false},
+    		];
+		
+    	var currentDate = new Date();
+  		reportService.setCurrentYear(currentDate.getFullYear());
+  		$scope.yearOptions = reportService.getYearList();
+		$scope.selectedYearOption = $scope.yearOptions[0];
+		
+		reportService.setMonthOfYear(currentDate.getMonth());
+		$scope.monthOptions = reportService.getMonthList();
+		$scope.selectedMonthOption = $scope.monthOptions[reportService.getMonthOfYear()-1];
+    	
+    	$scope.denominatorOptions = [
+    		{name:'部门毛利分析', id:1},
+    		{name:'运营利润分析', id:0}];
+    	$scope.selectedDenominatorOption = $scope.denominatorOptions[1];
+    	
+    	$scope.departmentOptions = [];
+    	reportService.getDepartments(restClient(config.currentMode).queryDepartments, {}, function(departments) {
+    		$scope.departmentOptions = departments;
+    		$scope.selectedDepartmentOption = $scope.departmentOptions[0];
+			$scope.showReport();
+		});
+		
   }]);

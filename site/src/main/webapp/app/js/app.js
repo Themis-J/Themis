@@ -2,7 +2,18 @@
 
 angular.module('themis', ['ngRoute', 'themis.directives', 'themis.controllers', 'themis.services', 'themis.config', 'guest.controllers', 'ngSanitize',
         'branch.services', 'branch.controllers', 'lirun.controller', 'jingying.controller','fenhong.controller', 'sunyi.controller', 'kucun.controller', 'zhangkuan.controller', 'renyuan.controller', 'tax.controller',
-        'masterApp.config', 'masterApp.services','masterApp.controllers', 'overallAbs.controllers', 'overallPercentage.controllers', 'departmentOp.controllers', 'departmentAbs.controllers', 'departmentOpComp.controllers','departmentPercentage.controllers', 'salesAbs.controllers',
+        'masterApp.config', 'masterApp.services','masterApp.controllers', 
+        'overallAbs.controllers', 
+		'overallPercentage.controllers', 
+		'overallExpPercentage.controllers', 
+		'departmentOp.controllers', 
+		'departmentAbs.controllers', 
+		'departmentOpComp.controllers', 
+		'departmentPercentage.controllers',
+		'salesAbs.controllers',
+		'salesDepartmentAbs.controllers',
+		'salesPercentage.controllers',
+		'salesDepartmentPercentage.controllers',
         'admin.controllers']).
     config(['$routeProvider', '$httpProvider', function ($routeProvider, $httpProvider) {
         $routeProvider.when('/branch', {templateUrl: 'partials/branch/edit.html', controller: 'editCtrl'})
@@ -18,7 +29,7 @@ angular.module('themis', ['ngRoute', 'themis.directives', 'themis.controllers', 
             .when('/notfound', {templateUrl: 'notfound.html'})
             .when('/error', {templateUrl: 'error.html'})
             .otherwise({redirectTo: 'guest/login'});
-
+			
         var actionsOnExceptions = ['$q', '$location', function ($q, $location) {
             var success = function (response) {
                 return response;
@@ -113,7 +124,7 @@ angular.module('themis', ['ngRoute', 'themis.directives', 'themis.controllers', 
             });
 
             return noCheck;
-        }
+        };
 
         $rootScope.$on('$routeChangeStart', function (event, next, current) {
             if (routeGuest($location.url()) && UserService.validateRoleGuest()) {

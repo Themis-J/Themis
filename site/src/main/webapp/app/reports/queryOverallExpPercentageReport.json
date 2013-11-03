@@ -1,0 +1,411 @@
+{
+    "reportName": "OverallExpensePercentageReport",
+    "detail": [
+        {
+            "year": 2013,
+            "month": 8,
+            "detail": [
+                {
+                    "id": 1,
+                    "name": "重庆长锦",
+                    "code": "CN-01",
+                    "amount": {
+                        "amount": 1213.7620486237101,
+                        "percentage": 0,
+                        "reference": 0
+                    },
+                    "currentMargin": {
+                        "amount": 1968.60876088607,
+                        "percentage": 0.6165582886451223,
+                        "reference": 0
+                    },
+                    "previousMargin": {
+                        "amount": 1218.59087517693,
+                        "percentage": 0.9960373685282037,
+                        "reference": 0
+                    }
+                },
+                {
+                    "id": 2,
+                    "name": "长沙长耀",
+                    "code": "CN-02",
+                    "amount": {
+                        "amount": 0,
+                        "percentage": 0,
+                        "reference": 0
+                    },
+                    "currentMargin": {
+                        "amount": 3268.8608251575793,
+                        "percentage": 0,
+                        "reference": 0
+                    },
+                    "previousMargin": {
+                        "amount": 2005.1327161979716,
+                        "percentage": 0,
+                        "reference": 0
+                    }
+                },
+                {
+                    "id": 3,
+                    "name": "广本一店",
+                    "code": "CN-03",
+                    "amount": {
+                        "amount": 0,
+                        "percentage": 0,
+                        "reference": 0
+                    },
+                    "currentMargin": {
+                        "amount": 1950.0835404344903,
+                        "percentage": 0,
+                        "reference": 0
+                    },
+                    "previousMargin": {
+                        "amount": 3181.279113107292,
+                        "percentage": 0,
+                        "reference": 0
+                    }
+                },
+                {
+                    "id": 4,
+                    "name": "长盛公司",
+                    "code": "CN-05",
+                    "amount": {
+                        "amount": 4402.616381865407,
+                        "percentage": 0,
+                        "reference": 0
+                    },
+                    "currentMargin": {
+                        "amount": 1866.2107995744261,
+                        "percentage": 2.359120621780448,
+                        "reference": 0
+                    },
+                    "previousMargin": {
+                        "amount": 1683.1308928016597,
+                        "percentage": 2.6157302445664348,
+                        "reference": 0
+                    }
+                },
+                {
+                    "id": 5,
+                    "name": "北京长怡",
+                    "code": "CN-06",
+                    "amount": {
+                        "amount": 0,
+                        "percentage": 0,
+                        "reference": 0
+                    },
+                    "currentMargin": {
+                        "amount": 6430.4189654471575,
+                        "percentage": 0,
+                        "reference": 0
+                    },
+                    "previousMargin": {
+                        "amount": 3114.1700494947945,
+                        "percentage": 0,
+                        "reference": 0
+                    }
+                },
+                {
+                    "id": 6,
+                    "name": "南京长昊",
+                    "code": "CN-07",
+                    "amount": {
+                        "amount": 0,
+                        "percentage": 0,
+                        "reference": 0
+                    },
+                    "currentMargin": {
+                        "amount": 5613.859109384497,
+                        "percentage": 0,
+                        "reference": 0
+                    },
+                    "previousMargin": {
+                        "amount": 2203.1629534600775,
+                        "percentage": 0,
+                        "reference": 0
+                    }
+                },
+                {
+                    "id": 7,
+                    "name": "重庆长捷",
+                    "code": "CN-08",
+                    "amount": {
+                        "amount": 5853.473373954411,
+                        "percentage": 0,
+                        "reference": 0
+                    },
+                    "currentMargin": {
+                        "amount": 5287.848829260421,
+                        "percentage": 1.106966852298064,
+                        "reference": 0
+                    },
+                    "previousMargin": {
+                        "amount": 1544.595253992773,
+                        "percentage": 3.7896486855201736,
+                        "reference": 0
+                    }
+                },
+                {
+                    "id": 8,
+                    "name": "长力公司",
+                    "code": "CN-09",
+                    "amount": {
+                        "amount": 2361.9220798016795,
+                        "percentage": 0,
+                        "reference": 0
+                    },
+                    "currentMargin": {
+                        "amount": 3466.620694996384,
+                        "percentage": 0.681332712058982,
+                        "reference": 0
+                    },
+                    "previousMargin": {
+                        "amount": 1572.3568874893438,
+                        "percentage": 1.5021539312064653,
+                        "reference": 0
+                    }
+                },
+                {
+                    "id": 9,
+                    "name": "重庆长达",
+                    "code": "CN-10",
+                    "amount": {
+                        "amount": 0,
+                        "percentage": 0,
+                        "reference": 0
+                    },
+                    "currentMargin": {
+                        "amount": 2128.629566455725,
+                        "percentage": 0,
+                        "reference": 0
+                    },
+                    "previousMargin": {
+                        "amount": 3972.7625313256503,
+                        "percentage": 0,
+                        "reference": 0
+                    }
+                },
+                {
+                    "id": 10,
+                    "name": "广丰一店",
+                    "code": "CN-11",
+                    "amount": {
+                        "amount": 0,
+                        "percentage": 0,
+                        "reference": 0
+                    },
+                    "currentMargin": {
+                        "amount": 2019.2626414095976,
+                        "percentage": 0,
+                        "reference": 0
+                    },
+                    "previousMargin": {
+                        "amount": 2775.2007864511556,
+                        "percentage": 0,
+                        "reference": 0
+                    }
+                },
+                {
+                    "id": 11,
+                    "name": "长宁公司",
+                    "code": "CN-12",
+                    "amount": {
+                        "amount": 0,
+                        "percentage": 0,
+                        "reference": 0
+                    },
+                    "currentMargin": {
+                        "amount": 3496.7580269578852,
+                        "percentage": 0,
+                        "reference": 0
+                    },
+                    "previousMargin": {
+                        "amount": 2792.500122906856,
+                        "percentage": 0,
+                        "reference": 0
+                    }
+                },
+                {
+                    "id": 12,
+                    "name": "长凯公司",
+                    "code": "CN-13",
+                    "amount": {
+                        "amount": 1139.6217477716766,
+                        "percentage": 0,
+                        "reference": 0
+                    },
+                    "currentMargin": {
+                        "amount": 2336.3648748071846,
+                        "percentage": 0.48777558679302063,
+                        "reference": 0
+                    },
+                    "previousMargin": {
+                        "amount": 2178.9367626895287,
+                        "percentage": 0.5230173574954999,
+                        "reference": 0
+                    }
+                },
+                {
+                    "id": 13,
+                    "name": "北京长京行",
+                    "code": "CN-14",
+                    "amount": {
+                        "amount": 0,
+                        "percentage": 0,
+                        "reference": 0
+                    },
+                    "currentMargin": {
+                        "amount": 2673.327726641976,
+                        "percentage": 0,
+                        "reference": 0
+                    },
+                    "previousMargin": {
+                        "amount": 2415.947049850723,
+                        "percentage": 0,
+                        "reference": 0
+                    }
+                },
+                {
+                    "id": 14,
+                    "name": "南京长益",
+                    "code": "CN-15",
+                    "amount": {
+                        "amount": 1487.7771783793353,
+                        "percentage": 0,
+                        "reference": 0
+                    },
+                    "currentMargin": {
+                        "amount": 1128.4098916310488,
+                        "percentage": 1.3184722939895914,
+                        "reference": 0
+                    },
+                    "previousMargin": {
+                        "amount": 1566.2413715624368,
+                        "percentage": 0.9499028728216853,
+                        "reference": 0
+                    }
+                },
+                {
+                    "id": 15,
+                    "name": "重庆长俊",
+                    "code": "CN-16",
+                    "amount": {
+                        "amount": 3242.229679443889,
+                        "percentage": 0,
+                        "reference": 0
+                    },
+                    "currentMargin": {
+                        "amount": 0,
+                        "percentage": 0,
+                        "reference": 0
+                    },
+                    "previousMargin": {
+                        "amount": 943.8713958736298,
+                        "percentage": 3.4350333039205427,
+                        "reference": 0
+                    }
+                },
+                {
+                    "id": 17,
+                    "name": "长悦公司",
+                    "code": "CN-18",
+                    "amount": {
+                        "amount": 1648.4386521924926,
+                        "percentage": 0,
+                        "reference": 0
+                    },
+                    "currentMargin": {
+                        "amount": 4410.143756140871,
+                        "percentage": 0.37378342823794275,
+                        "reference": 0
+                    },
+                    "previousMargin": {
+                        "amount": 3942.6350674856585,
+                        "percentage": 0.418105816028201,
+                        "reference": 0
+                    }
+                },
+                {
+                    "id": 16,
+                    "name": "长沙长威",
+                    "code": "CN-17",
+                    "amount": {
+                        "amount": 817.1782977645106,
+                        "percentage": 0,
+                        "reference": 0
+                    },
+                    "currentMargin": {
+                        "amount": 2880.8211511688937,
+                        "percentage": 0.28366158636156236,
+                        "reference": 0
+                    },
+                    "previousMargin": {
+                        "amount": 2408.4393733522043,
+                        "percentage": 0.3392978485595487,
+                        "reference": 0
+                    }
+                },
+                {
+                    "id": 19,
+                    "name": "长佳公司",
+                    "code": "CN-20",
+                    "amount": {
+                        "amount": 0,
+                        "percentage": 0,
+                        "reference": 0
+                    },
+                    "currentMargin": {
+                        "amount": 3183.021200168457,
+                        "percentage": 0,
+                        "reference": 0
+                    },
+                    "previousMargin": {
+                        "amount": 2581.61035472276,
+                        "percentage": 0,
+                        "reference": 0
+                    }
+                },
+                {
+                    "id": 18,
+                    "name": "湖南长坤",
+                    "code": "CN-19",
+                    "amount": {
+                        "amount": 0,
+                        "percentage": 0,
+                        "reference": 0
+                    },
+                    "currentMargin": {
+                        "amount": 4409.518400654728,
+                        "percentage": 0,
+                        "reference": 0
+                    },
+                    "previousMargin": {
+                        "amount": 1324.7237927241263,
+                        "percentage": 0,
+                        "reference": 0
+                    }
+                },
+                {
+                    "id": 20,
+                    "name": "重庆长冠",
+                    "code": "CN-21",
+                    "amount": {
+                        "amount": 0,
+                        "percentage": 0,
+                        "reference": 0
+                    },
+                    "currentMargin": {
+                        "amount": 2431.9239051577606,
+                        "percentage": 0,
+                        "reference": 0
+                    },
+                    "previousMargin": {
+                        "amount": 148.58919866011928,
+                        "percentage": 0,
+                        "reference": 0
+                    }
+                }
+            ]
+        }
+    ]
+}

@@ -1,0 +1,32 @@
+{
+    "items": [
+        {
+            "id": 1,
+            "name": "销售顾问薪酬",
+            "category": "变动费用",
+            "categoryID": 1,
+            "journalType": "Expense"
+        },
+        {
+            "id": 2,
+            "name": "金融保险顾问薪酬",
+            "category": "变动费用",
+            "categoryID": 1,
+            "journalType": "Expense"
+        },
+        {
+            "id": 3,
+            "name": "车辆交付费用",
+            "category": "变动费用",
+            "categoryID": 1,
+            "journalType": "Expense"
+        },
+        {
+            "id": 4,
+            "name": "顾客满意度费用-新车、二手车",
+            "category": "变动费用",
+            "categoryID": 1,
+            "journalType": "Expense"
+        }
+    ]
+}

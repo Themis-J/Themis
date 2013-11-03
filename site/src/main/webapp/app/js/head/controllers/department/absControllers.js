@@ -2,25 +2,7 @@
 
 angular.module('departmentAbs.controllers', [])
 	.controller('departmentAbsCtrl', ['$scope', '$http', 'ReportRestClient', 'ReportService', 'config', function($scope, $http, restClient, reportService, config) {
-		$scope.charts = [
-			{text:'营业额', display:false, chart:null},
-    		{text:'毛利', display:false, chart:null},
-    		{text:'费用', display:false, chart:null},
-    		{text:'运营利润', display:true, chart:null},
-    		];
-        
-    	var currentDate = new Date();
-  		reportService.setCurrentYear(currentDate.getFullYear());
-  		$scope.yearOptions = reportService.getYearList();
-  		$scope.selectedYearOption = $scope.yearOptions[0];
-		
-		$scope.monthOptions = [];
-		reportService.setMonthOfYear(currentDate.getMonth());
-		$scope.monthOptions = reportService.getMonthList();
-		$scope.selectedMonthOption = $scope.monthOptions[reportService.getMonthOfYear()-1];
-    	
-    	$scope.selectedTime = 0;
-    	$scope.selectReportYear = function() {
+		$scope.selectReportYear = function() {
     		reportService.setCurrentYear($scope.selectedYearOption.id);
     		$scope.selectTime($scope.selectedTime);
     	};
@@ -29,15 +11,7 @@ angular.module('departmentAbs.controllers', [])
     		$scope.selectTime($scope.selectedTime);
     	};
     	
-    	$scope.departmentOptions = [];
-    	reportService.getDepartments(restClient(config.currentMode).queryDepartments, {}, function(departments) {
-    		$scope.departmentOptions = departments;
-    		$scope.selectedDepartmentOption = $scope.departmentOptions[0];
-			// called on page is loaded
-			$scope.showReport();
-		});
-		
-		$scope.selectReportDepartment = function() {
+    	$scope.selectReportDepartment = function() {
 			$scope.showReport();
 		};
 		
@@ -132,7 +106,7 @@ angular.module('departmentAbs.controllers', [])
 	            		chartColumnCurrent = '当月';
 	            	}
 			       	var currentData = chartData[index];
-			       	$scope.charts[index].chart = $('#' + currentData.id).highcharts({
+			       	$('#' + currentData.id).highcharts({
 			                chart: {
 			                	zoomType: 'xy',
 			                    height:$(window).height()*0.60,
@@ -191,9 +165,7 @@ angular.module('departmentAbs.controllers', [])
 		};
         $scope.draw = function (pRestClient, params, index) {
 			Highcharts.theme = config.highChartsTheme;
-			
-            // Apply the theme
-            var highchartsOptions = Highcharts.setOptions(Highcharts.theme); 
+			Highcharts.setOptions(Highcharts.theme); 
  			
             pRestClient(params, function(data) {
             	var chartData = [
@@ -289,12 +261,8 @@ angular.module('departmentAbs.controllers', [])
 			        	chartWidth = $(window).width();
 					}
 			                    		
-			        chartData = [chartData[index]];
-			        
-		        	for (var i=0;i<chartData.length;i++) 
-	  				{
-			        	var currentData = chartData[i];
-			        	$scope.charts[index].chart = $('#' + currentData.id).highcharts({
+			        var currentData = chartData[index];
+			        $('#' + currentData.id).highcharts({
 			                chart: {
 			                	zoomType: 'xy',
 			                    height:$(window).height()*0.60,
@@ -377,17 +345,11 @@ angular.module('departmentAbs.controllers', [])
 				                        data: currentData.series.currentPercentage
 				                    }
 				            ]
-			        	}).highcharts();
-			        }
-		        
+			        	});
 			  });
 		};
 
-		$scope.times = [
-    		{text:'年', value:0, isDefault: true},
-    		{text:'月', value:1, isDefault: false}];
-    	
-    	$scope.selectTime = function(x) {
+		$scope.selectTime = function(x) {
     		if ( x == 0 ) { // year
     			$scope.selectedTime = 0;
     			$scope.showReport();
@@ -398,8 +360,6 @@ angular.module('departmentAbs.controllers', [])
     		}
     	};
     	
-        reportService.setFullScreen(false);
-
         $scope.toggleFullScreen = function()
         {
             if (reportService.getFullScreen())
@@ -428,4 +388,34 @@ angular.module('departmentAbs.controllers', [])
             }
         };
 
+		$scope.times = [
+    		{text:'年', value:0, isDefault: true},
+    		{text:'月', value:1, isDefault: false}];
+    	
+		reportService.setFullScreen(false);
+
+        $scope.charts = [
+    		{id: 'report_revenue', text:'营业额', display:false},
+    		{id: 'report_margin', text:'毛利', display:false},
+    		{id: 'report_expense', text:'费用', display:false},
+    		{id: 'report_opProfit', text:'运营利润', display:true},
+    		];
+    	var currentDate = new Date();
+  		reportService.setCurrentYear(currentDate.getFullYear());
+  		$scope.yearOptions = reportService.getYearList();
+  		$scope.selectedYearOption = $scope.yearOptions[0];
+		
+		reportService.setMonthOfYear(currentDate.getMonth());
+		$scope.monthOptions = reportService.getMonthList();
+		$scope.selectedMonthOption = $scope.monthOptions[reportService.getMonthOfYear()-1];
+    	
+    	$scope.selectedTime = 0;
+    	$scope.departmentOptions = [];
+    	reportService.getDepartments(restClient(config.currentMode).queryDepartments, {}, function(departments) {
+    		$scope.departmentOptions = departments;
+    		$scope.selectedDepartmentOption = $scope.departmentOptions[0];
+			// called on page is loaded
+			$scope.showReport();
+		});
+		
   }]);

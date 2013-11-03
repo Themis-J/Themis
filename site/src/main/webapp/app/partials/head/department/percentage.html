@@ -22,22 +22,8 @@
            
             </div>
 
-			<div id="chartsDisplay">
-				<div id="report_revenue_pie">
-	            </div>
-	            <div id="report_margin_pie">
-	            </div>
-	            <div id="report_expense_pie">
-	            </div>
-	           	<div id="report_opProfit_pie">
-	            </div>
-				<div id="report_revenue">
-	            </div>
-	            <div id="report_margin">
-	            </div>
-	            <div id="report_expense">
-	            </div>
-	           	<div id="report_opProfit">
+			<div id="chartsDisplay" ng-repeat="chart in charts">
+				<div id="{{chart.id}}" ng-show="chart.display">
 	            </div>
 			</div>
         </div>

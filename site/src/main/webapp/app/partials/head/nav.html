@@ -4,7 +4,7 @@
 		<div class="accordion-group">
 		    <div class="accordion-heading">
 		        <a onclick="return false;" class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapseOne">
-		            总运营  <i class="icon-chevron-right  pull-right"></i>
+		            总运营 <i class="icon-chevron-right  pull-right"></i>
 		        </a>
 		    </div>
 		    <div id="collapseOne" class="accordion-body in collapse">
@@ -12,21 +12,26 @@
 		            <div style="margin-left:30px">
 		                <ul style="list-style:none;margin-bottom: 0px;font-size: 12px" class="nav nav-pills nav-stacked">
 		                    <li class="active">
-		                        <a href="#"  onclick="return false;" ng-click="goto(0)">经销商运营概况 </i></a>
+		                        <a href="#"  onclick="return false;" ng-click="goto('总运营－营业额、毛利、费用、运营利润、税前净利润')">营业额、毛利、费用、运营利润、税前净利润</i></a>
 		                    </li>
-		                    <li >
-		                        <a href="#" onclick="return false;" ng-click="goto(1)">经销商运营对比 </i></a>
+		                    <li class>
+		                        <a href="#" onclick="return false;" ng-click="goto('总运营－销售、毛利占百分比')">销售、毛利占百分比</i></a>
+		                    </li>
+		        		    <li class>
+		                        <a href="#" onclick="return false;" ng-click="goto('总运营－费用占百分比')">费用占百分比</i></a>
+		                    </li>
+		                    <li class>
+		                        <a href="#" onclick="return false;" ng-click="goto('总运营－人员分析')">人员分析</i></a>
 		                    </li>
 		                </ul>
 		            </div>
 		        </div>
 		    </div>
 		</div>
-	
 		<div class="accordion-group">
 		    <div class="accordion-heading">
 		        <a onclick="return false;" class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapseTwo">
-		            分运营      <i class="icon-chevron-right  pull-right"></i>
+		            分运营 <i class="icon-chevron-right  pull-right"></i>
 		        </a>
 		    </div>
 		    <div id="collapseTwo" class="accordion-body collapse">
@@ -34,16 +39,16 @@
 		            <div style="margin-left:30px">
 		                <ul style="list-style:none;margin-bottom: 0px;font-size: 12px" class="nav nav-pills nav-stacked">
 		                    <li>
-		                        <a href="#"  onclick="return false;" ng-click="goto(2)">部门运营概况 </i></a>
+		                        <a href="#"  onclick="return false;" ng-click="goto('分运营－经销商部门收入、毛利、费用、运营利润')">经销商收入、毛利、费用、运营利润</i></a>
 		                    </li>
 		                    <li>
-		                        <a href="#"  onclick="return false;" ng-click="goto(3)">经销商各部门运营概况 </i></a>
+		                        <a href="#"  onclick="return false;" ng-click="goto('分运营－部门收入、毛利、费用、运营利润')">部门收入、毛利、费用、运营利润</i></a>
+		                    </li>
+		                    <li>
+		                        <a href="#"  onclick="return false;" ng-click="goto('分运营－各经销商部门收入、毛利、费用、运营利润')">各经销商部门收入、毛利、费用、运营利润</i></a>
 		                    </li>
 		                    <li >
-		                        <a href="#" onclick="return false;" ng-click="goto(4)">部门运营对比 </i></a>
-		                    </li>
-		                    <li >
-		                        <a href="#" onclick="return false;" ng-click="goto(5)">毛利、营业额分析 </i></a>
+		                        <a href="#" onclick="return false;" ng-click="goto('分运营－各部门毛利、运营利润占百分比')">各部门毛利、运营利润占百分比</i></a>
 		                    </li>
 		                </ul>
 		            </div>
@@ -53,7 +58,7 @@
 		<div class="accordion-group">
 		    <div class="accordion-heading">
 		        <a onclick="return false;" class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapsThree">
-		        	销售部      <i class="icon-chevron-right  pull-right"></i>
+		        	销售部 <i class="icon-chevron-right  pull-right"></i>
 		        </a>
 		    </div>
 		    <div id="collapsThree" class="accordion-body collapse">
@@ -61,10 +66,31 @@
 		            <div style="margin-left:30px">
 		                <ul style="list-style:none;margin-bottom: 0px;font-size: 12px" class="nav nav-pills nav-stacked">
 		                    <li>
-		                        <a href="#"  onclick="return false;" ng-click="goto(6)">销量概况 </i></a>
+		                        <a href="#"  onclick="return false;" ng-click="goto('销售部－营业额、毛利、费用、销售毛利、运营利润')">营业额、毛利、费用、销售毛利、运营利润</i></a>
 		                    </li>
 		                    <li >
-		                        <a href="#" onclick="return false;" ng-click="goto(7)">销量对比 </i></a>
+		                        <a href="#" onclick="return false;" ng-click="goto('销售部－销量 – 总量')">销量 – 总量</i></a>
+		                    </li>
+		                    <li >
+		                        <a href="#" onclick="return false;" ng-click="goto('销售部－销量')">销量</i></a>
+		                    </li>
+		                    <li >
+		                        <a href="#" onclick="return false;" ng-click="goto('销售部－总销量占百分比')">总销量占百分比</i></a>
+		                    </li>
+		                    <li >
+		                        <a href="#" onclick="return false;" ng-click="goto('销售部－部门销量占百分比')">部门销量占百分比</i></a>
+		                    </li>
+		                    <li >
+		                        <a href="#" onclick="return false;" ng-click="goto('新车零售及销售分析')">新车零售及销售分析</i></a>
+		                    </li>
+		                    <li >
+		                        <a href="#" onclick="return false;" ng-click="goto('销售部－新车部门轿货车零售毛利率')">新车部门轿货车零售毛利率</i></a>
+		                    </li>
+		                    <li >
+		                        <a href="#" onclick="return false;" ng-click="goto('销售部－新车水平事业部毛利')">新车水平事业部毛利</i></a>
+		                    </li>
+		                    <li >
+		                        <a href="#" onclick="return false;" ng-click="goto('销售部－二手车零售及销售分析')">二手车零售及销售分析</i></a>
 		                    </li>
 		                </ul>
 		            </div>
@@ -74,18 +100,48 @@
 		<div class="accordion-group">
 		    <div class="accordion-heading">
 		        <a onclick="return false;" class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapsFour">
-		        	售后部      <i class="icon-chevron-right  pull-right"></i>
+		        	售后部 <i class="icon-chevron-right  pull-right"></i>
 		        </a>
 		    </div>
-		    <div id="collapseFour" class="accordion-body collapse">
+		    <div id="collapsFour" class="accordion-body collapse">
 		        <div class="accordion-inner">
 		            <div style="margin-left:30px">
 		                <ul style="list-style:none;margin-bottom: 0px;font-size: 12px" class="nav nav-pills nav-stacked">
 		                    <li>
-		                        <a href="#"  onclick="return false;" ng-click="goto(8)">概况 </i></a>
+		                        <a href="#"  onclick="return false;" ng-click="goto(9)">营业额、毛利、费用、销售毛利、运营利润</i></a>
 		                    </li>
 		                    <li >
-		                        <a href="#" onclick="return false;" ng-click="goto(9)">对比 </i></a>
+		                        <a href="#" onclick="return false;" ng-click="goto(10)">部门收入、毛利、费用、销售毛利、运营利润</i></a>
+		                    </li>
+		                    <li>
+		                        <a href="#"  onclick="return false;" ng-click="goto(9)">吸收费用指数分析</i></a>
+		                    </li>
+		                    <li >
+		                        <a href="#" onclick="return false;" ng-click="goto(10)">零服吸收率分析</i></a>
+		                    </li>
+		                    <li>
+		                        <a href="#"  onclick="return false;" ng-click="goto(9)">部门费用分析</i></a>
+		                    </li>
+		                    <li >
+		                        <a href="#" onclick="return false;" ng-click="goto(10)">各部门费用占毛利百分比</i></a>
+		                    </li>
+		                    <li>
+		                        <a href="#"  onclick="return false;" ng-click="goto(9)">销售分析</i></a>
+		                    </li>
+		                    <li >
+		                        <a href="#" onclick="return false;" ng-click="goto(10)">机修钣喷部门工单工时量分析</i></a>
+		                    </li>
+		                    <li>
+		                        <a href="#"  onclick="return false;" ng-click="goto(9)">机修钣喷备件部门销售毛利分析</i></a>
+		                    </li>
+		                    <li >
+		                        <a href="#" onclick="return false;" ng-click="goto(10)">机修钣喷工时分析</i></a>
+		                    </li>
+		                    <li >
+		                        <a href="#" onclick="return false;" ng-click="goto(10)">机修钣喷备件人员贡献分析</i></a>
+		                    </li>
+		                    <li >
+		                        <a href="#" onclick="return false;" ng-click="goto(10)">机修钣喷工时分析</i></a>
 		                    </li>
 		                </ul>
 		            </div>

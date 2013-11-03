@@ -1,4 +1,4 @@
-<div id="report_div" class="span9 row-fluid" style="padding-left: 60px" ng-controller="departmentAbsCtrl">
+<div id="report_div" class="span9 row-fluid" style="padding-left: 60px" ng-controller="salesDepartmentPercentageCtrl">
         <div class="span11">
             <div>
             	<div id="date_div" style="padding-bottom: 10px">
@@ -7,12 +7,7 @@
 		            	<select data-width="100px" ng-options="o.name for o in monthOptions" ng-model="selectedMonthOption" ng-change="selectReportMonth()"></select>
 		            </div>
 	            </div>
-				<div style="padding-bottom: 10px">
-	            	<span ng-repeat="time in times">
-            			 <input name="timeSelectionBox" type="radio" ng-checked="time.isDefault" ng-value="time.value" ng-click="selectTime(time.value)">{{time.text}}
-            		</span>
-				</div>
-				<div>
+	            <div>
 					<select data-width="100px" ng-options="o.name for o in departmentOptions" ng-model="selectedDepartmentOption" ng-change="selectReportDepartment()"></select>
 				</div>
 				<div style="padding-bottom: 10px">
@@ -26,19 +21,9 @@
            
             </div>
 
-			<div id="chartsDisplay">
-				<div id="report_revenue" ng-show="charts[0].display">
+			<div id="chartsDisplay" ng-repeat="chart in charts">
+				<div id="{{chart.id}}" ng-show="chart.display">
 	            </div>
-	            
-	            <div id="report_margin" ng-show="charts[1].display">
-	            </div>
-
-	            <div id="report_expense" ng-show="charts[2].display">
-	            </div>
-	            
-	           	<div id="report_opProfit" ng-show="charts[3].display">
-	            </div>
-	            
 			</div>
         </div>
 </div>

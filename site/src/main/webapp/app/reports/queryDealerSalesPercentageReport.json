@@ -2,27 +2,27 @@
     "reportName": "SalesReport",
     "detail": [
         {
-            "year": 2012,
-            "month": null,
+            "year": 2013,
+            "month": 8,
             "detail": [
                 {
                     "id": 1,
                     "name": "重庆长锦",
                     "code": "CN-01",
                     "retail": {
-                        "amount": 3074,
+                        "amount": 0.4512939808083745,
                         "percentage": 0,
-                        "reference": 4430.888888888889
+                        "reference": 0.9108783638539636
                     },
                     "newCarRetail": {
-                        "amount": 1211,
+                        "amount": 0.4512939808083745,
                         "percentage": 0,
-                        "reference": 2701.6666666666665
+                        "reference": 0.5708672130380482
                     },
                     "newVanRetail": {
-                        "amount": 1863,
+                        "amount": 0,
                         "percentage": 0,
-                        "reference": 2124.1111111111113
+                        "reference": 0.42862614558242595
                     },
                     "wholesale": {
                         "amount": 0,
@@ -35,9 +35,9 @@
                         "reference": 0
                     },
                     "overall": {
-                        "amount": 5547,
+                        "amount": 429.875,
                         "percentage": 0,
-                        "reference": 6111.777777777777
+                        "reference": 680.9444444444445
                     }
                 },
                 {
@@ -45,19 +45,19 @@
                     "name": "长沙长耀",
                     "code": "CN-02",
                     "retail": {
-                        "amount": 3421,
+                        "amount": 0.7532875929102344,
                         "percentage": 0,
-                        "reference": 4430.888888888889
+                        "reference": 0.9108783638539636
                     },
                     "newCarRetail": {
-                        "amount": 1203,
+                        "amount": 0.6306460834762722,
                         "percentage": 0,
-                        "reference": 2701.6666666666665
+                        "reference": 0.5708672130380482
                     },
                     "newVanRetail": {
-                        "amount": 2218,
+                        "amount": 0.12264150943396226,
                         "percentage": 0,
-                        "reference": 2124.1111111111113
+                        "reference": 0.42862614558242595
                     },
                     "wholesale": {
                         "amount": 0,
@@ -70,9 +70,9 @@
                         "reference": 0
                     },
                     "overall": {
-                        "amount": 3945,
+                        "amount": 437.25,
                         "percentage": 0,
-                        "reference": 6111.777777777777
+                        "reference": 680.9444444444445
                     }
                 },
                 {
@@ -80,19 +80,19 @@
                     "name": "广本一店",
                     "code": "CN-03",
                     "retail": {
-                        "amount": 5643,
+                        "amount": 0.45559151384394103,
                         "percentage": 0,
-                        "reference": 4430.888888888889
+                        "reference": 0.9108783638539636
                     },
                     "newCarRetail": {
-                        "amount": 2547,
+                        "amount": 0.45559151384394103,
                         "percentage": 0,
-                        "reference": 2701.6666666666665
+                        "reference": 0.5708672130380482
                     },
                     "newVanRetail": {
-                        "amount": 3096,
+                        "amount": 0,
                         "percentage": 0,
-                        "reference": 2124.1111111111113
+                        "reference": 0.42862614558242595
                     },
                     "wholesale": {
                         "amount": 0,
@@ -105,9 +105,9 @@
                         "reference": 0
                     },
                     "overall": {
-                        "amount": 7964,
+                        "amount": 347.625,
                         "percentage": 0,
-                        "reference": 6111.777777777777
+                        "reference": 680.9444444444445
                     }
                 },
                 {
@@ -115,19 +115,19 @@
                     "name": "长盛公司",
                     "code": "CN-05",
                     "retail": {
-                        "amount": 3463,
+                        "amount": 0.3478764478764479,
                         "percentage": 0,
-                        "reference": 4430.888888888889
+                        "reference": 0.9108783638539636
                     },
                     "newCarRetail": {
-                        "amount": 2836,
+                        "amount": 0.10463320463320464,
                         "percentage": 0,
-                        "reference": 2701.6666666666665
+                        "reference": 0.5708672130380482
                     },
                     "newVanRetail": {
-                        "amount": 627,
+                        "amount": 0.24324324324324326,
                         "percentage": 0,
-                        "reference": 2124.1111111111113
+                        "reference": 0.42862614558242595
                     },
                     "wholesale": {
                         "amount": 0,
@@ -140,9 +140,9 @@
                         "reference": 0
                     },
                     "overall": {
-                        "amount": 5600,
+                        "amount": 323.75,
                         "percentage": 0,
-                        "reference": 6111.777777777777
+                        "reference": 680.9444444444445
                     }
                 },
                 {
@@ -150,19 +150,19 @@
                     "name": "北京长怡",
                     "code": "CN-06",
                     "retail": {
-                        "amount": 5117,
+                        "amount": 1,
                         "percentage": 0,
-                        "reference": 4430.888888888889
+                        "reference": 0.9108783638539636
                     },
                     "newCarRetail": {
-                        "amount": 3963,
+                        "amount": 0.4672735153879497,
                         "percentage": 0,
-                        "reference": 2701.6666666666665
+                        "reference": 0.5708672130380482
                     },
                     "newVanRetail": {
-                        "amount": 1154,
+                        "amount": 0.5327264846120503,
                         "percentage": 0,
-                        "reference": 2124.1111111111113
+                        "reference": 0.42862614558242595
                     },
                     "wholesale": {
                         "amount": 0,
@@ -175,9 +175,9 @@
                         "reference": 0
                     },
                     "overall": {
-                        "amount": 6192,
+                        "amount": 865.125,
                         "percentage": 0,
-                        "reference": 6111.777777777777
+                        "reference": 680.9444444444445
                     }
                 },
                 {
@@ -185,19 +185,19 @@
                     "name": "南京长昊",
                     "code": "CN-07",
                     "retail": {
-                        "amount": 3347,
+                        "amount": 0.8572131147540983,
                         "percentage": 0,
-                        "reference": 4430.888888888889
+                        "reference": 0.9108783638539636
                     },
                     "newCarRetail": {
-                        "amount": 2190,
+                        "amount": 0.5668852459016394,
                         "percentage": 0,
-                        "reference": 2701.6666666666665
+                        "reference": 0.5708672130380482
                     },
                     "newVanRetail": {
-                        "amount": 1157,
+                        "amount": 0.29032786885245904,
                         "percentage": 0,
-                        "reference": 2124.1111111111113
+                        "reference": 0.42862614558242595
                     },
                     "wholesale": {
                         "amount": 0,
@@ -210,9 +210,9 @@
                         "reference": 0
                     },
                     "overall": {
-                        "amount": 4761,
+                        "amount": 762.5,
                         "percentage": 0,
-                        "reference": 6111.777777777777
+                        "reference": 680.9444444444445
                     }
                 },
                 {
@@ -220,19 +220,19 @@
                     "name": "重庆长捷",
                     "code": "CN-08",
                     "retail": {
-                        "amount": 2248,
+                        "amount": 0.8536438767843727,
                         "percentage": 0,
-                        "reference": 4430.888888888889
+                        "reference": 0.9108783638539636
                     },
                     "newCarRetail": {
-                        "amount": 1393,
+                        "amount": 0.704282494365139,
                         "percentage": 0,
-                        "reference": 2701.6666666666665
+                        "reference": 0.5708672130380482
                     },
                     "newVanRetail": {
-                        "amount": 855,
+                        "amount": 0.14936138241923366,
                         "percentage": 0,
-                        "reference": 2124.1111111111113
+                        "reference": 0.42862614558242595
                     },
                     "wholesale": {
                         "amount": 0,
@@ -245,9 +245,9 @@
                         "reference": 0
                     },
                     "overall": {
-                        "amount": 3388,
+                        "amount": 831.875,
                         "percentage": 0,
-                        "reference": 6111.777777777777
+                        "reference": 680.9444444444445
                     }
                 },
                 {
@@ -255,19 +255,19 @@
                     "name": "长力公司",
                     "code": "CN-09",
                     "retail": {
-                        "amount": 4494,
+                        "amount": 1,
                         "percentage": 0,
-                        "reference": 4430.888888888889
+                        "reference": 0.9108783638539636
                     },
                     "newCarRetail": {
-                        "amount": 3373,
+                        "amount": 0.16446280991735537,
                         "percentage": 0,
-                        "reference": 2701.6666666666665
+                        "reference": 0.5708672130380482
                     },
                     "newVanRetail": {
-                        "amount": 1121,
+                        "amount": 0.8355371900826446,
                         "percentage": 0,
-                        "reference": 2124.1111111111113
+                        "reference": 0.42862614558242595
                     },
                     "wholesale": {
                         "amount": 0,
@@ -280,9 +280,9 @@
                         "reference": 0
                     },
                     "overall": {
-                        "amount": 6044,
+                        "amount": 302.5,
                         "percentage": 0,
-                        "reference": 6111.777777777777
+                        "reference": 680.9444444444445
                     }
                 },
                 {
@@ -290,19 +290,19 @@
                     "name": "重庆长达",
                     "code": "CN-10",
                     "retail": {
-                        "amount": 5565,
+                        "amount": 0.9153014987800627,
                         "percentage": 0,
-                        "reference": 4430.888888888889
+                        "reference": 0.9108783638539636
                     },
                     "newCarRetail": {
-                        "amount": 1638,
+                        "amount": 0.4140815615196933,
                         "percentage": 0,
-                        "reference": 2701.6666666666665
+                        "reference": 0.5708672130380482
                     },
                     "newVanRetail": {
-                        "amount": 3927,
+                        "amount": 0.5012199372603695,
                         "percentage": 0,
-                        "reference": 2124.1111111111113
+                        "reference": 0.42862614558242595
                     },
                     "wholesale": {
                         "amount": 0,
@@ -315,9 +315,9 @@
                         "reference": 0
                     },
                     "overall": {
-                        "amount": 9116,
+                        "amount": 358.625,
                         "percentage": 0,
-                        "reference": 6111.777777777777
+                        "reference": 680.9444444444445
                     }
                 },
                 {
@@ -325,19 +325,19 @@
                     "name": "广丰一店",
                     "code": "CN-11",
                     "retail": {
-                        "amount": 4674,
+                        "amount": 0.8184591914569032,
                         "percentage": 0,
-                        "reference": 4430.888888888889
+                        "reference": 0.9108783638539636
                     },
                     "newCarRetail": {
-                        "amount": 2640,
+                        "amount": 0.8184591914569032,
                         "percentage": 0,
-                        "reference": 2701.6666666666665
+                        "reference": 0.5708672130380482
                     },
                     "newVanRetail": {
-                        "amount": 2034,
+                        "amount": 0,
                         "percentage": 0,
-                        "reference": 2124.1111111111113
+                        "reference": 0.42862614558242595
                     },
                     "wholesale": {
                         "amount": 0,
@@ -350,9 +350,9 @@
                         "reference": 0
                     },
                     "overall": {
-                        "amount": 7198,
+                        "amount": 491.625,
                         "percentage": 0,
-                        "reference": 6111.777777777777
+                        "reference": 680.9444444444445
                     }
                 },
                 {
@@ -360,19 +360,19 @@
                     "name": "长宁公司",
                     "code": "CN-12",
                     "retail": {
-                        "amount": 2205,
+                        "amount": 1,
                         "percentage": 0,
-                        "reference": 4430.888888888889
+                        "reference": 0.9108783638539636
                     },
                     "newCarRetail": {
-                        "amount": 1592,
+                        "amount": 0.3595999024152232,
                         "percentage": 0,
-                        "reference": 2701.6666666666665
+                        "reference": 0.5708672130380482
                     },
                     "newVanRetail": {
-                        "amount": 613,
+                        "amount": 0.6404000975847768,
                         "percentage": 0,
-                        "reference": 2124.1111111111113
+                        "reference": 0.42862614558242595
                     },
                     "wholesale": {
                         "amount": 0,
@@ -385,9 +385,9 @@
                         "reference": 0
                     },
                     "overall": {
-                        "amount": 4099,
+                        "amount": 512.375,
                         "percentage": 0,
-                        "reference": 6111.777777777777
+                        "reference": 680.9444444444445
                     }
                 },
                 {
@@ -395,19 +395,19 @@
                     "name": "长凯公司",
                     "code": "CN-13",
                     "retail": {
-                        "amount": 2688,
+                        "amount": 0.265389876880985,
                         "percentage": 0,
-                        "reference": 4430.888888888889
+                        "reference": 0.9108783638539636
                     },
                     "newCarRetail": {
-                        "amount": 2285,
+                        "amount": 0.14692202462380302,
                         "percentage": 0,
-                        "reference": 2701.6666666666665
+                        "reference": 0.5708672130380482
                     },
                     "newVanRetail": {
-                        "amount": 403,
+                        "amount": 0.11846785225718194,
                         "percentage": 0,
-                        "reference": 2124.1111111111113
+                        "reference": 0.42862614558242595
                     },
                     "wholesale": {
                         "amount": 0,
@@ -420,9 +420,9 @@
                         "reference": 0
                     },
                     "overall": {
-                        "amount": 3810,
+                        "amount": 456.875,
                         "percentage": 0,
-                        "reference": 6111.777777777777
+                        "reference": 680.9444444444445
                     }
                 },
                 {
@@ -430,19 +430,19 @@
                     "name": "北京长京行",
                     "code": "CN-14",
                     "retail": {
-                        "amount": 3845,
+                        "amount": 0.6600625651720542,
                         "percentage": 0,
-                        "reference": 4430.888888888889
+                        "reference": 0.9108783638539636
                     },
                     "newCarRetail": {
-                        "amount": 2709,
+                        "amount": 0.2509558567952729,
                         "percentage": 0,
-                        "reference": 2701.6666666666665
+                        "reference": 0.5708672130380482
                     },
                     "newVanRetail": {
-                        "amount": 1136,
+                        "amount": 0.40910670837678137,
                         "percentage": 0,
-                        "reference": 2124.1111111111113
+                        "reference": 0.42862614558242595
                     },
                     "wholesale": {
                         "amount": 0,
@@ -455,9 +455,9 @@
                         "reference": 0
                     },
                     "overall": {
-                        "amount": 4481,
+                        "amount": 359.625,
                         "percentage": 0,
-                        "reference": 6111.777777777777
+                        "reference": 680.9444444444445
                     }
                 },
                 {
@@ -465,19 +465,19 @@
                     "name": "南京长益",
                     "code": "CN-15",
                     "retail": {
-                        "amount": 3616,
+                        "amount": 0.3949771689497717,
                         "percentage": 0,
-                        "reference": 4430.888888888889
+                        "reference": 0.9108783638539636
                     },
                     "newCarRetail": {
-                        "amount": 3224,
+                        "amount": 0.3949771689497717,
                         "percentage": 0,
-                        "reference": 2701.6666666666665
+                        "reference": 0.5708672130380482
                     },
                     "newVanRetail": {
-                        "amount": 392,
+                        "amount": 0,
                         "percentage": 0,
-                        "reference": 2124.1111111111113
+                        "reference": 0.42862614558242595
                     },
                     "wholesale": {
                         "amount": 0,
@@ -490,9 +490,9 @@
                         "reference": 0
                     },
                     "overall": {
-                        "amount": 3616,
+                        "amount": 109.5,
                         "percentage": 0,
-                        "reference": 6111.777777777777
+                        "reference": 680.9444444444445
                     }
                 },
                 {
@@ -500,19 +500,19 @@
                     "name": "重庆长俊",
                     "code": "CN-16",
                     "retail": {
-                        "amount": 2623,
+                        "amount": 0,
                         "percentage": 0,
-                        "reference": 4430.888888888889
+                        "reference": 0.9108783638539636
                     },
                     "newCarRetail": {
-                        "amount": 1034,
+                        "amount": 0,
                         "percentage": 0,
-                        "reference": 2701.6666666666665
+                        "reference": 0.5708672130380482
                     },
                     "newVanRetail": {
-                        "amount": 1589,
+                        "amount": 0,
                         "percentage": 0,
-                        "reference": 2124.1111111111113
+                        "reference": 0.42862614558242595
                     },
                     "wholesale": {
                         "amount": 0,
@@ -525,9 +525,9 @@
                         "reference": 0
                     },
                     "overall": {
-                        "amount": 3113,
+                        "amount": 414.625,
                         "percentage": 0,
-                        "reference": 6111.777777777777
+                        "reference": 680.9444444444445
                     }
                 },
                 {
@@ -535,19 +535,19 @@
                     "name": "长悦公司",
                     "code": "CN-18",
                     "retail": {
-                        "amount": 5030,
+                        "amount": 0.7058698876880695,
                         "percentage": 0,
-                        "reference": 4430.888888888889
+                        "reference": 0.9108783638539636
                     },
                     "newCarRetail": {
-                        "amount": 2250,
+                        "amount": 0.2194320830684467,
                         "percentage": 0,
-                        "reference": 2701.6666666666665
+                        "reference": 0.5708672130380482
                     },
                     "newVanRetail": {
-                        "amount": 2780,
+                        "amount": 0.4864378046196228,
                         "percentage": 0,
-                        "reference": 2124.1111111111113
+                        "reference": 0.42862614558242595
                     },
                     "wholesale": {
                         "amount": 0,
@@ -560,9 +560,9 @@
                         "reference": 0
                     },
                     "overall": {
-                        "amount": 6898,
+                        "amount": 1179.75,
                         "percentage": 0,
-                        "reference": 6111.777777777777
+                        "reference": 680.9444444444445
                     }
                 },
                 {
@@ -570,19 +570,19 @@
                     "name": "长沙长威",
                     "code": "CN-17",
                     "retail": {
-                        "amount": 2625,
+                        "amount": 0.61053276178812,
                         "percentage": 0,
-                        "reference": 4430.888888888889
+                        "reference": 0.9108783638539636
                     },
                     "newCarRetail": {
-                        "amount": 542,
+                        "amount": 0.17253521126760563,
                         "percentage": 0,
-                        "reference": 2701.6666666666665
+                        "reference": 0.5708672130380482
                     },
                     "newVanRetail": {
-                        "amount": 2083,
+                        "amount": 0.43799755052051437,
                         "percentage": 0,
-                        "reference": 2124.1111111111113
+                        "reference": 0.42862614558242595
                     },
                     "wholesale": {
                         "amount": 0,
@@ -595,9 +595,9 @@
                         "reference": 0
                     },
                     "overall": {
-                        "amount": 2625,
+                        "amount": 816.5,
                         "percentage": 0,
-                        "reference": 6111.777777777777
+                        "reference": 680.9444444444445
                     }
                 },
                 {
@@ -605,19 +605,19 @@
                     "name": "长佳公司",
                     "code": "CN-20",
                     "retail": {
-                        "amount": 4074,
+                        "amount": 1,
                         "percentage": 0,
-                        "reference": 4430.888888888889
+                        "reference": 0.9108783638539636
                     },
                     "newCarRetail": {
-                        "amount": 1777,
+                        "amount": 0.7058674117348235,
                         "percentage": 0,
-                        "reference": 2701.6666666666665
+                        "reference": 0.5708672130380482
                     },
                     "newVanRetail": {
-                        "amount": 2297,
+                        "amount": 0.2941325882651765,
                         "percentage": 0,
-                        "reference": 2124.1111111111113
+                        "reference": 0.42862614558242595
                     },
                     "wholesale": {
                         "amount": 0,
@@ -630,9 +630,9 @@
                         "reference": 0
                     },
                     "overall": {
-                        "amount": 4802,
+                        "amount": 492.125,
                         "percentage": 0,
-                        "reference": 6111.777777777777
+                        "reference": 680.9444444444445
                     }
                 },
                 {
@@ -640,19 +640,19 @@
                     "name": "湖南长坤",
                     "code": "CN-19",
                     "retail": {
-                        "amount": 2451,
+                        "amount": 1,
                         "percentage": 0,
-                        "reference": 4430.888888888889
+                        "reference": 0.9108783638539636
                     },
                     "newCarRetail": {
-                        "amount": 2451,
+                        "amount": 0.7347137298499167,
                         "percentage": 0,
-                        "reference": 2701.6666666666665
+                        "reference": 0.5708672130380482
                     },
                     "newVanRetail": {
-                        "amount": 0,
+                        "amount": 0.2652862701500834,
                         "percentage": 0,
-                        "reference": 2124.1111111111113
+                        "reference": 0.42862614558242595
                     },
                     "wholesale": {
                         "amount": 0,
@@ -665,9 +665,9 @@
                         "reference": 0
                     },
                     "overall": {
-                        "amount": 3521,
+                        "amount": 899.5,
                         "percentage": 0,
-                        "reference": 6111.777777777777
+                        "reference": 680.9444444444445
                     }
                 },
                 {
@@ -675,19 +675,19 @@
                     "name": "重庆长冠",
                     "code": "CN-21",
                     "retail": {
-                        "amount": 1059,
+                        "amount": 0.6100226073850791,
                         "percentage": 0,
-                        "reference": 4430.888888888889
+                        "reference": 0.9108783638539636
                     },
                     "newCarRetail": {
-                        "amount": 0,
+                        "amount": 0.4212509419743783,
                         "percentage": 0,
-                        "reference": 2701.6666666666665
+                        "reference": 0.5708672130380482
                     },
                     "newVanRetail": {
-                        "amount": 1059,
+                        "amount": 0.18877166541070084,
                         "percentage": 0,
-                        "reference": 2124.1111111111113
+                        "reference": 0.42862614558242595
                     },
                     "wholesale": {
                         "amount": 0,
@@ -700,35 +700,35 @@
                         "reference": 0
                     },
                     "overall": {
-                        "amount": 2970,
+                        "amount": 331.75,
                         "percentage": 0,
-                        "reference": 6111.777777777777
+                        "reference": 680.9444444444445
                     }
                 }
             ]
         },
         {
             "year": 2013,
-            "month": null,
+            "month": 8,
             "detail": [
                 {
                     "id": 1,
                     "name": "重庆长锦",
                     "code": "CN-01",
                     "retail": {
-                        "amount": 2873,
-                        "percentage": -0.06538711776187378,
-                        "reference": 5121.888888888889
+                        "amount": 0,
+                        "percentage": 0,
+                        "reference": 0.5610912086027827
                     },
                     "newCarRetail": {
-                        "amount": 2305,
-                        "percentage": 0.9033856317093312,
-                        "reference": 3146.8888888888887
+                        "amount": 0,
+                        "percentage": 0,
+                        "reference": 0.3506944444444444
                     },
                     "newVanRetail": {
-                        "amount": 568,
-                        "percentage": -0.6951154052603328,
-                        "reference": 2072
+                        "amount": 0,
+                        "percentage": 0,
+                        "reference": 0.09928565304722713
                     },
                     "wholesale": {
                         "amount": 0,
@@ -741,9 +741,9 @@
                         "reference": 0
                     },
                     "overall": {
-                        "amount": 5457,
-                        "percentage": -0.016224986479177934,
-                        "reference": 6642.333333333333
+                        "amount": 0,
+                        "percentage": 0,
+                        "reference": 875.3333333333334
                     }
                 },
                 {
@@ -751,19 +751,19 @@
                     "name": "长沙长耀",
                     "code": "CN-02",
                     "retail": {
-                        "amount": 2635,
-                        "percentage": -0.2297573808827828,
-                        "reference": 5121.888888888889
+                        "amount": 0,
+                        "percentage": 0,
+                        "reference": 0.5610912086027827
                     },
                     "newCarRetail": {
-                        "amount": 2206,
-                        "percentage": 0.8337489609310058,
-                        "reference": 3146.8888888888887
+                        "amount": 0,
+                        "percentage": 0,
+                        "reference": 0.3506944444444444
                     },
                     "newVanRetail": {
-                        "amount": 429,
-                        "percentage": -0.8065825067628494,
-                        "reference": 2072
+                        "amount": 0,
+                        "percentage": 0,
+                        "reference": 0.09928565304722713
                     },
                     "wholesale": {
                         "amount": 0,
@@ -776,9 +776,9 @@
                         "reference": 0
                     },
                     "overall": {
-                        "amount": 5481,
-                        "percentage": 0.38935361216730036,
-                        "reference": 6642.333333333333
+                        "amount": 0,
+                        "percentage": 0,
+                        "reference": 875.3333333333334
                     }
                 },
                 {
@@ -786,19 +786,19 @@
                     "name": "广本一店",
                     "code": "CN-03",
                     "retail": {
-                        "amount": 1539,
-                        "percentage": -0.7272727272727273,
-                        "reference": 5121.888888888889
+                        "amount": 0,
+                        "percentage": 0,
+                        "reference": 0.5610912086027827
                     },
                     "newCarRetail": {
-                        "amount": 1539,
-                        "percentage": -0.3957597173144876,
-                        "reference": 3146.8888888888887
+                        "amount": 0,
+                        "percentage": 0,
+                        "reference": 0.3506944444444444
                     },
                     "newVanRetail": {
                         "amount": 0,
                         "percentage": 0,
-                        "reference": 2072
+                        "reference": 0.09928565304722713
                     },
                     "wholesale": {
                         "amount": 0,
@@ -811,9 +811,9 @@
                         "reference": 0
                     },
                     "overall": {
-                        "amount": 4250,
-                        "percentage": -0.4663485685585133,
-                        "reference": 6642.333333333333
+                        "amount": 0,
+                        "percentage": 0,
+                        "reference": 875.3333333333334
                     }
                 },
                 {
@@ -821,19 +821,19 @@
                     "name": "长盛公司",
                     "code": "CN-05",
                     "retail": {
-                        "amount": 901,
-                        "percentage": -0.7398209644816633,
-                        "reference": 5121.888888888889
+                        "amount": 0,
+                        "percentage": 0,
+                        "reference": 0.5610912086027827
                     },
                     "newCarRetail": {
-                        "amount": 271,
-                        "percentage": -0.9044428772919605,
-                        "reference": 3146.8888888888887
+                        "amount": 0,
+                        "percentage": 0,
+                        "reference": 0.3506944444444444
                     },
                     "newVanRetail": {
-                        "amount": 630,
-                        "percentage": 0.004784688995215311,
-                        "reference": 2072
+                        "amount": 0,
+                        "percentage": 0,
+                        "reference": 0.09928565304722713
                     },
                     "wholesale": {
                         "amount": 0,
@@ -846,9 +846,9 @@
                         "reference": 0
                     },
                     "overall": {
-                        "amount": 2590,
-                        "percentage": -0.5375,
-                        "reference": 6642.333333333333
+                        "amount": 519,
+                        "percentage": 0.6030888030888031,
+                        "reference": 875.3333333333334
                     }
                 },
                 {
@@ -856,19 +856,19 @@
                     "name": "北京长怡",
                     "code": "CN-06",
                     "retail": {
-                        "amount": 6921,
-                        "percentage": 0.35255032245456325,
-                        "reference": 5121.888888888889
+                        "amount": 0,
+                        "percentage": 0,
+                        "reference": 0.5610912086027827
                     },
                     "newCarRetail": {
-                        "amount": 3234,
-                        "percentage": -0.18395155185465556,
-                        "reference": 3146.8888888888887
+                        "amount": 0,
+                        "percentage": 0,
+                        "reference": 0.3506944444444444
                     },
                     "newVanRetail": {
-                        "amount": 3687,
-                        "percentage": 2.1949740034662044,
-                        "reference": 2072
+                        "amount": 0,
+                        "percentage": 0,
+                        "reference": 0.09928565304722713
                     },
                     "wholesale": {
                         "amount": 0,
@@ -881,9 +881,9 @@
                         "reference": 0
                     },
                     "overall": {
-                        "amount": 6921,
-                        "percentage": 0.11773255813953488,
-                        "reference": 6642.333333333333
+                        "amount": 0,
+                        "percentage": 0,
+                        "reference": 875.3333333333334
                     }
                 },
                 {
@@ -891,19 +891,19 @@
                     "name": "南京长昊",
                     "code": "CN-07",
                     "retail": {
-                        "amount": 5229,
-                        "percentage": 0.5622945921720944,
-                        "reference": 5121.888888888889
+                        "amount": 0,
+                        "percentage": 0,
+                        "reference": 0.5610912086027827
                     },
                     "newCarRetail": {
-                        "amount": 3458,
-                        "percentage": 0.5789954337899543,
-                        "reference": 3146.8888888888887
+                        "amount": 0,
+                        "percentage": 0,
+                        "reference": 0.3506944444444444
                     },
                     "newVanRetail": {
-                        "amount": 1771,
-                        "percentage": 0.5306828003457217,
-                        "reference": 2072
+                        "amount": 0,
+                        "percentage": 0,
+                        "reference": 0.09928565304722713
                     },
                     "wholesale": {
                         "amount": 0,
@@ -916,9 +916,9 @@
                         "reference": 0
                     },
                     "overall": {
-                        "amount": 8396,
-                        "percentage": 0.7634950640621718,
-                        "reference": 6642.333333333333
+                        "amount": 0,
+                        "percentage": 0,
+                        "reference": 875.3333333333334
                     }
                 },
                 {
@@ -926,19 +926,19 @@
                     "name": "重庆长捷",
                     "code": "CN-08",
                     "retail": {
-                        "amount": 6269,
-                        "percentage": 1.7887010676156583,
-                        "reference": 5121.888888888889
+                        "amount": 0,
+                        "percentage": 0,
+                        "reference": 0.5610912086027827
                     },
                     "newCarRetail": {
-                        "amount": 5275,
-                        "percentage": 2.7867910983488873,
-                        "reference": 3146.8888888888887
+                        "amount": 0,
+                        "percentage": 0,
+                        "reference": 0.3506944444444444
                     },
                     "newVanRetail": {
-                        "amount": 994,
-                        "percentage": 0.16257309941520467,
-                        "reference": 2072
+                        "amount": 0,
+                        "percentage": 0,
+                        "reference": 0.09928565304722713
                     },
                     "wholesale": {
                         "amount": 0,
@@ -951,9 +951,9 @@
                         "reference": 0
                     },
                     "overall": {
-                        "amount": 8782,
-                        "percentage": 1.5920897284533648,
-                        "reference": 6642.333333333333
+                        "amount": 0,
+                        "percentage": 0,
+                        "reference": 875.3333333333334
                     }
                 },
                 {
@@ -961,19 +961,19 @@
                     "name": "长力公司",
                     "code": "CN-09",
                     "retail": {
-                        "amount": 3537,
-                        "percentage": -0.2129506008010681,
-                        "reference": 5121.888888888889
+                        "amount": 1,
+                        "percentage": 1076,
+                        "reference": 0.5610912086027827
                     },
                     "newCarRetail": {
-                        "amount": 1515,
-                        "percentage": -0.5508449451526831,
-                        "reference": 3146.8888888888887
+                        "amount": 0,
+                        "percentage": 0,
+                        "reference": 0.3506944444444444
                     },
                     "newVanRetail": {
-                        "amount": 2022,
-                        "percentage": 0.8037466547725245,
-                        "reference": 2072
+                        "amount": 1,
+                        "percentage": 1287.9910979228487,
+                        "reference": 0.09928565304722713
                     },
                     "wholesale": {
                         "amount": 0,
@@ -986,9 +986,9 @@
                         "reference": 0
                     },
                     "overall": {
-                        "amount": 3537,
-                        "percentage": -0.41479152878888154,
-                        "reference": 6642.333333333333
+                        "amount": 1077,
+                        "percentage": 2.5603305785123966,
+                        "reference": 875.3333333333334
                     }
                 },
                 {
@@ -996,19 +996,19 @@
                     "name": "重庆长达",
                     "code": "CN-10",
                     "retail": {
-                        "amount": 2626,
-                        "percentage": -0.5281221922731356,
-                        "reference": 5121.888888888889
+                        "amount": 0,
+                        "percentage": 0,
+                        "reference": 0.5610912086027827
                     },
                     "newCarRetail": {
-                        "amount": 1188,
-                        "percentage": -0.27472527472527475,
-                        "reference": 3146.8888888888887
+                        "amount": 0,
+                        "percentage": 0,
+                        "reference": 0.3506944444444444
                     },
                     "newVanRetail": {
-                        "amount": 1438,
-                        "percentage": -0.6338171632289279,
-                        "reference": 2072
+                        "amount": 0,
+                        "percentage": 0,
+                        "reference": 0.09928565304722713
                     },
                     "wholesale": {
                         "amount": 0,
@@ -1021,9 +1021,9 @@
                         "reference": 0
                     },
                     "overall": {
-                        "amount": 2869,
-                        "percentage": -0.6852786309784994,
-                        "reference": 6642.333333333333
+                        "amount": 0,
+                        "percentage": 0,
+                        "reference": 875.3333333333334
                     }
                 },
                 {
@@ -1031,19 +1031,19 @@
                     "name": "广丰一店",
                     "code": "CN-11",
                     "retail": {
-                        "amount": 4909,
-                        "percentage": 0.05027813436029097,
-                        "reference": 5121.888888888889
+                        "amount": 1,
+                        "percentage": 1419.9627213420317,
+                        "reference": 0.5610912086027827
                     },
                     "newCarRetail": {
-                        "amount": 4909,
-                        "percentage": 0.859469696969697,
-                        "reference": 3146.8888888888887
+                        "amount": 1,
+                        "percentage": 1419.9627213420317,
+                        "reference": 0.3506944444444444
                     },
                     "newVanRetail": {
                         "amount": 0,
                         "percentage": 0,
-                        "reference": 2072
+                        "reference": 0.09928565304722713
                     },
                     "wholesale": {
                         "amount": 0,
@@ -1056,9 +1056,9 @@
                         "reference": 0
                     },
                     "overall": {
-                        "amount": 5623,
-                        "percentage": -0.2188107807724368,
-                        "reference": 6642.333333333333
+                        "amount": 1163,
+                        "percentage": 1.3656242054411392,
+                        "reference": 875.3333333333334
                     }
                 },
                 {
@@ -1066,19 +1066,19 @@
                     "name": "长宁公司",
                     "code": "CN-12",
                     "retail": {
-                        "amount": 4099,
-                        "percentage": 0.8589569160997732,
-                        "reference": 5121.888888888889
+                        "amount": 1,
+                        "percentage": 1077,
+                        "reference": 0.5610912086027827
                     },
                     "newCarRetail": {
-                        "amount": 1474,
-                        "percentage": -0.07412060301507538,
-                        "reference": 3146.8888888888887
+                        "amount": 1,
+                        "percentage": 2996.776119402985,
+                        "reference": 0.3506944444444444
                     },
                     "newVanRetail": {
-                        "amount": 2625,
-                        "percentage": 3.2822185970636215,
-                        "reference": 2072
+                        "amount": 0,
+                        "percentage": 0,
+                        "reference": 0.09928565304722713
                     },
                     "wholesale": {
                         "amount": 0,
@@ -1091,9 +1091,9 @@
                         "reference": 0
                     },
                     "overall": {
-                        "amount": 4099,
-                        "percentage": 0,
-                        "reference": 6642.333333333333
+                        "amount": 1078,
+                        "percentage": 1.1039277872651867,
+                        "reference": 875.3333333333334
                     }
                 },
                 {
@@ -1101,19 +1101,19 @@
                     "name": "长凯公司",
                     "code": "CN-13",
                     "retail": {
-                        "amount": 1557,
-                        "percentage": -0.42075892857142855,
-                        "reference": 5121.888888888889
+                        "amount": 0,
+                        "percentage": 0,
+                        "reference": 0.5610912086027827
                     },
                     "newCarRetail": {
-                        "amount": 537,
-                        "percentage": -0.7649890590809628,
-                        "reference": 3146.8888888888887
+                        "amount": 0,
+                        "percentage": 0,
+                        "reference": 0.3506944444444444
                     },
                     "newVanRetail": {
-                        "amount": 1020,
-                        "percentage": 1.531017369727047,
-                        "reference": 2072
+                        "amount": 0,
+                        "percentage": 0,
+                        "reference": 0.09928565304722713
                     },
                     "wholesale": {
                         "amount": 0,
@@ -1126,9 +1126,9 @@
                         "reference": 0
                     },
                     "overall": {
-                        "amount": 5393,
-                        "percentage": 0.41548556430446193,
-                        "reference": 6642.333333333333
+                        "amount": 0,
+                        "percentage": 0,
+                        "reference": 875.3333333333334
                     }
                 },
                 {
@@ -1136,19 +1136,19 @@
                     "name": "北京长京行",
                     "code": "CN-14",
                     "retail": {
-                        "amount": 1899,
-                        "percentage": -0.5061118335500651,
-                        "reference": 5121.888888888889
+                        "amount": 0,
+                        "percentage": 0,
+                        "reference": 0.5610912086027827
                     },
                     "newCarRetail": {
-                        "amount": 722,
-                        "percentage": -0.7334809892949428,
-                        "reference": 3146.8888888888887
+                        "amount": 0,
+                        "percentage": 0,
+                        "reference": 0.3506944444444444
                     },
                     "newVanRetail": {
-                        "amount": 1177,
-                        "percentage": 0.03609154929577465,
-                        "reference": 2072
+                        "amount": 0,
+                        "percentage": 0,
+                        "reference": 0.09928565304722713
                     },
                     "wholesale": {
                         "amount": 0,
@@ -1161,9 +1161,9 @@
                         "reference": 0
                     },
                     "overall": {
-                        "amount": 4129,
-                        "percentage": -0.07855389422004017,
-                        "reference": 6642.333333333333
+                        "amount": 595,
+                        "percentage": 0.6545012165450121,
+                        "reference": 875.3333333333334
                     }
                 },
                 {
@@ -1171,19 +1171,19 @@
                     "name": "南京长益",
                     "code": "CN-15",
                     "retail": {
-                        "amount": 1068,
-                        "percentage": -0.7046460176991151,
-                        "reference": 5121.888888888889
+                        "amount": 0,
+                        "percentage": 0,
+                        "reference": 0.5610912086027827
                     },
                     "newCarRetail": {
-                        "amount": 618,
-                        "percentage": -0.8083126550868487,
-                        "reference": 3146.8888888888887
+                        "amount": 0,
+                        "percentage": 0,
+                        "reference": 0.3506944444444444
                     },
                     "newVanRetail": {
-                        "amount": 450,
-                        "percentage": 0.14795918367346939,
-                        "reference": 2072
+                        "amount": 0,
+                        "percentage": 0,
+                        "reference": 0.09928565304722713
                     },
                     "wholesale": {
                         "amount": 0,
@@ -1196,9 +1196,9 @@
                         "reference": 0
                     },
                     "overall": {
-                        "amount": 2249,
-                        "percentage": -0.3780420353982301,
-                        "reference": 6642.333333333333
+                        "amount": 0,
+                        "percentage": 0,
+                        "reference": 875.3333333333334
                     }
                 },
                 {
@@ -1206,19 +1206,19 @@
                     "name": "重庆长俊",
                     "code": "CN-16",
                     "retail": {
-                        "amount": 427,
-                        "percentage": -0.8372093023255814,
-                        "reference": 5121.888888888889
+                        "amount": 0,
+                        "percentage": 0,
+                        "reference": 0.5610912086027827
                     },
                     "newCarRetail": {
-                        "amount": 427,
-                        "percentage": -0.5870406189555126,
-                        "reference": 3146.8888888888887
+                        "amount": 0,
+                        "percentage": 0,
+                        "reference": 0.3506944444444444
                     },
                     "newVanRetail": {
                         "amount": 0,
                         "percentage": 0,
-                        "reference": 2072
+                        "reference": 0.09928565304722713
                     },
                     "wholesale": {
                         "amount": 0,
@@ -1231,9 +1231,9 @@
                         "reference": 0
                     },
                     "overall": {
-                        "amount": 3744,
-                        "percentage": 0.2026983617089624,
-                        "reference": 6642.333333333333
+                        "amount": 0,
+                        "percentage": 0,
+                        "reference": 875.3333333333334
                     }
                 },
                 {
@@ -1241,19 +1241,19 @@
                     "name": "长悦公司",
                     "code": "CN-18",
                     "retail": {
-                        "amount": 6662,
-                        "percentage": 0.32445328031809145,
-                        "reference": 5121.888888888889
+                        "amount": 0.6440917107583775,
+                        "percentage": 2585.8790153107175,
+                        "reference": 0.5610912086027827
                     },
                     "newCarRetail": {
-                        "amount": 2071,
-                        "percentage": -0.07955555555555556,
-                        "reference": 3146.8888888888887
+                        "amount": 0,
+                        "percentage": 0,
+                        "reference": 0.3506944444444444
                     },
                     "newVanRetail": {
-                        "amount": 4591,
-                        "percentage": 0.6514388489208633,
-                        "reference": 2072
+                        "amount": 0.6440917107583775,
+                        "percentage": 3752.8200827706382,
+                        "reference": 0.09928565304722713
                     },
                     "wholesale": {
                         "amount": 0,
@@ -1266,9 +1266,9 @@
                         "reference": 0
                     },
                     "overall": {
-                        "amount": 9438,
-                        "percentage": 0.3682226732386199,
-                        "reference": 6642.333333333333
+                        "amount": 2835,
+                        "percentage": 1.403051493960585,
+                        "reference": 875.3333333333334
                     }
                 },
                 {
@@ -1276,19 +1276,19 @@
                     "name": "长沙长威",
                     "code": "CN-17",
                     "retail": {
-                        "amount": 3988,
-                        "percentage": 0.5192380952380953,
-                        "reference": 5121.888888888889
+                        "amount": 0.40572916666666664,
+                        "percentage": 1274.9348044132398,
+                        "reference": 0.5610912086027827
                     },
                     "newCarRetail": {
-                        "amount": 1127,
-                        "percentage": 1.0793357933579335,
-                        "reference": 3146.8888888888887
+                        "amount": 0.15625,
+                        "percentage": 1737.775510204082,
+                        "reference": 0.3506944444444444
                     },
                     "newVanRetail": {
-                        "amount": 2861,
-                        "percentage": 0.37349975996159385,
-                        "reference": 2072
+                        "amount": 0.24947916666666667,
+                        "percentage": 1092.6134218804614,
+                        "reference": 0.09928565304722713
                     },
                     "wholesale": {
                         "amount": 0,
@@ -1301,9 +1301,9 @@
                         "reference": 0
                     },
                     "overall": {
-                        "amount": 6532,
-                        "percentage": 1.4883809523809524,
-                        "reference": 6642.333333333333
+                        "amount": 1920,
+                        "percentage": 1.3515003061849358,
+                        "reference": 875.3333333333334
                     }
                 },
                 {
@@ -1311,19 +1311,19 @@
                     "name": "长佳公司",
                     "code": "CN-20",
                     "retail": {
-                        "amount": 4483,
-                        "percentage": 0.10039273441335297,
-                        "reference": 5121.888888888889
+                        "amount": 1,
+                        "percentage": 505,
+                        "reference": 0.5610912086027827
                     },
                     "newCarRetail": {
-                        "amount": 3325,
-                        "percentage": 0.871131119864941,
-                        "reference": 3146.8888888888887
+                        "amount": 1,
+                        "percentage": 715.8485066570709,
+                        "reference": 0.3506944444444444
                     },
                     "newVanRetail": {
-                        "amount": 1158,
-                        "percentage": -0.4958641706573792,
-                        "reference": 2072
+                        "amount": 0,
+                        "percentage": 0,
+                        "reference": 0.09928565304722713
                     },
                     "wholesale": {
                         "amount": 0,
@@ -1336,9 +1336,9 @@
                         "reference": 0
                     },
                     "overall": {
-                        "amount": 4483,
-                        "percentage": -0.06643065389421074,
-                        "reference": 6642.333333333333
+                        "amount": 506,
+                        "percentage": 0.028194056388112777,
+                        "reference": 875.3333333333334
                     }
                 },
                 {
@@ -1346,19 +1346,19 @@
                     "name": "湖南长坤",
                     "code": "CN-19",
                     "retail": {
-                        "amount": 7196,
-                        "percentage": 1.9359445124439005,
-                        "reference": 5121.888888888889
+                        "amount": 1,
+                        "percentage": 1019,
+                        "reference": 0.5610912086027827
                     },
                     "newCarRetail": {
-                        "amount": 5287,
-                        "percentage": 1.1570787433700531,
-                        "reference": 3146.8888888888887
+                        "amount": 1,
+                        "percentage": 1387.2958199356913,
+                        "reference": 0.3506944444444444
                     },
                     "newVanRetail": {
-                        "amount": 1909,
+                        "amount": 0,
                         "percentage": 0,
-                        "reference": 2072
+                        "reference": 0.09928565304722713
                     },
                     "wholesale": {
                         "amount": 0,
@@ -1371,9 +1371,9 @@
                         "reference": 0
                     },
                     "overall": {
-                        "amount": 7196,
-                        "percentage": 1.0437375745526838,
-                        "reference": 6642.333333333333
+                        "amount": 1020,
+                        "percentage": 0.1339633129516398,
+                        "reference": 875.3333333333334
                     }
                 },
                 {
@@ -1381,19 +1381,19 @@
                     "name": "重庆长冠",
                     "code": "CN-21",
                     "retail": {
-                        "amount": 1619,
-                        "percentage": 0.5288007554296507,
-                        "reference": 5121.888888888889
+                        "amount": 0,
+                        "percentage": 0,
+                        "reference": 0.5610912086027827
                     },
                     "newCarRetail": {
-                        "amount": 1118,
+                        "amount": 0,
                         "percentage": 0,
-                        "reference": 3146.8888888888887
+                        "reference": 0.3506944444444444
                     },
                     "newVanRetail": {
-                        "amount": 501,
-                        "percentage": -0.5269121813031161,
-                        "reference": 2072
+                        "amount": 0,
+                        "percentage": 0,
+                        "reference": 0.09928565304722713
                     },
                     "wholesale": {
                         "amount": 0,
@@ -1406,9 +1406,9 @@
                         "reference": 0
                     },
                     "overall": {
-                        "amount": 2654,
-                        "percentage": -0.1063973063973064,
-                        "reference": 6642.333333333333
+                        "amount": 0,
+                        "percentage": 0,
+                        "reference": 875.3333333333334
                     }
                 }
             ]

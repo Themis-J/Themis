@@ -1,25 +1,7 @@
 'use strict';
 
 angular.module('departmentPercentage.controllers', [])
-	.controller('departmentPercentageCtrl', ['$scope', '$http', 'ReportRestClient', 'ReportService', 'config', function($scope, $http, restClient, reportService, config) {
-		$scope.charts = [
-			{text:'营业额', chart:null},
-    		{text:'毛利', chart:null},
-    		{text:'费用', chart:null},
-    		{text:'运营利润', chart:null},
-    		];
-        
-    	var currentDate = new Date();
-  		reportService.setCurrentYear(currentDate.getFullYear());
-  		$scope.yearOptions = reportService.getYearList();
-  		$scope.selectedYearOption = $scope.yearOptions[0];
-		
-		$scope.monthOptions = [];
-		reportService.setMonthOfYear(currentDate.getMonth());
-		$scope.monthOptions = reportService.getMonthList();
-		$scope.selectedMonthOption = $scope.monthOptions[reportService.getMonthOfYear()-1];
-    	
-    	$scope.selectedTime = 0;
+	.controller('departmentPercentageCtrl', ['$scope', 'ReportRestClient', 'ReportService', 'config', function($scope, restClient, reportService, config) {
     	$scope.selectReportYear = function() {
     		reportService.setCurrentYear($scope.selectedYearOption.id);
     		$scope.selectTime($scope.selectedTime);
@@ -29,18 +11,6 @@ angular.module('departmentPercentage.controllers', [])
     		$scope.selectTime($scope.selectedTime);
     	};
     	
-    	$scope.departments = [];
-    	$scope.dealerOptions = [];
-    	reportService.getDealers(restClient(config.currentMode).queryDealers, {}, function(dealers) {
-    		$scope.dealerOptions = dealers;
-    		$scope.selectedDealerOption = $scope.dealerOptions[0];
-			reportService.getDepartments(restClient(config.currentMode).queryDepartments, {}, function(departments) {
-	    		$scope.departments = departments;
-	    		// called on page is loaded
-				$scope.showReport();
-			});
-		});
-		
 		$scope.selectDealer = function() {
 			$scope.showReport();
 		};
@@ -62,9 +32,7 @@ angular.module('departmentPercentage.controllers', [])
         
         $scope.draw = function (pRestClient, params, index) {
         	Highcharts.theme = config.highChartsTheme;
-			
-            // Apply the theme
-            var highchartsOptions = Highcharts.setOptions(Highcharts.theme); 
+			Highcharts.setOptions(Highcharts.theme); 
  			
             pRestClient(params, function(data) {
             	var chartData = [
@@ -141,13 +109,8 @@ angular.module('departmentPercentage.controllers', [])
 			        	chartWidth = $(window).width();
 					}
 			                    		
-			        chartData = [chartData[index]];
-			        for (var i=0;i<chartData.length;i++) 
-	  				{
-			        	var currentData = chartData[i];
-			        	
-			        	//draw bar chart
-			        	$scope.charts[index].chart = $('#' + currentData.id).highcharts({
+			        var currentData = chartData[index];
+			        $('#' + currentData.id).highcharts({
 			                chart: {
 			                	zoomType: 'xy',
 			                    height:$(window).height()*0.60,
@@ -216,7 +179,7 @@ angular.module('departmentPercentage.controllers', [])
 			                        yAxis: 1,
 			                        data: currentData.series.percentage
 			                    	},
-				                    {
+				                    /*{
 							            type: 'pie',
 							            name: currentData.title + '百分比',
 							            data: currentData.series.current,
@@ -227,45 +190,10 @@ angular.module('departmentPercentage.controllers', [])
 						                    connectorColor: '#000000',
 						                    format: '<b>{point.name}</b>: {point.percentage:.1f} %'
 						                }
-							        }
+							        }*/
 				            ]
-			        	}).highcharts();
-			        	
-			        	//draw pie chart
-			        	//$('#' + currentData.id + '_pie').highcharts({
-					    //    chart: {
-					    //    	height:$(window).height()*0.60,
-			            //        width: chartWidth,
-					    //        plotBackgroundColor: null,
-					    //        plotBorderWidth: null,
-					    //        plotShadow: false
-					    //    },
-					    //    title: {
-					    //        text: '各部门' + currentData.title + '百分比'
-					    //    },
-					    //    tooltip: {
-					    //	    pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
-					    //    },
-					    //    plotOptions: {
-					    //        pie: {
-					    //            allowPointSelect: true,
-					       //         cursor: 'pointer',
-					       //         dataLabels: {
-					       //             enabled: true,
-					       //             color: '#000000',
-					       //             connectorColor: '#000000',
-					       //             format: '<b>{point.name}</b>: {point.percentage:.1f} %'
-					      //          }
-					      //      }
-					      //  },
-					      //  series: [{
-					     //       type: 'pie',
-					     //       name: currentData.title + '百分比',
-					     //       data: currentData.series.current
-					     //   }]
-					    //});
-			        }
-		        
+			        	});
+
 			  });
 		};
 
@@ -284,8 +212,6 @@ angular.module('departmentPercentage.controllers', [])
     		}
     	};
     	
-        reportService.setFullScreen(false);
-
         $scope.toggleFullScreen = function()
         {
             if (reportService.getFullScreen())
@@ -313,5 +239,35 @@ angular.module('departmentPercentage.controllers', [])
                
             }
         };
+        
+        $scope.departments = [];
+    	$scope.dealerOptions = [];
+    	reportService.getDealers(restClient(config.currentMode).queryDealers, {}, function(dealers) {
+    		$scope.dealerOptions = dealers;
+    		$scope.selectedDealerOption = $scope.dealerOptions[0];
+			reportService.getDepartments(restClient(config.currentMode).queryDepartments, {}, function(departments) {
+	    		$scope.departments = departments;
+	    		$scope.showReport();
+			});
+		});
+		
+        reportService.setFullScreen(false);
 
+        $scope.charts = [
+    		{id: 'report_revenue', text:'营业额', display:true},
+    		{id: 'report_margin', text:'毛利', display:true},
+    		{id: 'report_expense', text:'费用', display:true},
+    		{id: 'report_opProfit', text:'运营利润', display:true},
+    		];
+    		
+    	var currentDate = new Date();
+  		reportService.setCurrentYear(currentDate.getFullYear());
+  		$scope.yearOptions = reportService.getYearList();
+  		$scope.selectedYearOption = $scope.yearOptions[0];
+		
+		reportService.setMonthOfYear(currentDate.getMonth());
+		$scope.monthOptions = reportService.getMonthList();
+		$scope.selectedMonthOption = $scope.monthOptions[reportService.getMonthOfYear()-1];
+    	
+    	$scope.selectedTime = 0;
   }]);
