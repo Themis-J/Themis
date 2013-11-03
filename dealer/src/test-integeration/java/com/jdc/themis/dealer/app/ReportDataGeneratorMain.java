@@ -17,8 +17,9 @@ public class ReportDataGeneratorMain {
 		final ReportDataGenerator client = (ReportDataGenerator) context
 				.getBean("reportDataGenerator");
 
-		client.generateRevenues();
-		client.generateExpenses();
+		//client.generateRevenues();
+		//client.generateExpenses();
+		client.generateHRAllocations();
 
 		testDealerEntryItemStatus(client);
 		System.exit(0);

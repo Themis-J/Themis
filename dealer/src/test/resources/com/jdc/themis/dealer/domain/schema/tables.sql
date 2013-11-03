@@ -21,7 +21,7 @@ CREATE TABLE TaxJournalItem (id integer, name varchar(100), timestamp timestamp)
 
 CREATE TABLE SalesServiceJournalCategory (    id integer,    name varchar(100),     timestamp timestamp, CONSTRAINT SSJI_PK PRIMARY KEY (id))
 
-CREATE TABLE SalesServiceJournalItem (id integer, name varchar(100), categoryID integer, journalType integer, description varchar(100), timestamp timestamp)
+CREATE TABLE SalesServiceJournalItem (id integer, name varchar(100), categoryID integer, journalType integer, description varchar(100), tooltip VARCHAR( 2048 ), timestamp timestamp)
 
 CREATE TABLE TaxJournal (timestamp timestamp, timeEnd timestamp, validDate date, dealerID integer, id integer, version integer, amount double, updatedBy varchar(50))
 ALTER TABLE TaxJournal ALTER COLUMN timestamp SET NOT NULL
@@ -72,7 +72,7 @@ ALTER TABLE SalesServiceJournal ADD CONSTRAINT SSJ_Unique UNIQUE(timeEnd, validD
 
 CREATE TABLE GeneralJournalCategory (   id integer,    name varchar(100), timestamp timestamp) 
 
-CREATE TABLE GeneralJournalItem (   id integer,    name varchar(100),    categoryID integer, journalType integer, timestamp timestamp ) 
+CREATE TABLE GeneralJournalItem (   id integer,    name varchar(100),    categoryID integer, journalType integer, tooltip VARCHAR( 2048 ), timestamp timestamp ) 
 
 CREATE TABLE GeneralJournal (timestamp timestamp, timeEnd timestamp, validDate date, dealerID integer, departmentID integer, id integer, version integer, amount double, updatedBy varchar(40)) 
 ALTER TABLE GeneralJournal ALTER COLUMN timestamp SET NOT NULL
@@ -88,7 +88,7 @@ ALTER TABLE GeneralJournal ADD CONSTRAINT GJ_Unique UNIQUE(timeEnd, validDate, d
 
 CREATE TABLE Duration (   id integer,    unit integer,    lowerBound integer,  upperBound integer ) 
 
-CREATE TABLE AccountReceivableDurationItem (   id integer,    name varchar(100),    timestamp timestamp ) 
+CREATE TABLE AccountReceivableDurationItem (   id integer,    name varchar(100), tooltip VARCHAR( 2048 ),    timestamp timestamp ) 
 
 CREATE TABLE AccountReceivableDuration (   timestamp timestamp,   timeEnd timestamp,   validDate date,    dealerID integer,   durationID integer,   id integer,   version integer, amount double,   updatedBy varchar(20) ) 
 ALTER TABLE AccountReceivableDuration ALTER COLUMN timestamp SET NOT NULL
@@ -117,7 +117,7 @@ ALTER TABLE EmployeeFee ADD PRIMARY KEY (timestamp, validDate, dealerID, id, dep
 ALTER TABLE EmployeeFee ADD CONSTRAINT EF_Unique UNIQUE(timeEnd, validDate, dealerID, id, departmentID, version)
 
 
-CREATE TABLE EmployeeFeeSummaryItem (id integer, name varchar(100), timestamp timestamp ) 
+CREATE TABLE EmployeeFeeSummaryItem (id integer, name varchar(100), tooltip VARCHAR( 2048 ), timestamp timestamp ) 
 
 CREATE TABLE EmployeeFeeSummary (timestamp timestamp,  timeEnd timestamp,  validDate date,    dealerID integer,   departmentID integer,   id integer,   version integer, amount double,   updatedBy varchar(20) ) 
 ALTER TABLE EmployeeFeeSummary ALTER COLUMN timestamp SET NOT NULL
@@ -131,7 +131,7 @@ ALTER TABLE EmployeeFeeSummary ALTER COLUMN version SET NOT NULL
 ALTER TABLE EmployeeFeeSummary ADD PRIMARY KEY (timestamp, validDate, dealerID, id, departmentID)
 ALTER TABLE EmployeeFeeSummary ADD CONSTRAINT EFS_Unique UNIQUE(timeEnd, validDate, dealerID, id, departmentID, version)
 
-CREATE TABLE InventoryDurationItem (   id integer,    name varchar(100),    timestamp timestamp) 
+CREATE TABLE InventoryDurationItem (   id integer,    name varchar(100), tooltip VARCHAR( 2048 ),    timestamp timestamp) 
 
 CREATE TABLE InventoryDuration (timestamp timestamp, timeEnd timestamp, validDate date, dealerID integer, departmentID integer, durationID integer, id integer, version integer, amount double, updatedBy varchar(20)) 
 ALTER TABLE InventoryDuration ALTER COLUMN timestamp SET NOT NULL
@@ -154,3 +154,4 @@ ALTER TABLE DealerIncomeRevenueFact ADD CONSTRAINT DIRF_Unique UNIQUE(timeEnd, t
 
 CREATE TABLE DealerIncomeExpenseFact (   timeID integer NOT NULL,    dealerID integer NOT NULL,   departmentID integer NOT NULL,   itemID integer NOT NULL,   version integer,   amount double,   timestamp timestamp,    timeEnd timestamp,   CONSTRAINT DIEF_Unique UNIQUE (timestamp, timeID, dealerID, departmentID, itemID, version)) 
 
+CREATE TABLE DealerHRAllocationFact( timeID integer NOT NULL,    dealerID integer NOT NULL,    departmentID integer NOT NULL,    itemID integer NOT NULL,    version integer NOT NULL,    allocation double NOT NULL,    timestamp timestamp NOT NULL,  timeEnd timestamp NOT NULL) 

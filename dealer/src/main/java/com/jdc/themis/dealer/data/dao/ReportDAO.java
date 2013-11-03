@@ -41,6 +41,7 @@ public interface ReportDAO {
 			Collection<Integer> departmentID, 
 			Collection<Integer> itemSource,
 			Collection<String> itemCategory, 
+			Collection<String> itemName, 
 			Collection<Long> itemID, 
 			Collection<Integer> dealerID);
 	
@@ -50,10 +51,18 @@ public interface ReportDAO {
 			Collection<Integer> departmentID, 
 			Collection<Integer> itemSource,
 			Collection<String> itemCategory, 
+			Collection<String> itemName, 
 			Collection<Long> itemID, 
 			Collection<Integer> dealerID);
 	
 	void saveDealerHRAllocationFacts(Collection<DealerHRAllocationFact> journals);
+	
+	Collection<DealerHRAllocationFact> getDealerHRAllocationFacts(
+			Integer year,
+			Integer monthOfYear, 
+			Option<Integer> departmentID, 
+			Option<Integer> itemID, 
+			Collection<Integer> dealerID);
 	
 	void importVehicleSalesJournal(LocalDate validDate);
 	
@@ -69,6 +78,9 @@ public interface ReportDAO {
 	
 	Collection<ReportTime> getReportTime(Integer year, Option<Integer> monthOfYear);
 	
+	Collection<ReportTime> getReportTimeLessThanGivenMonth(Integer year,
+			Option<Integer> lessThanMonthOfYear);
+	
 	Collection<ReportTime> getAllReportTime();
 	
 	Option<ReportTime> addReportTime(LocalDate validDate);
@@ -78,6 +90,8 @@ public interface ReportDAO {
 	Option<ReportItem> getReportItem(Integer itemID, String source);
 	
 	Option<ReportItem> getReportItem(String itemName, String source);
+	
+	Collection<ReportItem> getReportItem(Collection<String> itemCategory, Collection<String> itemNames, Collection<Integer> itemSources);
 	
 	Option<ReportItem> getReportItem(Long id);
 	

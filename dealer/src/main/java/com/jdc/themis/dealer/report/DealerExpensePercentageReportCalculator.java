@@ -81,12 +81,10 @@ public class DealerExpensePercentageReportCalculator {
 	 * Amount could be "avg" or "sum" of the year's monthly amounts depending on parameter "op". 
 	 * 
 	 * @param dealerExpenseFacts
-	 * @param op
 	 * @return
 	 */
 	public DealerExpensePercentageReportCalculator calcExpenses(
-			final ImmutableListMultimap<Integer, DealerIncomeExpenseFact> dealerExpenseFacts,
-			final JournalOp op) {
+			final ImmutableListMultimap<Integer, DealerIncomeExpenseFact> dealerExpenseFacts) {
 		for (final Integer dealerID : dealerExpenseFacts.keySet()) {
 			final BigDecimal totalExpense = Lambda.sumFrom(
 					dealerExpenseFacts.get(dealerID),
@@ -102,12 +100,10 @@ public class DealerExpensePercentageReportCalculator {
 	 * Calculate the margin. 
 	 * 
 	 * @param dealerRevenueFacts
-	 * @param op
 	 * @return
 	 */
 	public DealerExpensePercentageReportCalculator calcCurrentMargins(
-			final ImmutableListMultimap<Integer, DealerIncomeRevenueFact> dealerRevenueFacts,
-			final JournalOp op) {
+			final ImmutableListMultimap<Integer, DealerIncomeRevenueFact> dealerRevenueFacts) {
 		for (final Integer dealerID : dealerRevenueFacts.keySet()) {
 			final BigDecimal totalMargin = Lambda.sumFrom(
 					dealerRevenueFacts.get(dealerID),
@@ -124,12 +120,10 @@ public class DealerExpensePercentageReportCalculator {
 	 * Calculate the margin. 
 	 * 
 	 * @param dealerRevenueFacts
-	 * @param op
 	 * @return
 	 */
 	public DealerExpensePercentageReportCalculator calcPreviousMargins(
-			final ImmutableListMultimap<Integer, DealerIncomeRevenueFact> dealerRevenueFacts,
-			final JournalOp op) {
+			final ImmutableListMultimap<Integer, DealerIncomeRevenueFact> dealerRevenueFacts) {
 		for (final Integer dealerID : dealerRevenueFacts.keySet()) {
 			final BigDecimal totalMargin = Lambda.sumFrom(
 					dealerRevenueFacts.get(dealerID),

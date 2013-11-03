@@ -4,6 +4,7 @@ import java.util.Collection;
 
 import com.google.common.collect.Lists;
 import com.jdc.themis.dealer.data.dao.ReportDAO;
+import com.jdc.themis.dealer.domain.DealerHRAllocationFact;
 import com.jdc.themis.dealer.domain.DealerIncomeExpenseFact;
 import com.jdc.themis.dealer.domain.DealerIncomeRevenueFact;
 
@@ -18,7 +19,9 @@ public class DealerIncomeFactsQueryBuilder {
 	private Collection<Integer> departmentID = Lists.newArrayList();
 	private Collection<Integer> itemSource = Lists.newArrayList();
 	private Collection<String> itemCategory = Lists.newArrayList();
+	private Collection<String> itemName = Lists.newArrayList();
 	private Collection<Long> itemID = Lists.newArrayList();
+	private Option<Integer> positionID = Option.<Integer>none();
 	private Collection<Integer> dealerID = Lists.newArrayList();
 	
 	public DealerIncomeFactsQueryBuilder(final ReportDAO reportDAL){
@@ -40,6 +43,11 @@ public class DealerIncomeFactsQueryBuilder {
 		return this;
 	}
 	
+	public DealerIncomeFactsQueryBuilder withPosition(final Integer id) {
+		this.positionID = Option.fromNull(id);
+		return this;
+	} 
+	
 	public DealerIncomeFactsQueryBuilder withDepartmentID(final Integer departmentID) {
 		this.departmentID.add(departmentID);
 		return this;
@@ -52,6 +60,10 @@ public class DealerIncomeFactsQueryBuilder {
 	
 	public DealerIncomeFactsQueryBuilder withItemCategory(final String itemCategory) {
 		this.itemCategory.add(itemCategory);
+		return this;
+	}
+	public DealerIncomeFactsQueryBuilder withItemName(final String itemName) {
+		this.itemName.add(itemName);
 		return this;
 	}
 	
@@ -68,6 +80,7 @@ public class DealerIncomeFactsQueryBuilder {
 	public DealerIncomeFactsQueryBuilder clear() {
 		this.itemCategory.clear();
 		this.itemSource.clear();
+		this.itemName.clear();
 		this.itemID.clear();
 		return this;
 	}
@@ -84,9 +97,14 @@ public class DealerIncomeFactsQueryBuilder {
 	public Collection<DealerIncomeExpenseFact> queryExpenses() {
 		if ( lessThanMonthOfYear.isSome() ) {
 			return this.reportDAL.getDealerIncomeExpenseFacts(year,
-					lessThanMonthOfYear, departmentID, itemSource, itemCategory, itemID, dealerID);
+					lessThanMonthOfYear, departmentID, itemSource, itemCategory, itemName, itemID, dealerID);
 		}
 		return this.reportDAL.getDealerIncomeExpenseFacts(year,
-				monthOfYear, departmentID, itemSource, itemCategory, itemID, dealerID);
+				monthOfYear, departmentID, itemSource, itemCategory, itemName, itemID, dealerID);
+	}
+	
+	public Collection<DealerHRAllocationFact> queryHRAllocations() {
+		return this.reportDAL.getDealerHRAllocationFacts(year,
+				monthOfYear.iterator().next(), departmentID.isEmpty() ? Option.<Integer>none() : Option.fromNull(departmentID.iterator().next()), positionID, dealerID);
 	}
 }

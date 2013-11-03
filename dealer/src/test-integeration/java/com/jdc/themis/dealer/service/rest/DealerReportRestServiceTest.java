@@ -13,10 +13,13 @@ import org.junit.Before;
 import org.junit.Ignore;
 import org.junit.Test;
 
+import com.jdc.themis.dealer.web.domain.QueryDealerExpensePercentageResponse;
+import com.jdc.themis.dealer.web.domain.QueryDealerHRAllocationResponse;
 import com.jdc.themis.dealer.web.domain.QueryDealerIncomeResponse;
 import com.jdc.themis.dealer.web.domain.QueryDealerSalesResponse;
 import com.jdc.themis.dealer.web.domain.QueryDepartmentIncomeResponse;
 import com.jdc.themis.dealer.web.domain.ReportDealerDataList;
+import com.jdc.themis.dealer.web.domain.ReportDealerExpensePercentageDataList;
 
 public class DealerReportRestServiceTest {
 
@@ -57,12 +60,12 @@ public class DealerReportRestServiceTest {
 	}
 	
 	@Test
-	@Ignore
+	//@Ignore
 	public void importData() throws Exception {
 		final StringRequestEntity requestEntity = new StringRequestEntity(
 			      "{" +
 			      "\"fromDate\": \"2012-01-01\"," +
-				  "\"toDate\": \"2013-09-01\" " +
+				  "\"toDate\": \"2013-10-01\" " +
 				  "      }" +
 				  "}",
 			    "application/json",
@@ -103,6 +106,28 @@ public class DealerReportRestServiceTest {
 		 * Verify 2013 data
 		 */
 		final ReportDealerDataList report2013 = (ReportDealerDataList) getResponse.getDetail().get(1);
+		System.out.println("2013: " + new String(report2013.toString().getBytes("ISO-8859-1")));
+		Assert.assertEquals(20, report2013.getDetail().size());
+	}
+	
+	@Test
+	//@Ignore
+	public void query2013OverallExpensePercentageReport() throws Exception {
+		final GetMethod mGet = createGetMethod(REPORT_ROOT_URL + "query/overallExpensePercentageReport",
+				new String[] { "year:2013", "monthOfYear:8", "itemCategory:固定费用", "denominator:1" });
+		final String getOutput = mGet.getResponseBodyAsString();
+		mGet.releaseConnection();
+		System.out.println("response : " + new String(getOutput.getBytes("ISO-8859-1")));
+		final ObjectMapper getMapper = new ObjectMapper();
+		final QueryDealerExpensePercentageResponse getResponse = getMapper.readValue(getOutput.getBytes(),
+				QueryDealerExpensePercentageResponse.class);
+		Assert.assertNotNull(getResponse);
+		Assert.assertEquals(1, getResponse.getDetail().size());
+		
+		/**
+		 * Verify 2013 data
+		 */
+		final ReportDealerExpensePercentageDataList report2013 = (ReportDealerExpensePercentageDataList) getResponse.getDetail().get(0);
 		System.out.println("2013: " + new String(report2013.toString().getBytes("ISO-8859-1")));
 		Assert.assertEquals(20, report2013.getDetail().size());
 	}
@@ -342,6 +367,46 @@ public class DealerReportRestServiceTest {
 	
 	}
 	
+	@Test
+	public void query2006OverallHRAllocReport() throws Exception {
+		final StringRequestEntity requestEntity = new StringRequestEntity(
+			      "{" +
+			      "\"fromDate\": \"2005-08-01\"," +
+				  "\"toDate\": \"2006-08-01\" " +
+				  "      }" +
+				  "}",
+			    "application/json",
+			    "UTF-8");
+		
+		final PostMethod mPost = createPostMethod(REPORT_ROOT_URL + "import",
+				requestEntity);
+		final String postOutput = mPost.getResponseBodyAsString();
+		mPost.releaseConnection();
+		System.out.println("response : " + postOutput);
+		final ObjectMapper postMapper = new ObjectMapper();
+		final GeneralSaveResponse response = postMapper.readValue(postOutput.getBytes(),
+				GeneralSaveResponse.class);
+		Assert.assertNotNull(response);
+		
+		final GetMethod mGet = createGetMethod(REPORT_ROOT_URL + "query/overallHRAllocReport",
+				new String[] { "year:2006", "monthOfYear:6", "groupBy:0" });
+		final String getOutput = mGet.getResponseBodyAsString();
+		mGet.releaseConnection();
+		System.out.println("response : " + new String(getOutput.getBytes("ISO-8859-1")));
+		final ObjectMapper getMapper = new ObjectMapper();
+		final QueryDealerHRAllocationResponse getResponse = getMapper.readValue(getOutput.getBytes(),
+				QueryDealerHRAllocationResponse.class);
+		Assert.assertNotNull(getResponse);
+		Assert.assertEquals(1, getResponse.getDetail().size());
+		
+		/**
+		 * Verify 2006 data
+		 */
+		Assert.assertEquals(20, getResponse.getDetail().get(0).getDetail().size());
+		// verify dealer 9
+		Assert.assertEquals(0.6, getResponse.getDetail().get(0).getDetail().get(8).getAllocation().getAmount());
+		
+	}
 	
 	@After
 	public void tearDown() throws Exception {
@@ -450,7 +515,7 @@ public class DealerReportRestServiceTest {
 		final StringRequestEntity requestEntity = new StringRequestEntity(
 			      "{\"dealerID\": 8," +
 			      "\"departmentID\": 3, " +
-				  "\"validDate\": \"2006-06-01\"," +
+			      "\"validDate\": \"" + validDate + "\"," +
 				  "\"updateBy\": \"chenkai\", " +
 				  "\"detail\": " +
 				  "  [" +
@@ -476,7 +541,7 @@ public class DealerReportRestServiceTest {
 	private void createTaxJournal(final Integer dealerID, final String validDate, final Double amount) throws Exception {
 		final StringRequestEntity requestEntity = new StringRequestEntity(
 			      "{\"dealerID\": 8," +
-			      "\"validDate\": \"2006-06-01\"," +
+			    		  "\"validDate\": \"" + validDate + "\"," +
 			      "\"tax\": " + amount + ", " +
 				  "\"updateBy\": \"chenkai\" " +
 				  "}",
@@ -499,7 +564,7 @@ public class DealerReportRestServiceTest {
 		final StringRequestEntity requestEntity = new StringRequestEntity(
 			      "{\"dealerID\": 9," +
 			      "\"departmentID\": 6, " +
-				  "\"validDate\": \"2005-08-01\"," +
+			      "\"validDate\": \"" + validDate + "\"," +
 				  "\"updateBy\": \"chenkai\", " +
 				  "\"detail\": " +
 				  "  [" +
@@ -527,7 +592,7 @@ public class DealerReportRestServiceTest {
 	private void createAccountReceivableDuration(final Integer dealerID, final String validDate, final Double amount) throws Exception {
 		final StringRequestEntity requestEntity = new StringRequestEntity(
 			      "{\"dealerID\": 9," +
-			      "\"validDate\": \"2005-08-01\"," +
+			    		  "\"validDate\": \"" + validDate + "\"," +
 				  "\"updateBy\": \"chenkai\", " +
 				  "\"detail\": " +
 				  "  [" +
@@ -554,7 +619,7 @@ public class DealerReportRestServiceTest {
 	private void createInventoryDuration(final Integer dealerID, final String validDate, final Double amount) throws Exception {
 		final StringRequestEntity requestEntity = new StringRequestEntity(
 			      "{\"dealerID\": 9," +
-			      "\"validDate\": \"2005-08-01\"," +
+			    		  "\"validDate\": \"" + validDate + "\"," +
 			      "\"updateBy\": \"chenkai\", " +
 				  "\"departmentID\": 2, " +
 				  "\"detail\": " +
@@ -583,7 +648,7 @@ public class DealerReportRestServiceTest {
 		final StringRequestEntity requestEntity = new StringRequestEntity(
 			      "{\"dealerID\": 9," +
 			      "\"departmentID\": 6, " +
-				  "\"validDate\": \"2005-08-01\"," +
+			      "\"validDate\": \"" + validDate + "\"," +
 				  "\"updateBy\": \"chenkai\", " +
 				  "\"detail\": " +
 				  "  [" +
@@ -610,7 +675,7 @@ public class DealerReportRestServiceTest {
 		final StringRequestEntity requestEntity = new StringRequestEntity(
 			      "{\"dealerID\": 9," +
 			      "\"departmentID\":6," +
-				  "\"validDate\": \"2005-08-01\"," +
+			      "\"validDate\": \"" + validDate + "\"," +
 				  "\"updateBy\": \"chenkai\", " +
 				  "\"detail\": " +
 				  "  [" +

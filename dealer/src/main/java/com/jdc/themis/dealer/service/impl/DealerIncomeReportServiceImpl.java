@@ -16,8 +16,11 @@ import com.google.common.base.Preconditions;
 import com.google.common.collect.ImmutableListMultimap;
 import com.google.common.collect.Multimaps;
 import com.jdc.themis.dealer.data.dao.ReportDAO;
+import com.jdc.themis.dealer.domain.DealerHRAllocationFact;
 import com.jdc.themis.dealer.domain.DealerIncomeExpenseFact;
 import com.jdc.themis.dealer.domain.DealerIncomeRevenueFact;
+import com.jdc.themis.dealer.report.DealerExpensePercentageReportCalculator;
+import com.jdc.themis.dealer.report.DealerHRAllocationReportCalculator;
 import com.jdc.themis.dealer.report.DealerReportCalculator;
 import com.jdc.themis.dealer.report.DealerSalesReportCalculator;
 import com.jdc.themis.dealer.report.DepartmentReportCalculator;
@@ -27,10 +30,12 @@ import com.jdc.themis.dealer.service.RefDataQueryService;
 import com.jdc.themis.dealer.utils.Performance;
 import com.jdc.themis.dealer.web.domain.ImportReportDataRequest;
 import com.jdc.themis.dealer.web.domain.QueryDealerExpensePercentageResponse;
+import com.jdc.themis.dealer.web.domain.QueryDealerHRAllocationResponse;
 import com.jdc.themis.dealer.web.domain.QueryDealerIncomeResponse;
 import com.jdc.themis.dealer.web.domain.QueryDealerSalesResponse;
 import com.jdc.themis.dealer.web.domain.QueryDepartmentIncomeResponse;
 import com.jdc.themis.dealer.web.domain.ReportDealerDataList;
+import com.jdc.themis.dealer.web.domain.ReportDealerExpensePercentageDataList;
 import com.jdc.themis.dealer.web.domain.ReportDealerSalesDataList;
 import com.jdc.themis.dealer.web.domain.ReportDepartmentDataList;
 
@@ -136,11 +141,17 @@ public class DealerIncomeReportServiceImpl implements DealerIncomeReportService 
 
 	@Override
 	public QueryDealerExpensePercentageResponse queryOverallExpensePercentageReport(
-			final Integer year, final Integer monthOfYear, final Option<Integer> denominator, final Option<Integer> categoryID, final Option<Integer> itemID) {
+			final Integer year, final Integer monthOfYear, final Integer denominator, final Option<String> category, final Option<String> itemName) {
 		Preconditions.checkNotNull(year, "year can't be null");
+		Preconditions.checkNotNull(monthOfYear, "month can't be null");
+		Preconditions.checkNotNull(denominator, "denominator can't be null");
+		
 		final QueryDealerExpensePercentageResponse response = new QueryDealerExpensePercentageResponse();
 		response.setReportName("OverallExpensePercentageReport");
-		// TODO:
+		
+		final ReportDealerExpensePercentageDataList reportDetailMonthlyAvg = getDealerExpensePercentageReportDataDetail(
+					year, monthOfYear, denominator, category, itemName);
+		response.getDetail().add(reportDetailMonthlyAvg);
 		return response;
 	}
 
@@ -191,7 +202,7 @@ public class DealerIncomeReportServiceImpl implements DealerIncomeReportService 
 	@Performance
 	public QueryDealerSalesResponse queryDealerSalesReport(final Integer year,
 			final Option<Integer> monthOfYear,
-			final Option<Integer> departmentID) {
+			final Option<Integer> departmentID, final Option<Integer> denominator) {
 		Preconditions.checkNotNull(year, "year can't be null");
 		final QueryDealerSalesResponse response = new QueryDealerSalesResponse();
 		response.setReportName("SalesReport");
@@ -201,31 +212,62 @@ public class DealerIncomeReportServiceImpl implements DealerIncomeReportService 
 			final ReportDealerSalesDataList reportDetailPreviousYear = getDealerSalesReportDataDetail(
 					previousYear, Option.<Integer> none(),
 					Option.<ReportDealerSalesDataList> none(), departmentID,
-					JournalOp.SUM);
+					JournalOp.SUM, denominator);
 			reportDetailPreviousYear.setYear(previousYear);
 			response.getDetail().add(reportDetailPreviousYear);
 
 			final ReportDealerSalesDataList reportDetailCurrentYear = getDealerSalesReportDataDetail(
 					year, Option.<Integer> none(),
 					Option.<ReportDealerSalesDataList> some(reportDetailPreviousYear),
-					departmentID, JournalOp.SUM);
+					departmentID, JournalOp.SUM, denominator);
 			reportDetailCurrentYear.setYear(year);
 			response.getDetail().add(reportDetailCurrentYear);
 		} else {
 			final ReportDealerSalesDataList reportDetailMonthlyAvg = getDealerSalesReportDataDetail(
 					year, monthOfYear, Option.<ReportDealerSalesDataList> none(),
-					departmentID, JournalOp.AVG);
+					departmentID, JournalOp.AVG, denominator);
 			response.getDetail().add(reportDetailMonthlyAvg);
 
 			final ReportDealerSalesDataList reportDetailCurrentMonth = getDealerSalesReportDataDetail(
 					year, monthOfYear,
 					Option.<ReportDealerSalesDataList> some(reportDetailMonthlyAvg),
-					departmentID, JournalOp.SUM);
+					departmentID, JournalOp.SUM, denominator);
 			response.getDetail().add(reportDetailCurrentMonth);
 		}
 		return response;
 	}
 
+	@Override
+	public QueryDealerHRAllocationResponse queryDealerHRAllocationReport(
+			final Integer year, final Integer monthOfYear, final Option<Integer> departmentID,
+			final Option<Integer> positionID, final Option<Integer> groupByOption) {
+		Preconditions.checkNotNull(year, "year can't be null");
+		Preconditions.checkNotNull(monthOfYear, "month can't be null");
+		
+		final QueryDealerHRAllocationResponse response = new QueryDealerHRAllocationResponse();
+		response.setReportName("OverallHRAllocationReport");
+		
+		final DealerHRAllocationReportCalculator calculator = new DealerHRAllocationReportCalculator(
+				refDataDAL.getDealers().getItems(), year, monthOfYear);
+		calculator.withGroupBy(groupByOption);
+		// Get current margin
+		final DealerIncomeFactsQueryBuilder currentQueryBuilder = 
+				new DealerIncomeFactsQueryBuilder(reportDAL).withYear(year);
+		currentQueryBuilder.withMonthOfYear(monthOfYear);
+		if ( departmentID.isSome() ) {
+			currentQueryBuilder.withDepartmentID(departmentID.some());
+		} 
+		if ( positionID.isSome() ) {
+			currentQueryBuilder.withPosition(positionID.some());
+		} 
+		final ImmutableListMultimap<Integer, DealerHRAllocationFact> factsMap = Multimaps
+				.index(currentQueryBuilder.queryHRAllocations(),
+						GetDealerIDFromHRAllocFunction.INSTANCE);
+		
+		response.getDetail().add(calculator.calcAllocations(factsMap, refDataDAL, reportDAL).getReportDetail());
+		return response;
+	}
+	
 	/** Private functions **/
 	
 	private ReportDepartmentDataList getDepartmentReportDataDetail(final Integer year,
@@ -295,7 +337,7 @@ public class DealerIncomeReportServiceImpl implements DealerIncomeReportService 
 	private ReportDealerSalesDataList getDealerSalesReportDataDetail(final Integer year,
 			final Option<Integer> monthOfYearOption,
 			final Option<ReportDealerSalesDataList> previousDetailOption,
-			final Option<Integer> departmentIDOption, final JournalOp op) {
+			final Option<Integer> departmentIDOption, final JournalOp op, final Option<Integer> denominator) {
 		final DealerSalesReportCalculator calculator = new DealerSalesReportCalculator(
 				refDataDAL.getDealers().getItems(), year)
 				.withMonth(monthOfYearOption)
@@ -325,6 +367,12 @@ public class DealerIncomeReportServiceImpl implements DealerIncomeReportService 
 								.withItemCategory("新轿车零售")
 								.withItemCategory("新货车零售").queryRevenues();
 		
+		final Collection<DealerIncomeRevenueFact> newCarRetailFacts = revenueFactsQueryBuilder.clear()
+								.withItemCategory("新轿车零售").queryRevenues();
+
+		final Collection<DealerIncomeRevenueFact> newVanRetailFacts = revenueFactsQueryBuilder.clear()
+								.withItemCategory("新货车零售").queryRevenues();
+
 		final Collection<DealerIncomeRevenueFact> wholesaleFacts = revenueFactsQueryBuilder.clear()
 								.withItemCategory("新车其它收入")
 								.withItemCategory("二手车其它收入")
@@ -343,18 +391,30 @@ public class DealerIncomeReportServiceImpl implements DealerIncomeReportService 
 												"新车其它收入").getId().longValue()).queryRevenues();
 
 		calculator
+				.withDenominator(denominator)
 				.calcOverall(
 						Multimaps.index(overallSalesFacts,
 								GetDealerIDFromRevenueFunction.INSTANCE), op)
 				.calcRetail(
 						Multimaps.index(retailFacts,
 								GetDealerIDFromRevenueFunction.INSTANCE), op)
+				.calcNewCarRetail(
+						Multimaps.index(newCarRetailFacts,
+								GetDealerIDFromRevenueFunction.INSTANCE), op)
+				.calcNewVanRetail(
+						Multimaps.index(newVanRetailFacts,
+								GetDealerIDFromRevenueFunction.INSTANCE), op)
 				.calcWholesale(
 						Multimaps.index(wholesaleFacts,
 								GetDealerIDFromRevenueFunction.INSTANCE), op)
 				.calcOther(
 						Multimaps.index(otherFacts,
-								GetDealerIDFromRevenueFunction.INSTANCE), op);
+								GetDealerIDFromRevenueFunction.INSTANCE), op)
+								.adjustNewCarRetailByDenominator()
+								.adjustNewVanRetailByDenominator()
+								.adjustRetailByDenominator()
+								.adjustOtherByDenominator()
+								.adjustWholesaleByDenominator();
 
 		return calculator.getReportDetail();
 	}
@@ -437,6 +497,92 @@ public class DealerIncomeReportServiceImpl implements DealerIncomeReportService 
 					.adjustMarginByDenominator().adjustNetProfitByDenominator()
 					.adjustOpProfitByDenominator();
 		}
+		return calculator.getReportDetail();
+	}
+	
+	private ReportDealerExpensePercentageDataList getDealerExpensePercentageReportDataDetail(final Integer year,
+			final Integer monthOfYear,
+			final Integer denominatorID, 
+			final Option<String> category, final Option<String> itemName) {
+		final DealerExpensePercentageReportCalculator calculator = new DealerExpensePercentageReportCalculator(
+				refDataDAL.getDealers().getItems(), year, monthOfYear);
+		
+		// Get current margin
+		final DealerIncomeFactsQueryBuilder currentQueryBuilder = 
+				new DealerIncomeFactsQueryBuilder(reportDAL).withYear(year);
+		currentQueryBuilder.withLessThanMonthOfYear(monthOfYear);
+		
+		if ( DealerExpensePercentageReportCalculator.Denominator.valueOf(denominatorID).some()
+				.equals(DealerExpensePercentageReportCalculator.Denominator.MARGIN) ) {
+			currentQueryBuilder.withItemCategory("新轿车零售")
+						.withItemCategory("新货车零售")
+						.withItemCategory("附加产品业务")
+						.withItemCategory("二手车零售")
+						.withItemCategory("维修收入")
+						.withItemCategory("配件收入")
+						.withItemCategory("钣喷收入")
+						.withItemCategory("新车其它收入")
+						.withItemCategory("二手车其它收入")
+						.withItemCategory("维修其它收入")
+						.withItemCategory("钣喷其它收入")
+						.withItemCategory("租恁收入");
+		} else {
+			currentQueryBuilder.withItemCategory("新轿车零售")
+				.withItemCategory("新货车零售")
+				.withItemCategory("二手车零售");
+		}
+		
+		final Collection<DealerIncomeRevenueFact> currentRevenueFacts = currentQueryBuilder.queryRevenues();
+
+		final ImmutableListMultimap<Integer, DealerIncomeRevenueFact> currentDealerRevenueFacts = Multimaps
+				.index(currentRevenueFacts, GetDealerIDFromRevenueFunction.INSTANCE);
+		
+		final DealerIncomeFactsQueryBuilder previousQueryBuilder = 
+				new DealerIncomeFactsQueryBuilder(reportDAL).withYear(year - 1);
+		previousQueryBuilder.withLessThanMonthOfYear(12);
+		
+		if ( DealerExpensePercentageReportCalculator.Denominator.valueOf(denominatorID).some()
+				.equals(DealerExpensePercentageReportCalculator.Denominator.MARGIN) ) {
+			previousQueryBuilder.withItemCategory("新轿车零售")
+						.withItemCategory("新货车零售")
+						.withItemCategory("附加产品业务")
+						.withItemCategory("二手车零售")
+						.withItemCategory("维修收入")
+						.withItemCategory("配件收入")
+						.withItemCategory("钣喷收入")
+						.withItemCategory("新车其它收入")
+						.withItemCategory("二手车其它收入")
+						.withItemCategory("维修其它收入")
+						.withItemCategory("钣喷其它收入")
+						.withItemCategory("租恁收入");
+		} else {
+			previousQueryBuilder.withItemCategory("新轿车零售")
+				.withItemCategory("新货车零售")
+				.withItemCategory("二手车零售");
+		}
+		
+		final Collection<DealerIncomeRevenueFact> previousRevenueFacts = previousQueryBuilder.queryRevenues();
+
+		final ImmutableListMultimap<Integer, DealerIncomeRevenueFact> previousDealerRevenueFacts = Multimaps
+				.index(previousRevenueFacts, GetDealerIDFromRevenueFunction.INSTANCE);
+		
+		// Get all expenses
+		currentQueryBuilder.clear();
+		if ( category.isSome() ) {
+			currentQueryBuilder.withItemCategory(category.some());
+		} 
+		if ( itemName.isSome() ) {
+			currentQueryBuilder.withItemName(itemName.some());
+		} 
+		final Collection<DealerIncomeExpenseFact> expenseFacts = currentQueryBuilder.queryExpenses();
+
+		final ImmutableListMultimap<Integer, DealerIncomeExpenseFact> dealerExpenseFacts = Multimaps
+				.index(expenseFacts, GetDealerIDFromExpenseFunction.INSTANCE);
+
+		calculator.calcExpenses(dealerExpenseFacts)
+				.calcCurrentMargins(currentDealerRevenueFacts)
+				.calcPreviousMargins(previousDealerRevenueFacts);
+		
 		return calculator.getReportDetail();
 	}
 	

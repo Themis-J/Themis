@@ -5,6 +5,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.jdc.themis.dealer.web.domain.ImportReportDataRequest;
 import com.jdc.themis.dealer.web.domain.QueryDealerExpensePercentageResponse;
+import com.jdc.themis.dealer.web.domain.QueryDealerHRAllocationResponse;
 import com.jdc.themis.dealer.web.domain.QueryDealerIncomeResponse;
 import com.jdc.themis.dealer.web.domain.QueryDealerSalesResponse;
 import com.jdc.themis.dealer.web.domain.QueryDepartmentIncomeResponse;
@@ -22,7 +23,7 @@ public interface DealerIncomeReportService {
 	
 	@Transactional(readOnly=true)
 	QueryDealerExpensePercentageResponse queryOverallExpensePercentageReport(
-			Integer year, Integer monthOfYear, Option<Integer> denominator, Option<Integer> categoryID, Option<Integer> itemID);
+			Integer year, Integer monthOfYear, Integer denominator, Option<String> category, Option<String> itemName);
 	
 	@Transactional(readOnly=true)
 	QueryDepartmentIncomeResponse queryDepartmentIncomeReport(
@@ -30,6 +31,10 @@ public interface DealerIncomeReportService {
 	
 	@Transactional(readOnly=true)
 	QueryDealerSalesResponse queryDealerSalesReport(
-			Integer year, Option<Integer> monthOfYear, Option<Integer> departmentID);
+			Integer year, Option<Integer> monthOfYear, Option<Integer> departmentID, Option<Integer> denominator);
+	
+	@Transactional(readOnly=true)
+	QueryDealerHRAllocationResponse queryDealerHRAllocationReport(
+			Integer year, Integer monthOfYear, Option<Integer> departmentID, Option<Integer> positionID, Option<Integer> groupBy);
 	
 }

@@ -29,6 +29,7 @@ import com.jdc.themis.dealer.web.domain.DepartmentDetail;
 import com.jdc.themis.dealer.web.domain.GetDealerResponse;
 import com.jdc.themis.dealer.web.domain.GetDepartmentResponse;
 import com.jdc.themis.dealer.web.domain.ImportReportDataRequest;
+import com.jdc.themis.dealer.web.domain.QueryDealerExpensePercentageResponse;
 import com.jdc.themis.dealer.web.domain.QueryDealerIncomeResponse;
 import com.jdc.themis.dealer.web.domain.QueryDealerSalesResponse;
 import com.jdc.themis.dealer.web.domain.QueryDepartmentIncomeResponse;
@@ -217,6 +218,26 @@ public class TestDealerIncomeReportServiceImpl {
 				Lists.newArrayList(revenueCategories), 
 				Lists.newArrayList(new Long[]{}), 
 				Lists.newArrayList(new Integer[]{}))).thenReturn(Lists.newArrayList(fact4, fact5));
+		
+		when(dal.getDealerIncomeRevenueFacts(2013, Option.<Integer>some(8), 
+				Lists.newArrayList(new Integer[]{}), 
+				Lists.newArrayList(new Integer[]{}), 
+				Lists.newArrayList(revenueCategories), 
+				Lists.newArrayList(new Long[]{}), 
+				Lists.newArrayList(new Integer[]{}))).thenReturn(Lists.newArrayList(fact1, fact2, fact3, fact6));
+		when(dal.getDealerIncomeRevenueFacts(2013, Option.<Integer>some(8), 
+				Lists.newArrayList(new Integer[]{}), 
+				Lists.newArrayList(new Integer[]{}), 
+				Lists.newArrayList(revenueCategories), 
+				Lists.newArrayList(new Long[]{}), 
+				Lists.newArrayList(new Integer[]{}))).thenReturn(Lists.newArrayList(fact1, fact2));
+		when(dal.getDealerIncomeRevenueFacts(2012, Option.<Integer>some(8), 
+				Lists.newArrayList(new Integer[]{}), 
+				Lists.newArrayList(new Integer[]{}), 
+				Lists.newArrayList(revenueCategories), 
+				Lists.newArrayList(new Long[]{}), 
+				Lists.newArrayList(new Integer[]{}))).thenReturn(Lists.newArrayList(fact4, fact5));
+		
 		final ReportItem item1 = new ReportItem();
 		item1.setId(1L);
 		item1.setItemCategory("C1");
@@ -357,6 +378,26 @@ public class TestDealerIncomeReportServiceImpl {
 				Lists.newArrayList(revenueCategories), 
 				Lists.newArrayList(new Long[]{}), 
 				Lists.newArrayList(new Integer[]{}))).thenReturn(Lists.newArrayList(fact4, fact5));
+		
+		when(dal.getDealerIncomeRevenueFacts(2013, Option.<Integer>some(8), 
+				Lists.newArrayList(new Integer[]{}), 
+				Lists.newArrayList(new Integer[]{}), 
+				Lists.newArrayList(revenueCategories), 
+				Lists.newArrayList(new Long[]{}), 
+				Lists.newArrayList(new Integer[]{}))).thenReturn(Lists.newArrayList(fact1, fact2, fact3, fact6));
+		when(dal.getDealerIncomeRevenueFacts(2013, Option.<Integer>some(8), 
+				Lists.newArrayList(new Integer[]{}), 
+				Lists.newArrayList(new Integer[]{}), 
+				Lists.newArrayList(revenueCategories), 
+				Lists.newArrayList(new Long[]{}), 
+				Lists.newArrayList(new Integer[]{}))).thenReturn(Lists.newArrayList(fact1, fact2));
+		when(dal.getDealerIncomeRevenueFacts(2012, Option.<Integer>some(8), 
+				Lists.newArrayList(new Integer[]{}), 
+				Lists.newArrayList(new Integer[]{}), 
+				Lists.newArrayList(revenueCategories), 
+				Lists.newArrayList(new Long[]{}), 
+				Lists.newArrayList(new Integer[]{}))).thenReturn(Lists.newArrayList(fact4, fact5));
+		
 		final ReportItem item1 = new ReportItem();
 		item1.setId(1L);
 		item1.setItemCategory("C1");
@@ -566,6 +607,160 @@ public class TestDealerIncomeReportServiceImpl {
 		System.out.println(response2);
 	}
 	
+	@Test
+	public void queryOverallExpensePercentageReport() {
+		final DealerDetail dealer1 = new DealerDetail();
+		dealer1.setId(1);
+		dealer1.setName("Dealer1");
+		final DealerDetail dealer2 = new DealerDetail();
+		dealer2.setId(2);
+		dealer2.setName("Dealer2");
+		final DealerDetail dealer3 = new DealerDetail();
+		dealer3.setId(3);
+		dealer3.setName("Dealer3");
+		final DealerDetail dealer4 = new DealerDetail();
+		dealer4.setId(4);
+		dealer4.setName("Dealer4");
+		final DealerDetail dealer5 = new DealerDetail();
+		dealer5.setId(5);
+		dealer5.setName("Dealer5");
+		final DealerDetail dealer6 = new DealerDetail();
+		dealer6.setId(6);
+		dealer6.setName("Dealer6");
+		final DealerDetail dealer7 = new DealerDetail();
+		dealer7.setId(7);
+		dealer7.setName("Dealer7");
+		final DealerDetail dealer8 = new DealerDetail();
+		dealer8.setId(8);
+		dealer8.setName("Dealer8");
+		final DealerDetail dealer9 = new DealerDetail();
+		dealer9.setId(9);
+		dealer9.setName("Dealer9");
+		final DealerDetail dealer10 = new DealerDetail();
+		dealer10.setId(10);
+		dealer10.setName("Dealer10");
+		final DealerDetail dealer11 = new DealerDetail();
+		dealer11.setId(11);
+		dealer11.setName("Dealer11");
+		final DealerDetail dealer12 = new DealerDetail();
+		dealer12.setId(12);
+		dealer12.setName("Dealer12");
+		
+		final GetDealerResponse dealers = new GetDealerResponse();
+		dealers.getItems().addAll(Lists.newArrayList(dealer1, dealer2, dealer3, dealer4, dealer5, dealer6, dealer7, dealer8, dealer9, dealer10, dealer11, dealer12));
+		when(refDataDAL.getDealers()).thenReturn(dealers);
+		
+		final ReportTime time201308 = new ReportTime();
+		time201308.setId(1L);
+		time201308.setMonthOfYear(8);
+		time201308.setYear(2013);
+		time201308.setValidDate(LocalDate.of(2013, 8, 1));
+		
+		final ReportTime time201307 = new ReportTime();
+		time201307.setId(2L);
+		time201307.setMonthOfYear(7);
+		time201307.setYear(2013);
+		time201307.setValidDate(LocalDate.of(2013, 7, 1));
+		
+		final ReportTime time201208 = new ReportTime();
+		time201208.setId(3L);
+		time201208.setMonthOfYear(8);
+		time201208.setYear(2012);
+		time201208.setValidDate(LocalDate.of(2012, 8, 1));
+		final ReportTime time201207 = new ReportTime();
+		time201207.setId(4L);
+		time201207.setMonthOfYear(7);
+		time201207.setYear(2012);
+		time201207.setValidDate(LocalDate.of(2012, 7, 1));
+		
+		final DealerIncomeRevenueFact fact1 = new DealerIncomeRevenueFact();
+		fact1.setTimeID(time201308.getId());
+		fact1.setDealerID(1);
+		fact1.setDepartmentID(1);
+		fact1.setItemID(1L);
+		fact1.setAmount(new BigDecimal("1000.0"));
+		fact1.setMargin(new BigDecimal("2000.0"));
+		fact1.setCount(20);
+		//skip timestamp and time end
+		final DealerIncomeRevenueFact fact2 = new DealerIncomeRevenueFact();
+		fact2.setTimeID(time201308.getId());
+		fact2.setDealerID(1);
+		fact2.setDepartmentID(2);
+		fact2.setItemID(1L);
+		fact2.setAmount(new BigDecimal("2000.0"));
+		fact2.setMargin(new BigDecimal("3000.0"));
+		fact2.setCount(30);
+		final DealerIncomeRevenueFact fact3 = new DealerIncomeRevenueFact();
+		fact3.setTimeID(time201308.getId());
+		fact3.setDealerID(2);
+		fact3.setDepartmentID(2);
+		fact3.setItemID(2L);
+		fact3.setAmount(new BigDecimal("2020.0"));
+		fact3.setMargin(new BigDecimal("3030.0"));
+		fact3.setCount(40);
+		final DealerIncomeRevenueFact fact6 = new DealerIncomeRevenueFact();
+		fact6.setTimeID(time201307.getId());
+		fact6.setDealerID(1);
+		fact6.setDepartmentID(2);
+		fact6.setItemID(1L);
+		fact6.setAmount(new BigDecimal("2000.0"));
+		fact6.setMargin(new BigDecimal("3000.0"));
+		fact6.setCount(30);
+		
+		final DealerIncomeRevenueFact fact4 = new DealerIncomeRevenueFact();
+		fact4.setTimeID(time201208.getId());
+		fact4.setDealerID(1);
+		fact4.setDepartmentID(2);
+		fact4.setItemID(1L);
+		fact4.setAmount(new BigDecimal("500.0"));
+		fact4.setMargin(new BigDecimal("300.0"));
+		fact4.setCount(30);
+		final DealerIncomeRevenueFact fact5 = new DealerIncomeRevenueFact();
+		fact5.setTimeID(time201208.getId());
+		fact5.setDealerID(2);
+		fact5.setDepartmentID(2);
+		fact5.setItemID(2L);
+		fact5.setAmount(new BigDecimal("220.0"));
+		fact5.setMargin(new BigDecimal("330.0"));
+		fact5.setCount(40);
+		
+		//skip timestamp and time end
+		when(dal.getDealerIncomeRevenueFacts(2013, Option.<Integer>some(8), 
+				Lists.newArrayList(new Integer[]{}), 
+				Lists.newArrayList(new Integer[]{}), 
+				Lists.newArrayList("TestCategory"), 
+				Lists.newArrayList(new Long[]{}), 
+				Lists.newArrayList(new Integer[]{}))).thenReturn(Lists.newArrayList(fact1, fact2, fact3, fact6));
+		when(dal.getDealerIncomeRevenueFacts(2013, Option.<Integer>some(8), 
+				Lists.newArrayList(new Integer[]{}), 
+				Lists.newArrayList(new Integer[]{}), 
+				Lists.newArrayList("TestCategory"), 
+				Lists.newArrayList(new Long[]{}), 
+				Lists.newArrayList(new Integer[]{}))).thenReturn(Lists.newArrayList(fact1, fact2));
+		when(dal.getDealerIncomeRevenueFacts(2012, Option.<Integer>some(12), 
+				Lists.newArrayList(new Integer[]{}), 
+				Lists.newArrayList(new Integer[]{}), 
+				Lists.newArrayList("TestCategory"), 
+				Lists.newArrayList(new Long[]{}), 
+				Lists.newArrayList(new Integer[]{}))).thenReturn(Lists.newArrayList(fact4, fact5));
+		final ReportItem item1 = new ReportItem();
+		item1.setId(1L);
+		item1.setItemCategory("C1");
+		final ReportItem item2 = new ReportItem();
+		item2.setId(2L);
+		item2.setItemCategory("C1");
+		when(dal.getReportItem(1L)).thenReturn(Option.<ReportItem>some(item1));
+		when(dal.getReportItem(2L)).thenReturn(Option.<ReportItem>some(item2));
+
+		final QueryDealerExpensePercentageResponse response21 = 
+				service.queryOverallExpensePercentageReport(2013, 8, 1, Option.<String>some("TestCategory"), Option.<String>none());
+		Assert.assertNotNull(response21);
+		Assert.assertEquals(1, response21.getDetail().size());
+		Assert.assertEquals(2013, response21.getDetail().get(0).getYear().intValue());
+		Assert.assertEquals(8, response21.getDetail().get(0).getMonth().intValue());
+		System.out.println(response21);
+	}
+	
 	private final static String[] salesRevenueCategories = new String[] {"新轿车零售", "新货车零售",
 		"附加产品业务", "二手车零售", "新车其它收入", "二手车其它收入"};
 
@@ -704,6 +899,26 @@ public class TestDealerIncomeReportServiceImpl {
 				Lists.newArrayList(salesRevenueCategories), 
 				Lists.newArrayList(new Long[]{}), 
 				Lists.newArrayList(new Integer[]{}))).thenReturn(Lists.newArrayList(fact4, fact5));
+		
+		when(dal.getDealerIncomeRevenueFacts(2013, Option.<Integer>some(8), 
+				Lists.newArrayList(new Integer[]{}), 
+				Lists.newArrayList(new Integer[]{}), 
+				Lists.newArrayList(salesRevenueCategories), 
+				Lists.newArrayList(new Long[]{}), 
+				Lists.newArrayList(new Integer[]{}))).thenReturn(Lists.newArrayList(fact1, fact2, fact3, fact6));
+		when(dal.getDealerIncomeRevenueFacts(2013, Option.<Integer>some(8), 
+				Lists.newArrayList(new Integer[]{}), 
+				Lists.newArrayList(new Integer[]{}), 
+				Lists.newArrayList(salesRevenueCategories), 
+				Lists.newArrayList(new Long[]{}), 
+				Lists.newArrayList(new Integer[]{}))).thenReturn(Lists.newArrayList(fact1, fact2));
+		when(dal.getDealerIncomeRevenueFacts(2012, Option.<Integer>some(8), 
+				Lists.newArrayList(new Integer[]{}), 
+				Lists.newArrayList(new Integer[]{}), 
+				Lists.newArrayList(salesRevenueCategories), 
+				Lists.newArrayList(new Long[]{}), 
+				Lists.newArrayList(new Integer[]{}))).thenReturn(Lists.newArrayList(fact4, fact5));
+		
 		final ReportItem item1 = new ReportItem();
 		item1.setId(1L);
 		item1.setItemCategory("C1");
@@ -722,7 +937,7 @@ public class TestDealerIncomeReportServiceImpl {
 		when(refDataDAL.getSalesServiceRevenueItem("他店调车", "新车其它收入")).thenReturn(v1);
 		when(refDataDAL.getSalesServiceRevenueItem("批发销售", "二手车其它收入")).thenReturn(v1);
 		
-		final QueryDealerSalesResponse response = service.queryDealerSalesReport(2013, Option.<Integer>none(), Option.<Integer>none());
+		final QueryDealerSalesResponse response = service.queryDealerSalesReport(2013, Option.<Integer>none(), Option.<Integer>none(), Option.<Integer>none());
 		Assert.assertNotNull(response);
 		Assert.assertEquals(2, response.getDetail().size());
 		Assert.assertEquals(2012, response.getDetail().get(0).getYear().intValue());
@@ -731,7 +946,7 @@ public class TestDealerIncomeReportServiceImpl {
 		Assert.assertEquals(0.0, response.getDetail().get(1).getDetail().get(0).getRetail().getAmount());
 		System.err.println(response);
 		
-		final QueryDealerSalesResponse response2 = service.queryDealerSalesReport(2013, Option.<Integer>some(8), Option.<Integer>none());
+		final QueryDealerSalesResponse response2 = service.queryDealerSalesReport(2013, Option.<Integer>some(8), Option.<Integer>none(), Option.<Integer>none());
 		Assert.assertNotNull(response2);
 		Assert.assertEquals(2, response2.getDetail().size());
 		Assert.assertEquals(2013, response2.getDetail().get(0).getYear().intValue());
@@ -741,5 +956,16 @@ public class TestDealerIncomeReportServiceImpl {
 		Assert.assertEquals(6.25, response2.getDetail().get(0).getDetail().get(0).getOverall().getAmount());
 		Assert.assertEquals(0.0, response2.getDetail().get(1).getDetail().get(0).getWholesale().getAmount());
 		System.out.println(response2);
+		
+		final QueryDealerSalesResponse response3 = service.queryDealerSalesReport(2013, Option.<Integer>some(8), Option.<Integer>none(), Option.<Integer>some(0));
+		Assert.assertNotNull(response3);
+		Assert.assertEquals(2, response3.getDetail().size());
+		Assert.assertEquals(2013, response3.getDetail().get(0).getYear().intValue());
+		Assert.assertEquals(8, response3.getDetail().get(0).getMonth().intValue());
+		Assert.assertEquals(2013, response3.getDetail().get(1).getYear().intValue());
+		Assert.assertEquals(8, response3.getDetail().get(1).getMonth().intValue());
+		Assert.assertEquals(6.25, response3.getDetail().get(0).getDetail().get(0).getOverall().getAmount());
+		Assert.assertEquals(0.0, response3.getDetail().get(1).getDetail().get(0).getWholesale().getAmount());
+		System.out.println(response3);
 	}
 }

@@ -13,6 +13,7 @@ import com.google.common.collect.Lists;
 import com.jdc.themis.dealer.data.dao.IncomeJournalDAO;
 import com.jdc.themis.dealer.domain.DealerEntryItemStatus;
 import com.jdc.themis.dealer.domain.GeneralJournal;
+import com.jdc.themis.dealer.domain.HumanResourceAllocation;
 import com.jdc.themis.dealer.domain.SalesServiceJournal;
 import com.jdc.themis.dealer.domain.VehicleSalesJournal;
 
@@ -153,6 +154,41 @@ public class ReportDataGenerator {
 			journal.setValidDate(LocalDate.of(year, monthOfYear, dayOfMonth));
 			System.err.println(journal);
 			this.incomeJournalDAL.saveGeneralJournal(journal.getDealerID(), journal.getDepartmentID(), Lists.newArrayList(journal));
+			try {
+				Thread.sleep(1000);
+			} catch (InterruptedException e) {
+				e.printStackTrace();
+			}
+		} 
+	}
+	
+	@Transactional
+	public void generateHRAllocations() {
+		final int numberOfRecords = 100;
+		final int startYear = 2012;
+		final int maxYearOffset = 2;
+		final int maxMonth = 10;
+		final int maxDealerID = 20;
+		
+		final Random r = new Random();
+		
+		for ( int i = 0; i <= numberOfRecords; i++ ) {
+			final HumanResourceAllocation journal = new HumanResourceAllocation();
+			int departmentID = r.nextInt(8);
+			if (departmentID <= 1) {
+				departmentID = 7;
+			} 
+			journal.setDepartmentID(departmentID); 
+			journal.setUpdatedBy("chenkai");
+			journal.setDealerID(r.nextInt(maxDealerID) + 1);
+			journal.setId(r.nextInt(15) + 1);
+			journal.setAllocation(new BigDecimal("" + r.nextDouble()));
+			int monthOfYear = r.nextInt(maxMonth) + 1;
+			int year = startYear + r.nextInt(maxYearOffset);
+			int dayOfMonth = 1;
+			journal.setValidDate(LocalDate.of(year, monthOfYear, dayOfMonth));
+			System.err.println(journal);
+			this.incomeJournalDAL.saveHumanResourceAllocation(journal.getDealerID(), journal.getDepartmentID(), Lists.newArrayList(journal));
 			try {
 				Thread.sleep(1000);
 			} catch (InterruptedException e) {

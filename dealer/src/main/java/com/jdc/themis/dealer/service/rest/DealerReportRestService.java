@@ -78,6 +78,41 @@ public class DealerReportRestService {
 						Option.fromNull(denominator))).build();
 	}
 	
+	@GET
+	@Path("/query/overallExpensePercentageReport")
+	@Produces({ "application/json", "application/xml" })
+	@RestServiceErrorHandler
+	public Response queryDealerOverallExpensePercentageReport(
+			@QueryParam("year") Integer year, 
+			@QueryParam("monthOfYear") Integer monthOfYear, 
+			@QueryParam("denominator") Integer denominator, 
+			@QueryParam("itemCategory") String itemCategory, 
+			@QueryParam("itemName") String itemName) {
+		return Response.ok(
+				dealerIncomeReportService.queryOverallExpensePercentageReport(
+						year, 
+						monthOfYear, 
+						denominator,
+						Option.fromNull(itemCategory), 
+						Option.fromNull(itemName))).build();
+	}
+	
+	@GET
+	@Path("/query/overallHRAllocReport")
+	@Produces({ "application/json", "application/xml" })
+	@RestServiceErrorHandler
+	public Response queryDealerOverallHRAllocReport(
+			@QueryParam("year") Integer year, 
+			@QueryParam("monthOfYear") Integer monthOfYear, 
+			@QueryParam("departmentID") Integer departmentID, 
+			@QueryParam("positionID") Integer positionID, 
+			@QueryParam("groupBy") Integer groupBy) {
+		return Response.ok(
+				dealerIncomeReportService
+					.queryDealerHRAllocationReport(year, monthOfYear, Option.fromNull(departmentID), Option.fromNull(positionID), Option.fromNull(groupBy)))
+					.build();
+	}
+	
 	/**
 	 * Query department income report.
 	 * 
@@ -116,11 +151,13 @@ public class DealerReportRestService {
 	public Response queryDealerSalesReport(
 			@QueryParam("year") Integer year, 
 			@QueryParam("monthOfYear") Integer monthOfYear, 
+			@QueryParam("denominator") Integer denominator, 
 			@QueryParam("departmentID") Integer departmentID) {
 		return Response.ok(
 				dealerIncomeReportService.queryDealerSalesReport(
 						year, 
 						Option.fromNull(monthOfYear), 
-						Option.fromNull(departmentID))).build();
+						Option.fromNull(departmentID), 
+						Option.fromNull(denominator))).build();
 	}
 }

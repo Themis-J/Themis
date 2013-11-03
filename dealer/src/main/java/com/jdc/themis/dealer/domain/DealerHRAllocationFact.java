@@ -43,9 +43,9 @@ import org.hibernate.annotations.Type;
 } )
 @Entity
 public class DealerHRAllocationFact implements Serializable, TemporalEntity {
-	public static final String FILTER = "diefFilter";
-	public static final String FILTER_ALL = "diefAllFilter";
-	public static final String FILTER_REFTIME = "diefRefTimeFilter";
+	public static final String FILTER = "dihraFilter";
+	public static final String FILTER_ALL = "dihraAllFilter";
+	public static final String FILTER_REFTIME = "dihraRefTimeFilter";
 
 	private static final long serialVersionUID = 1L;
 

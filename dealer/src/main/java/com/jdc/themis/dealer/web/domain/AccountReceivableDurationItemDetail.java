@@ -40,5 +40,4 @@ public class AccountReceivableDurationItemDetail implements Serializable{
     public void setTooltip(String tooltip) {
       this.tooltip = tooltip;
     }
-	
 }

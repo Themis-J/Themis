@@ -431,6 +431,23 @@ public class ReportDAOImpl implements ReportDAO {
 
 				});
 	}
+	
+	@SuppressWarnings("unchecked")
+	@Override
+	public Collection<ReportItem> getReportItem(Collection<String> itemCategories, Collection<String> itemNames, Collection<Integer> itemSources) {
+		final Session session = sessionFactory.getCurrentSession();
+		final Criteria criteria = session.createCriteria(ReportItem.class);
+		if ( !itemCategories.isEmpty() ) {
+			criteria.add(Restrictions.in("itemCategory", itemCategories));
+		}
+		if ( !itemNames.isEmpty() ) {
+			criteria.add(Restrictions.in("name", itemNames));
+		}
+		if ( !itemSources.isEmpty() ) {
+			criteria.add(Restrictions.in("itemSource", itemSources));
+		}
+		return criteria.list();
+	}
 
 	@Override
 	public void saveDealerIncomeRevenueFacts(
@@ -506,7 +523,8 @@ public class ReportDAOImpl implements ReportDAO {
 		return ImmutableList.copyOf(list);
 	}
 
-	private Collection<ReportTime> getReportTimeLessThanGivenMonth(Integer year,
+	@Override
+	public Collection<ReportTime> getReportTimeLessThanGivenMonth(Integer year,
 			Option<Integer> lessThanMonthOfYear) {
 		final Session session = sessionFactory.getCurrentSession();
 		final Criteria criteria = session.createCriteria(ReportTime.class);
@@ -666,7 +684,7 @@ public class ReportDAOImpl implements ReportDAO {
 	public Collection<DealerIncomeExpenseFact> getDealerIncomeExpenseFacts(
 			Integer year, Collection<Integer> monthOfYear,
 			Collection<Integer> departmentID, Collection<Integer> itemSource,
-			Collection<String> itemCategory, Collection<Long> itemID,
+			Collection<String> itemCategory, Collection<String> itemName, Collection<Long> itemID,
 			Collection<Integer> dealerID) {
 		Preconditions.checkNotNull(year, "year can't be null");
 		final Session session = sessionFactory.getCurrentSession();
@@ -676,7 +694,6 @@ public class ReportDAOImpl implements ReportDAO {
 			return Lists.newArrayList();
 		}
 
-		final List<DealerIncomeExpenseFact> facts = Lists.newArrayList();
 		session.enableFilter(DealerIncomeExpenseFact.FILTER_REFTIME)
 				.setParameter("referenceTime", Utils.currentTimestamp());
 
@@ -693,24 +710,16 @@ public class ReportDAOImpl implements ReportDAO {
 		if (!itemID.isEmpty()) {
 			criteria.add(Restrictions.in("itemID", itemID));
 		}
+		if (!itemCategory.isEmpty() || !itemSource.isEmpty() || !itemName.isEmpty()) {
+			final Collection<ReportItem> items = getReportItem(itemCategory, itemName, itemSource);
+			criteria.add(Restrictions.in("itemID", Lambda.extractProperty(items, "id")));
+		}
 
 		@SuppressWarnings("unchecked")
 		final List<DealerIncomeExpenseFact> list = criteria.list();
 		session.disableFilter(DealerIncomeExpenseFact.FILTER_REFTIME);
 
-		for (final DealerIncomeExpenseFact fact : list) {
-			final ReportItem item = getReportItem(fact.getItemID()).some();
-			if (!itemCategory.isEmpty()
-					&& !itemCategory.contains(item.getItemCategory())) {
-				continue;
-			}
-			if (!itemSource.isEmpty()
-					&& !itemSource.contains(item.getItemSource())) {
-				continue;
-			}
-			facts.add(fact);
-		}
-		return facts;
+		return list;
 	}
 	
 	@Override
@@ -718,7 +727,7 @@ public class ReportDAOImpl implements ReportDAO {
 	public Collection<DealerIncomeExpenseFact> getDealerIncomeExpenseFacts(
 			Integer year, Option<Integer> lessThanMonthOfYear,
 			Collection<Integer> departmentID, Collection<Integer> itemSource,
-			Collection<String> itemCategory, Collection<Long> itemID,
+			Collection<String> itemCategory, Collection<String> itemName, Collection<Long> itemID,
 			Collection<Integer> dealerID) {
 		Preconditions.checkNotNull(year, "year can't be null");
 		final Session session = sessionFactory.getCurrentSession();
@@ -728,7 +737,6 @@ public class ReportDAOImpl implements ReportDAO {
 			return Lists.newArrayList();
 		}
 
-		final List<DealerIncomeExpenseFact> facts = Lists.newArrayList();
 		session.enableFilter(DealerIncomeExpenseFact.FILTER_REFTIME)
 				.setParameter("referenceTime", Utils.currentTimestamp());
 
@@ -745,24 +753,16 @@ public class ReportDAOImpl implements ReportDAO {
 		if (!itemID.isEmpty()) {
 			criteria.add(Restrictions.in("itemID", itemID));
 		}
-
+		if (!itemCategory.isEmpty() || !itemSource.isEmpty() || !itemName.isEmpty()) {
+			final Collection<ReportItem> items = getReportItem(itemCategory, itemName, itemSource);
+			criteria.add(Restrictions.in("itemID", Lambda.extractProperty(items, "id")));
+		}
+		
 		@SuppressWarnings("unchecked")
 		final List<DealerIncomeExpenseFact> list = criteria.list();
 		session.disableFilter(DealerIncomeExpenseFact.FILTER_REFTIME);
 
-		for (final DealerIncomeExpenseFact fact : list) {
-			final ReportItem item = getReportItem(fact.getItemID()).some();
-			if (!itemCategory.isEmpty()
-					&& !itemCategory.contains(item.getItemCategory())) {
-				continue;
-			}
-			if (!itemSource.isEmpty()
-					&& !itemSource.contains(item.getItemSource())) {
-				continue;
-			}
-			facts.add(fact);
-		}
-		return facts;
+		return list;
 	}
 
 	@Override
@@ -780,7 +780,6 @@ public class ReportDAOImpl implements ReportDAO {
 			return Lists.newArrayList();
 		}
 
-		final List<DealerIncomeRevenueFact> facts = Lists.newArrayList();
 		session.enableFilter(DealerIncomeRevenueFact.FILTER_REFTIME)
 				.setParameter("referenceTime", Utils.currentTimestamp());
 
@@ -797,25 +796,18 @@ public class ReportDAOImpl implements ReportDAO {
 		if (!itemID.isEmpty()) {
 			criteria.add(Restrictions.in("itemID", itemID));
 		}
-
+		if (!itemCategory.isEmpty() || !itemSource.isEmpty()) {
+			final Collection<String> itemName = Lists.newArrayList();
+			final Collection<ReportItem> items = getReportItem(itemCategory, itemName, itemSource);
+			criteria.add(Restrictions.in("itemID", Lambda.extractProperty(items, "id")));
+		}
+		
 		@SuppressWarnings("unchecked")
 		final List<DealerIncomeRevenueFact> list = criteria.list();
 		logger.debug("get revenue facts {}", list);
 		session.disableFilter(DealerIncomeRevenueFact.FILTER_REFTIME);
 
-		for (final DealerIncomeRevenueFact fact : list) {
-			final ReportItem item = getReportItem(fact.getItemID()).some();
-			if (!itemCategory.isEmpty()
-					&& !itemCategory.contains(item.getItemCategory())) {
-				continue;
-			}
-			if (!itemSource.isEmpty()
-					&& !itemSource.contains(item.getItemSource())) {
-				continue;
-			}
-			facts.add(fact);
-		}
-		return facts;
+		return list;
 	}
 	
 	@Override
@@ -833,7 +825,6 @@ public class ReportDAOImpl implements ReportDAO {
 			return Lists.newArrayList();
 		}
 
-		final List<DealerIncomeRevenueFact> facts = Lists.newArrayList();
 		session.enableFilter(DealerIncomeRevenueFact.FILTER_REFTIME)
 				.setParameter("referenceTime", Utils.currentTimestamp());
 
@@ -850,25 +841,17 @@ public class ReportDAOImpl implements ReportDAO {
 		if (!itemID.isEmpty()) {
 			criteria.add(Restrictions.in("itemID", itemID));
 		}
-
+		if (!itemCategory.isEmpty() || !itemSource.isEmpty()) {
+			final Collection<String> itemName = Lists.newArrayList();
+			final Collection<ReportItem> items = getReportItem(itemCategory, itemName, itemSource);
+			criteria.add(Restrictions.in("itemID", Lambda.extractProperty(items, "id")));
+		}
 		@SuppressWarnings("unchecked")
 		final List<DealerIncomeRevenueFact> list = criteria.list();
 		logger.debug("get revenue facts {}", list);
 		session.disableFilter(DealerIncomeRevenueFact.FILTER_REFTIME);
 
-		for (final DealerIncomeRevenueFact fact : list) {
-			final ReportItem item = getReportItem(fact.getItemID()).some();
-			if (!itemCategory.isEmpty()
-					&& !itemCategory.contains(item.getItemCategory())) {
-				continue;
-			}
-			if (!itemSource.isEmpty()
-					&& !itemSource.contains(item.getItemSource())) {
-				continue;
-			}
-			facts.add(fact);
-		}
-		return facts;
+		return list;
 	}
 
 	@Override
@@ -989,5 +972,43 @@ public class ReportDAOImpl implements ReportDAO {
 
 			session.flush();
 		}
+	}
+
+	@Override
+	public Collection<DealerHRAllocationFact> getDealerHRAllocationFacts(
+			Integer year, Integer monthOfYear, Option<Integer> departmentID,
+			Option<Integer> itemID, Collection<Integer> dealerID) {
+		Preconditions.checkNotNull(year, "year can't be null");
+		final Session session = sessionFactory.getCurrentSession();
+		final Collection<ReportTime> reportTimes = getReportTime(year,
+				Option.fromNull(monthOfYear));
+		if (reportTimes.isEmpty()) {
+			return Lists.newArrayList();
+		}
+
+		session.enableFilter(DealerHRAllocationFact.FILTER_REFTIME)
+				.setParameter("referenceTime", Utils.currentTimestamp());
+
+		final Criteria criteria = session
+				.createCriteria(DealerHRAllocationFact.class);
+		criteria.add(Restrictions.in("timeID",
+				Lambda.extractProperty(reportTimes, "id")));
+		if (!dealerID.isEmpty()) {
+			criteria.add(Restrictions.in("dealerID", dealerID));
+		}
+		if (departmentID.isSome()) {
+			criteria.add(Restrictions.eq("departmentID", departmentID.some()));
+		}
+		if (itemID.isSome()) {
+			final Option<ReportItem> item = getReportItem(itemID.some(), "HumanResourceAllocation");
+			criteria.add(Restrictions.eq("itemID", item.some().getId()));
+		}
+		
+		@SuppressWarnings("unchecked")
+		final List<DealerHRAllocationFact> list = criteria.list();
+		logger.debug("get hr allocation facts {}", list);
+		session.disableFilter(DealerHRAllocationFact.FILTER_REFTIME);
+
+		return list;
 	}
 }
