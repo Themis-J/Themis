@@ -12,6 +12,10 @@ angular.module('masterApp.services', ['ngResource'])
 		            queryDealerSalesReport: {method: 'GET', params: {root:'report', path: 'query', subpath:'salesReport'}, isArray: false},
 		            queryDepartments: {method: 'GET', params: {root:'dealer', path: 'department', subpath:''}, isArray: false},
 		            queryDealers: {method: 'GET', params: {root:'dealer', path: 'list', subpath:''}, isArray: false},
+		            queryGeneralJournalItems: {method: 'GET', params: {root:'dealer', path: 'generalJournal', subpath:'items'}, isArray: false},
+		            queryOverallExpPercentageReport: {method: 'GET', params: {root: 'report', path: 'query', subpath:'overallExpensePercentageReport'}, isArray: false},
+		            queryDepartmentIncomePercentageReport: {method: 'GET', params: {root: 'report', path: 'query', subpath:'departmentIncomeReport'}, isArray: false},
+		            queryDealerSalesPercentgeReport: {method: 'GET', params: {root: 'report', path: 'query', subpath:'salesReport'}, isArray: false},
 		        }),
 	        	local: $resource(
 		        	config.service.localUrl + '/:path/:subpath', {}, {
