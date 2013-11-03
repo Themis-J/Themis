@@ -8,6 +8,6 @@
 	<name>themis</name>
 	<modules>
 		<module>dealer</module>
-		<module>report</module>
+		<module>site</module>
         </modules>
 </project>
