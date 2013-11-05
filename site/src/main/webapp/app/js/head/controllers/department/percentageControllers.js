@@ -69,7 +69,7 @@ angular.module('departmentPercentage.controllers', [])
 	            	}
 	            	chartCategories[0].categories = departments;
 					
-	            	var previousDetail = data.detail[0].departmentDetail;
+	            	var previousDetail = data.detail[0].detail;
 	            	var previousYear = data.detail[0].year;
 	            	for ( var i = 1;i < previousDetail.length; i++ ) {
 	            		chartData[0].series.previous[i-1] = [previousDetail[i].name, previousDetail[i].revenue.amount];
@@ -78,7 +78,7 @@ angular.module('departmentPercentage.controllers', [])
 	            		chartData[3].series.previous[i-1] = [previousDetail[i].name, previousDetail[i].opProfit.amount];
 	            	};
 	            	
-					var currentDetail = data.detail[1].departmentDetail;
+					var currentDetail = data.detail[1].detail;
 					for ( var i = 1;i < currentDetail.length; i++ ) {
 	            		chartData[0].series.current[i-1] = [currentDetail[i].name, currentDetail[i].revenue.amount];
 	            		chartData[1].series.current[i-1] = [currentDetail[i].name, currentDetail[i].margin.amount];
