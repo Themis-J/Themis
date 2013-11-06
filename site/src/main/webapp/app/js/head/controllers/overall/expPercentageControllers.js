@@ -30,14 +30,14 @@ angular.module('overallExpPercentage.controllers', [])
         	var params = {year: reportService.getCurrentYear(), 
         					monthOfYear: reportService.getMonthOfYear(), 
         					denominator: $scope.selectedDenominatorOption.id, 
-        					itemCategory: $scope.selectedCategoryOption.name, 
+        					itemCategory: $scope.selectedCategoryOption.name
         					};
         	if ( $scope.isQueryItem ) {
         		params = {year: reportService.getCurrentYear(), 
         					monthOfYear: reportService.getMonthOfYear(), 
         					denominator: $scope.selectedDenominatorOption.id, 
         					itemCategory: $scope.selectedCategoryOption.name, 
-        					itemName: $scope.selectedItemOption.name, 
+        					itemName: $scope.selectedItemOption.name
         					};
         	}
         	$scope.draw(restClient(config.currentMode).queryOverallExpPercentageReport, params);
@@ -56,7 +56,7 @@ angular.module('overallExpPercentage.controllers', [])
 				        		id: 'chart',
 				        		title: expTitle + '/' + $scope.selectedDenominatorOption.name,
 				        		yAxisTitle: expTitle,
-				        		series: { amount:[], currentMargin:[], previousMargin:[], currentPercentage:[], previousPercentage:[], }
+				        		series: { amount:[], currentMargin:[], previousMargin:[], currentPercentage:[], previousPercentage:[] }
 				        	};
 				    
             	var chartCategories = [{ categories: null }];
@@ -83,7 +83,7 @@ angular.module('overallExpPercentage.controllers', [])
 			                chart: {
 			                    zoomType: 'xy',
 			                    height:$(window).height()*0.60,
-			                    width:chartWidth,
+			                    width:chartWidth
 			                },
 			                title: {
 			                    text: currentData.title
@@ -110,7 +110,7 @@ angular.module('overallExpPercentage.controllers', [])
 		                        }
 		                        ,
 		                        opposite: true
-		                    },
+		                    }
 							],
 			                tooltip: {
 			                    formatter: function() {
@@ -151,7 +151,7 @@ angular.module('overallExpPercentage.controllers', [])
 			                        name: '去年百分比',
 			                        yAxis: 1,
 			                        data: currentData.series.previousPercentage
-			                    },
+			                    }
 			                ]
 			        	});
 			  });
@@ -198,7 +198,7 @@ angular.module('overallExpPercentage.controllers', [])
     		{name:'销售费用', id:2},
     		{name:'人工费用', id:3},
     		{name:'半固定费用', id:4},
-    		{name:'固定费用', id:5},
+    		{name:'固定费用', id:5}
     		];
     	$scope.selectedCategoryOption = $scope.categoryOptions[0];
     	$scope.itemOptions = [];

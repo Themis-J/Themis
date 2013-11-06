@@ -37,25 +37,25 @@ angular.module('departmentOp.controllers', [])
 				        		id: 'report_opProfit',
 				        		title: '运营利润',
 				        		yAxisTitle: '运营利润',
-				        		series: { previous:[], current:[], previousReference:[], currentReference:[], currentPercentage:[], }
+				        		series: { previous:[], current:[], previousReference:[], currentReference:[], currentPercentage:[] }
 				        	},
 				        	{
 				        		id: 'report_revenue',
 				        		title: '营业额',
 				        		yAxisTitle: '营业额',
-				        		series: { previous:[], current:[], previousReference:[], currentReference:[], currentPercentage:[], }
+				        		series: { previous:[], current:[], previousReference:[], currentReference:[], currentPercentage:[] }
 				        	}, 
 				        	{
 				        		id: 'report_expense',
 				        		title: '费用',
 				        		yAxisTitle: '费用',
-				        		series: { previous:[], current:[], previousReference:[], currentReference:[], currentPercentage:[], }
+				        		series: { previous:[], current:[], previousReference:[], currentReference:[], currentPercentage:[] }
 				        	}, 
 				        	{
 				        		id: 'report_margin',
 				        		title: '毛利',
 				        		yAxisTitle: '毛利',
-				        		series: { previous:[], current:[], previousReference:[], currentReference:[], currentPercentage:[], }
+				        		series: { previous:[], current:[], previousReference:[], currentReference:[], currentPercentage:[] }
 				        	}
 				    ]; 
 	            	var chartCategories = [{ categories: null }];
@@ -124,7 +124,7 @@ angular.module('departmentOp.controllers', [])
 			                chart: {
 			                	zoomType: 'xy',
 			                    height:$(window).height()*0.60,
-			                    width: chartWidth,
+			                    width: chartWidth
 			                },
 			                title: {
 			                    text: currentData.title
@@ -151,7 +151,7 @@ angular.module('departmentOp.controllers', [])
 		                        }
 		                        ,
 		                        opposite: true
-		                    },
+		                    }
 							],
 			                tooltip: {
 			                    formatter: function() {
@@ -236,7 +236,7 @@ angular.module('departmentOp.controllers', [])
     		{id: 'report_opProfit', text:'运营利润', display:true},
     		{id: 'report_revenue', text:'营业额', display:false},
     		{id: 'report_expense', text:'费用', display:false},
-    		{id: 'report_margin', text:'毛利', display:false},
+    		{id: 'report_margin', text:'毛利', display:false}
     		];
 		
     	var currentDate = new Date();

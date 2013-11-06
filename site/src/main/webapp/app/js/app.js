@@ -1,8 +1,8 @@
 'use strict';
 
 angular.module('themis', ['ngRoute', 'themis.directives', 'themis.controllers', 'themis.services', 'themis.config', 'guest.controllers', 'ngSanitize',
-        'branch.services', 'branch.controllers', 'lirun.controller', 'jingying.controller','fenhong.controller', 'sunyi.controller', 'kucun.controller', 'zhangkuan.controller', 'renyuan.controller', 'tax.controller',
-        'masterApp.config', 'masterApp.services','masterApp.controllers', 
+        'branch.services', 'branch.controllers', 'branch.tool.controllers', 'lirun.controller', 'jingying.controller','fenhong.controller', 'sunyi.controller', 'kucun.controller', 'zhangkuan.controller', 'renyuan.controller', 'tax.controller',
+        'masterApp.config', 'masterApp.services','masterApp.controllers',  'head.tool.controllers',
         'overallAbs.controllers', 
 		'overallPercentage.controllers', 
 		'overallExpPercentage.controllers', 
@@ -19,10 +19,11 @@ angular.module('themis', ['ngRoute', 'themis.directives', 'themis.controllers', 
     config(['$routeProvider', '$httpProvider', function ($routeProvider, $httpProvider) {
         $routeProvider.when('/branch', {templateUrl: 'partials/branch/edit.html', controller: 'editCtrl'})
             .when('/branch/edit', {templateUrl: 'partials/branch/edit.html', controller: 'editCtrl'})
-            .when('/branch/help', {templateUrl: 'partials/branch/help.html', controller: 'helpCtrl'})
+            .when('/branch/tool', {templateUrl: 'partials/branch/tool/home.html', controller: 'branchToolCtrl'})
             .when('/guest/login', {templateUrl: 'partials/guest/login.html', controller: 'loginCtrl'})
             .when('/head', {templateUrl: 'partials/head/edit.html', controller: 'headEditCtrl'})
             .when('/head/report', {templateUrl: 'partials/head/edit.html', controller: 'headEditCtrl'})
+            .when('/head/tool', {templateUrl: 'partials/branch/tool/home.html', controller: 'headToolCtrl'})
             .when('/admin', {templateUrl: 'partials/admin/admin.html', controller: 'adminCtrl'})
             .when('/admin/addUser', {templateUrl: 'partials/admin/admin.html', controller: 'adminCtrl'})
             .when('/admin/changePass', {templateUrl: 'partials/admin/changePass.html', controller: 'adminCtrl'})

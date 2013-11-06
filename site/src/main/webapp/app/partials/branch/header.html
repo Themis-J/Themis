@@ -1,4 +1,4 @@
-<div class="navbar navbar-inverse navbar-fixed-top" style="font-size: 13px" ng-controller="branchHeadCtrl">
+<div class="navbar navbar-inverse navbar-fixed-top" style="font-size: 13px" ng-controller="branchHeaderCtrl">
     <div class="navbar-inner">
         <div class="container">
             <div class="fluid-container navbar-sub">
@@ -6,6 +6,7 @@
             </div>
             <div class="pull-right" style="font-size: 18px;padding-top: 10px">
                 <span style="color:gray"><b>{{dealerFullName}}</b></span>
+                <a href="#/branch/tool"  style="text-decoration: none;padding-right: 20px"><i class="icon-cog" style="color: white"></i></a>
                 <a href="#" title="退出登录" ng-click="signout()" onclick="return false;" style="text-decoration: none"><i class="icon-signout" style="color: white"></i></a>
             </div>
         </div>

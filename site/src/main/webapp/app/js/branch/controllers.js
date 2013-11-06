@@ -111,7 +111,7 @@ angular.module('branch.controllers', []).
         $scope.$on('$includeContentLoaded', function () {
         });
     }])
-    .controller('branchHeadCtrl', [ '$scope', '$route', '$location', 'DealerService','UserService','Auth', function($scope, $route,$location,DealerService,UserService,Auth)
+    .controller('branchHeaderCtrl', [ '$scope', '$route', '$location', 'DealerService','UserService','Auth', function($scope, $route,$location,DealerService,UserService,Auth)
     {
          $scope.dealerFullName = DealerService.getDealerFullName();
 

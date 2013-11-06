@@ -18,7 +18,7 @@ angular.module('masterApp.services', ['ngResource'])
 		            queryDealerSalesPercentgeReport: {method: 'GET', params: {root: 'report', path: 'query', subpath:'salesReport', subpath2:''}, isArray: false},
 		            queryPositions: {method: 'GET', params: {root:'dealer', path: 'hr', subpath:'allocation', subpath2:'items'}, isArray: false},
 		            queryOverallHRAllocReport: {method: 'GET', params: {root:'report', path: 'query', subpath:'overallHRAllocReport', subpath2:''}, isArray: false},
-		            importData: {method: 'POST', params: {root:'report', path: 'import', subpath:'', subpath2:''}, isArray: false},
+		            importData: {method: 'POST', params: {root:'report', path: 'import', subpath:'', subpath2:''}, isArray: false}
 		        }),
 	        	local: $resource(
 		        	config.service.localUrl + '/:path/:subpath', {}, {
@@ -34,7 +34,7 @@ angular.module('masterApp.services', ['ngResource'])
 		            queryDealerSalesPercentgeReport: {method: 'GET', params: {path: '', subpath:'queryDealerSalesPercentageReport.json'}, isArray: false},
 		            queryPositions: {method: 'GET', params: {path: '', subpath:'positions.json'}, isArray: false},
 		            queryOverallHRAllocReport: {method: 'GET', params: {path: '', subpath:'queryOverallHRAllocReport.json'}, isArray: false},
-		            importData: {method: 'POST', params: {path:'', subpath:'queryOverallHRAllocReport.json'}, isArray: false},
+		            importData: {method: 'POST', params: {path:'', subpath:'queryOverallHRAllocReport.json'}, isArray: false}
 		        })
 	        };
 	        if ( mode == 'local' ) {
@@ -136,7 +136,7 @@ angular.module('masterApp.services', ['ngResource'])
         			}
         			callback(items);
         		});
-        	},
+        	}
         };
     }])
     ;

@@ -50,32 +50,32 @@ angular.module('salesDepartmentAbs.controllers', [])
 				        		id: 'report_wholesale',
 				        		title: '批发销量',
 				        		yAxisTitle: '批发销量',
-				        		series: { previous:[], current:[], previousReference:[], currentReference:[], currentPercentage:[], }
+				        		series: { previous:[], current:[], previousReference:[], currentReference:[], currentPercentage:[] }
 				        	},
 				        	{
 				        		id: 'report_other',
 				        		title: '他店调车量',
 				        		yAxisTitle: '他店调车量',
-				        		series: { previous:[], current:[], previousReference:[], currentReference:[], currentPercentage:[], }
+				        		series: { previous:[], current:[], previousReference:[], currentReference:[], currentPercentage:[] }
 				        	},
 				        	{
 				        		id: 'report_newCarRetail',
 				        		title: '零售销量（轿车）',
 				        		yAxisTitle: '零售销量（轿车）',
-				        		series: { previous:[], current:[], previousReference:[], currentReference:[], currentPercentage:[], }
+				        		series: { previous:[], current:[], previousReference:[], currentReference:[], currentPercentage:[] }
 				        	},
 				        	{
 				        		id: 'report_newVanRetail',
 				        		title: '零售销量（货车）',
 				        		yAxisTitle: '零售销量（货车）',
-				        		series: { previous:[], current:[], previousReference:[], currentReference:[], currentPercentage:[], }
+				        		series: { previous:[], current:[], previousReference:[], currentReference:[], currentPercentage:[]}
 				        	},
 				        	{
 				        		id: 'report_retail',
 				        		title: '零售销量',
 				        		yAxisTitle: '零售销量',
-				        		series: { previous:[], current:[], previousReference:[], currentReference:[], currentPercentage:[], }
-				        	},
+				        		series: { previous:[], current:[], previousReference:[], currentReference:[], currentPercentage:[] }
+				        	}
 				    ]; 
 	            	var chartCategories = [{ categories: null }];
 	            	var dealers = [];
@@ -154,7 +154,7 @@ angular.module('salesDepartmentAbs.controllers', [])
 			                chart: {
 			                	zoomType: 'xy',
 			                    height:$(window).height()*0.60,
-			                    width: chartWidth,
+			                    width: chartWidth
 			                },
 			                title: {
 			                    text: currentData.title
@@ -181,7 +181,7 @@ angular.module('salesDepartmentAbs.controllers', [])
 		                        }
 		                        ,
 		                        opposite: true
-		                    },
+		                    }
 							],
 			                tooltip: {
 			                    formatter: function() {

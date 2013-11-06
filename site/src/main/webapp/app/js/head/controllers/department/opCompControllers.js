@@ -33,19 +33,19 @@ angular.module('departmentOpComp.controllers', [])
 				        		id: 'report_opProfit',
 				        		title: '运营利润' + '/' + $scope.selectedDenominatorOption.name,
 				        		yAxisTitle: '运营利润',
-				        		series: { previous:[], current:[], previousReference:[], currentReference:[], currentPercentage:[], }
+				        		series: { previous:[], current:[], previousReference:[], currentReference:[], currentPercentage:[] }
 				        	},
 				        	{
 				        		id: 'report_revenue',
 				        		title: '营业额' + '/' + $scope.selectedDenominatorOption.name,
 				        		yAxisTitle: '营业额',
-				        		series: { previous:[], current:[], previousReference:[], currentReference:[], currentPercentage:[], }
+				        		series: { previous:[], current:[], previousReference:[], currentReference:[], currentPercentage:[] }
 				        	}, 
 				        	{
 				        		id: 'report_margin',
 				        		title: '毛利' + '/' + $scope.selectedDenominatorOption.name,
 				        		yAxisTitle: '毛利',
-				        		series: { previous:[], current:[], previousReference:[], currentReference:[], currentPercentage:[], }
+				        		series: { previous:[], current:[], previousReference:[], currentReference:[], currentPercentage:[] }
 				        	}
 				]; 
 				    
@@ -93,7 +93,7 @@ angular.module('departmentOpComp.controllers', [])
 			                chart: {
 			                    zoomType: 'xy',
 			                    height:$(window).height()*0.60,
-			                    width:chartWidth,
+			                    width:chartWidth
 			                },
 			                title: {
 			                    text: currentData.title
@@ -105,8 +105,8 @@ angular.module('departmentOpComp.controllers', [])
 			                yAxis: [{
 			                    title: {
 			                        text: currentData.yAxisTitle + '百分比 (%)'
-			                    },
-			                },
+			                    }
+			                }
 							],
 			                tooltip: {
 			                    formatter: function() {
@@ -188,7 +188,7 @@ angular.module('departmentOpComp.controllers', [])
 		$scope.charts = [
     		{id: 'report_opProfit', display:true},
     		{id: 'report_revenue', display:false},
-    		{id: 'report_margin', display:false},
+    		{id: 'report_margin', display:false}
     		];
 		
     	var currentDate = new Date();

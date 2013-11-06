@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en" ng-app="themis">
+<html lang="en"  id="ng-app" ng-app="themis">
 <head>
     <meta charset="utf-8">
     <title>广汽集团报表系统</title>
@@ -15,7 +15,11 @@
 ", Helvetica, Arial, "Microsoft Yahei UI", "Microsoft YaHei", SimHei, "\5B8B\4F53", simsun, sans-serif">
 <div ng-view></div>
 
-<script src="lib/jquery/jquery-2.0.2.min.js"></script>
+
+<!--[if lte IE 8]>
+<script src="lib/json2/json2.js"></script>
+<![endif]-->
+<script src="lib/jquery/jquery-1.10.2.min.js"></script>
 <script src="lib/jquery-ui/js/jquery-ui.js"></script>
 <script src="lib/jquery/qtip/js/jquery.qtip.min.js"></script>
 <script src="lib/bootstrap/js/bootstrap.min.js"></script>
@@ -44,6 +48,7 @@
 <script src="js/branch/Controllers/sunyiController.js"></script>
 <script src="js/branch/Controllers/renyuanController.js"></script>
 <script src="js/branch/Controllers/taxController.js"></script>
+<script src="js/branch/tool/controllers.js"></script>
 
 <script src="js/admin/controllers.js"></script>
 <script src="js/admin/services.js"></script>
@@ -51,6 +56,7 @@
 <script src="js/head/config.js"></script>
 <script src="js/head/controllers.js"></script>
 <script src="js/head/services.js"></script>
+<script src="js/head/tool/controllers.js"></script>
 
 <script src="js/head/controllers/overall/absControllers.js"></script>
 <script src="js/head/controllers/overall/percentageControllers.js"></script>

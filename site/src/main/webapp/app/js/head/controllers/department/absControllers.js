@@ -64,7 +64,7 @@ angular.module('departmentAbs.controllers', [])
 				        		title: '运营利润',
 				        		yAxisTitle: '运营利润',
 				        		series: { previous:[], current:[]}
-				        	},
+				        	}
 
 				    ]; 
 	            	var chartCategories = [{ categories: null }];
@@ -110,7 +110,7 @@ angular.module('departmentAbs.controllers', [])
 			                chart: {
 			                	zoomType: 'xy',
 			                    height:$(window).height()*0.60,
-			                    width: chartWidth,
+			                    width: chartWidth
 			                },
 			                title: {
 			                    text: pDealerName + '-' + currentData.title
@@ -149,7 +149,7 @@ angular.module('departmentAbs.controllers', [])
 				                            	$scope.draw(restClient(config.currentMode).queryOverallIncomeReport, params, index); 
 				                            }
 				                        }
-				                    },
+				                    }
 			                    }
 			                },
 			                series: [
@@ -157,7 +157,7 @@ angular.module('departmentAbs.controllers', [])
 				                        type: 'column',
 				                        name: chartColumnCurrent,
 				                        data: chartData[index].series.current
-				                    },
+				                    }
 				            ]
 			        	}).highcharts();
 			    
@@ -173,26 +173,26 @@ angular.module('departmentAbs.controllers', [])
 				        		id: 'report_revenue',
 				        		title: '营业额',
 				        		yAxisTitle: '营业额',
-				        		series: { previous:[], current:[], previousReference:[], currentReference:[], currentPercentage:[], }
+				        		series: { previous:[], current:[], previousReference:[], currentReference:[], currentPercentage:[] }
 				        	}, 
 				        	{
 				        		id: 'report_margin',
 				        		title: '毛利',
 				        		yAxisTitle: '毛利',
-				        		series: { previous:[], current:[], previousReference:[], currentReference:[], currentPercentage:[], }
+				        		series: { previous:[], current:[], previousReference:[], currentReference:[], currentPercentage:[] }
 				        	},
 				        	{
 				        		id: 'report_expense',
 				        		title: '费用',
 				        		yAxisTitle: '费用',
-				        		series: { previous:[], current:[], previousReference:[], currentReference:[], currentPercentage:[], }
+				        		series: { previous:[], current:[], previousReference:[], currentReference:[], currentPercentage:[] }
 				        	}, 
 				        	{
 				        		id: 'report_opProfit',
 				        		title: '运营利润',
 				        		yAxisTitle: '运营利润',
-				        		series: { previous:[], current:[], previousReference:[], currentReference:[], currentPercentage:[], }
-				        	},
+				        		series: { previous:[], current:[], previousReference:[], currentReference:[], currentPercentage:[]}
+				        	}
 
 				    ]; 
 	            	var chartCategories = [{ categories: null }];
@@ -266,7 +266,7 @@ angular.module('departmentAbs.controllers', [])
 			                chart: {
 			                	zoomType: 'xy',
 			                    height:$(window).height()*0.60,
-			                    width: chartWidth,
+			                    width: chartWidth
 			                },
 			                title: {
 			                    text: currentData.title
@@ -293,7 +293,7 @@ angular.module('departmentAbs.controllers', [])
 		                        }
 		                        ,
 		                        opposite: true
-		                    },
+		                    }
 							],
 			                tooltip: {
 			                    formatter: function() {
@@ -314,7 +314,7 @@ angular.module('departmentAbs.controllers', [])
 					                            } 
 				                            }
 				                        }
-				                    },
+				                    }
 			                    }
 			                },
 			                series: [

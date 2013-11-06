@@ -40,26 +40,26 @@ angular.module('departmentPercentage.controllers', [])
 				        		id: 'report_revenue',
 				        		title: '营业额',
 				        		yAxisTitle: '营业额',
-				        		series: { previous:[], current:[], percentage: [],}
+				        		series: { previous:[], current:[], percentage: []}
 				        	}, 
 				        	{
 				        		id: 'report_margin',
 				        		title: '毛利',
 				        		yAxisTitle: '毛利',
-				        		series: { previous:[], current:[], percentage: [],}
+				        		series: { previous:[], current:[], percentage: []}
 				        	},
 				        	{
 				        		id: 'report_expense',
 				        		title: '费用',
 				        		yAxisTitle: '费用',
-				        		series: { previous:[], current:[], percentage: [],}
+				        		series: { previous:[], current:[], percentage: []}
 				        	}, 
 				        	{
 				        		id: 'report_opProfit',
 				        		title: '运营利润',
 				        		yAxisTitle: '运营利润',
-				        		series: { previous:[], current:[], percentage: [],}
-				        	},
+				        		series: { previous:[], current:[], percentage: []}
+				        	}
 
 				    ]; 
 	            	var chartCategories = [{ categories: null }];
@@ -114,7 +114,7 @@ angular.module('departmentPercentage.controllers', [])
 			                chart: {
 			                	zoomType: 'xy',
 			                    height:$(window).height()*0.60,
-			                    width: chartWidth,
+			                    width: chartWidth
 			                },
 			                title: {
 			                    text: currentData.title
@@ -141,7 +141,7 @@ angular.module('departmentPercentage.controllers', [])
 		                        }
 		                        ,
 		                        opposite: true
-		                    },
+		                    }
 							],
 			                tooltip: {
 			                    formatter: function() {
@@ -159,7 +159,7 @@ angular.module('departmentPercentage.controllers', [])
 				                            	// do nothing here
 				                            }
 				                        }
-				                    },
+				                    }
 			                    }
 			                },
 			                series: [
@@ -178,7 +178,7 @@ angular.module('departmentPercentage.controllers', [])
 			                        name: '增长比例(%)',
 			                        yAxis: 1,
 			                        data: currentData.series.percentage
-			                    	},
+			                    	}
 				                    /*{
 							            type: 'pie',
 							            name: currentData.title + '百分比',
@@ -257,7 +257,7 @@ angular.module('departmentPercentage.controllers', [])
     		{id: 'report_revenue', text:'营业额', display:true},
     		{id: 'report_margin', text:'毛利', display:true},
     		{id: 'report_expense', text:'费用', display:true},
-    		{id: 'report_opProfit', text:'运营利润', display:true},
+    		{id: 'report_opProfit', text:'运营利润', display:true}
     		];
     		
     	var currentDate = new Date();

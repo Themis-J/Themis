@@ -30,20 +30,20 @@ angular.module('salesPercentage.controllers', [])
 				        		id: 'report_retail',
 				        		title: '零售销量' + '/' + '销售总量',
 				        		yAxisTitle: '零售销量',
-				        		series: { previous:[], current:[], previousReference:[], currentReference:[], currentPercentage:[], }
+				        		series: { previous:[], current:[], previousReference:[], currentReference:[], currentPercentage:[] }
 				        	},
 				        	{
 				        		id: 'report_wholesale',
 				        		title: '批发销量' + '/' + '销售总量',
 				        		yAxisTitle: '批发销量',
-				        		series: { previous:[], current:[], previousReference:[], currentReference:[], currentPercentage:[], }
+				        		series: { previous:[], current:[], previousReference:[], currentReference:[], currentPercentage:[] }
 				        	}, 
 				        	{
 				        		id: 'report_other',
 				        		title: '他店调车' + '/' + '销售总量',
 				        		yAxisTitle: '他店调车',
-				        		series: { previous:[], current:[], previousReference:[], currentReference:[], currentPercentage:[], }
-				        	},
+				        		series: { previous:[], current:[], previousReference:[], currentReference:[], currentPercentage:[] }
+				        	}
 				        	
 				]; 
 				    
@@ -79,7 +79,7 @@ angular.module('salesPercentage.controllers', [])
 			                chart: {
 			                    zoomType: 'xy',
 			                    height:$(window).height()*0.60,
-			                    width:chartWidth,
+			                    width:chartWidth
 			                },
 			                title: {
 			                    text: currentData.title
@@ -91,8 +91,8 @@ angular.module('salesPercentage.controllers', [])
 			                yAxis: [{
 			                    title: {
 			                        text: currentData.yAxisTitle + '百分比 (%)'
-			                    },
-			                },
+			                    }
+			                }
 							],
 			                tooltip: {
 			                    formatter: function() {
@@ -116,7 +116,7 @@ angular.module('salesPercentage.controllers', [])
 			                        type: 'spline',
 			                        name: chartColumnAvgRef,
 			                        data: currentData.series.previousReference
-			                    },
+			                    }
 			                ]
 			        	});
 			  });
@@ -147,7 +147,7 @@ angular.module('salesPercentage.controllers', [])
 		$scope.charts = [
     		{id: 'report_retail', text:'零售销量', display:true},
     		{id: 'report_wholesale', text:'批发销量', display:false},
-    		{id: 'report_other', text:'他店调车', display:false},
+    		{id: 'report_other', text:'他店调车', display:false}
     	];
     	
     	reportService.setFullScreen(false);

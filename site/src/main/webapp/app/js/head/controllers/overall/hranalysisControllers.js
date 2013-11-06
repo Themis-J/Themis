@@ -24,7 +24,7 @@ angular.module('overallHRAnalysis.controllers', [])
     	$scope.showReport = function() {
         	var params = {year: reportService.getCurrentYear(), 
         					monthOfYear: reportService.getMonthOfYear(), 
-        					groupBy:0,
+        					groupBy:0
         					};
         	if ( $scope.selectedDepartmentOption.name != '全部门' ) {
         		if ( $scope.selectedPositionOption.name != '全职位' ) {
@@ -32,13 +32,13 @@ angular.module('overallHRAnalysis.controllers', [])
         					monthOfYear: reportService.getMonthOfYear(), 
         					departmentID: $scope.selectedDepartmentOption.id,
         					positionID: $scope.selectedPositionOption.id,
-        					groupBy:0,
+        					groupBy:0
         					};
         		} else {
         			params = {year: reportService.getCurrentYear(), 
         					monthOfYear: reportService.getMonthOfYear(), 
         					departmentID: $scope.selectedDepartmentOption.id,
-        					groupBy:0,
+        					groupBy:0
         					};
         		}
         		
@@ -49,13 +49,13 @@ angular.module('overallHRAnalysis.controllers', [])
         					monthOfYear: reportService.getMonthOfYear(), 
         					departmentID: $scope.selectedDepartmentOption.id,
         					positionID: $scope.selectedPositionOption.id,
-        					groupBy:0,
+        					groupBy:0
         					};
         		} else {
         			params = {year: reportService.getCurrentYear(), 
         					monthOfYear: reportService.getMonthOfYear(), 
         					positionID: $scope.selectedPositionOption.id,
-        					groupBy:0,
+        					groupBy:0
         					};
         		}
         	}
@@ -72,7 +72,7 @@ angular.module('overallHRAnalysis.controllers', [])
 				        		id: 'report_chart',
 				        		title: expTitle,
 				        		yAxisTitle: expTitle,
-				        		series: { allocation:[], }
+				        		series: { allocation:[] }
 				        	};
 				
             	var chartCategories = [{ categories: null }];
@@ -95,7 +95,7 @@ angular.module('overallHRAnalysis.controllers', [])
 			                chart: {
 			                    zoomType: 'xy',
 			                    height:$(window).height()*0.60,
-			                    width:chartWidth,
+			                    width:chartWidth
 			                },
 			                title: {
 			                    text: currentData.title
@@ -109,7 +109,7 @@ angular.module('overallHRAnalysis.controllers', [])
 			                        text: currentData.yAxisTitle
 			                    },
 			                    min:0
-			                },
+			                }
 			                ],
 			                tooltip: {
 			                    formatter: function() {
@@ -128,7 +128,7 @@ angular.module('overallHRAnalysis.controllers', [])
 			                        type: 'column',
 			                        name: '人数',
 			                        data: currentData.series.allocation
-			                    },
+			                    }
 			                ]
 			        	});
 			  });

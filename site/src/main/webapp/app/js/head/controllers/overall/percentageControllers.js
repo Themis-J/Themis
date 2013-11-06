@@ -54,26 +54,26 @@ angular.module('overallPercentage.controllers', [])
 				        		id: 'report_margin',
 				        		title: '毛利' + '/' + $scope.selectedDenominatorOption.name,
 				        		yAxisTitle: '毛利',
-				        		series: { previous:[], current:[], previousReference:[], currentReference:[], currentPercentage:[], }
+				        		series: { previous:[], current:[], previousReference:[], currentReference:[], currentPercentage:[] }
 				        	},
 				        	{
 				        		id: 'report_expense',
 				        		title: '费用' + '/' + $scope.selectedDenominatorOption.name,
 				        		yAxisTitle: '费用',
-				        		series: { previous:[], current:[], previousReference:[], currentReference:[], currentPercentage:[], }
+				        		series: { previous:[], current:[], previousReference:[], currentReference:[], currentPercentage:[] }
 				        	}, 
 				        	{
 				        		id: 'report_opProfit',
 				        		title: '运营利润' + '/' + $scope.selectedDenominatorOption.name,
 				        		yAxisTitle: '运营利润',
-				        		series: { previous:[], current:[], previousReference:[], currentReference:[], currentPercentage:[], }
+				        		series: { previous:[], current:[], previousReference:[], currentReference:[], currentPercentage:[] }
 				        	},
 				        	{
 				        		id: 'report_netProfit',
 				        		title: '税前尽利润' + '/' + $scope.selectedDenominatorOption.name,
 				        		yAxisTitle: '税前尽利润',
-				        		series: { previous:[], current:[], previousReference:[], currentReference:[], currentPercentage:[], }
-				        	},
+				        		series: { previous:[], current:[], previousReference:[], currentReference:[], currentPercentage:[] }
+				        	}
 				        	
 				]; 
 				    
@@ -128,7 +128,7 @@ angular.module('overallPercentage.controllers', [])
 			                chart: {
 			                    zoomType: 'xy',
 			                    height:$(window).height()*0.60,
-			                    width:chartWidth,
+			                    width:chartWidth
 			                },
 			                title: {
 			                    text: currentData.title
@@ -140,8 +140,8 @@ angular.module('overallPercentage.controllers', [])
 			                yAxis: [{
 			                    title: {
 			                        text: currentData.yAxisTitle + '百分比 (%)'
-			                    },
-			                },
+			                    }
+			                }
 							],
 			                tooltip: {
 			                    formatter: function() {
@@ -207,7 +207,7 @@ angular.module('overallPercentage.controllers', [])
     		{id: 'report_margin', text:'毛利', display:false, checkboxDisplay: false},
     		{id: 'report_expense', text:'费用', display:false, checkboxDisplay: false},
     		{id: 'report_opProfit', text:'运营利润', display:true, checkboxDisplay: true},
-    		{id: 'report_netProfit', text:'税前净利润', display:true, checkboxDisplay: true},
+    		{id: 'report_netProfit', text:'税前净利润', display:true, checkboxDisplay: true}
     	];
     	
     	reportService.setFullScreen(false);

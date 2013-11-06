@@ -35,7 +35,7 @@ angular.module('masterApp.controllers', [])
         };
         $scope.subpage = 'partials/head/' + $scope.items[0].page + '.html';
   	}])
-    .controller('branchHeadCtrl', [ '$scope', '$route', '$location', 'DealerService','UserService','Auth', function($scope, $route,$location,DealerService,UserService,Auth)
+    .controller('headHeaderCtrl', [ '$scope', '$route', '$location', 'DealerService','UserService','Auth', function($scope, $route,$location,DealerService,UserService,Auth)
     {
         $scope.signout = function() {
             Auth.logout({}, function () {
