@@ -14,11 +14,22 @@
 <body style="font-family: '" Helvetica Neue
 ", Helvetica, Arial, "Microsoft Yahei UI", "Microsoft YaHei", SimHei, "\5B8B\4F53", simsun, sans-serif">
 <div ng-view></div>
-
-
 <!--[if lte IE 8]>
+<script>
+    if(!Array.indexOf){
+        Array.prototype.indexOf = function(obj){
+            for(var i=0; i<this.length; i++){
+                if(this[i]==obj){
+                    return i;
+                }
+            }
+            return -1;
+        }
+    }
+</script>
 <script src="lib/json2/json2.js"></script>
 <![endif]-->
+
 <script src="lib/jquery/jquery-1.10.2.min.js"></script>
 <script src="lib/jquery-ui/js/jquery-ui.js"></script>
 <script src="lib/jquery/qtip/js/jquery.qtip.min.js"></script>
