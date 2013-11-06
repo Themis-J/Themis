@@ -5,7 +5,7 @@
 angular.module('masterApp.config', []).constant(
 	'config',
 	{
-		//currentMode: 'local',
+	    //currentMode: 'local',
 		currentMode: 'remote',
 		service : {
 			url : '/themis', 

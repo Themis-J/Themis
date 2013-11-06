@@ -17,5 +17,6 @@ angular.module('themis', ['ngRoute', 'themis.directives', 'themis.controllers', 
         'admin.controllers']).
     config(['$routeProvider', function($routeProvider) {
     	$routeProvider.when('/head/report', {templateUrl: 'partials/head/edit.html', controller: 'headEditCtrl'});
+    	//$routeProvider.when('/head/report', {templateUrl: 'partials/admin/admin.html', controller: 'adminCtrl'});
         $routeProvider.otherwise({redirectTo: '/head/report'});
     }]);

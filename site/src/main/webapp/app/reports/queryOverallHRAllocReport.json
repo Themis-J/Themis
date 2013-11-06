@@ -59,7 +59,7 @@
                             "id": 5,
                             "name": "备件部",
                             "allocation": {
-                                "amount": 0,
+                                "amount": 0.3393088870287856,
                                 "percentage": 0,
                                 "reference": 0
                             }
@@ -84,7 +84,7 @@
                         }
                     ],
                     "allocation": {
-                        "amount": 0,
+                        "amount": 0.3393088870287856,
                         "percentage": 0,
                         "reference": 0
                     }
@@ -125,7 +125,7 @@
                             "id": 3,
                             "name": "租赁事业部",
                             "allocation": {
-                                "amount": 0.2059116727709368,
+                                "amount": 0,
                                 "percentage": 0,
                                 "reference": 0
                             }
@@ -152,7 +152,7 @@
                             "id": 6,
                             "name": "钣喷部",
                             "allocation": {
-                                "amount": 0,
+                                "amount": 0.38893530620600447,
                                 "percentage": 0,
                                 "reference": 0
                             }
@@ -168,7 +168,7 @@
                         }
                     ],
                     "allocation": {
-                        "amount": 0.2059116727709368,
+                        "amount": 0.38893530620600447,
                         "percentage": 0,
                         "reference": 0
                     }
@@ -377,7 +377,7 @@
                             "id": 3,
                             "name": "租赁事业部",
                             "allocation": {
-                                "amount": 0,
+                                "amount": 0.720146783535188,
                                 "percentage": 0,
                                 "reference": 0
                             }
@@ -395,7 +395,7 @@
                             "id": 5,
                             "name": "备件部",
                             "allocation": {
-                                "amount": 0.43782258482344294,
+                                "amount": 0,
                                 "percentage": 0,
                                 "reference": 0
                             }
@@ -413,14 +413,14 @@
                             "id": 7,
                             "name": "其它部",
                             "allocation": {
-                                "amount": 0,
+                                "amount": 0.9801766330209923,
                                 "percentage": 0,
                                 "reference": 0
                             }
                         }
                     ],
                     "allocation": {
-                        "amount": 0.43782258482344294,
+                        "amount": 1.7003234165561805,
                         "percentage": 0,
                         "reference": 0
                     }
@@ -620,7 +620,7 @@
                             "id": 2,
                             "name": "二手车部",
                             "allocation": {
-                                "amount": 0,
+                                "amount": 0.17326990578902246,
                                 "percentage": 0,
                                 "reference": 0
                             }
@@ -629,7 +629,7 @@
                             "id": 3,
                             "name": "租赁事业部",
                             "allocation": {
-                                "amount": 0.8398689358350894,
+                                "amount": 0,
                                 "percentage": 0,
                                 "reference": 0
                             }
@@ -665,14 +665,14 @@
                             "id": 7,
                             "name": "其它部",
                             "allocation": {
-                                "amount": 0,
+                                "amount": 0.8033873470717352,
                                 "percentage": 0,
                                 "reference": 0
                             }
                         }
                     ],
                     "allocation": {
-                        "amount": 0.8398689358350894,
+                        "amount": 0.9766572528607577,
                         "percentage": 0,
                         "reference": 0
                     }
@@ -713,7 +713,7 @@
                             "id": 3,
                             "name": "租赁事业部",
                             "allocation": {
-                                "amount": 0.2226036869993333,
+                                "amount": 0,
                                 "percentage": 0,
                                 "reference": 0
                             }
@@ -756,7 +756,7 @@
                         }
                     ],
                     "allocation": {
-                        "amount": 0.2226036869993333,
+                        "amount": 0,
                         "percentage": 0,
                         "reference": 0
                     }
@@ -890,7 +890,7 @@
                             "id": 4,
                             "name": "维修部",
                             "allocation": {
-                                "amount": 0,
+                                "amount": 0.6098529414275925,
                                 "percentage": 0,
                                 "reference": 0
                             }
@@ -924,7 +924,7 @@
                         }
                     ],
                     "allocation": {
-                        "amount": 0,
+                        "amount": 0.6098529414275925,
                         "percentage": 0,
                         "reference": 0
                     }
@@ -956,7 +956,7 @@
                             "id": 2,
                             "name": "二手车部",
                             "allocation": {
-                                "amount": 0.9422554518883025,
+                                "amount": 0,
                                 "percentage": 0,
                                 "reference": 0
                             }
@@ -974,7 +974,7 @@
                             "id": 4,
                             "name": "维修部",
                             "allocation": {
-                                "amount": 0,
+                                "amount": 0.6790437265202887,
                                 "percentage": 0,
                                 "reference": 0
                             }
@@ -1001,14 +1001,14 @@
                             "id": 7,
                             "name": "其它部",
                             "allocation": {
-                                "amount": 0.7686163404009154,
+                                "amount": 0,
                                 "percentage": 0,
                                 "reference": 0
                             }
                         }
                     ],
                     "allocation": {
-                        "amount": 1.710871792289218,
+                        "amount": 0.6790437265202887,
                         "percentage": 0,
                         "reference": 0
                     }
@@ -1058,7 +1058,7 @@
                             "id": 4,
                             "name": "维修部",
                             "allocation": {
-                                "amount": 0,
+                                "amount": 0.8510356434855487,
                                 "percentage": 0,
                                 "reference": 0
                             }
@@ -1076,7 +1076,7 @@
                             "id": 6,
                             "name": "钣喷部",
                             "allocation": {
-                                "amount": 0.7833390623369898,
+                                "amount": 0,
                                 "percentage": 0,
                                 "reference": 0
                             }
@@ -1092,7 +1092,7 @@
                         }
                     ],
                     "allocation": {
-                        "amount": 0.7833390623369898,
+                        "amount": 0.8510356434855487,
                         "percentage": 0,
                         "reference": 0
                     }
@@ -1253,14 +1253,14 @@
                             "id": 7,
                             "name": "其它部",
                             "allocation": {
-                                "amount": 0,
+                                "amount": 0.37872671664573376,
                                 "percentage": 0,
                                 "reference": 0
                             }
                         }
                     ],
                     "allocation": {
-                        "amount": 0,
+                        "amount": 0.37872671664573376,
                         "percentage": 0,
                         "reference": 0
                     }
@@ -1337,14 +1337,14 @@
                             "id": 7,
                             "name": "其它部",
                             "allocation": {
-                                "amount": 0.1254415039963488,
+                                "amount": 0,
                                 "percentage": 0,
                                 "reference": 0
                             }
                         }
                     ],
                     "allocation": {
-                        "amount": 0.1254415039963488,
+                        "amount": 0,
                         "percentage": 0,
                         "reference": 0
                     }
@@ -1421,14 +1421,14 @@
                             "id": 7,
                             "name": "其它部",
                             "allocation": {
-                                "amount": 0.08689015855096216,
+                                "amount": 0,
                                 "percentage": 0,
                                 "reference": 0
                             }
                         }
                     ],
                     "allocation": {
-                        "amount": 0.08689015855096216,
+                        "amount": 0,
                         "percentage": 0,
                         "reference": 0
                     }
@@ -1562,7 +1562,7 @@
                             "id": 4,
                             "name": "维修部",
                             "allocation": {
-                                "amount": 0,
+                                "amount": 0.12068809153272386,
                                 "percentage": 0,
                                 "reference": 0
                             }
@@ -1596,7 +1596,7 @@
                         }
                     ],
                     "allocation": {
-                        "amount": 0,
+                        "amount": 0.12068809153272386,
                         "percentage": 0,
                         "reference": 0
                     }

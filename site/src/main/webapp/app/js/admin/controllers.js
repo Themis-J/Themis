@@ -82,4 +82,42 @@ angular.module('admin.controllers', [])
         }
 
     }])
+    .controller('importDataCtrl', ['$scope', '$location', 'Auth', 'ReportRestClient', 'ReportService', 'config', function ($scope, $location, Auth, ReportRestClient, ReportService, config) {
+    	$scope.msg = "";
+        $scope.msgClass = "";
+		var currentDate = new Date();
+  		ReportService.setCurrentYear(currentDate.getFullYear());
+  		$scope.yearOptions = ReportService.getYearList();
+  		$scope.selectedFromYearOption = $scope.yearOptions[0];
+		$scope.selectedToYearOption = $scope.yearOptions[0];
+		
+		ReportService.setMonthOfYear(currentDate.getMonth());
+		$scope.monthOptions = ReportService.getMonthList();
+		$scope.selectedFromMonthOption = $scope.monthOptions[ReportService.getMonthOfYear()-1];
+		$scope.selectedToMonthOption = $scope.monthOptions[ReportService.getMonthOfYear()-1];
+		
+        $scope.importData = function(){
+            var data = {};
+            if ( $scope.selectedFromMonthOption.id < 10 ) {
+            	data.fromDate = $scope.selectedFromYearOption.id + '-0' + $scope.selectedFromMonthOption.id + '-01';
+            } else {
+            	data.fromDate = $scope.selectedFromYearOption.id + '-' + $scope.selectedFromMonthOption.id + '-01';
+            }
+            if ( $scope.selectedToMonthOption.id < 10 ) {
+            	data.toDate = $scope.selectedToYearOption.id + '-0' + $scope.selectedToMonthOption.id + '-01';
+            } else {
+            	data.toDate = $scope.selectedToYearOption.id + '-' + $scope.selectedToMonthOption.id + '-01';
+            }
+            
+            ReportRestClient(config.currentMode).importData({}, data, function(){
+                $scope.msg = "数据导入成功！";
+                $scope.msgClass = "text-success";
+            }, function(data){
+                $scope.msg = "数据导入失败";
+                $scope.msgClass = "text-error";
+            });
+            
+        };
+
+    }])
 ;

@@ -2,6 +2,15 @@
 
 angular.module('overallHRAnalysis.controllers', [])
 	.controller('overallHRAnalysisCtrl', ['$scope', 'ReportRestClient', 'ReportService', 'config', function($scope, restClient, reportService, config) {
+		$scope.selectReportYear = function() {
+    		reportService.setCurrentYear($scope.selectedYearOption.id);
+    		$scope.showReport();
+    	};
+    	
+		$scope.selectReportMonth = function() {
+    		reportService.setMonthOfYear($scope.selectedMonthOption.id);
+    		$scope.showReport();
+    	};
 		$scope.selectReportDepartment = function() {
 			$scope.showReport();
 		};
@@ -15,6 +24,7 @@ angular.module('overallHRAnalysis.controllers', [])
     	$scope.showReport = function() {
         	var params = {year: reportService.getCurrentYear(), 
         					monthOfYear: reportService.getMonthOfYear(), 
+        					groupBy:0,
         					};
         	if ( $scope.selectedDepartmentOption.name != '全部门' ) {
         		if ( $scope.selectedPositionOption.name != '全职位' ) {
