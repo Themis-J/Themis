@@ -44,6 +44,7 @@ public class DealerReportRestService {
 	@Produces({ "application/json", "application/xml" })
 	@Consumes({ "application/json", "application/xml" })
 	@Path("/import")
+	@RolesAllowed({Constant.HEAD_ROLE, Constant.ADMIN_ROLE, Constant.SUPER_ROLE})
 	@RestServiceErrorHandler
 	public Response importReportData(final ImportReportDataRequest request) {
 		final GeneralResponse response = new GeneralResponse();

@@ -73,7 +73,7 @@ public class DealerIncomeSystemRestService {
 	@GET
 	@Path("/list")
 	@Produces({ "application/json", "application/xml" })
-	@RolesAllowed({Constant.DEALER_ROLE, Constant.ADMIN_ROLE, Constant.SUPER_ROLE})
+	@RolesAllowed({Constant.DEALER_ROLE, Constant.HEAD_ROLE, Constant.ADMIN_ROLE, Constant.SUPER_ROLE})
 	@RestServiceErrorHandler
 	public Response getDealers() {
 		return Response.ok(this.refDataQueryService.getDealers()).build();
@@ -87,6 +87,7 @@ public class DealerIncomeSystemRestService {
 	@GET
 	@Path("/department")
 	@Produces({ "application/json", "application/xml" })
+	@RolesAllowed({Constant.DEALER_ROLE, Constant.HEAD_ROLE})
 	@RestServiceErrorHandler
 	public Response getDepartments() {
 		return Response.ok(this.refDataQueryService.getDepartments()).build();
@@ -114,6 +115,7 @@ public class DealerIncomeSystemRestService {
 	@GET
 	@Path("/salesServiceRevenue/items")
 	@Produces({ "application/json", "application/xml" })
+	@RolesAllowed({Constant.DEALER_ROLE, Constant.HEAD_ROLE})
 	@RestServiceErrorHandler
 	public Response getSalesServiceRevenueItems(@QueryParam("categoryID") Integer categoryID) {
 		return Response.ok(
@@ -306,6 +308,7 @@ public class DealerIncomeSystemRestService {
 	@GET
 	@Path("/generalJournal/items")
 	@Produces({ "application/json", "application/xml" })
+	@RolesAllowed({Constant.DEALER_ROLE, Constant.HEAD_ROLE})
 	@RestServiceErrorHandler
 	public Response getGeneralIncomeItems(@QueryParam("categoryID") Integer categoryID) {
 		return Response.ok(this.refDataQueryService.getGeneralIncomeItems(
@@ -631,6 +634,7 @@ public class DealerIncomeSystemRestService {
 	@GET
 	@Path("/hr/allocation/items")
 	@Produces({ "application/json", "application/xml" })
+	@RolesAllowed({Constant.DEALER_ROLE, Constant.HEAD_ROLE})
 	@RestServiceErrorHandler
 	public Response getHumanResourceAllocationItems() {
 		return Response.ok(this.refDataQueryService.getHumanResourceAllocationItems())

@@ -129,7 +129,7 @@ public class UserServiceImpl implements UserService {
 		Preconditions.checkArgument(userDAL.getUser(request.getUsername()).isSome(), "user name does not exists");
 		Preconditions.checkArgument(!request.getNewPassword().equals(request.getOldPassword()), 
 				"old password equals to the new password");
-		Preconditions.checkArgument(request.getOldPassword().equals(userDAL.getUser(request.getUsername()).some().getPassword()), 
+		Preconditions.checkArgument(hashPassword(request.getOldPassword()).equals(userDAL.getUser(request.getUsername()).some().getPassword()), 
 				"password doesn't match");
 		
 		final UserInfo user = userDAL.getUser(request.getUsername()).some();
