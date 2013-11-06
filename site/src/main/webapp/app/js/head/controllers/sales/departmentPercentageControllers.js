@@ -2,6 +2,15 @@
 
 angular.module('salesDepartmentPercentage.controllers', [])
 	.controller('salesDepartmentPercentageCtrl', ['$scope', 'ReportRestClient', 'ReportService', 'config', function($scope, restClient, reportService, config) {
+		$scope.selectReportYear = function() {
+    		reportService.setCurrentYear($scope.selectedYearOption.id);
+    		$scope.showReport();
+    	};
+    	
+		$scope.selectReportMonth = function() {
+    		reportService.setMonthOfYear($scope.selectedMonthOption.id);
+    		$scope.showReport();
+    	};
 		$scope.selectReportDepartment = function() {
     		if ( $scope.selectedDepartmentOption.name == '新车部' ) {
 	    		$scope.charts = [

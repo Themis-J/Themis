@@ -4,11 +4,11 @@ angular.module('departmentPercentage.controllers', [])
 	.controller('departmentPercentageCtrl', ['$scope', 'ReportRestClient', 'ReportService', 'config', function($scope, restClient, reportService, config) {
     	$scope.selectReportYear = function() {
     		reportService.setCurrentYear($scope.selectedYearOption.id);
-    		$scope.selectTime($scope.selectedTime);
+    		$scope.showReport();
     	};
 		$scope.selectReportMonth = function() {
     		reportService.setMonthOfYear($scope.selectedMonthOption.id);
-    		$scope.selectTime($scope.selectedTime);
+    		$scope.showReport();
     	};
     	
 		$scope.selectDealer = function() {
@@ -268,6 +268,4 @@ angular.module('departmentPercentage.controllers', [])
 		reportService.setMonthOfYear(currentDate.getMonth());
 		$scope.monthOptions = reportService.getMonthList();
 		$scope.selectedMonthOption = $scope.monthOptions[reportService.getMonthOfYear()-1];
-    	
-    	$scope.selectedTime = 0;
   }]);

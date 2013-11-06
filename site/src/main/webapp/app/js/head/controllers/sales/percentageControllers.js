@@ -2,6 +2,15 @@
 
 angular.module('salesPercentage.controllers', [])
 	.controller('salesPercentageCtrl', ['$scope', 'ReportRestClient', 'ReportService', 'config', function($scope, restClient, reportService, config) {
+		$scope.selectReportYear = function() {
+    		reportService.setCurrentYear($scope.selectedYearOption.id);
+    		$scope.showReport();
+    	};
+    	
+		$scope.selectReportMonth = function() {
+    		reportService.setMonthOfYear($scope.selectedMonthOption.id);
+    		$scope.showReport();
+    	};
 		$scope.showReport = function() {
         	var params = {year: reportService.getCurrentYear(), monthOfYear: reportService.getMonthOfYear(), denominator: 0};
         	for ( var i=0; i< $scope.charts.length;i++ ) {

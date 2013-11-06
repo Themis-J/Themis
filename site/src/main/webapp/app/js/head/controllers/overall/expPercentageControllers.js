@@ -2,6 +2,15 @@
 
 angular.module('overallExpPercentage.controllers', [])
 	.controller('overallExpPercentageCtrl', ['$scope', 'ReportRestClient', 'ReportService', 'config', function($scope, restClient, reportService, config) {
+		$scope.selectReportYear = function() {
+    		reportService.setCurrentYear($scope.selectedYearOption.id);
+    		$scope.showReport();
+    	};
+    	
+		$scope.selectReportMonth = function() {
+    		reportService.setMonthOfYear($scope.selectedMonthOption.id);
+    		$scope.showReport();
+    	};
 		$scope.selectReportDenominotor = function() {
     		$scope.showReport();
     	};
@@ -21,14 +30,14 @@ angular.module('overallExpPercentage.controllers', [])
         	var params = {year: reportService.getCurrentYear(), 
         					monthOfYear: reportService.getMonthOfYear(), 
         					denominator: $scope.selectedDenominatorOption.id, 
-        					categoryID: $scope.selectedCategoryOption.id, 
+        					itemCategory: $scope.selectedCategoryOption.name, 
         					};
         	if ( $scope.isQueryItem ) {
         		params = {year: reportService.getCurrentYear(), 
         					monthOfYear: reportService.getMonthOfYear(), 
         					denominator: $scope.selectedDenominatorOption.id, 
-        					categoryID: $scope.selectedCategoryOption.id, 
-        					itemID: $scope.selectedItemOption.id, 
+        					itemCategory: $scope.selectedCategoryOption.name, 
+        					itemName: $scope.selectedItemOption.name, 
         					};
         	}
         	$scope.draw(restClient(config.currentMode).queryOverallExpPercentageReport, params);
