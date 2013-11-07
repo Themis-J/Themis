@@ -59,6 +59,13 @@ angular.module('themis', ['ngRoute', 'themis.directives', 'themis.controllers', 
         }];
 
         $httpProvider.responseInterceptors.push(actionsOnExceptions);
+
+        //initialize get if not there
+        if (!$httpProvider.defaults.headers.get) {
+            $httpProvider.defaults.headers.get = {};
+        }
+        //disable IE ajax request caching
+        $httpProvider.defaults.headers.get['If-Modified-Since'] = '0';
     }])
     .run(function ($rootScope, config, $location, Auth, UserService, DealerService) {
         $rootScope.config = config;
