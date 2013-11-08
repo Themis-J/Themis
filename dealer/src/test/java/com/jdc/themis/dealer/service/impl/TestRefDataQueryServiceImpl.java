@@ -286,6 +286,10 @@ public class TestRefDataQueryServiceImpl {
 		when(refDataDAL.getDepartment(1)).thenReturn(Option.<Department>some(v1));
 		final DepartmentDetail item = refDataQueryService.getDepartment(1);
 		Assert.assertEquals("g1", item.getName());
+		
+		when(refDataDAL.getDepartment("g2")).thenReturn(Option.<Department>some(v2));
+		final DepartmentDetail item2 = refDataQueryService.getDepartment("g2");
+		Assert.assertEquals("g2", item2.getName());
 	}
 	
 	@Test

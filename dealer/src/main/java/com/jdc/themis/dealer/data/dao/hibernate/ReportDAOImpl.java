@@ -3,7 +3,6 @@ package com.jdc.themis.dealer.data.dao.hibernate;
 import java.math.BigDecimal;
 import java.util.Collection;
 import java.util.List;
-import java.util.Map;
 
 import javax.time.calendar.LocalDate;
 
@@ -18,11 +17,9 @@ import org.springframework.stereotype.Service;
 
 import ch.lambdaj.Lambda;
 
-import com.google.common.base.Function;
 import com.google.common.base.Preconditions;
 import com.google.common.collect.ImmutableList;
 import com.google.common.collect.Lists;
-import com.google.common.collect.Maps;
 import com.jdc.themis.dealer.data.dao.IncomeJournalDAO;
 import com.jdc.themis.dealer.data.dao.RefDataDAO;
 import com.jdc.themis.dealer.data.dao.ReportDAO;
@@ -564,21 +561,11 @@ public class ReportDAOImpl implements ReportDAO {
 		return list;
 	}
 
-	private enum GetReportItemFunction implements Function<ReportItem, Long> {
-		INSTANCE;
-
-		@Override
-		public Long apply(ReportItem item) {
-			return item.getId();
-		}
-	}
-
 	@Override
 	public Option<ReportItem> getReportItem(Long id) {
-		final Map<Long, ReportItem> map = Maps.uniqueIndex(getAllReportItem(),
-				GetReportItemFunction.INSTANCE);
-
-		return Option.<ReportItem> iif(map.containsKey(id), map.get(id));
+		final Session session = sessionFactory.getCurrentSession();
+		final ReportItem result = (ReportItem) session.get(ReportItem.class, id);
+		return Option.<ReportItem>fromNull(result);
 	}
 
 	@Override

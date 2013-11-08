@@ -202,8 +202,18 @@ public class RefDataQueryServiceImpl implements RefDataQueryService {
 
 	@Override
 	public DepartmentDetail getDepartment(Integer id) {
-		Preconditions.checkArgument(refDataDAL.getDepartment(id).isSome(), "unknown department id");
+		Preconditions.checkArgument(refDataDAL.getDepartment(id).isSome(), "unknown department id " + id);
 		final Department department = refDataDAL.getDepartment(id).some();
+		final DepartmentDetail item = new DepartmentDetail();
+		item.setId(department.getId());
+		item.setName(department.getName());
+		return item;
+	}
+
+	@Override
+	public DepartmentDetail getDepartment(String name) {
+		Preconditions.checkArgument(refDataDAL.getDepartment(name).isSome(), "unknown department name " + name);
+		final Department department = refDataDAL.getDepartment(name).some();
 		final DepartmentDetail item = new DepartmentDetail();
 		item.setId(department.getId());
 		item.setName(department.getName());

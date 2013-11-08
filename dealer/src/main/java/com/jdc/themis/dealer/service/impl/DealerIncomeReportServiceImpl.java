@@ -22,6 +22,7 @@ import com.jdc.themis.dealer.domain.DealerIncomeRevenueFact;
 import com.jdc.themis.dealer.report.DealerExpensePercentageReportCalculator;
 import com.jdc.themis.dealer.report.DealerHRAllocationReportCalculator;
 import com.jdc.themis.dealer.report.DealerReportCalculator;
+import com.jdc.themis.dealer.report.DealerSalesIncomeReportCalculator;
 import com.jdc.themis.dealer.report.DealerSalesReportCalculator;
 import com.jdc.themis.dealer.report.DepartmentReportCalculator;
 import com.jdc.themis.dealer.report.JournalOp;
@@ -32,6 +33,7 @@ import com.jdc.themis.dealer.web.domain.ImportReportDataRequest;
 import com.jdc.themis.dealer.web.domain.QueryDealerExpensePercentageResponse;
 import com.jdc.themis.dealer.web.domain.QueryDealerHRAllocationResponse;
 import com.jdc.themis.dealer.web.domain.QueryDealerIncomeResponse;
+import com.jdc.themis.dealer.web.domain.QueryDealerSalesIncomeResponse;
 import com.jdc.themis.dealer.web.domain.QueryDealerSalesResponse;
 import com.jdc.themis.dealer.web.domain.QueryDepartmentIncomeResponse;
 import com.jdc.themis.dealer.web.domain.ReportDealerDataList;
@@ -138,7 +140,56 @@ public class DealerIncomeReportServiceImpl implements DealerIncomeReportService 
 		}
 		return response;
 	}
+	
+	@Override
+	public QueryDealerSalesIncomeResponse queryDealerSalesIncomeReport(
+			Integer year, Integer monthOfYear) {
+		final DealerSalesIncomeReportCalculator calculator = new DealerSalesIncomeReportCalculator(
+				refDataDAL.getDealers().getItems(), year, monthOfYear);
+		final QueryDealerSalesIncomeResponse response = new QueryDealerSalesIncomeResponse();
+		response.setReportName("SalesIncomeReport");
+		
+		// Get all revenues
+		final DealerIncomeFactsQueryBuilder queryBuilder = 
+				new DealerIncomeFactsQueryBuilder(reportDAL).withYear(year);
+		
+		final Collection<DealerIncomeRevenueFact> revenueFacts = queryBuilder
+								.withDepartmentID(refDataDAL.getDepartment("新车销售部").getId())
+								.withDepartmentID(refDataDAL.getDepartment("二手车部").getId())
+								.withItemCategory("新轿车零售")
+								.withItemCategory("新货车零售")
+								.withItemCategory("附加产品业务")
+								.withItemCategory("二手车零售")
+								.withItemCategory("新车其它收入")
+								.withItemCategory("二手车其它收入")
+								.queryRevenues();
 
+		final ImmutableListMultimap<Integer, DealerIncomeRevenueFact> dealerRevenueFacts = Multimaps
+				.index(revenueFacts, GetDealerIDFromRevenueFunction.INSTANCE);
+		// Get all expenses
+		final Collection<DealerIncomeExpenseFact> expenseFacts = 
+												queryBuilder.clear() // clear the builder for next query
+															.withDepartmentID(refDataDAL.getDepartment("新车销售部").getId())
+															.withDepartmentID(refDataDAL.getDepartment("二手车部").getId())
+															.withItemCategory("变动费用")
+															.withItemCategory("销售费用")
+															.withItemCategory("人工费用")
+															.withItemCategory("半固定费用")
+															.withItemCategory("固定费用")
+															.queryExpenses();
+
+		final ImmutableListMultimap<Integer, DealerIncomeExpenseFact> dealerExpenseFacts = Multimaps
+				.index(expenseFacts, GetDealerIDFromExpenseFunction.INSTANCE);
+
+		calculator.calcRevenues(dealerRevenueFacts)
+				.calcMargins(dealerRevenueFacts)
+				.calcExpenses(dealerExpenseFacts)
+				.calcOpProfit();
+
+		response.getDetail().add(calculator.getReportDetail());
+		return response;
+	}
+	
 	@Override
 	public QueryDealerExpensePercentageResponse queryOverallExpensePercentageReport(
 			final Integer year, final Integer monthOfYear, final Integer denominator, final Option<String> category, final Option<String> itemName) {

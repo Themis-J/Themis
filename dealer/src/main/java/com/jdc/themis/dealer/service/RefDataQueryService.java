@@ -54,6 +54,10 @@ public interface RefDataQueryService {
 	DepartmentDetail getDepartment(Integer id);
 	
 	@Transactional(readOnly=true)
+	@Cacheable("departmentByName")
+	DepartmentDetail getDepartment(String name);
+	
+	@Transactional(readOnly=true)
 	GetVehicleResponse getVehicles(Option<Integer> categoryID);
 	
 	@Transactional(readOnly=true)

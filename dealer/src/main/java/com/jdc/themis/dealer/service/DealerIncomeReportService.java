@@ -7,6 +7,7 @@ import com.jdc.themis.dealer.web.domain.ImportReportDataRequest;
 import com.jdc.themis.dealer.web.domain.QueryDealerExpensePercentageResponse;
 import com.jdc.themis.dealer.web.domain.QueryDealerHRAllocationResponse;
 import com.jdc.themis.dealer.web.domain.QueryDealerIncomeResponse;
+import com.jdc.themis.dealer.web.domain.QueryDealerSalesIncomeResponse;
 import com.jdc.themis.dealer.web.domain.QueryDealerSalesResponse;
 import com.jdc.themis.dealer.web.domain.QueryDepartmentIncomeResponse;
 
@@ -32,6 +33,10 @@ public interface DealerIncomeReportService {
 	@Transactional(readOnly=true)
 	QueryDealerSalesResponse queryDealerSalesReport(
 			Integer year, Option<Integer> monthOfYear, Option<Integer> departmentID, Option<Integer> denominator);
+	
+	@Transactional(readOnly=true)
+	QueryDealerSalesIncomeResponse queryDealerSalesIncomeReport(
+			Integer year, Integer monthOfYear);
 	
 	@Transactional(readOnly=true)
 	QueryDealerHRAllocationResponse queryDealerHRAllocationReport(

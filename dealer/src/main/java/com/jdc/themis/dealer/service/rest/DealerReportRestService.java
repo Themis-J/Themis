@@ -161,4 +161,24 @@ public class DealerReportRestService {
 						Option.fromNull(departmentID), 
 						Option.fromNull(denominator))).build();
 	}
+	
+	/**
+	 * Query sales income report.
+	 * 
+	 * @param year
+	 * @param dealer id
+	 * @return
+	 */
+	@GET
+	@Path("/query/salesIncomeReport")
+	@Produces({ "application/json", "application/xml" })
+	@RestServiceErrorHandler
+	public Response queryDealerSalesIncomeReport(
+			@QueryParam("year") Integer year, 
+			@QueryParam("monthOfYear") Integer monthOfYear) {
+		return Response.ok(
+				dealerIncomeReportService.queryDealerSalesIncomeReport(
+						year, 
+						monthOfYear)).build();
+	}
 }

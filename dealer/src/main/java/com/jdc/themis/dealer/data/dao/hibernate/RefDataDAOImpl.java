@@ -2,7 +2,6 @@ package com.jdc.themis.dealer.data.dao.hibernate;
 
 import java.util.Collection;
 import java.util.List;
-import java.util.Map;
 
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
@@ -15,7 +14,6 @@ import org.springframework.stereotype.Service;
 import com.google.common.base.Function;
 import com.google.common.collect.ImmutableList;
 import com.google.common.collect.ImmutableListMultimap;
-import com.google.common.collect.Maps;
 import com.google.common.collect.Multimaps;
 import com.jdc.themis.dealer.data.dao.RefDataDAO;
 import com.jdc.themis.dealer.domain.AccountReceivableDurationItem;
@@ -113,7 +111,7 @@ public class RefDataDAOImpl implements RefDataDAO {
 			session.enableFilter(Vehicle.FILTER).setParameter("categoryID", categoryID.some());
 		}
 		@SuppressWarnings("unchecked")
-		final List<Vehicle> list = session.createCriteria(Vehicle.class).list();
+		final List<Vehicle> list = session.createCriteria(Vehicle.class).setCacheable(true).list();
 		if ( categoryID.isSome() ) {
 			session.disableFilter(Vehicle.FILTER);
 		}
@@ -185,15 +183,22 @@ public class RefDataDAOImpl implements RefDataDAO {
 		return ImmutableList.copyOf(list);
 	}
 
-	private enum GetEnumTypeIDFunction implements Function<EnumValue, Integer> {
-		INSTANCE;
+	private Option<EnumType> getEnumType(String name) {
+		final Session session = sessionFactory.getCurrentSession();
+		@SuppressWarnings("unchecked")
+		final List<EnumType> enumTypes = session.createCriteria(EnumType.class)
+														.add(Restrictions.eq("name", name)).list();
+		return Option.<EnumType> iif(!enumTypes.isEmpty(),
+				new P1<EnumType>() {
 
-		@Override
-		public Integer apply(EnumValue value) {
-			return value.getTypeID();
-		}
+					@Override
+					public EnumType _1() {
+						return enumTypes.get(0);
+					}
+
+				});
 	}
-
+	
 	@Override
 	public List<EnumValue> getEnumValues() {
 		final Session session = sessionFactory.getCurrentSession();
@@ -203,45 +208,48 @@ public class RefDataDAOImpl implements RefDataDAO {
 		return ImmutableList.copyOf(list);
 	}
 
-	private enum GetEnumTypeNameFunction implements Function<EnumType, String> {
-		INSTANCE;
-
-		@Override
-		public String apply(EnumType type) {
-			return type.getName();
-		}
-	}
-
 	@Override
 	@Performance
 	public Option<EnumValue> getEnumValue(String enumType, Integer enumValue) {
-		final Map<String, EnumType> enumTypes = Maps.uniqueIndex(
-				getEnumTypes(), GetEnumTypeNameFunction.INSTANCE);
-		final EnumType type = enumTypes.get(enumType);
-		final ImmutableListMultimap<Integer, EnumValue> values = Multimaps
-				.index(getEnumValues(), GetEnumTypeIDFunction.INSTANCE);
-		for (final EnumValue ev : values.asMap().get(type.getId())) {
-			if (ev.getValue().equals(enumValue)) {
-				return Option.<EnumValue>some(ev);
+		final EnumType type = getEnumType(enumType).some();
+		final Session session = sessionFactory.getCurrentSession();
+		@SuppressWarnings("unchecked")
+		final List<EnumValue> enumValues = session.createCriteria(EnumValue.class)
+				.add(Restrictions.eq("typeID", type.getId()))
+				.add(Restrictions.eq("value", enumValue))
+				.setCacheable(true)
+				.list();
+		return Option.<EnumValue> iif(!enumValues.isEmpty(),
+			new P1<EnumValue>() {
+			
+			@Override
+			public EnumValue _1() {
+				return enumValues.get(0);
 			}
-		}
-		return Option.<EnumValue>none();
+		
+		});
 	}
 
 	@Override
 	@Performance
 	public Option<EnumValue> getEnumValue(String enumType, String enumValue) {
-		final Map<String, EnumType> enumTypes = Maps.uniqueIndex(
-				getEnumTypes(), GetEnumTypeNameFunction.INSTANCE);
-		final EnumType type = enumTypes.get(enumType);
-		final ImmutableListMultimap<Integer, EnumValue> values = Multimaps
-				.index(getEnumValues(), GetEnumTypeIDFunction.INSTANCE);
-		for (final EnumValue ev : values.asMap().get(type.getId())) {
-			if (ev.getName().equals(enumValue)) {
-				return Option.<EnumValue>some(ev);
+		final EnumType type = getEnumType(enumType).some();
+		final Session session = sessionFactory.getCurrentSession();
+		@SuppressWarnings("unchecked")
+		final List<EnumValue> enumValues = session.createCriteria(EnumValue.class)
+				.add(Restrictions.eq("typeID", type.getId()))
+				.add(Restrictions.eq("name", enumValue))
+				.setCacheable(true)
+				.list();
+		return Option.<EnumValue> iif(!enumValues.isEmpty(),
+			new P1<EnumValue>() {
+			
+			@Override
+			public EnumValue _1() {
+				return enumValues.get(0);
 			}
-		}
-		return Option.<EnumValue>none();
+		
+		});
 	}
 
 	@Override
@@ -304,38 +312,19 @@ public class RefDataDAOImpl implements RefDataDAO {
 				EmployeeFeeSummaryItem.class).list();
 		return ImmutableList.copyOf(list);
 	}
-	private enum GetVehicleIDFunction implements Function<Vehicle, Integer> {
-	    INSTANCE;
 
-	    @Override
-	    public Integer apply(Vehicle item) {
-	        return item.getId();
-	    }
-	}
 	@Override
 	public Option<Vehicle> getVehicle(Integer id) {
-		final Map<Integer, Vehicle> map = Maps.uniqueIndex(getVehicles(Option.<Integer>none()), GetVehicleIDFunction.INSTANCE);
-		if ( !map.containsKey(id) ) {
-			return Option.<Vehicle>none();
-		}
-		return Option.<Vehicle>some(map.get(id));
-	}
-	private enum GetSalesServiceIDFunction implements Function<SalesServiceJournalItem, Integer> {
-	    INSTANCE;
-
-	    @Override
-	    public Integer apply(SalesServiceJournalItem item) {
-	        return item.getId();
-	    }
+		final Session session = sessionFactory.getCurrentSession();
+		final Vehicle result = (Vehicle) session.get(Vehicle.class, id);
+		return Option.<Vehicle>fromNull(result);
 	}
 	
 	@Override
 	public Option<SalesServiceJournalItem> getSalesServiceJournalItem(Integer id) {
-		final Map<Integer, SalesServiceJournalItem> map = Maps.uniqueIndex(getSalesServiceJournalItems(Option.<Integer>none()), GetSalesServiceIDFunction.INSTANCE);
-		if ( !map.containsKey(id) ) {
-			return Option.<SalesServiceJournalItem>none();
-		}
-		return Option.<SalesServiceJournalItem>some(map.get(id));
+		final Session session = sessionFactory.getCurrentSession();
+		final SalesServiceJournalItem result = (SalesServiceJournalItem) session.get(SalesServiceJournalItem.class, id);
+		return Option.<SalesServiceJournalItem>fromNull(result);
 	}
 	
 	@Override
@@ -358,22 +347,11 @@ public class RefDataDAOImpl implements RefDataDAO {
 		});
 	}
 
-	private enum GetCategoryIDFunction implements Function<SalesServiceJournalCategory, Integer> {
-	    INSTANCE;
-
-	    @Override
-	    public Integer apply(SalesServiceJournalCategory item) {
-	        return item.getId();
-	    }
-	}
-	
 	@Override
 	public Option<SalesServiceJournalCategory> getSalesServiceJournalCategory(final Integer id) {
-		final Map<Integer, SalesServiceJournalCategory> map = Maps.uniqueIndex(getSalesServiceJournalCategorys(), GetCategoryIDFunction.INSTANCE);
-		if ( !map.containsKey(id) ) {
-			return Option.<SalesServiceJournalCategory>none();
-		}
-		return Option.<SalesServiceJournalCategory>some(map.get(id));
+		final Session session = sessionFactory.getCurrentSession();
+		final SalesServiceJournalCategory category = (SalesServiceJournalCategory) session.get(SalesServiceJournalCategory.class, id);
+		return Option.<SalesServiceJournalCategory>fromNull(category);
 	}
 	
 	@Override
@@ -395,17 +373,10 @@ public class RefDataDAOImpl implements RefDataDAO {
 		});
 	}
 
-	private enum GetDealerIDFunction implements Function<Dealer, Integer> {
-	    INSTANCE;
-
-	    @Override
-	    public Integer apply(Dealer item) {
-	        return item.getId();
-	    }
-	}
 	@Override
 	public Option<Dealer> getDealer(final Integer dealerID) {
-		final Dealer dealer = Maps.uniqueIndex(getDealers(), GetDealerIDFunction.INSTANCE).get(dealerID);
+		final Session session = sessionFactory.getCurrentSession();
+		final Dealer dealer = (Dealer) session.get(Dealer.class, dealerID);
 		return Option.<Dealer>fromNull(dealer);
 	}
 
@@ -418,88 +389,63 @@ public class RefDataDAOImpl implements RefDataDAO {
 		return ImmutableList.copyOf(list);
 	}
 
-	private enum GetDepartmentIDFunction implements Function<Department, Integer> {
-	    INSTANCE;
-
-	    @Override
-	    public Integer apply(Department item) {
-	        return item.getId();
-	    }
-	}
 	@Override
 	public Option<Department> getDepartment(Integer departmentID) {
-		final Department department = Maps.uniqueIndex(getDepartments(), GetDepartmentIDFunction.INSTANCE).get(departmentID);
+		final Session session = sessionFactory.getCurrentSession();
+		final Department department = (Department) session.get(Department.class, departmentID);
 		return Option.<Department>fromNull(department);
 	}
+	
+	@Override
+	public Option<Department> getDepartment(String name) {
+		final Session session = sessionFactory.getCurrentSession();
+		@SuppressWarnings("unchecked")
+		final List<Department> departments = session.createCriteria(Department.class)
+														.add(Restrictions.eq("name", name)).list();
+		return Option.<Department> iif(!departments.isEmpty(),
+				new P1<Department>() {
 
-	private enum GetJobPositionIDFunction implements Function<JobPosition, Integer> {
-	    INSTANCE;
+					@Override
+					public Department _1() {
+						return departments.get(0);
+					}
 
-	    @Override
-	    public Integer apply(JobPosition item) {
-	        return item.getId();
-	    }
+				});
 	}
+
 	@Override
 	public Option<JobPosition> getJobPosition(Integer positionID) {
-		final Map<Integer, JobPosition> map = Maps.uniqueIndex(getJobPositions(), GetJobPositionIDFunction.INSTANCE);
-		return Option.<JobPosition>iif(map.containsKey(positionID), map.get(positionID));
+		final Session session = sessionFactory.getCurrentSession();
+		final JobPosition position = (JobPosition) session.get(JobPosition.class, positionID);
+		return Option.<JobPosition>fromNull(position);
 	}
 
-	private enum GetAccountReceivableDurationItemIDFunction implements Function<AccountReceivableDurationItem, Integer> {
-	    INSTANCE;
-
-	    @Override
-	    public Integer apply(AccountReceivableDurationItem item) {
-	        return item.getId();
-	    }
-	}
 	@Override
 	public Option<AccountReceivableDurationItem> getAccountReceivableDurationItem(Integer itemID) {
-		final Map<Integer, AccountReceivableDurationItem> map = 
-				Maps.uniqueIndex(getAccountReceivableDurationItems(), GetAccountReceivableDurationItemIDFunction.INSTANCE);
-		return Option.<AccountReceivableDurationItem>iif(map.containsKey(itemID), map.get(itemID));
+		final Session session = sessionFactory.getCurrentSession();
+		final AccountReceivableDurationItem item = (AccountReceivableDurationItem) session.get(AccountReceivableDurationItem.class, itemID);
+		return Option.<AccountReceivableDurationItem>fromNull(item);
 	}
 
-	private enum GetDurationIDFunction implements Function<Duration, Integer> {
-	    INSTANCE;
-
-	    @Override
-	    public Integer apply(Duration item) {
-	        return item.getId();
-	    }
-	}
 	@Override
 	public Option<Duration> getDuration(Integer durationID) {
-		final Map<Integer, Duration> map = Maps.uniqueIndex(getDurations(), GetDurationIDFunction.INSTANCE);
-		return Option.<Duration>iif(map.containsKey(durationID), map.get(durationID));
+		final Session session = sessionFactory.getCurrentSession();
+		final Duration item = (Duration) session.get(Duration.class, durationID);
+		return Option.<Duration>fromNull(item);
 	}
-	private enum GetEmployeeFeeItemIDFunction implements Function<EmployeeFeeItem, Integer> {
-	    INSTANCE;
 
-	    @Override
-	    public Integer apply(EmployeeFeeItem item) {
-	        return item.getId();
-	    }
-	}
 	@Override
 	public Option<EmployeeFeeItem> getEmployeeFeeItem(Integer itemID) {
-		final Map<Integer, EmployeeFeeItem> map = Maps.uniqueIndex(getEmployeeFeeItems(), GetEmployeeFeeItemIDFunction.INSTANCE);
-		return Option.<EmployeeFeeItem>iif(map.containsKey(itemID), map.get(itemID));
+		final Session session = sessionFactory.getCurrentSession();
+		final EmployeeFeeItem item = (EmployeeFeeItem) session.get(EmployeeFeeItem.class, itemID);
+		return Option.<EmployeeFeeItem>fromNull(item);
 	}
-	private enum GetEmployeeFeeSummaryItemIDFunction implements Function<EmployeeFeeSummaryItem, Integer> {
-	    INSTANCE;
 
-	    @Override
-	    public Integer apply(EmployeeFeeSummaryItem item) {
-	        return item.getId();
-	    }
-	}
 	@Override
 	public Option<EmployeeFeeSummaryItem> getEmployeeFeeSummaryItem(Integer itemID) {
-		final Map<Integer, EmployeeFeeSummaryItem> map = 
-				Maps.uniqueIndex(getEmployeeFeeSummaryItems(), GetEmployeeFeeSummaryItemIDFunction.INSTANCE);
-		return Option.<EmployeeFeeSummaryItem>iif(map.containsKey(itemID), map.get(itemID));
+		final Session session = sessionFactory.getCurrentSession();
+		final EmployeeFeeSummaryItem item = (EmployeeFeeSummaryItem) session.get(EmployeeFeeSummaryItem.class, itemID);
+		return Option.<EmployeeFeeSummaryItem>fromNull(item);
 	}
 
 	@Override
@@ -511,45 +457,25 @@ public class RefDataDAOImpl implements RefDataDAO {
 		return ImmutableList.copyOf(list);
 	}
 
-	private enum GetInventoryDurationItemIDFunction implements Function<InventoryDurationItem, Integer> {
-	    INSTANCE;
-
-	    @Override
-	    public Integer apply(InventoryDurationItem item) {
-	        return item.getId();
-	    }
-	}
 	@Override
 	public Option<InventoryDurationItem> getInventoryDurationItem(Integer itemID) {
-		final Map<Integer, InventoryDurationItem> map = Maps.uniqueIndex(getInventoryDurationItems(), GetInventoryDurationItemIDFunction.INSTANCE);
-		return Option.<InventoryDurationItem>iif(map.containsKey(itemID), map.get(itemID));
+		final Session session = sessionFactory.getCurrentSession();
+		final InventoryDurationItem item = (InventoryDurationItem) session.get(InventoryDurationItem.class, itemID);
+		return Option.<InventoryDurationItem>fromNull(item);
 	}
 
-	private enum GetGeneralJournalItemIDFunction implements Function<GeneralJournalItem, Integer> {
-	    INSTANCE;
-
-	    @Override
-	    public Integer apply(GeneralJournalItem item) {
-	        return item.getId();
-	    }
-	}
 	@Override
 	public Option<GeneralJournalItem> getGeneralJournalItem(Integer itemID) {
-		final Map<Integer, GeneralJournalItem> map = Maps.uniqueIndex(getGeneralJournalItems(Option.<Integer>none()), GetGeneralJournalItemIDFunction.INSTANCE);
-		return Option.<GeneralJournalItem>iif(map.containsKey(itemID), map.get(itemID));
+		final Session session = sessionFactory.getCurrentSession();
+		final GeneralJournalItem result = (GeneralJournalItem) session.get(GeneralJournalItem.class, itemID);
+		return Option.<GeneralJournalItem>fromNull(result);
 	}
-	private enum GetGeneralJournalCategoryIDFunction implements Function<GeneralJournalCategory, Integer> {
-	    INSTANCE;
-
-	    @Override
-	    public Integer apply(GeneralJournalCategory item) {
-	        return item.getId();
-	    }
-	}
+	
 	@Override
 	public Option<GeneralJournalCategory> getGeneralJournalCategory(Integer itemID) {
-		final Map<Integer, GeneralJournalCategory> map = Maps.uniqueIndex(getGeneralJournalCategorys(), GetGeneralJournalCategoryIDFunction.INSTANCE);
-		return Option.<GeneralJournalCategory>iif(map.containsKey(itemID), map.get(itemID));
+		final Session session = sessionFactory.getCurrentSession();
+		final GeneralJournalCategory result = (GeneralJournalCategory) session.get(GeneralJournalCategory.class, itemID);
+		return Option.<GeneralJournalCategory>fromNull(result);
 	}
 
 	@Override
@@ -560,18 +486,12 @@ public class RefDataDAOImpl implements RefDataDAO {
 				GeneralJournalCategory.class).list();
 		return ImmutableList.copyOf(list);
 	}
-	private enum GetTaxJournalItemIDFunction implements Function<TaxJournalItem, Integer> {
-	    INSTANCE;
 
-	    @Override
-	    public Integer apply(TaxJournalItem item) {
-	        return item.getId();
-	    }
-	}
 	@Override
 	public Option<TaxJournalItem> getTaxJournalItem(Integer itemID) {
-		final Map<Integer, TaxJournalItem> map = Maps.uniqueIndex(getTaxJournalItems(), GetTaxJournalItemIDFunction.INSTANCE);
-		return Option.<TaxJournalItem>iif(map.containsKey(itemID), map.get(itemID));
+		final Session session = sessionFactory.getCurrentSession();
+		final TaxJournalItem item = (TaxJournalItem) session.get(TaxJournalItem.class, itemID);
+		return Option.<TaxJournalItem>fromNull(item);
 	}
 
 }

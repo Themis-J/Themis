@@ -61,6 +61,8 @@ public interface RefDataDAO {
 	
 	Option<Department> getDepartment(Integer departmentID);
 	
+	Option<Department> getDepartment(String name);
+	
 	List<TaxJournalItem> getTaxJournalItems();
 
 	List<SalesServiceJournalItem> getSalesServiceJournalItems(Option<Integer> categoryID);

@@ -97,6 +97,8 @@ angular.module('admin.controllers', [])
 		$scope.selectedToMonthOption = $scope.monthOptions[ReportService.getMonthOfYear()-1];
 		
         $scope.importData = function(){
+        	$scope.msg = "正在导入，请耐心等候......";
+        	$scope.msgClass = "text-success";
             var data = {};
             if ( $scope.selectedFromMonthOption.id < 10 ) {
             	data.fromDate = $scope.selectedFromYearOption.id + '-0' + $scope.selectedFromMonthOption.id + '-01';
