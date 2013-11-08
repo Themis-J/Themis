@@ -82,9 +82,9 @@
                 </div>
 
                 <div>
-                    <label><b>维修部 - 当月数据</b></label>
+                    <label ng-click="hideWeixiudangyue=!hideWeixiudangyue"><b>维修部 - 当月数据</b><i ng-show="hideWeixiudangyue" class="icon-double-angle-down"></i><i ng-show="!hideWeixiudangyue" class="icon-double-angle-right"></i></label>
 
-                    <div class="well">
+                    <div class="well" ng-show="!hideWeixiudangyue">
                         <form name="form" ng-repeat="employeeSummary in employeeFeeSummary | filter: {dept: 4}">
                             <fieldset>
                                 <table style="font-size: 12px">

@@ -58,7 +58,7 @@
                         <label class="hasTooltip" ng-click="hide_12_$index = !hide_12_$index"><b>{{accountReceivable.name}}</b><i ng-show="hide_12_$index" class="icon-double-angle-down"></i><i ng-show="!hide_12_$index" class="icon-double-angle-right"></i></label>
                         <div style="display: none;" bind-html-unsafe="accountReceivable.tooltip" ></div>
 
-                        <div class="well" ng-show="hide_12_$index">
+                        <div class="well" ng-show="!hide_12_$index">
                             <table style="font-size: 12px">
                                 <tr ng-repeat="accountInRange in accountReceivable.data | filter:{durationDesc: '天'}">
                                     <td width="35%">

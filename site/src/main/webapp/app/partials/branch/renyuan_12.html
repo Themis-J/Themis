@@ -14,9 +14,9 @@
         <div class="span4">
             <div style="margin-top:20px">
                 <div>
-                    <label ng-click="hideBumenrenyuan = !hideBumenrenyuan"><b>部门人员</b><i ng-show="hideBumenrenyuan" class="icon-double-angle-down"></i><i ng-show="!hideBumenrenyuan" class="icon-double-angle-right"></i></label>
+                    <label><b>部门人员</b></label>
 
-                    <div class="well" ng-show="!hideBumenrenyuan">
+                    <div class="well">
                         <div  style="padding-bottom: 10px">
                             <select ng-model="depart" ng-options="d.name for d in deptMap">
                             </select>
@@ -56,9 +56,9 @@
         <div class="span4">
             <div style="margin-top:20px">
                 <div>
-                    <label ng-click="hideBumenheji = !hideBumenheji"><b>部门合计</b><i ng-show="hideBumenheji" class="icon-double-angle-down"></i><i ng-show="!hideBumenheji" class="icon-double-angle-right"></i></label>
+                    <label><b>部门合计</b></label>
 
-                    <div class="well" ng-show="hideBumenheji">
+                    <div class="well">
                         <form name="form" ng-repeat="oneSummary in itemSummary">
                             <fieldset>
                                 <table style="font-size: 12px;width: 100%">
@@ -82,9 +82,9 @@
         <div class="span4">
             <div style="margin-top:20px">
                 <div>
-                    <label ng-click="hideGangwei = !hideGangwei"><b>岗位合计</b><i ng-show="hideGangwei" class="icon-double-angle-down"></i><i ng-show="!hideGangwei" class="icon-double-angle-right"></i></label>
+                    <label><b>岗位合计</b></label>
 
-                    <div class="well" ng-show="!hideGangwei">
+                    <div class="well">
                         <form name="form" ng-repeat="oneSummary in deptSummary">
                             <fieldset>
                                 <table style="font-size: 12px;width: 100%">
