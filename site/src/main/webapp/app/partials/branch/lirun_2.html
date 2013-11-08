@@ -14,9 +14,9 @@
 <div class="span6">
     <div style="margin-top:20px">
         <div>
-            <label><b>二手车零售</b></label>
+            <label ng-click="hideErshou = !hideErshou"><b>二手车零售</b><i ng-show="hideErshou" class="icon-double-angle-down"></i><i ng-show="!hideErshou" class="icon-double-angle-right"></i></label>
 
-            <div class="well">
+            <div class="well" ng-show="!hideErshou">
                 <form name="form" ng-repeat="generalSale in generalSales  | filter: {categoryID: 4}">
                     <div class="text-warning" style="padding-left: 60%"
                          ng-show="form.amount.$dirty && form.amount.$invalid">
@@ -63,9 +63,9 @@
     <div style="margin-top:20px">
         <div>
             <div style="margin-top:20px">
-                <label><b>二手车其它收入 ( 业务 | 数量 | 收入 | 毛利润)</b></label>
+                <label ng-click="hideErshouqita = !hideErshouqita"><b>二手车其它收入 ( 业务 | 数量 | 收入 | 毛利润)</b><i ng-show="hideErshouqita" class="icon-double-angle-down"></i><i ng-show="!hideErshouqita" class="icon-double-angle-right"></i></label>
 
-                <div class="well">
+                <div class="well" ng-show="!hideErshouqita">
                     <form name="form" ng-repeat="sale in sales | filter: {categoryID: 9}">
                         <div style="padding-left: 35%">
                             <div class="text-warning"
@@ -154,9 +154,9 @@
 
         <div>
             <div style="margin-top:20px">
-                <label><b>附加产品业务 ( 业务 | 数量 | 收入 | 毛利润)</b></label>
+                <label ng-click="hideFujia = !hideFujia"><b>附加产品业务 ( 业务 | 数量 | 收入 | 毛利润)</b><i ng-show="hideFujia" class="icon-double-angle-down"></i><i ng-show="!hideFujia" class="icon-double-angle-right"></i></label>
 
-                <div class="well">
+                <div class="well" ng-show="!hideFujia">
                     <form name="form" ng-repeat="sale in sales | filter: {categoryID: 3}">
                         <div style="padding-left: 35%">
                             <div class="text-warning"

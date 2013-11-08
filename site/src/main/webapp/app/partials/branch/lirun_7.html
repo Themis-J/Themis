@@ -16,9 +16,9 @@
             <div style="margin-top:20px">
                 <div>
                     <div style="margin-top:20px">
-                        <label><b>返利／津贴</b></label>
+                        <label ng-click="hideJintie = !hideJintie"><b>返利／津贴</b><i ng-show="hideJintie" class="icon-double-angle-down"></i><i ng-show="!hideJintie   " class="icon-double-angle-right"></i></label>
 
-                        <div class="well">
+                        <div class="well" ng-show="!hideJintie">
                             <form name="form" ng-repeat="generalSale in generalSales | filter: {categoryID: 8}">
                                 <div class="text-warning"    style="padding-left: 60%"
                                      ng-show="form.amount.$dirty && form.amount.$invalid">

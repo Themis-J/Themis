@@ -61,9 +61,9 @@
 
         <div>
             <div style="margin-top:20px">
-                <label><b>人工费用</b></label>
+                <label ng-click="hideRengong = !hideRengong"><b>人工费用</b><i ng-show="hideRengong" class="icon-double-angle-down"></i><i ng-show="!hideRengong" class="icon-double-angle-right"></i></label>
 
-                <div class="well">
+                <div class="well" ng-show="!hideRengong" >
                     <form name="form" ng-repeat="generalSale in generalSales | filter: {categoryID: 3}">
                         <div class="text-warning"       style="padding-left: 60%"
                              ng-show="form.amount.$dirty && form.amount.$invalid">
@@ -107,9 +107,9 @@
 
         <div>
             <div style="margin-top:20px">
-                <label><b>固定费用</b></label>
+                <label ng-click="hideGuding = !hideGuding"><b>固定费用</b><i ng-show="hideGuding" class="icon-double-angle-down"></i><i ng-show="!hideGuding" class="icon-double-angle-right"></i></label>
 
-                <div class="well">
+                <div class="well" ng-show="!hideGuding">
                     <form name="form" ng-repeat="generalSale in generalSales | filter: {categoryID: 5}">
                         <div class="text-warning"  style="padding-left: 60%"
                              ng-show="form.amount.$dirty && form.amount.$invalid">
@@ -157,9 +157,9 @@
     <div style="margin-top:20px">
         <div>
             <div style="margin-top:20px">
-                <label><b>销售费用</b></label>
+                <label ng-click="hideXiaoshou = !hideXiaoshou"><b>销售费用</b><i ng-show="hideXiaoshou" class="icon-double-angle-down"></i><i ng-show="!hideXiaoshou" class="icon-double-angle-right"></i></label>
 
-                <div class="well">
+                <div class="well" ng-show="!hideXiaoshou">
                     <form name="form" ng-repeat="generalSale in generalSales | filter: {categoryID: 2}">
                         <div class="text-warning"   style="padding-left: 60%"
                              ng-show="form.amount.$dirty && form.amount.$invalid">
@@ -203,9 +203,9 @@
 
         <div>
             <div style="margin-top:20px">
-                <label><b>半固定费用</b></label>
+                <label ng-click="hideBanguding = !hideBanguding"><b>半固定费用</b><i ng-show="hideBanguding" class="icon-double-angle-down"></i><i ng-show="!hideBanguding" class="icon-double-angle-right"></i>s</label>
 
-                <div class="well">
+                <div class="well" ng-show="!hideBanguding">
                     <form name="form" ng-repeat="generalSale in generalSales | filter: {categoryID: 4}">
                         <div class="text-warning"     style="padding-left: 60%"
                              ng-show="form.amount.$dirty && form.amount.$invalid">

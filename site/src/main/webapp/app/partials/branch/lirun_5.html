@@ -16,9 +16,9 @@
             <div style="margin-top:20px">
                 <div>
                     <div style="margin-top:20px">
-                        <label><b>配件收入 ( 业务 | 数量 | 收入 | 毛利润)</b></label>
+                        <label ng-click="hidePeijian = !hidePeijian"><b>配件收入 ( 业务 | 数量 | 收入 | 毛利润)</b><i ng-show="hidePeijian" class="icon-double-angle-down"></i><i ng-show="!hidePeijian" class="icon-double-angle-right"></i></label>
 
-                        <div class="well">
+                        <div class="well" ng-show="!hidePeijian">
                             <form name="form" ng-repeat="sale in sales | filter: {categoryID: 6}">
                                 <div style="padding-left: 35%">
                                     <div class="text-warning"

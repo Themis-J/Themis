@@ -14,9 +14,9 @@
 <div class="span6">
     <div style="margin-top:20px">
         <div>
-            <label><b>新轿车零售(车型|数量|收入|毛利润)</b></label>
+            <label ng-click="hideXinjiaoche = !hideXinjiaoche"><b>新轿车零售(车型|数量|收入|毛利润)</b><i ng-show="hideXinjiaoche" class="icon-double-angle-down"></i><i ng-show="!hideXinjiaoche" class="icon-double-angle-right"></i></label>
 
-            <div class="well">
+            <div class="well" ng-show="!hideXinjiaoche">
                 <form name="form" ng-repeat="vehivleRevenue in vehicleRevenues | filter: {categoryID: 1}">
                     <div style="padding-left: 35%">
                     <div class="text-warning"
@@ -98,9 +98,9 @@
 
         <div>
             <div style="margin-top:20px">
-                <label><b>附加产品业务 ( 业务 | 数量 | 收入 | 毛利润)</b></label>
+                <label ng-click="hideFujia = !hideFujia"><b>附加产品业务 ( 业务 | 数量 | 收入 | 毛利润)</b><i ng-show="hideFujia" class="icon-double-angle-down"></i><i ng-show="!hideFujia" class="icon-double-angle-right"></i></label>
 
-                <div class="well">
+                <div class="well" ng-show="!hideFujia">
                     <form name="form" ng-repeat="sale in sales | filter: {categoryID: 3}">
                         <div style="padding-left: 35%">
                             <div class="text-warning"
@@ -193,9 +193,9 @@
 <div class="span6 ">
     <div style="margin-top:20px">
         <div>
-            <label><b>新货车零售(车型|数量|收入|毛利润)</b></label>
+            <label ng-click="hideXinhuoche = !hideXinhuoche"><b>新货车零售(车型|数量|收入|毛利润)</b><i ng-show="hideXinhuoche" class="icon-double-angle-down"></i><i ng-show="!hideXinhuoche" class="icon-double-angle-right"></i></label>
 
-            <div class="well">
+            <div class="well" ng-show="!hideXinhuoche">
                 <form name="form" novalidate ng-repeat="vehivleRevenue in vehicleRevenues | filter: {categoryID: 2}">
                     <div style="padding-left: 35%">
                         <div class="text-warning"
@@ -277,9 +277,9 @@
 
         <div>
             <div style="margin-top:20px">
-                <label><b>其他收入 ( 业务 | 数量 | 收入 | 毛利润)</b></label>
+                <label ng-click="hideQita = !hideQita"><b>其他收入 ( 业务 | 数量 | 收入 | 毛利润)</b><i ng-show="hideQita" class="icon-double-angle-down"></i><i ng-show="!hideQita" class="icon-double-angle-right"></i></label>
 
-                <div class="well">
+                <div class="well" ng-show="!hideQita">
                     <form name="form" novalidate ng-repeat="sale in sales  | filter: {categoryID: 7}">
                         <div style="padding-left: 35%">
                             <div class="text-warning"

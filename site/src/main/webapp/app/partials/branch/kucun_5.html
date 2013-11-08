@@ -16,10 +16,10 @@
             <div style="margin-top:20px">
                 <div ng-repeat="accountReceivable in accountReceivables | filter: {id:5}">
                     <div>
-                        <label class="hasTooltip"><b>{{accountReceivable.name}}</b></label>
+                        <label class="hasTooltip" ng-click="hide_5_$index = !hide_5_$index"><b>{{accountReceivable.name}}</b><i ng-show="hide_5_$index" class="icon-double-angle-down"></i><i ng-show="!hide_5_$index" class="icon-double-angle-right"></i></label>
                         <div style="display: none;" bind-html-unsafe="accountReceivable.tooltip" ></div>
 
-                        <div class="well">
+                        <div class="well" ng-show="!hide_5_$index">
                             <table style="font-size: 12px">
                                 <tr ng-repeat="accountInRange in accountReceivable.data | filter:{durationDesc: '天'}">
                                     <td width="35%">
@@ -41,10 +41,10 @@
                 </div>
                 <div ng-repeat="accountReceivable in accountReceivables | filter: {id:7}">
                     <div>
-                        <label class="hasTooltip"><b>{{accountReceivable.name}}</b></label>
+                        <label class="hasTooltip" ng-click="hide_7_$index = !hide_7_$index"><b>{{accountReceivable.name}}</b><i ng-show="hide_7_$index" class="icon-double-angle-down"></i><i ng-show="!hide_7_$index" class="icon-double-angle-right"></i></label>
                         <div style="display: none;" bind-html-unsafe="accountReceivable.tooltip" ></div>
 
-                        <div class="well">
+                        <div class="well" ng-show="!hide_7_$index">
                             <table style="font-size: 12px">
                                 <tr ng-repeat="accountInRange in accountReceivable.data | filter:{durationDesc: '天'}">
                                     <td width="35%">
@@ -67,10 +67,10 @@
 
                 <div ng-repeat="accountReceivable in accountReceivables | filter: {id:9}">
                     <div>
-                        <label class="hasTooltip"><b>{{accountReceivable.name}}</b></label>
+                        <label class="hasTooltip" ng-click="hide_9_$index = !hide_9_$index"><b>{{accountReceivable.name}}</b><i ng-show="hide_9_$index" class="icon-double-angle-down"></i><i ng-show="!hide_9_$index" class="icon-double-angle-right"></i></label>
                         <div style="display: none;" bind-html-unsafe="accountReceivable.tooltip" ></div>
 
-                        <div class="well">
+                        <div class="well" ng-show="!hide_9_$index">
                             <table style="font-size: 12px">
                                 <tr ng-repeat="accountInRange in accountReceivable.data | filter:{durationDesc: '天'}">
                                     <td width="35%">
@@ -98,10 +98,10 @@
             <div style="margin-top:20px">
                 <div ng-repeat="accountReceivable in accountReceivables | filter:{id:6}">
                     <div>
-                        <label class="hasTooltip"><b>{{accountReceivable.name}}</b></label>
+                        <label class="hasTooltip" ng-click="hide_6_$index = !hide_6_$index"><b>{{accountReceivable.name}}</b><i ng-show="hide_6_$index" class="icon-double-angle-down"></i><i ng-show="!hide_6_$index" class="icon-double-angle-right"></i></label>
                         <div style="display: none;" bind-html-unsafe="accountReceivable.tooltip" ></div>
 
-                        <div class="well">
+                        <div class="well" ng-show="!hide_6_$index">
                             <table style="font-size: 12px">
                                 <tr ng-repeat="accountInRange in accountReceivable.data | filter:{durationDesc: '天'}">
                                     <td width="35%">
@@ -131,10 +131,10 @@
 
                 <div ng-repeat="accountReceivable in accountReceivables | filter: {id:8}">
                     <div>
-                        <label class="hasTooltip"><b>{{accountReceivable.name}}</b></label>
+                        <label class="hasTooltip" ng-click="hide_8_$index = !hide_8_$index"><b>{{accountReceivable.name}}</b><i ng-show="hide_8_$index" class="icon-double-angle-down"></i><i ng-show="!hide_8_$index" class="icon-double-angle-right"></i></label>
                         <div style="display: none;" bind-html-unsafe="accountReceivable.tooltip" ></div>
 
-                        <div class="well">
+                        <div class="well" ng-show="!hide_8_$index">
                             <table style="font-size: 12px">
                                 <tr ng-repeat="accountInRange in accountReceivable.data | filter:{durationDesc: '天'}">
                                     <td width="35%">

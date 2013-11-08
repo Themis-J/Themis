@@ -14,9 +14,9 @@
         <div class="span6">
             <div style="margin-top:20px">
                 <div ng-class="{true: '', false: 'hide'}[isJinxiangActive]">
-                    <label><b>非经营性损益进项</b></label>
+                    <label ng-click="hideJinxiang = !hideJinxiang"><b>非经营性损益进项</b><i ng-show="hideJinxiang" class="icon-double-angle-down"></i><i ng-show="!hideJinxiang" class="icon-double-angle-right"></i></label>
 
-                    <div class="well">
+                    <div class="well" ng-show="!hideJinxiang">
                         <form name="form" ng-repeat="generalSale in generalSales | filter:{categoryID: 6}">
                             <div class="text-warning"   style="padding-left: 60%"
                                  ng-show="form.amount.$dirty && form.amount.$invalid">
@@ -62,9 +62,9 @@
         <div class="span6">
             <div style="margin-top:20px">
                 <div ng-class="{true: '', false: 'hide'}[isXiaoxiangActive]">
-                    <label><b>非经营性损益削项</b></label>
+                    <label ng-click="hideXiaoxiang = !hideXiaoxiang"><b>非经营性损益削项</b><i ng-show="hideXiaoxiang" class="icon-double-angle-down"></i><i ng-show="!hideXiaoxiang" class="icon-double-angle-right"></i></label>
 
-                    <div class="well">
+                    <div class="well" ng-show="!hideXiaoxiang">
                         <form name="form" ng-repeat="generalSale in generalSales | filter:{categoryID: 7}">
                             <div class="text-warning"     style="padding-left: 60%"
                                  ng-show="form.amount.$dirty && form.amount.$invalid">

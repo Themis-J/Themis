@@ -16,9 +16,9 @@
             <div style="margin-top:20px">
                 <div>
                     <div style="margin-top:20px">
-                        <label><b>维修收入 ( 业务 | 数量 | 收入 | 毛利润)</b></label>
+                        <label ng-click="hideWeixiu = !hideWeixiu"><b>维修收入 ( 业务 | 数量 | 收入 | 毛利润)</b><i ng-show="hideWeixiu" class="icon-double-angle-down"></i><i ng-show="!hideWeixiu" class="icon-double-angle-right"></i></label>
 
-                        <div class="well">
+                        <div class="well" ng-show="!hideWeixiu">
                             <form name="form" ng-repeat="sale in sales | filter: {categoryID: 5}">
                                 <div style="padding-left: 35%">
                                     <div class="text-warning"
@@ -113,9 +113,9 @@
             <div style="margin-top:20px">
                 <div>
                     <div style="margin-top:20px">
-                        <label><b>维修其它收入 ( 业务 | 数量 | 收入 | 毛利润)</b></label>
+                        <label ng-click="hideWeixiuqita = !hideWeixiuqita"><b>维修其它收入 ( 业务 | 数量 | 收入 | 毛利润)</b><i ng-show="hideWeixiuqita" class="icon-double-angle-down"></i><i ng-show="!hideWeixiuqita" class="icon-double-angle-right"></i></label>
 
-                        <div class="well">
+                        <div class="well" ng-show="!hideWeixiuqita">
                             <form name="form" ng-repeat="sale in sales | filter: {categoryID: 10}">
                                 <div style="padding-left: 35%">
                                     <div class="text-warning"
