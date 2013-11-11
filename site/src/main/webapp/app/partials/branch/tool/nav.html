@@ -1,7 +1,7 @@
 <div class="affix" style="font-size: 15px">
-    <ul class="nav nav-tabs nav-stacked">
+    <ul class="nav nav-tabs nav-stacked" style="width: 100px">
         <li>
-            <a href="#" onclick="return false;" ng-click="jumpTo('changePass')" style="width: 100%">
+            <a href="#" onclick="event.preventDefault ? event.preventDefault() : event.returnValue = false;" ng-click="jumpTo('changePass')" style="width: 100%">
                 修改密码 <i class="icon-chevron-right pull-right" style="font-size:12px ;color: gray;padding-top: 6px"></i>
             </a>
         </li>

@@ -87,3 +87,21 @@ form{
     visibility: visible;
 }
 
+form table {
+    table-layout:fixed;
+    width: 100%;
+}
+
+.input_1 {
+    width: 70%;
+}
+
+.input_2 {
+    width: 75%;
+    font-size: 12px;
+}
+
+.input_3 {
+    width: 60%;
+    font-size: 12px;
+}
