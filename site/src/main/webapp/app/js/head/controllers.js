@@ -17,7 +17,7 @@ angular.module('masterApp.controllers', [])
 						{name: '销售部－销量 – 总量', page:'sales/abs'},
 						{name: '销售部－销量', page:'sales/departmentAbs'},
 						{name: '销售部－总销量占百分比', page:'sales/percentage'},
-						{name: '销售部－部门销量占百分比', page:'sales/departmentPercentage'}
+						{name: '销售部－部门销量占百分比', page:'sales/departmentPercentage'},
 						];
         
 		$scope.goto = function(item)
