@@ -3,7 +3,10 @@
 angular.module('masterApp.controllers', [])
 	.controller('headEditCtrl', ['$scope',
 	function($scope) {
-		$scope.items = [{name: '总运营－营业额、毛利、费用、运营利润、税前净利润', page:'overall/abs'}, 
+		$scope.items = [{name: '关键指标总览－本年度税前净利润', page:'key/netProfit'}, 
+						{name: '关键指标总览－本年度总运营利润', page:'key/opProfit'}, 
+						{name: '关键指标总览－月均运营利润占销售金额百分比', page:'key/opProfitPerRevenue'}, 
+						{name: '总运营－营业额、毛利、费用、运营利润、税前净利润', page:'overall/abs'}, 
 						{name: '总运营－销售、毛利占百分比', page:'overall/percentage'},
 						{name: '总运营－费用占百分比', page:'overall/expPercentage'},
 						{name: '总运营－人员分析', page:'overall/hranalysis'},

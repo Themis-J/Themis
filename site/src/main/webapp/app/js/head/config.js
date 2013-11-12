@@ -4,8 +4,8 @@
 angular.module('masterApp.config', []).constant(
 	'config',
 	{
-	    //currentMode: 'local',
-		currentMode: 'remote',
+	    currentMode: 'local',
+		//currentMode: 'remote',
 		service : {
 			url : '/themis', 
 			localUrl : 'reports'
