@@ -20,7 +20,7 @@ public interface DealerIncomeReportService {
 	
 	@Transactional(readOnly=true)
 	QueryDealerIncomeResponse queryOverallIncomeReport(
-			Integer year, Option<Integer> monthOfYear, Option<Integer> departmentID, Option<Integer> denominator);
+			Integer year, Option<Integer> monthOfYear, Option<Integer> departmentID, Option<Integer> denominator, Option<Integer> groupBy);
 	
 	@Transactional(readOnly=true)
 	QueryDealerExpensePercentageResponse queryOverallExpensePercentageReport(

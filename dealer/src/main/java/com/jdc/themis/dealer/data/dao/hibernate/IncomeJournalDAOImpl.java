@@ -710,4 +710,18 @@ public class IncomeJournalDAOImpl implements IncomeJournalDAO {
 		return list;
 	}
 
+	@Override
+	public Collection<AccountReceivableDuration> getAccountReceivableDuration(
+			LocalDate validDate, Instant timestamp) {
+		final Session session = sessionFactory.getCurrentSession();
+		session.enableFilter(AccountReceivableDuration.FILTER_VALIDATE)
+			.setParameter("referenceDate", validDate)
+			.setParameter("referenceTime", timestamp);
+		@SuppressWarnings("unchecked")
+		final List<AccountReceivableDuration> list = session.createCriteria(
+				AccountReceivableDuration.class).list();
+		session.disableFilter(AccountReceivableDuration.FILTER_VALIDATE);
+		return list;
+	}
+
 }

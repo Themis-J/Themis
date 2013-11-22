@@ -70,13 +70,15 @@ public class DealerReportRestService {
 			@QueryParam("year") Integer year, 
 			@QueryParam("monthOfYear") Integer monthOfYear, 
 			@QueryParam("departmentID") Integer departmentID, 
-			@QueryParam("denominator") Integer denominator) {
+			@QueryParam("denominator") Integer denominator, 
+			@QueryParam("groupBy") Integer groupBy) {
 		return Response.ok(
 				dealerIncomeReportService.queryOverallIncomeReport(
 						year, 
 						Option.fromNull(monthOfYear), 
 						Option.fromNull(departmentID),
-						Option.fromNull(denominator))).build();
+						Option.fromNull(denominator),
+						Option.fromNull(groupBy))).build();
 	}
 	
 	@GET

@@ -18,7 +18,8 @@ angular.module('masterApp.services', ['ngResource'])
 		            queryDealerSalesPercentgeReport: {method: 'GET', params: {root: 'report', path: 'query', subpath:'salesReport', subpath2:''}, isArray: false},
 		            queryPositions: {method: 'GET', params: {root:'dealer', path: 'hr', subpath:'allocation', subpath2:'items'}, isArray: false},
 		            queryOverallHRAllocReport: {method: 'GET', params: {root:'report', path: 'query', subpath:'overallHRAllocReport', subpath2:''}, isArray: false},
-		            importData: {method: 'POST', params: {root:'report', path: 'import', subpath:'', subpath2:''}, isArray: false}
+		            importData: {method: 'POST', params: {root:'report', path: 'import', subpath:'', subpath2:''}, isArray: false},
+		            queryOverallIncomeWithGroupByReport: {method: 'GET', params: {root:'report', path: 'query', subpath:'overallIncomeReport', subpath2:''}, isArray: false}
 		        }),
 	        	local: $resource(
 		        	config.service.localUrl + '/:path/:subpath', {}, {
@@ -34,7 +35,8 @@ angular.module('masterApp.services', ['ngResource'])
 		            queryDealerSalesPercentgeReport: {method: 'GET', params: {path: '', subpath:'queryDealerSalesPercentageReport.json'}, isArray: false},
 		            queryPositions: {method: 'GET', params: {path: '', subpath:'positions.json'}, isArray: false},
 		            queryOverallHRAllocReport: {method: 'GET', params: {path: '', subpath:'queryOverallHRAllocReport.json'}, isArray: false},
-		            importData: {method: 'POST', params: {path:'', subpath:'queryOverallHRAllocReport.json'}, isArray: false}
+		            importData: {method: 'POST', params: {path:'', subpath:'queryOverallHRAllocReport.json'}, isArray: false},
+		            queryOverallIncomeWithGroupByReport: {method: 'GET', params: {path: '', subpath:'queryYearlyIncomeWithGroupByReport.json'}, isArray: false}
 		        })
 	        };
 	        if ( mode == 'local' ) {
@@ -159,6 +161,7 @@ angular.module('masterApp.services', ['ngResource'])
 		            $('#prt-container div').remove('.ui-jqgrid-toppager,.ui-jqgrid-titlebar,.ui-jqgrid-pager');
 		            // print the contents of the print container.    
 		            $('#prt-container').printElement({printMode:'popup', pageTitle:pgTitle, overrideElementCSS:[{href:'css/print-container.css',media:'print'}]});
+		            
 		            // remove print container style and div from DOM after printing is done.
 		            $('head style').remove();
 		            $('body #prt-container').remove();

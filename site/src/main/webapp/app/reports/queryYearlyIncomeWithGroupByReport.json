@@ -1,0 +1,4491 @@
+{
+    "reportName": "OverallIncomeReport",
+    "detail": [
+        {
+            "year": 2013,
+            "month": null,
+            "detail": [
+                {
+                    "id": 1,
+                    "name": "重庆长锦",
+                    "code": "CN-01",
+                    "revenue": {
+                        "amount": 51621.84266974224,
+                        "percentage": 0,
+                        "reference": 127176.35957702047
+                    },
+                    "expense": {
+                        "amount": 113051.05651028974,
+                        "percentage": 0,
+                        "reference": 57046.93810355648
+                    },
+                    "margin": {
+                        "amount": 44894.66746682483,
+                        "percentage": 0,
+                        "reference": 64229.85317239741
+                    },
+                    "opProfit": {
+                        "amount": -68156.38904346491,
+                        "percentage": 0,
+                        "reference": 36594.196764896704
+                    },
+                    "netProfit": {
+                        "amount": 0,
+                        "percentage": 0,
+                        "reference": 0
+                    },
+                    "detail": [
+                        {
+                            "id": 0,
+                            "name": "NA",
+                            "revenue": {
+                                "amount": 0,
+                                "percentage": 0,
+                                "reference": 0
+                            },
+                            "expense": {
+                                "amount": 0,
+                                "percentage": 0,
+                                "reference": 0
+                            },
+                            "margin": {
+                                "amount": 0,
+                                "percentage": 0,
+                                "reference": 0
+                            },
+                            "opProfit": {
+                                "amount": 0,
+                                "percentage": 0,
+                                "reference": 0
+                            }
+                        },
+                        {
+                            "id": 1,
+                            "name": "新车销售部",
+                            "revenue": {
+                                "amount": 16629.693569419236,
+                                "percentage": 0,
+                                "reference": 0
+                            },
+                            "expense": {
+                                "amount": 0,
+                                "percentage": 0,
+                                "reference": 0
+                            },
+                            "margin": {
+                                "amount": 23854.543521746327,
+                                "percentage": 0,
+                                "reference": 0
+                            },
+                            "opProfit": {
+                                "amount": 23854.543521746327,
+                                "percentage": 0,
+                                "reference": 0
+                            }
+                        },
+                        {
+                            "id": 2,
+                            "name": "二手车部",
+                            "revenue": {
+                                "amount": 0,
+                                "percentage": 0,
+                                "reference": 0
+                            },
+                            "expense": {
+                                "amount": 30873.929185440964,
+                                "percentage": 0,
+                                "reference": 0
+                            },
+                            "margin": {
+                                "amount": 0,
+                                "percentage": 0,
+                                "reference": 0
+                            },
+                            "opProfit": {
+                                "amount": -30873.929185440964,
+                                "percentage": 0,
+                                "reference": 0
+                            }
+                        },
+                        {
+                            "id": 3,
+                            "name": "租赁事业部",
+                            "revenue": {
+                                "amount": 0,
+                                "percentage": 0,
+                                "reference": 0
+                            },
+                            "expense": {
+                                "amount": 0,
+                                "percentage": 0,
+                                "reference": 0
+                            },
+                            "margin": {
+                                "amount": 0,
+                                "percentage": 0,
+                                "reference": 0
+                            },
+                            "opProfit": {
+                                "amount": 0,
+                                "percentage": 0,
+                                "reference": 0
+                            }
+                        },
+                        {
+                            "id": 4,
+                            "name": "维修部",
+                            "revenue": {
+                                "amount": 11906.376693900362,
+                                "percentage": 0,
+                                "reference": 0
+                            },
+                            "expense": {
+                                "amount": 19043.671769808323,
+                                "percentage": 0,
+                                "reference": 0
+                            },
+                            "margin": {
+                                "amount": 1465.1415036617454,
+                                "percentage": 0,
+                                "reference": 0
+                            },
+                            "opProfit": {
+                                "amount": -17578.530266146576,
+                                "percentage": 0,
+                                "reference": 0
+                            }
+                        },
+                        {
+                            "id": 5,
+                            "name": "备件部",
+                            "revenue": {
+                                "amount": 3795.6332562832595,
+                                "percentage": 0,
+                                "reference": 0
+                            },
+                            "expense": {
+                                "amount": 19934.348677785045,
+                                "percentage": 0,
+                                "reference": 0
+                            },
+                            "margin": {
+                                "amount": 8222.227161572517,
+                                "percentage": 0,
+                                "reference": 0
+                            },
+                            "opProfit": {
+                                "amount": -11712.121516212528,
+                                "percentage": 0,
+                                "reference": 0
+                            }
+                        },
+                        {
+                            "id": 6,
+                            "name": "钣喷部",
+                            "revenue": {
+                                "amount": 0,
+                                "percentage": 0,
+                                "reference": 0
+                            },
+                            "expense": {
+                                "amount": 0,
+                                "percentage": 0,
+                                "reference": 0
+                            },
+                            "margin": {
+                                "amount": 0,
+                                "percentage": 0,
+                                "reference": 0
+                            },
+                            "opProfit": {
+                                "amount": 0,
+                                "percentage": 0,
+                                "reference": 0
+                            }
+                        },
+                        {
+                            "id": 7,
+                            "name": "其它部",
+                            "revenue": {
+                                "amount": 19290.139150139385,
+                                "percentage": 0,
+                                "reference": 0
+                            },
+                            "expense": {
+                                "amount": 43199.10687725541,
+                                "percentage": 0,
+                                "reference": 0
+                            },
+                            "margin": {
+                                "amount": 11352.755279844241,
+                                "percentage": 0,
+                                "reference": 0
+                            },
+                            "opProfit": {
+                                "amount": -31846.351597411172,
+                                "percentage": 0,
+                                "reference": 0
+                            }
+                        }
+                    ]
+                },
+                {
+                    "id": 2,
+                    "name": "长沙长耀",
+                    "code": "CN-02",
+                    "revenue": {
+                        "amount": 93687.52861367143,
+                        "percentage": 0,
+                        "reference": 127176.35957702047
+                    },
+                    "expense": {
+                        "amount": 60436.77574287287,
+                        "percentage": 0,
+                        "reference": 57046.93810355648
+                    },
+                    "margin": {
+                        "amount": 45322.38069886267,
+                        "percentage": 0,
+                        "reference": 64229.85317239741
+                    },
+                    "opProfit": {
+                        "amount": -15114.395044010205,
+                        "percentage": 0,
+                        "reference": 36594.196764896704
+                    },
+                    "netProfit": {
+                        "amount": 0,
+                        "percentage": 0,
+                        "reference": 0
+                    },
+                    "detail": [
+                        {
+                            "id": 0,
+                            "name": "NA",
+                            "revenue": {
+                                "amount": 0,
+                                "percentage": 0,
+                                "reference": 0
+                            },
+                            "expense": {
+                                "amount": 0,
+                                "percentage": 0,
+                                "reference": 0
+                            },
+                            "margin": {
+                                "amount": 0,
+                                "percentage": 0,
+                                "reference": 0
+                            },
+                            "opProfit": {
+                                "amount": 0,
+                                "percentage": 0,
+                                "reference": 0
+                            }
+                        },
+                        {
+                            "id": 1,
+                            "name": "新车销售部",
+                            "revenue": {
+                                "amount": 60391.263937218486,
+                                "percentage": 0,
+                                "reference": 0
+                            },
+                            "expense": {
+                                "amount": 0,
+                                "percentage": 0,
+                                "reference": 0
+                            },
+                            "margin": {
+                                "amount": 18583.250168393577,
+                                "percentage": 0,
+                                "reference": 0
+                            },
+                            "opProfit": {
+                                "amount": 18583.250168393577,
+                                "percentage": 0,
+                                "reference": 0
+                            }
+                        },
+                        {
+                            "id": 2,
+                            "name": "二手车部",
+                            "revenue": {
+                                "amount": 4399.1389836279595,
+                                "percentage": 0,
+                                "reference": 0
+                            },
+                            "expense": {
+                                "amount": 0,
+                                "percentage": 0,
+                                "reference": 0
+                            },
+                            "margin": {
+                                "amount": 2692.8034251090794,
+                                "percentage": 0,
+                                "reference": 0
+                            },
+                            "opProfit": {
+                                "amount": 2692.8034251090794,
+                                "percentage": 0,
+                                "reference": 0
+                            }
+                        },
+                        {
+                            "id": 3,
+                            "name": "租赁事业部",
+                            "revenue": {
+                                "amount": 0,
+                                "percentage": 0,
+                                "reference": 0
+                            },
+                            "expense": {
+                                "amount": 14268.54605956387,
+                                "percentage": 0,
+                                "reference": 0
+                            },
+                            "margin": {
+                                "amount": 0,
+                                "percentage": 0,
+                                "reference": 0
+                            },
+                            "opProfit": {
+                                "amount": -14268.54605956387,
+                                "percentage": 0,
+                                "reference": 0
+                            }
+                        },
+                        {
+                            "id": 4,
+                            "name": "维修部",
+                            "revenue": {
+                                "amount": 12043.690418068009,
+                                "percentage": 0,
+                                "reference": 0
+                            },
+                            "expense": {
+                                "amount": 0,
+                                "percentage": 0,
+                                "reference": 0
+                            },
+                            "margin": {
+                                "amount": 9539.919188381127,
+                                "percentage": 0,
+                                "reference": 0
+                            },
+                            "opProfit": {
+                                "amount": 9539.919188381127,
+                                "percentage": 0,
+                                "reference": 0
+                            }
+                        },
+                        {
+                            "id": 5,
+                            "name": "备件部",
+                            "revenue": {
+                                "amount": 16853.435274756972,
+                                "percentage": 0,
+                                "reference": 0
+                            },
+                            "expense": {
+                                "amount": 17716.44998454004,
+                                "percentage": 0,
+                                "reference": 0
+                            },
+                            "margin": {
+                                "amount": 14506.407916978887,
+                                "percentage": 0,
+                                "reference": 0
+                            },
+                            "opProfit": {
+                                "amount": -3210.0420675611513,
+                                "percentage": 0,
+                                "reference": 0
+                            }
+                        },
+                        {
+                            "id": 6,
+                            "name": "钣喷部",
+                            "revenue": {
+                                "amount": 0,
+                                "percentage": 0,
+                                "reference": 0
+                            },
+                            "expense": {
+                                "amount": 0,
+                                "percentage": 0,
+                                "reference": 0
+                            },
+                            "margin": {
+                                "amount": 0,
+                                "percentage": 0,
+                                "reference": 0
+                            },
+                            "opProfit": {
+                                "amount": 0,
+                                "percentage": 0,
+                                "reference": 0
+                            }
+                        },
+                        {
+                            "id": 7,
+                            "name": "其它部",
+                            "revenue": {
+                                "amount": 0,
+                                "percentage": 0,
+                                "reference": 0
+                            },
+                            "expense": {
+                                "amount": 28451.779698768958,
+                                "percentage": 0,
+                                "reference": 0
+                            },
+                            "margin": {
+                                "amount": 0,
+                                "percentage": 0,
+                                "reference": 0
+                            },
+                            "opProfit": {
+                                "amount": -28451.779698768958,
+                                "percentage": 0,
+                                "reference": 0
+                            }
+                        }
+                    ]
+                },
+                {
+                    "id": 3,
+                    "name": "广本一店",
+                    "code": "CN-03",
+                    "revenue": {
+                        "amount": 123437.13814957223,
+                        "percentage": 0,
+                        "reference": 127176.35957702047
+                    },
+                    "expense": {
+                        "amount": 50139.6406308468,
+                        "percentage": 0,
+                        "reference": 57046.93810355648
+                    },
+                    "margin": {
+                        "amount": 83995.2474676822,
+                        "percentage": 0,
+                        "reference": 64229.85317239741
+                    },
+                    "opProfit": {
+                        "amount": 33855.6068368354,
+                        "percentage": 0,
+                        "reference": 36594.196764896704
+                    },
+                    "netProfit": {
+                        "amount": 0,
+                        "percentage": 0,
+                        "reference": 0
+                    },
+                    "detail": [
+                        {
+                            "id": 0,
+                            "name": "NA",
+                            "revenue": {
+                                "amount": 0,
+                                "percentage": 0,
+                                "reference": 0
+                            },
+                            "expense": {
+                                "amount": 0,
+                                "percentage": 0,
+                                "reference": 0
+                            },
+                            "margin": {
+                                "amount": 0,
+                                "percentage": 0,
+                                "reference": 0
+                            },
+                            "opProfit": {
+                                "amount": 0,
+                                "percentage": 0,
+                                "reference": 0
+                            }
+                        },
+                        {
+                            "id": 1,
+                            "name": "新车销售部",
+                            "revenue": {
+                                "amount": 19706.245126767677,
+                                "percentage": 0,
+                                "reference": 0
+                            },
+                            "expense": {
+                                "amount": 0,
+                                "percentage": 0,
+                                "reference": 0
+                            },
+                            "margin": {
+                                "amount": 24450.42543605666,
+                                "percentage": 0,
+                                "reference": 0
+                            },
+                            "opProfit": {
+                                "amount": 24450.42543605666,
+                                "percentage": 0,
+                                "reference": 0
+                            }
+                        },
+                        {
+                            "id": 2,
+                            "name": "二手车部",
+                            "revenue": {
+                                "amount": 23491.100585787244,
+                                "percentage": 0,
+                                "reference": 0
+                            },
+                            "expense": {
+                                "amount": 28370.55623140015,
+                                "percentage": 0,
+                                "reference": 0
+                            },
+                            "margin": {
+                                "amount": 8330.418063631367,
+                                "percentage": 0,
+                                "reference": 0
+                            },
+                            "opProfit": {
+                                "amount": -20040.138167768782,
+                                "percentage": 0,
+                                "reference": 0
+                            }
+                        },
+                        {
+                            "id": 3,
+                            "name": "租赁事业部",
+                            "revenue": {
+                                "amount": 106.0408734146745,
+                                "percentage": 0,
+                                "reference": 0
+                            },
+                            "expense": {
+                                "amount": 5085.769888358418,
+                                "percentage": 0,
+                                "reference": 0
+                            },
+                            "margin": {
+                                "amount": 7176.8965022468465,
+                                "percentage": 0,
+                                "reference": 0
+                            },
+                            "opProfit": {
+                                "amount": 2091.1266138884284,
+                                "percentage": 0,
+                                "reference": 0
+                            }
+                        },
+                        {
+                            "id": 4,
+                            "name": "维修部",
+                            "revenue": {
+                                "amount": 1116.9382181375931,
+                                "percentage": 0,
+                                "reference": 0
+                            },
+                            "expense": {
+                                "amount": 0,
+                                "percentage": 0,
+                                "reference": 0
+                            },
+                            "margin": {
+                                "amount": 7467.8140228744305,
+                                "percentage": 0,
+                                "reference": 0
+                            },
+                            "opProfit": {
+                                "amount": 7467.8140228744305,
+                                "percentage": 0,
+                                "reference": 0
+                            }
+                        },
+                        {
+                            "id": 5,
+                            "name": "备件部",
+                            "revenue": {
+                                "amount": 6949.490569017677,
+                                "percentage": 0,
+                                "reference": 0
+                            },
+                            "expense": {
+                                "amount": 12031.13137748432,
+                                "percentage": 0,
+                                "reference": 0
+                            },
+                            "margin": {
+                                "amount": 9145.123300773732,
+                                "percentage": 0,
+                                "reference": 0
+                            },
+                            "opProfit": {
+                                "amount": -2886.0080767105883,
+                                "percentage": 0,
+                                "reference": 0
+                            }
+                        },
+                        {
+                            "id": 6,
+                            "name": "钣喷部",
+                            "revenue": {
+                                "amount": 34349.55051305264,
+                                "percentage": 0,
+                                "reference": 0
+                            },
+                            "expense": {
+                                "amount": 0,
+                                "percentage": 0,
+                                "reference": 0
+                            },
+                            "margin": {
+                                "amount": 9644.086902225677,
+                                "percentage": 0,
+                                "reference": 0
+                            },
+                            "opProfit": {
+                                "amount": 9644.086902225677,
+                                "percentage": 0,
+                                "reference": 0
+                            }
+                        },
+                        {
+                            "id": 7,
+                            "name": "其它部",
+                            "revenue": {
+                                "amount": 37717.77226339471,
+                                "percentage": 0,
+                                "reference": 0
+                            },
+                            "expense": {
+                                "amount": 4652.183133603909,
+                                "percentage": 0,
+                                "reference": 0
+                            },
+                            "margin": {
+                                "amount": 17780.483239873487,
+                                "percentage": 0,
+                                "reference": 0
+                            },
+                            "opProfit": {
+                                "amount": 13128.300106269578,
+                                "percentage": 0,
+                                "reference": 0
+                            }
+                        }
+                    ]
+                },
+                {
+                    "id": 4,
+                    "name": "长盛公司",
+                    "code": "CN-05",
+                    "revenue": {
+                        "amount": 60161.50636822482,
+                        "percentage": 0,
+                        "reference": 127176.35957702047
+                    },
+                    "expense": {
+                        "amount": 58208.10663417926,
+                        "percentage": 0,
+                        "reference": 57046.93810355648
+                    },
+                    "margin": {
+                        "amount": 41977.61924946649,
+                        "percentage": 0,
+                        "reference": 64229.85317239741
+                    },
+                    "opProfit": {
+                        "amount": -16230.487384712775,
+                        "percentage": 0,
+                        "reference": 36594.196764896704
+                    },
+                    "netProfit": {
+                        "amount": 0,
+                        "percentage": 0,
+                        "reference": 0
+                    },
+                    "detail": [
+                        {
+                            "id": 0,
+                            "name": "NA",
+                            "revenue": {
+                                "amount": 0,
+                                "percentage": 0,
+                                "reference": 0
+                            },
+                            "expense": {
+                                "amount": 0,
+                                "percentage": 0,
+                                "reference": 0
+                            },
+                            "margin": {
+                                "amount": 0,
+                                "percentage": 0,
+                                "reference": 0
+                            },
+                            "opProfit": {
+                                "amount": 0,
+                                "percentage": 0,
+                                "reference": 0
+                            }
+                        },
+                        {
+                            "id": 1,
+                            "name": "新车销售部",
+                            "revenue": {
+                                "amount": 12784.283259326181,
+                                "percentage": 0,
+                                "reference": 0
+                            },
+                            "expense": {
+                                "amount": 0,
+                                "percentage": 0,
+                                "reference": 0
+                            },
+                            "margin": {
+                                "amount": 14929.686396595409,
+                                "percentage": 0,
+                                "reference": 0
+                            },
+                            "opProfit": {
+                                "amount": 14929.686396595409,
+                                "percentage": 0,
+                                "reference": 0
+                            }
+                        },
+                        {
+                            "id": 2,
+                            "name": "二手车部",
+                            "revenue": {
+                                "amount": 18283.802900448038,
+                                "percentage": 0,
+                                "reference": 0
+                            },
+                            "expense": {
+                                "amount": 9598.883109677741,
+                                "percentage": 0,
+                                "reference": 0
+                            },
+                            "margin": {
+                                "amount": 1647.2632367791907,
+                                "percentage": 0,
+                                "reference": 0
+                            },
+                            "opProfit": {
+                                "amount": -7951.619872898551,
+                                "percentage": 0,
+                                "reference": 0
+                            }
+                        },
+                        {
+                            "id": 3,
+                            "name": "租赁事业部",
+                            "revenue": {
+                                "amount": 13221.487206700589,
+                                "percentage": 0,
+                                "reference": 0
+                            },
+                            "expense": {
+                                "amount": 0,
+                                "percentage": 0,
+                                "reference": 0
+                            },
+                            "margin": {
+                                "amount": 1102.8227547237145,
+                                "percentage": 0,
+                                "reference": 0
+                            },
+                            "opProfit": {
+                                "amount": 1102.8227547237145,
+                                "percentage": 0,
+                                "reference": 0
+                            }
+                        },
+                        {
+                            "id": 4,
+                            "name": "维修部",
+                            "revenue": {
+                                "amount": 4685.578102144734,
+                                "percentage": 0,
+                                "reference": 0
+                            },
+                            "expense": {
+                                "amount": 0,
+                                "percentage": 0,
+                                "reference": 0
+                            },
+                            "margin": {
+                                "amount": 11719.319732392634,
+                                "percentage": 0,
+                                "reference": 0
+                            },
+                            "opProfit": {
+                                "amount": 11719.319732392634,
+                                "percentage": 0,
+                                "reference": 0
+                            }
+                        },
+                        {
+                            "id": 5,
+                            "name": "备件部",
+                            "revenue": {
+                                "amount": 0,
+                                "percentage": 0,
+                                "reference": 0
+                            },
+                            "expense": {
+                                "amount": 22431.11884369026,
+                                "percentage": 0,
+                                "reference": 0
+                            },
+                            "margin": {
+                                "amount": 0,
+                                "percentage": 0,
+                                "reference": 0
+                            },
+                            "opProfit": {
+                                "amount": -22431.11884369026,
+                                "percentage": 0,
+                                "reference": 0
+                            }
+                        },
+                        {
+                            "id": 6,
+                            "name": "钣喷部",
+                            "revenue": {
+                                "amount": 0,
+                                "percentage": 0,
+                                "reference": 0
+                            },
+                            "expense": {
+                                "amount": 0,
+                                "percentage": 0,
+                                "reference": 0
+                            },
+                            "margin": {
+                                "amount": 0,
+                                "percentage": 0,
+                                "reference": 0
+                            },
+                            "opProfit": {
+                                "amount": 0,
+                                "percentage": 0,
+                                "reference": 0
+                            }
+                        },
+                        {
+                            "id": 7,
+                            "name": "其它部",
+                            "revenue": {
+                                "amount": 11186.354899605278,
+                                "percentage": 0,
+                                "reference": 0
+                            },
+                            "expense": {
+                                "amount": 26178.10468081126,
+                                "percentage": 0,
+                                "reference": 0
+                            },
+                            "margin": {
+                                "amount": 12578.52712897554,
+                                "percentage": 0,
+                                "reference": 0
+                            },
+                            "opProfit": {
+                                "amount": -13599.577551835719,
+                                "percentage": 0,
+                                "reference": 0
+                            }
+                        }
+                    ]
+                },
+                {
+                    "id": 5,
+                    "name": "北京长怡",
+                    "code": "CN-06",
+                    "revenue": {
+                        "amount": 163602.61979254906,
+                        "percentage": 0,
+                        "reference": 127176.35957702047
+                    },
+                    "expense": {
+                        "amount": 2295.7285789789307,
+                        "percentage": 0,
+                        "reference": 57046.93810355648
+                    },
+                    "margin": {
+                        "amount": 75326.35619399272,
+                        "percentage": 0,
+                        "reference": 64229.85317239741
+                    },
+                    "opProfit": {
+                        "amount": 73030.62761501379,
+                        "percentage": 0,
+                        "reference": 36594.196764896704
+                    },
+                    "netProfit": {
+                        "amount": 0,
+                        "percentage": 0,
+                        "reference": 0
+                    },
+                    "detail": [
+                        {
+                            "id": 0,
+                            "name": "NA",
+                            "revenue": {
+                                "amount": 0,
+                                "percentage": 0,
+                                "reference": 0
+                            },
+                            "expense": {
+                                "amount": 0,
+                                "percentage": 0,
+                                "reference": 0
+                            },
+                            "margin": {
+                                "amount": 0,
+                                "percentage": 0,
+                                "reference": 0
+                            },
+                            "opProfit": {
+                                "amount": 0,
+                                "percentage": 0,
+                                "reference": 0
+                            }
+                        },
+                        {
+                            "id": 1,
+                            "name": "新车销售部",
+                            "revenue": {
+                                "amount": 94887.33191606702,
+                                "percentage": 0,
+                                "reference": 0
+                            },
+                            "expense": {
+                                "amount": 0,
+                                "percentage": 0,
+                                "reference": 0
+                            },
+                            "margin": {
+                                "amount": 51443.35172357726,
+                                "percentage": 0,
+                                "reference": 0
+                            },
+                            "opProfit": {
+                                "amount": 51443.35172357726,
+                                "percentage": 0,
+                                "reference": 0
+                            }
+                        },
+                        {
+                            "id": 2,
+                            "name": "二手车部",
+                            "revenue": {
+                                "amount": 16865.031014825465,
+                                "percentage": 0,
+                                "reference": 0
+                            },
+                            "expense": {
+                                "amount": 2295.7285789789307,
+                                "percentage": 0,
+                                "reference": 0
+                            },
+                            "margin": {
+                                "amount": 7130.574636808159,
+                                "percentage": 0,
+                                "reference": 0
+                            },
+                            "opProfit": {
+                                "amount": 4834.846057829229,
+                                "percentage": 0,
+                                "reference": 0
+                            }
+                        },
+                        {
+                            "id": 3,
+                            "name": "租赁事业部",
+                            "revenue": {
+                                "amount": 0,
+                                "percentage": 0,
+                                "reference": 0
+                            },
+                            "expense": {
+                                "amount": 0,
+                                "percentage": 0,
+                                "reference": 0
+                            },
+                            "margin": {
+                                "amount": 0,
+                                "percentage": 0,
+                                "reference": 0
+                            },
+                            "opProfit": {
+                                "amount": 0,
+                                "percentage": 0,
+                                "reference": 0
+                            }
+                        },
+                        {
+                            "id": 4,
+                            "name": "维修部",
+                            "revenue": {
+                                "amount": 18346.470432940037,
+                                "percentage": 0,
+                                "reference": 0
+                            },
+                            "expense": {
+                                "amount": 0,
+                                "percentage": 0,
+                                "reference": 0
+                            },
+                            "margin": {
+                                "amount": 2034.444639730303,
+                                "percentage": 0,
+                                "reference": 0
+                            },
+                            "opProfit": {
+                                "amount": 2034.444639730303,
+                                "percentage": 0,
+                                "reference": 0
+                            }
+                        },
+                        {
+                            "id": 5,
+                            "name": "备件部",
+                            "revenue": {
+                                "amount": 0,
+                                "percentage": 0,
+                                "reference": 0
+                            },
+                            "expense": {
+                                "amount": 0,
+                                "percentage": 0,
+                                "reference": 0
+                            },
+                            "margin": {
+                                "amount": 0,
+                                "percentage": 0,
+                                "reference": 0
+                            },
+                            "opProfit": {
+                                "amount": 0,
+                                "percentage": 0,
+                                "reference": 0
+                            }
+                        },
+                        {
+                            "id": 6,
+                            "name": "钣喷部",
+                            "revenue": {
+                                "amount": 12302.668529157123,
+                                "percentage": 0,
+                                "reference": 0
+                            },
+                            "expense": {
+                                "amount": 0,
+                                "percentage": 0,
+                                "reference": 0
+                            },
+                            "margin": {
+                                "amount": 5474.898020254136,
+                                "percentage": 0,
+                                "reference": 0
+                            },
+                            "opProfit": {
+                                "amount": 5474.898020254136,
+                                "percentage": 0,
+                                "reference": 0
+                            }
+                        },
+                        {
+                            "id": 7,
+                            "name": "其它部",
+                            "revenue": {
+                                "amount": 21201.117899559416,
+                                "percentage": 0,
+                                "reference": 0
+                            },
+                            "expense": {
+                                "amount": 0,
+                                "percentage": 0,
+                                "reference": 0
+                            },
+                            "margin": {
+                                "amount": 9243.087173622866,
+                                "percentage": 0,
+                                "reference": 0
+                            },
+                            "opProfit": {
+                                "amount": 9243.087173622866,
+                                "percentage": 0,
+                                "reference": 0
+                            }
+                        }
+                    ]
+                },
+                {
+                    "id": 6,
+                    "name": "南京长昊",
+                    "code": "CN-07",
+                    "revenue": {
+                        "amount": 193188.75968839202,
+                        "percentage": 0,
+                        "reference": 127176.35957702047
+                    },
+                    "expense": {
+                        "amount": 14575.938344419948,
+                        "percentage": 0,
+                        "reference": 57046.93810355648
+                    },
+                    "margin": {
+                        "amount": 69147.49345149627,
+                        "percentage": 0,
+                        "reference": 64229.85317239741
+                    },
+                    "opProfit": {
+                        "amount": 54571.55510707632,
+                        "percentage": 0,
+                        "reference": 36594.196764896704
+                    },
+                    "netProfit": {
+                        "amount": 0,
+                        "percentage": 0,
+                        "reference": 0
+                    },
+                    "detail": [
+                        {
+                            "id": 0,
+                            "name": "NA",
+                            "revenue": {
+                                "amount": 0,
+                                "percentage": 0,
+                                "reference": 0
+                            },
+                            "expense": {
+                                "amount": 0,
+                                "percentage": 0,
+                                "reference": 0
+                            },
+                            "margin": {
+                                "amount": 0,
+                                "percentage": 0,
+                                "reference": 0
+                            },
+                            "opProfit": {
+                                "amount": 0,
+                                "percentage": 0,
+                                "reference": 0
+                            }
+                        },
+                        {
+                            "id": 1,
+                            "name": "新车销售部",
+                            "revenue": {
+                                "amount": 90760.55777007883,
+                                "percentage": 0,
+                                "reference": 0
+                            },
+                            "expense": {
+                                "amount": 0,
+                                "percentage": 0,
+                                "reference": 0
+                            },
+                            "margin": {
+                                "amount": 44910.87287507598,
+                                "percentage": 0,
+                                "reference": 0
+                            },
+                            "opProfit": {
+                                "amount": 44910.87287507598,
+                                "percentage": 0,
+                                "reference": 0
+                            }
+                        },
+                        {
+                            "id": 2,
+                            "name": "二手车部",
+                            "revenue": {
+                                "amount": 35192.11973722487,
+                                "percentage": 0,
+                                "reference": 0
+                            },
+                            "expense": {
+                                "amount": 0,
+                                "percentage": 0,
+                                "reference": 0
+                            },
+                            "margin": {
+                                "amount": 13356.463302321834,
+                                "percentage": 0,
+                                "reference": 0
+                            },
+                            "opProfit": {
+                                "amount": 13356.463302321834,
+                                "percentage": 0,
+                                "reference": 0
+                            }
+                        },
+                        {
+                            "id": 3,
+                            "name": "租赁事业部",
+                            "revenue": {
+                                "amount": 0,
+                                "percentage": 0,
+                                "reference": 0
+                            },
+                            "expense": {
+                                "amount": 0,
+                                "percentage": 0,
+                                "reference": 0
+                            },
+                            "margin": {
+                                "amount": 0,
+                                "percentage": 0,
+                                "reference": 0
+                            },
+                            "opProfit": {
+                                "amount": 0,
+                                "percentage": 0,
+                                "reference": 0
+                            }
+                        },
+                        {
+                            "id": 4,
+                            "name": "维修部",
+                            "revenue": {
+                                "amount": 60890.71956067636,
+                                "percentage": 0,
+                                "reference": 0
+                            },
+                            "expense": {
+                                "amount": 0,
+                                "percentage": 0,
+                                "reference": 0
+                            },
+                            "margin": {
+                                "amount": 10392.827438695356,
+                                "percentage": 0,
+                                "reference": 0
+                            },
+                            "opProfit": {
+                                "amount": 10392.827438695356,
+                                "percentage": 0,
+                                "reference": 0
+                            }
+                        },
+                        {
+                            "id": 5,
+                            "name": "备件部",
+                            "revenue": {
+                                "amount": 0,
+                                "percentage": 0,
+                                "reference": 0
+                            },
+                            "expense": {
+                                "amount": 0,
+                                "percentage": 0,
+                                "reference": 0
+                            },
+                            "margin": {
+                                "amount": 0,
+                                "percentage": 0,
+                                "reference": 0
+                            },
+                            "opProfit": {
+                                "amount": 0,
+                                "percentage": 0,
+                                "reference": 0
+                            }
+                        },
+                        {
+                            "id": 6,
+                            "name": "钣喷部",
+                            "revenue": {
+                                "amount": 0,
+                                "percentage": 0,
+                                "reference": 0
+                            },
+                            "expense": {
+                                "amount": 5710.227494753865,
+                                "percentage": 0,
+                                "reference": 0
+                            },
+                            "margin": {
+                                "amount": 0,
+                                "percentage": 0,
+                                "reference": 0
+                            },
+                            "opProfit": {
+                                "amount": -5710.227494753865,
+                                "percentage": 0,
+                                "reference": 0
+                            }
+                        },
+                        {
+                            "id": 7,
+                            "name": "其它部",
+                            "revenue": {
+                                "amount": 6345.3626204119655,
+                                "percentage": 0,
+                                "reference": 0
+                            },
+                            "expense": {
+                                "amount": 8865.710849666082,
+                                "percentage": 0,
+                                "reference": 0
+                            },
+                            "margin": {
+                                "amount": 487.32983540309306,
+                                "percentage": 0,
+                                "reference": 0
+                            },
+                            "opProfit": {
+                                "amount": -8378.381014262988,
+                                "percentage": 0,
+                                "reference": 0
+                            }
+                        }
+                    ]
+                },
+                {
+                    "id": 7,
+                    "name": "重庆长捷",
+                    "code": "CN-08",
+                    "revenue": {
+                        "amount": 135276.6858462204,
+                        "percentage": 0,
+                        "reference": 127176.35957702047
+                    },
+                    "expense": {
+                        "amount": 63231.06119903559,
+                        "percentage": 0,
+                        "reference": 57046.93810355648
+                    },
+                    "margin": {
+                        "amount": 67898.39345364145,
+                        "percentage": 0,
+                        "reference": 64229.85317239741
+                    },
+                    "opProfit": {
+                        "amount": 4667.332254605855,
+                        "percentage": 0,
+                        "reference": 36594.196764896704
+                    },
+                    "netProfit": {
+                        "amount": 0,
+                        "percentage": 0,
+                        "reference": 0
+                    },
+                    "detail": [
+                        {
+                            "id": 0,
+                            "name": "NA",
+                            "revenue": {
+                                "amount": 0,
+                                "percentage": 0,
+                                "reference": 0
+                            },
+                            "expense": {
+                                "amount": 0,
+                                "percentage": 0,
+                                "reference": 0
+                            },
+                            "margin": {
+                                "amount": 0,
+                                "percentage": 0,
+                                "reference": 0
+                            },
+                            "opProfit": {
+                                "amount": 0,
+                                "percentage": 0,
+                                "reference": 0
+                            }
+                        },
+                        {
+                            "id": 1,
+                            "name": "新车销售部",
+                            "revenue": {
+                                "amount": 86833.78187966808,
+                                "percentage": 0,
+                                "reference": 0
+                            },
+                            "expense": {
+                                "amount": 0,
+                                "percentage": 0,
+                                "reference": 0
+                            },
+                            "margin": {
+                                "amount": 36363.335857033344,
+                                "percentage": 0,
+                                "reference": 0
+                            },
+                            "opProfit": {
+                                "amount": 36363.335857033344,
+                                "percentage": 0,
+                                "reference": 0
+                            }
+                        },
+                        {
+                            "id": 2,
+                            "name": "二手车部",
+                            "revenue": {
+                                "amount": 19849.988070516913,
+                                "percentage": 0,
+                                "reference": 0
+                            },
+                            "expense": {
+                                "amount": 18943.086111235803,
+                                "percentage": 0,
+                                "reference": 0
+                            },
+                            "margin": {
+                                "amount": 7918.288158362484,
+                                "percentage": 0,
+                                "reference": 0
+                            },
+                            "opProfit": {
+                                "amount": -11024.79795287332,
+                                "percentage": 0,
+                                "reference": 0
+                            }
+                        },
+                        {
+                            "id": 3,
+                            "name": "租赁事业部",
+                            "revenue": {
+                                "amount": 0,
+                                "percentage": 0,
+                                "reference": 0
+                            },
+                            "expense": {
+                                "amount": 0,
+                                "percentage": 0,
+                                "reference": 0
+                            },
+                            "margin": {
+                                "amount": 0,
+                                "percentage": 0,
+                                "reference": 0
+                            },
+                            "opProfit": {
+                                "amount": 0,
+                                "percentage": 0,
+                                "reference": 0
+                            }
+                        },
+                        {
+                            "id": 4,
+                            "name": "维修部",
+                            "revenue": {
+                                "amount": 0,
+                                "percentage": 0,
+                                "reference": 0
+                            },
+                            "expense": {
+                                "amount": 10274.232855015442,
+                                "percentage": 0,
+                                "reference": 0
+                            },
+                            "margin": {
+                                "amount": 0,
+                                "percentage": 0,
+                                "reference": 0
+                            },
+                            "opProfit": {
+                                "amount": -10274.232855015442,
+                                "percentage": 0,
+                                "reference": 0
+                            }
+                        },
+                        {
+                            "id": 5,
+                            "name": "备件部",
+                            "revenue": {
+                                "amount": 0,
+                                "percentage": 0,
+                                "reference": 0
+                            },
+                            "expense": {
+                                "amount": 17610.46802538404,
+                                "percentage": 0,
+                                "reference": 0
+                            },
+                            "margin": {
+                                "amount": 0,
+                                "percentage": 0,
+                                "reference": 0
+                            },
+                            "opProfit": {
+                                "amount": -17610.46802538404,
+                                "percentage": 0,
+                                "reference": 0
+                            }
+                        },
+                        {
+                            "id": 6,
+                            "name": "钣喷部",
+                            "revenue": {
+                                "amount": 0,
+                                "percentage": 0,
+                                "reference": 0
+                            },
+                            "expense": {
+                                "amount": 16403.274207400304,
+                                "percentage": 0,
+                                "reference": 0
+                            },
+                            "margin": {
+                                "amount": 0,
+                                "percentage": 0,
+                                "reference": 0
+                            },
+                            "opProfit": {
+                                "amount": -16403.274207400304,
+                                "percentage": 0,
+                                "reference": 0
+                            }
+                        },
+                        {
+                            "id": 7,
+                            "name": "其它部",
+                            "revenue": {
+                                "amount": 28592.91589603542,
+                                "percentage": 0,
+                                "reference": 0
+                            },
+                            "expense": {
+                                "amount": 0,
+                                "percentage": 0,
+                                "reference": 0
+                            },
+                            "margin": {
+                                "amount": 23616.769438245625,
+                                "percentage": 0,
+                                "reference": 0
+                            },
+                            "opProfit": {
+                                "amount": 23616.769438245625,
+                                "percentage": 0,
+                                "reference": 0
+                            }
+                        }
+                    ]
+                },
+                {
+                    "id": 8,
+                    "name": "长力公司",
+                    "code": "CN-09",
+                    "revenue": {
+                        "amount": 105180.32390585825,
+                        "percentage": 0,
+                        "reference": 127176.35957702047
+                    },
+                    "expense": {
+                        "amount": 70036.71061869733,
+                        "percentage": 0,
+                        "reference": 57046.93810355648
+                    },
+                    "margin": {
+                        "amount": 53257.41856433692,
+                        "percentage": 0,
+                        "reference": 64229.85317239741
+                    },
+                    "opProfit": {
+                        "amount": -16779.292054360405,
+                        "percentage": 0,
+                        "reference": 36594.196764896704
+                    },
+                    "netProfit": {
+                        "amount": 0,
+                        "percentage": 0,
+                        "reference": 0
+                    },
+                    "detail": [
+                        {
+                            "id": 0,
+                            "name": "NA",
+                            "revenue": {
+                                "amount": 0,
+                                "percentage": 0,
+                                "reference": 0
+                            },
+                            "expense": {
+                                "amount": 0,
+                                "percentage": 0,
+                                "reference": 0
+                            },
+                            "margin": {
+                                "amount": 0,
+                                "percentage": 0,
+                                "reference": 0
+                            },
+                            "opProfit": {
+                                "amount": 0,
+                                "percentage": 0,
+                                "reference": 0
+                            }
+                        },
+                        {
+                            "id": 1,
+                            "name": "新车销售部",
+                            "revenue": {
+                                "amount": 49763.62395038696,
+                                "percentage": 0,
+                                "reference": 0
+                            },
+                            "expense": {
+                                "amount": 0,
+                                "percentage": 0,
+                                "reference": 0
+                            },
+                            "margin": {
+                                "amount": 47257.46355526007,
+                                "percentage": 0,
+                                "reference": 0
+                            },
+                            "opProfit": {
+                                "amount": 47257.46355526007,
+                                "percentage": 0,
+                                "reference": 0
+                            }
+                        },
+                        {
+                            "id": 2,
+                            "name": "二手车部",
+                            "revenue": {
+                                "amount": 19648.639073059938,
+                                "percentage": 0,
+                                "reference": 0
+                            },
+                            "expense": {
+                                "amount": 0,
+                                "percentage": 0,
+                                "reference": 0
+                            },
+                            "margin": {
+                                "amount": 286.5603472755029,
+                                "percentage": 0,
+                                "reference": 0
+                            },
+                            "opProfit": {
+                                "amount": 286.5603472755029,
+                                "percentage": 0,
+                                "reference": 0
+                            }
+                        },
+                        {
+                            "id": 3,
+                            "name": "租赁事业部",
+                            "revenue": {
+                                "amount": 0,
+                                "percentage": 0,
+                                "reference": 0
+                            },
+                            "expense": {
+                                "amount": 15291.205841113046,
+                                "percentage": 0,
+                                "reference": 0
+                            },
+                            "margin": {
+                                "amount": 0,
+                                "percentage": 0,
+                                "reference": 0
+                            },
+                            "opProfit": {
+                                "amount": -15291.205841113046,
+                                "percentage": 0,
+                                "reference": 0
+                            }
+                        },
+                        {
+                            "id": 4,
+                            "name": "维修部",
+                            "revenue": {
+                                "amount": 0,
+                                "percentage": 0,
+                                "reference": 0
+                            },
+                            "expense": {
+                                "amount": 0,
+                                "percentage": 0,
+                                "reference": 0
+                            },
+                            "margin": {
+                                "amount": 0,
+                                "percentage": 0,
+                                "reference": 0
+                            },
+                            "opProfit": {
+                                "amount": 0,
+                                "percentage": 0,
+                                "reference": 0
+                            }
+                        },
+                        {
+                            "id": 5,
+                            "name": "备件部",
+                            "revenue": {
+                                "amount": 0,
+                                "percentage": 0,
+                                "reference": 0
+                            },
+                            "expense": {
+                                "amount": 12956.955337477413,
+                                "percentage": 0,
+                                "reference": 0
+                            },
+                            "margin": {
+                                "amount": 0,
+                                "percentage": 0,
+                                "reference": 0
+                            },
+                            "opProfit": {
+                                "amount": -12956.955337477413,
+                                "percentage": 0,
+                                "reference": 0
+                            }
+                        },
+                        {
+                            "id": 6,
+                            "name": "钣喷部",
+                            "revenue": {
+                                "amount": 17606.00815083671,
+                                "percentage": 0,
+                                "reference": 0
+                            },
+                            "expense": {
+                                "amount": 14426.747208617739,
+                                "percentage": 0,
+                                "reference": 0
+                            },
+                            "margin": {
+                                "amount": 1549.5383301929633,
+                                "percentage": 0,
+                                "reference": 0
+                            },
+                            "opProfit": {
+                                "amount": -12877.208878424775,
+                                "percentage": 0,
+                                "reference": 0
+                            }
+                        },
+                        {
+                            "id": 7,
+                            "name": "其它部",
+                            "revenue": {
+                                "amount": 18162.05273157465,
+                                "percentage": 0,
+                                "reference": 0
+                            },
+                            "expense": {
+                                "amount": 27361.80223148913,
+                                "percentage": 0,
+                                "reference": 0
+                            },
+                            "margin": {
+                                "amount": 4163.85633160839,
+                                "percentage": 0,
+                                "reference": 0
+                            },
+                            "opProfit": {
+                                "amount": -23197.945899880742,
+                                "percentage": 0,
+                                "reference": 0
+                            }
+                        }
+                    ]
+                },
+                {
+                    "id": 9,
+                    "name": "重庆长达",
+                    "code": "CN-10",
+                    "revenue": {
+                        "amount": 60523.86140628091,
+                        "percentage": 0,
+                        "reference": 127176.35957702047
+                    },
+                    "expense": {
+                        "amount": 46924.99848025456,
+                        "percentage": 0,
+                        "reference": 57046.93810355648
+                    },
+                    "margin": {
+                        "amount": 36556.2858043533,
+                        "percentage": 0,
+                        "reference": 64229.85317239741
+                    },
+                    "opProfit": {
+                        "amount": -10368.71267590126,
+                        "percentage": 0,
+                        "reference": 36594.196764896704
+                    },
+                    "netProfit": {
+                        "amount": 0,
+                        "percentage": 0,
+                        "reference": 0
+                    },
+                    "detail": [
+                        {
+                            "id": 0,
+                            "name": "NA",
+                            "revenue": {
+                                "amount": 0,
+                                "percentage": 0,
+                                "reference": 0
+                            },
+                            "expense": {
+                                "amount": 0,
+                                "percentage": 0,
+                                "reference": 0
+                            },
+                            "margin": {
+                                "amount": 0,
+                                "percentage": 0,
+                                "reference": 0
+                            },
+                            "opProfit": {
+                                "amount": 0,
+                                "percentage": 0,
+                                "reference": 0
+                            }
+                        },
+                        {
+                            "id": 1,
+                            "name": "新车销售部",
+                            "revenue": {
+                                "amount": 15979.556704422854,
+                                "percentage": 0,
+                                "reference": 0
+                            },
+                            "expense": {
+                                "amount": 0,
+                                "percentage": 0,
+                                "reference": 0
+                            },
+                            "margin": {
+                                "amount": 17029.0365316458,
+                                "percentage": 0,
+                                "reference": 0
+                            },
+                            "opProfit": {
+                                "amount": 17029.0365316458,
+                                "percentage": 0,
+                                "reference": 0
+                            }
+                        },
+                        {
+                            "id": 2,
+                            "name": "二手车部",
+                            "revenue": {
+                                "amount": 3343.547634864317,
+                                "percentage": 0,
+                                "reference": 0
+                            },
+                            "expense": {
+                                "amount": 0,
+                                "percentage": 0,
+                                "reference": 0
+                            },
+                            "margin": {
+                                "amount": 9473.584238418014,
+                                "percentage": 0,
+                                "reference": 0
+                            },
+                            "opProfit": {
+                                "amount": 9473.584238418014,
+                                "percentage": 0,
+                                "reference": 0
+                            }
+                        },
+                        {
+                            "id": 3,
+                            "name": "租赁事业部",
+                            "revenue": {
+                                "amount": 9332.573826575346,
+                                "percentage": 0,
+                                "reference": 0
+                            },
+                            "expense": {
+                                "amount": 13501.134087099914,
+                                "percentage": 0,
+                                "reference": 0
+                            },
+                            "margin": {
+                                "amount": 18.581639326603614,
+                                "percentage": 0,
+                                "reference": 0
+                            },
+                            "opProfit": {
+                                "amount": -13482.55244777331,
+                                "percentage": 0,
+                                "reference": 0
+                            }
+                        },
+                        {
+                            "id": 4,
+                            "name": "维修部",
+                            "revenue": {
+                                "amount": 0,
+                                "percentage": 0,
+                                "reference": 0
+                            },
+                            "expense": {
+                                "amount": 0,
+                                "percentage": 0,
+                                "reference": 0
+                            },
+                            "margin": {
+                                "amount": 0,
+                                "percentage": 0,
+                                "reference": 0
+                            },
+                            "opProfit": {
+                                "amount": 0,
+                                "percentage": 0,
+                                "reference": 0
+                            }
+                        },
+                        {
+                            "id": 5,
+                            "name": "备件部",
+                            "revenue": {
+                                "amount": 19985.309719271372,
+                                "percentage": 0,
+                                "reference": 0
+                            },
+                            "expense": {
+                                "amount": 0,
+                                "percentage": 0,
+                                "reference": 0
+                            },
+                            "margin": {
+                                "amount": 378.27887962747275,
+                                "percentage": 0,
+                                "reference": 0
+                            },
+                            "opProfit": {
+                                "amount": 378.27887962747275,
+                                "percentage": 0,
+                                "reference": 0
+                            }
+                        },
+                        {
+                            "id": 6,
+                            "name": "钣喷部",
+                            "revenue": {
+                                "amount": 0,
+                                "percentage": 0,
+                                "reference": 0
+                            },
+                            "expense": {
+                                "amount": 0,
+                                "percentage": 0,
+                                "reference": 0
+                            },
+                            "margin": {
+                                "amount": 0,
+                                "percentage": 0,
+                                "reference": 0
+                            },
+                            "opProfit": {
+                                "amount": 0,
+                                "percentage": 0,
+                                "reference": 0
+                            }
+                        },
+                        {
+                            "id": 7,
+                            "name": "其它部",
+                            "revenue": {
+                                "amount": 11882.87352114702,
+                                "percentage": 0,
+                                "reference": 0
+                            },
+                            "expense": {
+                                "amount": 33423.86439315465,
+                                "percentage": 0,
+                                "reference": 0
+                            },
+                            "margin": {
+                                "amount": 9656.804515335405,
+                                "percentage": 0,
+                                "reference": 0
+                            },
+                            "opProfit": {
+                                "amount": -23767.059877819243,
+                                "percentage": 0,
+                                "reference": 0
+                            }
+                        }
+                    ]
+                },
+                {
+                    "id": 10,
+                    "name": "广丰一店",
+                    "code": "CN-11",
+                    "revenue": {
+                        "amount": 127768.19333348532,
+                        "percentage": 0,
+                        "reference": 127176.35957702047
+                    },
+                    "expense": {
+                        "amount": 40793.35833431455,
+                        "percentage": 0,
+                        "reference": 57046.93810355648
+                    },
+                    "margin": {
+                        "amount": 66645.3097438054,
+                        "percentage": 0,
+                        "reference": 64229.85317239741
+                    },
+                    "opProfit": {
+                        "amount": 25851.951409490845,
+                        "percentage": 0,
+                        "reference": 36594.196764896704
+                    },
+                    "netProfit": {
+                        "amount": 0,
+                        "percentage": 0,
+                        "reference": 0
+                    },
+                    "detail": [
+                        {
+                            "id": 0,
+                            "name": "NA",
+                            "revenue": {
+                                "amount": 0,
+                                "percentage": 0,
+                                "reference": 0
+                            },
+                            "expense": {
+                                "amount": 0,
+                                "percentage": 0,
+                                "reference": 0
+                            },
+                            "margin": {
+                                "amount": 0,
+                                "percentage": 0,
+                                "reference": 0
+                            },
+                            "opProfit": {
+                                "amount": 0,
+                                "percentage": 0,
+                                "reference": 0
+                            }
+                        },
+                        {
+                            "id": 1,
+                            "name": "新车销售部",
+                            "revenue": {
+                                "amount": 67457.3926900941,
+                                "percentage": 0,
+                                "reference": 0
+                            },
+                            "expense": {
+                                "amount": 0,
+                                "percentage": 0,
+                                "reference": 0
+                            },
+                            "margin": {
+                                "amount": 27561.46861519006,
+                                "percentage": 0,
+                                "reference": 0
+                            },
+                            "opProfit": {
+                                "amount": 27561.46861519006,
+                                "percentage": 0,
+                                "reference": 0
+                            }
+                        },
+                        {
+                            "id": 2,
+                            "name": "二手车部",
+                            "revenue": {
+                                "amount": 19635.060665199344,
+                                "percentage": 0,
+                                "reference": 0
+                            },
+                            "expense": {
+                                "amount": 4558.669971936493,
+                                "percentage": 0,
+                                "reference": 0
+                            },
+                            "margin": {
+                                "amount": 3260.7020528272833,
+                                "percentage": 0,
+                                "reference": 0
+                            },
+                            "opProfit": {
+                                "amount": -1297.96791910921,
+                                "percentage": 0,
+                                "reference": 0
+                            }
+                        },
+                        {
+                            "id": 3,
+                            "name": "租赁事业部",
+                            "revenue": {
+                                "amount": 17953.97058688225,
+                                "percentage": 0,
+                                "reference": 0
+                            },
+                            "expense": {
+                                "amount": 0,
+                                "percentage": 0,
+                                "reference": 0
+                            },
+                            "margin": {
+                                "amount": 9786.965669731593,
+                                "percentage": 0,
+                                "reference": 0
+                            },
+                            "opProfit": {
+                                "amount": 9786.965669731593,
+                                "percentage": 0,
+                                "reference": 0
+                            }
+                        },
+                        {
+                            "id": 4,
+                            "name": "维修部",
+                            "revenue": {
+                                "amount": 2259.609150292785,
+                                "percentage": 0,
+                                "reference": 0
+                            },
+                            "expense": {
+                                "amount": 0,
+                                "percentage": 0,
+                                "reference": 0
+                            },
+                            "margin": {
+                                "amount": 8598.284322278154,
+                                "percentage": 0,
+                                "reference": 0
+                            },
+                            "opProfit": {
+                                "amount": 8598.284322278154,
+                                "percentage": 0,
+                                "reference": 0
+                            }
+                        },
+                        {
+                            "id": 5,
+                            "name": "备件部",
+                            "revenue": {
+                                "amount": 0,
+                                "percentage": 0,
+                                "reference": 0
+                            },
+                            "expense": {
+                                "amount": 12427.979102683315,
+                                "percentage": 0,
+                                "reference": 0
+                            },
+                            "margin": {
+                                "amount": 0,
+                                "percentage": 0,
+                                "reference": 0
+                            },
+                            "opProfit": {
+                                "amount": -12427.979102683315,
+                                "percentage": 0,
+                                "reference": 0
+                            }
+                        },
+                        {
+                            "id": 6,
+                            "name": "钣喷部",
+                            "revenue": {
+                                "amount": 0,
+                                "percentage": 0,
+                                "reference": 0
+                            },
+                            "expense": {
+                                "amount": 0,
+                                "percentage": 0,
+                                "reference": 0
+                            },
+                            "margin": {
+                                "amount": 0,
+                                "percentage": 0,
+                                "reference": 0
+                            },
+                            "opProfit": {
+                                "amount": 0,
+                                "percentage": 0,
+                                "reference": 0
+                            }
+                        },
+                        {
+                            "id": 7,
+                            "name": "其它部",
+                            "revenue": {
+                                "amount": 20462.160241016845,
+                                "percentage": 0,
+                                "reference": 0
+                            },
+                            "expense": {
+                                "amount": 23806.70925969474,
+                                "percentage": 0,
+                                "reference": 0
+                            },
+                            "margin": {
+                                "amount": 17437.8890837783,
+                                "percentage": 0,
+                                "reference": 0
+                            },
+                            "opProfit": {
+                                "amount": -6368.82017591644,
+                                "percentage": 0,
+                                "reference": 0
+                            }
+                        }
+                    ]
+                },
+                {
+                    "id": 11,
+                    "name": "长宁公司",
+                    "code": "CN-12",
+                    "revenue": {
+                        "amount": 85475.76548632908,
+                        "percentage": 0,
+                        "reference": 127176.35957702047
+                    },
+                    "expense": {
+                        "amount": 8756.002690628336,
+                        "percentage": 0,
+                        "reference": 57046.93810355648
+                    },
+                    "margin": {
+                        "amount": 30177.2016617989,
+                        "percentage": 0,
+                        "reference": 64229.85317239741
+                    },
+                    "opProfit": {
+                        "amount": 21421.19897117056,
+                        "percentage": 0,
+                        "reference": 36594.196764896704
+                    },
+                    "netProfit": {
+                        "amount": 0,
+                        "percentage": 0,
+                        "reference": 0
+                    },
+                    "detail": [
+                        {
+                            "id": 0,
+                            "name": "NA",
+                            "revenue": {
+                                "amount": 0,
+                                "percentage": 0,
+                                "reference": 0
+                            },
+                            "expense": {
+                                "amount": 0,
+                                "percentage": 0,
+                                "reference": 0
+                            },
+                            "margin": {
+                                "amount": 0,
+                                "percentage": 0,
+                                "reference": 0
+                            },
+                            "opProfit": {
+                                "amount": 0,
+                                "percentage": 0,
+                                "reference": 0
+                            }
+                        },
+                        {
+                            "id": 1,
+                            "name": "新车销售部",
+                            "revenue": {
+                                "amount": 79759.21870827692,
+                                "percentage": 0,
+                                "reference": 0
+                            },
+                            "expense": {
+                                "amount": 0,
+                                "percentage": 0,
+                                "reference": 0
+                            },
+                            "margin": {
+                                "amount": 27974.064215663082,
+                                "percentage": 0,
+                                "reference": 0
+                            },
+                            "opProfit": {
+                                "amount": 27974.064215663082,
+                                "percentage": 0,
+                                "reference": 0
+                            }
+                        },
+                        {
+                            "id": 2,
+                            "name": "二手车部",
+                            "revenue": {
+                                "amount": 0,
+                                "percentage": 0,
+                                "reference": 0
+                            },
+                            "expense": {
+                                "amount": 0,
+                                "percentage": 0,
+                                "reference": 0
+                            },
+                            "margin": {
+                                "amount": 0,
+                                "percentage": 0,
+                                "reference": 0
+                            },
+                            "opProfit": {
+                                "amount": 0,
+                                "percentage": 0,
+                                "reference": 0
+                            }
+                        },
+                        {
+                            "id": 3,
+                            "name": "租赁事业部",
+                            "revenue": {
+                                "amount": 0,
+                                "percentage": 0,
+                                "reference": 0
+                            },
+                            "expense": {
+                                "amount": 0,
+                                "percentage": 0,
+                                "reference": 0
+                            },
+                            "margin": {
+                                "amount": 0,
+                                "percentage": 0,
+                                "reference": 0
+                            },
+                            "opProfit": {
+                                "amount": 0,
+                                "percentage": 0,
+                                "reference": 0
+                            }
+                        },
+                        {
+                            "id": 4,
+                            "name": "维修部",
+                            "revenue": {
+                                "amount": 0,
+                                "percentage": 0,
+                                "reference": 0
+                            },
+                            "expense": {
+                                "amount": 0,
+                                "percentage": 0,
+                                "reference": 0
+                            },
+                            "margin": {
+                                "amount": 0,
+                                "percentage": 0,
+                                "reference": 0
+                            },
+                            "opProfit": {
+                                "amount": 0,
+                                "percentage": 0,
+                                "reference": 0
+                            }
+                        },
+                        {
+                            "id": 5,
+                            "name": "备件部",
+                            "revenue": {
+                                "amount": 3213.208233932754,
+                                "percentage": 0,
+                                "reference": 0
+                            },
+                            "expense": {
+                                "amount": 8756.002690628336,
+                                "percentage": 0,
+                                "reference": 0
+                            },
+                            "margin": {
+                                "amount": 1912.7163681993331,
+                                "percentage": 0,
+                                "reference": 0
+                            },
+                            "opProfit": {
+                                "amount": -6843.286322429003,
+                                "percentage": 0,
+                                "reference": 0
+                            }
+                        },
+                        {
+                            "id": 6,
+                            "name": "钣喷部",
+                            "revenue": {
+                                "amount": 0,
+                                "percentage": 0,
+                                "reference": 0
+                            },
+                            "expense": {
+                                "amount": 0,
+                                "percentage": 0,
+                                "reference": 0
+                            },
+                            "margin": {
+                                "amount": 0,
+                                "percentage": 0,
+                                "reference": 0
+                            },
+                            "opProfit": {
+                                "amount": 0,
+                                "percentage": 0,
+                                "reference": 0
+                            }
+                        },
+                        {
+                            "id": 7,
+                            "name": "其它部",
+                            "revenue": {
+                                "amount": 2503.3385441194046,
+                                "percentage": 0,
+                                "reference": 0
+                            },
+                            "expense": {
+                                "amount": 0,
+                                "percentage": 0,
+                                "reference": 0
+                            },
+                            "margin": {
+                                "amount": 290.42107793648466,
+                                "percentage": 0,
+                                "reference": 0
+                            },
+                            "opProfit": {
+                                "amount": 290.42107793648466,
+                                "percentage": 0,
+                                "reference": 0
+                            }
+                        }
+                    ]
+                },
+                {
+                    "id": 12,
+                    "name": "长凯公司",
+                    "code": "CN-13",
+                    "revenue": {
+                        "amount": 114992.03572529844,
+                        "percentage": 0,
+                        "reference": 127176.35957702047
+                    },
+                    "expense": {
+                        "amount": 16908.27512359485,
+                        "percentage": 0,
+                        "reference": 57046.93810355648
+                    },
+                    "margin": {
+                        "amount": 61064.391007515405,
+                        "percentage": 0,
+                        "reference": 64229.85317239741
+                    },
+                    "opProfit": {
+                        "amount": 44156.11588392056,
+                        "percentage": 0,
+                        "reference": 36594.196764896704
+                    },
+                    "netProfit": {
+                        "amount": 0,
+                        "percentage": 0,
+                        "reference": 0
+                    },
+                    "detail": [
+                        {
+                            "id": 0,
+                            "name": "NA",
+                            "revenue": {
+                                "amount": 0,
+                                "percentage": 0,
+                                "reference": 0
+                            },
+                            "expense": {
+                                "amount": 0,
+                                "percentage": 0,
+                                "reference": 0
+                            },
+                            "margin": {
+                                "amount": 0,
+                                "percentage": 0,
+                                "reference": 0
+                            },
+                            "opProfit": {
+                                "amount": 0,
+                                "percentage": 0,
+                                "reference": 0
+                            }
+                        },
+                        {
+                            "id": 1,
+                            "name": "新车销售部",
+                            "revenue": {
+                                "amount": 33558.5892362949,
+                                "percentage": 0,
+                                "reference": 0
+                            },
+                            "expense": {
+                                "amount": 0,
+                                "percentage": 0,
+                                "reference": 0
+                            },
+                            "margin": {
+                                "amount": 16693.362034513342,
+                                "percentage": 0,
+                                "reference": 0
+                            },
+                            "opProfit": {
+                                "amount": 16693.362034513342,
+                                "percentage": 0,
+                                "reference": 0
+                            }
+                        },
+                        {
+                            "id": 2,
+                            "name": "二手车部",
+                            "revenue": {
+                                "amount": 31472.743394660672,
+                                "percentage": 0,
+                                "reference": 0
+                            },
+                            "expense": {
+                                "amount": 16908.27512359485,
+                                "percentage": 0,
+                                "reference": 0
+                            },
+                            "margin": {
+                                "amount": 9681.577058045,
+                                "percentage": 0,
+                                "reference": 0
+                            },
+                            "opProfit": {
+                                "amount": -7226.698065549848,
+                                "percentage": 0,
+                                "reference": 0
+                            }
+                        },
+                        {
+                            "id": 3,
+                            "name": "租赁事业部",
+                            "revenue": {
+                                "amount": 11173.691918114606,
+                                "percentage": 0,
+                                "reference": 0
+                            },
+                            "expense": {
+                                "amount": 0,
+                                "percentage": 0,
+                                "reference": 0
+                            },
+                            "margin": {
+                                "amount": 11598.347015790716,
+                                "percentage": 0,
+                                "reference": 0
+                            },
+                            "opProfit": {
+                                "amount": 11598.347015790716,
+                                "percentage": 0,
+                                "reference": 0
+                            }
+                        },
+                        {
+                            "id": 4,
+                            "name": "维修部",
+                            "revenue": {
+                                "amount": 28634.44607418693,
+                                "percentage": 0,
+                                "reference": 0
+                            },
+                            "expense": {
+                                "amount": 0,
+                                "percentage": 0,
+                                "reference": 0
+                            },
+                            "margin": {
+                                "amount": 10362.506212641705,
+                                "percentage": 0,
+                                "reference": 0
+                            },
+                            "opProfit": {
+                                "amount": 10362.506212641705,
+                                "percentage": 0,
+                                "reference": 0
+                            }
+                        },
+                        {
+                            "id": 5,
+                            "name": "备件部",
+                            "revenue": {
+                                "amount": 0,
+                                "percentage": 0,
+                                "reference": 0
+                            },
+                            "expense": {
+                                "amount": 0,
+                                "percentage": 0,
+                                "reference": 0
+                            },
+                            "margin": {
+                                "amount": 0,
+                                "percentage": 0,
+                                "reference": 0
+                            },
+                            "opProfit": {
+                                "amount": 0,
+                                "percentage": 0,
+                                "reference": 0
+                            }
+                        },
+                        {
+                            "id": 6,
+                            "name": "钣喷部",
+                            "revenue": {
+                                "amount": 0,
+                                "percentage": 0,
+                                "reference": 0
+                            },
+                            "expense": {
+                                "amount": 0,
+                                "percentage": 0,
+                                "reference": 0
+                            },
+                            "margin": {
+                                "amount": 0,
+                                "percentage": 0,
+                                "reference": 0
+                            },
+                            "opProfit": {
+                                "amount": 0,
+                                "percentage": 0,
+                                "reference": 0
+                            }
+                        },
+                        {
+                            "id": 7,
+                            "name": "其它部",
+                            "revenue": {
+                                "amount": 10152.565102041335,
+                                "percentage": 0,
+                                "reference": 0
+                            },
+                            "expense": {
+                                "amount": 0,
+                                "percentage": 0,
+                                "reference": 0
+                            },
+                            "margin": {
+                                "amount": 12728.598686524638,
+                                "percentage": 0,
+                                "reference": 0
+                            },
+                            "opProfit": {
+                                "amount": 12728.598686524638,
+                                "percentage": 0,
+                                "reference": 0
+                            }
+                        }
+                    ]
+                },
+                {
+                    "id": 13,
+                    "name": "北京长京行",
+                    "code": "CN-14",
+                    "revenue": {
+                        "amount": 102972.2910978878,
+                        "percentage": 0,
+                        "reference": 127176.35957702047
+                    },
+                    "expense": {
+                        "amount": 22073.406106994633,
+                        "percentage": 0,
+                        "reference": 57046.93810355648
+                    },
+                    "margin": {
+                        "amount": 43895.025514510264,
+                        "percentage": 0,
+                        "reference": 64229.85317239741
+                    },
+                    "opProfit": {
+                        "amount": 21821.61940751563,
+                        "percentage": 0,
+                        "reference": 36594.196764896704
+                    },
+                    "netProfit": {
+                        "amount": 0,
+                        "percentage": 0,
+                        "reference": 0
+                    },
+                    "detail": [
+                        {
+                            "id": 0,
+                            "name": "NA",
+                            "revenue": {
+                                "amount": 0,
+                                "percentage": 0,
+                                "reference": 0
+                            },
+                            "expense": {
+                                "amount": 0,
+                                "percentage": 0,
+                                "reference": 0
+                            },
+                            "margin": {
+                                "amount": 0,
+                                "percentage": 0,
+                                "reference": 0
+                            },
+                            "opProfit": {
+                                "amount": 0,
+                                "percentage": 0,
+                                "reference": 0
+                            }
+                        },
+                        {
+                            "id": 1,
+                            "name": "新车销售部",
+                            "revenue": {
+                                "amount": 20541.376127364292,
+                                "percentage": 0,
+                                "reference": 0
+                            },
+                            "expense": {
+                                "amount": 0,
+                                "percentage": 0,
+                                "reference": 0
+                            },
+                            "margin": {
+                                "amount": 7473.102717179902,
+                                "percentage": 0,
+                                "reference": 0
+                            },
+                            "opProfit": {
+                                "amount": 7473.102717179902,
+                                "percentage": 0,
+                                "reference": 0
+                            }
+                        },
+                        {
+                            "id": 2,
+                            "name": "二手车部",
+                            "revenue": {
+                                "amount": 0,
+                                "percentage": 0,
+                                "reference": 0
+                            },
+                            "expense": {
+                                "amount": 0,
+                                "percentage": 0,
+                                "reference": 0
+                            },
+                            "margin": {
+                                "amount": 0,
+                                "percentage": 0,
+                                "reference": 0
+                            },
+                            "opProfit": {
+                                "amount": 0,
+                                "percentage": 0,
+                                "reference": 0
+                            }
+                        },
+                        {
+                            "id": 3,
+                            "name": "租赁事业部",
+                            "revenue": {
+                                "amount": 18439.618316763037,
+                                "percentage": 0,
+                                "reference": 0
+                            },
+                            "expense": {
+                                "amount": 2992.057671962993,
+                                "percentage": 0,
+                                "reference": 0
+                            },
+                            "margin": {
+                                "amount": 11128.301574095474,
+                                "percentage": 0,
+                                "reference": 0
+                            },
+                            "opProfit": {
+                                "amount": 8136.243902132481,
+                                "percentage": 0,
+                                "reference": 0
+                            }
+                        },
+                        {
+                            "id": 4,
+                            "name": "维修部",
+                            "revenue": {
+                                "amount": 25852.63235794663,
+                                "percentage": 0,
+                                "reference": 0
+                            },
+                            "expense": {
+                                "amount": 0,
+                                "percentage": 0,
+                                "reference": 0
+                            },
+                            "margin": {
+                                "amount": 10354.995832270572,
+                                "percentage": 0,
+                                "reference": 0
+                            },
+                            "opProfit": {
+                                "amount": 10354.995832270572,
+                                "percentage": 0,
+                                "reference": 0
+                            }
+                        },
+                        {
+                            "id": 5,
+                            "name": "备件部",
+                            "revenue": {
+                                "amount": 11171.348465211559,
+                                "percentage": 0,
+                                "reference": 0
+                            },
+                            "expense": {
+                                "amount": 0,
+                                "percentage": 0,
+                                "reference": 0
+                            },
+                            "margin": {
+                                "amount": 2851.725125371595,
+                                "percentage": 0,
+                                "reference": 0
+                            },
+                            "opProfit": {
+                                "amount": 2851.725125371595,
+                                "percentage": 0,
+                                "reference": 0
+                            }
+                        },
+                        {
+                            "id": 6,
+                            "name": "钣喷部",
+                            "revenue": {
+                                "amount": 9568.54236383257,
+                                "percentage": 0,
+                                "reference": 0
+                            },
+                            "expense": {
+                                "amount": 0,
+                                "percentage": 0,
+                                "reference": 0
+                            },
+                            "margin": {
+                                "amount": 10600.731097056529,
+                                "percentage": 0,
+                                "reference": 0
+                            },
+                            "opProfit": {
+                                "amount": 10600.731097056529,
+                                "percentage": 0,
+                                "reference": 0
+                            }
+                        },
+                        {
+                            "id": 7,
+                            "name": "其它部",
+                            "revenue": {
+                                "amount": 17398.77346676972,
+                                "percentage": 0,
+                                "reference": 0
+                            },
+                            "expense": {
+                                "amount": 19081.34843503164,
+                                "percentage": 0,
+                                "reference": 0
+                            },
+                            "margin": {
+                                "amount": 1486.1691685361923,
+                                "percentage": 0,
+                                "reference": 0
+                            },
+                            "opProfit": {
+                                "amount": -17595.17926649545,
+                                "percentage": 0,
+                                "reference": 0
+                            }
+                        }
+                    ]
+                },
+                {
+                    "id": 14,
+                    "name": "南京长益",
+                    "code": "CN-15",
+                    "revenue": {
+                        "amount": 62827.17895443748,
+                        "percentage": 0,
+                        "reference": 127176.35957702047
+                    },
+                    "expense": {
+                        "amount": 49592.21059402678,
+                        "percentage": 0,
+                        "reference": 57046.93810355648
+                    },
+                    "margin": {
+                        "amount": 46531.418657335016,
+                        "percentage": 0,
+                        "reference": 64229.85317239741
+                    },
+                    "opProfit": {
+                        "amount": -3060.791936691763,
+                        "percentage": 0,
+                        "reference": 36594.196764896704
+                    },
+                    "netProfit": {
+                        "amount": 0,
+                        "percentage": 0,
+                        "reference": 0
+                    },
+                    "detail": [
+                        {
+                            "id": 0,
+                            "name": "NA",
+                            "revenue": {
+                                "amount": 0,
+                                "percentage": 0,
+                                "reference": 0
+                            },
+                            "expense": {
+                                "amount": 0,
+                                "percentage": 0,
+                                "reference": 0
+                            },
+                            "margin": {
+                                "amount": 0,
+                                "percentage": 0,
+                                "reference": 0
+                            },
+                            "opProfit": {
+                                "amount": 0,
+                                "percentage": 0,
+                                "reference": 0
+                            }
+                        },
+                        {
+                            "id": 1,
+                            "name": "新车销售部",
+                            "revenue": {
+                                "amount": 33422.05977193544,
+                                "percentage": 0,
+                                "reference": 0
+                            },
+                            "expense": {
+                                "amount": 0,
+                                "percentage": 0,
+                                "reference": 0
+                            },
+                            "margin": {
+                                "amount": 13775.5964227948,
+                                "percentage": 0,
+                                "reference": 0
+                            },
+                            "opProfit": {
+                                "amount": 13775.5964227948,
+                                "percentage": 0,
+                                "reference": 0
+                            }
+                        },
+                        {
+                            "id": 2,
+                            "name": "二手车部",
+                            "revenue": {
+                                "amount": 0,
+                                "percentage": 0,
+                                "reference": 0
+                            },
+                            "expense": {
+                                "amount": 11902.217427034682,
+                                "percentage": 0,
+                                "reference": 0
+                            },
+                            "margin": {
+                                "amount": 0,
+                                "percentage": 0,
+                                "reference": 0
+                            },
+                            "opProfit": {
+                                "amount": -11902.217427034682,
+                                "percentage": 0,
+                                "reference": 0
+                            }
+                        },
+                        {
+                            "id": 3,
+                            "name": "租赁事业部",
+                            "revenue": {
+                                "amount": 0,
+                                "percentage": 0,
+                                "reference": 0
+                            },
+                            "expense": {
+                                "amount": 21202.650239719558,
+                                "percentage": 0,
+                                "reference": 0
+                            },
+                            "margin": {
+                                "amount": 0,
+                                "percentage": 0,
+                                "reference": 0
+                            },
+                            "opProfit": {
+                                "amount": -21202.650239719558,
+                                "percentage": 0,
+                                "reference": 0
+                            }
+                        },
+                        {
+                            "id": 4,
+                            "name": "维修部",
+                            "revenue": {
+                                "amount": 0,
+                                "percentage": 0,
+                                "reference": 0
+                            },
+                            "expense": {
+                                "amount": 0,
+                                "percentage": 0,
+                                "reference": 0
+                            },
+                            "margin": {
+                                "amount": 0,
+                                "percentage": 0,
+                                "reference": 0
+                            },
+                            "opProfit": {
+                                "amount": 0,
+                                "percentage": 0,
+                                "reference": 0
+                            }
+                        },
+                        {
+                            "id": 5,
+                            "name": "备件部",
+                            "revenue": {
+                                "amount": 915.099774084327,
+                                "percentage": 0,
+                                "reference": 0
+                            },
+                            "expense": {
+                                "amount": 2319.368671400519,
+                                "percentage": 0,
+                                "reference": 0
+                            },
+                            "margin": {
+                                "amount": 2877.8036217958625,
+                                "percentage": 0,
+                                "reference": 0
+                            },
+                            "opProfit": {
+                                "amount": 558.4349503953435,
+                                "percentage": 0,
+                                "reference": 0
+                            }
+                        },
+                        {
+                            "id": 6,
+                            "name": "钣喷部",
+                            "revenue": {
+                                "amount": 0,
+                                "percentage": 0,
+                                "reference": 0
+                            },
+                            "expense": {
+                                "amount": 7042.698067277193,
+                                "percentage": 0,
+                                "reference": 0
+                            },
+                            "margin": {
+                                "amount": 0,
+                                "percentage": 0,
+                                "reference": 0
+                            },
+                            "opProfit": {
+                                "amount": -7042.698067277193,
+                                "percentage": 0,
+                                "reference": 0
+                            }
+                        },
+                        {
+                            "id": 7,
+                            "name": "其它部",
+                            "revenue": {
+                                "amount": 28490.019408417713,
+                                "percentage": 0,
+                                "reference": 0
+                            },
+                            "expense": {
+                                "amount": 7125.276188594827,
+                                "percentage": 0,
+                                "reference": 0
+                            },
+                            "margin": {
+                                "amount": 29878.018612744352,
+                                "percentage": 0,
+                                "reference": 0
+                            },
+                            "opProfit": {
+                                "amount": 22752.742424149525,
+                                "percentage": 0,
+                                "reference": 0
+                            }
+                        }
+                    ]
+                },
+                {
+                    "id": 15,
+                    "name": "重庆长俊",
+                    "code": "CN-16",
+                    "revenue": {
+                        "amount": 57632.53425706543,
+                        "percentage": 0,
+                        "reference": 127176.35957702047
+                    },
+                    "expense": {
+                        "amount": 57562.55279738283,
+                        "percentage": 0,
+                        "reference": 57046.93810355648
+                    },
+                    "margin": {
+                        "amount": 56975.016308010585,
+                        "percentage": 0,
+                        "reference": 64229.85317239741
+                    },
+                    "opProfit": {
+                        "amount": -587.5364893722435,
+                        "percentage": 0,
+                        "reference": 36594.196764896704
+                    },
+                    "netProfit": {
+                        "amount": 0,
+                        "percentage": 0,
+                        "reference": 0
+                    },
+                    "detail": [
+                        {
+                            "id": 0,
+                            "name": "NA",
+                            "revenue": {
+                                "amount": 0,
+                                "percentage": 0,
+                                "reference": 0
+                            },
+                            "expense": {
+                                "amount": 0,
+                                "percentage": 0,
+                                "reference": 0
+                            },
+                            "margin": {
+                                "amount": 0,
+                                "percentage": 0,
+                                "reference": 0
+                            },
+                            "opProfit": {
+                                "amount": 0,
+                                "percentage": 0,
+                                "reference": 0
+                            }
+                        },
+                        {
+                            "id": 1,
+                            "name": "新车销售部",
+                            "revenue": {
+                                "amount": 15037.262916844693,
+                                "percentage": 0,
+                                "reference": 0
+                            },
+                            "expense": {
+                                "amount": 0,
+                                "percentage": 0,
+                                "reference": 0
+                            },
+                            "margin": {
+                                "amount": 8384.907708796329,
+                                "percentage": 0,
+                                "reference": 0
+                            },
+                            "opProfit": {
+                                "amount": 8384.907708796329,
+                                "percentage": 0,
+                                "reference": 0
+                            }
+                        },
+                        {
+                            "id": 2,
+                            "name": "二手车部",
+                            "revenue": {
+                                "amount": 0,
+                                "percentage": 0,
+                                "reference": 0
+                            },
+                            "expense": {
+                                "amount": 0,
+                                "percentage": 0,
+                                "reference": 0
+                            },
+                            "margin": {
+                                "amount": 0,
+                                "percentage": 0,
+                                "reference": 0
+                            },
+                            "opProfit": {
+                                "amount": 0,
+                                "percentage": 0,
+                                "reference": 0
+                            }
+                        },
+                        {
+                            "id": 3,
+                            "name": "租赁事业部",
+                            "revenue": {
+                                "amount": 6885.564783141504,
+                                "percentage": 0,
+                                "reference": 0
+                            },
+                            "expense": {
+                                "amount": 0,
+                                "percentage": 0,
+                                "reference": 0
+                            },
+                            "margin": {
+                                "amount": 4555.363530279806,
+                                "percentage": 0,
+                                "reference": 0
+                            },
+                            "opProfit": {
+                                "amount": 4555.363530279806,
+                                "percentage": 0,
+                                "reference": 0
+                            }
+                        },
+                        {
+                            "id": 4,
+                            "name": "维修部",
+                            "revenue": {
+                                "amount": 0,
+                                "percentage": 0,
+                                "reference": 0
+                            },
+                            "expense": {
+                                "amount": 25035.335782379952,
+                                "percentage": 0,
+                                "reference": 0
+                            },
+                            "margin": {
+                                "amount": 0,
+                                "percentage": 0,
+                                "reference": 0
+                            },
+                            "opProfit": {
+                                "amount": -25035.335782379952,
+                                "percentage": 0,
+                                "reference": 0
+                            }
+                        },
+                        {
+                            "id": 5,
+                            "name": "备件部",
+                            "revenue": {
+                                "amount": 0,
+                                "percentage": 0,
+                                "reference": 0
+                            },
+                            "expense": {
+                                "amount": 0,
+                                "percentage": 0,
+                                "reference": 0
+                            },
+                            "margin": {
+                                "amount": 0,
+                                "percentage": 0,
+                                "reference": 0
+                            },
+                            "opProfit": {
+                                "amount": 0,
+                                "percentage": 0,
+                                "reference": 0
+                            }
+                        },
+                        {
+                            "id": 6,
+                            "name": "钣喷部",
+                            "revenue": {
+                                "amount": 2489.485430386271,
+                                "percentage": 0,
+                                "reference": 0
+                            },
+                            "expense": {
+                                "amount": 3144.2209841375247,
+                                "percentage": 0,
+                                "reference": 0
+                            },
+                            "margin": {
+                                "amount": 13374.273205933492,
+                                "percentage": 0,
+                                "reference": 0
+                            },
+                            "opProfit": {
+                                "amount": 10230.052221795968,
+                                "percentage": 0,
+                                "reference": 0
+                            }
+                        },
+                        {
+                            "id": 7,
+                            "name": "其它部",
+                            "revenue": {
+                                "amount": 33220.221126692966,
+                                "percentage": 0,
+                                "reference": 0
+                            },
+                            "expense": {
+                                "amount": 29382.996030865346,
+                                "percentage": 0,
+                                "reference": 0
+                            },
+                            "margin": {
+                                "amount": 30660.471863000956,
+                                "percentage": 0,
+                                "reference": 0
+                            },
+                            "opProfit": {
+                                "amount": 1277.4758321356094,
+                                "percentage": 0,
+                                "reference": 0
+                            }
+                        }
+                    ]
+                },
+                {
+                    "id": 17,
+                    "name": "长悦公司",
+                    "code": "CN-18",
+                    "revenue": {
+                        "amount": 104495.63572408409,
+                        "percentage": 0,
+                        "reference": 127176.35957702047
+                    },
+                    "expense": {
+                        "amount": 27693.315348879805,
+                        "percentage": 0,
+                        "reference": 57046.93810355648
+                    },
+                    "margin": {
+                        "amount": 59239.704968386104,
+                        "percentage": 0,
+                        "reference": 64229.85317239741
+                    },
+                    "opProfit": {
+                        "amount": 31546.3896195063,
+                        "percentage": 0,
+                        "reference": 36594.196764896704
+                    },
+                    "netProfit": {
+                        "amount": 0,
+                        "percentage": 0,
+                        "reference": 0
+                    },
+                    "detail": [
+                        {
+                            "id": 0,
+                            "name": "NA",
+                            "revenue": {
+                                "amount": 0,
+                                "percentage": 0,
+                                "reference": 0
+                            },
+                            "expense": {
+                                "amount": 0,
+                                "percentage": 0,
+                                "reference": 0
+                            },
+                            "margin": {
+                                "amount": 0,
+                                "percentage": 0,
+                                "reference": 0
+                            },
+                            "opProfit": {
+                                "amount": 0,
+                                "percentage": 0,
+                                "reference": 0
+                            }
+                        },
+                        {
+                            "id": 1,
+                            "name": "新车销售部",
+                            "revenue": {
+                                "amount": 67076.55957177842,
+                                "percentage": 0,
+                                "reference": 0
+                            },
+                            "expense": {
+                                "amount": 0,
+                                "percentage": 0,
+                                "reference": 0
+                            },
+                            "margin": {
+                                "amount": 35281.15004912697,
+                                "percentage": 0,
+                                "reference": 0
+                            },
+                            "opProfit": {
+                                "amount": 35281.15004912697,
+                                "percentage": 0,
+                                "reference": 0
+                            }
+                        },
+                        {
+                            "id": 2,
+                            "name": "二手车部",
+                            "revenue": {
+                                "amount": 0,
+                                "percentage": 0,
+                                "reference": 0
+                            },
+                            "expense": {
+                                "amount": 0,
+                                "percentage": 0,
+                                "reference": 0
+                            },
+                            "margin": {
+                                "amount": 0,
+                                "percentage": 0,
+                                "reference": 0
+                            },
+                            "opProfit": {
+                                "amount": 0,
+                                "percentage": 0,
+                                "reference": 0
+                            }
+                        },
+                        {
+                            "id": 3,
+                            "name": "租赁事业部",
+                            "revenue": {
+                                "amount": 12977.876240679569,
+                                "percentage": 0,
+                                "reference": 0
+                            },
+                            "expense": {
+                                "amount": 0,
+                                "percentage": 0,
+                                "reference": 0
+                            },
+                            "margin": {
+                                "amount": 9525.226827658573,
+                                "percentage": 0,
+                                "reference": 0
+                            },
+                            "opProfit": {
+                                "amount": 9525.226827658573,
+                                "percentage": 0,
+                                "reference": 0
+                            }
+                        },
+                        {
+                            "id": 4,
+                            "name": "维修部",
+                            "revenue": {
+                                "amount": 0,
+                                "percentage": 0,
+                                "reference": 0
+                            },
+                            "expense": {
+                                "amount": 0,
+                                "percentage": 0,
+                                "reference": 0
+                            },
+                            "margin": {
+                                "amount": 0,
+                                "percentage": 0,
+                                "reference": 0
+                            },
+                            "opProfit": {
+                                "amount": 0,
+                                "percentage": 0,
+                                "reference": 0
+                            }
+                        },
+                        {
+                            "id": 5,
+                            "name": "备件部",
+                            "revenue": {
+                                "amount": 7111.6139701566,
+                                "percentage": 0,
+                                "reference": 0
+                            },
+                            "expense": {
+                                "amount": 7493.910364108342,
+                                "percentage": 0,
+                                "reference": 0
+                            },
+                            "margin": {
+                                "amount": 6427.952388229639,
+                                "percentage": 0,
+                                "reference": 0
+                            },
+                            "opProfit": {
+                                "amount": -1065.957975878703,
+                                "percentage": 0,
+                                "reference": 0
+                            }
+                        },
+                        {
+                            "id": 6,
+                            "name": "钣喷部",
+                            "revenue": {
+                                "amount": 6269.06749439194,
+                                "percentage": 0,
+                                "reference": 0
+                            },
+                            "expense": {
+                                "amount": 13187.50921753994,
+                                "percentage": 0,
+                                "reference": 0
+                            },
+                            "margin": {
+                                "amount": 4063.407638410379,
+                                "percentage": 0,
+                                "reference": 0
+                            },
+                            "opProfit": {
+                                "amount": -9124.101579129561,
+                                "percentage": 0,
+                                "reference": 0
+                            }
+                        },
+                        {
+                            "id": 7,
+                            "name": "其它部",
+                            "revenue": {
+                                "amount": 11060.518447077558,
+                                "percentage": 0,
+                                "reference": 0
+                            },
+                            "expense": {
+                                "amount": 7011.895767231522,
+                                "percentage": 0,
+                                "reference": 0
+                            },
+                            "margin": {
+                                "amount": 3941.968064960544,
+                                "percentage": 0,
+                                "reference": 0
+                            },
+                            "opProfit": {
+                                "amount": -3069.927702270978,
+                                "percentage": 0,
+                                "reference": 0
+                            }
+                        }
+                    ]
+                },
+                {
+                    "id": 16,
+                    "name": "长沙长威",
+                    "code": "CN-17",
+                    "revenue": {
+                        "amount": 134192.28672719336,
+                        "percentage": 0,
+                        "reference": 127176.35957702047
+                    },
+                    "expense": {
+                        "amount": 19965.721172295274,
+                        "percentage": 0,
+                        "reference": 57046.93810355648
+                    },
+                    "margin": {
+                        "amount": 57490.710357126234,
+                        "percentage": 0,
+                        "reference": 64229.85317239741
+                    },
+                    "opProfit": {
+                        "amount": 37524.98918483096,
+                        "percentage": 0,
+                        "reference": 36594.196764896704
+                    },
+                    "netProfit": {
+                        "amount": 0,
+                        "percentage": 0,
+                        "reference": 0
+                    },
+                    "detail": [
+                        {
+                            "id": 0,
+                            "name": "NA",
+                            "revenue": {
+                                "amount": 0,
+                                "percentage": 0,
+                                "reference": 0
+                            },
+                            "expense": {
+                                "amount": 0,
+                                "percentage": 0,
+                                "reference": 0
+                            },
+                            "margin": {
+                                "amount": 0,
+                                "percentage": 0,
+                                "reference": 0
+                            },
+                            "opProfit": {
+                                "amount": 0,
+                                "percentage": 0,
+                                "reference": 0
+                            }
+                        },
+                        {
+                            "id": 1,
+                            "name": "新车销售部",
+                            "revenue": {
+                                "amount": 47413.52582605497,
+                                "percentage": 0,
+                                "reference": 0
+                            },
+                            "expense": {
+                                "amount": 0,
+                                "percentage": 0,
+                                "reference": 0
+                            },
+                            "margin": {
+                                "amount": 23046.56920935115,
+                                "percentage": 0,
+                                "reference": 0
+                            },
+                            "opProfit": {
+                                "amount": 23046.56920935115,
+                                "percentage": 0,
+                                "reference": 0
+                            }
+                        },
+                        {
+                            "id": 2,
+                            "name": "二手车部",
+                            "revenue": {
+                                "amount": 0,
+                                "percentage": 0,
+                                "reference": 0
+                            },
+                            "expense": {
+                                "amount": 6537.426382116085,
+                                "percentage": 0,
+                                "reference": 0
+                            },
+                            "margin": {
+                                "amount": 0,
+                                "percentage": 0,
+                                "reference": 0
+                            },
+                            "opProfit": {
+                                "amount": -6537.426382116085,
+                                "percentage": 0,
+                                "reference": 0
+                            }
+                        },
+                        {
+                            "id": 3,
+                            "name": "租赁事业部",
+                            "revenue": {
+                                "amount": 0,
+                                "percentage": 0,
+                                "reference": 0
+                            },
+                            "expense": {
+                                "amount": 0,
+                                "percentage": 0,
+                                "reference": 0
+                            },
+                            "margin": {
+                                "amount": 0,
+                                "percentage": 0,
+                                "reference": 0
+                            },
+                            "opProfit": {
+                                "amount": 0,
+                                "percentage": 0,
+                                "reference": 0
+                            }
+                        },
+                        {
+                            "id": 4,
+                            "name": "维修部",
+                            "revenue": {
+                                "amount": 0,
+                                "percentage": 0,
+                                "reference": 0
+                            },
+                            "expense": {
+                                "amount": 3722.886876385727,
+                                "percentage": 0,
+                                "reference": 0
+                            },
+                            "margin": {
+                                "amount": 0,
+                                "percentage": 0,
+                                "reference": 0
+                            },
+                            "opProfit": {
+                                "amount": -3722.886876385727,
+                                "percentage": 0,
+                                "reference": 0
+                            }
+                        },
+                        {
+                            "id": 5,
+                            "name": "备件部",
+                            "revenue": {
+                                "amount": 2296.0424314626416,
+                                "percentage": 0,
+                                "reference": 0
+                            },
+                            "expense": {
+                                "amount": 0,
+                                "percentage": 0,
+                                "reference": 0
+                            },
+                            "margin": {
+                                "amount": 6616.059836549103,
+                                "percentage": 0,
+                                "reference": 0
+                            },
+                            "opProfit": {
+                                "amount": 6616.059836549103,
+                                "percentage": 0,
+                                "reference": 0
+                            }
+                        },
+                        {
+                            "id": 6,
+                            "name": "钣喷部",
+                            "revenue": {
+                                "amount": 0,
+                                "percentage": 0,
+                                "reference": 0
+                            },
+                            "expense": {
+                                "amount": 0,
+                                "percentage": 0,
+                                "reference": 0
+                            },
+                            "margin": {
+                                "amount": 0,
+                                "percentage": 0,
+                                "reference": 0
+                            },
+                            "opProfit": {
+                                "amount": 0,
+                                "percentage": 0,
+                                "reference": 0
+                            }
+                        },
+                        {
+                            "id": 7,
+                            "name": "其它部",
+                            "revenue": {
+                                "amount": 84482.71846967576,
+                                "percentage": 0,
+                                "reference": 0
+                            },
+                            "expense": {
+                                "amount": 9705.407913793464,
+                                "percentage": 0,
+                                "reference": 0
+                            },
+                            "margin": {
+                                "amount": 27828.08131122598,
+                                "percentage": 0,
+                                "reference": 0
+                            },
+                            "opProfit": {
+                                "amount": 18122.673397432514,
+                                "percentage": 0,
+                                "reference": 0
+                            }
+                        }
+                    ]
+                },
+                {
+                    "id": 19,
+                    "name": "长佳公司",
+                    "code": "CN-20",
+                    "revenue": {
+                        "amount": 135642.3169889232,
+                        "percentage": 0,
+                        "reference": 127176.35957702047
+                    },
+                    "expense": {
+                        "amount": 5682.9586038787365,
+                        "percentage": 0,
+                        "reference": 57046.93810355648
+                    },
+                    "margin": {
+                        "amount": 64281.303067602465,
+                        "percentage": 0,
+                        "reference": 64229.85317239741
+                    },
+                    "opProfit": {
+                        "amount": 58598.344463723726,
+                        "percentage": 0,
+                        "reference": 36594.196764896704
+                    },
+                    "netProfit": {
+                        "amount": 0,
+                        "percentage": 0,
+                        "reference": 0
+                    },
+                    "detail": [
+                        {
+                            "id": 0,
+                            "name": "NA",
+                            "revenue": {
+                                "amount": 0,
+                                "percentage": 0,
+                                "reference": 0
+                            },
+                            "expense": {
+                                "amount": 0,
+                                "percentage": 0,
+                                "reference": 0
+                            },
+                            "margin": {
+                                "amount": 0,
+                                "percentage": 0,
+                                "reference": 0
+                            },
+                            "opProfit": {
+                                "amount": 0,
+                                "percentage": 0,
+                                "reference": 0
+                            }
+                        },
+                        {
+                            "id": 1,
+                            "name": "新车销售部",
+                            "revenue": {
+                                "amount": 57256.86166186107,
+                                "percentage": 0,
+                                "reference": 0
+                            },
+                            "expense": {
+                                "amount": 0,
+                                "percentage": 0,
+                                "reference": 0
+                            },
+                            "margin": {
+                                "amount": 25549.967886963375,
+                                "percentage": 0,
+                                "reference": 0
+                            },
+                            "opProfit": {
+                                "amount": 25549.967886963375,
+                                "percentage": 0,
+                                "reference": 0
+                            }
+                        },
+                        {
+                            "id": 2,
+                            "name": "二手车部",
+                            "revenue": {
+                                "amount": 0,
+                                "percentage": 0,
+                                "reference": 0
+                            },
+                            "expense": {
+                                "amount": 0,
+                                "percentage": 0,
+                                "reference": 0
+                            },
+                            "margin": {
+                                "amount": 0,
+                                "percentage": 0,
+                                "reference": 0
+                            },
+                            "opProfit": {
+                                "amount": 0,
+                                "percentage": 0,
+                                "reference": 0
+                            }
+                        },
+                        {
+                            "id": 3,
+                            "name": "租赁事业部",
+                            "revenue": {
+                                "amount": 13632.643271808209,
+                                "percentage": 0,
+                                "reference": 0
+                            },
+                            "expense": {
+                                "amount": 997.8384634933878,
+                                "percentage": 0,
+                                "reference": 0
+                            },
+                            "margin": {
+                                "amount": 6647.75446258407,
+                                "percentage": 0,
+                                "reference": 0
+                            },
+                            "opProfit": {
+                                "amount": 5649.915999090682,
+                                "percentage": 0,
+                                "reference": 0
+                            }
+                        },
+                        {
+                            "id": 4,
+                            "name": "维修部",
+                            "revenue": {
+                                "amount": 5781.0134616559235,
+                                "percentage": 0,
+                                "reference": 0
+                            },
+                            "expense": {
+                                "amount": 0,
+                                "percentage": 0,
+                                "reference": 0
+                            },
+                            "margin": {
+                                "amount": 7251.0805590750515,
+                                "percentage": 0,
+                                "reference": 0
+                            },
+                            "opProfit": {
+                                "amount": 7251.0805590750515,
+                                "percentage": 0,
+                                "reference": 0
+                            }
+                        },
+                        {
+                            "id": 5,
+                            "name": "备件部",
+                            "revenue": {
+                                "amount": 44058.39673334198,
+                                "percentage": 0,
+                                "reference": 0
+                            },
+                            "expense": {
+                                "amount": 0,
+                                "percentage": 0,
+                                "reference": 0
+                            },
+                            "margin": {
+                                "amount": 20318.494467066317,
+                                "percentage": 0,
+                                "reference": 0
+                            },
+                            "opProfit": {
+                                "amount": 20318.494467066317,
+                                "percentage": 0,
+                                "reference": 0
+                            }
+                        },
+                        {
+                            "id": 6,
+                            "name": "钣喷部",
+                            "revenue": {
+                                "amount": 14913.401860256028,
+                                "percentage": 0,
+                                "reference": 0
+                            },
+                            "expense": {
+                                "amount": 4685.120140385348,
+                                "percentage": 0,
+                                "reference": 0
+                            },
+                            "margin": {
+                                "amount": 4514.005691913653,
+                                "percentage": 0,
+                                "reference": 0
+                            },
+                            "opProfit": {
+                                "amount": -171.11444847169514,
+                                "percentage": 0,
+                                "reference": 0
+                            }
+                        },
+                        {
+                            "id": 7,
+                            "name": "其它部",
+                            "revenue": {
+                                "amount": 0,
+                                "percentage": 0,
+                                "reference": 0
+                            },
+                            "expense": {
+                                "amount": 0,
+                                "percentage": 0,
+                                "reference": 0
+                            },
+                            "margin": {
+                                "amount": 0,
+                                "percentage": 0,
+                                "reference": 0
+                            },
+                            "opProfit": {
+                                "amount": 0,
+                                "percentage": 0,
+                                "reference": 0
+                            }
+                        }
+                    ]
+                },
+                {
+                    "id": 18,
+                    "name": "湖南长坤",
+                    "code": "CN-19",
+                    "revenue": {
+                        "amount": 79380.66871599236,
+                        "percentage": 0,
+                        "reference": 127176.35957702047
+                    },
+                    "expense": {
+                        "amount": 57290.38623471234,
+                        "percentage": 0,
+                        "reference": 57046.93810355648
+                    },
+                    "margin": {
+                        "amount": 35798.67760910633,
+                        "percentage": 0,
+                        "reference": 64229.85317239741
+                    },
+                    "opProfit": {
+                        "amount": -21491.708625606014,
+                        "percentage": 0,
+                        "reference": 36594.196764896704
+                    },
+                    "netProfit": {
+                        "amount": 0,
+                        "percentage": 0,
+                        "reference": 0
+                    },
+                    "detail": [
+                        {
+                            "id": 0,
+                            "name": "NA",
+                            "revenue": {
+                                "amount": 0,
+                                "percentage": 0,
+                                "reference": 0
+                            },
+                            "expense": {
+                                "amount": 0,
+                                "percentage": 0,
+                                "reference": 0
+                            },
+                            "margin": {
+                                "amount": 0,
+                                "percentage": 0,
+                                "reference": 0
+                            },
+                            "opProfit": {
+                                "amount": 0,
+                                "percentage": 0,
+                                "reference": 0
+                            }
+                        },
+                        {
+                            "id": 1,
+                            "name": "新车销售部",
+                            "revenue": {
+                                "amount": 75638.13606203311,
+                                "percentage": 0,
+                                "reference": 0
+                            },
+                            "expense": {
+                                "amount": 0,
+                                "percentage": 0,
+                                "reference": 0
+                            },
+                            "margin": {
+                                "amount": 35276.14720523782,
+                                "percentage": 0,
+                                "reference": 0
+                            },
+                            "opProfit": {
+                                "amount": 35276.14720523782,
+                                "percentage": 0,
+                                "reference": 0
+                            }
+                        },
+                        {
+                            "id": 2,
+                            "name": "二手车部",
+                            "revenue": {
+                                "amount": 0,
+                                "percentage": 0,
+                                "reference": 0
+                            },
+                            "expense": {
+                                "amount": 0,
+                                "percentage": 0,
+                                "reference": 0
+                            },
+                            "margin": {
+                                "amount": 0,
+                                "percentage": 0,
+                                "reference": 0
+                            },
+                            "opProfit": {
+                                "amount": 0,
+                                "percentage": 0,
+                                "reference": 0
+                            }
+                        },
+                        {
+                            "id": 3,
+                            "name": "租赁事业部",
+                            "revenue": {
+                                "amount": 0,
+                                "percentage": 0,
+                                "reference": 0
+                            },
+                            "expense": {
+                                "amount": 12440.461160760393,
+                                "percentage": 0,
+                                "reference": 0
+                            },
+                            "margin": {
+                                "amount": 0,
+                                "percentage": 0,
+                                "reference": 0
+                            },
+                            "opProfit": {
+                                "amount": -12440.461160760393,
+                                "percentage": 0,
+                                "reference": 0
+                            }
+                        },
+                        {
+                            "id": 4,
+                            "name": "维修部",
+                            "revenue": {
+                                "amount": 0,
+                                "percentage": 0,
+                                "reference": 0
+                            },
+                            "expense": {
+                                "amount": 7737.4298472133105,
+                                "percentage": 0,
+                                "reference": 0
+                            },
+                            "margin": {
+                                "amount": 0,
+                                "percentage": 0,
+                                "reference": 0
+                            },
+                            "opProfit": {
+                                "amount": -7737.4298472133105,
+                                "percentage": 0,
+                                "reference": 0
+                            }
+                        },
+                        {
+                            "id": 5,
+                            "name": "备件部",
+                            "revenue": {
+                                "amount": 0,
+                                "percentage": 0,
+                                "reference": 0
+                            },
+                            "expense": {
+                                "amount": 15404.201146131642,
+                                "percentage": 0,
+                                "reference": 0
+                            },
+                            "margin": {
+                                "amount": 0,
+                                "percentage": 0,
+                                "reference": 0
+                            },
+                            "opProfit": {
+                                "amount": -15404.201146131642,
+                                "percentage": 0,
+                                "reference": 0
+                            }
+                        },
+                        {
+                            "id": 6,
+                            "name": "钣喷部",
+                            "revenue": {
+                                "amount": 0,
+                                "percentage": 0,
+                                "reference": 0
+                            },
+                            "expense": {
+                                "amount": 10353.18526221942,
+                                "percentage": 0,
+                                "reference": 0
+                            },
+                            "margin": {
+                                "amount": 0,
+                                "percentage": 0,
+                                "reference": 0
+                            },
+                            "opProfit": {
+                                "amount": -10353.18526221942,
+                                "percentage": 0,
+                                "reference": 0
+                            }
+                        },
+                        {
+                            "id": 7,
+                            "name": "其它部",
+                            "revenue": {
+                                "amount": 3742.532653959245,
+                                "percentage": 0,
+                                "reference": 0
+                            },
+                            "expense": {
+                                "amount": 11355.108818387576,
+                                "percentage": 0,
+                                "reference": 0
+                            },
+                            "margin": {
+                                "amount": 522.5304038685075,
+                                "percentage": 0,
+                                "reference": 0
+                            },
+                            "opProfit": {
+                                "amount": -10832.578414519068,
+                                "percentage": 0,
+                                "reference": 0
+                            }
+                        }
+                    ]
+                },
+                {
+                    "id": 20,
+                    "name": "重庆长冠",
+                    "code": "CN-21",
+                    "revenue": {
+                        "amount": 55379.010374302496,
+                        "percentage": 0,
+                        "reference": 127176.35957702047
+                    },
+                    "expense": {
+                        "amount": 18127.810000370944,
+                        "percentage": 0,
+                        "reference": 57046.93810355648
+                    },
+                    "margin": {
+                        "amount": 37668.69336213353,
+                        "percentage": 0,
+                        "reference": 64229.85317239741
+                    },
+                    "opProfit": {
+                        "amount": 19540.883361762582,
+                        "percentage": 0,
+                        "reference": 36594.196764896704
+                    },
+                    "netProfit": {
+                        "amount": 0,
+                        "percentage": 0,
+                        "reference": 0
+                    },
+                    "detail": [
+                        {
+                            "id": 0,
+                            "name": "NA",
+                            "revenue": {
+                                "amount": 0,
+                                "percentage": 0,
+                                "reference": 0
+                            },
+                            "expense": {
+                                "amount": 0,
+                                "percentage": 0,
+                                "reference": 0
+                            },
+                            "margin": {
+                                "amount": 0,
+                                "percentage": 0,
+                                "reference": 0
+                            },
+                            "opProfit": {
+                                "amount": 0,
+                                "percentage": 0,
+                                "reference": 0
+                            }
+                        },
+                        {
+                            "id": 1,
+                            "name": "新车销售部",
+                            "revenue": {
+                                "amount": 26399.618137753496,
+                                "percentage": 0,
+                                "reference": 0
+                            },
+                            "expense": {
+                                "amount": 0,
+                                "percentage": 0,
+                                "reference": 0
+                            },
+                            "margin": {
+                                "amount": 19455.391241262085,
+                                "percentage": 0,
+                                "reference": 0
+                            },
+                            "opProfit": {
+                                "amount": 19455.391241262085,
+                                "percentage": 0,
+                                "reference": 0
+                            }
+                        },
+                        {
+                            "id": 2,
+                            "name": "二手车部",
+                            "revenue": {
+                                "amount": 0,
+                                "percentage": 0,
+                                "reference": 0
+                            },
+                            "expense": {
+                                "amount": 0,
+                                "percentage": 0,
+                                "reference": 0
+                            },
+                            "margin": {
+                                "amount": 0,
+                                "percentage": 0,
+                                "reference": 0
+                            },
+                            "opProfit": {
+                                "amount": 0,
+                                "percentage": 0,
+                                "reference": 0
+                            }
+                        },
+                        {
+                            "id": 3,
+                            "name": "租赁事业部",
+                            "revenue": {
+                                "amount": 14195.972064755195,
+                                "percentage": 0,
+                                "reference": 0
+                            },
+                            "expense": {
+                                "amount": 0,
+                                "percentage": 0,
+                                "reference": 0
+                            },
+                            "margin": {
+                                "amount": 3003.0961691195835,
+                                "percentage": 0,
+                                "reference": 0
+                            },
+                            "opProfit": {
+                                "amount": 3003.0961691195835,
+                                "percentage": 0,
+                                "reference": 0
+                            }
+                        },
+                        {
+                            "id": 4,
+                            "name": "维修部",
+                            "revenue": {
+                                "amount": 6981.987323187209,
+                                "percentage": 0,
+                                "reference": 0
+                            },
+                            "expense": {
+                                "amount": 18127.810000370944,
+                                "percentage": 0,
+                                "reference": 0
+                            },
+                            "margin": {
+                                "amount": 536.8223928589344,
+                                "percentage": 0,
+                                "reference": 0
+                            },
+                            "opProfit": {
+                                "amount": -17590.98760751201,
+                                "percentage": 0,
+                                "reference": 0
+                            }
+                        },
+                        {
+                            "id": 5,
+                            "name": "备件部",
+                            "revenue": {
+                                "amount": 0,
+                                "percentage": 0,
+                                "reference": 0
+                            },
+                            "expense": {
+                                "amount": 0,
+                                "percentage": 0,
+                                "reference": 0
+                            },
+                            "margin": {
+                                "amount": 0,
+                                "percentage": 0,
+                                "reference": 0
+                            },
+                            "opProfit": {
+                                "amount": 0,
+                                "percentage": 0,
+                                "reference": 0
+                            }
+                        },
+                        {
+                            "id": 6,
+                            "name": "钣喷部",
+                            "revenue": {
+                                "amount": 4618.437289684303,
+                                "percentage": 0,
+                                "reference": 0
+                            },
+                            "expense": {
+                                "amount": 0,
+                                "percentage": 0,
+                                "reference": 0
+                            },
+                            "margin": {
+                                "amount": 6198.76539725816,
+                                "percentage": 0,
+                                "reference": 0
+                            },
+                            "opProfit": {
+                                "amount": 6198.76539725816,
+                                "percentage": 0,
+                                "reference": 0
+                            }
+                        },
+                        {
+                            "id": 7,
+                            "name": "其它部",
+                            "revenue": {
+                                "amount": 3182.995558922297,
+                                "percentage": 0,
+                                "reference": 0
+                            },
+                            "expense": {
+                                "amount": 0,
+                                "percentage": 0,
+                                "reference": 0
+                            },
+                            "margin": {
+                                "amount": 8474.618161634762,
+                                "percentage": 0,
+                                "reference": 0
+                            },
+                            "opProfit": {
+                                "amount": 8474.618161634762,
+                                "percentage": 0,
+                                "reference": 0
+                            }
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

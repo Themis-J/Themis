@@ -26,6 +26,10 @@ import com.jdc.themis.dealer.data.hibernate.type.PersistentTimestamp;
 					@org.hibernate.annotations.ParamDef(name="referenceTime", type="com.jdc.themis.dealer.data.hibernate.type.PersistentTimestamp"), 
 					@org.hibernate.annotations.ParamDef(name="referenceDate", type="com.jdc.themis.dealer.data.hibernate.type.PersistentLocalDate"), 
 					@org.hibernate.annotations.ParamDef(name="dealerID", type="integer")}), 
+			@org.hibernate.annotations.FilterDef(name="ardDateFilter", 
+					parameters = {
+					@org.hibernate.annotations.ParamDef(name="referenceTime", type="com.jdc.themis.dealer.data.hibernate.type.PersistentTimestamp"), 
+					@org.hibernate.annotations.ParamDef(name="referenceDate", type="com.jdc.themis.dealer.data.hibernate.type.PersistentLocalDate")}),
 			@org.hibernate.annotations.FilterDef(name="ardFilterSingleItem", 
 					parameters = {
 					@org.hibernate.annotations.ParamDef(name="referenceTime", type="com.jdc.themis.dealer.data.hibernate.type.PersistentTimestamp"), 
@@ -37,7 +41,8 @@ import com.jdc.themis.dealer.data.hibernate.type.PersistentTimestamp;
 		)
 @Filters( {
     @Filter(name="ardFilterSingleItem", condition="validDate = :referenceDate and durationID = :durationID and id = :id and dealerID = :dealerID and timestamp < :referenceTime and timeEnd >= :referenceTime"), 
-    @Filter(name="ardFilter", condition="validDate = :referenceDate and dealerID = :dealerID and timestamp < :referenceTime and timeEnd >= :referenceTime")
+    @Filter(name="ardFilter", condition="validDate = :referenceDate and dealerID = :dealerID and timestamp < :referenceTime and timeEnd >= :referenceTime"),
+    @Filter(name="ardDateFilter", condition="validDate = :referenceDate and timestamp < :referenceTime and timeEnd >= :referenceTime")
 } )
 @TypeDefs({ @TypeDef(name = "datetime", typeClass = PersistentTimestamp.class),
 	@TypeDef(name = "localdate", typeClass = PersistentLocalDate.class)})
@@ -47,6 +52,7 @@ public class AccountReceivableDuration implements TemporalEntity, Serializable {
 	private static final long serialVersionUID = 1L;
 	public static final String FILTER = "ardFilter";
 	public static final String FILTER_SINGLEITEM = "ardFilterSingleItem";
+	public static final String FILTER_VALIDATE = "ardDateFilter";
 
 	@Id
 	private Integer id;

@@ -4,6 +4,7 @@ import java.util.Collection;
 
 import com.google.common.collect.Lists;
 import com.jdc.themis.dealer.data.dao.ReportDAO;
+import com.jdc.themis.dealer.domain.DealerAccountReceivableFact;
 import com.jdc.themis.dealer.domain.DealerHRAllocationFact;
 import com.jdc.themis.dealer.domain.DealerIncomeExpenseFact;
 import com.jdc.themis.dealer.domain.DealerIncomeRevenueFact;
@@ -22,6 +23,7 @@ public class DealerIncomeFactsQueryBuilder {
 	private Collection<String> itemName = Lists.newArrayList();
 	private Collection<Long> itemID = Lists.newArrayList();
 	private Option<Integer> positionID = Option.<Integer>none();
+	private Option<Integer> durationID = Option.<Integer>none();
 	private Collection<Integer> dealerID = Lists.newArrayList();
 	
 	public DealerIncomeFactsQueryBuilder(final ReportDAO reportDAL){
@@ -45,6 +47,11 @@ public class DealerIncomeFactsQueryBuilder {
 	
 	public DealerIncomeFactsQueryBuilder withPosition(final Integer id) {
 		this.positionID = Option.fromNull(id);
+		return this;
+	} 
+	
+	public DealerIncomeFactsQueryBuilder withDuration(final Integer id) {
+		this.durationID = Option.fromNull(id);
 		return this;
 	} 
 	
@@ -82,6 +89,8 @@ public class DealerIncomeFactsQueryBuilder {
 		this.itemSource.clear();
 		this.itemName.clear();
 		this.itemID.clear();
+		this.positionID = Option.<Integer>none();
+		this.durationID = Option.<Integer>none();
 		return this;
 	}
 	
@@ -106,5 +115,10 @@ public class DealerIncomeFactsQueryBuilder {
 	public Collection<DealerHRAllocationFact> queryHRAllocations() {
 		return this.reportDAL.getDealerHRAllocationFacts(year,
 				monthOfYear.iterator().next(), departmentID.isEmpty() ? Option.<Integer>none() : Option.fromNull(departmentID.iterator().next()), positionID, dealerID);
+	}
+	
+	public Collection<DealerAccountReceivableFact> queryAccountReceivables() {
+		return this.reportDAL.getDealerAccountReceivableFacts(year,
+				monthOfYear.iterator().next(), durationID, itemSource.isEmpty() ? Option.<Integer>none() : Option.fromNull(itemSource.iterator().next()), dealerID);
 	}
 }

@@ -155,3 +155,6 @@ ALTER TABLE DealerIncomeRevenueFact ADD CONSTRAINT DIRF_Unique UNIQUE(timeEnd, t
 CREATE TABLE DealerIncomeExpenseFact (   timeID integer NOT NULL,    dealerID integer NOT NULL,   departmentID integer NOT NULL,   itemID integer NOT NULL,   version integer,   amount double,   timestamp timestamp,    timeEnd timestamp,   CONSTRAINT DIEF_Unique UNIQUE (timestamp, timeID, dealerID, departmentID, itemID, version)) 
 
 CREATE TABLE DealerHRAllocationFact( timeID integer NOT NULL,    dealerID integer NOT NULL,    departmentID integer NOT NULL,    itemID integer NOT NULL,    version integer NOT NULL,    allocation double NOT NULL,    timestamp timestamp NOT NULL,  timeEnd timestamp NOT NULL) 
+CREATE TABLE DealerAccountReceivableFact(   timeID integer NOT NULL,    dealerID integer NOT NULL,   itemID integer NOT NULL,    durationID integer NOT NULL,   version integer NOT NULL, amount double NOT NULL,    timestamp timestamp NOT NULL,   timeEnd timestamp) 
+   
+   

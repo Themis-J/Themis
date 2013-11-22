@@ -40,7 +40,7 @@ import org.hibernate.annotations.Type;
 @Filters( {
     @Filter(name="difFilter", condition="timeID = :timeID and durationID = :durationID and dealerID = :dealerID and itemID = :itemID and departmentID = :departmentID and timestamp < :referenceTime and timeEnd >= :referenceTime"), 
     @Filter(name="difAllFilter", condition="timeID = :timeID and timestamp < :referenceTime and timeEnd >= :referenceTime"), 
-    @Filter(name="deffRefTimeFilter", condition="timestamp < :referenceTime and timeEnd >= :referenceTime"), 
+    @Filter(name="difRefTimeFilter", condition="timestamp < :referenceTime and timeEnd >= :referenceTime"), 
 } )
 @Entity
 public class DealerInventoryFact implements Serializable, TemporalEntity {

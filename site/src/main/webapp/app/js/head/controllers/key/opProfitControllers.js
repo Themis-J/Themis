@@ -57,7 +57,7 @@ angular.module('keyOpProfit.controllers', [])
 			        	chartWidth = $(window).width() * 0.90;
 					}
 			        var currentData = chartData;
-			        
+			        jQuery("#report_list").jqGrid("GridUnload");
 			        jQuery("#report_list").jqGrid({
 					   	data:chartData.gridData,
 						datatype: "local",

@@ -56,6 +56,8 @@ public interface IncomeJournalDAO {
 	
 	Collection<AccountReceivableDuration> getAccountReceivableDuration(Integer dealerID, LocalDate validDate);
 	
+	Collection<AccountReceivableDuration> getAccountReceivableDuration(LocalDate validDate, Instant timestamp);
+	
 	Instant saveHumanResourceAllocation(Integer dealerID, Integer departmentID, Collection<HumanResourceAllocation> journals);
 	
 	Collection<HumanResourceAllocation> getHumanResourceAllocation(Integer dealerID, LocalDate validDate);

@@ -21,6 +21,7 @@ import com.jdc.themis.dealer.domain.DealerIncomeExpenseFact;
 import com.jdc.themis.dealer.domain.DealerIncomeRevenueFact;
 import com.jdc.themis.dealer.report.DealerExpensePercentageReportCalculator;
 import com.jdc.themis.dealer.report.DealerHRAllocationReportCalculator;
+import com.jdc.themis.dealer.report.DealerIncomeReportCalculator;
 import com.jdc.themis.dealer.report.DealerReportCalculator;
 import com.jdc.themis.dealer.report.DealerSalesIncomeReportCalculator;
 import com.jdc.themis.dealer.report.DealerSalesReportCalculator;
@@ -106,36 +107,46 @@ public class DealerIncomeReportServiceImpl implements DealerIncomeReportService 
 	public QueryDealerIncomeResponse queryOverallIncomeReport(final Integer year,
 			final Option<Integer> monthOfYear,
 			final Option<Integer> departmentID,
-			final Option<Integer> denominator) {
+			final Option<Integer> denominator, final Option<Integer> groupBy) {
 		Preconditions.checkNotNull(year, "year can't be null");
 		final QueryDealerIncomeResponse response = new QueryDealerIncomeResponse();
 		response.setReportName("OverallIncomeReport");
+		
+		if ( groupBy.isSome() ) {
+			final ReportDealerDataList reportDetailCurrentYear = getDealerReportDataDetail(
+					year, Option.<Integer> none(),
+					Option.<ReportDealerDataList> none(),
+					Option.<Integer> none(), Option.<Integer> none(), JournalOp.SUM, groupBy);
+			reportDetailCurrentYear.setYear(year);
+			response.getDetail().add(reportDetailCurrentYear);
+			return response;
+		}
 
 		if (monthOfYear.isNone()) {
 			int previousYear = year - 1;
 			final ReportDealerDataList reportDetailPreviousYear = getDealerReportDataDetail(
 					previousYear, Option.<Integer> none(),
 					Option.<ReportDealerDataList> none(), departmentID,
-					denominator, JournalOp.SUM);
+					denominator, JournalOp.SUM, Option.<Integer> none());
 			reportDetailPreviousYear.setYear(previousYear);
 			response.getDetail().add(reportDetailPreviousYear);
 
 			final ReportDealerDataList reportDetailCurrentYear = getDealerReportDataDetail(
 					year, Option.<Integer> none(),
 					Option.<ReportDealerDataList> some(reportDetailPreviousYear),
-					departmentID, denominator, JournalOp.SUM);
+					departmentID, denominator, JournalOp.SUM, Option.<Integer> none());
 			reportDetailCurrentYear.setYear(year);
 			response.getDetail().add(reportDetailCurrentYear);
 		} else {
 			final ReportDealerDataList reportDetailMonthlyAvg = getDealerReportDataDetail(
 					year, monthOfYear, Option.<ReportDealerDataList> none(),
-					departmentID, denominator, JournalOp.AVG);
+					departmentID, denominator, JournalOp.AVG, Option.<Integer> none());
 			response.getDetail().add(reportDetailMonthlyAvg);
 
 			final ReportDealerDataList reportDetailCurrentMonth = getDealerReportDataDetail(
 					year, monthOfYear,
 					Option.<ReportDealerDataList> some(reportDetailMonthlyAvg),
-					departmentID, denominator, JournalOp.SUM);
+					departmentID, denominator, JournalOp.SUM, Option.<Integer> none());
 			response.getDetail().add(reportDetailCurrentMonth);
 		}
 		return response;
@@ -474,7 +485,50 @@ public class DealerIncomeReportServiceImpl implements DealerIncomeReportService 
 			final Option<Integer> monthOfYearOption,
 			final Option<ReportDealerDataList> previousDetailOption,
 			final Option<Integer> departmentIDOption,
-			final Option<Integer> denominatorIDOption, final JournalOp op) {
+			final Option<Integer> denominatorIDOption, final JournalOp op, 
+			final Option<Integer> groupBy) {
+		if ( groupBy.isSome() ) {
+			final DealerIncomeReportCalculator calculator = new DealerIncomeReportCalculator(
+					refDataDAL.getDealers().getItems(), refDataDAL.getDepartments().getItems(), year)
+						.withGroupBy(groupBy);
+
+			// Get all revenues
+			final DealerIncomeFactsQueryBuilder queryBuilder = 
+					new DealerIncomeFactsQueryBuilder(reportDAL).withYear(year);
+			final Collection<DealerIncomeRevenueFact> revenueFacts = queryBuilder.withItemCategory("新轿车零售")
+									.withItemCategory("新货车零售")
+									.withItemCategory("附加产品业务")
+									.withItemCategory("二手车零售")
+									.withItemCategory("维修收入")
+									.withItemCategory("配件收入")
+									.withItemCategory("钣喷收入")
+									.withItemCategory("新车其它收入")
+									.withItemCategory("二手车其它收入")
+									.withItemCategory("维修其它收入")
+									.withItemCategory("钣喷其它收入")
+									.withItemCategory("租恁收入").queryRevenues();
+
+			final ImmutableListMultimap<Integer, DealerIncomeRevenueFact> dealerRevenueFacts = Multimaps
+					.index(revenueFacts, GetDealerIDFromRevenueFunction.INSTANCE);
+			// Get all expenses
+			final Collection<DealerIncomeExpenseFact> expenseFacts = 
+													queryBuilder.clear() // clear the builder for next query
+																.withItemCategory("变动费用")
+																.withItemCategory("销售费用")
+																.withItemCategory("人工费用")
+																.withItemCategory("半固定费用")
+																.withItemCategory("固定费用")
+																.queryExpenses();
+
+			final ImmutableListMultimap<Integer, DealerIncomeExpenseFact> dealerExpenseFacts = Multimaps
+					.index(expenseFacts, GetDealerIDFromExpenseFunction.INSTANCE);
+
+			calculator.calcRevenues(dealerRevenueFacts, op, refDataDAL)
+					.calcMargins(dealerRevenueFacts, op, refDataDAL)
+					.calcExpenses(dealerExpenseFacts, op, refDataDAL).calcOpProfit();
+
+			return calculator.getReportDetail();
+		}
 		final DealerReportCalculator calculator = new DealerReportCalculator(
 				refDataDAL.getDealers().getItems(), year)
 					.withMonth(monthOfYearOption)

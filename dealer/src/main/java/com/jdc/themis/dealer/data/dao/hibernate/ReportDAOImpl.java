@@ -23,6 +23,8 @@ import com.google.common.collect.Lists;
 import com.jdc.themis.dealer.data.dao.IncomeJournalDAO;
 import com.jdc.themis.dealer.data.dao.RefDataDAO;
 import com.jdc.themis.dealer.data.dao.ReportDAO;
+import com.jdc.themis.dealer.domain.AccountReceivableDuration;
+import com.jdc.themis.dealer.domain.DealerAccountReceivableFact;
 import com.jdc.themis.dealer.domain.DealerHRAllocationFact;
 import com.jdc.themis.dealer.domain.DealerIncomeExpenseFact;
 import com.jdc.themis.dealer.domain.DealerIncomeRevenueFact;
@@ -42,7 +44,7 @@ import fj.data.Option;
 @Service
 public class ReportDAOImpl implements ReportDAO {
 	private final static Logger logger = LoggerFactory
-			.getLogger(RefDataDAOImpl.class);
+			.getLogger(ReportDAOImpl.class);
 
 	@Autowired
 	private SessionFactory sessionFactory;
@@ -995,6 +997,143 @@ public class ReportDAOImpl implements ReportDAO {
 		final List<DealerHRAllocationFact> list = criteria.list();
 		logger.debug("get hr allocation facts {}", list);
 		session.disableFilter(DealerHRAllocationFact.FILTER_REFTIME);
+
+		return list;
+	}
+
+	@Override
+	public void saveDealerAccountReceivableFacts(
+			final Collection<DealerAccountReceivableFact> journals) {
+		final Session session = sessionFactory.getCurrentSession();
+		for (final DealerAccountReceivableFact newJournal : journals) {
+			// check whether this journal has been inserted before
+			session.enableFilter(DealerAccountReceivableFact.FILTER)
+					.setParameter("timeID", newJournal.getTimeID())
+					.setParameter("itemID", newJournal.getItemID())
+					.setParameter("dealerID", newJournal.getDealerID())
+					.setParameter("durationID", newJournal.getDurationID())
+					.setParameter("referenceTime", Utils.currentTimestamp()); // we
+																				// are
+																				// only
+																				// interested
+																				// in
+																				// latest
+																				// record
+			@SuppressWarnings("unchecked")
+			final List<DealerAccountReceivableFact> list = session.createCriteria(
+					DealerAccountReceivableFact.class).list();
+			boolean isPersisted = false;
+			if (!list.isEmpty()) {
+				for (final DealerAccountReceivableFact oldJournal : list) {
+					// if we get here, it means we have inserted this fact
+					// before
+					if (oldJournal.getTimestamp().isBefore(
+							newJournal.getTimestamp())) {
+						oldJournal.setTimeEnd(newJournal.getTimestamp());
+						session.saveOrUpdate(oldJournal);
+					}
+					if (oldJournal.getTimestamp().equals(
+							newJournal.getTimestamp())) {
+						isPersisted = true;
+					}
+				}
+				session.flush();
+			} else {
+				session.save(newJournal);
+			}
+			if (!isPersisted) {
+				session.save(newJournal);
+			}
+			session.disableFilter(DealerAccountReceivableFact.FILTER);
+
+			session.flush();
+		}
+	}
+
+	@Override
+	public void importAccountReceivable(final LocalDate validDate) {
+		logger.info("Importing account receivable");
+
+		final Collection<AccountReceivableDuration> list = incomeJournalDAL.getAccountReceivableDuration(
+				validDate, Utils.currentTimestamp());
+
+		final List<DealerAccountReceivableFact> facts = Lists.newArrayList();
+		for (final AccountReceivableDuration journal : list) {
+			// verify report time
+			final Option<ReportTime> reportTime = this.getReportTime(validDate)
+					.orElse(new P1<Option<ReportTime>>() {
+
+						@Override
+						public Option<ReportTime> _1() {
+							return ReportDAOImpl.this.addReportTime(validDate);
+						}
+
+					});
+
+			final DealerAccountReceivableFact fact = new DealerAccountReceivableFact();
+			fact.setAmount(journal.getAmount());
+			fact.setTimeID(reportTime.some().getId());
+			// verify report item here
+			final Option<ReportItem> reportItem = this.getReportItem(
+					journal.getId(), "AccountReceivableDuration").orElse(
+					new P1<Option<ReportItem>>() {
+
+						@Override
+						public Option<ReportItem> _1() {
+							return ReportDAOImpl.this.addReportItem(
+									journal.getId(), refDataDAL
+											.getJobPosition(journal.getId())
+											.some().getName(), "AccountReceivableDuration",
+									null);
+						}
+
+					});
+
+			fact.setDealerID(journal.getDealerID());
+			fact.setDurationID(journal.getDurationID()); 
+			fact.setItemID(reportItem.some().getId());
+			fact.setTimestamp(journal.getTimestamp());
+			fact.setTimeEnd(journal.getTimeEnd());
+			facts.add(fact);
+		}
+		this.saveDealerAccountReceivableFacts(facts);
+	}
+
+	@Override
+	public Collection<DealerAccountReceivableFact> getDealerAccountReceivableFacts(
+			final Integer year, final Integer monthOfYear, final Option<Integer> durationID,
+			final Option<Integer> itemID, final Collection<Integer> dealerID) {
+		Preconditions.checkNotNull(year, "year can't be null");
+		Preconditions.checkNotNull(monthOfYear, "month can't be null");
+		final Session session = sessionFactory.getCurrentSession();
+		final Collection<ReportTime> reportTimes = getReportTime(year,
+				Option.fromNull(monthOfYear));
+		if (reportTimes.isEmpty()) {
+			return Lists.newArrayList();
+		}
+
+		session.enableFilter(DealerAccountReceivableFact.FILTER_REFTIME)
+				.setParameter("referenceTime", Utils.currentTimestamp());
+
+		final Criteria criteria = session
+				.createCriteria(DealerHRAllocationFact.class);
+		criteria.add(Restrictions.in("timeID",
+				Lambda.extractProperty(reportTimes, "id")));
+		if (!dealerID.isEmpty()) {
+			criteria.add(Restrictions.in("dealerID", dealerID));
+		}
+		if (durationID.isSome()) {
+			criteria.add(Restrictions.eq("durationID", durationID.some()));
+		}
+		if (itemID.isSome()) {
+			final Option<ReportItem> item = getReportItem(itemID.some(), "AccountReceivableDuration");
+			criteria.add(Restrictions.eq("itemID", item.some().getId()));
+		}
+		
+		@SuppressWarnings("unchecked")
+		final List<DealerAccountReceivableFact> list = criteria.list();
+		logger.debug("get facts {}", list);
+		session.disableFilter(DealerAccountReceivableFact.FILTER_REFTIME);
 
 		return list;
 	}

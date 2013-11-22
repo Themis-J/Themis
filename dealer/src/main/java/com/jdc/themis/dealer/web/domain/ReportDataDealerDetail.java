@@ -1,6 +1,7 @@
 package com.jdc.themis.dealer.web.domain;
 
 import java.io.Serializable;
+import java.util.List;
 
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
@@ -8,6 +9,8 @@ import javax.xml.bind.annotation.XmlRootElement;
 
 import org.apache.commons.lang.builder.ToStringBuilder;
 import org.apache.commons.lang.builder.ToStringStyle;
+
+import com.google.common.collect.Lists;
 
 @XmlRootElement
 @XmlAccessorType(XmlAccessType.FIELD)
@@ -22,6 +25,7 @@ public class ReportDataDealerDetail implements Serializable{
 	private ReportDataDetailAmount margin = new ReportDataDetailAmount();
 	private ReportDataDetailAmount opProfit = new ReportDataDetailAmount();
 	private ReportDataDetailAmount netProfit = new ReportDataDetailAmount();
+	private List<ReportDataDepartmentDetail> detail = Lists.newArrayList();
 	
 	public String getCode() {
 		return code;
@@ -72,6 +76,9 @@ public class ReportDataDealerDetail implements Serializable{
 	public void setNetProfit(ReportDataDetailAmount netProfit) {
 		this.netProfit = netProfit;
 	}
+	public List<ReportDataDepartmentDetail> getDetail() {
+		return detail;
+	}
 	
 	public String toString() {
 		return new ToStringBuilder(this, ToStringStyle.MULTI_LINE_STYLE).append("id", id)
@@ -81,6 +88,7 @@ public class ReportDataDealerDetail implements Serializable{
 				.append("expense", expense)
 				.append("opProfit", opProfit)
 				.append("netProfit", netProfit)
+				.append("detail", detail)
 				.getStringBuffer().toString();
 	}
 }

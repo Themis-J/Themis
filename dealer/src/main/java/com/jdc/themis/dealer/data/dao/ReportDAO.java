@@ -3,6 +3,7 @@ package com.jdc.themis.dealer.data.dao;
 import java.util.Collection;
 import javax.time.calendar.LocalDate;
 
+import com.jdc.themis.dealer.domain.DealerAccountReceivableFact;
 import com.jdc.themis.dealer.domain.DealerHRAllocationFact;
 import com.jdc.themis.dealer.domain.DealerIncomeExpenseFact;
 import com.jdc.themis.dealer.domain.DealerIncomeRevenueFact;
@@ -64,6 +65,15 @@ public interface ReportDAO {
 			Option<Integer> itemID, 
 			Collection<Integer> dealerID);
 	
+	void saveDealerAccountReceivableFacts(Collection<DealerAccountReceivableFact> journals);
+	
+	Collection<DealerAccountReceivableFact> getDealerAccountReceivableFacts(
+			Integer year,
+			Integer monthOfYear, 
+			Option<Integer> durationID, 
+			Option<Integer> itemID, 
+			Collection<Integer> dealerID);
+	
 	void importVehicleSalesJournal(LocalDate validDate);
 	
 	void importSalesServiceJournal(LocalDate validDate);
@@ -73,6 +83,8 @@ public interface ReportDAO {
 	void importTaxJournal(LocalDate validDate);
 	
 	void importHRAllocation(LocalDate validDate);
+	
+	void importAccountReceivable(LocalDate validDate);
 	
 	Option<ReportTime> getReportTime(LocalDate validDate);
 	

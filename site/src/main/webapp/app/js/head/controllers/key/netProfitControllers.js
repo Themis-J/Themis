@@ -73,7 +73,7 @@ angular.module('keyNetProfit.controllers', [])
 			        	chartWidth = $(window).width() * 0.90;
 					}
 			        var currentData = chartData;
-			        
+			        jQuery("#report_list").jqGrid("GridUnload");
 			        jQuery("#report_list").jqGrid({
 					   	data:chartData.gridData,
 						datatype: "local",
@@ -85,6 +85,12 @@ angular.module('keyNetProfit.controllers', [])
 					   	],
 					   	rowNum:30,
 					   	pager: '#report_pager',
+					   	loadError: function(xhr,status, err) { 
+					   		try {
+					   			jQuery.jgrid.info_dialog(jQuery.jgrid.errors.errcap,'<div class="ui-state-error">'+ xhr.responseText +'</div>', jQuery.jgrid.edit.bClose,{buttonalign:'right'});
+					   		} catch(e) { 
+					   			alert(xhr.responseText);
+					   		}}, 
 					   	sortname: 'amount',
 					    viewrecords: true,
 					    sortorder: "desc",
@@ -93,8 +99,8 @@ angular.module('keyNetProfit.controllers', [])
 						height: "100%",
 						caption: "本年税前尽利润"
 					});
-					jQuery("#report_list").jqGrid('navGrid','#report_pager',{edit:false,add:false,del:false});
-					reportService.setPrintGrid('report_list', 'report_pager', 'custom grid');
+					jQuery("#report_list").jqGrid('navGrid','#report_pager',{"edit":false,"add":false,"del":false,"search":true,"refresh":true,"view":false,"excel":false,"pdf":false,"csv":false,"columns":false});
+					
 					/*
 					$('#report_chart').highcharts({
 			                chart: {
@@ -196,7 +202,7 @@ angular.module('keyNetProfit.controllers', [])
                
             }
         };
-
+		
 		/**
 		 * Global variables
 		 */
