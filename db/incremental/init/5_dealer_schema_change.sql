@@ -1,0 +1,1 @@
+ALTER TABLE  Dealer ADD  brand VARCHAR( 20 ) default '' NULL;

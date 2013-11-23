@@ -559,6 +559,7 @@ DROP TABLE IF EXISTS DealerIncomeRevenueFact CASCADE;
 DROP TABLE IF EXISTS DealerIncomeExpenseFact CASCADE;
 DROP TABLE IF EXISTS DealerEmployeeFeeFact CASCADE;
 DROP TABLE IF EXISTS DealerInventoryFact CASCADE;
+DROP TABLE IF EXISTS DealerAccountReceivableFact CASCADE;
 DROP TABLE IF EXISTS ReportTime CASCADE;
 DROP TABLE IF EXISTS ReportItem CASCADE;
 
@@ -670,6 +671,23 @@ CREATE TABLE DealerHRAllocationFact
    timeEnd timestamp without time zone NOT NULL, 
    CONSTRAINT DHRAF_PK PRIMARY KEY (timestamp, timeID, dealerID, departmentID, itemID),
    CONSTRAINT DHRAF_Unique UNIQUE (timeEnd, timeID, dealerID, departmentID, itemID, version)
+) 
+WITH (
+  OIDS = FALSE
+)
+;
+CREATE TABLE DealerAccountReceivableFact
+(
+   timeID integer NOT NULL, 
+   dealerID integer NOT NULL,
+   itemID integer NOT NULL,
+   durationID integer NOT NULL,
+   version integer NOT NULL,
+   amount double precision NOT NULL,
+   timestamp timestamp without time zone NOT NULL, 
+   timeEnd timestamp without time zone NOT NULL, 
+   CONSTRAINT DARF_PK PRIMARY KEY (timestamp, timeID, dealerID, itemID, durationID),
+   CONSTRAINT DARF_Unique UNIQUE (timeEnd, timeID, dealerID, itemID, durationID, version)
 ) 
 WITH (
   OIDS = FALSE

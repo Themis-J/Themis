@@ -11,5 +11,7 @@
 		<sqlFile path="incremental/init/2_insert_themis_data.sql" stripComments="true"/>
 		<sqlFile path="incremental/init/3_tooltip_columns.sql" stripComments="true"/>
 		<sqlFile path="incremental/init/4_tooltip_rows.sql" stripComments="true"/>
+		<sqlFile path="incremental/init/5_dealer_schema_change.sql" stripComments="true"/>
+		<sqlFile path="incremental/init/6_dealer_data_change.sql" stripComments="true"/>
 	</changeSet>
 </databaseChangeLog>
