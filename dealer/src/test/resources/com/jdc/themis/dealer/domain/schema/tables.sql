@@ -5,7 +5,7 @@ CREATE TABLE EnumValue (    typeID integer,     name varchar(100),     value int
 CREATE TABLE UserRole( id integer,    name varchar(20),     timestamp timestamp) 
 CREATE TABLE UserInfo (username varchar(20),     password varchar(50),     userRoleID integer,    dealerID integer,    active boolean,  version integer,   timestamp timestamp, timeEnd timestamp, updatedBy varchar(20) ) 
 
-CREATE TABLE Dealer (   id integer,   name varchar(100) NOT NULL,   fullName varchar(250) NOT NULL,    code varchar(10) NOT NULL,    city varchar(20),    timestamp timestamp ) 
+CREATE TABLE Dealer (   id integer,   name varchar(100) NOT NULL,   fullName varchar(250) NOT NULL,    code varchar(10) NOT NULL,    city varchar(20),     brand varchar(20),    timestamp timestamp ) 
 
 CREATE TABLE Menu (id integer PRIMARY KEY, name varchar(100) NOT NULL, displayText varchar(100)) 
 CREATE TABLE MenuHierachy (parentID integer, childID integer, itemOrder integer) 
@@ -156,5 +156,5 @@ CREATE TABLE DealerIncomeExpenseFact (   timeID integer NOT NULL,    dealerID in
 
 CREATE TABLE DealerHRAllocationFact( timeID integer NOT NULL,    dealerID integer NOT NULL,    departmentID integer NOT NULL,    itemID integer NOT NULL,    version integer NOT NULL,    allocation double NOT NULL,    timestamp timestamp NOT NULL,  timeEnd timestamp NOT NULL) 
 CREATE TABLE DealerAccountReceivableFact(   timeID integer NOT NULL,    dealerID integer NOT NULL,   itemID integer NOT NULL,    durationID integer NOT NULL,   version integer NOT NULL, amount double NOT NULL,    timestamp timestamp NOT NULL,   timeEnd timestamp) 
-   
+CREATE TABLE DealerInventoryFact(   timeID integer NOT NULL,    dealerID integer NOT NULL,   departmentID integer NOT NULL,   itemID integer NOT NULL,    durationID integer NOT NULL,   version integer NOT NULL, amount double NOT NULL,    timestamp timestamp NOT NULL,   timeEnd timestamp) 
    

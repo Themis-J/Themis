@@ -28,8 +28,10 @@ import com.jdc.themis.dealer.domain.DealerAccountReceivableFact;
 import com.jdc.themis.dealer.domain.DealerHRAllocationFact;
 import com.jdc.themis.dealer.domain.DealerIncomeExpenseFact;
 import com.jdc.themis.dealer.domain.DealerIncomeRevenueFact;
+import com.jdc.themis.dealer.domain.DealerInventoryFact;
 import com.jdc.themis.dealer.domain.GeneralJournal;
 import com.jdc.themis.dealer.domain.HumanResourceAllocation;
+import com.jdc.themis.dealer.domain.InventoryDuration;
 import com.jdc.themis.dealer.domain.ReportItem;
 import com.jdc.themis.dealer.domain.ReportTime;
 import com.jdc.themis.dealer.domain.SalesServiceJournal;
@@ -1134,6 +1136,148 @@ public class ReportDAOImpl implements ReportDAO {
 		final List<DealerAccountReceivableFact> list = criteria.list();
 		logger.debug("get facts {}", list);
 		session.disableFilter(DealerAccountReceivableFact.FILTER_REFTIME);
+
+		return list;
+	}
+	
+	@Override
+	public void importInventory(final LocalDate validDate) {
+		logger.info("Importing inventory duration");
+
+		final Collection<InventoryDuration> list = incomeJournalDAL.getInventoryDuration(
+				validDate, Utils.currentTimestamp());
+
+		final List<DealerInventoryFact> facts = Lists.newArrayList();
+		for (final InventoryDuration journal : list) {
+			// verify report time
+			final Option<ReportTime> reportTime = this.getReportTime(validDate)
+					.orElse(new P1<Option<ReportTime>>() {
+
+						@Override
+						public Option<ReportTime> _1() {
+							return ReportDAOImpl.this.addReportTime(validDate);
+						}
+
+					});
+
+			final DealerInventoryFact fact = new DealerInventoryFact();
+			fact.setAmount(journal.getAmount());
+			fact.setTimeID(reportTime.some().getId());
+			// verify report item here
+			final Option<ReportItem> reportItem = this.getReportItem(
+					journal.getId(), "InventoryDuration").orElse(
+					new P1<Option<ReportItem>>() {
+
+						@Override
+						public Option<ReportItem> _1() {
+							return ReportDAOImpl.this.addReportItem(
+									journal.getId(), refDataDAL
+											.getJobPosition(journal.getId())
+											.some().getName(), "InventoryDuration",
+									null);
+						}
+
+					});
+
+			fact.setDealerID(journal.getDealerID());
+			fact.setDurationID(journal.getDurationID()); 
+			fact.setDepartmentID(journal.getDepartmentID()); 
+			fact.setItemID(reportItem.some().getId());
+			fact.setTimestamp(journal.getTimestamp());
+			fact.setTimeEnd(journal.getTimeEnd());
+			facts.add(fact);
+		}
+		this.saveDealerInventoryFacts(facts);
+	}
+	
+	@Override
+	public void saveDealerInventoryFacts(
+			final Collection<DealerInventoryFact> journals) {
+		final Session session = sessionFactory.getCurrentSession();
+		for (final DealerInventoryFact newJournal : journals) {
+			// check whether this journal has been inserted before
+			session.enableFilter(DealerInventoryFact.FILTER)
+					.setParameter("timeID", newJournal.getTimeID())
+					.setParameter("itemID", newJournal.getItemID())
+					.setParameter("dealerID", newJournal.getDealerID())
+					.setParameter("departmentID", newJournal.getDepartmentID())
+					.setParameter("durationID", newJournal.getDurationID())
+					.setParameter("referenceTime", Utils.currentTimestamp()); // we
+																				// are
+																				// only
+																				// interested
+																				// in
+																				// latest
+																				// record
+			@SuppressWarnings("unchecked")
+			final List<DealerInventoryFact> list = session.createCriteria(
+					DealerInventoryFact.class).list();
+			boolean isPersisted = false;
+			if (!list.isEmpty()) {
+				for (final DealerInventoryFact oldJournal : list) {
+					// if we get here, it means we have inserted this fact
+					// before
+					if (oldJournal.getTimestamp().isBefore(
+							newJournal.getTimestamp())) {
+						oldJournal.setTimeEnd(newJournal.getTimestamp());
+						session.saveOrUpdate(oldJournal);
+					}
+					if (oldJournal.getTimestamp().equals(
+							newJournal.getTimestamp())) {
+						isPersisted = true;
+					}
+				}
+				session.flush();
+			} else {
+				session.save(newJournal);
+			}
+			if (!isPersisted) {
+				session.save(newJournal);
+			}
+			session.disableFilter(DealerInventoryFact.FILTER);
+
+			session.flush();
+		}
+	}
+	
+	@Override
+	public Collection<DealerInventoryFact> getDealerInventoryFacts(
+			final Integer year, final Integer monthOfYear, final Option<Integer> departmentID, final Option<Integer> durationID,
+			final Option<Integer> itemID, final Collection<Integer> dealerID) {
+		Preconditions.checkNotNull(year, "year can't be null");
+		Preconditions.checkNotNull(monthOfYear, "month can't be null");
+		final Session session = sessionFactory.getCurrentSession();
+		final Collection<ReportTime> reportTimes = getReportTime(year,
+				Option.fromNull(monthOfYear));
+		if (reportTimes.isEmpty()) {
+			return Lists.newArrayList();
+		}
+
+		session.enableFilter(DealerInventoryFact.FILTER_REFTIME)
+				.setParameter("referenceTime", Utils.currentTimestamp());
+
+		final Criteria criteria = session
+				.createCriteria(DealerInventoryFact.class);
+		criteria.add(Restrictions.in("timeID",
+				Lambda.extractProperty(reportTimes, "id")));
+		if (!dealerID.isEmpty()) {
+			criteria.add(Restrictions.in("dealerID", dealerID));
+		}
+		if (departmentID.isSome()) {
+			criteria.add(Restrictions.eq("departmentID", departmentID.some()));
+		}
+		if (durationID.isSome()) {
+			criteria.add(Restrictions.eq("durationID", durationID.some()));
+		}
+		if (itemID.isSome()) {
+			final Option<ReportItem> item = getReportItem(itemID.some(), "InventoryDuration");
+			criteria.add(Restrictions.eq("itemID", item.some().getId()));
+		}
+		
+		@SuppressWarnings("unchecked")
+		final List<DealerInventoryFact> list = criteria.list();
+		logger.debug("get facts {}", list);
+		session.disableFilter(DealerInventoryFact.FILTER_REFTIME);
 
 		return list;
 	}

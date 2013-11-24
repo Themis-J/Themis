@@ -16,6 +16,7 @@ public class DealerDetail implements Serializable{
 	private String name;
 	private String code;
 	private String fullName;
+	private String brand;
 
 	public String getCode() {
 		return code;
@@ -40,6 +41,12 @@ public class DealerDetail implements Serializable{
 	}
 	public void setName(String name) {
 		this.name = name;
+	}
+	public String getBrand() {
+		return brand;
+	}
+	public void setBrand(String brand) {
+		this.brand = brand;
 	}
 	
 	

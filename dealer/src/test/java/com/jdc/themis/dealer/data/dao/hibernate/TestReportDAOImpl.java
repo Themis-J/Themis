@@ -20,8 +20,10 @@ import com.jdc.themis.dealer.data.dao.ReportDAO;
 import com.jdc.themis.dealer.domain.DealerHRAllocationFact;
 import com.jdc.themis.dealer.domain.DealerIncomeExpenseFact;
 import com.jdc.themis.dealer.domain.DealerIncomeRevenueFact;
+import com.jdc.themis.dealer.domain.DealerInventoryFact;
 import com.jdc.themis.dealer.domain.GeneralJournal;
 import com.jdc.themis.dealer.domain.HumanResourceAllocation;
+import com.jdc.themis.dealer.domain.InventoryDuration;
 import com.jdc.themis.dealer.domain.ReportItem;
 import com.jdc.themis.dealer.domain.ReportTime;
 import com.jdc.themis.dealer.domain.SalesServiceJournal;
@@ -624,6 +626,93 @@ public class TestReportDAOImpl {
 		for (final DealerHRAllocationFact journal : 
 			reportDAL.getDealerHRAllocationFacts(2013, 
 					8, 
+					Option.<Integer>none(), 
+					Option.<Integer>some(1), 
+					Lists.newArrayList(new Integer[]{}))) {
+			hasJournal++;
+			System.err.println(journal);
+			Assert.assertNotNull(journal);
+		} 
+		Assert.assertEquals(2, hasJournal);
+		
+		int hasReportItem = 0;
+		for (final ReportItem journal : 
+			reportDAL.getAllReportItem()) {
+			hasReportItem++;
+			System.err.println(journal);
+			Assert.assertNotNull(journal);
+		} 
+		Assert.assertEquals(2, hasReportItem);
+		
+	} 
+	
+	@Test
+	public void importInventory() {
+		final InventoryDuration status4 = new InventoryDuration();
+		status4.setDealerID(10);
+		status4.setId(1);
+		status4.setDurationID(1);
+		status4.setAmount(new BigDecimal("1234.343"));
+		status4.setDepartmentID(1);
+		status4.setValidDate(LocalDate.of(2013, 8, 1));
+		status4.setUpdatedBy("test");
+		incomeJournalDAL.saveInventoryDuration(10, 1, Lists.newArrayList(status4));
+		
+		final InventoryDuration status5 = new InventoryDuration();
+		status5.setDealerID(11);
+		status5.setId(1);
+		status5.setAmount(new BigDecimal("5234.343"));
+		status5.setDepartmentID(3);
+		status5.setDurationID(1);
+		status5.setValidDate(LocalDate.of(2013, 8, 1));
+		status5.setUpdatedBy("test2");
+		incomeJournalDAL.saveInventoryDuration(11, 3, Lists.newArrayList(status5));
+		
+		final InventoryDuration status6 = new InventoryDuration();
+		status6.setDealerID(10);
+		status6.setId(1);
+		status6.setAmount(new BigDecimal("335"));
+		status6.setDepartmentID(3);
+		status6.setDurationID(1);
+		status6.setValidDate(LocalDate.of(2013, 7, 1));
+		status6.setUpdatedBy("test");
+		incomeJournalDAL.saveInventoryDuration(10, 3, Lists.newArrayList(status6));
+		
+		final InventoryDuration status7 = new InventoryDuration();
+		status7.setDealerID(10);
+		status7.setId(2);
+		status7.setAmount(new BigDecimal("335"));
+		status7.setDepartmentID(3);
+		status7.setDurationID(2);
+		status7.setValidDate(LocalDate.of(2013, 7, 1));
+		status7.setUpdatedBy("test");
+		incomeJournalDAL.saveInventoryDuration(10, 3, Lists.newArrayList(status7));
+		
+		reportDAL.importInventory(LocalDate.of(2013, 8, 1));
+		reportDAL.importInventory(LocalDate.of(2013, 7, 1));
+		// force to populate twice
+		reportDAL.importInventory(LocalDate.of(2013, 8, 1));
+		reportDAL.importInventory(LocalDate.of(2013, 7, 1));
+		
+		int hasJournal = 0;
+		for (final DealerInventoryFact journal : 
+			reportDAL.getDealerInventoryFacts(2013, 
+					8, 
+					Option.<Integer>some(3), 
+					Option.<Integer>none(), 
+					Option.<Integer>none(), 
+					Lists.newArrayList(new Integer[]{}))) {
+			hasJournal++;
+			System.err.println(journal);
+			Assert.assertNotNull(journal);
+		} 
+		Assert.assertEquals(1, hasJournal);
+		
+		hasJournal = 0;
+		for (final DealerInventoryFact journal : 
+			reportDAL.getDealerInventoryFacts(2013, 
+					8, 
+					Option.<Integer>none(), 
 					Option.<Integer>none(), 
 					Option.<Integer>some(1), 
 					Lists.newArrayList(new Integer[]{}))) {

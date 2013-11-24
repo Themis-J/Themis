@@ -45,6 +45,7 @@ angular.module('keyNetProfit.controllers', [])
 	            		chartData.gridData[i] = {id:null, name:null, amount:null};
 	            		chartData.gridData[i].id = currentDetail[i].code;
 	            		chartData.gridData[i].name = currentDetail[i].name;
+	            		chartData.gridData[i].brand = currentDetail[i].brand;
 	            		chartData.gridData[i].amount = currentDetail[i].netProfit.amount;
 	            	};
 	            	var chartSubtitle = '年度对比';
@@ -77,10 +78,11 @@ angular.module('keyNetProfit.controllers', [])
 			        jQuery("#report_list").jqGrid({
 					   	data:chartData.gridData,
 						datatype: "local",
-					   	colNames:['经销商代码','名称', '税前尽利润'],
+					   	colNames:['经销商代码','名称', '品牌', '税前尽利润'],
 					   	colModel:[
 					   		{name:'id',index:'id', width:55},
 					   		{name:'name',index:'name', width:100},
+					   		{name:'brand',index:'brand', width:55},
 					   		{name:'amount',index:'amount', width:80, sorttype:"float", formatter:"number", align:"right"}	
 					   	],
 					   	rowNum:30,

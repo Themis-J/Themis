@@ -9,6 +9,8 @@ INSERT INTO EnumValue VALUES (2, 'SalesServiceJournal', 1);
 INSERT INTO EnumValue VALUES (2, 'GeneralJournal', 2);
 INSERT INTO EnumValue VALUES (2, 'TaxJournal', 3);
 INSERT INTO EnumValue VALUES (2, 'HumanResourceAllocation', 4);
+INSERT INTO EnumValue VALUES (2, 'AccountReceivableDuration', 5);
+INSERT INTO EnumValue VALUES (2, 'InventoryDuration', 6);
 INSERT INTO EnumValue VALUES (3, 'Days', 0);
 INSERT INTO EnumValue VALUES (3, 'Months', 1);
 INSERT INTO EnumValue VALUES (4, '标准工时收费', 0);

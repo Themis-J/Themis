@@ -6,6 +6,7 @@ angular.module('masterApp.controllers', [])
 		$scope.items = [{name: '关键指标总览－本年度税前净利润', page:'key/netProfit'}, 
 						{name: '关键指标总览－本年度总运营利润', page:'key/opProfit'}, 
 						{name: '关键指标总览－月均运营利润占销售金额百分比', page:'key/opProfitPerRevenue'}, 
+						{name: '关键指标总览－月均运营利润占毛利百分比', page:'key/opProfitPerMargin'}, 
 						{name: '总运营－(本年度)总营业额', page:'overall/revenue'}, 
 						{name: '总运营－(本年度)经销商总毛利', page:'overall/margin'}, 
 						{name: '总运营－营业额、毛利、费用、运营利润、税前净利润', page:'overall/abs'}, 

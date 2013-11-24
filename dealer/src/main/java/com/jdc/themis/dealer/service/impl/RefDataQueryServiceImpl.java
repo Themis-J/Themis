@@ -338,12 +338,13 @@ public class RefDataQueryServiceImpl implements RefDataQueryService {
 	@Override
 	public DealerDetail getDealer(Integer id) {
 		Preconditions.checkArgument(refDataDAL.getDealer(id).isSome(), "unknown dealer id");
-		final Dealer gji = refDataDAL.getDealer(id).some();
+		final Dealer dealer = refDataDAL.getDealer(id).some();
 		final DealerDetail item = new DealerDetail();
-		item.setId(gji.getId());
-		item.setName(gji.getName());
-		item.setCode(gji.getCode());
-		item.setFullName(gji.getFullName());
+		item.setId(dealer.getId());
+		item.setName(dealer.getName());
+		item.setCode(dealer.getCode());
+		item.setFullName(dealer.getFullName());
+		item.setBrand(dealer.getBrand());
 		return item;
 	}
 
@@ -435,6 +436,7 @@ public class RefDataQueryServiceImpl implements RefDataQueryService {
 			item.setName(dealer.getName());
 			item.setCode(dealer.getCode());
 			item.setFullName(dealer.getFullName());
+			item.setBrand(dealer.getBrand());
 			response.getItems().add(item);
 		}
 		 

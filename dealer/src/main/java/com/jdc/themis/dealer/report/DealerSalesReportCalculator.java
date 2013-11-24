@@ -62,6 +62,7 @@ public class DealerSalesReportCalculator {
 			dealerDetails.get(dealer.getId()).setId(dealer.getId());
 			dealerDetails.get(dealer.getId()).setName(dealer.getName());
 			dealerDetails.get(dealer.getId()).setCode(dealer.getCode());
+			dealerDetails.get(dealer.getId()).setBrand(dealer.getBrand());
 		}
 		
 		this.year = year;

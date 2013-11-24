@@ -17,6 +17,7 @@ public class ReportDataDealerExpensePercentageDetail implements Serializable{
 	private Integer id;
 	private String name;
 	private String code;
+	private String brand;
 	private ReportDataDetailAmount amount = new ReportDataDetailAmount();
 	private ReportDataDetailAmount currentMargin = new ReportDataDetailAmount();
 	private ReportDataDetailAmount previousMargin = new ReportDataDetailAmount();
@@ -59,10 +60,17 @@ public class ReportDataDealerExpensePercentageDetail implements Serializable{
 	public void setName(String name) {
 		this.name = name;
 	}
-	
+	public String getBrand() {
+		return brand;
+	}
+	public void setBrand(String brand) {
+		this.brand = brand;
+	}
 	public String toString() {
 		return new ToStringBuilder(this, ToStringStyle.MULTI_LINE_STYLE).append("id", id)
 				.append("name", name)
+				.append("code", code)
+				.append("brand", brand)
 				.append("amount", amount)
 				.append("currentMargin", currentMargin)
 				.append("previousMargin", previousMargin)

@@ -20,6 +20,7 @@ public class ReportDataDealerDetail implements Serializable{
 	private Integer id;
 	private String name;
 	private String code;
+	private String brand;
 	private ReportDataDetailAmount revenue = new ReportDataDetailAmount();
 	private ReportDataDetailAmount expense = new ReportDataDetailAmount();
 	private ReportDataDetailAmount margin = new ReportDataDetailAmount();
@@ -79,10 +80,18 @@ public class ReportDataDealerDetail implements Serializable{
 	public List<ReportDataDepartmentDetail> getDetail() {
 		return detail;
 	}
-	
+	public String getBrand() {
+		return brand;
+	}
+	public void setBrand(String brand) {
+		this.brand = brand;
+	}
+
 	public String toString() {
 		return new ToStringBuilder(this, ToStringStyle.MULTI_LINE_STYLE).append("id", id)
 				.append("name", name)
+				.append("code", code)
+				.append("brand", brand)
 				.append("revenue", revenue)
 				.append("margin", margin)
 				.append("expense", expense)

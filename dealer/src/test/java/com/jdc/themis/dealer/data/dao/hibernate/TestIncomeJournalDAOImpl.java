@@ -556,6 +556,38 @@ public class TestIncomeJournalDAOImpl {
 			Assert.assertEquals(10, journal.getDealerID().intValue());
 		}
 		Assert.assertEquals(1, hasJournal);
+		
+	} 
+	
+	@Test
+	public void insertTwoAcctReceivableDuration2() {
+		final AccountReceivableDuration status = new AccountReceivableDuration();
+		status.setDealerID(10);
+		status.setId(1);
+		status.setAmount(new BigDecimal("1234.343"));
+		status.setDurationID(1);
+		status.setValidDate(LocalDate.of(2013, 9, 1));
+		status.setUpdatedBy("test");
+		incomeJournalDAL.saveAccountReceivableDuration(10, Lists.newArrayList(status));
+		
+		final AccountReceivableDuration status2 = new AccountReceivableDuration();
+		status2.setDealerID(10);
+		status2.setId(1);
+		status2.setAmount(new BigDecimal("5234.343"));
+		status2.setDurationID(1);
+		status2.setValidDate(LocalDate.of(2013, 9, 1));
+		status2.setUpdatedBy("test2");
+		incomeJournalDAL.saveAccountReceivableDuration(10, Lists.newArrayList(status2));
+		
+		int hasJournal = 0;
+		for (final AccountReceivableDuration journal : incomeJournalDAL.getAccountReceivableDuration(LocalDate.of(2013, 9, 1), Utils.currentTimestamp())) {
+			hasJournal++;
+			System.err.println(journal);
+			Assert.assertNotNull(journal);
+			Assert.assertEquals("test2", journal.getUpdatedBy());
+			Assert.assertEquals(10, journal.getDealerID().intValue());
+		}
+		Assert.assertEquals(1, hasJournal);
 	} 
 	
 	@Test
@@ -761,6 +793,16 @@ public class TestIncomeJournalDAOImpl {
 		
 		int hasJournal = 0;
 		for (final InventoryDuration journal : incomeJournalDAL.getInventoryDuration(10, 2, LocalDate.of(2013, 8, 1))) {
+			hasJournal++;
+			System.err.println(journal);
+			Assert.assertNotNull(journal);
+			Assert.assertEquals("test2", journal.getUpdatedBy());
+			Assert.assertEquals(10, journal.getDealerID().intValue());
+		}
+		Assert.assertEquals(1, hasJournal);
+		
+		hasJournal = 0;
+		for (final InventoryDuration journal : incomeJournalDAL.getInventoryDuration(LocalDate.of(2013, 8, 1), Utils.currentTimestamp())) {
 			hasJournal++;
 			System.err.println(journal);
 			Assert.assertNotNull(journal);

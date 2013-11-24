@@ -724,4 +724,18 @@ public class IncomeJournalDAOImpl implements IncomeJournalDAO {
 		return list;
 	}
 
+	@Override
+	public Collection<InventoryDuration> getInventoryDuration(
+			LocalDate validDate, Instant timestamp) {
+		final Session session = sessionFactory.getCurrentSession();
+		session.enableFilter(InventoryDuration.FILTER_VALIDATE)
+			.setParameter("referenceDate", validDate)
+			.setParameter("referenceTime", timestamp);
+		@SuppressWarnings("unchecked")
+		final List<InventoryDuration> list = session.createCriteria(
+				InventoryDuration.class).list();
+		session.disableFilter(InventoryDuration.FILTER_VALIDATE);
+		return list;
+	}
+
 }

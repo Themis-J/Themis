@@ -17,6 +17,7 @@ public class ReportDataDealerSalesDetail implements Serializable{
 	private Integer id;
 	private String name;
 	private String code;
+	private String brand;
 	private ReportDataDetailAmount retail = new ReportDataDetailAmount();
 	private ReportDataDetailAmount newCarRetail = new ReportDataDetailAmount();
 	private ReportDataDetailAmount newVanRetail = new ReportDataDetailAmount();
@@ -42,7 +43,13 @@ public class ReportDataDealerSalesDetail implements Serializable{
 	public void setName(String name) {
 		this.name = name;
 	}
-
+	public String getBrand() {
+		return brand;
+	}
+	public void setBrand(String brand) {
+		this.brand = brand;
+	}
+	
 	public ReportDataDetailAmount getRetail() {
 		return retail;
 	}
@@ -82,6 +89,8 @@ public class ReportDataDealerSalesDetail implements Serializable{
 	public String toString() {
 		return new ToStringBuilder(this, ToStringStyle.MULTI_LINE_STYLE).append("id", id)
 				.append("name", name)
+				.append("code", code)
+				.append("brand", brand)
 				.append("retail", retail)
 				.append("newCarRetail", newCarRetail)
 				.append("newVanRetail", newVanRetail)

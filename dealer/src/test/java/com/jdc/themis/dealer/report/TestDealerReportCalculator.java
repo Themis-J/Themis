@@ -33,6 +33,7 @@ public class TestDealerReportCalculator {
 		final DealerDetail dealer1 = new DealerDetail();
 		dealer1.setId(1);
 		dealer1.setName("Dealer1");
+		dealer1.setBrand("B-1");
 		final DealerDetail dealer2 = new DealerDetail();
 		dealer2.setId(2);
 		dealer2.setName("Dealer2");

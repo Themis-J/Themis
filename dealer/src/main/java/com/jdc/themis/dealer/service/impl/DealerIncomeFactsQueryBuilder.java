@@ -8,6 +8,7 @@ import com.jdc.themis.dealer.domain.DealerAccountReceivableFact;
 import com.jdc.themis.dealer.domain.DealerHRAllocationFact;
 import com.jdc.themis.dealer.domain.DealerIncomeExpenseFact;
 import com.jdc.themis.dealer.domain.DealerIncomeRevenueFact;
+import com.jdc.themis.dealer.domain.DealerInventoryFact;
 
 import fj.data.Option;
 
@@ -120,5 +121,10 @@ public class DealerIncomeFactsQueryBuilder {
 	public Collection<DealerAccountReceivableFact> queryAccountReceivables() {
 		return this.reportDAL.getDealerAccountReceivableFacts(year,
 				monthOfYear.iterator().next(), durationID, itemSource.isEmpty() ? Option.<Integer>none() : Option.fromNull(itemSource.iterator().next()), dealerID);
+	}
+	
+	public Collection<DealerInventoryFact> queryInventoryDurations() {
+		return this.reportDAL.getDealerInventoryFacts(year,
+				monthOfYear.iterator().next(), departmentID.isEmpty() ? Option.<Integer>none() : Option.fromNull(departmentID.iterator().next()), durationID, itemSource.isEmpty() ? Option.<Integer>none() : Option.fromNull(itemSource.iterator().next()), dealerID);
 	}
 }

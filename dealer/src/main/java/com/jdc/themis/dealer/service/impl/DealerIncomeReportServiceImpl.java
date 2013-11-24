@@ -95,6 +95,8 @@ public class DealerIncomeReportServiceImpl implements DealerIncomeReportService 
 			reportDAL.importGeneralJournal(currentDate);
 			reportDAL.importTaxJournal(currentDate);
 			reportDAL.importHRAllocation(currentDate);
+			reportDAL.importAccountReceivable(currentDate);
+			reportDAL.importInventory(currentDate);
 			counter++;
 		}
 	}

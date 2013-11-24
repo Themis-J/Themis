@@ -51,6 +51,8 @@ public class DealerIncomeReportCalculator {
 			dealerDetails.get(dealer.getId()).setId(dealer.getId());
 			dealerDetails.get(dealer.getId()).setName(dealer.getName());
 			dealerDetails.get(dealer.getId()).setCode(dealer.getCode());
+			dealerDetails.get(dealer.getId()).setBrand(dealer.getBrand());
+			
 			final Map<Integer, ReportDataDepartmentDetail> departmentDetails = Maps
 					.newHashMap();
 			for (final DepartmentDetail department : departments) {

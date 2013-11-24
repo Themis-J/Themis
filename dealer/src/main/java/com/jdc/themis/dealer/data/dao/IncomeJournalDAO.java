@@ -68,6 +68,8 @@ public interface IncomeJournalDAO {
 	
 	Collection<InventoryDuration> getInventoryDuration(Integer dealerID, Integer departmentID, LocalDate validDate);
 	
+	Collection<InventoryDuration> getInventoryDuration(LocalDate validDate, Instant timestamp);
+	
 	Instant saveEmployeeFee(Integer dealerID, Integer departmentID, Collection<EmployeeFee> journals);
 	
 	Collection<EmployeeFee> getEmployeeFee(Integer dealerID, Integer departmentID, LocalDate validDate);

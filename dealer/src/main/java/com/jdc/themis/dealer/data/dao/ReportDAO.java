@@ -7,6 +7,7 @@ import com.jdc.themis.dealer.domain.DealerAccountReceivableFact;
 import com.jdc.themis.dealer.domain.DealerHRAllocationFact;
 import com.jdc.themis.dealer.domain.DealerIncomeExpenseFact;
 import com.jdc.themis.dealer.domain.DealerIncomeRevenueFact;
+import com.jdc.themis.dealer.domain.DealerInventoryFact;
 import com.jdc.themis.dealer.domain.ReportItem;
 import com.jdc.themis.dealer.domain.ReportTime;
 
@@ -74,6 +75,16 @@ public interface ReportDAO {
 			Option<Integer> itemID, 
 			Collection<Integer> dealerID);
 	
+	void saveDealerInventoryFacts(Collection<DealerInventoryFact> journals);
+	
+	Collection<DealerInventoryFact> getDealerInventoryFacts(
+			Integer year,
+			Integer monthOfYear, 
+			Option<Integer> departmentID, 
+			Option<Integer> durationID, 
+			Option<Integer> itemID, 
+			Collection<Integer> dealerID);
+	
 	void importVehicleSalesJournal(LocalDate validDate);
 	
 	void importSalesServiceJournal(LocalDate validDate);
@@ -85,6 +96,8 @@ public interface ReportDAO {
 	void importHRAllocation(LocalDate validDate);
 	
 	void importAccountReceivable(LocalDate validDate);
+	
+	void importInventory(LocalDate validDate);
 	
 	Option<ReportTime> getReportTime(LocalDate validDate);
 	

@@ -20,6 +20,7 @@ public class Dealer implements Serializable {
 	private String fullName;
 	private String code;
 	private String city;
+	private String brand;
 	
 	@Id
 	public Integer getId() {
@@ -52,9 +53,19 @@ public class Dealer implements Serializable {
 	public void setCode(String code) {
 		this.code = code;
 	}
+	public String getBrand() {
+		return brand;
+	}
+	public void setBrand(String brand) {
+		this.brand = brand;
+	}
+	
 	public String toString() {
 		return new ToStringBuilder(this).append("id", id)
 				.append("name", name)
+				.append("code", code)
+				.append("city", city)
+				.append("brand", brand)
 				.getStringBuffer().toString();
 	}
 	public boolean equals(Object other) {

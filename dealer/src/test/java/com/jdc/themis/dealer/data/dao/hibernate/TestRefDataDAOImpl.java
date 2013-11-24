@@ -186,6 +186,7 @@ public class TestRefDataDAOImpl {
 	@Test
 	public void getDealer() {
 		Assert.assertEquals("Dealer2", refDataDAO.getDealer(2).some().getName());
+		Assert.assertEquals("B-2", refDataDAO.getDealer(2).some().getBrand());
 	}
 	
 	@Test

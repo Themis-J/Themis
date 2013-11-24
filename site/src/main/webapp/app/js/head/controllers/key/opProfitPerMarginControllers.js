@@ -1,7 +1,7 @@
 'use strict';
 
-angular.module('keyOpProfit.controllers', [])
-	.controller('keyOpProfitCtrl', ['$scope', 'ReportRestClient', 'ReportService', 'config', function($scope, restClient, reportService, config) {
+angular.module('keyOpProfitPerMargin.controllers', [])
+	.controller('keyOpProfitPerMarginCtrl', ['$scope', 'ReportRestClient', 'ReportService', 'config', function($scope, restClient, reportService, config) {
 		/**
 		 * Global functions
 		 */
@@ -9,10 +9,14 @@ angular.module('keyOpProfit.controllers', [])
     		reportService.setCurrentYear($scope.selectedYearOption.id);
     		$scope.showReport();
     	};
+    	$scope.selectReportMonth = function() {
+    		reportService.setCurrentMonth($scope.selectedMonthOption.id);
+    		$scope.showReport();
+    	};
     	
     	$scope.showReport = function() {
-        	var params = {year: reportService.getCurrentYear()};
-        	$scope.draw(restClient(config.currentMode).queryOverallIncomeReport, params);
+        	var params = {year: reportService.getCurrentYear(), monthOfYear: reportService.getMonthOfYear(), denominator: 1};
+        	$scope.draw(restClient(config.currentMode).queryOverallPercentageIncomeReport, params);
         };
         
         $scope.draw = function (restClient, params) {
@@ -22,8 +26,8 @@ angular.module('keyOpProfit.controllers', [])
 	            restClient(params, function(data) {
 	            	var chartData = {
 				        		id: 'report_chart',
-				        		title: '运营利润',
-				        		yAxisTitle: '运营利润',
+				        		title: '运营利润/毛利',
+				        		yAxisTitle: '运营利润/毛利',
 				        		series: { previous:[], current:[], previousReference:[], currentReference:[], currentPercentage:[] },
 				        		gridData:[]
 				        	}; 
@@ -34,6 +38,11 @@ angular.module('keyOpProfit.controllers', [])
 	            		dealers[i] = previousDetail[i].code;
 	            		chartData.series.previous[i] = previousDetail[i].opProfit.amount;
 	            		chartData.series.previousReference[i] = previousDetail[i].opProfit.reference;
+	            		chartData.gridData[i] = {id:null, name:null, amount:null};
+	            		chartData.gridData[i].id = previousDetail[i].code;
+	            		chartData.gridData[i].name = previousDetail[i].name;
+	            		chartData.gridData[i].brand = previousDetail[i].brand;
+	            		chartData.gridData[i].amount = previousDetail[i].opProfit.amount * 100;
 	            	};
 	            	
 					chartCategories[0].categories = dealers;
@@ -42,11 +51,6 @@ angular.module('keyOpProfit.controllers', [])
 	            		chartData.series.current[i] = currentDetail[i].opProfit.amount;
 	            		chartData.series.currentPercentage[i] = currentDetail[i].opProfit.percentage * 100;
 	            		chartData.series.currentReference[i] = currentDetail[i].opProfit.reference;
-	            		chartData.gridData[i] = {id:null, name:null, amount:null};
-	            		chartData.gridData[i].id = currentDetail[i].code;
-	            		chartData.gridData[i].name = currentDetail[i].name;
-	            		chartData.gridData[i].brand = currentDetail[i].brand;
-	            		chartData.gridData[i].amount = currentDetail[i].opProfit.amount;
 	            	};
 	            	var chartSubtitle = '年度对比';
 	            	var chartColumnPrevious = '去年';
@@ -62,7 +66,7 @@ angular.module('keyOpProfit.controllers', [])
 			        jQuery("#report_list").jqGrid({
 					   	data:chartData.gridData,
 						datatype: "local",
-					   	colNames:['经销商代码','名称', '品牌', '运营利润'],
+					   	colNames:['经销商代码','名称', '品牌', '百分比（％）'],
 					   	colModel:[
 					   		{name:'id',index:'id', width:55},
 					   		{name:'name',index:'name', width:100},
@@ -77,7 +81,7 @@ angular.module('keyOpProfit.controllers', [])
 						multiselect: false,
 						width: chartWidth,
 						height: "100%",
-						caption: "本年运营利润"
+						caption: "月均运营利润占毛利百分比"
 					});
 					/*
 					$('#report_chart').highcharts({
@@ -190,7 +194,8 @@ angular.module('keyOpProfit.controllers', [])
 		reportService.setMonthOfYear(currentDate.getMonth());
   		$scope.yearOptions = reportService.getYearList();
 		$scope.selectedYearOption = $scope.yearOptions[0];
-		
+		$scope.monthOptions = reportService.getMonthList();
+		$scope.selectedMonthOption = $scope.monthOptions[reportService.getMonthOfYear()-1];
 
 		// called on page is loaded
 		$scope.showReport();
