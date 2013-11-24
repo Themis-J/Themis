@@ -1,4 +1,3 @@
-
 {
     "reportName": "OverallIncomeReport",
     "detail": [
@@ -10,30 +9,31 @@
                     "id": 1,
                     "name": "重庆长锦",
                     "code": "CN-01",
+                    "brand": "广汽菲亚特",
                     "revenue": {
-                        "amount": 8107.545770271485,
+                        "amount": 105824.98846550443,
                         "percentage": 0,
-                        "reference": 34015.6441281622
+                        "reference": 102594.3858721506
                     },
                     "expense": {
-                        "amount": 0,
+                        "amount": 12506.511742031229,
                         "percentage": 0,
-                        "reference": 5692.618904591022
+                        "reference": 46421.5154278952
                     },
                     "margin": {
-                        "amount": 12090.374690967037,
+                        "amount": 50965.69898534013,
                         "percentage": 0,
-                        "reference": 16512.472998504
+                        "reference": 54591.64078651326
                     },
                     "opProfit": {
-                        "amount": 12090.374690967037,
+                        "amount": 38459.1872433089,
                         "percentage": 0,
-                        "reference": 14213.548993882412
+                        "reference": 29866.69204412874
                     },
                     "netProfit": {
-                        "amount": 0,
+                        "amount": 57604.75672168671,
                         "percentage": 0,
-                        "reference": 0
+                        "reference": 40593.74528800565
                     },
                     "detail": []
                 },
@@ -41,30 +41,31 @@
                     "id": 2,
                     "name": "长沙长耀",
                     "code": "CN-02",
+                    "brand": "广汽菲亚特",
                     "revenue": {
-                        "amount": 0,
+                        "amount": 79302.54079760186,
                         "percentage": 0,
-                        "reference": 34015.6441281622
+                        "reference": 102594.3858721506
                     },
                     "expense": {
-                        "amount": 2197.5685277777025,
+                        "amount": 555.4825567674703,
                         "percentage": 0,
-                        "reference": 5692.618904591022
+                        "reference": 46421.5154278952
                     },
                     "margin": {
-                        "amount": 0,
+                        "amount": 26519.005901951215,
                         "percentage": 0,
-                        "reference": 16512.472998504
+                        "reference": 54591.64078651326
                     },
                     "opProfit": {
-                        "amount": -2197.5685277777025,
+                        "amount": 25963.523345183745,
                         "percentage": 0,
-                        "reference": 14213.548993882412
+                        "reference": 29866.69204412874
                     },
                     "netProfit": {
-                        "amount": 0,
+                        "amount": 47681.69525135952,
                         "percentage": 0,
-                        "reference": 0
+                        "reference": 40593.74528800565
                     },
                     "detail": []
                 },
@@ -72,30 +73,31 @@
                     "id": 3,
                     "name": "广本一店",
                     "code": "CN-03",
+                    "brand": "广汽本田",
                     "revenue": {
-                        "amount": 0,
+                        "amount": 157665.71863342784,
                         "percentage": 0,
-                        "reference": 34015.6441281622
+                        "reference": 102594.3858721506
                     },
                     "expense": {
-                        "amount": 0,
+                        "amount": 57766.29999433706,
                         "percentage": 0,
-                        "reference": 5692.618904591022
+                        "reference": 46421.5154278952
                     },
                     "margin": {
-                        "amount": 0,
+                        "amount": 60463.37293614491,
                         "percentage": 0,
-                        "reference": 16512.472998504
+                        "reference": 54591.64078651326
                     },
                     "opProfit": {
-                        "amount": 0,
+                        "amount": 2697.072941807848,
                         "percentage": 0,
-                        "reference": 14213.548993882412
+                        "reference": 29866.69204412874
                     },
                     "netProfit": {
-                        "amount": 0,
+                        "amount": 17004.8177295503,
                         "percentage": 0,
-                        "reference": 0
+                        "reference": 40593.74528800565
                     },
                     "detail": []
                 },
@@ -103,30 +105,31 @@
                     "id": 4,
                     "name": "长盛公司",
                     "code": "CN-05",
+                    "brand": "广汽本田",
                     "revenue": {
-                        "amount": 18607.345921494867,
+                        "amount": 101383.3779494337,
                         "percentage": 0,
-                        "reference": 34015.6441281622
+                        "reference": 102594.3858721506
                     },
                     "expense": {
-                        "amount": 1284.7007269592514,
+                        "amount": 28412.562337565385,
                         "percentage": 0,
-                        "reference": 5692.618904591022
+                        "reference": 46421.5154278952
                     },
                     "margin": {
-                        "amount": 9595.588505399342,
+                        "amount": 43281.310650078456,
                         "percentage": 0,
-                        "reference": 16512.472998504
+                        "reference": 54591.64078651326
                     },
                     "opProfit": {
-                        "amount": 8310.88777844009,
+                        "amount": 14868.748312513071,
                         "percentage": 0,
-                        "reference": 14213.548993882412
+                        "reference": 29866.69204412874
                     },
                     "netProfit": {
-                        "amount": 0,
+                        "amount": 14868.748312513071,
                         "percentage": 0,
-                        "reference": 0
+                        "reference": 40593.74528800565
                     },
                     "detail": []
                 },
@@ -134,30 +137,31 @@
                     "id": 5,
                     "name": "北京长怡",
                     "code": "CN-06",
+                    "brand": "广汽本田",
                     "revenue": {
-                        "amount": 33828.788462313336,
+                        "amount": 77909.71388348371,
                         "percentage": 0,
-                        "reference": 34015.6441281622
+                        "reference": 102594.3858721506
                     },
                     "expense": {
-                        "amount": 2577.981364088353,
+                        "amount": 17732.909557734176,
                         "percentage": 0,
-                        "reference": 5692.618904591022
+                        "reference": 46421.5154278952
                     },
                     "margin": {
-                        "amount": 5001.862852441584,
+                        "amount": 47780.70503906488,
                         "percentage": 0,
-                        "reference": 16512.472998504
+                        "reference": 54591.64078651326
                     },
                     "opProfit": {
-                        "amount": 2423.8814883532314,
+                        "amount": 30047.795481330704,
                         "percentage": 0,
-                        "reference": 14213.548993882412
+                        "reference": 29866.69204412874
                     },
                     "netProfit": {
-                        "amount": 0,
+                        "amount": 30047.795481330704,
                         "percentage": 0,
-                        "reference": 0
+                        "reference": 40593.74528800565
                     },
                     "detail": []
                 },
@@ -165,30 +169,31 @@
                     "id": 6,
                     "name": "南京长昊",
                     "code": "CN-07",
+                    "brand": "广汽本田",
                     "revenue": {
-                        "amount": 60366.06557888456,
+                        "amount": 91061.43668242428,
                         "percentage": 0,
-                        "reference": 34015.6441281622
+                        "reference": 102594.3858721506
                     },
                     "expense": {
-                        "amount": 0,
+                        "amount": 21239.427578843824,
                         "percentage": 0,
-                        "reference": 5692.618904591022
+                        "reference": 46421.5154278952
                     },
                     "margin": {
-                        "amount": 23222.62781492828,
+                        "amount": 46802.38158325432,
                         "percentage": 0,
-                        "reference": 16512.472998504
+                        "reference": 54591.64078651326
                     },
                     "opProfit": {
-                        "amount": 23222.62781492828,
+                        "amount": 25562.954004410494,
                         "percentage": 0,
-                        "reference": 14213.548993882412
+                        "reference": 29866.69204412874
                     },
                     "netProfit": {
-                        "amount": 0,
+                        "amount": 22323.45522458529,
                         "percentage": 0,
-                        "reference": 0
+                        "reference": 40593.74528800565
                     },
                     "detail": []
                 },
@@ -196,30 +201,31 @@
                     "id": 7,
                     "name": "重庆长捷",
                     "code": "CN-08",
+                    "brand": "广汽本田",
                     "revenue": {
-                        "amount": 22376.350793813453,
+                        "amount": 70437.38383302075,
                         "percentage": 0,
-                        "reference": 34015.6441281622
+                        "reference": 102594.3858721506
                     },
                     "expense": {
-                        "amount": 0,
+                        "amount": 22458.02101537225,
                         "percentage": 0,
-                        "reference": 5692.618904591022
+                        "reference": 46421.5154278952
                     },
                     "margin": {
-                        "amount": 5371.940501194253,
+                        "amount": 50827.45417223253,
                         "percentage": 0,
-                        "reference": 16512.472998504
+                        "reference": 54591.64078651326
                     },
                     "opProfit": {
-                        "amount": 5371.940501194253,
+                        "amount": 28369.43315686028,
                         "percentage": 0,
-                        "reference": 14213.548993882412
+                        "reference": 29866.69204412874
                     },
                     "netProfit": {
-                        "amount": 0,
+                        "amount": 53596.758029670076,
                         "percentage": 0,
-                        "reference": 0
+                        "reference": 40593.74528800565
                     },
                     "detail": []
                 },
@@ -227,30 +233,31 @@
                     "id": 8,
                     "name": "长力公司",
                     "code": "CN-09",
+                    "brand": "广汽本田",
                     "revenue": {
-                        "amount": 26948.867626149044,
+                        "amount": 87421.67278412361,
                         "percentage": 0,
-                        "reference": 34015.6441281622
+                        "reference": 102594.3858721506
                     },
                     "expense": {
-                        "amount": 0,
+                        "amount": 5563.043641186884,
                         "percentage": 0,
-                        "reference": 5692.618904591022
+                        "reference": 46421.5154278952
                     },
                     "margin": {
-                        "amount": 5570.027850746986,
+                        "amount": 36985.18963732317,
                         "percentage": 0,
-                        "reference": 16512.472998504
+                        "reference": 54591.64078651326
                     },
                     "opProfit": {
-                        "amount": 5570.027850746986,
+                        "amount": 31422.14599613629,
                         "percentage": 0,
-                        "reference": 14213.548993882412
+                        "reference": 29866.69204412874
                     },
                     "netProfit": {
-                        "amount": 0,
+                        "amount": 31422.14599613629,
                         "percentage": 0,
-                        "reference": 0
+                        "reference": 40593.74528800565
                     },
                     "detail": []
                 },
@@ -258,30 +265,31 @@
                     "id": 9,
                     "name": "重庆长达",
                     "code": "CN-10",
+                    "brand": "广汽三菱",
                     "revenue": {
-                        "amount": 45292.73533613229,
+                        "amount": 102338.68995076414,
                         "percentage": 0,
-                        "reference": 34015.6441281622
+                        "reference": 102594.3858721506
                     },
                     "expense": {
-                        "amount": 0,
+                        "amount": 18430.780646890627,
                         "percentage": 0,
-                        "reference": 5692.618904591022
+                        "reference": 46421.5154278952
                     },
                     "margin": {
-                        "amount": 7325.320883098771,
+                        "amount": 64886.75690423685,
                         "percentage": 0,
-                        "reference": 16512.472998504
+                        "reference": 54591.64078651326
                     },
                     "opProfit": {
-                        "amount": 7325.320883098771,
+                        "amount": 46455.97625734622,
                         "percentage": 0,
-                        "reference": 14213.548993882412
+                        "reference": 29866.69204412874
                     },
                     "netProfit": {
-                        "amount": 0,
+                        "amount": 46455.97625734622,
                         "percentage": 0,
-                        "reference": 0
+                        "reference": 40593.74528800565
                     },
                     "detail": []
                 },
@@ -289,30 +297,31 @@
                     "id": 10,
                     "name": "广丰一店",
                     "code": "CN-11",
+                    "brand": "广汽丰田",
                     "revenue": {
-                        "amount": 0,
+                        "amount": 151825.9182094602,
                         "percentage": 0,
-                        "reference": 34015.6441281622
+                        "reference": 102594.3858721506
                     },
                     "expense": {
-                        "amount": 7176.476165260448,
+                        "amount": 13697.476939858605,
                         "percentage": 0,
-                        "reference": 5692.618904591022
+                        "reference": 46421.5154278952
                     },
                     "margin": {
-                        "amount": 0,
+                        "amount": 66291.27042396076,
                         "percentage": 0,
-                        "reference": 16512.472998504
+                        "reference": 54591.64078651326
                     },
                     "opProfit": {
-                        "amount": -7176.476165260448,
+                        "amount": 52593.79348410215,
                         "percentage": 0,
-                        "reference": 14213.548993882412
+                        "reference": 29866.69204412874
                     },
                     "netProfit": {
-                        "amount": 0,
+                        "amount": 52593.79348410215,
                         "percentage": 0,
-                        "reference": 0
+                        "reference": 40593.74528800565
                     },
                     "detail": []
                 },
@@ -320,30 +329,31 @@
                     "id": 11,
                     "name": "长宁公司",
                     "code": "CN-12",
+                    "brand": "广汽丰田",
                     "revenue": {
-                        "amount": 24292.539747658902,
+                        "amount": 76314.2537644716,
                         "percentage": 0,
-                        "reference": 34015.6441281622
+                        "reference": 102594.3858721506
                     },
                     "expense": {
-                        "amount": 0,
+                        "amount": 46245.38680162211,
                         "percentage": 0,
-                        "reference": 5692.618904591022
+                        "reference": 46421.5154278952
                     },
                     "margin": {
-                        "amount": 6936.15081756112,
+                        "amount": 47647.311623956826,
                         "percentage": 0,
-                        "reference": 16512.472998504
+                        "reference": 54591.64078651326
                     },
                     "opProfit": {
-                        "amount": 6936.15081756112,
+                        "amount": 1401.9248223347167,
                         "percentage": 0,
-                        "reference": 14213.548993882412
+                        "reference": 29866.69204412874
                     },
                     "netProfit": {
-                        "amount": 0,
+                        "amount": -41293.08410683704,
                         "percentage": 0,
-                        "reference": 0
+                        "reference": 40593.74528800565
                     },
                     "detail": []
                 },
@@ -351,30 +361,31 @@
                     "id": 12,
                     "name": "长凯公司",
                     "code": "CN-13",
+                    "brand": "广汽丰田",
                     "revenue": {
-                        "amount": 35035.06471293833,
+                        "amount": 74326.43939610409,
                         "percentage": 0,
-                        "reference": 34015.6441281622
+                        "reference": 102594.3858721506
                     },
                     "expense": {
-                        "amount": 0,
+                        "amount": 62949.56586454548,
                         "percentage": 0,
-                        "reference": 5692.618904591022
+                        "reference": 46421.5154278952
                     },
                     "margin": {
-                        "amount": 18179.10858465034,
+                        "amount": 48873.873156716116,
                         "percentage": 0,
-                        "reference": 16512.472998504
+                        "reference": 54591.64078651326
                     },
                     "opProfit": {
-                        "amount": 18179.10858465034,
+                        "amount": -14075.692707829367,
                         "percentage": 0,
-                        "reference": 14213.548993882412
+                        "reference": 29866.69204412874
                     },
                     "netProfit": {
-                        "amount": 0,
+                        "amount": -26814.68662243153,
                         "percentage": 0,
-                        "reference": 0
+                        "reference": 40593.74528800565
                     },
                     "detail": []
                 },
@@ -382,30 +393,31 @@
                     "id": 13,
                     "name": "北京长京行",
                     "code": "CN-14",
+                    "brand": "广汽丰田",
                     "revenue": {
-                        "amount": 8729.750068913585,
+                        "amount": 96108.66941056332,
                         "percentage": 0,
-                        "reference": 34015.6441281622
+                        "reference": 102594.3858721506
                     },
                     "expense": {
-                        "amount": 0,
+                        "amount": 29565.39642597652,
                         "percentage": 0,
-                        "reference": 5692.618904591022
+                        "reference": 46421.5154278952
                     },
                     "margin": {
-                        "amount": 7907.578768213298,
+                        "amount": 56265.059091667805,
                         "percentage": 0,
-                        "reference": 16512.472998504
+                        "reference": 54591.64078651326
                     },
                     "opProfit": {
-                        "amount": 7907.578768213298,
+                        "amount": 26699.662665691285,
                         "percentage": 0,
-                        "reference": 14213.548993882412
+                        "reference": 29866.69204412874
                     },
                     "netProfit": {
-                        "amount": 0,
+                        "amount": 50554.30538079674,
                         "percentage": 0,
-                        "reference": 0
+                        "reference": 40593.74528800565
                     },
                     "detail": []
                 },
@@ -413,30 +425,31 @@
                     "id": 14,
                     "name": "南京长益",
                     "code": "CN-15",
+                    "brand": "广汽丰田",
                     "revenue": {
-                        "amount": 34420.15313085267,
+                        "amount": 64080.38487337126,
                         "percentage": 0,
-                        "reference": 34015.6441281622
+                        "reference": 102594.3858721506
                     },
                     "expense": {
-                        "amount": 5449.637546812994,
+                        "amount": 15752.508937469427,
                         "percentage": 0,
-                        "reference": 5692.618904591022
+                        "reference": 46421.5154278952
                     },
                     "margin": {
-                        "amount": 22034.242711216044,
+                        "amount": 31572.05918436015,
                         "percentage": 0,
-                        "reference": 16512.472998504
+                        "reference": 54591.64078651326
                     },
                     "opProfit": {
-                        "amount": 16584.605164403052,
+                        "amount": 15819.550246890723,
                         "percentage": 0,
-                        "reference": 14213.548993882412
+                        "reference": 29866.69204412874
                     },
                     "netProfit": {
-                        "amount": 0,
+                        "amount": 30667.782486723838,
                         "percentage": 0,
-                        "reference": 0
+                        "reference": 40593.74528800565
                     },
                     "detail": []
                 },
@@ -444,30 +457,31 @@
                     "id": 15,
                     "name": "重庆长俊",
                     "code": "CN-16",
+                    "brand": "广汽丰田",
                     "revenue": {
-                        "amount": 0,
+                        "amount": 85973.6812552464,
                         "percentage": 0,
-                        "reference": 34015.6441281622
+                        "reference": 102594.3858721506
                     },
                     "expense": {
-                        "amount": 29044.89495309922,
+                        "amount": 57273.67990389036,
                         "percentage": 0,
-                        "reference": 5692.618904591022
+                        "reference": 46421.5154278952
                     },
                     "margin": {
-                        "amount": 0,
+                        "amount": 22428.99169937366,
                         "percentage": 0,
-                        "reference": 16512.472998504
+                        "reference": 54591.64078651326
                     },
                     "opProfit": {
-                        "amount": -29044.89495309922,
+                        "amount": -34844.6882045167,
                         "percentage": 0,
-                        "reference": 14213.548993882412
+                        "reference": 29866.69204412874
                     },
                     "netProfit": {
-                        "amount": 0,
+                        "amount": -44888.57574348402,
                         "percentage": 0,
-                        "reference": 0
+                        "reference": 40593.74528800565
                     },
                     "detail": []
                 },
@@ -475,30 +489,31 @@
                     "id": 17,
                     "name": "长悦公司",
                     "code": "CN-18",
+                    "brand": "雷克萨斯",
                     "revenue": {
-                        "amount": 24750.23779932708,
+                        "amount": 101411.03814183538,
                         "percentage": 0,
-                        "reference": 34015.6441281622
+                        "reference": 102594.3858721506
                     },
                     "expense": {
-                        "amount": 10785.817741864337,
+                        "amount": 58897.02678754001,
                         "percentage": 0,
-                        "reference": 5692.618904591022
+                        "reference": 46421.5154278952
                     },
                     "margin": {
-                        "amount": 15867.17232262404,
+                        "amount": 63614.53516925931,
                         "percentage": 0,
-                        "reference": 16512.472998504
+                        "reference": 54591.64078651326
                     },
                     "opProfit": {
-                        "amount": 5081.354580759702,
+                        "amount": 4717.508381719301,
                         "percentage": 0,
-                        "reference": 14213.548993882412
+                        "reference": 29866.69204412874
                     },
                     "netProfit": {
-                        "amount": 0,
+                        "amount": -20685.345821158793,
                         "percentage": 0,
-                        "reference": 0
+                        "reference": 40593.74528800565
                     },
                     "detail": []
                 },
@@ -506,30 +521,31 @@
                     "id": 16,
                     "name": "长沙长威",
                     "code": "CN-17",
+                    "brand": "广汽丰田",
                     "revenue": {
-                        "amount": 30525.136728968544,
+                        "amount": 32425.809009147375,
                         "percentage": 0,
-                        "reference": 34015.6441281622
+                        "reference": 102594.3858721506
                     },
                     "expense": {
-                        "amount": 10376.150259374073,
+                        "amount": 62855.68666236692,
                         "percentage": 0,
-                        "reference": 5692.618904591022
+                        "reference": 46421.5154278952
                     },
                     "margin": {
-                        "amount": 28891.55217066442,
+                        "amount": 38619.35488598002,
                         "percentage": 0,
-                        "reference": 16512.472998504
+                        "reference": 54591.64078651326
                     },
                     "opProfit": {
-                        "amount": 18515.401911290348,
+                        "amount": -24236.331776386898,
                         "percentage": 0,
-                        "reference": 14213.548993882412
+                        "reference": 29866.69204412874
                     },
                     "netProfit": {
-                        "amount": 0,
+                        "amount": -695.1499796856297,
                         "percentage": 0,
-                        "reference": 0
+                        "reference": 40593.74528800565
                     },
                     "detail": []
                 },
@@ -537,30 +553,31 @@
                     "id": 19,
                     "name": "长佳公司",
                     "code": "CN-20",
+                    "brand": "广汽传祺",
                     "revenue": {
-                        "amount": 18746.172857069363,
+                        "amount": 55183.00896373125,
                         "percentage": 0,
-                        "reference": 34015.6441281622
+                        "reference": 102594.3858721506
                     },
                     "expense": {
-                        "amount": 0,
+                        "amount": 42224.75613721861,
                         "percentage": 0,
-                        "reference": 5692.618904591022
+                        "reference": 46421.5154278952
                     },
                     "margin": {
-                        "amount": 13907.421381260774,
+                        "amount": 41240.25581077614,
                         "percentage": 0,
-                        "reference": 16512.472998504
+                        "reference": 54591.64078651326
                     },
                     "opProfit": {
-                        "amount": 13907.421381260774,
+                        "amount": -984.5003264424668,
                         "percentage": 0,
-                        "reference": 14213.548993882412
+                        "reference": 29866.69204412874
                     },
                     "netProfit": {
-                        "amount": 0,
+                        "amount": -984.5003264424668,
                         "percentage": 0,
-                        "reference": 0
+                        "reference": 40593.74528800565
                     },
                     "detail": []
                 },
@@ -568,30 +585,31 @@
                     "id": 18,
                     "name": "湖南长坤",
                     "code": "CN-19",
+                    "brand": "广汽传祺",
                     "revenue": {
-                        "amount": 32058.762899781243,
+                        "amount": 63871.8051244295,
                         "percentage": 0,
-                        "reference": 34015.6441281622
+                        "reference": 102594.3858721506
                     },
                     "expense": {
-                        "amount": 0,
+                        "amount": 22146.06291891672,
                         "percentage": 0,
-                        "reference": 5692.618904591022
+                        "reference": 46421.5154278952
                     },
                     "margin": {
-                        "amount": 10286.363483881463,
+                        "amount": 20684.78059946024,
                         "percentage": 0,
-                        "reference": 16512.472998504
+                        "reference": 54591.64078651326
                     },
                     "opProfit": {
-                        "amount": 10286.363483881463,
+                        "amount": -1461.2823194564808,
                         "percentage": 0,
-                        "reference": 14213.548993882412
+                        "reference": 29866.69204412874
                     },
                     "netProfit": {
-                        "amount": 0,
+                        "amount": -7491.362772206258,
                         "percentage": 0,
-                        "reference": 0
+                        "reference": 40593.74528800565
                     },
                     "detail": []
                 },
@@ -599,30 +617,31 @@
                     "id": 20,
                     "name": "重庆长冠",
                     "code": "CN-21",
+                    "brand": "广汽传祺",
                     "revenue": {
-                        "amount": 26665.91070628887,
+                        "amount": 34545.69874942204,
                         "percentage": 0,
-                        "reference": 34015.6441281622
+                        "reference": 102594.3858721506
                     },
                     "expense": {
-                        "amount": 0,
+                        "amount": 34552.84380053978,
                         "percentage": 0,
-                        "reference": 5692.618904591022
+                        "reference": 46421.5154278952
                     },
                     "margin": {
-                        "amount": 9931.567740723862,
+                        "amount": 14958.032494319395,
                         "percentage": 0,
-                        "reference": 16512.472998504
+                        "reference": 54591.64078651326
                     },
                     "opProfit": {
-                        "amount": 9931.567740723862,
+                        "amount": -19594.81130622038,
                         "percentage": 0,
-                        "reference": 14213.548993882412
+                        "reference": 29866.69204412874
                     },
                     "netProfit": {
-                        "amount": 0,
+                        "amount": -19594.81130622038,
                         "percentage": 0,
-                        "reference": 0
+                        "reference": 40593.74528800565
                     },
                     "detail": []
                 }
@@ -636,30 +655,31 @@
                     "id": 1,
                     "name": "重庆长锦",
                     "code": "CN-01",
+                    "brand": "广汽菲亚特",
                     "revenue": {
-                        "amount": 59408.85561517957,
-                        "percentage": 6.327600398263337,
-                        "reference": 30833.373125980484
+                        "amount": 51621.84266974224,
+                        "percentage": -0.5121960945304586,
+                        "reference": 127176.35957702047
                     },
                     "expense": {
-                        "amount": 0,
-                        "percentage": 0,
-                        "reference": 16958.83289978864
+                        "amount": 113051.05651028974,
+                        "percentage": 8.039375554284547,
+                        "reference": 57046.93810355648
                     },
                     "margin": {
-                        "amount": 32714.72432058175,
-                        "percentage": 1.7058486735753178,
-                        "reference": 16275.117474287536
+                        "amount": 44894.66746682483,
+                        "percentage": -0.1191199500719412,
+                        "reference": 64229.85317239741
                     },
                     "opProfit": {
-                        "amount": 32714.72432058175,
-                        "percentage": 1.7058486735753178,
-                        "reference": 10216.09258709781
+                        "amount": -68156.38904346491,
+                        "percentage": -2.772174451120849,
+                        "reference": 36594.196764896704
                     },
                     "netProfit": {
-                        "amount": 0,
-                        "percentage": 0,
-                        "reference": 0
+                        "amount": -88013.27831750191,
+                        "percentage": -2.5278821286014943,
+                        "reference": 41477.53503283596
                     },
                     "detail": []
                 },
@@ -667,30 +687,31 @@
                     "id": 2,
                     "name": "长沙长耀",
                     "code": "CN-02",
+                    "brand": "广汽菲亚特",
                     "revenue": {
-                        "amount": 28430.573684061274,
-                        "percentage": 0,
-                        "reference": 30833.373125980484
+                        "amount": 93687.52861367143,
+                        "percentage": 0.18139378223433383,
+                        "reference": 127176.35957702047
                     },
                     "expense": {
-                        "amount": 17960.50661090264,
-                        "percentage": 7.172899449495327,
-                        "reference": 16958.83289978864
+                        "amount": 60436.77574287287,
+                        "percentage": 107.80049248454118,
+                        "reference": 57046.93810355648
                     },
                     "margin": {
-                        "amount": 7404.96271785793,
-                        "percentage": 0,
-                        "reference": 16275.117474287536
+                        "amount": 45322.38069886267,
+                        "percentage": 0.7090527777109449,
+                        "reference": 64229.85317239741
                     },
                     "opProfit": {
-                        "amount": -10555.54389304471,
-                        "percentage": 3.803283155733503,
-                        "reference": 10216.09258709781
+                        "amount": -15114.395044010205,
+                        "percentage": -1.5821395980454993,
+                        "reference": 36594.196764896704
                     },
                     "netProfit": {
-                        "amount": 0,
-                        "percentage": 0,
-                        "reference": 0
+                        "amount": -5559.988122126428,
+                        "percentage": -1.1166063432270248,
+                        "reference": 41477.53503283596
                     },
                     "detail": []
                 },
@@ -698,30 +719,31 @@
                     "id": 3,
                     "name": "广本一店",
                     "code": "CN-03",
+                    "brand": "广汽本田",
                     "revenue": {
-                        "amount": 12008.699005605533,
-                        "percentage": 0,
-                        "reference": 30833.373125980484
+                        "amount": 123437.13814957223,
+                        "percentage": -0.21709589618169894,
+                        "reference": 127176.35957702047
                     },
                     "expense": {
-                        "amount": 16314.878707693028,
-                        "percentage": 0,
-                        "reference": 16958.83289978864
+                        "amount": 50139.6406308468,
+                        "percentage": -0.1320261011045872,
+                        "reference": 57046.93810355648
                     },
                     "margin": {
-                        "amount": 3462.7280547117334,
-                        "percentage": 0,
-                        "reference": 16275.117474287536
+                        "amount": 83995.2474676822,
+                        "percentage": 0.3891922231396055,
+                        "reference": 64229.85317239741
                     },
                     "opProfit": {
-                        "amount": -12852.150652981294,
-                        "percentage": 0,
-                        "reference": 10216.09258709781
+                        "amount": 33855.6068368354,
+                        "percentage": 11.55272199428985,
+                        "reference": 36594.196764896704
                     },
                     "netProfit": {
-                        "amount": 0,
-                        "percentage": 0,
-                        "reference": 0
+                        "amount": 15293.645343669108,
+                        "percentage": -0.10062868141818333,
+                        "reference": 41477.53503283596
                     },
                     "detail": []
                 },
@@ -729,30 +751,31 @@
                     "id": 4,
                     "name": "长盛公司",
                     "code": "CN-05",
+                    "brand": "广汽本田",
                     "revenue": {
-                        "amount": 14692.392849938617,
-                        "percentage": -0.21039825282302985,
-                        "reference": 30833.373125980484
+                        "amount": 60161.50636822482,
+                        "percentage": -0.40659398428970117,
+                        "reference": 127176.35957702047
                     },
                     "expense": {
-                        "amount": 20923.076820298018,
-                        "percentage": 15.286343100171425,
-                        "reference": 16958.83289978864
+                        "amount": 58208.10663417926,
+                        "percentage": 1.0486750171497203,
+                        "reference": 57046.93810355648
                     },
                     "margin": {
-                        "amount": 9701.601666941275,
-                        "percentage": 0.011048114608320243,
-                        "reference": 16275.117474287536
+                        "amount": 41977.61924946649,
+                        "percentage": -0.030121347552343736,
+                        "reference": 64229.85317239741
                     },
                     "opProfit": {
-                        "amount": -11221.475153356743,
-                        "percentage": -2.35021377408888,
-                        "reference": 10216.09258709781
+                        "amount": -16230.487384712775,
+                        "percentage": -2.091583974896778,
+                        "reference": 36594.196764896704
                     },
                     "netProfit": {
-                        "amount": 0,
-                        "percentage": 0,
-                        "reference": 0
+                        "amount": -16230.487384712775,
+                        "percentage": -2.091583974896778,
+                        "reference": 41477.53503283596
                     },
                     "detail": []
                 },
@@ -760,30 +783,31 @@
                     "id": 5,
                     "name": "北京长怡",
                     "code": "CN-06",
+                    "brand": "广汽本田",
                     "revenue": {
-                        "amount": 0,
-                        "percentage": 0,
-                        "reference": 30833.373125980484
+                        "amount": 163602.61979254906,
+                        "percentage": 1.099900149000953,
+                        "reference": 127176.35957702047
                     },
                     "expense": {
-                        "amount": 31953.65901109149,
-                        "percentage": 11.394837083080004,
-                        "reference": 16958.83289978864
+                        "amount": 2295.7285789789307,
+                        "percentage": -0.8705385277297795,
+                        "reference": 57046.93810355648
                     },
                     "margin": {
-                        "amount": 0,
-                        "percentage": 0,
-                        "reference": 16275.117474287536
+                        "amount": 75326.35619399272,
+                        "percentage": 0.576501563390638,
+                        "reference": 64229.85317239741
                     },
                     "opProfit": {
-                        "amount": -31953.65901109149,
-                        "percentage": -14.182847084161937,
-                        "reference": 10216.09258709781
+                        "amount": 73030.62761501379,
+                        "percentage": 1.4304820518493337,
+                        "reference": 36594.196764896704
                     },
                     "netProfit": {
-                        "amount": 0,
-                        "percentage": 0,
-                        "reference": 0
+                        "amount": 73030.62761501379,
+                        "percentage": 1.4304820518493337,
+                        "reference": 41477.53503283596
                     },
                     "detail": []
                 },
@@ -791,30 +815,31 @@
                     "id": 6,
                     "name": "南京长昊",
                     "code": "CN-07",
+                    "brand": "广汽本田",
                     "revenue": {
-                        "amount": 0,
-                        "percentage": 0,
-                        "reference": 30833.373125980484
+                        "amount": 193188.75968839202,
+                        "percentage": 1.1215211040666493,
+                        "reference": 127176.35957702047
                     },
                     "expense": {
-                        "amount": 3978.5404747800635,
-                        "percentage": 0,
-                        "reference": 16958.83289978864
+                        "amount": 14575.938344419948,
+                        "percentage": -0.3137320537329945,
+                        "reference": 57046.93810355648
                     },
                     "margin": {
-                        "amount": 0,
-                        "percentage": 0,
-                        "reference": 16275.117474287536
+                        "amount": 69147.49345149627,
+                        "percentage": 0.477435359320196,
+                        "reference": 64229.85317239741
                     },
                     "opProfit": {
-                        "amount": -3978.5404747800635,
-                        "percentage": -1.1713217171840702,
-                        "reference": 10216.09258709781
+                        "amount": 54571.55510707632,
+                        "percentage": 1.1347906465606767,
+                        "reference": 36594.196764896704
                     },
                     "netProfit": {
-                        "amount": 0,
-                        "percentage": 0,
-                        "reference": 0
+                        "amount": 55646.606935692456,
+                        "percentage": 1.4927416645792215,
+                        "reference": 41477.53503283596
                     },
                     "detail": []
                 },
@@ -822,30 +847,31 @@
                     "id": 7,
                     "name": "重庆长捷",
                     "code": "CN-08",
+                    "brand": "广汽本田",
                     "revenue": {
-                        "amount": 25400.219549254824,
-                        "percentage": 0.1351368140097893,
-                        "reference": 30833.373125980484
+                        "amount": 135276.6858462204,
+                        "percentage": 0.9205239957081323,
+                        "reference": 127176.35957702047
                     },
                     "expense": {
-                        "amount": 0,
-                        "percentage": 0,
-                        "reference": 16958.83289978864
+                        "amount": 63231.06119903559,
+                        "percentage": 1.8155223986901905,
+                        "reference": 57046.93810355648
                     },
                     "margin": {
-                        "amount": 20407.99981146968,
-                        "percentage": 2.7989995992942798,
-                        "reference": 16275.117474287536
+                        "amount": 67898.39345364145,
+                        "percentage": 0.3358606005243307,
+                        "reference": 64229.85317239741
                     },
                     "opProfit": {
-                        "amount": 20407.99981146968,
-                        "percentage": 2.7989995992942798,
-                        "reference": 10216.09258709781
+                        "amount": 4667.332254605855,
+                        "percentage": -0.8354802428092504,
+                        "reference": 36594.196764896704
                     },
                     "netProfit": {
-                        "amount": 0,
-                        "percentage": 0,
-                        "reference": 0
+                        "amount": 12773.658220326673,
+                        "percentage": -0.761671065752607,
+                        "reference": 41477.53503283596
                     },
                     "detail": []
                 },
@@ -853,30 +879,31 @@
                     "id": 8,
                     "name": "长力公司",
                     "code": "CN-09",
+                    "brand": "广汽本田",
                     "revenue": {
-                        "amount": 31612.220931787295,
-                        "percentage": 0.1730444993211256,
-                        "reference": 30833.373125980484
+                        "amount": 105180.32390585825,
+                        "percentage": 0.20313785536439355,
+                        "reference": 127176.35957702047
                     },
                     "expense": {
-                        "amount": 7422.7328552027,
-                        "percentage": 0,
-                        "reference": 16958.83289978864
+                        "amount": 70036.71061869733,
+                        "percentage": 11.589638898420521,
+                        "reference": 57046.93810355648
                     },
                     "margin": {
-                        "amount": 23409.62456333414,
-                        "percentage": 3.2027841135829727,
-                        "reference": 16275.117474287536
+                        "amount": 53257.41856433692,
+                        "percentage": 0.43996608065496623,
+                        "reference": 64229.85317239741
                     },
                     "opProfit": {
-                        "amount": 15986.89170813144,
-                        "percentage": 1.870163693344454,
-                        "reference": 10216.09258709781
+                        "amount": -16779.292054360405,
+                        "percentage": -1.5339957384331298,
+                        "reference": 36594.196764896704
                     },
                     "netProfit": {
-                        "amount": 0,
-                        "percentage": 0,
-                        "reference": 0
+                        "amount": -24563.356462848777,
+                        "percentage": -1.781721161434013,
+                        "reference": 41477.53503283596
                     },
                     "detail": []
                 },
@@ -884,30 +911,31 @@
                     "id": 9,
                     "name": "重庆长达",
                     "code": "CN-10",
+                    "brand": "广汽三菱",
                     "revenue": {
-                        "amount": 15675.28282571612,
-                        "percentage": -0.6539117651123367,
-                        "reference": 30833.373125980484
+                        "amount": 60523.86140628091,
+                        "percentage": -0.4085925720233534,
+                        "reference": 127176.35957702047
                     },
                     "expense": {
-                        "amount": 0,
-                        "percentage": 0,
-                        "reference": 16958.83289978864
+                        "amount": 46924.99848025456,
+                        "percentage": 1.5460125308458412,
+                        "reference": 57046.93810355648
                     },
                     "margin": {
-                        "amount": 4522.560551442164,
-                        "percentage": -0.3826126358673558,
-                        "reference": 16275.117474287536
+                        "amount": 36556.2858043533,
+                        "percentage": -0.4366140712147949,
+                        "reference": 64229.85317239741
                     },
                     "opProfit": {
-                        "amount": 4522.560551442164,
-                        "percentage": -0.3826126358673558,
-                        "reference": 10216.09258709781
+                        "amount": -10368.71267590126,
+                        "percentage": -1.223194376940074,
+                        "reference": 36594.196764896704
                     },
                     "netProfit": {
-                        "amount": 0,
-                        "percentage": 0,
-                        "reference": 0
+                        "amount": -17153.333602703693,
+                        "percentage": -1.3692384701525067,
+                        "reference": 41477.53503283596
                     },
                     "detail": []
                 },
@@ -915,30 +943,31 @@
                     "id": 10,
                     "name": "广丰一店",
                     "code": "CN-11",
+                    "brand": "广汽丰田",
                     "revenue": {
-                        "amount": 14193.221052285813,
-                        "percentage": 0,
-                        "reference": 30833.373125980484
+                        "amount": 127768.19333348532,
+                        "percentage": -0.1584559814272596,
+                        "reference": 127176.35957702047
                     },
                     "expense": {
-                        "amount": 1491.127382491364,
-                        "percentage": -0.7922201163699889,
-                        "reference": 16958.83289978864
+                        "amount": 40793.35833431455,
+                        "percentage": 1.978165870504882,
+                        "reference": 57046.93810355648
                     },
                     "margin": {
-                        "amount": 5884.581721268225,
-                        "percentage": 0,
-                        "reference": 16275.117474287536
+                        "amount": 66645.3097438054,
+                        "percentage": 0.005340662768723673,
+                        "reference": 64229.85317239741
                     },
                     "opProfit": {
-                        "amount": 4393.454338776861,
-                        "percentage": -1.6122021780054798,
-                        "reference": 10216.09258709781
+                        "amount": 25851.951409490845,
+                        "percentage": -0.5084600349791222,
+                        "reference": 36594.196764896704
                     },
                     "netProfit": {
-                        "amount": 0,
-                        "percentage": 0,
-                        "reference": 0
+                        "amount": 25851.951409490845,
+                        "percentage": -0.5084600349791222,
+                        "reference": 41477.53503283596
                     },
                     "detail": []
                 },
@@ -946,30 +975,31 @@
                     "id": 11,
                     "name": "长宁公司",
                     "code": "CN-12",
+                    "brand": "广汽丰田",
                     "revenue": {
-                        "amount": 16107.759043030559,
-                        "percentage": -0.3369256895182036,
-                        "reference": 30833.373125980484
+                        "amount": 85475.76548632908,
+                        "percentage": 0.12004981074875753,
+                        "reference": 127176.35957702047
                     },
                     "expense": {
-                        "amount": 0,
-                        "percentage": 0,
-                        "reference": 16958.83289978864
+                        "amount": 8756.002690628336,
+                        "percentage": -0.8106621374324582,
+                        "reference": 57046.93810355648
                     },
                     "margin": {
-                        "amount": 1721.0263453429475,
-                        "percentage": -0.7518758760282995,
-                        "reference": 16275.117474287536
+                        "amount": 30177.2016617989,
+                        "percentage": -0.3666546834800653,
+                        "reference": 64229.85317239741
                     },
                     "opProfit": {
-                        "amount": 1721.0263453429475,
-                        "percentage": -0.7518758760282995,
-                        "reference": 10216.09258709781
+                        "amount": 21421.19897117056,
+                        "percentage": 14.279848555285898,
+                        "reference": 36594.196764896704
                     },
                     "netProfit": {
-                        "amount": 0,
-                        "percentage": 0,
-                        "reference": 0
+                        "amount": 43035.42955742228,
+                        "percentage": 2.042194606875991,
+                        "reference": 41477.53503283596
                     },
                     "detail": []
                 },
@@ -977,30 +1007,31 @@
                     "id": 12,
                     "name": "长凯公司",
                     "code": "CN-13",
+                    "brand": "广汽丰田",
                     "revenue": {
-                        "amount": 16861.451362555767,
-                        "percentage": -0.5187264102204187,
-                        "reference": 30833.373125980484
+                        "amount": 114992.03572529844,
+                        "percentage": 0.5471215446293245,
+                        "reference": 127176.35957702047
                     },
                     "expense": {
-                        "amount": 0,
-                        "percentage": 0,
-                        "reference": 16958.83289978864
+                        "amount": 16908.27512359485,
+                        "percentage": -0.7313996547652452,
+                        "reference": 57046.93810355648
                     },
                     "margin": {
-                        "amount": 57.31437785789883,
-                        "percentage": -0.9968472393686952,
-                        "reference": 16275.117474287536
+                        "amount": 61064.391007515405,
+                        "percentage": 0.24942811083766342,
+                        "reference": 64229.85317239741
                     },
                     "opProfit": {
-                        "amount": 57.31437785789883,
-                        "percentage": -0.9968472393686952,
-                        "reference": 10216.09258709781
+                        "amount": 44156.11588392056,
+                        "percentage": 4.137047447715271,
+                        "reference": 36594.196764896704
                     },
                     "netProfit": {
-                        "amount": 0,
-                        "percentage": 0,
-                        "reference": 0
+                        "amount": 55206.6922886712,
+                        "percentage": 3.0588229527354853,
+                        "reference": 41477.53503283596
                     },
                     "detail": []
                 },
@@ -1008,30 +1039,31 @@
                     "id": 13,
                     "name": "北京长京行",
                     "code": "CN-14",
+                    "brand": "广汽丰田",
                     "revenue": {
-                        "amount": 29691.888727674617,
-                        "percentage": 2.4012301031855046,
-                        "reference": 30833.373125980484
+                        "amount": 102972.2910978878,
+                        "percentage": 0.07141521914119958,
+                        "reference": 127176.35957702047
                     },
                     "expense": {
-                        "amount": 9375.826216285179,
-                        "percentage": 0,
-                        "reference": 16958.83289978864
+                        "amount": 22073.406106994633,
+                        "percentage": -0.25340402039728216,
+                        "reference": 57046.93810355648
                     },
                     "margin": {
-                        "amount": 7725.524571023191,
-                        "percentage": -0.02302274849564874,
-                        "reference": 16275.117474287536
+                        "amount": 43895.025514510264,
+                        "percentage": -0.219852849652288,
+                        "reference": 64229.85317239741
                     },
                     "opProfit": {
-                        "amount": -1650.3016452619877,
-                        "percentage": -1.2086987298685956,
-                        "reference": 10216.09258709781
+                        "amount": 21821.61940751563,
+                        "percentage": -0.18270055765325738,
+                        "reference": 36594.196764896704
                     },
                     "netProfit": {
-                        "amount": 0,
-                        "percentage": 0,
-                        "reference": 0
+                        "amount": 47939.67192325024,
+                        "percentage": -0.051719303387752213,
+                        "reference": 41477.53503283596
                     },
                     "detail": []
                 },
@@ -1039,30 +1071,31 @@
                     "id": 14,
                     "name": "南京长益",
                     "code": "CN-15",
+                    "brand": "广汽丰田",
                     "revenue": {
-                        "amount": 0,
-                        "percentage": 0,
-                        "reference": 30833.373125980484
+                        "amount": 62827.17895443748,
+                        "percentage": -0.01955677890215909,
+                        "reference": 127176.35957702047
                     },
                     "expense": {
-                        "amount": 11179.189662516448,
-                        "percentage": 1.051363887320205,
-                        "reference": 16958.83289978864
+                        "amount": 49592.21059402678,
+                        "percentage": 2.1482102813517625,
+                        "reference": 57046.93810355648
                     },
                     "margin": {
-                        "amount": 0,
-                        "percentage": 0,
-                        "reference": 16275.117474287536
+                        "amount": 46531.418657335016,
+                        "percentage": 0.47381640157273247,
+                        "reference": 64229.85317239741
                     },
                     "opProfit": {
-                        "amount": -11179.189662516448,
-                        "percentage": -1.6740702930034954,
-                        "reference": 10216.09258709781
+                        "amount": -3060.791936691763,
+                        "percentage": -1.1934816027587984,
+                        "reference": 36594.196764896704
                     },
                     "netProfit": {
-                        "amount": 0,
-                        "percentage": 0,
-                        "reference": 0
+                        "amount": 9411.341311071712,
+                        "percentage": -0.6931196014858294,
+                        "reference": 41477.53503283596
                     },
                     "detail": []
                 },
@@ -1070,30 +1103,31 @@
                     "id": 15,
                     "name": "重庆长俊",
                     "code": "CN-16",
+                    "brand": "广汽丰田",
                     "revenue": {
-                        "amount": 28918.58218382303,
-                        "percentage": 0,
-                        "reference": 30833.373125980484
+                        "amount": 57632.53425706543,
+                        "percentage": -0.329649104055917,
+                        "reference": 127176.35957702047
                     },
                     "expense": {
-                        "amount": 16741.653558663616,
-                        "percentage": -0.42359393670737977,
-                        "reference": 16958.83289978864
+                        "amount": 57562.55279738283,
+                        "percentage": 0.005043728532498987,
+                        "reference": 57046.93810355648
                     },
                     "margin": {
-                        "amount": 18577.479385627747,
-                        "percentage": 0,
-                        "reference": 16275.117474287536
+                        "amount": 56975.016308010585,
+                        "percentage": 1.5402397518209276,
+                        "reference": 64229.85317239741
                     },
                     "opProfit": {
-                        "amount": 1835.82582696413,
-                        "percentage": -1.0632064887798205,
-                        "reference": 10216.09258709781
+                        "amount": -587.5364893722435,
+                        "percentage": 0.9831384202400156,
+                        "reference": 36594.196764896704
                     },
                     "netProfit": {
-                        "amount": 0,
-                        "percentage": 0,
-                        "reference": 0
+                        "amount": 19828.922317501176,
+                        "percentage": 1.4417364995230333,
+                        "reference": 41477.53503283596
                     },
                     "detail": []
                 },
@@ -1101,30 +1135,31 @@
                     "id": 17,
                     "name": "长悦公司",
                     "code": "CN-18",
+                    "brand": "雷克萨斯",
                     "revenue": {
-                        "amount": 25219.168497570856,
-                        "percentage": 0.0189465128394252,
-                        "reference": 30833.373125980484
+                        "amount": 104495.63572408409,
+                        "percentage": 0.030416783407093546,
+                        "reference": 127176.35957702047
                     },
                     "expense": {
-                        "amount": 20298.85678431526,
-                        "percentage": 0.8819951597667722,
-                        "reference": 16958.83289978864
+                        "amount": 27693.315348879805,
+                        "percentage": -0.5298011315787086,
+                        "reference": 57046.93810355648
                     },
                     "margin": {
-                        "amount": 17463.201019739514,
-                        "percentage": 0.10058683832656144,
-                        "reference": 16275.117474287536
+                        "amount": 59239.704968386104,
+                        "percentage": -0.06877092144480955,
+                        "reference": 64229.85317239741
                     },
                     "opProfit": {
-                        "amount": -2835.6557645757457,
-                        "percentage": -1.558051149453891,
-                        "reference": 10216.09258709781
+                        "amount": 31546.3896195063,
+                        "percentage": 5.68708713730132,
+                        "reference": 36594.196764896704
                     },
                     "netProfit": {
-                        "amount": 0,
-                        "percentage": 0,
-                        "reference": 0
+                        "amount": 31546.3896195063,
+                        "percentage": 2.5250598124996233,
+                        "reference": 41477.53503283596
                     },
                     "detail": []
                 },
@@ -1132,30 +1167,31 @@
                     "id": 16,
                     "name": "长沙长威",
                     "code": "CN-17",
+                    "brand": "广汽丰田",
                     "revenue": {
-                        "amount": 0,
-                        "percentage": 0,
-                        "reference": 30833.373125980484
+                        "amount": 134192.28672719336,
+                        "percentage": 3.1384406689540882,
+                        "reference": 127176.35957702047
                     },
                     "expense": {
-                        "amount": 14998.422252146413,
-                        "percentage": 0.44547080345106443,
-                        "reference": 16958.83289978864
+                        "amount": 19965.721172295274,
+                        "percentage": -0.682356168033891,
+                        "reference": 57046.93810355648
                     },
                     "margin": {
-                        "amount": 0,
-                        "percentage": 0,
-                        "reference": 16275.117474287536
+                        "amount": 57490.710357126234,
+                        "percentage": 0.4886501995401554,
+                        "reference": 64229.85317239741
                     },
                     "opProfit": {
-                        "amount": -14998.422252146413,
-                        "percentage": -1.8100511306211857,
-                        "reference": 10216.09258709781
+                        "amount": 37524.98918483096,
+                        "percentage": 2.548294912408775,
+                        "reference": 36594.196764896704
                     },
                     "netProfit": {
-                        "amount": 0,
-                        "percentage": 0,
-                        "reference": 0
+                        "amount": 37524.98918483096,
+                        "percentage": 54.981141165825875,
+                        "reference": 41477.53503283596
                     },
                     "detail": []
                 },
@@ -1163,30 +1199,31 @@
                     "id": 19,
                     "name": "长佳公司",
                     "code": "CN-20",
+                    "brand": "广汽传祺",
                     "revenue": {
-                        "amount": 0,
-                        "percentage": 0,
-                        "reference": 30833.373125980484
+                        "amount": 135642.3169889232,
+                        "percentage": 1.4580449586950475,
+                        "reference": 127176.35957702047
                     },
                     "expense": {
-                        "amount": 11474.435564501486,
-                        "percentage": 0,
-                        "reference": 16958.83289978864
+                        "amount": 5682.9586038787365,
+                        "percentage": -0.8654116891661678,
+                        "reference": 57046.93810355648
                     },
                     "margin": {
-                        "amount": 0,
-                        "percentage": 0,
-                        "reference": 16275.117474287536
+                        "amount": 64281.303067602465,
+                        "percentage": 0.5587028209171695,
+                        "reference": 64229.85317239741
                     },
                     "opProfit": {
-                        "amount": -11474.435564501486,
-                        "percentage": -1.8250584526016045,
-                        "reference": 10216.09258709781
+                        "amount": 58598.344463723726,
+                        "percentage": 60.52089896757201,
+                        "reference": 36594.196764896704
                     },
                     "netProfit": {
-                        "amount": 0,
-                        "percentage": 0,
-                        "reference": 0
+                        "amount": 39807.00476556091,
+                        "percentage": 41.43371413537788,
+                        "reference": 41477.53503283596
                     },
                     "detail": []
                 },
@@ -1194,30 +1231,31 @@
                     "id": 18,
                     "name": "湖南长坤",
                     "code": "CN-19",
+                    "brand": "广汽传祺",
                     "revenue": {
-                        "amount": 45112.87301417045,
-                        "percentage": 0.407193195670014,
-                        "reference": 30833.373125980484
+                        "amount": 79380.66871599236,
+                        "percentage": 0.2428123576803543,
+                        "reference": 127176.35957702047
                     },
                     "expense": {
-                        "amount": 0,
-                        "percentage": 0,
-                        "reference": 16958.83289978864
+                        "amount": 57290.38623471234,
+                        "percentage": 1.5869332370484714,
+                        "reference": 57046.93810355648
                     },
                     "margin": {
-                        "amount": 12305.235714387825,
-                        "percentage": 0.19626685695774765,
-                        "reference": 16275.117474287536
+                        "amount": 35798.67760910633,
+                        "percentage": 0.7306771728601502,
+                        "reference": 64229.85317239741
                     },
                     "opProfit": {
-                        "amount": 12305.235714387825,
-                        "percentage": 0.19626685695774765,
-                        "reference": 10216.09258709781
+                        "amount": -21491.708625606014,
+                        "percentage": -13.707430822539333,
+                        "reference": 36594.196764896704
                     },
                     "netProfit": {
-                        "amount": 0,
-                        "percentage": 0,
-                        "reference": 0
+                        "amount": -22602.780570700175,
+                        "percentage": -2.0171787507820156,
+                        "reference": 41477.53503283596
                     },
                     "detail": []
                 },
@@ -1225,30 +1263,31 @@
                     "id": 20,
                     "name": "重庆长冠",
                     "code": "CN-21",
+                    "brand": "广汽传祺",
                     "revenue": {
-                        "amount": 26667.253791091898,
-                        "percentage": 0.00005036710794627351,
-                        "reference": 30833.373125980484
+                        "amount": 55379.010374302496,
+                        "percentage": 0.6030652839300004,
+                        "reference": 127176.35957702047
                     },
                     "expense": {
-                        "amount": 0,
-                        "percentage": 0,
-                        "reference": 16958.83289978864
+                        "amount": 18127.810000370944,
+                        "percentage": -0.4753598255178129,
+                        "reference": 57046.93810355648
                     },
                     "margin": {
-                        "amount": 12060.68015851258,
-                        "percentage": 0.2143782807882794,
-                        "reference": 16275.117474287536
+                        "amount": 37668.69336213353,
+                        "percentage": 1.5182919863584297,
+                        "reference": 64229.85317239741
                     },
                     "opProfit": {
-                        "amount": 12060.68015851258,
-                        "percentage": 0.2143782807882794,
-                        "reference": 10216.09258709781
+                        "amount": 19540.883361762582,
+                        "percentage": 1.9972478456865426,
+                        "reference": 36594.196764896704
                     },
                     "netProfit": {
-                        "amount": 0,
-                        "percentage": 0,
-                        "reference": 0
+                        "amount": 36739.07961109839,
+                        "percentage": 2.8749391885920104,
+                        "reference": 41477.53503283596
                     },
                     "detail": []
                 }

@@ -41,6 +41,7 @@ angular.module('keyOpProfitPerRevenue.controllers', [])
 	            		chartData.gridData[i] = {id:null, name:null, amount:null};
 	            		chartData.gridData[i].id = previousDetail[i].code;
 	            		chartData.gridData[i].name = previousDetail[i].name;
+	            		chartData.gridData[i].brand = previousDetail[i].brand;
 	            		chartData.gridData[i].amount = previousDetail[i].opProfit.amount * 100;
 	            	};
 	            	
@@ -65,10 +66,11 @@ angular.module('keyOpProfitPerRevenue.controllers', [])
 			        jQuery("#report_list").jqGrid({
 					   	data:chartData.gridData,
 						datatype: "local",
-					   	colNames:['经销商代码','名称', '百分比（％）'],
+					   	colNames:['经销商代码','名称', '品牌', '百分比（％）'],
 					   	colModel:[
 					   		{name:'id',index:'id', width:55},
 					   		{name:'name',index:'name', width:100},
+					   		{name:'brand',index:'brand', width:55},
 					   		{name:'amount',index:'amount', width:80, sorttype:"float", formatter:"number", align:"right"}	
 					   	],
 					   	rowNum:30,
