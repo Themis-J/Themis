@@ -36,8 +36,8 @@ angular.module('keyOpProfitPerRevenue.controllers', [])
 	            	var previousDetail = data.detail[0].detail;
 	            	for ( var i in previousDetail ) {
 	            		dealers[i] = previousDetail[i].code;
-	            		chartData.series.previous[i] = previousDetail[i].opProfit.amount;
-	            		chartData.series.previousReference[i] = previousDetail[i].opProfit.reference;
+	            		chartData.series.previous[i] = previousDetail[i].opProfit.amount * 100;
+	            		chartData.series.previousReference[i] = previousDetail[i].opProfit.reference * 100;
 	            		chartData.gridData[i] = {id:null, name:null, amount:null};
 	            		chartData.gridData[i].id = previousDetail[i].code;
 	            		chartData.gridData[i].name = previousDetail[i].name;
@@ -46,17 +46,10 @@ angular.module('keyOpProfitPerRevenue.controllers', [])
 	            	};
 	            	
 					chartCategories[0].categories = dealers;
-					var currentDetail = data.detail[1].detail;
-					for ( var i in currentDetail ) {
-	            		chartData.series.current[i] = currentDetail[i].opProfit.amount;
-	            		chartData.series.currentPercentage[i] = currentDetail[i].opProfit.percentage * 100;
-	            		chartData.series.currentReference[i] = currentDetail[i].opProfit.reference;
-	            	};
-	            	var chartSubtitle = '年度对比';
-	            	var chartColumnPrevious = '去年';
-	            	var chartColumnCurrent = '今年';
-	            	var chartColumnPreviousRef = '去年参考值';
-	            	var chartColumnCurrentRef = '今年参考值';
+					
+	            	var chartSubtitle = '月均对比';
+	            	var chartColumnCurrent = '月均';
+	            	var chartColumnCurrentRef = '参考值';
 			        var chartWidth = $(window).width() * 0.60;
 			        if ( reportService.getFullScreen() ) {
 			        	chartWidth = $(window).width() * 0.90;
@@ -83,7 +76,8 @@ angular.module('keyOpProfitPerRevenue.controllers', [])
 						height: "100%",
 						caption: "月均运营利润占销售金额百分比"
 					});
-					/*
+					jQuery("#report_list").jqGrid('navGrid','#report_pager',{"edit":false,"add":false,"del":false,"search":true,"refresh":true,"view":false,"excel":false,"pdf":false,"csv":false,"columns":false});
+					if (  $scope.report_chart_display ) {
 					$('#report_chart').highcharts({
 			                chart: {
 			                	zoomType: 'xy',
@@ -100,26 +94,12 @@ angular.module('keyOpProfitPerRevenue.controllers', [])
 			                yAxis: [{
 			                    title: {
 			                        text: currentData.yAxisTitle
-			                    },
-			                    min:-10000
-			                },
-		                    {
-		                        gridLineWidth: 0,
-		                        title: {
-		                            text: '增长百分比 (%)'
-		                        },
-		                        labels: {
-		                            formatter: function() {
-		                                return this.value +' %';
-		                            }
-		                        }
-		                        ,
-		                        opposite: true
-		                    }
+			                    }
+			                }
 							],
 			                tooltip: {
 			                    formatter: function() {
-			                        var tooltip = this.series.name +': '+ this.y +'<br/>';
+			                        var tooltip = this.series.name +': '+ this.y + '%' +'<br/>';
 			                        return  tooltip;
 			                    },
 			                    useHTML: true
@@ -132,32 +112,17 @@ angular.module('keyOpProfitPerRevenue.controllers', [])
 			                series: [
 			                    {
 			                        type: 'column',
-			                        name: chartColumnPrevious,
-			                        data: currentData.series.previous
-			                    },
-			                    {
-			                        type: 'column',
 			                        name: chartColumnCurrent,
-			                        data: currentData.series.current
-			                    },
-			                    {
-			                        type: 'spline',
-			                        name: chartColumnPreviousRef,
-			                        data: currentData.series.previousReference
+			                        data: currentData.series.previous
 			                    },
 			                    {
 			                        type: 'spline',
 			                        name: chartColumnCurrentRef,
-			                        data: currentData.series.currentReference
-			                    },
-			                    {
-			                        type: 'spline',
-			                        name: '增长比例(%)',
-			                        yAxis: 1,
-			                        data: currentData.series.currentPercentage
+			                        data: currentData.series.previousReference
 			                    }
 			                ]
-			        	});*/
+			        	});
+			        }
 			  });
 		};
 		
@@ -185,10 +150,24 @@ angular.module('keyOpProfitPerRevenue.controllers', [])
             }
         };
 
+		$scope.showChart = function() {
+            reportService.setShowChart(!reportService.getShowChart());
+            $scope.report_chart_display = reportService.getShowChart();
+			if ( $scope.report_chart_display ) {
+				$scope.report_chart_button_text = "隐藏图表";
+			} else {
+				$scope.report_chart_button_text = "显示图表";
+			}
+			$scope.showReport();
+        };
+		
 		/**
 		 * Global variables
 		 */
 		reportService.setFullScreen(false);
+		reportService.setShowChart(false);
+		$scope.report_chart_display = reportService.getShowChart();
+		$scope.report_chart_button_text = "显示图表";
     	var currentDate = new Date();
   		reportService.setCurrentYear(currentDate.getFullYear());
 		reportService.setMonthOfYear(currentDate.getMonth());

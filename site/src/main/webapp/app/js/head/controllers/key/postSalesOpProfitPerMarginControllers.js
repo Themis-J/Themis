@@ -1,7 +1,7 @@
 'use strict';
 
-angular.module('keyOpProfit.controllers', [])
-	.controller('keyOpProfitCtrl', ['$scope', 'ReportRestClient', 'ReportService', 'config', function($scope, restClient, reportService, config) {
+angular.module('keyPostSalesOpProfitPerMargin.controllers', [])
+	.controller('keyPostSalesOpProfitPerMarginCtrl', ['$scope', 'ReportRestClient', 'ReportService', 'config', function($scope, restClient, reportService, config) {
 		/**
 		 * Global functions
 		 */
@@ -9,10 +9,16 @@ angular.module('keyOpProfit.controllers', [])
     		reportService.setCurrentYear($scope.selectedYearOption.id);
     		$scope.showReport();
     	};
-    	
+    	$scope.selectReportMonth = function() {
+    		reportService.setCurrentMonth($scope.selectedMonthOption.id);
+    		$scope.showReport();
+    	};
+    	$scope.selectReportDepartment = function() {
+			$scope.showReport();
+		};
     	$scope.showReport = function() {
-        	var params = {year: reportService.getCurrentYear()};
-        	$scope.draw(restClient(config.currentMode).queryOverallIncomeReport, params);
+        	var params = {year: reportService.getCurrentYear(), monthOfYear: reportService.getMonthOfYear(), departmentID: $scope.selectedDepartmentOption.id, denominator: 1};
+        	$scope.draw(restClient(config.currentMode).queryOverallPercentageIncomeReport, params);
         };
         
         $scope.draw = function (restClient, params) {
@@ -22,8 +28,8 @@ angular.module('keyOpProfit.controllers', [])
 	            restClient(params, function(data) {
 	            	var chartData = {
 				        		id: 'report_chart',
-				        		title: '运营利润',
-				        		yAxisTitle: '运营利润',
+				        		title: '运营利润/毛利',
+				        		yAxisTitle: '运营利润/毛利',
 				        		series: { previous:[], current:[], previousReference:[], currentReference:[], currentPercentage:[] },
 				        		gridData:[]
 				        	}; 
@@ -32,25 +38,20 @@ angular.module('keyOpProfit.controllers', [])
 	            	var previousDetail = data.detail[0].detail;
 	            	for ( var i in previousDetail ) {
 	            		dealers[i] = previousDetail[i].code;
-	            		chartData.series.previous[i] = previousDetail[i].opProfit.amount;
-	            		chartData.series.previousReference[i] = previousDetail[i].opProfit.reference;
+	            		chartData.series.previous[i] = previousDetail[i].opProfit.amount * 100;
+	            		chartData.series.previousReference[i] = previousDetail[i].opProfit.reference * 100;
+	            		chartData.gridData[i] = {id:null, name:null, amount:null};
+	            		chartData.gridData[i].id = previousDetail[i].code;
+	            		chartData.gridData[i].name = previousDetail[i].name;
+	            		chartData.gridData[i].brand = previousDetail[i].brand;
+	            		chartData.gridData[i].amount = previousDetail[i].opProfit.amount * 100;
 	            	};
 	            	
 					chartCategories[0].categories = dealers;
-					var currentDetail = data.detail[1].detail;
-					for ( var i in currentDetail ) {
-	            		chartData.series.current[i] = currentDetail[i].opProfit.amount;
-	            		chartData.series.currentPercentage[i] = currentDetail[i].opProfit.percentage * 100;
-	            		chartData.series.currentReference[i] = currentDetail[i].opProfit.reference;
-	            		chartData.gridData[i] = {id:null, name:null, amount:null};
-	            		chartData.gridData[i].id = currentDetail[i].code;
-	            		chartData.gridData[i].name = currentDetail[i].name;
-	            		chartData.gridData[i].brand = currentDetail[i].brand;
-	            		chartData.gridData[i].amount = currentDetail[i].opProfit.amount;
-	            	};
-	            	var chartSubtitle = '年度对比';
-	            	var chartColumnCurrent = '今年';
-	            	var chartColumnCurrentRef = '今年参考值';
+					
+	            	var chartSubtitle = '月均对比';
+	            	var chartColumnCurrent = '月均';
+	            	var chartColumnCurrentRef = '参考值';
 			        var chartWidth = $(window).width() * 0.60;
 			        if ( reportService.getFullScreen() ) {
 			        	chartWidth = $(window).width() * 0.90;
@@ -60,7 +61,7 @@ angular.module('keyOpProfit.controllers', [])
 			        jQuery("#report_list").jqGrid({
 					   	data:chartData.gridData,
 						datatype: "local",
-					   	colNames:['经销商代码','名称', '品牌', '运营利润'],
+					   	colNames:['经销商代码','名称', '品牌', '百分比（％）'],
 					   	colModel:[
 					   		{name:'id',index:'id', width:55},
 					   		{name:'name',index:'name', width:100},
@@ -75,7 +76,7 @@ angular.module('keyOpProfit.controllers', [])
 						multiselect: false,
 						width: chartWidth,
 						height: "100%",
-						caption: "本年运营利润"
+						caption: "月均运营利润占毛利百分比"
 					});
 					jQuery("#report_list").jqGrid('navGrid','#report_pager',{"edit":false,"add":false,"del":false,"search":true,"refresh":true,"view":false,"excel":false,"pdf":false,"csv":false,"columns":false});
 					if (  $scope.report_chart_display ) {
@@ -95,13 +96,12 @@ angular.module('keyOpProfit.controllers', [])
 			                yAxis: [{
 			                    title: {
 			                        text: currentData.yAxisTitle
-			                    },
-			                    min:-10000
+			                    }
 			                }
 							],
 			                tooltip: {
 			                    formatter: function() {
-			                        var tooltip = this.series.name +': '+ this.y +'<br/>';
+			                        var tooltip = this.series.name +': '+ this.y + '%' +'<br/>';
 			                        return  tooltip;
 			                    },
 			                    useHTML: true
@@ -115,16 +115,16 @@ angular.module('keyOpProfit.controllers', [])
 			                    {
 			                        type: 'column',
 			                        name: chartColumnCurrent,
-			                        data: currentData.series.current
+			                        data: currentData.series.previous
 			                    },
 			                    {
 			                        type: 'spline',
 			                        name: chartColumnCurrentRef,
-			                        data: currentData.series.currentReference
+			                        data: currentData.series.previousReference
 			                    }
 			                ]
 			        	});
-					}
+			        }
 			  });
 		};
 		
@@ -175,8 +175,14 @@ angular.module('keyOpProfit.controllers', [])
 		reportService.setMonthOfYear(currentDate.getMonth());
   		$scope.yearOptions = reportService.getYearList();
 		$scope.selectedYearOption = $scope.yearOptions[0];
-		
+		$scope.monthOptions = reportService.getMonthList();
+		$scope.selectedMonthOption = $scope.monthOptions[reportService.getMonthOfYear()-1];
 
-		// called on page is loaded
-		$scope.showReport();
+		$scope.departmentOptions = [];
+    	reportService.getPostSalesDepartments(restClient(config.currentMode).queryDepartments, {}, function(departments) {
+    		$scope.departmentOptions = departments;
+    		$scope.selectedDepartmentOption = $scope.departmentOptions[0];
+			// called on page is loaded
+			$scope.showReport();
+		});
   }]);

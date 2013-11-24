@@ -11,12 +11,12 @@ angular.module('overallRevenue.controllers', [])
     	};
     	
     	$scope.showReport = function() {
-        	var params = {year: reportService.getCurrentYear(), groupBy:0};
-        	$scope.draw(restClient(config.currentMode).queryOverallIncomeWithGroupByReport, params);
+        	var params = {year: reportService.getCurrentYear()};
+        	$scope.draw(restClient(config.currentMode).queryOverallIncomeReport, params);
         };
         
         $scope.draw = function (restClient, params) {
-        		Highcharts.theme = config.highChartsTheme;
+	        	Highcharts.theme = config.highChartsTheme;
 				Highcharts.setOptions(Highcharts.theme); 
 	 			
 	            restClient(params, function(data) {
@@ -29,29 +29,25 @@ angular.module('overallRevenue.controllers', [])
 				        	}; 
 	            	var chartCategories = [{ categories: null }];
 	            	var dealers = [];
-	            	chartCategories[0].categories = dealers;
-					var currentDetail = data.detail[0].detail;
-					var j = 0;
+	            	var previousDetail = data.detail[0].detail;
+	            	for ( var i in previousDetail ) {
+	            		dealers[i] = previousDetail[i].code;
+	            		chartData.series.previous[i] = previousDetail[i].revenue.amount;
+	            		chartData.series.previousReference[i] = previousDetail[i].revenue.reference;
+	            	};
+	            	
+					chartCategories[0].categories = dealers;
+					var currentDetail = data.detail[1].detail;
 					for ( var i in currentDetail ) {
 	            		chartData.series.current[i] = currentDetail[i].revenue.amount;
 	            		chartData.series.currentPercentage[i] = currentDetail[i].revenue.percentage * 100;
 	            		chartData.series.currentReference[i] = currentDetail[i].revenue.reference;
-	            		
-	            		for ( var k in currentDetail[i].detail ) {
-	            			if ( currentDetail[i].detail[k].name != 'NA' &&  
-	            					currentDetail[i].detail[k].name != '二手车部' && 
-	            						currentDetail[i].detail[k].name != '其它部' &&
-	            						currentDetail[i].detail[k].name != '租赁事业部' ) {
-			            		chartData.gridData[j] = {id:null, departmentName:null, name:null, amount:null};
-			            		chartData.gridData[j].id = currentDetail[i].code;
-			            		chartData.gridData[j].name = currentDetail[i].name;
-			            		chartData.gridData[j].departmentName = currentDetail[i].detail[k].name;
-			            		chartData.gridData[j].amount = currentDetail[i].detail[k].revenue.amount;
-			            		j++;
-		            		}
-	            		}
+	            		chartData.gridData[i] = {id:null, name:null, amount:null};
+	            		chartData.gridData[i].id = currentDetail[i].code;
+	            		chartData.gridData[i].name = currentDetail[i].name;
+	            		chartData.gridData[i].brand = currentDetail[i].brand;
+	            		chartData.gridData[i].amount = currentDetail[i].revenue.amount;
 	            	};
-	            	
 	            	var chartSubtitle = '年度对比';
 	            	var chartColumnCurrent = '今年';
 	            	var chartColumnCurrentRef = '今年参考值';
@@ -64,41 +60,71 @@ angular.module('overallRevenue.controllers', [])
 			        jQuery("#report_list").jqGrid({
 					   	data:chartData.gridData,
 						datatype: "local",
-					   	colNames:['部门','经销商代码', '名称', '总营业额'],
+					   	colNames:['经销商代码','名称', '品牌', '总营业额'],
 					   	colModel:[
-					   		{name:'departmentName',index:'departmentName', width:55},
 					   		{name:'id',index:'id', width:55},
 					   		{name:'name',index:'name', width:100},
-					   		{name:'amount',index:'amount', width:80, sorttype:"float", formatter:"number", align:"right", summaryType: "sum"}	
+					   		{name:'brand',index:'brand', width:55},
+					   		{name:'amount',index:'amount', width:80, sorttype:"float", formatter:"number", align:"right"}	
 					   	],
-					   	rowNum:300,
+					   	rowNum:30,
 					   	pager: '#report_pager',
-					   	loadError: function(xhr,status, err) { 
-					   		try {
-					   			jQuery.jgrid.info_dialog(jQuery.jgrid.errors.errcap,'<div class="ui-state-error">'+ xhr.responseText +'</div>', jQuery.jgrid.edit.bClose,{buttonalign:'right'});
-					   		} catch(e) { 
-					   			alert(xhr.responseText);
-					   		}}, 
 					   	sortname: 'amount',
 					    viewrecords: true,
 					    sortorder: "desc",
 						multiselect: false,
 						width: chartWidth,
 						height: "100%",
-						grouping:true,
-					   	groupingView : {
-					   		groupField : ['name'],
-					   		groupSummary : [true],
-					   		groupColumnShow : [true],
-					   		groupText : ['<b>{0}</b>'],
-					   		groupCollapse : true,
-					   		showSummaryOnHide: true,
-							groupOrder: ['asc']
-					   	},
 						caption: "本年总营业额"
 					});
 					jQuery("#report_list").jqGrid('navGrid','#report_pager',{"edit":false,"add":false,"del":false,"search":true,"refresh":true,"view":false,"excel":false,"pdf":false,"csv":false,"columns":false});
-					
+					if (  $scope.report_chart_display ) {
+					$('#report_chart').highcharts({
+			                chart: {
+			                	zoomType: 'xy',
+			                    height:$(window).height()*0.60,
+			                    width: chartWidth
+			                },
+			                title: {
+			                    text: currentData.title
+			                },
+			                subtitle: {
+			                    text: chartSubtitle
+			                },
+			                xAxis: chartCategories,
+			                yAxis: [{
+			                    title: {
+			                        text: currentData.yAxisTitle
+			                    },
+			                    min:-10000
+			                }
+							],
+			                tooltip: {
+			                    formatter: function() {
+			                        var tooltip = this.series.name +': '+ this.y +'<br/>';
+			                        return  tooltip;
+			                    },
+			                    useHTML: true
+			                },
+			                plotOptions: {
+			                    column: {
+			                    	cursor: 'pointer'
+			                    }
+			                },
+			                series: [
+			                    {
+			                        type: 'column',
+			                        name: chartColumnCurrent,
+			                        data: currentData.series.current
+			                    },
+			                    {
+			                        type: 'spline',
+			                        name: chartColumnCurrentRef,
+			                        data: currentData.series.currentReference
+			                    }
+			                ]
+			        	});
+					}
 			  });
 		};
 		
@@ -125,17 +151,32 @@ angular.module('overallRevenue.controllers', [])
                
             }
         };
-		
+
+		$scope.showChart = function() {
+            reportService.setShowChart(!reportService.getShowChart());
+            $scope.report_chart_display = reportService.getShowChart();
+			if ( $scope.report_chart_display ) {
+				$scope.report_chart_button_text = "隐藏图表";
+			} else {
+				$scope.report_chart_button_text = "显示图表";
+			}
+			$scope.showReport();
+        };
+        
 		/**
 		 * Global variables
 		 */
 		reportService.setFullScreen(false);
+		reportService.setShowChart(false);
+		$scope.report_chart_display = reportService.getShowChart();
+		$scope.report_chart_button_text = "显示图表";
     	var currentDate = new Date();
   		reportService.setCurrentYear(currentDate.getFullYear());
 		reportService.setMonthOfYear(currentDate.getMonth());
   		$scope.yearOptions = reportService.getYearList();
 		$scope.selectedYearOption = $scope.yearOptions[0];
 		
+
 		// called on page is loaded
 		$scope.showReport();
   }]);

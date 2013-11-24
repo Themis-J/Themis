@@ -7,8 +7,11 @@ angular.module('masterApp.controllers', [])
 						{name: '关键指标总览－本年度总运营利润', page:'key/opProfit'}, 
 						{name: '关键指标总览－月均运营利润占销售金额百分比', page:'key/opProfitPerRevenue'}, 
 						{name: '关键指标总览－月均运营利润占毛利百分比', page:'key/opProfitPerMargin'}, 
+						{name: '关键指标总览－售后部门运营利润毛利润百分比', page:'key/postSalesOpProfitPerMargin'}, 
+						{name: '关键指标总览－售后部门销售金额毛利润百分比', page:'key/postSalesRevenuePerMargin'}, 
 						{name: '总运营－(本年度)总营业额', page:'overall/revenue'}, 
 						{name: '总运营－(本年度)经销商总毛利', page:'overall/margin'}, 
+						{name: '总运营－(本年度)经销商总费用', page:'overall/expense'}, 
 						{name: '总运营－营业额、毛利、费用、运营利润、税前净利润', page:'overall/abs'}, 
 						{name: '总运营－销售、毛利占百分比', page:'overall/percentage'},
 						{name: '总运营－费用占百分比', page:'overall/expPercentage'},
@@ -20,7 +23,7 @@ angular.module('masterApp.controllers', [])
 						{name: '销售部－销量 – 总量', page:'sales/abs'},
 						{name: '销售部－销量', page:'sales/departmentAbs'},
 						{name: '销售部－总销量占百分比', page:'sales/percentage'},
-						{name: '销售部－部门销量占百分比', page:'sales/departmentPercentage'},
+						{name: '销售部－部门销量占百分比', page:'sales/departmentPercentage'}
 						];
         
 		$scope.goto = function(item)

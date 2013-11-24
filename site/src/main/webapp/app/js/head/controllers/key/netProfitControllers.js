@@ -49,61 +49,43 @@ angular.module('keyNetProfit.controllers', [])
 	            		chartData.gridData[i].amount = currentDetail[i].netProfit.amount;
 	            	};
 	            	var chartSubtitle = '年度对比';
-	            	if ( $scope.selectedTime == 1 ) {
-	            		chartSubtitle = '月对比';
-	            	}
-	            	
-	            	var chartColumnPrevious = '去年';
-	            	if ( $scope.selectedTime == 1 ) {
-	            		chartColumnPrevious = '月均';
-	            	}
 	            	var chartColumnCurrent = '今年';
-	            	if ( $scope.selectedTime == 1 ) {
-	            		chartColumnCurrent = '当月';
-	            	}
-	            	var chartColumnPreviousRef = '去年参考值';
-	            	if ( $scope.selectedTime == 1 ) {
-	            		chartColumnPreviousRef = '月均参考值';
-	            	}
 	            	var chartColumnCurrentRef = '今年参考值';
-	            	if ( $scope.selectedTime == 1 ) {
-	            		chartColumnCurrentRef = '当月参考值';
-	            	}
 			        var chartWidth = $(window).width() * 0.60;
 			        if ( reportService.getFullScreen() ) {
 			        	chartWidth = $(window).width() * 0.90;
 					}
 			        var currentData = chartData;
+			        
 			        jQuery("#report_list").jqGrid("GridUnload");
 			        jQuery("#report_list").jqGrid({
-					   	data:chartData.gridData,
-						datatype: "local",
-					   	colNames:['经销商代码','名称', '品牌', '税前尽利润'],
-					   	colModel:[
-					   		{name:'id',index:'id', width:55},
-					   		{name:'name',index:'name', width:100},
-					   		{name:'brand',index:'brand', width:55},
-					   		{name:'amount',index:'amount', width:80, sorttype:"float", formatter:"number", align:"right"}	
-					   	],
-					   	rowNum:30,
-					   	pager: '#report_pager',
-					   	loadError: function(xhr,status, err) { 
-					   		try {
-					   			jQuery.jgrid.info_dialog(jQuery.jgrid.errors.errcap,'<div class="ui-state-error">'+ xhr.responseText +'</div>', jQuery.jgrid.edit.bClose,{buttonalign:'right'});
-					   		} catch(e) { 
-					   			alert(xhr.responseText);
-					   		}}, 
-					   	sortname: 'amount',
-					    viewrecords: true,
-					    sortorder: "desc",
-						multiselect: false,
-						width: chartWidth,
-						height: "100%",
-						caption: "本年税前尽利润"
-					});
+						   	data:chartData.gridData,
+							datatype: "local",
+						   	colNames:['经销商代码','名称', '品牌', '税前尽利润'],
+						   	colModel:[
+						   		{name:'id',index:'id', width:55},
+						   		{name:'name',index:'name', width:100},
+						   		{name:'brand',index:'brand', width:55},
+						   		{name:'amount',index:'amount', width:80, sorttype:"float", formatter:"number", align:"right"}	
+						   	],
+						   	rowNum:30,
+						   	pager: '#report_pager',
+						   	loadError: function(xhr,status, err) { 
+						   		try {
+						   			jQuery.jgrid.info_dialog(jQuery.jgrid.errors.errcap,'<div class="ui-state-error">'+ xhr.responseText +'</div>', jQuery.jgrid.edit.bClose,{buttonalign:'right'});
+						   		} catch(e) { 
+						   			alert(xhr.responseText);
+						   		}}, 
+						   	sortname: 'amount',
+						    viewrecords: true,
+						    sortorder: "desc",
+							multiselect: false,
+							width: chartWidth,
+							height: "100%",
+							caption: "本年税前尽利润"
+						});
 					jQuery("#report_list").jqGrid('navGrid','#report_pager',{"edit":false,"add":false,"del":false,"search":true,"refresh":true,"view":false,"excel":false,"pdf":false,"csv":false,"columns":false});
-					
-					/*
+					if (  $scope.report_chart_display ) {
 					$('#report_chart').highcharts({
 			                chart: {
 			                	zoomType: 'xy',
@@ -122,20 +104,7 @@ angular.module('keyNetProfit.controllers', [])
 			                        text: currentData.yAxisTitle
 			                    },
 			                    min:-10000
-			                },
-		                    {
-		                        gridLineWidth: 0,
-		                        title: {
-		                            text: '增长百分比 (%)'
-		                        },
-		                        labels: {
-		                            formatter: function() {
-		                                return this.value +' %';
-		                            }
-		                        }
-		                        ,
-		                        opposite: true
-		                    }
+			                }
 							],
 			                tooltip: {
 			                    formatter: function() {
@@ -152,32 +121,17 @@ angular.module('keyNetProfit.controllers', [])
 			                series: [
 			                    {
 			                        type: 'column',
-			                        name: chartColumnPrevious,
-			                        data: currentData.series.previous
-			                    },
-			                    {
-			                        type: 'column',
 			                        name: chartColumnCurrent,
 			                        data: currentData.series.current
 			                    },
 			                    {
 			                        type: 'spline',
-			                        name: chartColumnPreviousRef,
-			                        data: currentData.series.previousReference
-			                    },
-			                    {
-			                        type: 'spline',
 			                        name: chartColumnCurrentRef,
 			                        data: currentData.series.currentReference
-			                    },
-			                    {
-			                        type: 'spline',
-			                        name: '增长比例(%)',
-			                        yAxis: 1,
-			                        data: currentData.series.currentPercentage
 			                    }
 			                ]
-			        	});*/
+			        	});
+			        }
 			  });
 		};
 		
@@ -204,11 +158,25 @@ angular.module('keyNetProfit.controllers', [])
                
             }
         };
+        
+        $scope.showChart = function() {
+            reportService.setShowChart(!reportService.getShowChart());
+            $scope.report_chart_display = reportService.getShowChart();
+			if ( $scope.report_chart_display ) {
+				$scope.report_chart_button_text = "隐藏图表";
+			} else {
+				$scope.report_chart_button_text = "显示图表";
+			}
+			$scope.showReport();
+        };
 		
 		/**
 		 * Global variables
 		 */
 		reportService.setFullScreen(false);
+		reportService.setShowChart(false);
+		$scope.report_chart_display = reportService.getShowChart();
+		$scope.report_chart_button_text = "显示图表";
     	var currentDate = new Date();
   		reportService.setCurrentYear(currentDate.getFullYear());
 		reportService.setMonthOfYear(currentDate.getMonth());

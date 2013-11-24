@@ -1,7 +1,7 @@
 'use strict';
 
-angular.module('overallMargin.controllers', [])
-	.controller('overallMarginCtrl', ['$scope', 'ReportRestClient', 'ReportService', 'config', function($scope, restClient, reportService, config) {
+angular.module('overallExpense.controllers', [])
+	.controller('overallExpenseCtrl', ['$scope', 'ReportRestClient', 'ReportService', 'config', function($scope, restClient, reportService, config) {
 		/**
 		 * Global functions
 		 */
@@ -16,8 +16,8 @@ angular.module('overallMargin.controllers', [])
         };
         var chartData = {
 				        		id: 'report_chart',
-				        		title: '总毛利',
-				        		yAxisTitle: '总毛利',
+				        		title: '总费用',
+				        		yAxisTitle: '总费用',
 				        		series: { previous:[], current:[], previousReference:[], currentReference:[], currentPercentage:[] },
 				        		gridData:[]
 				        	}; 
@@ -33,9 +33,9 @@ angular.module('overallMargin.controllers', [])
 					var currentDetail = data.detail[0].detail;
 					var j = 0;
 					for ( var i in currentDetail ) {
-	            		chartData.series.current[i] = currentDetail[i].margin.amount;
-	            		chartData.series.currentPercentage[i] = currentDetail[i].margin.percentage * 100;
-	            		chartData.series.currentReference[i] = currentDetail[i].margin.reference;
+	            		chartData.series.current[i] = currentDetail[i].expense.amount;
+	            		chartData.series.currentPercentage[i] = currentDetail[i].expense.percentage * 100;
+	            		chartData.series.currentReference[i] = currentDetail[i].expense.reference;
 	            		
 	            		for ( var k in currentDetail[i].detail ) {
 	            			if ( currentDetail[i].detail[k].name != 'NA' &&  
@@ -46,8 +46,8 @@ angular.module('overallMargin.controllers', [])
 			            		chartData.gridData[j].id = currentDetail[i].code;
 			            		chartData.gridData[j].name = currentDetail[i].name;
 			            		chartData.gridData[j].departmentName = currentDetail[i].detail[k].name;
-			            		chartData.gridData[j].amount = currentDetail[i].detail[k].margin.amount;
-			            		chartData.gridData[j].totalAmount = currentDetail[i].margin.amount;
+			            		chartData.gridData[j].amount = currentDetail[i].detail[k].expense.amount;
+			            		chartData.gridData[j].totalAmount = currentDetail[i].expense.amount;
 			            		j++;
 		            		}
 	            		}
@@ -65,7 +65,7 @@ angular.module('overallMargin.controllers', [])
 			        jQuery("#report_list").jqGrid({
 					   	data:chartData.gridData,
 						datatype: "local",
-					   	colNames:['部门','经销商代码', '名称', '部门总毛利', '经销商总毛利'],
+					   	colNames:['部门','经销商代码', '名称', '部门总费用', '经销商总费用'],
 					   	colModel:[
 					   		{name:'departmentName',index:'departmentName', width:55},
 					   		{name:'id',index:'id', width:55},
@@ -83,7 +83,7 @@ angular.module('overallMargin.controllers', [])
 					   		}}, 
 					   	sortname: 'totalAmount',
 					    viewrecords: true,
-					    sortable: false,  
+					    sortorder: "desc",
 						multiselect: false,
 						width: chartWidth,
 						height: "100%",
@@ -95,10 +95,9 @@ angular.module('overallMargin.controllers', [])
 					   		groupText : ['<b>{0}</b>'],
 					   		groupCollapse : false,
 					   		showSummaryOnHide: true,
-					   		groupDataSorted : false,
-              				groupSorted: false
+							groupOrder: ['desc']
 					   	},
-						caption: "本年总毛利"
+						caption: "本年总费用"
 					});
 					jQuery("#report_list").jqGrid('navGrid','#report_pager',{"edit":false,"add":false,"del":false,"search":true,"refresh":true,"view":false,"excel":false,"pdf":false,"csv":false,"columns":false});
 					

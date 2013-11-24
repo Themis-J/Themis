@@ -51,6 +51,7 @@ angular.module('masterApp.services', ['ngResource'])
     	var currentYear = -1;
     	var charts = [];
     	var isFullScreen = false;
+    	var isShowChart = false;
         return {
         	setCurrentYear: function(year) {
         		currentYear = year;
@@ -69,6 +70,12 @@ angular.module('masterApp.services', ['ngResource'])
         	},
         	getFullScreen: function() {
         		return isFullScreen;
+        	},
+        	setShowChart: function(flag){
+        		isShowChart = flag;
+        	},
+        	getShowChart: function() {
+        		return isShowChart;
         	},
         	getDepartments: function(restClient, params, callback) {
         		restClient(params, function(data) {
@@ -92,6 +99,18 @@ angular.module('masterApp.services', ['ngResource'])
         				} else {
         					departments[j++]={id: 0, name:'全部门'};
         				}
+        			}
+        			callback(departments);
+        		});
+        	},
+        	getPostSalesDepartments: function(restClient, params, callback) {
+        		restClient(params, function(data) {
+        			var departments = [];
+        			var j = 0;
+        			for ( var i = 0; i < data.items.length; i++) {
+        				if (data.items[i].name == '维修部' || data.items[i].name == '备件部' || data.items[i].name == '钣喷部') {
+        					departments[j++]=data.items[i];        					
+        				} 
         			}
         			callback(departments);
         		});
