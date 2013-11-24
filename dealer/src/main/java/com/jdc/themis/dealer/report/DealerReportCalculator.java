@@ -161,6 +161,28 @@ public class DealerReportCalculator {
 	}
 	
 	/**
+	 * Adjust the revenue by using denominator. 
+	 * 
+	 * This has to be called after "prepareDenominators" function is called. 
+	 * 
+	 * @return
+	 */
+	public DealerReportCalculator adjustRevenueByDenominator() {
+		if (this.denominatorOption.isNone()) {
+			return this;
+		} 
+		for (final Integer dealerID : dealerDetails.keySet()) {
+			final Double amount = dealerDetails.get(dealerID).getRevenue().getAmount() / denominators.get(dealerID);
+			dealerDetails.get(dealerID).getRevenue().setAmount(amount);
+		}
+
+		final Double reference = calcReference(Lambda.extract(dealerDetails.values(), 
+				Lambda.on(ReportDataDealerDetail.class).getRevenue().getAmount()));
+		Lambda.forEach(dealerDetails.values()).getRevenue().setReference(reference);
+		return this;
+	}
+	
+	/**
 	 * Adjust the margin by using denominator. 
 	 * 
 	 * This has to be called after "prepareDenominators" function is called. 

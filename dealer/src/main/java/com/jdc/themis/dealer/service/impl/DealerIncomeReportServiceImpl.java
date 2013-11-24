@@ -600,7 +600,9 @@ public class DealerIncomeReportServiceImpl implements DealerIncomeReportService 
 									Multimaps.index(otherExpenseFacts,GetDealerIDFromExpenseFunction.INSTANCE), op);
 		}
 		if (denominatorIDOption.isSome()) {
-			calculator.prepareDenominators().adjustExpenseByDenominator()
+			calculator.prepareDenominators()
+					.adjustRevenueByDenominator()
+					.adjustExpenseByDenominator()
 					.adjustMarginByDenominator().adjustNetProfitByDenominator()
 					.adjustOpProfitByDenominator();
 		}

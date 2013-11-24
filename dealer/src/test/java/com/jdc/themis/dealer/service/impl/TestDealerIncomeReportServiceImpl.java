@@ -576,7 +576,7 @@ public class TestDealerIncomeReportServiceImpl {
 		Assert.assertEquals(2, response.getDetail().size());
 		Assert.assertEquals(2012, response.getDetail().get(0).getYear().intValue());
 		Assert.assertEquals(2013, response.getDetail().get(1).getYear().intValue());
-		Assert.assertEquals(5000.0, response.getDetail().get(1).getDetail().get(0).getRevenue().getAmount());
+		Assert.assertEquals(1.0, response.getDetail().get(1).getDetail().get(0).getRevenue().getAmount());
 		Assert.assertEquals(1.6, response.getDetail().get(1).getDetail().get(0).getMargin().getAmount());
 		System.err.println(response);
 		
@@ -600,7 +600,7 @@ public class TestDealerIncomeReportServiceImpl {
 		Assert.assertEquals(8, response2.getDetail().get(0).getMonth().intValue());
 		Assert.assertEquals(2013, response2.getDetail().get(1).getYear().intValue());
 		Assert.assertEquals(8, response2.getDetail().get(1).getMonth().intValue());
-		Assert.assertEquals(3000.0, response2.getDetail().get(1).getDetail().get(0).getRevenue().getAmount());
+		Assert.assertEquals(0.6, response2.getDetail().get(1).getDetail().get(0).getRevenue().getAmount());
 		Assert.assertEquals(1.0, response2.getDetail().get(1).getDetail().get(0).getMargin().getAmount());
 		Assert.assertEquals(1.0, response2.getDetail().get(1).getDetail().get(0).getOpProfit().getAmount());
 		Assert.assertEquals(1.0, response2.getDetail().get(1).getDetail().get(0).getNetProfit().getAmount());
