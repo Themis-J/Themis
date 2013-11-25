@@ -69,8 +69,8 @@ angular.module('overallMargin.controllers', [])
 					   	colModel:[
 					   		{name:'departmentName',index:'departmentName', width:55},
 					   		{name:'id',index:'id', width:55},
-					   		{name:'name',index:'name', width:100},
-					   		{name:'amount',index:'amount', width:80, formatter:"number", sorttype:"float", align:"right", summaryType: "sum"},
+					   		{name:'name',index:'name', sorttype: function (cellValus, rowData) {return rowData.totalAmount;}, width:100},
+					   		{name:'amount',index:'amount', width:80, formatter:"number", align:"right", sorttype:"float", summaryType: "sum"},
 					   		{name:'totalAmount',index:'totalAmount', width:80, formatter:"number", sorttype:"float", align:"right"}		
 					   	],
 					   	rowNum:300,
@@ -81,8 +81,7 @@ angular.module('overallMargin.controllers', [])
 					   		} catch(e) { 
 					   			alert(xhr.responseText);
 					   		}}, 
-					   	sortname: 'totalAmount',
-					    viewrecords: true,
+					   	viewrecords: true,
 					    sortable: false,  
 						multiselect: false,
 						width: chartWidth,
@@ -95,8 +94,7 @@ angular.module('overallMargin.controllers', [])
 					   		groupText : ['<b>{0}</b>'],
 					   		groupCollapse : false,
 					   		showSummaryOnHide: true,
-					   		groupDataSorted : false,
-              				groupSorted: false
+					   		groupOrder: 'desc'
 					   	},
 						caption: "本年总毛利"
 					});

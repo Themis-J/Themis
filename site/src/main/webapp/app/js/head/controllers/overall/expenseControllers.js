@@ -69,7 +69,7 @@ angular.module('overallExpense.controllers', [])
 					   	colModel:[
 					   		{name:'departmentName',index:'departmentName', width:55},
 					   		{name:'id',index:'id', width:55},
-					   		{name:'name',index:'name', width:100},
+					   		{name:'name',index:'name', sorttype: function (cellValus, rowData) {return rowData.totalAmount;}, width:100},
 					   		{name:'amount',index:'amount', width:80, formatter:"number", sorttype:"float", align:"right", summaryType: "sum"},
 					   		{name:'totalAmount',index:'totalAmount', width:80, formatter:"number", sorttype:"float", align:"right"}		
 					   	],
@@ -81,9 +81,8 @@ angular.module('overallExpense.controllers', [])
 					   		} catch(e) { 
 					   			alert(xhr.responseText);
 					   		}}, 
-					   	sortname: 'totalAmount',
-					    viewrecords: true,
-					    sortorder: "desc",
+					   	viewrecords: true,
+					    sortable: false,
 						multiselect: false,
 						width: chartWidth,
 						height: "100%",
