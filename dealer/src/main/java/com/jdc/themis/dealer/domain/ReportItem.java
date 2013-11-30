@@ -59,6 +59,7 @@ public class ReportItem implements Serializable {
 	}
 	public String toString() {
 		return new ToStringBuilder(this).append("id", id)
+				.append("name", name)
 				.append("sourceItemID", sourceItemID)
 				.append("itemCategory", itemCategory)
 				.append("itemSource", itemSource).getStringBuffer().toString();

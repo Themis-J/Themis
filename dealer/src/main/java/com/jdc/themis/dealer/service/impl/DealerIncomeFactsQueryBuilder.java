@@ -120,11 +120,11 @@ public class DealerIncomeFactsQueryBuilder {
 	
 	public Collection<DealerAccountReceivableFact> queryAccountReceivables() {
 		return this.reportDAL.getDealerAccountReceivableFacts(year,
-				monthOfYear.iterator().next(), durationID, itemSource.isEmpty() ? Option.<Integer>none() : Option.fromNull(itemSource.iterator().next()), dealerID);
+				monthOfYear.iterator().next(), durationID, itemName, dealerID);
 	}
 	
 	public Collection<DealerInventoryFact> queryInventoryDurations() {
 		return this.reportDAL.getDealerInventoryFacts(year,
-				monthOfYear.iterator().next(), departmentID.isEmpty() ? Option.<Integer>none() : Option.fromNull(departmentID.iterator().next()), durationID, itemSource.isEmpty() ? Option.<Integer>none() : Option.fromNull(itemSource.iterator().next()), dealerID);
+				monthOfYear.iterator().next(), departmentID.isEmpty() ? Option.<Integer>none() : Option.fromNull(departmentID.iterator().next()), durationID, itemName, dealerID);
 	}
 }

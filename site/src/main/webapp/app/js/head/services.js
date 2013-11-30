@@ -19,7 +19,8 @@ angular.module('masterApp.services', ['ngResource'])
 		            queryPositions: {method: 'GET', params: {root:'dealer', path: 'hr', subpath:'allocation', subpath2:'items'}, isArray: false},
 		            queryOverallHRAllocReport: {method: 'GET', params: {root:'report', path: 'query', subpath:'overallHRAllocReport', subpath2:''}, isArray: false},
 		            importData: {method: 'POST', params: {root:'report', path: 'import', subpath:'', subpath2:''}, isArray: false},
-		            queryOverallIncomeWithGroupByReport: {method: 'GET', params: {root:'report', path: 'query', subpath:'overallIncomeReport', subpath2:''}, isArray: false}
+		            queryOverallIncomeWithGroupByReport: {method: 'GET', params: {root:'report', path: 'query', subpath:'overallIncomeReport', subpath2:''}, isArray: false},
+		            queryAccountReceivableReport: {method: 'GET', params:  {root:'report', path: 'query', subpath:'accountReceivableReport', subpath2:''}, isArray: false}
 		        }),
 	        	local: $resource(
 		        	config.service.localUrl + '/:path/:subpath', {}, {
@@ -36,7 +37,8 @@ angular.module('masterApp.services', ['ngResource'])
 		            queryPositions: {method: 'GET', params: {path: '', subpath:'positions.json'}, isArray: false},
 		            queryOverallHRAllocReport: {method: 'GET', params: {path: '', subpath:'queryOverallHRAllocReport.json'}, isArray: false},
 		            importData: {method: 'POST', params: {path:'', subpath:'queryOverallHRAllocReport.json'}, isArray: false},
-		            queryOverallIncomeWithGroupByReport: {method: 'GET', params: {path: '', subpath:'queryYearlyIncomeWithGroupByReport.json'}, isArray: false}
+		            queryOverallIncomeWithGroupByReport: {method: 'GET', params: {path: '', subpath:'queryYearlyIncomeWithGroupByReport.json'}, isArray: false},
+		            queryAccountReceivableReport: {method: 'GET', params: {path: '', subpath:'queryAccountReceivableReport.json'}, isArray: false}
 		        })
 	        };
 	        if ( mode == 'local' ) {

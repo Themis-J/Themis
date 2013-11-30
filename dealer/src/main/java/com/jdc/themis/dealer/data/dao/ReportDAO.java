@@ -72,7 +72,7 @@ public interface ReportDAO {
 			Integer year,
 			Integer monthOfYear, 
 			Option<Integer> durationID, 
-			Option<Integer> itemID, 
+			Collection<String> itemName, 
 			Collection<Integer> dealerID);
 	
 	void saveDealerInventoryFacts(Collection<DealerInventoryFact> journals);
@@ -82,7 +82,7 @@ public interface ReportDAO {
 			Integer monthOfYear, 
 			Option<Integer> departmentID, 
 			Option<Integer> durationID, 
-			Option<Integer> itemID, 
+			Collection<String> itemName, 
 			Collection<Integer> dealerID);
 	
 	void importVehicleSalesJournal(LocalDate validDate);

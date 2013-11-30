@@ -16,9 +16,11 @@ import com.google.common.base.Preconditions;
 import com.google.common.collect.ImmutableListMultimap;
 import com.google.common.collect.Multimaps;
 import com.jdc.themis.dealer.data.dao.ReportDAO;
+import com.jdc.themis.dealer.domain.DealerAccountReceivableFact;
 import com.jdc.themis.dealer.domain.DealerHRAllocationFact;
 import com.jdc.themis.dealer.domain.DealerIncomeExpenseFact;
 import com.jdc.themis.dealer.domain.DealerIncomeRevenueFact;
+import com.jdc.themis.dealer.report.DealerAccountReceivableReportCalculator;
 import com.jdc.themis.dealer.report.DealerExpensePercentageReportCalculator;
 import com.jdc.themis.dealer.report.DealerHRAllocationReportCalculator;
 import com.jdc.themis.dealer.report.DealerIncomeReportCalculator;
@@ -31,6 +33,7 @@ import com.jdc.themis.dealer.service.DealerIncomeReportService;
 import com.jdc.themis.dealer.service.RefDataQueryService;
 import com.jdc.themis.dealer.utils.Performance;
 import com.jdc.themis.dealer.web.domain.ImportReportDataRequest;
+import com.jdc.themis.dealer.web.domain.QueryDealerAccountReceivableResponse;
 import com.jdc.themis.dealer.web.domain.QueryDealerExpensePercentageResponse;
 import com.jdc.themis.dealer.web.domain.QueryDealerHRAllocationResponse;
 import com.jdc.themis.dealer.web.domain.QueryDealerIncomeResponse;
@@ -329,6 +332,33 @@ public class DealerIncomeReportServiceImpl implements DealerIncomeReportService 
 						GetDealerIDFromHRAllocFunction.INSTANCE);
 		
 		response.getDetail().add(calculator.calcAllocations(factsMap, refDataDAL, reportDAL).getReportDetail());
+		return response;
+	}
+	
+	@Override
+	public QueryDealerAccountReceivableResponse queryDealerAccountReceivableReport(
+			final Integer year, final Integer monthOfYear, final Option<String> itemName) {
+		Preconditions.checkNotNull(year, "year can't be null");
+		Preconditions.checkNotNull(monthOfYear, "month can't be null");
+		
+		final QueryDealerAccountReceivableResponse response = new QueryDealerAccountReceivableResponse();
+		response.setReportName("AccountReceivableReport");
+		
+		final DealerAccountReceivableReportCalculator calculator = new DealerAccountReceivableReportCalculator(
+				refDataDAL.getDealers().getItems(), year, monthOfYear);
+		// Get current margin
+		final DealerIncomeFactsQueryBuilder currentQueryBuilder = 
+				new DealerIncomeFactsQueryBuilder(reportDAL).withYear(year);
+		currentQueryBuilder.withMonthOfYear(monthOfYear);
+		
+		if ( itemName.isSome() ) {
+			currentQueryBuilder.withItemName(itemName.some());
+		} 
+		final ImmutableListMultimap<Integer, DealerAccountReceivableFact> factsMap = Multimaps
+				.index(currentQueryBuilder.queryAccountReceivables(),
+						GetDealerIDFromAccountReceivableFunction.INSTANCE);
+		
+		response.getDetail().add(calculator.calc(factsMap).getReportDetail());
 		return response;
 	}
 	

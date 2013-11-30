@@ -1,0 +1,1 @@
+ALTER TABLE ReportItem ADD CONSTRAINT RI_Unique UNIQUE (name, sourceItemID, itemSource, itemCategory);

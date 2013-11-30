@@ -835,7 +835,11 @@ public class ReportDAOImpl implements ReportDAO {
 		if (!itemCategory.isEmpty() || !itemSource.isEmpty()) {
 			final Collection<String> itemName = Lists.newArrayList();
 			final Collection<ReportItem> items = getReportItem(itemCategory, itemName, itemSource);
-			criteria.add(Restrictions.in("itemID", Lambda.extractProperty(items, "id")));
+			if ( items.isEmpty() ) {
+				criteria.add(Restrictions.in("itemID", Lists.newArrayList(new Long[]{-9999L})));
+			} else {
+				criteria.add(Restrictions.in("itemID", Lambda.extractProperty(items, "id")));
+			}
 		}
 		@SuppressWarnings("unchecked")
 		final List<DealerIncomeRevenueFact> list = criteria.list();
@@ -1084,7 +1088,7 @@ public class ReportDAOImpl implements ReportDAO {
 						public Option<ReportItem> _1() {
 							return ReportDAOImpl.this.addReportItem(
 									journal.getId(), refDataDAL
-											.getJobPosition(journal.getId())
+											.getAccountReceivableDurationItem(journal.getId())
 											.some().getName(), "AccountReceivableDuration",
 									null);
 						}
@@ -1104,7 +1108,7 @@ public class ReportDAOImpl implements ReportDAO {
 	@Override
 	public Collection<DealerAccountReceivableFact> getDealerAccountReceivableFacts(
 			final Integer year, final Integer monthOfYear, final Option<Integer> durationID,
-			final Option<Integer> itemID, final Collection<Integer> dealerID) {
+			final Collection<String> itemName, final Collection<Integer> dealerID) {
 		Preconditions.checkNotNull(year, "year can't be null");
 		Preconditions.checkNotNull(monthOfYear, "month can't be null");
 		final Session session = sessionFactory.getCurrentSession();
@@ -1118,7 +1122,7 @@ public class ReportDAOImpl implements ReportDAO {
 				.setParameter("referenceTime", Utils.currentTimestamp());
 
 		final Criteria criteria = session
-				.createCriteria(DealerHRAllocationFact.class);
+				.createCriteria(DealerAccountReceivableFact.class);
 		criteria.add(Restrictions.in("timeID",
 				Lambda.extractProperty(reportTimes, "id")));
 		if (!dealerID.isEmpty()) {
@@ -1127,9 +1131,16 @@ public class ReportDAOImpl implements ReportDAO {
 		if (durationID.isSome()) {
 			criteria.add(Restrictions.eq("durationID", durationID.some()));
 		}
-		if (itemID.isSome()) {
-			final Option<ReportItem> item = getReportItem(itemID.some(), "AccountReceivableDuration");
-			criteria.add(Restrictions.eq("itemID", item.some().getId()));
+		if ( !itemName.isEmpty() ) {
+			final List<String> emptyCategory = Lists.newArrayList();
+			final List<Integer> itemSource = Lists.newArrayList(new Integer[]{refDataDAL
+					.getEnumValue("ReportItemSource", "AccountReceivableDuration").some().getValue()});
+			final Collection<ReportItem> items = getReportItem(emptyCategory, itemName, itemSource);
+			if ( items.isEmpty() ) {
+				criteria.add(Restrictions.in("itemID", Lists.newArrayList(new Long[]{-9999L})));
+			} else {
+				criteria.add(Restrictions.in("itemID", Lambda.extractProperty(items, "id")));
+			}
 		}
 		
 		@SuppressWarnings("unchecked")
@@ -1243,7 +1254,7 @@ public class ReportDAOImpl implements ReportDAO {
 	@Override
 	public Collection<DealerInventoryFact> getDealerInventoryFacts(
 			final Integer year, final Integer monthOfYear, final Option<Integer> departmentID, final Option<Integer> durationID,
-			final Option<Integer> itemID, final Collection<Integer> dealerID) {
+			final Collection<String> itemName, final Collection<Integer> dealerID) {
 		Preconditions.checkNotNull(year, "year can't be null");
 		Preconditions.checkNotNull(monthOfYear, "month can't be null");
 		final Session session = sessionFactory.getCurrentSession();
@@ -1269,9 +1280,16 @@ public class ReportDAOImpl implements ReportDAO {
 		if (durationID.isSome()) {
 			criteria.add(Restrictions.eq("durationID", durationID.some()));
 		}
-		if (itemID.isSome()) {
-			final Option<ReportItem> item = getReportItem(itemID.some(), "InventoryDuration");
-			criteria.add(Restrictions.eq("itemID", item.some().getId()));
+		if ( !itemName.isEmpty() ) {
+			final List<String> emptyCategory = Lists.newArrayList();
+			final List<Integer> itemSource = Lists.newArrayList(new Integer[]{refDataDAL
+					.getEnumValue("ReportItemSource", "InventoryDuration").some().getValue()});
+			final Collection<ReportItem> items = getReportItem(emptyCategory, itemName, itemSource);
+			if ( items.isEmpty() ) {
+				criteria.add(Restrictions.in("itemID", Lists.newArrayList(new Long[]{-9999L})));
+			} else {
+				criteria.add(Restrictions.in("itemID", Lambda.extractProperty(items, "id")));
+			}
 		}
 		
 		@SuppressWarnings("unchecked")

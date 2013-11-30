@@ -11,6 +11,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.google.common.collect.Lists;
 import com.jdc.themis.dealer.data.dao.IncomeJournalDAO;
+import com.jdc.themis.dealer.domain.AccountReceivableDuration;
 import com.jdc.themis.dealer.domain.DealerEntryItemStatus;
 import com.jdc.themis.dealer.domain.GeneralJournal;
 import com.jdc.themis.dealer.domain.HumanResourceAllocation;
@@ -196,4 +197,41 @@ public class ReportDataGenerator {
 			}
 		} 
 	}
+	
+	@Transactional
+	public void generateAccountReceivables() {
+		final int numberOfRecords = 100;
+		final int startYear = 2012;
+		final int maxYearOffset = 2;
+		final int maxMonth = 10;
+		final int maxDealerID = 20;
+		
+		final Random r = new Random();
+		
+		for ( int i = 0; i <= numberOfRecords; i++ ) {
+			final AccountReceivableDuration journal = new AccountReceivableDuration();
+			int departmentID = r.nextInt(8);
+			if (departmentID <= 1) {
+				departmentID = 7;
+			} 
+			journal.setUpdatedBy("chenkai");
+			journal.setDealerID(r.nextInt(maxDealerID) + 1);
+			journal.setDurationID(r.nextInt(7) + 1);
+			journal.setId(r.nextInt(7) + 1);
+			journal.setAmount(new BigDecimal("" + 10000.0 * r.nextDouble()));
+			int monthOfYear = r.nextInt(maxMonth) + 1;
+			int year = startYear + r.nextInt(maxYearOffset);
+			int dayOfMonth = 1;
+			journal.setValidDate(LocalDate.of(year, monthOfYear, dayOfMonth));
+			System.err.println(journal);
+			this.incomeJournalDAL.saveAccountReceivableDuration(journal.getDealerID(), Lists.newArrayList(journal));
+			try {
+				Thread.sleep(1000);
+			} catch (InterruptedException e) {
+				e.printStackTrace();
+			}
+		} 
+	}
+	
+
 }

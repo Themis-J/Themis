@@ -18,8 +18,8 @@ import com.jdc.themis.dealer.web.domain.GetUserRoleResponse;
 
 public class DealerUserRestServiceTest {
 
-	//private final static String ROOT_URL = "http://localhost:8080/themis/user/";
-	private final static String ROOT_URL = "http://115.28.15.122:8080/themis/user/";
+	private final static String ROOT_URL = "http://localhost:8080/themis/user/";
+	//private final static String ROOT_URL = "http://115.28.15.122:8080/themis/user/";
 	
 	@Test
 	public void getUserRoles() throws Exception {

@@ -13,6 +13,7 @@ import org.junit.Before;
 import org.junit.Ignore;
 import org.junit.Test;
 
+import com.jdc.themis.dealer.web.domain.QueryDealerAccountReceivableResponse;
 import com.jdc.themis.dealer.web.domain.QueryDealerExpensePercentageResponse;
 import com.jdc.themis.dealer.web.domain.QueryDealerHRAllocationResponse;
 import com.jdc.themis.dealer.web.domain.QueryDealerIncomeResponse;
@@ -405,6 +406,88 @@ public class DealerReportRestServiceTest {
 		Assert.assertEquals(20, getResponse.getDetail().get(0).getDetail().size());
 		// verify dealer 9
 		Assert.assertEquals(0.6, getResponse.getDetail().get(0).getDetail().get(8).getAllocation().getAmount());
+		
+	}
+	
+	@Test
+	public void query2006AccountReceivableReport() throws Exception {
+		final StringRequestEntity requestEntity = new StringRequestEntity(
+			      "{" +
+			      "\"fromDate\": \"2005-08-01\"," +
+				  "\"toDate\": \"2006-08-01\" " +
+				  "      }" +
+				  "}",
+			    "application/json",
+			    "UTF-8");
+		
+		final PostMethod mPost = createPostMethod(REPORT_ROOT_URL + "import",
+				requestEntity);
+		final String postOutput = mPost.getResponseBodyAsString();
+		mPost.releaseConnection();
+		System.out.println("response : " + postOutput);
+		final ObjectMapper postMapper = new ObjectMapper();
+		final GeneralSaveResponse response = postMapper.readValue(postOutput.getBytes(),
+				GeneralSaveResponse.class);
+		Assert.assertNotNull(response);
+		
+		final GetMethod mGet = createGetMethod(REPORT_ROOT_URL + "query/accountReceivableReport",
+				new String[] { "year:2006", "monthOfYear:6" });
+		final String getOutput = mGet.getResponseBodyAsString();
+		mGet.releaseConnection();
+		System.out.println("response : " + new String(getOutput.getBytes("ISO-8859-1")));
+		final ObjectMapper getMapper = new ObjectMapper();
+		final QueryDealerAccountReceivableResponse getResponse = getMapper.readValue(getOutput.getBytes(),
+				QueryDealerAccountReceivableResponse.class);
+		Assert.assertNotNull(getResponse);
+		Assert.assertEquals(1, getResponse.getDetail().size());
+		
+		/**
+		 * Verify 2006 data
+		 */
+		Assert.assertEquals(20, getResponse.getDetail().get(0).getDetail().size());
+		// verify dealer 9
+		Assert.assertEquals(60000.0, getResponse.getDetail().get(0).getDetail().get(8).getAmount().getAmount());
+		
+	}
+	
+	@Test
+	public void query2006AccountReceivableReportWithItemName() throws Exception {
+		final StringRequestEntity requestEntity = new StringRequestEntity(
+			      "{" +
+			      "\"fromDate\": \"2005-08-01\"," +
+				  "\"toDate\": \"2006-08-01\" " +
+				  "      }" +
+				  "}",
+			    "application/json",
+			    "UTF-8");
+		
+		final PostMethod mPost = createPostMethod(REPORT_ROOT_URL + "import",
+				requestEntity);
+		final String postOutput = mPost.getResponseBodyAsString();
+		mPost.releaseConnection();
+		System.out.println("response : " + postOutput);
+		final ObjectMapper postMapper = new ObjectMapper();
+		final GeneralSaveResponse response = postMapper.readValue(postOutput.getBytes(),
+				GeneralSaveResponse.class);
+		Assert.assertNotNull(response);
+		
+		final GetMethod mGet = createGetMethod(REPORT_ROOT_URL + "query/accountReceivableReport",
+				new String[] { "year:2006", "monthOfYear:6", "itemName:销售应收帐款" });
+		final String getOutput = mGet.getResponseBodyAsString();
+		mGet.releaseConnection();
+		System.out.println("response : " + new String(getOutput.getBytes("ISO-8859-1")));
+		final ObjectMapper getMapper = new ObjectMapper();
+		final QueryDealerAccountReceivableResponse getResponse = getMapper.readValue(getOutput.getBytes(),
+				QueryDealerAccountReceivableResponse.class);
+		Assert.assertNotNull(getResponse);
+		Assert.assertEquals(1, getResponse.getDetail().size());
+		
+		/**
+		 * Verify 2006 data
+		 */
+		Assert.assertEquals(20, getResponse.getDetail().get(0).getDetail().size());
+		// verify dealer 9
+		Assert.assertEquals(60000.0, getResponse.getDetail().get(0).getDetail().get(8).getAmount().getAmount());
 		
 	}
 	

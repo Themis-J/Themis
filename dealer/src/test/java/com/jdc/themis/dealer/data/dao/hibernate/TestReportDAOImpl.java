@@ -17,6 +17,8 @@ import org.springframework.transaction.annotation.Transactional;
 import com.google.common.collect.Lists;
 import com.jdc.themis.dealer.data.dao.IncomeJournalDAO;
 import com.jdc.themis.dealer.data.dao.ReportDAO;
+import com.jdc.themis.dealer.domain.AccountReceivableDuration;
+import com.jdc.themis.dealer.domain.DealerAccountReceivableFact;
 import com.jdc.themis.dealer.domain.DealerHRAllocationFact;
 import com.jdc.themis.dealer.domain.DealerIncomeExpenseFact;
 import com.jdc.themis.dealer.domain.DealerIncomeRevenueFact;
@@ -700,7 +702,7 @@ public class TestReportDAOImpl {
 					8, 
 					Option.<Integer>some(3), 
 					Option.<Integer>none(), 
-					Option.<Integer>none(), 
+					Lists.newArrayList(new String[]{}), 
 					Lists.newArrayList(new Integer[]{}))) {
 			hasJournal++;
 			System.err.println(journal);
@@ -714,13 +716,134 @@ public class TestReportDAOImpl {
 					8, 
 					Option.<Integer>none(), 
 					Option.<Integer>none(), 
-					Option.<Integer>some(1), 
+					Lists.newArrayList(new String[]{}), 
 					Lists.newArrayList(new Integer[]{}))) {
 			hasJournal++;
 			System.err.println(journal);
 			Assert.assertNotNull(journal);
 		} 
 		Assert.assertEquals(2, hasJournal);
+		
+		hasJournal = 0;
+		for (final DealerInventoryFact journal : 
+			reportDAL.getDealerInventoryFacts(2013, 
+					7, 
+					Option.<Integer>none(), 
+					Option.<Integer>none(), 
+					Lists.newArrayList(new String[]{"JobPosition2"}), 
+					Lists.newArrayList(new Integer[]{}))) {
+			hasJournal++;
+			System.err.println(journal);
+			Assert.assertNotNull(journal);
+		} 
+		Assert.assertEquals(1, hasJournal);
+		
+		int hasReportItem = 0;
+		for (final ReportItem journal : 
+			reportDAL.getAllReportItem()) {
+			hasReportItem++;
+			System.err.println(journal);
+			Assert.assertNotNull(journal);
+		} 
+		Assert.assertEquals(2, hasReportItem);
+		
+	} 
+	
+	@Test
+	public void importAccountReceivable() {
+		final AccountReceivableDuration status4 = new AccountReceivableDuration();
+		status4.setDealerID(10);
+		status4.setId(1);
+		status4.setDurationID(2);
+		status4.setAmount(new BigDecimal("1234.343"));
+		status4.setValidDate(LocalDate.of(2013, 8, 1));
+		status4.setUpdatedBy("test");
+		incomeJournalDAL.saveAccountReceivableDuration(10, Lists.newArrayList(status4));
+		
+		final AccountReceivableDuration status5 = new AccountReceivableDuration();
+		status5.setDealerID(11);
+		status5.setId(1);
+		status5.setAmount(new BigDecimal("5234.343"));
+		status5.setDurationID(1);
+		status5.setValidDate(LocalDate.of(2013, 8, 1));
+		status5.setUpdatedBy("test2");
+		incomeJournalDAL.saveAccountReceivableDuration(11, Lists.newArrayList(status5));
+		
+		final AccountReceivableDuration status6 = new AccountReceivableDuration();
+		status6.setDealerID(10);
+		status6.setId(1);
+		status6.setAmount(new BigDecimal("335"));
+		status6.setDurationID(1);
+		status6.setValidDate(LocalDate.of(2013, 7, 1));
+		status6.setUpdatedBy("test");
+		incomeJournalDAL.saveAccountReceivableDuration(10, Lists.newArrayList(status6));
+		
+		final AccountReceivableDuration status7 = new AccountReceivableDuration();
+		status7.setDealerID(10);
+		status7.setId(2);
+		status7.setAmount(new BigDecimal("335"));
+		status7.setDurationID(2);
+		status7.setValidDate(LocalDate.of(2013, 7, 1));
+		status7.setUpdatedBy("test");
+		incomeJournalDAL.saveAccountReceivableDuration(10, Lists.newArrayList(status7));
+		
+		reportDAL.importAccountReceivable(LocalDate.of(2013, 8, 1));
+		reportDAL.importAccountReceivable(LocalDate.of(2013, 7, 1));
+		// force to populate twice
+		reportDAL.importAccountReceivable(LocalDate.of(2013, 8, 1));
+		reportDAL.importAccountReceivable(LocalDate.of(2013, 7, 1));
+		
+		int hasJournal = 0;
+		for (final DealerAccountReceivableFact journal : 
+			reportDAL.getDealerAccountReceivableFacts(2013, 
+					8, 
+					Option.<Integer>some(1), 
+					Lists.newArrayList(new String[]{}), 
+					Lists.newArrayList(new Integer[]{}))) {
+			hasJournal++;
+			System.err.println(journal);
+			Assert.assertNotNull(journal);
+		} 
+		Assert.assertEquals(2, hasJournal);
+		
+		hasJournal = 0;
+		for (final DealerAccountReceivableFact journal : 
+			reportDAL.getDealerAccountReceivableFacts(2013, 
+					8, 
+					Option.<Integer>none(), 
+					Lists.newArrayList(new String[]{}), 
+					Lists.newArrayList(new Integer[]{}))) {
+			hasJournal++;
+			System.err.println(journal);
+			Assert.assertNotNull(journal);
+		} 
+		Assert.assertEquals(3, hasJournal);
+		
+		hasJournal = 0;
+		for (final DealerAccountReceivableFact journal : 
+			reportDAL.getDealerAccountReceivableFacts(2013, 
+					7, 
+					Option.<Integer>none(), 
+					Lists.newArrayList(new String[]{"AccountReceivableDurationItem2"}), 
+					Lists.newArrayList(new Integer[]{}))) {
+			hasJournal++;
+			System.err.println(journal);
+			Assert.assertNotNull(journal);
+		} 
+		Assert.assertEquals(1, hasJournal);
+		
+		hasJournal = 0;
+		for (final DealerAccountReceivableFact journal : 
+			reportDAL.getDealerAccountReceivableFacts(2013, 
+					7, 
+					Option.<Integer>none(), 
+					Lists.newArrayList(new String[]{"sdasdf"}), 
+					Lists.newArrayList(new Integer[]{}))) {
+			hasJournal++;
+			System.err.println(journal);
+			Assert.assertNotNull(journal);
+		} 
+		Assert.assertEquals(0, hasJournal);
 		
 		int hasReportItem = 0;
 		for (final ReportItem journal : 

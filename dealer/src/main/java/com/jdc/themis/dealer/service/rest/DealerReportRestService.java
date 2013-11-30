@@ -116,6 +116,19 @@ public class DealerReportRestService {
 					.build();
 	}
 	
+	@GET
+	@Path("/query/accountReceivableReport")
+	@Produces({ "application/json", "application/xml" })
+	@RestServiceErrorHandler
+	public Response queryDealerAccountReceivableReport(
+			@QueryParam("year") Integer year, 
+			@QueryParam("monthOfYear") Integer monthOfYear, 
+			@QueryParam("itemName") String itemName) {
+		return Response.ok(
+				dealerIncomeReportService
+					.queryDealerAccountReceivableReport(year, monthOfYear, Option.fromNull(itemName))).build();
+	}
+	
 	/**
 	 * Query department income report.
 	 * 

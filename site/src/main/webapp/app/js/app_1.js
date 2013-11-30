@@ -24,6 +24,10 @@ angular.module('themis', ['ngRoute', 'themis.directives', 'themis.controllers', 
 		'salesDepartmentAbs.controllers',
 		'salesPercentage.controllers',
 		'salesDepartmentPercentage.controllers',
+		'ardOverall.controllers',
+		'ardSales.controllers',
+		'ardPostSales.controllers',
+		'ardFactory.controllers',
         'admin.controllers']).
     config(['$routeProvider', '$httpProvider', function ($routeProvider, $httpProvider) {
         $routeProvider.when('/branch', {templateUrl: 'partials/branch/edit.html', controller: 'editCtrl'})

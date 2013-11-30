@@ -23,7 +23,11 @@ angular.module('masterApp.controllers', [])
 						{name: '销售部－销量 – 总量', page:'sales/abs'},
 						{name: '销售部－销量', page:'sales/departmentAbs'},
 						{name: '销售部－总销量占百分比', page:'sales/percentage'},
-						{name: '销售部－部门销量占百分比', page:'sales/departmentPercentage'}
+						{name: '销售部－部门销量占百分比', page:'sales/departmentPercentage'}, 
+						{name: '应收账款－应收帐款总额', page:'ard/overall'},
+						{name: '应收账款－售前应收总额', page:'ard/sales'},
+						{name: '应收账款－售后应收总额', page:'ard/postSales'},
+						{name: '应收账款－厂家应收总额', page:'ard/factory'}
 						];
         
 		$scope.goto = function(item)
