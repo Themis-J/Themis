@@ -78,4 +78,27 @@ public class DealerAccountReceivableReportCalculator {
 		return this;
 	}
 	
+	public DealerAccountReceivableReportCalculator calcPercentage(
+			final ImmutableListMultimap<Integer, DealerAccountReceivableFact> factsExcluding,  
+			final ImmutableListMultimap<Integer, DealerAccountReceivableFact> overallFacts) {
+		for (final Integer dealerID : overallFacts.keySet()) {
+			// populate percentage per dealer
+			final BigDecimal totalAmount = Lambda.sumFrom(
+					overallFacts.get(dealerID),
+					DealerAccountReceivableFact.class).getAmount();
+			
+			final BigDecimal excludingAmount = Lambda.sumFrom(
+					factsExcluding.get(dealerID),
+					DealerAccountReceivableFact.class).getAmount();
+			
+			final ReportDataDetailAmount amount = new ReportDataDetailAmount();
+			amount.setAmount((totalAmount.doubleValue() - excludingAmount.doubleValue()) / totalAmount.doubleValue());
+			dealerDetails.get(dealerID).setAmount(amount);
+		}
+		final Double reference = calcReference(Lambda.extract(dealerDetails.values(), 
+				Lambda.on(ReportDataDealerAccountReceivableDetail.class).getAmount().getAmount()));
+		Lambda.forEach(dealerDetails.values()).getAmount().setReference(reference);
+		return this;
+	}
+	
 }

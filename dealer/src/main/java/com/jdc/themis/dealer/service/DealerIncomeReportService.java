@@ -24,6 +24,16 @@ public interface DealerIncomeReportService {
 			Integer year, Option<Integer> monthOfYear, Option<Integer> departmentID, Option<Integer> denominator, Option<Integer> groupBy);
 	
 	@Transactional(readOnly=true)
+	QueryDealerIncomeResponse queryPostSalesOverallIncomeReport(
+			Integer year, Option<Integer> monthOfYear, Option<Integer> denominator);
+	
+	@Transactional(readOnly=true)
+	QueryDealerIncomeResponse queryNonRecurrentPNLReport(Integer year);
+	
+	@Transactional(readOnly=true)
+	QueryDealerIncomeResponse queryNonSalesProfitReport(Integer year);
+	
+	@Transactional(readOnly=true)
 	QueryDealerExpensePercentageResponse queryOverallExpensePercentageReport(
 			Integer year, Integer monthOfYear, Integer denominator, Option<String> category, Option<String> itemName);
 	
@@ -46,5 +56,9 @@ public interface DealerIncomeReportService {
 	@Transactional(readOnly=true)
 	QueryDealerAccountReceivableResponse queryDealerAccountReceivableReport(
 			Integer year, Integer monthOfYear, Option<String> itemName);
+	
+	@Transactional(readOnly=true)
+	QueryDealerAccountReceivableResponse queryDealerAccountReceivablePercentageReport(
+			Integer year, Integer monthOfYear);
 	
 }

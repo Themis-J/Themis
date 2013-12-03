@@ -20,7 +20,11 @@ angular.module('masterApp.services', ['ngResource'])
 		            queryOverallHRAllocReport: {method: 'GET', params: {root:'report', path: 'query', subpath:'overallHRAllocReport', subpath2:''}, isArray: false},
 		            importData: {method: 'POST', params: {root:'report', path: 'import', subpath:'', subpath2:''}, isArray: false},
 		            queryOverallIncomeWithGroupByReport: {method: 'GET', params: {root:'report', path: 'query', subpath:'overallIncomeReport', subpath2:''}, isArray: false},
-		            queryAccountReceivableReport: {method: 'GET', params:  {root:'report', path: 'query', subpath:'accountReceivableReport', subpath2:''}, isArray: false}
+		            queryAccountReceivableReport: {method: 'GET', params:  {root:'report', path: 'query', subpath:'accountReceivableReport', subpath2:''}, isArray: false},
+		            queryAccountReceivablePercentageReport: {method: 'GET', params:  {root:'report', path: 'query', subpath:'accountReceivablePercentageReport', subpath2:''}, isArray: false},
+		            queryPostSalesOverallPercentageIncomeReport: {method: 'GET', params: {root:'report', path: 'query', subpath:'postSalesOverallIncomeReport', subpath2:''}, isArray: false},
+		            queryNonRecurrentPNLReport: {method: 'GET', params: {root:'report', path: 'query', subpath:'nonRecurrentPNLReport', subpath2:''}, isArray: false},
+		            queryNonSalesProfitReport: {method: 'GET', params: {root:'report', path: 'query', subpath:'nonSalesProfitReport', subpath2:''}, isArray: false}
 		        }),
 	        	local: $resource(
 		        	config.service.localUrl + '/:path/:subpath', {}, {
@@ -38,7 +42,11 @@ angular.module('masterApp.services', ['ngResource'])
 		            queryOverallHRAllocReport: {method: 'GET', params: {path: '', subpath:'queryOverallHRAllocReport.json'}, isArray: false},
 		            importData: {method: 'POST', params: {path:'', subpath:'queryOverallHRAllocReport.json'}, isArray: false},
 		            queryOverallIncomeWithGroupByReport: {method: 'GET', params: {path: '', subpath:'queryYearlyIncomeWithGroupByReport.json'}, isArray: false},
-		            queryAccountReceivableReport: {method: 'GET', params: {path: '', subpath:'queryAccountReceivableReport.json'}, isArray: false}
+		            queryAccountReceivableReport: {method: 'GET', params: {path: '', subpath:'queryAccountReceivableReport.json'}, isArray: false},
+		            queryAccountReceivablePercentageReport: {method: 'GET', params: {path: '', subpath:'queryAccountReceivablePercentageReport.json'}, isArray: false},
+		            queryPostSalesOverallPercentageIncomeReport: {method: 'GET', params: {path: '', subpath:'queryPostSalesOverallPercentageIncomeReport.json'}, isArray: false},
+		            queryNonRecurrentPNLReport: {method: 'GET', params: {path: '', subpath:'queryNonRecurrentPNLReport.json'}, isArray: false},
+		            queryNonSalesProfitReport: {method: 'GET', params: {path: '', subpath:'queryNonSalesProfitReport.json'}, isArray: false}
 		        })
 	        };
 	        if ( mode == 'local' ) {

@@ -81,6 +81,53 @@ public class DealerReportRestService {
 						Option.fromNull(groupBy))).build();
 	}
 	
+	/**
+	 * Query overall income report.
+	 * 
+	 * @param year
+	 * @return
+	 */
+	@GET
+	@Path("/query/postSalesOverallIncomeReport")
+	@Produces({ "application/json", "application/xml" })
+	@RestServiceErrorHandler
+	public Response queryDealerPostSalesOverallIncomeReport(
+			@QueryParam("year") Integer year,  
+			@QueryParam("monthOfYear") Integer monthOfYear, 
+			@QueryParam("denominator") Integer denominator) {
+		return Response.ok(
+				dealerIncomeReportService.queryPostSalesOverallIncomeReport(
+						year, 
+						Option.fromNull(monthOfYear), 
+						Option.fromNull(denominator))).build();
+	}
+	
+	/**
+	 * Query overall income report.
+	 * 
+	 * @param year
+	 * @return
+	 */
+	@GET
+	@Path("/query/nonRecurrentPNLReport")
+	@Produces({ "application/json", "application/xml" })
+	@RestServiceErrorHandler
+	public Response queryDealerNonRecurrentPNLReport(
+			@QueryParam("year") Integer year) {
+		return Response.ok(
+				dealerIncomeReportService.queryNonRecurrentPNLReport(year)).build();
+	}
+	
+	@GET
+	@Path("/query/nonSalesProfitReport")
+	@Produces({ "application/json", "application/xml" })
+	@RestServiceErrorHandler
+	public Response queryDealerNonSalesProfitReport(
+			@QueryParam("year") Integer year) {
+		return Response.ok(
+				dealerIncomeReportService.queryNonSalesProfitReport(year)).build();
+	}
+	
 	@GET
 	@Path("/query/overallExpensePercentageReport")
 	@Produces({ "application/json", "application/xml" })
@@ -127,6 +174,18 @@ public class DealerReportRestService {
 		return Response.ok(
 				dealerIncomeReportService
 					.queryDealerAccountReceivableReport(year, monthOfYear, Option.fromNull(itemName))).build();
+	}
+	
+	@GET
+	@Path("/query/accountReceivablePercentageReport")
+	@Produces({ "application/json", "application/xml" })
+	@RestServiceErrorHandler
+	public Response queryDealerAccountReceivablePercentageReport(
+			@QueryParam("year") Integer year, 
+			@QueryParam("monthOfYear") Integer monthOfYear) {
+		return Response.ok(
+				dealerIncomeReportService
+					.queryDealerAccountReceivablePercentageReport(year, monthOfYear)).build();
 	}
 	
 	/**

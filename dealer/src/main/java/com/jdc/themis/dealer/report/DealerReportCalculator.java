@@ -432,5 +432,39 @@ public class DealerReportCalculator {
 		Lambda.forEach(dealerDetails.values()).getOpProfit().setReference(reference);
 		return this;
 	}
+	
+	/*
+	 * warning: this would set value to "revenue" field, which means it can't be used together with revenue calculator
+	 */
+	public DealerReportCalculator calcNonRecurrentPNL(
+			final ImmutableListMultimap<Integer, DealerIncomeRevenueFact> otherDealerRevenueFacts,
+			final ImmutableListMultimap<Integer, DealerIncomeExpenseFact> otherDealerExpenseFacts,
+			final JournalOp op) {
+		for (final Integer dealerID : dealerDetails.keySet()) {
+			final BigDecimal otherRevenue = Lambda.sumFrom(
+					otherDealerRevenueFacts.get(dealerID),
+					DealerIncomeRevenueFact.class).getAmount();
+			final BigDecimal otherExpense = Lambda.sumFrom(
+					otherDealerExpenseFacts.get(dealerID),
+					DealerIncomeExpenseFact.class).getAmount();
+			
+			final Double totalAmount = op == JournalOp.SUM ? 
+						otherRevenue.doubleValue() - otherExpense.doubleValue():
+							(otherRevenue.doubleValue() - otherExpense.doubleValue()) / (monthOfYear.some() * 1.0);
+			
+			final ReportDataDetailAmount amount = new ReportDataDetailAmount();
+			amount.setAmount(totalAmount);
+
+			if (dealerPreviousDetailOption.isSome()) {
+				amount.setPercentage(calcPercentage(amount.getAmount(), dealerPreviousDetailOption
+						.some().get(dealerID).getRevenue().getAmount()));
+			}
+			dealerDetails.get(dealerID).setRevenue(amount);
+		}
+		final Double reference = calcReference(Lambda.extract(dealerDetails.values(), 
+				Lambda.on(ReportDataDealerDetail.class).getRevenue().getAmount()));
+		Lambda.forEach(dealerDetails.values()).getRevenue().setReference(reference);
+		return this;
+	}
 
 }
