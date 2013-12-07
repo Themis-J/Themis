@@ -13,52 +13,6 @@
 <div class="row-fluid">
 <div class="span6">
     <div style="margin-top:20px">
-        <div>
-            <div style="margin-top:20px">
-                <label ng-click="hideBiandong = !hideBiandong"><b>变动费用</b><i ng-show="hideBiandong" class="icon-double-angle-down"></i><i ng-show="!hideBiandong" class="icon-double-angle-right"></i></label>
-
-                <div class="well" ng-show="!hideBiandong">
-                    <form name="form" ng-repeat="generalSale in generalSales | filter: {categoryID: 1}">
-                        <div class="text-warning" style="padding-left: 60%"
-                             ng-show="form.amount.$dirty && form.amount.$invalid">
-                            <small class="text-warning"
-                                   ng-show="form.amount.$error.pattern">
-                                收入必须为正数
-                            </small>
-                        </div>
-
-                        <table style="font-size: 12px">
-                            <tr>
-                                <td width="35%">
-                                    <label class="hasTooltip">{{generalSale.name}}</label>
-
-                                    <div style="display: none;" bind-html-unsafe="generalSale.tooltip"></div>
-                                </td>
-                                <td width="25%">
-                                    <input type="text" ng-pattern="/^\d+(\.\d+)?$/" class="input-mini" name="amount"
-                                           ng-change="amountChange(generalSummary, generalSales, generalSale)"
-                                           style="width: 55%;" placeholder="0"
-                                           ng-model="generalSale.amount" required ng-blur="autoSaveGeneralRevenue()">
-                                    <i
-                                            ng-class="generalSale.sign"></i>
-                                </td>
-                            </tr>
-                        </table>
-                    </form>
-
-                    <table style="font-size: 12px; width: 100%">
-                        <tr>
-                            <td width="25%">
-                                合计
-                            </td>
-                            <td width="35%" style="text-align: center">
-                                {{generalSummary[1]}}
-                            </td>
-                        </tr>
-                    </table>
-                </div>
-            </div>
-        </div>
 
         <div>
             <div style="margin-top:20px">
@@ -70,7 +24,7 @@
                              ng-show="form.amount.$dirty && form.amount.$invalid">
                             <small class="text-warning"
                                    ng-show="form.amount.$error.pattern">
-                                收入必须为正数
+                                费用必须为正数
                             </small>
                         </div>
 
@@ -117,7 +71,7 @@
                              ng-show="form.amount.$dirty && form.amount.$invalid">
                             <small class="text-warning"
                                    ng-show="form.amount.$error.pattern">
-                                收入必须为正数
+                                费用必须为正数
                             </small>
                         </div>
 
@@ -168,11 +122,11 @@
                              ng-show="form.amount.$dirty && form.amount.$invalid">
                             <small class="text-warning"
                                    ng-show="form.amount.$error.pattern">
-                                收入必须为正数
+                                费用必须为正数
                             </small>
                         </div>
 
-                        <table style="font-size: 12px">
+                        <table style="font-size: 12px" ng-show="generalSale.id!=7 && generalSale.id!=8">
                             <tr>
                                 <td width="35%">
                                     <label class="hasTooltip">{{generalSale.name}}</label>
@@ -215,7 +169,7 @@
                              ng-show="form.amount.$dirty && form.amount.$invalid">
                             <small class="text-warning"
                                    ng-show="form.amount.$error.pattern">
-                                收入必须为正数
+                                费用必须为正数
                             </small>
                         </div>
 

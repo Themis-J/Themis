@@ -23,7 +23,7 @@
                              ng-show="form.amount.$dirty && form.amount.$invalid">
                             <small class="text-warning"
                                    ng-show="form.amount.$error.pattern">
-                                收入必须为正数
+                                费用必须为正数
                             </small>
                         </div>
 
@@ -69,7 +69,7 @@
                              ng-show="form.amount.$dirty && form.amount.$invalid">
                             <small class="text-warning"
                                    ng-show="form.amount.$error.pattern">
-                                收入必须为正数
+                                费用必须为正数
                             </small>
                         </div>
 
@@ -115,7 +115,7 @@
                              ng-show="form.amount.$dirty && form.amount.$invalid">
                             <small class="text-warning"
                                    ng-show="form.amount.$error.pattern">
-                                收入必须为正数
+                                费用必须为正数
                             </small>
                         </div>
 
@@ -165,11 +165,11 @@
                              ng-show="form.amount.$dirty && form.amount.$invalid">
                             <small class="text-warning"
                                    ng-show="form.amount.$error.pattern">
-                                收入必须为正数
+                                费用必须为正数
                             </small>
                         </div>
 
-                        <table style="font-size: 12px">
+                        <table style="font-size: 12px" ng-show="generalSale.id<13">
                             <tr>
                                 <td width="35%">
                                     <label class="hasTooltip">{{generalSale.name}}</label>
@@ -211,7 +211,7 @@
                              ng-show="form.amount.$dirty && form.amount.$invalid">
                             <small class="text-warning"
                                    ng-show="form.amount.$error.pattern">
-                                收入必须为正数
+                                费用必须为正数
                             </small>
                         </div>
 

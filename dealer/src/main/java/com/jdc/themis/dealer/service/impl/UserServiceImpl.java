@@ -1,5 +1,6 @@
 package com.jdc.themis.dealer.service.impl;
 
+import java.io.UnsupportedEncodingException;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 
@@ -9,6 +10,8 @@ import javax.time.Instant;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import sun.misc.BASE64Encoder;
 
 import com.google.common.base.Preconditions;
 import com.jdc.themis.dealer.data.dao.UserDAO;
@@ -182,7 +185,26 @@ public class UserServiceImpl implements UserService {
       } catch (NoSuchAlgorithmException e) {
         throw new RuntimeException(e);
       }        
-      return new String(passHash);
+      return new BASE64Encoder().encode(passHash);
     }
 
+  public static void main(String[] args) throws UnsupportedEncodingException {
+    String[] password =
+        {"superadmin", "admin168", "changjin", "changyao", "guangben", "changsheng", "changyi",
+            "changhao", "changjie", "changli", "changda",  "guangfeng", "changning", "changkai", "changjing",
+            "changyi", "changjun", "changwei", "changyue", "changkun", "changjia", "changguan",
+            "headquarter"};
+
+    for (String pass : password) {
+      byte[] passHash = null;
+      try {
+        MessageDigest sha256 = MessageDigest.getInstance("SHA-256");
+        passHash = sha256.digest(pass.getBytes());
+      } catch (NoSuchAlgorithmException e) {
+        throw new RuntimeException(e);
+      }
+      System.out.println(pass);
+      System.out.println(new BASE64Encoder().encode(passHash));
+    }
+  }
 }

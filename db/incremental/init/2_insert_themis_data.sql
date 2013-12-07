@@ -1,4 +1,4 @@
-INSERT INTO EnumType VALUES (2, 'ReportItemSource');
+﻿INSERT INTO EnumType VALUES (2, 'ReportItemSource');
 INSERT INTO EnumType VALUES (3, 'DurationUnit');
 INSERT INTO EnumType VALUES (4, 'FeeType');
 INSERT INTO EnumType VALUES (5, 'JournalType');
@@ -86,10 +86,29 @@ INSERT INTO Dealer SELECT 18, '湖南长坤', '湖南长坤销售服务有限公
 INSERT INTO Dealer SELECT 19, '长佳公司', '长佳公司销售服务有限公司', 'CN-20', '广州', current_timestamp;
 INSERT INTO Dealer SELECT 20, '重庆长冠', '重庆长冠销售服务有限公司', 'CN-21', '重庆', current_timestamp;
 
-INSERT INTO UserInfo SELECT 'sa', 'sa', 0, null, true, 0, current_timestamp, '9999-01-01 08:00:00', 'admin';
-INSERT INTO UserInfo SELECT 'admin', 'admin', 1, null, true, 0, current_timestamp, '9999-01-01 08:00:00', 'admin';
-INSERT INTO UserInfo SELECT 'guangning', 'guangning', 2, 11, true, 0, current_timestamp, '9999-01-01 08:00:00', 'admin';
-INSERT INTO UserInfo SELECT 'manager', 'manager', 3, null, true, 0, current_timestamp, '9999-01-01 08:00:00', 'admin';
+INSERT INTO UserInfo SELECT 'superadmin', 'GGz3dMl7YKHBBu9xjRCXCmoG4GvviVU9muZdk4qIbq4=', 0, null, true, 0, current_timestamp, '9999-01-01 08:00:00', 'admin';
+INSERT INTO UserInfo SELECT 'admin', 'SCgxDIJCG248l/33bxMv4KSfCr/YMyId1+aA1IGtv9Y=', 1, null, true, 0, current_timestamp, '9999-01-01 08:00:00', 'admin';
+INSERT INTO UserInfo SELECT 'changjin', 'n6CquLgvsJjmslyrMMJ/EuoeYq7GapTkdloc+TOxw1s=', 2, 11, true, 0, current_timestamp, '9999-01-01 08:00:00', 'admin';
+INSERT INTO UserInfo SELECT 'changyao', 'eKlYt6bOE5ZBFvThjICSNkSX1Pw5v0qNVYe9LnbxPs4=', 2, 11, true, 0, current_timestamp, '9999-01-01 08:00:00', 'admin';
+INSERT INTO UserInfo SELECT 'guangben', 'R7Z+52irSlMTt9IUyiqgiXOq7vtvrQpnAXfYoQczdZU=', 2, 11, true, 0, current_timestamp, '9999-01-01 08:00:00', 'admin';
+INSERT INTO UserInfo SELECT 'changsheng', 'j7wMAHzrcz38LFtBveS8yf/R6DSb4UjBU8MpDavmz3M=', 2, 11, true, 0, current_timestamp, '9999-01-01 08:00:00', 'admin';
+INSERT INTO UserInfo SELECT 'changyi', 'aFOX4zD+sddnQNggoVmIbUQmmp+2UJko5PaKUnet/80=', 2, 11, true, 0, current_timestamp, '9999-01-01 08:00:00', 'admin';
+INSERT INTO UserInfo SELECT 'changhao', 'iR+IxOJvJqDunHM3g3++ck6lckZEQY1W+rTsYSHl9II=', 2, 11, true, 0, current_timestamp, '9999-01-01 08:00:00', 'admin';
+INSERT INTO UserInfo SELECT 'changjie', 'SR6sw3fNoAB+kIcCK3hk1hPQ2cqTwem6obyhejnFM9A=', 2, 11, true, 0, current_timestamp, '9999-01-01 08:00:00', 'admin';
+INSERT INTO UserInfo SELECT 'changli', '9ZxOeqTtCzzLDNtSKPTyTcpn90eG8hiD3yJyftCKzZA=', 2, 11, true, 0, current_timestamp, '9999-01-01 08:00:00', 'admin';
+INSERT INTO UserInfo SELECT 'changda', 'OppK5ytWBdOErRR3+ipomW6Z85rSH8GgCDBlfTevR1k=', 2, 11, true, 0, current_timestamp, '9999-01-01 08:00:00', 'admin';
+INSERT INTO UserInfo SELECT 'guangfeng', '+LcTilpinvsERvRYtxdzMjuPLh/p2soRXubVD3REbX0=', 2, 11, true, 0, current_timestamp, '9999-01-01 08:00:00', 'admin';
+INSERT INTO UserInfo SELECT 'changning', 'HjKdle7RVUwmO6gKJ7p+yetENq6jyJRRPa6HbRMVkLY=', 2, 11, true, 0, current_timestamp, '9999-01-01 08:00:00', 'admin';
+INSERT INTO UserInfo SELECT 'changkai', 'k61GgrDxhb+pqifYsGUCkEq0iez/Q4BkMkL5LHbggQs=', 2, 11, true, 0, current_timestamp, '9999-01-01 08:00:00', 'admin';
+INSERT INTO UserInfo SELECT 'changjing', '43pVjB9MgXs0Uc6xcR+u+fKNPZawKxcGCLhmmcweB4o=', 2, 11, true, 0, current_timestamp, '9999-01-01 08:00:00', 'admin';
+INSERT INTO UserInfo SELECT 'changyi', 'aFOX4zD+sddnQNggoVmIbUQmmp+2UJko5PaKUnet/80=', 2, 11, true, 0, current_timestamp, '9999-01-01 08:00:00', 'admin';
+INSERT INTO UserInfo SELECT 'changjun', 'er6oVLQ8BA9o/r6PE8V1JfZ6QDNZ01OMSCpyoHd3jaM=', 2, 11, true, 0, current_timestamp, '9999-01-01 08:00:00', 'admin';
+INSERT INTO UserInfo SELECT 'changwei', 'JlSGTcIovTnWOSXzQie2I+Y8nQz2mVHpqWlT5fltUt0=', 2, 11, true, 0, current_timestamp, '9999-01-01 08:00:00', 'admin';
+INSERT INTO UserInfo SELECT 'changyue', 'FoS+KlCqxnMcI8sYHXdVf+2aWnFFStBwmd5+ygBR3gM=', 2, 11, true, 0, current_timestamp, '9999-01-01 08:00:00', 'admin';
+INSERT INTO UserInfo SELECT 'changkun', 'BejWDFjgG71DOai8IKqd7uLTshqDhooWkNWNCaxi6DU=', 2, 11, true, 0, current_timestamp, '9999-01-01 08:00:00', 'admin';
+INSERT INTO UserInfo SELECT 'changjia', 'ku/hnfclLTPeZK2y2dbqBwf0iUgixzNGVISQkEMjgDM=', 2, 11, true, 0, current_timestamp, '9999-01-01 08:00:00', 'admin';
+INSERT INTO UserInfo SELECT 'changguan', 'SASPoLl7RWFxPZzxWzMthAPEhfBbAhB4wfptYrn7plU=', 2, 11, true, 0, current_timestamp, '9999-01-01 08:00:00', 'admin';
+INSERT INTO UserInfo SELECT 'headquarter', 'uaKtisih50nJyRVwud/cBOFhqNLRiiEgojCjv01Ez44=', 3, null, true, 0, current_timestamp, '9999-01-01 08:00:00', 'admin';
 
 INSERT INTO Department SELECT 0, 'NA', current_timestamp;
 INSERT INTO Department SELECT 1, '新车销售部', current_timestamp;
@@ -198,7 +217,7 @@ INSERT INTO SalesServiceJournalItem SELECT 5, '零售销售返利', 8, 0, '', cu
 INSERT INTO SalesServiceJournalItem SELECT 6, '分期收入', 3, 0, '', current_timestamp;
 INSERT INTO SalesServiceJournalItem SELECT 7, '保险收入', 3, 0, '', current_timestamp;
 INSERT INTO SalesServiceJournalItem SELECT 8, '延保收入', 3, 0, '', current_timestamp;
-INSERT INTO SalesServiceJournalItem SELECT 9, '拍照收入', 3, 0, '', current_timestamp;
+INSERT INTO SalesServiceJournalItem SELECT 9, '牌照收入', 3, 0, '', current_timestamp;
 INSERT INTO SalesServiceJournalItem SELECT 10, '其他附加收入', 3, 0, '', current_timestamp;
 INSERT INTO SalesServiceJournalItem SELECT 11, '认证二手车零售', 4, 0, '', current_timestamp;
 INSERT INTO SalesServiceJournalItem SELECT 12, '*备注*认证二手车翻新', 4, 1, '', current_timestamp;

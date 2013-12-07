@@ -79,7 +79,6 @@ public class UserRestService {
 	}
 
 	@POST
-	@RolesAllowed({Constant.ADMIN_ROLE, Constant.SUPER_ROLE})
 	@Produces({ "application/json", "application/xml" })
 	@Consumes({ "application/json", "application/xml" })
 	@Path("/resetpwd")

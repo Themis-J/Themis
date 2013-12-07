@@ -14,30 +14,78 @@
 <div class="span6">
     <div style="margin-top:20px">
         <div>
-            <label ng-click="hideErshou = !hideErshou"><b>二手车零售</b><i ng-show="hideErshou" class="icon-double-angle-down"></i><i ng-show="!hideErshou" class="icon-double-angle-right"></i></label>
+            <label ng-click="hideErshou = !hideErshou"><b>二手车零售( 业务 | 数量 | 收入 | 毛利润)</b><i ng-show="hideErshou" class="icon-double-angle-down"></i><i ng-show="!hideErshou" class="icon-double-angle-right"></i></label>
 
             <div class="well" ng-show="!hideErshou">
-                <form name="form" ng-repeat="generalSale in generalSales  | filter: {categoryID: 4}">
-                    <div class="text-warning" style="padding-left: 60%"
-                         ng-show="form.amount.$dirty && form.amount.$invalid">
-                        <small class="text-warning"
-                               ng-show="form.amount.$error.pattern">
-                            收入必须为正数
-                        </small>
+                <form name="form" ng-repeat="sale in sales | filter: {categoryID: 4}">
+                    <div style="padding-left: 35%">
+                        <div class="text-warning"
+                             ng-show="form.$dirty  && form.$invalid">
+                            <small class="text-warning"
+                                   ng-show="form.$error.required">
+                                数量，收入，毛利必须同时输入
+                            </small>
+                        </div>
+                        <div class="text-warning"
+                             ng-show="form.count.$dirty && form.count.$invalid">
+                            <small class="text-warning"
+                                   ng-show="form.count.$error.pattern">
+                                数量必须为正整数
+                            </small>
+                        </div>
+                        <div class="text-warning"
+                             ng-show="form.amount.$dirty && form.amount.$invalid">
+                            <small class="text-warning"
+                                   ng-show="form.amount.$error.pattern">
+                                收入必须为正数
+                            </small>
+                        </div>
+                        <div class="text-warning"
+                             ng-show="form.margin.$dirty && form.margin.$invalid && sale.journalType == 'Revenue'">
+                            <small class="text-warning"
+                                   ng-show="form.margin.$error.pattern">
+                                毛利润必须为数字
+                            </small>
+                        </div>
+                        <div class="text-warning"
+                             ng-show="form.margin.$dirty && form.margin.$invalid && sale.journalType == 'Expense'">
+                            <small class="text-warning"
+                                   ng-show="form.margin.$error.pattern">
+                                支出必须为负数
+                            </small>
+                        </div>
                     </div>
-                    <table style="font-size: 12px">
+                    <table>
                         <tr>
-                            <td width="35%">
-                                <label class="hasTooltip">{{generalSale.name}}</label>
-                                <div style="display: none;" bind-html-unsafe="generalSale.tooltip" ></div>
+                            <td  width='30%'>
+                                <label class="hasTooltip">{{sale.name}}</label>
+                                <div style="display: none;" bind-html-unsafe="sale.tooltip" ></div>
                             </td>
-                            <td width="25%">
-                                <input type="text" ng-pattern="/^\d+(\.\d+)?$/" class="input-mini" name="amount"
-                                       ng-change="amountChange(generalSummary, generalSales, generalSale)"
-                                       style="width: 55%;" placeholder="0"
-                                       ng-model="generalSale.amount" required ng-blur="autoSaveGeneralRevenue()">
+                            <td width="20%">
+                                <input ng-if="sale.journalType == 'Revenue'" type="text" ng-pattern="/^[0-9]*$/"
+                                       class="input_1"   name="count"
+                                       placeholder="0"
+                                       ng-model="sale.count" required ng-blur="autoSaveSalesRevenue()">
+                            </td>
+                            <td width="22%">
+                                <input ng-if="sale.journalType == 'Revenue'" type="text"
+                                       ng-pattern="/^\d+(\.\d+)?$/" class="input_2" name="amount"
+                                       ng-change="amountChange(salesSummary, sales, sale)"
+                                       placeholder="0"
+                                       ng-model="sale.amount" required ng-blur="autoSaveSalesRevenue()">
+                            </td>
+                            <td width="28%">
+                                <input ng-if="sale.journalType == 'Revenue'" type="text"
+                                       ng-pattern="/^(-?\d+)(\.\d+)?$/" class="input_3" name="margin"
+                                       placeholder="0"
+                                       ng-model="sale.margin" required ng-blur="autoSaveSalesRevenue()">
+
+                                <input ng-if="sale.journalType == 'Expense'" type="text"
+                                       ng-pattern="/^((-\d+(\.\d+)?)|(0+(\.0+)?))$/" class="input_3"
+                                       name="margin"    placeholder="0"
+                                       ng-model="sale.margin" required ng-blur="autoSaveSalesRevenue()">
                                 <i
-                                        ng-class="generalSale.sign"></i>
+                                        ng-class="sale.sign"></i>
                             </td>
                         </tr>
                     </table>
@@ -45,11 +93,11 @@
 
                 <table style="font-size: 12px; width: 100%">
                     <tr>
-                        <td width='30%'>
+                        <td width='15%'>
                             合计
                         </td>
-                        <td width="40%" style="text-align: center">
-                            {{generalSummary[4]}}
+                        <td width="45%" style="text-align: center">
+                            {{salesSummary[4]}}
                         </td>
                     </tr>
                 </table>
@@ -64,7 +112,6 @@
         <div>
             <div style="margin-top:20px">
                 <label ng-click="hideErshouqita = !hideErshouqita"><b>二手车其它收入 ( 业务 | 数量 | 收入 | 毛利润)</b><i ng-show="hideErshouqita" class="icon-double-angle-down"></i><i ng-show="!hideErshouqita" class="icon-double-angle-right"></i></label>
-
                 <div class="well" ng-show="!hideErshouqita">
                     <form name="form" ng-repeat="sale in sales | filter: {categoryID: 9}">
                         <div style="padding-left: 35%">
@@ -90,10 +137,17 @@
                                 </small>
                             </div>
                             <div class="text-warning"
-                                 ng-show="form.margin.$dirty && form.margin.$invalid">
+                                 ng-show="form.margin.$dirty && form.margin.$invalid && sale.journalType == 'Revenue'">
                                 <small class="text-warning"
                                        ng-show="form.margin.$error.pattern">
                                     毛利润必须为数字
+                                </small>
+                            </div>
+                            <div class="text-warning"
+                                 ng-show="form.margin.$dirty && form.margin.$invalid && sale.journalType == 'Expense'">
+                                <small class="text-warning"
+                                       ng-show="form.margin.$error.pattern">
+                                    支出必须为负数
                                 </small>
                             </div>
                         </div>
@@ -115,17 +169,16 @@
                                            ng-change="amountChange(salesSummary, sales, sale)"
                                            placeholder="0"
                                            ng-model="sale.amount" required ng-blur="autoSaveSalesRevenue()">
-
-                                    <input ng-if="sale.journalType == 'Expense'" type="text"
-                                           ng-pattern="/^((-\d+(\.\d+)?)|(0+(\.0+)?))$/" class="input_2"
-                                           name="amount" ng-change="amountChange(salesSummary, sales, sale)"
-                                            placeholder="0"
-                                           ng-model="sale.amount" required ng-blur="autoSaveSalesRevenue()">
                                 </td>
                                 <td width="28%">
                                     <input ng-if="sale.journalType == 'Revenue'" type="text"
                                            ng-pattern="/^(-?\d+)(\.\d+)?$/" class="input_3" name="margin"
-                                            placeholder="0"
+                                           placeholder="0"
+                                           ng-model="sale.margin" required ng-blur="autoSaveSalesRevenue()">
+
+                                    <input ng-if="sale.journalType == 'Expense'" type="text"
+                                           ng-pattern="/^((-\d+(\.\d+)?)|(0+(\.0+)?))$/" class="input_3"
+                                           name="margin"    placeholder="0"
                                            ng-model="sale.margin" required ng-blur="autoSaveSalesRevenue()">
                                     <i
                                             ng-class="sale.sign"></i>
@@ -181,10 +234,17 @@
                                 </small>
                             </div>
                             <div class="text-warning"
-                                 ng-show="form.margin.$dirty && form.margin.$invalid">
+                                 ng-show="form.margin.$dirty && form.margin.$invalid && sale.journalType == 'Revenue'">
                                 <small class="text-warning"
                                        ng-show="form.margin.$error.pattern">
                                     毛利润必须为数字
+                                </small>
+                            </div>
+                            <div class="text-warning"
+                                 ng-show="form.margin.$dirty && form.margin.$invalid && sale.journalType == 'Expense'">
+                                <small class="text-warning"
+                                       ng-show="form.margin.$error.pattern">
+                                    支出必须为负数
                                 </small>
                             </div>
                         </div>
@@ -196,7 +256,7 @@
                                 </td>
                                 <td width="20%">
                                     <input ng-if="sale.journalType == 'Revenue'" type="text" ng-pattern="/^[0-9]*$/"
-                                           class="input_1"  name="count"
+                                           class="input_1"   name="count"
                                            placeholder="0"
                                            ng-model="sale.count" required ng-blur="autoSaveSalesRevenue()">
                                 </td>
@@ -204,12 +264,6 @@
                                     <input ng-if="sale.journalType == 'Revenue'" type="text"
                                            ng-pattern="/^\d+(\.\d+)?$/" class="input_2" name="amount"
                                            ng-change="amountChange(salesSummary, sales, sale)"
-                                          placeholder="0"
-                                           ng-model="sale.amount" required ng-blur="autoSaveSalesRevenue()">
-
-                                    <input ng-if="sale.journalType == 'Expense'" type="text"
-                                           ng-pattern="/^((-\d+(\.\d+)?)|(0+(\.0+)?))$/" class="input_2"
-                                           name="amount" ng-change="amountChange(salesSummary, sales, sale)"
                                            placeholder="0"
                                            ng-model="sale.amount" required ng-blur="autoSaveSalesRevenue()">
                                 </td>
@@ -217,6 +271,11 @@
                                     <input ng-if="sale.journalType == 'Revenue'" type="text"
                                            ng-pattern="/^(-?\d+)(\.\d+)?$/" class="input_3" name="margin"
                                            placeholder="0"
+                                           ng-model="sale.margin" required ng-blur="autoSaveSalesRevenue()">
+
+                                    <input ng-if="sale.journalType == 'Expense'" type="text"
+                                           ng-pattern="/^((-\d+(\.\d+)?)|(0+(\.0+)?))$/" class="input_3"
+                                           name="margin"    placeholder="0"
                                            ng-model="sale.margin" required ng-blur="autoSaveSalesRevenue()">
                                     <i
                                             ng-class="sale.sign"></i>
