@@ -5,6 +5,8 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.jdc.themis.dealer.web.domain.ImportReportDataRequest;
 import com.jdc.themis.dealer.web.domain.QueryDealerAccountReceivableResponse;
+import com.jdc.themis.dealer.web.domain.QueryDealerAftersaleExpenseResponse;
+import com.jdc.themis.dealer.web.domain.QueryDealerAftersaleIncomeResponse;
 import com.jdc.themis.dealer.web.domain.QueryDealerExpensePercentageResponse;
 import com.jdc.themis.dealer.web.domain.QueryDealerHRAllocationResponse;
 import com.jdc.themis.dealer.web.domain.QueryDealerIncomeResponse;
@@ -60,5 +62,14 @@ public interface DealerIncomeReportService {
 	@Transactional(readOnly=true)
 	QueryDealerAccountReceivableResponse queryDealerAccountReceivablePercentageReport(
 			Integer year, Integer monthOfYear);
+
+	@Transactional(readOnly = true)
+	QueryDealerAftersaleIncomeResponse queryDealerAftersaleIncomeReport(
+			Integer year, Integer monthOfYear, Option<Integer> groupBy);
+	
+	@Transactional(readOnly = true)
+	QueryDealerAftersaleExpenseResponse queryDealerAftersaleExpenseReport(
+			Integer year, Integer monthOfYear, Option<Integer> groupBy,
+			Option<String> itemCategory);
 	
 }

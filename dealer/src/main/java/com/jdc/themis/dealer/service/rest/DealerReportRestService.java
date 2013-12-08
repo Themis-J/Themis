@@ -255,4 +255,50 @@ public class DealerReportRestService {
 						year, 
 						monthOfYear)).build();
 	}
+	
+	/**
+	 * Query after sale income report.
+	 * 
+	 * @param year
+	 * @param monthOfYear
+	 * @param groupBy
+	 * @return
+	 */
+	@GET
+	@Path("/query/aftersaleIncomeReport")
+	@Produces({ "application/json", "application/xml" })
+	@RestServiceErrorHandler
+	public Response queryDealerAftersaleIncomeReport(
+			@QueryParam("year") Integer year,
+			@QueryParam("monthOfYear") Integer monthOfYear,
+			@QueryParam("groupBy") Integer groupBy) {
+		return Response.ok(
+				dealerIncomeReportService.queryDealerAftersaleIncomeReport(
+						year, monthOfYear, Option.fromNull(groupBy))).build();
+	}
+	
+	/**
+	 * Query after sale expense report.
+	 * 
+	 * @param year
+	 * @param monthOfYear
+	 * @param groupBy
+	 * @param itemName
+	 * @return
+	 */
+	@GET
+	@Path("/query/aftersaleExpenseReport")
+	@Produces({ "application/json", "application/xml" })
+	@RestServiceErrorHandler
+	public Response queryDealerAftersaleExpenseReport(
+			@QueryParam("year") Integer year,
+			@QueryParam("monthOfYear") Integer monthOfYear,
+			@QueryParam("groupBy") Integer groupBy,
+			@QueryParam("itemCategory") String itemCategory) {
+		return Response.ok(
+				dealerIncomeReportService.queryDealerAftersaleExpenseReport(
+						year, monthOfYear, Option.fromNull(groupBy),
+						Option.fromNull(itemCategory))).build();
+	}
+	
 }

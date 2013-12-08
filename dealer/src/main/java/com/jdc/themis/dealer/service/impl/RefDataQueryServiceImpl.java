@@ -1,6 +1,8 @@
 package com.jdc.themis.dealer.service.impl;
 
+import java.util.ArrayList;
 import java.util.Collection;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -187,6 +189,23 @@ public class RefDataQueryServiceImpl implements RefDataQueryService {
 		final GetDepartmentResponse response = new GetDepartmentResponse();
 
 		for (final Department department : refDataDAL.getDepartments()) {
+			final DepartmentDetail item = new DepartmentDetail();
+			item.setId(department.getId());
+			item.setName(department.getName());
+			response.getItems().add(item);
+		}
+		return response;
+	}
+	
+	@Override
+	public GetDepartmentResponse getAftersaleDepartments() {
+		final GetDepartmentResponse response = new GetDepartmentResponse();
+		
+		List<Department> departments = new ArrayList<Department>();
+		departments.add(refDataDAL.getDepartment("维修部").some());
+		departments.add(refDataDAL.getDepartment("备件部").some());
+		departments.add(refDataDAL.getDepartment("钣喷部").some());
+		for (final Department department : departments) {
 			final DepartmentDetail item = new DepartmentDetail();
 			item.setId(department.getId());
 			item.setName(department.getName());

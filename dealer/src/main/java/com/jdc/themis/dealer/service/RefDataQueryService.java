@@ -50,6 +50,9 @@ public interface RefDataQueryService {
 	GetDepartmentResponse getDepartments();
 	
 	@Transactional(readOnly=true)
+	GetDepartmentResponse getAftersaleDepartments();
+	
+	@Transactional(readOnly=true)
 	@Cacheable("department")
 	DepartmentDetail getDepartment(Integer id);
 	
