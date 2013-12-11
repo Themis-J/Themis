@@ -11,7 +11,7 @@ import com.google.common.collect.Lists;
 
 @XmlRootElement
 @XmlAccessorType(XmlAccessType.FIELD)
-public class ReportDataDealerAftersaleExpenseDetail implements Serializable {
+public class ReportDataDealerPostSalesExpenseDetail implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 	private Integer id;

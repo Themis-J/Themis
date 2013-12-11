@@ -17,33 +17,33 @@ import com.jdc.themis.dealer.service.RefDataQueryService;
 import com.jdc.themis.dealer.service.impl.GetDepartmentIDFromRevenueFunction;
 import com.jdc.themis.dealer.web.domain.DealerDetail;
 import com.jdc.themis.dealer.web.domain.DepartmentDetail;
-import com.jdc.themis.dealer.web.domain.ReportDataDealerAftersaleIncomeDetail;
+import com.jdc.themis.dealer.web.domain.ReportDataDealerPostSalesIncomeDetail;
 import com.jdc.themis.dealer.web.domain.ReportDataDepartmentDetail;
 import com.jdc.themis.dealer.web.domain.ReportDataDetailAmount;
-import com.jdc.themis.dealer.web.domain.ReportDealerAftersaleIncomeDataList;
+import com.jdc.themis.dealer.web.domain.ReportDealerPostSalesIncomeDataList;
 
 import fj.data.Option;
 
-public class DealerAftersaleIncomeReportCalculator {
+public class DealerPostSalesIncomeReportCalculator {
 
 	/**
 	 * Mapping between dealer id and dealer report detail.
 	 */
-	private final Map<Integer, ReportDataDealerAftersaleIncomeDetail> dealerDetails = Maps
+	private final Map<Integer, ReportDataDealerPostSalesIncomeDetail> dealerDetails = Maps
 			.newHashMap();
 
 	private Integer year;
 	private Integer monthOfYear;
 	private Option<GroupBy> groupByOption = Option.<GroupBy> none();
 
-	public DealerAftersaleIncomeReportCalculator(
+	public DealerPostSalesIncomeReportCalculator(
 			final Collection<DealerDetail> dealers,
 			final Collection<DepartmentDetail> departments, final Integer year,
 			final Integer monthOfYear) {
 		for (final DealerDetail dealer : dealers) {
 			// initialize dealer details map for all dealers
 			dealerDetails.put(dealer.getId(),
-					new ReportDataDealerAftersaleIncomeDetail());
+					new ReportDataDealerPostSalesIncomeDetail());
 			dealerDetails.get(dealer.getId()).setId(dealer.getId());
 			dealerDetails.get(dealer.getId()).setName(dealer.getName());
 			dealerDetails.get(dealer.getId()).setCode(dealer.getCode());
@@ -72,15 +72,15 @@ public class DealerAftersaleIncomeReportCalculator {
 	 * 
 	 * @return
 	 */
-	public ReportDealerAftersaleIncomeDataList getReportDetail() {
-		final ReportDealerAftersaleIncomeDataList reportDetail = new ReportDealerAftersaleIncomeDataList();
+	public ReportDealerPostSalesIncomeDataList getReportDetail() {
+		final ReportDealerPostSalesIncomeDataList reportDetail = new ReportDealerPostSalesIncomeDataList();
 		reportDetail.setYear(year);
 		reportDetail.setMonth(monthOfYear);
 		reportDetail.getDetail().addAll(dealerDetails.values());
 		return reportDetail;
 	}
 
-	public DealerAftersaleIncomeReportCalculator withGroupBy(
+	public DealerPostSalesIncomeReportCalculator withGroupBy(
 			final Option<Integer> groupByOption) {
 		if (groupByOption.isSome()) {
 			this.groupByOption = GroupBy.valueOf(groupByOption.some());
@@ -95,7 +95,7 @@ public class DealerAftersaleIncomeReportCalculator {
 	 * @param op
 	 * @return
 	 */
-	public DealerAftersaleIncomeReportCalculator calcRevenues(
+	public DealerPostSalesIncomeReportCalculator calcRevenues(
 			final ImmutableListMultimap<Integer, DealerIncomeRevenueFact> dealerRevenueFacts,
 			final RefDataQueryService refDataDAL) {
 		for (final Integer dealerID : dealerRevenueFacts.keySet()) {
@@ -109,7 +109,7 @@ public class DealerAftersaleIncomeReportCalculator {
 		}
 		final Double reference = calcReference(Lambda.extract(
 				dealerDetails.values(),
-				Lambda.on(ReportDataDealerAftersaleIncomeDetail.class)
+				Lambda.on(ReportDataDealerPostSalesIncomeDetail.class)
 						.getRevenue().getAmount()));
 		Lambda.forEach(dealerDetails.values()).getRevenue()
 				.setReference(reference);
@@ -148,7 +148,7 @@ public class DealerAftersaleIncomeReportCalculator {
 		return this;
 	}
 
-	public DealerAftersaleIncomeReportCalculator calcMargins(
+	public DealerPostSalesIncomeReportCalculator calcMargins(
 			final ImmutableListMultimap<Integer, DealerIncomeRevenueFact> dealerRevenueFacts,
 			final RefDataQueryService refDataDAL) {
 		for (final Integer dealerID : dealerRevenueFacts.keySet()) {
@@ -162,7 +162,7 @@ public class DealerAftersaleIncomeReportCalculator {
 		}
 		final Double reference = calcReference(Lambda.extract(
 				dealerDetails.values(),
-				Lambda.on(ReportDataDealerAftersaleIncomeDetail.class)
+				Lambda.on(ReportDataDealerPostSalesIncomeDetail.class)
 						.getMargin().getAmount()));
 		Lambda.forEach(dealerDetails.values()).getMargin()
 				.setReference(reference);

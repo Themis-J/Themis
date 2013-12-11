@@ -17,33 +17,33 @@ import com.jdc.themis.dealer.service.RefDataQueryService;
 import com.jdc.themis.dealer.service.impl.GetDepartmentIDFromExpenseFunction;
 import com.jdc.themis.dealer.web.domain.DealerDetail;
 import com.jdc.themis.dealer.web.domain.DepartmentDetail;
-import com.jdc.themis.dealer.web.domain.ReportDataDealerAftersaleExpenseDetail;
+import com.jdc.themis.dealer.web.domain.ReportDataDealerPostSalesExpenseDetail;
 import com.jdc.themis.dealer.web.domain.ReportDataDepartmentDetail;
 import com.jdc.themis.dealer.web.domain.ReportDataDetailAmount;
-import com.jdc.themis.dealer.web.domain.ReportDealerAftersaleExpenseDataList;
+import com.jdc.themis.dealer.web.domain.ReportDealerPostSalesExpenseDataList;
 
 import fj.data.Option;
 
-public class DealerAftersaleExpenseReportCalculator {
+public class DealerPostSalesExpenseReportCalculator {
 
 	/**
 	 * Mapping between dealer id and dealer report detail.
 	 */
-	private final Map<Integer, ReportDataDealerAftersaleExpenseDetail> dealerDetails = Maps
+	private final Map<Integer, ReportDataDealerPostSalesExpenseDetail> dealerDetails = Maps
 			.newHashMap();
 
 	private Integer year;
 	private Integer monthOfYear;
 	private Option<GroupBy> groupByOption = Option.<GroupBy> none();
 
-	public DealerAftersaleExpenseReportCalculator(
+	public DealerPostSalesExpenseReportCalculator(
 			final Collection<DealerDetail> dealers,
 			final Collection<DepartmentDetail> departments, final Integer year,
 			final Integer monthOfYear) {
 		for (final DealerDetail dealer : dealers) {
 			// initialize dealer details map for all dealers
 			dealerDetails.put(dealer.getId(),
-					new ReportDataDealerAftersaleExpenseDetail());
+					new ReportDataDealerPostSalesExpenseDetail());
 			dealerDetails.get(dealer.getId()).setId(dealer.getId());
 			dealerDetails.get(dealer.getId()).setName(dealer.getName());
 			dealerDetails.get(dealer.getId()).setCode(dealer.getCode());
@@ -72,15 +72,15 @@ public class DealerAftersaleExpenseReportCalculator {
 	 * 
 	 * @return
 	 */
-	public ReportDealerAftersaleExpenseDataList getReportDetail() {
-		final ReportDealerAftersaleExpenseDataList reportDetail = new ReportDealerAftersaleExpenseDataList();
+	public ReportDealerPostSalesExpenseDataList getReportDetail() {
+		final ReportDealerPostSalesExpenseDataList reportDetail = new ReportDealerPostSalesExpenseDataList();
 		reportDetail.setYear(year);
 		reportDetail.setMonth(monthOfYear);
 		reportDetail.getDetail().addAll(dealerDetails.values());
 		return reportDetail;
 	}
 
-	public DealerAftersaleExpenseReportCalculator withGroupBy(
+	public DealerPostSalesExpenseReportCalculator withGroupBy(
 			final Option<Integer> groupByOption) {
 		if (groupByOption.isSome()) {
 			this.groupByOption = GroupBy.valueOf(groupByOption.some());
@@ -95,7 +95,7 @@ public class DealerAftersaleExpenseReportCalculator {
 	 * @param op
 	 * @return
 	 */
-	public DealerAftersaleExpenseReportCalculator calcExpenses(
+	public DealerPostSalesExpenseReportCalculator calcExpenses(
 			final ImmutableListMultimap<Integer, DealerIncomeExpenseFact> dealerExpenseFacts,
 			final RefDataQueryService refDataDAL) {
 		for (final Integer dealerID : dealerExpenseFacts.keySet()) {
@@ -109,7 +109,7 @@ public class DealerAftersaleExpenseReportCalculator {
 		}
 		final Double reference = calcReference(Lambda.extract(
 				dealerDetails.values(),
-				Lambda.on(ReportDataDealerAftersaleExpenseDetail.class)
+				Lambda.on(ReportDataDealerPostSalesExpenseDetail.class)
 						.getExpense().getAmount()));
 		Lambda.forEach(dealerDetails.values()).getExpense()
 				.setReference(reference);

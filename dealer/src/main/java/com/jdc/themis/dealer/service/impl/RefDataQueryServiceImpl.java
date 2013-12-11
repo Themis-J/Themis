@@ -1,6 +1,5 @@
 package com.jdc.themis.dealer.service.impl;
 
-import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 
@@ -8,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.google.common.base.Preconditions;
+import com.google.common.collect.Lists;
 import com.jdc.themis.dealer.data.dao.RefDataDAO;
 import com.jdc.themis.dealer.domain.AccountReceivableDurationItem;
 import com.jdc.themis.dealer.domain.Dealer;
@@ -198,10 +198,10 @@ public class RefDataQueryServiceImpl implements RefDataQueryService {
 	}
 	
 	@Override
-	public GetDepartmentResponse getAftersaleDepartments() {
+	public GetDepartmentResponse getPostSalesDepartments() {
 		final GetDepartmentResponse response = new GetDepartmentResponse();
-		
-		List<Department> departments = new ArrayList<Department>();
+
+		final List<Department> departments = Lists.newArrayList();
 		departments.add(refDataDAL.getDepartment("维修部").some());
 		departments.add(refDataDAL.getDepartment("备件部").some());
 		departments.add(refDataDAL.getDepartment("钣喷部").some());

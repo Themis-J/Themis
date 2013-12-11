@@ -14,22 +14,22 @@ import com.google.common.collect.Lists;
 
 @XmlRootElement
 @XmlAccessorType(XmlAccessType.FIELD)
-public class ReportDealerAftersaleIncomeDataList extends ReportDataDetail {
-	
-private static final long serialVersionUID = 1L;
-	
-	@XmlElement(name = "detail")
-	private List<ReportDataDealerAftersaleIncomeDetail> detail = Lists.newArrayList();
+public class ReportDealerPostSalesIncomeDataList extends ReportDataDetail {
 
-	public List<ReportDataDealerAftersaleIncomeDetail> getDetail() {
+	private static final long serialVersionUID = 1L;
+
+	@XmlElement(name = "detail")
+	private List<ReportDataDealerPostSalesIncomeDetail> detail = Lists
+			.newArrayList();
+
+	public List<ReportDataDealerPostSalesIncomeDetail> getDetail() {
 		return detail;
 	}
-	
+
 	public String toString() {
-		return new ToStringBuilder(this, ToStringStyle.MULTI_LINE_STYLE).append("year", getYear())
-				.append("month", getMonth())
-				.append("detail", detail)
-				.getStringBuffer().toString();
+		return new ToStringBuilder(this, ToStringStyle.MULTI_LINE_STYLE)
+				.append("year", getYear()).append("month", getMonth())
+				.append("detail", detail).getStringBuffer().toString();
 	}
-	
+
 }

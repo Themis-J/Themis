@@ -21,8 +21,8 @@ import com.jdc.themis.dealer.domain.DealerHRAllocationFact;
 import com.jdc.themis.dealer.domain.DealerIncomeExpenseFact;
 import com.jdc.themis.dealer.domain.DealerIncomeRevenueFact;
 import com.jdc.themis.dealer.report.DealerAccountReceivableReportCalculator;
-import com.jdc.themis.dealer.report.DealerAftersaleExpenseReportCalculator;
-import com.jdc.themis.dealer.report.DealerAftersaleIncomeReportCalculator;
+import com.jdc.themis.dealer.report.DealerPostSalesExpenseReportCalculator;
+import com.jdc.themis.dealer.report.DealerPostSalesIncomeReportCalculator;
 import com.jdc.themis.dealer.report.DealerExpensePercentageReportCalculator;
 import com.jdc.themis.dealer.report.DealerHRAllocationReportCalculator;
 import com.jdc.themis.dealer.report.DealerIncomeReportCalculator;
@@ -36,8 +36,8 @@ import com.jdc.themis.dealer.service.RefDataQueryService;
 import com.jdc.themis.dealer.utils.Performance;
 import com.jdc.themis.dealer.web.domain.ImportReportDataRequest;
 import com.jdc.themis.dealer.web.domain.QueryDealerAccountReceivableResponse;
-import com.jdc.themis.dealer.web.domain.QueryDealerAftersaleExpenseResponse;
-import com.jdc.themis.dealer.web.domain.QueryDealerAftersaleIncomeResponse;
+import com.jdc.themis.dealer.web.domain.QueryDealerPostSalesExpenseResponse;
+import com.jdc.themis.dealer.web.domain.QueryDealerPostSalesIncomeResponse;
 import com.jdc.themis.dealer.web.domain.QueryDealerExpensePercentageResponse;
 import com.jdc.themis.dealer.web.domain.QueryDealerHRAllocationResponse;
 import com.jdc.themis.dealer.web.domain.QueryDealerIncomeResponse;
@@ -510,17 +510,17 @@ public class DealerIncomeReportServiceImpl implements DealerIncomeReportService 
 	
 	@Override
 	@Performance
-	public QueryDealerAftersaleExpenseResponse queryDealerAftersaleExpenseReport(
+	public QueryDealerPostSalesExpenseResponse queryDealerPostSalesExpenseReport(
 			final Integer year, final Integer monthOfYear,
 			final Option<Integer> groupBy, final Option<String> itemCategory) {
 		Preconditions.checkNotNull(year, "year can't be null");
 		Preconditions.checkNotNull(monthOfYear, "month can't be null");
-		final QueryDealerAftersaleExpenseResponse response = new QueryDealerAftersaleExpenseResponse();
-		response.setReportName("AftersaleExpenseReport");
+		final QueryDealerPostSalesExpenseResponse response = new QueryDealerPostSalesExpenseResponse();
+		response.setReportName("PostSalesExpenseReport");
 
-		DealerAftersaleExpenseReportCalculator calculator = new DealerAftersaleExpenseReportCalculator(
+		DealerPostSalesExpenseReportCalculator calculator = new DealerPostSalesExpenseReportCalculator(
 				refDataDAL.getDealers().getItems(), refDataDAL
-						.getAftersaleDepartments().getItems(), year,
+						.getPostSalesDepartments().getItems(), year,
 				monthOfYear);
 		if (groupBy.isSome()) {
 			calculator = calculator.withGroupBy(groupBy);
@@ -536,7 +536,6 @@ public class DealerIncomeReportServiceImpl implements DealerIncomeReportService 
 
 		// Get all expenses
 		final Collection<DealerIncomeExpenseFact> expenseFacts = queryBuilder
-				// clear the builder for next query
 				.withDepartmentID(refDataDAL.getDepartment("维修部").getId())
 				.withDepartmentID(refDataDAL.getDepartment("备件部").getId())
 				.withDepartmentID(refDataDAL.getDepartment("钣喷部").getId())
@@ -552,17 +551,17 @@ public class DealerIncomeReportServiceImpl implements DealerIncomeReportService 
 	
 	@Override
 	@Performance
-	public QueryDealerAftersaleIncomeResponse queryDealerAftersaleIncomeReport(
+	public QueryDealerPostSalesIncomeResponse queryDealerPostSalesIncomeReport(
 			final Integer year, final Integer monthOfYear,
 			final Option<Integer> groupBy) {
 		Preconditions.checkNotNull(year, "year can't be null");
 		Preconditions.checkNotNull(monthOfYear, "month can't be null");
-		final QueryDealerAftersaleIncomeResponse response = new QueryDealerAftersaleIncomeResponse();
-		response.setReportName("AftersaleIncomeReport");
+		final QueryDealerPostSalesIncomeResponse response = new QueryDealerPostSalesIncomeResponse();
+		response.setReportName("PostSalesIncomeReport");
 
-		DealerAftersaleIncomeReportCalculator calculator = new DealerAftersaleIncomeReportCalculator(
+		DealerPostSalesIncomeReportCalculator calculator = new DealerPostSalesIncomeReportCalculator(
 				refDataDAL.getDealers().getItems(), refDataDAL
-						.getAftersaleDepartments().getItems(), year,
+						.getPostSalesDepartments().getItems(), year,
 				monthOfYear);
 		if (groupBy.isSome()) {
 			calculator = calculator.withGroupBy(groupBy);

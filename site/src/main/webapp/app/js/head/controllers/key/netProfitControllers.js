@@ -22,8 +22,8 @@ angular.module('keyNetProfit.controllers', [])
 	            restClient(params, function(data) {
 	            	var chartData = {
 				        		id: 'report_chart',
-				        		title: '税前尽利润',
-				        		yAxisTitle: '税前尽利润',
+				        		title: '税前净利润',
+				        		yAxisTitle: '税前净利润',
 				        		series: { previous:[], current:[], previousReference:[], currentReference:[], currentPercentage:[] },
 				        		gridData:[]
 				        	}; 
@@ -61,7 +61,7 @@ angular.module('keyNetProfit.controllers', [])
 			        jQuery("#report_list").jqGrid({
 						   	data:chartData.gridData,
 							datatype: "local",
-						   	colNames:['经销商代码','名称', '品牌', '税前尽利润'],
+						   	colNames:['经销商代码','名称', '品牌', '税前净利润'],
 						   	colModel:[
 						   		{name:'id',index:'id', width:55},
 						   		{name:'name',index:'name', width:100},
@@ -82,7 +82,7 @@ angular.module('keyNetProfit.controllers', [])
 							multiselect: false,
 							width: chartWidth,
 							height: "100%",
-							caption: "本年税前尽利润"
+							caption: "本年税前净利润"
 						});
 					jQuery("#report_list").jqGrid('navGrid','#report_pager',{"edit":false,"add":false,"del":false,"search":true,"refresh":true,"view":false,"excel":false,"pdf":false,"csv":false,"columns":false});
 					if (  $scope.report_chart_display ) {

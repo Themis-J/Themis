@@ -5,11 +5,11 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.jdc.themis.dealer.web.domain.ImportReportDataRequest;
 import com.jdc.themis.dealer.web.domain.QueryDealerAccountReceivableResponse;
-import com.jdc.themis.dealer.web.domain.QueryDealerAftersaleExpenseResponse;
-import com.jdc.themis.dealer.web.domain.QueryDealerAftersaleIncomeResponse;
 import com.jdc.themis.dealer.web.domain.QueryDealerExpensePercentageResponse;
 import com.jdc.themis.dealer.web.domain.QueryDealerHRAllocationResponse;
 import com.jdc.themis.dealer.web.domain.QueryDealerIncomeResponse;
+import com.jdc.themis.dealer.web.domain.QueryDealerPostSalesExpenseResponse;
+import com.jdc.themis.dealer.web.domain.QueryDealerPostSalesIncomeResponse;
 import com.jdc.themis.dealer.web.domain.QueryDealerSalesIncomeResponse;
 import com.jdc.themis.dealer.web.domain.QueryDealerSalesResponse;
 import com.jdc.themis.dealer.web.domain.QueryDepartmentIncomeResponse;
@@ -64,11 +64,11 @@ public interface DealerIncomeReportService {
 			Integer year, Integer monthOfYear);
 
 	@Transactional(readOnly = true)
-	QueryDealerAftersaleIncomeResponse queryDealerAftersaleIncomeReport(
+	QueryDealerPostSalesIncomeResponse queryDealerPostSalesIncomeReport(
 			Integer year, Integer monthOfYear, Option<Integer> groupBy);
-	
+
 	@Transactional(readOnly = true)
-	QueryDealerAftersaleExpenseResponse queryDealerAftersaleExpenseReport(
+	QueryDealerPostSalesExpenseResponse queryDealerPostSalesExpenseReport(
 			Integer year, Integer monthOfYear, Option<Integer> groupBy,
 			Option<String> itemCategory);
 	

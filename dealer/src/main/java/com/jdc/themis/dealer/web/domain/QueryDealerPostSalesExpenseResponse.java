@@ -15,28 +15,32 @@ import com.google.common.collect.Lists;
 
 @XmlRootElement
 @XmlAccessorType(XmlAccessType.FIELD)
-public class QueryDealerAftersaleIncomeResponse implements Serializable {
-	
+public class QueryDealerPostSalesExpenseResponse implements Serializable {
+
 	private static final long serialVersionUID = 1L;
-	
+
 	private String reportName;
-	
+
 	@XmlElement(name = "report")
-	private List<ReportDealerAftersaleIncomeDataList> detail = Lists.newArrayList();
-	
+	private List<ReportDealerPostSalesExpenseDataList> detail = Lists
+			.newArrayList();
+
 	public String getReportName() {
 		return reportName;
 	}
+
 	public void setReportName(String reportName) {
 		this.reportName = reportName;
 	}
-	public List<ReportDealerAftersaleIncomeDataList> getDetail() {
+
+	public List<ReportDealerPostSalesExpenseDataList> getDetail() {
 		return detail;
 	}
+
 	public String toString() {
-		return new ToStringBuilder(this, ToStringStyle.MULTI_LINE_STYLE).append("reportName", reportName)
-				.append("report", detail)
+		return new ToStringBuilder(this, ToStringStyle.MULTI_LINE_STYLE)
+				.append("reportName", reportName).append("report", detail)
 				.getStringBuffer().toString();
 	}
-	
+
 }
