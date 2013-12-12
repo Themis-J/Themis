@@ -32,7 +32,9 @@ angular.module('masterApp.controllers', [])
 						{name: '应收账款－应收帐款总额', page:'ard/overall'},
 						{name: '应收账款－售前应收总额', page:'ard/sales'},
 						{name: '应收账款－售后应收总额', page:'ard/postSales'},
-						{name: '应收账款－厂家应收总额', page:'ard/factory'}
+						{name: '应收账款－厂家应收总额', page:'ard/factory'},
+						{name: '售后总览-月均经销商售后销售额', page:'postSales/revenue'},
+						{name: '售后总览-月均经销商售后毛利', page:'postSales/margin'}
 						];
         
 		$scope.goto = function(item)
@@ -43,7 +45,6 @@ angular.module('masterApp.controllers', [])
         			break;
         		}
         	}
-        	
         };
         $scope.bindEvent = function()
         {

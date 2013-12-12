@@ -3,7 +3,7 @@ package com.jdc.themis.dealer.service.impl;
 import com.google.common.base.Function;
 import com.jdc.themis.dealer.domain.DealerIncomeRevenueFact;
 
-enum GetDepartmentIDFromRevenueFunction implements
+public enum GetDepartmentIDFromRevenueFunction implements
 		Function<DealerIncomeRevenueFact, Integer> {
 	INSTANCE;
 

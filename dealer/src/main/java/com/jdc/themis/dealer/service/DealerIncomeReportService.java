@@ -8,6 +8,8 @@ import com.jdc.themis.dealer.web.domain.QueryDealerAccountReceivableResponse;
 import com.jdc.themis.dealer.web.domain.QueryDealerExpensePercentageResponse;
 import com.jdc.themis.dealer.web.domain.QueryDealerHRAllocationResponse;
 import com.jdc.themis.dealer.web.domain.QueryDealerIncomeResponse;
+import com.jdc.themis.dealer.web.domain.QueryDealerPostSalesExpenseResponse;
+import com.jdc.themis.dealer.web.domain.QueryDealerPostSalesIncomeResponse;
 import com.jdc.themis.dealer.web.domain.QueryDealerSalesIncomeResponse;
 import com.jdc.themis.dealer.web.domain.QueryDealerSalesResponse;
 import com.jdc.themis.dealer.web.domain.QueryDepartmentIncomeResponse;
@@ -60,5 +62,14 @@ public interface DealerIncomeReportService {
 	@Transactional(readOnly=true)
 	QueryDealerAccountReceivableResponse queryDealerAccountReceivablePercentageReport(
 			Integer year, Integer monthOfYear);
+
+	@Transactional(readOnly = true)
+	QueryDealerPostSalesIncomeResponse queryDealerPostSalesIncomeReport(
+			Integer year, Integer monthOfYear, Option<Integer> groupBy);
+
+	@Transactional(readOnly = true)
+	QueryDealerPostSalesExpenseResponse queryDealerPostSalesExpenseReport(
+			Integer year, Integer monthOfYear, Option<Integer> groupBy,
+			Option<String> itemCategory);
 	
 }

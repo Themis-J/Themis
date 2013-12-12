@@ -255,4 +255,50 @@ public class DealerReportRestService {
 						year, 
 						monthOfYear)).build();
 	}
+	
+	/**
+	 * Query post sales income report.
+	 * 
+	 * @param year
+	 * @param monthOfYear
+	 * @param groupBy
+	 * @return
+	 */
+	@GET
+	@Path("/query/postSalesIncomeReport")
+	@Produces({ "application/json", "application/xml" })
+	@RestServiceErrorHandler
+	public Response queryDealerPostSalesIncomeReport(
+			@QueryParam("year") Integer year,
+			@QueryParam("monthOfYear") Integer monthOfYear,
+			@QueryParam("groupBy") Integer groupBy) {
+		return Response.ok(
+				dealerIncomeReportService.queryDealerPostSalesIncomeReport(
+						year, monthOfYear, Option.fromNull(groupBy))).build();
+	}
+
+	/**
+	 * Query post sales expense report.
+	 * 
+	 * @param year
+	 * @param monthOfYear
+	 * @param groupBy
+	 * @param itemName
+	 * @return
+	 */
+	@GET
+	@Path("/query/postSalesExpenseReport")
+	@Produces({ "application/json", "application/xml" })
+	@RestServiceErrorHandler
+	public Response queryDealerPostSalesExpenseReport(
+			@QueryParam("year") Integer year,
+			@QueryParam("monthOfYear") Integer monthOfYear,
+			@QueryParam("groupBy") Integer groupBy,
+			@QueryParam("itemCategory") String itemCategory) {
+		return Response.ok(
+				dealerIncomeReportService.queryDealerPostSalesExpenseReport(
+						year, monthOfYear, Option.fromNull(groupBy),
+						Option.fromNull(itemCategory))).build();
+	}
+	
 }

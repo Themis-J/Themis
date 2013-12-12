@@ -1,0 +1,1811 @@
+{
+    "reportName": "PostSalesIncomeReport",
+    "detail": [
+        {
+            "year": 2013,
+            "month": 11,
+            "detail": [
+                {
+                    "id": 1,
+                    "name": "重庆长锦",
+                    "code": "CN-01",
+                    "brand": "广汽菲亚特",
+                    "revenue": {
+                        "amount": 0,
+                        "percentage": 0,
+                        "reference": 405.117084591769
+                    },
+                    "margin": {
+                        "amount": 0,
+                        "percentage": 0,
+                        "reference": 354.2981567691821
+                    },
+                    "detail": [
+                        {
+                            "id": 4,
+                            "name": "维修部",
+                            "revenue": {
+                                "amount": 0,
+                                "percentage": 0,
+                                "reference": 0
+                            },
+                            "expense": {
+                                "amount": 0,
+                                "percentage": 0,
+                                "reference": 0
+                            },
+                            "margin": {
+                                "amount": 0,
+                                "percentage": 0,
+                                "reference": 0
+                            },
+                            "opProfit": {
+                                "amount": 0,
+                                "percentage": 0,
+                                "reference": 0
+                            }
+                        },
+                        {
+                            "id": 5,
+                            "name": "备件部",
+                            "revenue": {
+                                "amount": 0,
+                                "percentage": 0,
+                                "reference": 0
+                            },
+                            "expense": {
+                                "amount": 0,
+                                "percentage": 0,
+                                "reference": 0
+                            },
+                            "margin": {
+                                "amount": 0,
+                                "percentage": 0,
+                                "reference": 0
+                            },
+                            "opProfit": {
+                                "amount": 0,
+                                "percentage": 0,
+                                "reference": 0
+                            }
+                        },
+                        {
+                            "id": 6,
+                            "name": "钣喷部",
+                            "revenue": {
+                                "amount": 0,
+                                "percentage": 0,
+                                "reference": 0
+                            },
+                            "expense": {
+                                "amount": 0,
+                                "percentage": 0,
+                                "reference": 0
+                            },
+                            "margin": {
+                                "amount": 0,
+                                "percentage": 0,
+                                "reference": 0
+                            },
+                            "opProfit": {
+                                "amount": 0,
+                                "percentage": 0,
+                                "reference": 0
+                            }
+                        }
+                    ]
+                },
+                {
+                    "id": 2,
+                    "name": "长沙长耀",
+                    "code": "CN-02",
+                    "brand": "广汽菲亚特",
+                    "revenue": {
+                        "amount": 1121.1801950752583,
+                        "percentage": 0,
+                        "reference": 405.117084591769
+                    },
+                    "margin": {
+                        "amount": 762.0698696335588,
+                        "percentage": 0,
+                        "reference": 354.2981567691821
+                    },
+                    "detail": [
+                        {
+                            "id": 4,
+                            "name": "维修部",
+                            "revenue": {
+                                "amount": 1121.1801950752583,
+                                "percentage": 0,
+                                "reference": 0
+                            },
+                            "expense": {
+                                "amount": 0,
+                                "percentage": 0,
+                                "reference": 0
+                            },
+                            "margin": {
+                                "amount": 762.0698696335588,
+                                "percentage": 0,
+                                "reference": 0
+                            },
+                            "opProfit": {
+                                "amount": 0,
+                                "percentage": 0,
+                                "reference": 0
+                            }
+                        },
+                        {
+                            "id": 5,
+                            "name": "备件部",
+                            "revenue": {
+                                "amount": 0,
+                                "percentage": 0,
+                                "reference": 0
+                            },
+                            "expense": {
+                                "amount": 0,
+                                "percentage": 0,
+                                "reference": 0
+                            },
+                            "margin": {
+                                "amount": 0,
+                                "percentage": 0,
+                                "reference": 0
+                            },
+                            "opProfit": {
+                                "amount": 0,
+                                "percentage": 0,
+                                "reference": 0
+                            }
+                        },
+                        {
+                            "id": 6,
+                            "name": "钣喷部",
+                            "revenue": {
+                                "amount": 0,
+                                "percentage": 0,
+                                "reference": 0
+                            },
+                            "expense": {
+                                "amount": 0,
+                                "percentage": 0,
+                                "reference": 0
+                            },
+                            "margin": {
+                                "amount": 0,
+                                "percentage": 0,
+                                "reference": 0
+                            },
+                            "opProfit": {
+                                "amount": 0,
+                                "percentage": 0,
+                                "reference": 0
+                            }
+                        }
+                    ]
+                },
+                {
+                    "id": 3,
+                    "name": "广本一店",
+                    "code": "CN-03",
+                    "brand": "广汽本田",
+                    "revenue": {
+                        "amount": 0,
+                        "percentage": 0,
+                        "reference": 405.117084591769
+                    },
+                    "margin": {
+                        "amount": 0,
+                        "percentage": 0,
+                        "reference": 354.2981567691821
+                    },
+                    "detail": [
+                        {
+                            "id": 4,
+                            "name": "维修部",
+                            "revenue": {
+                                "amount": 0,
+                                "percentage": 0,
+                                "reference": 0
+                            },
+                            "expense": {
+                                "amount": 0,
+                                "percentage": 0,
+                                "reference": 0
+                            },
+                            "margin": {
+                                "amount": 0,
+                                "percentage": 0,
+                                "reference": 0
+                            },
+                            "opProfit": {
+                                "amount": 0,
+                                "percentage": 0,
+                                "reference": 0
+                            }
+                        },
+                        {
+                            "id": 5,
+                            "name": "备件部",
+                            "revenue": {
+                                "amount": 0,
+                                "percentage": 0,
+                                "reference": 0
+                            },
+                            "expense": {
+                                "amount": 0,
+                                "percentage": 0,
+                                "reference": 0
+                            },
+                            "margin": {
+                                "amount": 0,
+                                "percentage": 0,
+                                "reference": 0
+                            },
+                            "opProfit": {
+                                "amount": 0,
+                                "percentage": 0,
+                                "reference": 0
+                            }
+                        },
+                        {
+                            "id": 6,
+                            "name": "钣喷部",
+                            "revenue": {
+                                "amount": 0,
+                                "percentage": 0,
+                                "reference": 0
+                            },
+                            "expense": {
+                                "amount": 0,
+                                "percentage": 0,
+                                "reference": 0
+                            },
+                            "margin": {
+                                "amount": 0,
+                                "percentage": 0,
+                                "reference": 0
+                            },
+                            "opProfit": {
+                                "amount": 0,
+                                "percentage": 0,
+                                "reference": 0
+                            }
+                        }
+                    ]
+                },
+                {
+                    "id": 4,
+                    "name": "长盛公司",
+                    "code": "CN-05",
+                    "brand": "广汽本田",
+                    "revenue": {
+                        "amount": 32.09318603056661,
+                        "percentage": 0,
+                        "reference": 405.117084591769
+                    },
+                    "margin": {
+                        "amount": 23.797043107812417,
+                        "percentage": 0,
+                        "reference": 354.2981567691821
+                    },
+                    "detail": [
+                        {
+                            "id": 4,
+                            "name": "维修部",
+                            "revenue": {
+                                "amount": 0,
+                                "percentage": 0,
+                                "reference": 0
+                            },
+                            "expense": {
+                                "amount": 0,
+                                "percentage": 0,
+                                "reference": 0
+                            },
+                            "margin": {
+                                "amount": 0,
+                                "percentage": 0,
+                                "reference": 0
+                            },
+                            "opProfit": {
+                                "amount": 0,
+                                "percentage": 0,
+                                "reference": 0
+                            }
+                        },
+                        {
+                            "id": 5,
+                            "name": "备件部",
+                            "revenue": {
+                                "amount": 0,
+                                "percentage": 0,
+                                "reference": 0
+                            },
+                            "expense": {
+                                "amount": 0,
+                                "percentage": 0,
+                                "reference": 0
+                            },
+                            "margin": {
+                                "amount": 0,
+                                "percentage": 0,
+                                "reference": 0
+                            },
+                            "opProfit": {
+                                "amount": 0,
+                                "percentage": 0,
+                                "reference": 0
+                            }
+                        },
+                        {
+                            "id": 6,
+                            "name": "钣喷部",
+                            "revenue": {
+                                "amount": 32.09318603056661,
+                                "percentage": 0,
+                                "reference": 0
+                            },
+                            "expense": {
+                                "amount": 0,
+                                "percentage": 0,
+                                "reference": 0
+                            },
+                            "margin": {
+                                "amount": 23.797043107812417,
+                                "percentage": 0,
+                                "reference": 0
+                            },
+                            "opProfit": {
+                                "amount": 0,
+                                "percentage": 0,
+                                "reference": 0
+                            }
+                        }
+                    ]
+                },
+                {
+                    "id": 5,
+                    "name": "北京长怡",
+                    "code": "CN-06",
+                    "brand": "广汽本田",
+                    "revenue": {
+                        "amount": 474.9866224172136,
+                        "percentage": 0,
+                        "reference": 405.117084591769
+                    },
+                    "margin": {
+                        "amount": 726.6729165512778,
+                        "percentage": 0,
+                        "reference": 354.2981567691821
+                    },
+                    "detail": [
+                        {
+                            "id": 4,
+                            "name": "维修部",
+                            "revenue": {
+                                "amount": 0,
+                                "percentage": 0,
+                                "reference": 0
+                            },
+                            "expense": {
+                                "amount": 0,
+                                "percentage": 0,
+                                "reference": 0
+                            },
+                            "margin": {
+                                "amount": 0,
+                                "percentage": 0,
+                                "reference": 0
+                            },
+                            "opProfit": {
+                                "amount": 0,
+                                "percentage": 0,
+                                "reference": 0
+                            }
+                        },
+                        {
+                            "id": 5,
+                            "name": "备件部",
+                            "revenue": {
+                                "amount": 474.9866224172136,
+                                "percentage": 0,
+                                "reference": 0
+                            },
+                            "expense": {
+                                "amount": 0,
+                                "percentage": 0,
+                                "reference": 0
+                            },
+                            "margin": {
+                                "amount": 726.6729165512778,
+                                "percentage": 0,
+                                "reference": 0
+                            },
+                            "opProfit": {
+                                "amount": 0,
+                                "percentage": 0,
+                                "reference": 0
+                            }
+                        },
+                        {
+                            "id": 6,
+                            "name": "钣喷部",
+                            "revenue": {
+                                "amount": 0,
+                                "percentage": 0,
+                                "reference": 0
+                            },
+                            "expense": {
+                                "amount": 0,
+                                "percentage": 0,
+                                "reference": 0
+                            },
+                            "margin": {
+                                "amount": 0,
+                                "percentage": 0,
+                                "reference": 0
+                            },
+                            "opProfit": {
+                                "amount": 0,
+                                "percentage": 0,
+                                "reference": 0
+                            }
+                        }
+                    ]
+                },
+                {
+                    "id": 6,
+                    "name": "南京长昊",
+                    "code": "CN-07",
+                    "brand": "广汽本田",
+                    "revenue": {
+                        "amount": 0,
+                        "percentage": 0,
+                        "reference": 405.117084591769
+                    },
+                    "margin": {
+                        "amount": 0,
+                        "percentage": 0,
+                        "reference": 354.2981567691821
+                    },
+                    "detail": [
+                        {
+                            "id": 4,
+                            "name": "维修部",
+                            "revenue": {
+                                "amount": 0,
+                                "percentage": 0,
+                                "reference": 0
+                            },
+                            "expense": {
+                                "amount": 0,
+                                "percentage": 0,
+                                "reference": 0
+                            },
+                            "margin": {
+                                "amount": 0,
+                                "percentage": 0,
+                                "reference": 0
+                            },
+                            "opProfit": {
+                                "amount": 0,
+                                "percentage": 0,
+                                "reference": 0
+                            }
+                        },
+                        {
+                            "id": 5,
+                            "name": "备件部",
+                            "revenue": {
+                                "amount": 0,
+                                "percentage": 0,
+                                "reference": 0
+                            },
+                            "expense": {
+                                "amount": 0,
+                                "percentage": 0,
+                                "reference": 0
+                            },
+                            "margin": {
+                                "amount": 0,
+                                "percentage": 0,
+                                "reference": 0
+                            },
+                            "opProfit": {
+                                "amount": 0,
+                                "percentage": 0,
+                                "reference": 0
+                            }
+                        },
+                        {
+                            "id": 6,
+                            "name": "钣喷部",
+                            "revenue": {
+                                "amount": 0,
+                                "percentage": 0,
+                                "reference": 0
+                            },
+                            "expense": {
+                                "amount": 0,
+                                "percentage": 0,
+                                "reference": 0
+                            },
+                            "margin": {
+                                "amount": 0,
+                                "percentage": 0,
+                                "reference": 0
+                            },
+                            "opProfit": {
+                                "amount": 0,
+                                "percentage": 0,
+                                "reference": 0
+                            }
+                        }
+                    ]
+                },
+                {
+                    "id": 7,
+                    "name": "重庆长捷",
+                    "code": "CN-08",
+                    "brand": "广汽本田",
+                    "revenue": {
+                        "amount": 0,
+                        "percentage": 0,
+                        "reference": 405.117084591769
+                    },
+                    "margin": {
+                        "amount": 0,
+                        "percentage": 0,
+                        "reference": 354.2981567691821
+                    },
+                    "detail": [
+                        {
+                            "id": 4,
+                            "name": "维修部",
+                            "revenue": {
+                                "amount": 0,
+                                "percentage": 0,
+                                "reference": 0
+                            },
+                            "expense": {
+                                "amount": 0,
+                                "percentage": 0,
+                                "reference": 0
+                            },
+                            "margin": {
+                                "amount": 0,
+                                "percentage": 0,
+                                "reference": 0
+                            },
+                            "opProfit": {
+                                "amount": 0,
+                                "percentage": 0,
+                                "reference": 0
+                            }
+                        },
+                        {
+                            "id": 5,
+                            "name": "备件部",
+                            "revenue": {
+                                "amount": 0,
+                                "percentage": 0,
+                                "reference": 0
+                            },
+                            "expense": {
+                                "amount": 0,
+                                "percentage": 0,
+                                "reference": 0
+                            },
+                            "margin": {
+                                "amount": 0,
+                                "percentage": 0,
+                                "reference": 0
+                            },
+                            "opProfit": {
+                                "amount": 0,
+                                "percentage": 0,
+                                "reference": 0
+                            }
+                        },
+                        {
+                            "id": 6,
+                            "name": "钣喷部",
+                            "revenue": {
+                                "amount": 0,
+                                "percentage": 0,
+                                "reference": 0
+                            },
+                            "expense": {
+                                "amount": 0,
+                                "percentage": 0,
+                                "reference": 0
+                            },
+                            "margin": {
+                                "amount": 0,
+                                "percentage": 0,
+                                "reference": 0
+                            },
+                            "opProfit": {
+                                "amount": 0,
+                                "percentage": 0,
+                                "reference": 0
+                            }
+                        }
+                    ]
+                },
+                {
+                    "id": 8,
+                    "name": "长力公司",
+                    "code": "CN-09",
+                    "brand": "广汽本田",
+                    "revenue": {
+                        "amount": 0,
+                        "percentage": 0,
+                        "reference": 405.117084591769
+                    },
+                    "margin": {
+                        "amount": 0,
+                        "percentage": 0,
+                        "reference": 354.2981567691821
+                    },
+                    "detail": [
+                        {
+                            "id": 4,
+                            "name": "维修部",
+                            "revenue": {
+                                "amount": 0,
+                                "percentage": 0,
+                                "reference": 0
+                            },
+                            "expense": {
+                                "amount": 0,
+                                "percentage": 0,
+                                "reference": 0
+                            },
+                            "margin": {
+                                "amount": 0,
+                                "percentage": 0,
+                                "reference": 0
+                            },
+                            "opProfit": {
+                                "amount": 0,
+                                "percentage": 0,
+                                "reference": 0
+                            }
+                        },
+                        {
+                            "id": 5,
+                            "name": "备件部",
+                            "revenue": {
+                                "amount": 0,
+                                "percentage": 0,
+                                "reference": 0
+                            },
+                            "expense": {
+                                "amount": 0,
+                                "percentage": 0,
+                                "reference": 0
+                            },
+                            "margin": {
+                                "amount": 0,
+                                "percentage": 0,
+                                "reference": 0
+                            },
+                            "opProfit": {
+                                "amount": 0,
+                                "percentage": 0,
+                                "reference": 0
+                            }
+                        },
+                        {
+                            "id": 6,
+                            "name": "钣喷部",
+                            "revenue": {
+                                "amount": 0,
+                                "percentage": 0,
+                                "reference": 0
+                            },
+                            "expense": {
+                                "amount": 0,
+                                "percentage": 0,
+                                "reference": 0
+                            },
+                            "margin": {
+                                "amount": 0,
+                                "percentage": 0,
+                                "reference": 0
+                            },
+                            "opProfit": {
+                                "amount": 0,
+                                "percentage": 0,
+                                "reference": 0
+                            }
+                        }
+                    ]
+                },
+                {
+                    "id": 9,
+                    "name": "重庆长达",
+                    "code": "CN-10",
+                    "brand": "广汽三菱",
+                    "revenue": {
+                        "amount": 0,
+                        "percentage": 0,
+                        "reference": 405.117084591769
+                    },
+                    "margin": {
+                        "amount": 0,
+                        "percentage": 0,
+                        "reference": 354.2981567691821
+                    },
+                    "detail": [
+                        {
+                            "id": 4,
+                            "name": "维修部",
+                            "revenue": {
+                                "amount": 0,
+                                "percentage": 0,
+                                "reference": 0
+                            },
+                            "expense": {
+                                "amount": 0,
+                                "percentage": 0,
+                                "reference": 0
+                            },
+                            "margin": {
+                                "amount": 0,
+                                "percentage": 0,
+                                "reference": 0
+                            },
+                            "opProfit": {
+                                "amount": 0,
+                                "percentage": 0,
+                                "reference": 0
+                            }
+                        },
+                        {
+                            "id": 5,
+                            "name": "备件部",
+                            "revenue": {
+                                "amount": 0,
+                                "percentage": 0,
+                                "reference": 0
+                            },
+                            "expense": {
+                                "amount": 0,
+                                "percentage": 0,
+                                "reference": 0
+                            },
+                            "margin": {
+                                "amount": 0,
+                                "percentage": 0,
+                                "reference": 0
+                            },
+                            "opProfit": {
+                                "amount": 0,
+                                "percentage": 0,
+                                "reference": 0
+                            }
+                        },
+                        {
+                            "id": 6,
+                            "name": "钣喷部",
+                            "revenue": {
+                                "amount": 0,
+                                "percentage": 0,
+                                "reference": 0
+                            },
+                            "expense": {
+                                "amount": 0,
+                                "percentage": 0,
+                                "reference": 0
+                            },
+                            "margin": {
+                                "amount": 0,
+                                "percentage": 0,
+                                "reference": 0
+                            },
+                            "opProfit": {
+                                "amount": 0,
+                                "percentage": 0,
+                                "reference": 0
+                            }
+                        }
+                    ]
+                },
+                {
+                    "id": 10,
+                    "name": "广丰一店",
+                    "code": "CN-11",
+                    "brand": "广汽丰田",
+                    "revenue": {
+                        "amount": 0,
+                        "percentage": 0,
+                        "reference": 405.117084591769
+                    },
+                    "margin": {
+                        "amount": 0,
+                        "percentage": 0,
+                        "reference": 354.2981567691821
+                    },
+                    "detail": [
+                        {
+                            "id": 4,
+                            "name": "维修部",
+                            "revenue": {
+                                "amount": 0,
+                                "percentage": 0,
+                                "reference": 0
+                            },
+                            "expense": {
+                                "amount": 0,
+                                "percentage": 0,
+                                "reference": 0
+                            },
+                            "margin": {
+                                "amount": 0,
+                                "percentage": 0,
+                                "reference": 0
+                            },
+                            "opProfit": {
+                                "amount": 0,
+                                "percentage": 0,
+                                "reference": 0
+                            }
+                        },
+                        {
+                            "id": 5,
+                            "name": "备件部",
+                            "revenue": {
+                                "amount": 0,
+                                "percentage": 0,
+                                "reference": 0
+                            },
+                            "expense": {
+                                "amount": 0,
+                                "percentage": 0,
+                                "reference": 0
+                            },
+                            "margin": {
+                                "amount": 0,
+                                "percentage": 0,
+                                "reference": 0
+                            },
+                            "opProfit": {
+                                "amount": 0,
+                                "percentage": 0,
+                                "reference": 0
+                            }
+                        },
+                        {
+                            "id": 6,
+                            "name": "钣喷部",
+                            "revenue": {
+                                "amount": 0,
+                                "percentage": 0,
+                                "reference": 0
+                            },
+                            "expense": {
+                                "amount": 0,
+                                "percentage": 0,
+                                "reference": 0
+                            },
+                            "margin": {
+                                "amount": 0,
+                                "percentage": 0,
+                                "reference": 0
+                            },
+                            "opProfit": {
+                                "amount": 0,
+                                "percentage": 0,
+                                "reference": 0
+                            }
+                        }
+                    ]
+                },
+                {
+                    "id": 11,
+                    "name": "长宁公司",
+                    "code": "CN-12",
+                    "brand": "广汽丰田",
+                    "revenue": {
+                        "amount": 0,
+                        "percentage": 0,
+                        "reference": 405.117084591769
+                    },
+                    "margin": {
+                        "amount": 0,
+                        "percentage": 0,
+                        "reference": 354.2981567691821
+                    },
+                    "detail": [
+                        {
+                            "id": 4,
+                            "name": "维修部",
+                            "revenue": {
+                                "amount": 0,
+                                "percentage": 0,
+                                "reference": 0
+                            },
+                            "expense": {
+                                "amount": 0,
+                                "percentage": 0,
+                                "reference": 0
+                            },
+                            "margin": {
+                                "amount": 0,
+                                "percentage": 0,
+                                "reference": 0
+                            },
+                            "opProfit": {
+                                "amount": 0,
+                                "percentage": 0,
+                                "reference": 0
+                            }
+                        },
+                        {
+                            "id": 5,
+                            "name": "备件部",
+                            "revenue": {
+                                "amount": 0,
+                                "percentage": 0,
+                                "reference": 0
+                            },
+                            "expense": {
+                                "amount": 0,
+                                "percentage": 0,
+                                "reference": 0
+                            },
+                            "margin": {
+                                "amount": 0,
+                                "percentage": 0,
+                                "reference": 0
+                            },
+                            "opProfit": {
+                                "amount": 0,
+                                "percentage": 0,
+                                "reference": 0
+                            }
+                        },
+                        {
+                            "id": 6,
+                            "name": "钣喷部",
+                            "revenue": {
+                                "amount": 0,
+                                "percentage": 0,
+                                "reference": 0
+                            },
+                            "expense": {
+                                "amount": 0,
+                                "percentage": 0,
+                                "reference": 0
+                            },
+                            "margin": {
+                                "amount": 0,
+                                "percentage": 0,
+                                "reference": 0
+                            },
+                            "opProfit": {
+                                "amount": 0,
+                                "percentage": 0,
+                                "reference": 0
+                            }
+                        }
+                    ]
+                },
+                {
+                    "id": 12,
+                    "name": "长凯公司",
+                    "code": "CN-13",
+                    "brand": "广汽丰田",
+                    "revenue": {
+                        "amount": 1128.1641687050223,
+                        "percentage": 0,
+                        "reference": 405.117084591769
+                    },
+                    "margin": {
+                        "amount": 320.01475030333245,
+                        "percentage": 0,
+                        "reference": 354.2981567691821
+                    },
+                    "detail": [
+                        {
+                            "id": 4,
+                            "name": "维修部",
+                            "revenue": {
+                                "amount": 0,
+                                "percentage": 0,
+                                "reference": 0
+                            },
+                            "expense": {
+                                "amount": 0,
+                                "percentage": 0,
+                                "reference": 0
+                            },
+                            "margin": {
+                                "amount": 0,
+                                "percentage": 0,
+                                "reference": 0
+                            },
+                            "opProfit": {
+                                "amount": 0,
+                                "percentage": 0,
+                                "reference": 0
+                            }
+                        },
+                        {
+                            "id": 5,
+                            "name": "备件部",
+                            "revenue": {
+                                "amount": 0,
+                                "percentage": 0,
+                                "reference": 0
+                            },
+                            "expense": {
+                                "amount": 0,
+                                "percentage": 0,
+                                "reference": 0
+                            },
+                            "margin": {
+                                "amount": 0,
+                                "percentage": 0,
+                                "reference": 0
+                            },
+                            "opProfit": {
+                                "amount": 0,
+                                "percentage": 0,
+                                "reference": 0
+                            }
+                        },
+                        {
+                            "id": 6,
+                            "name": "钣喷部",
+                            "revenue": {
+                                "amount": 1128.1641687050223,
+                                "percentage": 0,
+                                "reference": 0
+                            },
+                            "expense": {
+                                "amount": 0,
+                                "percentage": 0,
+                                "reference": 0
+                            },
+                            "margin": {
+                                "amount": 320.01475030333245,
+                                "percentage": 0,
+                                "reference": 0
+                            },
+                            "opProfit": {
+                                "amount": 0,
+                                "percentage": 0,
+                                "reference": 0
+                            }
+                        }
+                    ]
+                },
+                {
+                    "id": 13,
+                    "name": "北京长京行",
+                    "code": "CN-14",
+                    "brand": "广汽丰田",
+                    "revenue": {
+                        "amount": 0,
+                        "percentage": 0,
+                        "reference": 405.117084591769
+                    },
+                    "margin": {
+                        "amount": 0,
+                        "percentage": 0,
+                        "reference": 354.2981567691821
+                    },
+                    "detail": [
+                        {
+                            "id": 4,
+                            "name": "维修部",
+                            "revenue": {
+                                "amount": 0,
+                                "percentage": 0,
+                                "reference": 0
+                            },
+                            "expense": {
+                                "amount": 0,
+                                "percentage": 0,
+                                "reference": 0
+                            },
+                            "margin": {
+                                "amount": 0,
+                                "percentage": 0,
+                                "reference": 0
+                            },
+                            "opProfit": {
+                                "amount": 0,
+                                "percentage": 0,
+                                "reference": 0
+                            }
+                        },
+                        {
+                            "id": 5,
+                            "name": "备件部",
+                            "revenue": {
+                                "amount": 0,
+                                "percentage": 0,
+                                "reference": 0
+                            },
+                            "expense": {
+                                "amount": 0,
+                                "percentage": 0,
+                                "reference": 0
+                            },
+                            "margin": {
+                                "amount": 0,
+                                "percentage": 0,
+                                "reference": 0
+                            },
+                            "opProfit": {
+                                "amount": 0,
+                                "percentage": 0,
+                                "reference": 0
+                            }
+                        },
+                        {
+                            "id": 6,
+                            "name": "钣喷部",
+                            "revenue": {
+                                "amount": 0,
+                                "percentage": 0,
+                                "reference": 0
+                            },
+                            "expense": {
+                                "amount": 0,
+                                "percentage": 0,
+                                "reference": 0
+                            },
+                            "margin": {
+                                "amount": 0,
+                                "percentage": 0,
+                                "reference": 0
+                            },
+                            "opProfit": {
+                                "amount": 0,
+                                "percentage": 0,
+                                "reference": 0
+                            }
+                        }
+                    ]
+                },
+                {
+                    "id": 14,
+                    "name": "南京长益",
+                    "code": "CN-15",
+                    "brand": "广汽丰田",
+                    "revenue": {
+                        "amount": 0,
+                        "percentage": 0,
+                        "reference": 405.117084591769
+                    },
+                    "margin": {
+                        "amount": 0,
+                        "percentage": 0,
+                        "reference": 354.2981567691821
+                    },
+                    "detail": [
+                        {
+                            "id": 4,
+                            "name": "维修部",
+                            "revenue": {
+                                "amount": 0,
+                                "percentage": 0,
+                                "reference": 0
+                            },
+                            "expense": {
+                                "amount": 0,
+                                "percentage": 0,
+                                "reference": 0
+                            },
+                            "margin": {
+                                "amount": 0,
+                                "percentage": 0,
+                                "reference": 0
+                            },
+                            "opProfit": {
+                                "amount": 0,
+                                "percentage": 0,
+                                "reference": 0
+                            }
+                        },
+                        {
+                            "id": 5,
+                            "name": "备件部",
+                            "revenue": {
+                                "amount": 0,
+                                "percentage": 0,
+                                "reference": 0
+                            },
+                            "expense": {
+                                "amount": 0,
+                                "percentage": 0,
+                                "reference": 0
+                            },
+                            "margin": {
+                                "amount": 0,
+                                "percentage": 0,
+                                "reference": 0
+                            },
+                            "opProfit": {
+                                "amount": 0,
+                                "percentage": 0,
+                                "reference": 0
+                            }
+                        },
+                        {
+                            "id": 6,
+                            "name": "钣喷部",
+                            "revenue": {
+                                "amount": 0,
+                                "percentage": 0,
+                                "reference": 0
+                            },
+                            "expense": {
+                                "amount": 0,
+                                "percentage": 0,
+                                "reference": 0
+                            },
+                            "margin": {
+                                "amount": 0,
+                                "percentage": 0,
+                                "reference": 0
+                            },
+                            "opProfit": {
+                                "amount": 0,
+                                "percentage": 0,
+                                "reference": 0
+                            }
+                        }
+                    ]
+                },
+                {
+                    "id": 15,
+                    "name": "重庆长俊",
+                    "code": "CN-16",
+                    "brand": "广汽丰田",
+                    "revenue": {
+                        "amount": 333.1724582106607,
+                        "percentage": 0,
+                        "reference": 405.117084591769
+                    },
+                    "margin": {
+                        "amount": 598.7788344193696,
+                        "percentage": 0,
+                        "reference": 354.2981567691821
+                    },
+                    "detail": [
+                        {
+                            "id": 4,
+                            "name": "维修部",
+                            "revenue": {
+                                "amount": 0,
+                                "percentage": 0,
+                                "reference": 0
+                            },
+                            "expense": {
+                                "amount": 0,
+                                "percentage": 0,
+                                "reference": 0
+                            },
+                            "margin": {
+                                "amount": 0,
+                                "percentage": 0,
+                                "reference": 0
+                            },
+                            "opProfit": {
+                                "amount": 0,
+                                "percentage": 0,
+                                "reference": 0
+                            }
+                        },
+                        {
+                            "id": 5,
+                            "name": "备件部",
+                            "revenue": {
+                                "amount": 0,
+                                "percentage": 0,
+                                "reference": 0
+                            },
+                            "expense": {
+                                "amount": 0,
+                                "percentage": 0,
+                                "reference": 0
+                            },
+                            "margin": {
+                                "amount": 0,
+                                "percentage": 0,
+                                "reference": 0
+                            },
+                            "opProfit": {
+                                "amount": 0,
+                                "percentage": 0,
+                                "reference": 0
+                            }
+                        },
+                        {
+                            "id": 6,
+                            "name": "钣喷部",
+                            "revenue": {
+                                "amount": 333.1724582106607,
+                                "percentage": 0,
+                                "reference": 0
+                            },
+                            "expense": {
+                                "amount": 0,
+                                "percentage": 0,
+                                "reference": 0
+                            },
+                            "margin": {
+                                "amount": 598.7788344193696,
+                                "percentage": 0,
+                                "reference": 0
+                            },
+                            "opProfit": {
+                                "amount": 0,
+                                "percentage": 0,
+                                "reference": 0
+                            }
+                        }
+                    ]
+                },
+                {
+                    "id": 17,
+                    "name": "长悦公司",
+                    "code": "CN-18",
+                    "brand": "雷克萨斯",
+                    "revenue": {
+                        "amount": 0,
+                        "percentage": 0,
+                        "reference": 405.117084591769
+                    },
+                    "margin": {
+                        "amount": 0,
+                        "percentage": 0,
+                        "reference": 354.2981567691821
+                    },
+                    "detail": [
+                        {
+                            "id": 4,
+                            "name": "维修部",
+                            "revenue": {
+                                "amount": 0,
+                                "percentage": 0,
+                                "reference": 0
+                            },
+                            "expense": {
+                                "amount": 0,
+                                "percentage": 0,
+                                "reference": 0
+                            },
+                            "margin": {
+                                "amount": 0,
+                                "percentage": 0,
+                                "reference": 0
+                            },
+                            "opProfit": {
+                                "amount": 0,
+                                "percentage": 0,
+                                "reference": 0
+                            }
+                        },
+                        {
+                            "id": 5,
+                            "name": "备件部",
+                            "revenue": {
+                                "amount": 0,
+                                "percentage": 0,
+                                "reference": 0
+                            },
+                            "expense": {
+                                "amount": 0,
+                                "percentage": 0,
+                                "reference": 0
+                            },
+                            "margin": {
+                                "amount": 0,
+                                "percentage": 0,
+                                "reference": 0
+                            },
+                            "opProfit": {
+                                "amount": 0,
+                                "percentage": 0,
+                                "reference": 0
+                            }
+                        },
+                        {
+                            "id": 6,
+                            "name": "钣喷部",
+                            "revenue": {
+                                "amount": 0,
+                                "percentage": 0,
+                                "reference": 0
+                            },
+                            "expense": {
+                                "amount": 0,
+                                "percentage": 0,
+                                "reference": 0
+                            },
+                            "margin": {
+                                "amount": 0,
+                                "percentage": 0,
+                                "reference": 0
+                            },
+                            "opProfit": {
+                                "amount": 0,
+                                "percentage": 0,
+                                "reference": 0
+                            }
+                        }
+                    ]
+                },
+                {
+                    "id": 16,
+                    "name": "长沙长威",
+                    "code": "CN-17",
+                    "brand": "广汽丰田",
+                    "revenue": {
+                        "amount": 149.55580188178058,
+                        "percentage": 0,
+                        "reference": 405.117084591769
+                    },
+                    "margin": {
+                        "amount": 894.7014340827577,
+                        "percentage": 0,
+                        "reference": 354.2981567691821
+                    },
+                    "detail": [
+                        {
+                            "id": 4,
+                            "name": "维修部",
+                            "revenue": {
+                                "amount": 0,
+                                "percentage": 0,
+                                "reference": 0
+                            },
+                            "expense": {
+                                "amount": 0,
+                                "percentage": 0,
+                                "reference": 0
+                            },
+                            "margin": {
+                                "amount": 0,
+                                "percentage": 0,
+                                "reference": 0
+                            },
+                            "opProfit": {
+                                "amount": 0,
+                                "percentage": 0,
+                                "reference": 0
+                            }
+                        },
+                        {
+                            "id": 5,
+                            "name": "备件部",
+                            "revenue": {
+                                "amount": 0,
+                                "percentage": 0,
+                                "reference": 0
+                            },
+                            "expense": {
+                                "amount": 0,
+                                "percentage": 0,
+                                "reference": 0
+                            },
+                            "margin": {
+                                "amount": 0,
+                                "percentage": 0,
+                                "reference": 0
+                            },
+                            "opProfit": {
+                                "amount": 0,
+                                "percentage": 0,
+                                "reference": 0
+                            }
+                        },
+                        {
+                            "id": 6,
+                            "name": "钣喷部",
+                            "revenue": {
+                                "amount": 149.55580188178058,
+                                "percentage": 0,
+                                "reference": 0
+                            },
+                            "expense": {
+                                "amount": 0,
+                                "percentage": 0,
+                                "reference": 0
+                            },
+                            "margin": {
+                                "amount": 894.7014340827577,
+                                "percentage": 0,
+                                "reference": 0
+                            },
+                            "opProfit": {
+                                "amount": 0,
+                                "percentage": 0,
+                                "reference": 0
+                            }
+                        }
+                    ]
+                },
+                {
+                    "id": 19,
+                    "name": "长佳公司",
+                    "code": "CN-20",
+                    "brand": "广汽传祺",
+                    "revenue": {
+                        "amount": 0,
+                        "percentage": 0,
+                        "reference": 405.117084591769
+                    },
+                    "margin": {
+                        "amount": 0,
+                        "percentage": 0,
+                        "reference": 354.2981567691821
+                    },
+                    "detail": [
+                        {
+                            "id": 4,
+                            "name": "维修部",
+                            "revenue": {
+                                "amount": 0,
+                                "percentage": 0,
+                                "reference": 0
+                            },
+                            "expense": {
+                                "amount": 0,
+                                "percentage": 0,
+                                "reference": 0
+                            },
+                            "margin": {
+                                "amount": 0,
+                                "percentage": 0,
+                                "reference": 0
+                            },
+                            "opProfit": {
+                                "amount": 0,
+                                "percentage": 0,
+                                "reference": 0
+                            }
+                        },
+                        {
+                            "id": 5,
+                            "name": "备件部",
+                            "revenue": {
+                                "amount": 0,
+                                "percentage": 0,
+                                "reference": 0
+                            },
+                            "expense": {
+                                "amount": 0,
+                                "percentage": 0,
+                                "reference": 0
+                            },
+                            "margin": {
+                                "amount": 0,
+                                "percentage": 0,
+                                "reference": 0
+                            },
+                            "opProfit": {
+                                "amount": 0,
+                                "percentage": 0,
+                                "reference": 0
+                            }
+                        },
+                        {
+                            "id": 6,
+                            "name": "钣喷部",
+                            "revenue": {
+                                "amount": 0,
+                                "percentage": 0,
+                                "reference": 0
+                            },
+                            "expense": {
+                                "amount": 0,
+                                "percentage": 0,
+                                "reference": 0
+                            },
+                            "margin": {
+                                "amount": 0,
+                                "percentage": 0,
+                                "reference": 0
+                            },
+                            "opProfit": {
+                                "amount": 0,
+                                "percentage": 0,
+                                "reference": 0
+                            }
+                        }
+                    ]
+                },
+                {
+                    "id": 18,
+                    "name": "湖南长坤",
+                    "code": "CN-19",
+                    "brand": "广汽传祺",
+                    "revenue": {
+                        "amount": 1181.7346539860916,
+                        "percentage": 0,
+                        "reference": 405.117084591769
+                    },
+                    "margin": {
+                        "amount": 73.10703600713195,
+                        "percentage": 0,
+                        "reference": 354.2981567691821
+                    },
+                    "detail": [
+                        {
+                            "id": 4,
+                            "name": "维修部",
+                            "revenue": {
+                                "amount": 770.9232915881431,
+                                "percentage": 0,
+                                "reference": 0
+                            },
+                            "expense": {
+                                "amount": 0,
+                                "percentage": 0,
+                                "reference": 0
+                            },
+                            "margin": {
+                                "amount": 44.633980279793484,
+                                "percentage": 0,
+                                "reference": 0
+                            },
+                            "opProfit": {
+                                "amount": 0,
+                                "percentage": 0,
+                                "reference": 0
+                            }
+                        },
+                        {
+                            "id": 5,
+                            "name": "备件部",
+                            "revenue": {
+                                "amount": 0,
+                                "percentage": 0,
+                                "reference": 0
+                            },
+                            "expense": {
+                                "amount": 0,
+                                "percentage": 0,
+                                "reference": 0
+                            },
+                            "margin": {
+                                "amount": 0,
+                                "percentage": 0,
+                                "reference": 0
+                            },
+                            "opProfit": {
+                                "amount": 0,
+                                "percentage": 0,
+                                "reference": 0
+                            }
+                        },
+                        {
+                            "id": 6,
+                            "name": "钣喷部",
+                            "revenue": {
+                                "amount": 410.81136239794864,
+                                "percentage": 0,
+                                "reference": 0
+                            },
+                            "expense": {
+                                "amount": 0,
+                                "percentage": 0,
+                                "reference": 0
+                            },
+                            "margin": {
+                                "amount": 28.473055727338473,
+                                "percentage": 0,
+                                "reference": 0
+                            },
+                            "opProfit": {
+                                "amount": 0,
+                                "percentage": 0,
+                                "reference": 0
+                            }
+                        }
+                    ]
+                },
+                {
+                    "id": 20,
+                    "name": "重庆长冠",
+                    "code": "CN-21",
+                    "brand": "广汽传祺",
+                    "revenue": {
+                        "amount": 406.90132900541863,
+                        "percentage": 0,
+                        "reference": 405.117084591769
+                    },
+                    "margin": {
+                        "amount": 684.2429609001564,
+                        "percentage": 0,
+                        "reference": 354.2981567691821
+                    },
+                    "detail": [
+                        {
+                            "id": 4,
+                            "name": "维修部",
+                            "revenue": {
+                                "amount": 406.90132900541863,
+                                "percentage": 0,
+                                "reference": 0
+                            },
+                            "expense": {
+                                "amount": 0,
+                                "percentage": 0,
+                                "reference": 0
+                            },
+                            "margin": {
+                                "amount": 684.2429609001564,
+                                "percentage": 0,
+                                "reference": 0
+                            },
+                            "opProfit": {
+                                "amount": 0,
+                                "percentage": 0,
+                                "reference": 0
+                            }
+                        },
+                        {
+                            "id": 5,
+                            "name": "备件部",
+                            "revenue": {
+                                "amount": 0,
+                                "percentage": 0,
+                                "reference": 0
+                            },
+                            "expense": {
+                                "amount": 0,
+                                "percentage": 0,
+                                "reference": 0
+                            },
+                            "margin": {
+                                "amount": 0,
+                                "percentage": 0,
+                                "reference": 0
+                            },
+                            "opProfit": {
+                                "amount": 0,
+                                "percentage": 0,
+                                "reference": 0
+                            }
+                        },
+                        {
+                            "id": 6,
+                            "name": "钣喷部",
+                            "revenue": {
+                                "amount": 0,
+                                "percentage": 0,
+                                "reference": 0
+                            },
+                            "expense": {
+                                "amount": 0,
+                                "percentage": 0,
+                                "reference": 0
+                            },
+                            "margin": {
+                                "amount": 0,
+                                "percentage": 0,
+                                "reference": 0
+                            },
+                            "opProfit": {
+                                "amount": 0,
+                                "percentage": 0,
+                                "reference": 0
+                            }
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}
