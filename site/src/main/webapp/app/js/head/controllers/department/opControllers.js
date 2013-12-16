@@ -61,8 +61,8 @@ angular.module('departmentOp.controllers', [])
 	            	var chartCategories = [{ categories: null }];
 	            	var departments = [];
 	            	var previousDetail = data.detail[0].detail;
-	            	for ( var i in previousDetail ) {
-	            		if (i == 0) {
+	            	for (var i=0; i<previousDetail.length; i++) {
+						if (i == 0) {
 	            			// nothing
 	            		} else {
 	            		departments[i-1] = previousDetail[i].name;
@@ -74,7 +74,7 @@ angular.module('departmentOp.controllers', [])
 	            	};
 	            	chartCategories[0].categories = departments;
 					var currentDetail = data.detail[1].detail;
-					for ( var i in currentDetail ) {
+					for (var i=0; i<currentDetail.length; i++) {
 						if (i == 0) {
 	            			// nothing
 	            		} else {

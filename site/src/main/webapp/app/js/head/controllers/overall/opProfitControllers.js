@@ -32,13 +32,13 @@ angular.module('overallOpProfit.controllers', [])
 	            	chartCategories[0].categories = dealers;
 					var currentDetail = data.detail[0].detail;
 					var j = 0;
-					for ( var i in currentDetail ) {
-	            		chartData.series.current[i] = currentDetail[i].opProfit.amount;
+					for (var i=0; i<currentDetail.length; i++) {
+						chartData.series.current[i] = currentDetail[i].opProfit.amount;
 	            		chartData.series.currentPercentage[i] = currentDetail[i].opProfit.percentage * 100;
 	            		chartData.series.currentReference[i] = currentDetail[i].opProfit.reference;
 	            		
-	            		for ( var k in currentDetail[i].detail ) {
-	            			if ( currentDetail[i].detail[k].name != 'NA' &&  
+	            		for (var k=0; k<currentDetail[i].detail.length; k++) {
+							if ( currentDetail[i].detail[k].name != 'NA' &&  
 	            					currentDetail[i].detail[k].name != '二手车部' && 
 	            						currentDetail[i].detail[k].name != '其它部' &&
 	            						currentDetail[i].detail[k].name != '租赁事业部' ) {

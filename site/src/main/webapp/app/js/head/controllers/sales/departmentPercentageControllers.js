@@ -76,8 +76,8 @@ angular.module('salesDepartmentPercentage.controllers', [])
             	var chartCategories = [{ categories: null }];
             	var dealers = [];
             	var avgDetail = data.detail[0].detail;
-	            for ( var i in avgDetail ) {
-	            		dealers[i] = avgDetail[i].code;
+	            for (var i=0; i<avgDetail.length; i++) {
+						dealers[i] = avgDetail[i].code;
 	            		
 	            		chartData[0].series.previous[i] = avgDetail[i].wholesale.amount * 100;
 	            		chartData[0].series.previousReference[i] = avgDetail[i].wholesale.reference * 100;

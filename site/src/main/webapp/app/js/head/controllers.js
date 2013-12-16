@@ -39,7 +39,7 @@ angular.module('masterApp.controllers', [])
         
 		$scope.goto = function(item)
         {
-        	for ( var i in $scope.items ) {
+        	for ( var i = 0; i < $scope.items.length; i++) {
         		if ($scope.items[i].name == item) {
         			$scope.subpage = 'partials/head/' + $scope.items[i].page + '.html';
         			break;

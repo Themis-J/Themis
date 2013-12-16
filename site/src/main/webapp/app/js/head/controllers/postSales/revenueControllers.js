@@ -38,13 +38,13 @@ angular.module('postSalesRevenue.controllers', [])
 				chartCategories[0].categories = dealers;
 				var currentDetail = data.detail[0].detail;
 				var j = 0;
-				for ( var i in currentDetail ) {
-            		chartData.series.current[i] = currentDetail[i].revenue.amount;
+				for (var i=0; i<currentDetail.length; i++) {
+					chartData.series.current[i] = currentDetail[i].revenue.amount;
             		chartData.series.currentPercentage[i] = currentDetail[i].revenue.percentage * 100;
             		chartData.series.currentReference[i] = currentDetail[i].revenue.reference;
             		
-            		for ( var k in currentDetail[i].detail ) {
-            			if ( currentDetail[i].detail[k].name != 'NA' &&  
+            		for (var k=0; k<currentDetail[i].detail.length; k++) {
+						if ( currentDetail[i].detail[k].name != 'NA' &&  
             					currentDetail[i].detail[k].name != '二手车部' && 
             						currentDetail[i].detail[k].name != '其它部' &&
             						currentDetail[i].detail[k].name != '租赁事业部' ) {
@@ -79,7 +79,7 @@ angular.module('postSalesRevenue.controllers', [])
 					   		{name:'amount',index:'amount', width:80, formatter:"number", align:"right", sorttype:"float", summaryType: "sum"},
 					   		{name:'totalAmount',index:'totalAmount', width:80, formatter:"number", sorttype:"float", align:"right"}
 					   	],
-					   	rowNum:30,
+					   	rowNum:300,
 					   	pager: '#report_pager',
 					   	loadError: function(xhr,status, err) { 
 					   		try {

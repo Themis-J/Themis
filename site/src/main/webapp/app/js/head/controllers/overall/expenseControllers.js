@@ -32,8 +32,8 @@ angular.module('overallExpense.controllers', [])
 	            	chartCategories[0].categories = dealers;
 					var currentDetail = data.detail[0].detail;
 					var j = 0;
-					for ( var i in currentDetail ) {
-	            		chartData.series.current[i] = currentDetail[i].expense.amount;
+					for (var i=0; i<currentDetail.length; i++) {
+						chartData.series.current[i] = currentDetail[i].expense.amount;
 	            		chartData.series.currentPercentage[i] = currentDetail[i].expense.percentage * 100;
 	            		chartData.series.currentReference[i] = currentDetail[i].expense.reference;
 	            		

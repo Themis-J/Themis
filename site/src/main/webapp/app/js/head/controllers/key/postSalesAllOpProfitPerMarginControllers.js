@@ -33,8 +33,8 @@ angular.module('keyPostSalesAllOpProfitPerMargin.controllers', [])
 	            	var chartCategories = [{ categories: null }];
 	            	var dealers = [];
 	            	var previousDetail = data.detail[0].detail;
-	            	for ( var i in previousDetail ) {
-	            		dealers[i] = previousDetail[i].code;
+	            	for (var i=0; i<previousDetail.length; i++) {
+						dealers[i] = previousDetail[i].code;
 	            		chartData.series.previous[i] = previousDetail[i].opProfit.amount * 100;
 	            		chartData.series.previousReference[i] = previousDetail[i].opProfit.reference * 100;
 	            		chartData.gridData[i] = {id:null, name:null, amount:null};
@@ -175,11 +175,5 @@ angular.module('keyPostSalesAllOpProfitPerMargin.controllers', [])
 		$scope.monthOptions = reportService.getMonthList();
 		$scope.selectedMonthOption = $scope.monthOptions[reportService.getMonthOfYear()-1];
 
-		$scope.departmentOptions = [];
-    	reportService.getPostSalesDepartments(restClient(config.currentMode).queryDepartments, {}, function(departments) {
-    		$scope.departmentOptions = departments;
-    		$scope.selectedDepartmentOption = $scope.departmentOptions[0];
-			// called on page is loaded
-			$scope.showReport();
-		});
+		$scope.showReport();
   }]);

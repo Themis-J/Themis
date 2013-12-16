@@ -34,8 +34,8 @@ angular.module('keyOpProfitPerMargin.controllers', [])
 	            	var chartCategories = [{ categories: null }];
 	            	var dealers = [];
 	            	var previousDetail = data.detail[0].detail;
-	            	for ( var i in previousDetail ) {
-	            		dealers[i] = previousDetail[i].code;
+	            	for (var i=0; i<previousDetail.length; i++) {
+						dealers[i] = previousDetail[i].code;
 	            		chartData.series.previous[i] = previousDetail[i].opProfit.amount * 100;
 	            		chartData.series.previousReference[i] = previousDetail[i].opProfit.reference * 100;
 	            		chartData.gridData[i] = {id:null, name:null, amount:null};

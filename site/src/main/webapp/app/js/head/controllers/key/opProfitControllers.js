@@ -30,16 +30,16 @@ angular.module('keyOpProfit.controllers', [])
 	            	var chartCategories = [{ categories: null }];
 	            	var dealers = [];
 	            	var previousDetail = data.detail[0].detail;
-	            	for ( var i in previousDetail ) {
-	            		dealers[i] = previousDetail[i].code;
+	            	for (var i=0; i<previousDetail.length; i++) {
+						dealers[i] = previousDetail[i].code;
 	            		chartData.series.previous[i] = previousDetail[i].opProfit.amount;
 	            		chartData.series.previousReference[i] = previousDetail[i].opProfit.reference;
 	            	};
 	            	
 					chartCategories[0].categories = dealers;
 					var currentDetail = data.detail[1].detail;
-					for ( var i in currentDetail ) {
-	            		chartData.series.current[i] = currentDetail[i].opProfit.amount;
+					for (var i=0; i<currentDetail.length; i++) {
+						chartData.series.current[i] = currentDetail[i].opProfit.amount;
 	            		chartData.series.currentPercentage[i] = currentDetail[i].opProfit.percentage * 100;
 	            		chartData.series.currentReference[i] = currentDetail[i].opProfit.reference;
 	            		chartData.gridData[i] = {id:null, name:null, amount:null};
