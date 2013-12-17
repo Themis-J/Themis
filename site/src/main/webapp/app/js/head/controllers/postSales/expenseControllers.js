@@ -51,7 +51,7 @@ angular.module('postSalesExpense.controllers', []).controller('postSalesExpenseC
 			var dealers = [];
 			chartCategories[0].categories = dealers;
 			var currentDetail = data.detail[0].detail;
-			for (var i in currentDetail) {
+			for (var i = 0; i < currentDetail.length; i++) {
 				chartData.series.current[i] = currentDetail[i].expense.amount;
 				chartData.series.currentPercentage[i] = currentDetail[i].expense.percentage * 100;
 				chartData.series.currentReference[i] = currentDetail[i].expense.reference;
@@ -67,7 +67,7 @@ angular.module('postSalesExpense.controllers', []).controller('postSalesExpenseC
 				chartData.gridData[i].id = currentDetail[i].code;
 				chartData.gridData[i].name = currentDetail[i].name;
 				chartData.gridData[i].totalAmount = currentDetail[i].expense.amount;
-				for (var k in currentDetail[i].detail ) {
+				for (var k = 0; k < currentDetail[i].detail.length; k++) {
 					if (currentDetail[i].detail[k].name == "维修部") {
 						chartData.gridData[i].maintenanceAmount = currentDetail[i].detail[k].expense.amount;
 					} else if (currentDetail[i].detail[k].name == "备件部") {

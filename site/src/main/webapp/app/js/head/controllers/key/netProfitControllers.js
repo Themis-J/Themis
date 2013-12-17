@@ -38,8 +38,8 @@ angular.module('keyNetProfit.controllers', [])
 	            	
 					chartCategories[0].categories = dealers;
 					var currentDetail = data.detail[1].detail;
-					for ( var i in currentDetail ) {
-	            		chartData.series.current[i] = currentDetail[i].netProfit.amount;
+					for (var i=0; i<currentDetail.length; i++) {
+						chartData.series.current[i] = currentDetail[i].netProfit.amount;
 	            		chartData.series.currentPercentage[i] = currentDetail[i].netProfit.percentage * 100;
 	            		chartData.series.currentReference[i] = currentDetail[i].netProfit.reference;
 	            		chartData.gridData[i] = {id:null, name:null, amount:null};

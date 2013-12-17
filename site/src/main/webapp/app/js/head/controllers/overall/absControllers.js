@@ -67,8 +67,8 @@ angular.module('overallAbs.controllers', [])
 	            	var chartCategories = [{ categories: null }];
 	            	var dealers = [];
 	            	var previousDetail = data.detail[0].detail;
-	            	for ( var i in previousDetail ) {
-	            		dealers[i] = previousDetail[i].code;
+	            	for (var i=0; i<previousDetail.length; i++) {
+						dealers[i] = previousDetail[i].code;
 	            		chartData[0].series.previous[i] = previousDetail[i].revenue.amount;
 	            		chartData[0].series.previousReference[i] = previousDetail[i].revenue.reference;
 	            		
@@ -87,8 +87,8 @@ angular.module('overallAbs.controllers', [])
 	            	
 					chartCategories[0].categories = dealers;
 					var currentDetail = data.detail[1].detail;
-					for ( var i in currentDetail ) {
-	            		chartData[0].series.current[i] = currentDetail[i].revenue.amount;
+					for (var i=0; i<currentDetail.length; i++) {
+						chartData[0].series.current[i] = currentDetail[i].revenue.amount;
 	            		chartData[0].series.currentReference[i] = currentDetail[i].revenue.reference;
 	            		chartData[0].series.currentPercentage[i] = currentDetail[i].revenue.percentage * 100;
 	            		

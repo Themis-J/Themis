@@ -79,8 +79,8 @@ angular.module('overallHRAnalysis.controllers', [])
             	var dealers = [];
             	var detail = data.detail[0].detail;
             	
-	            for ( var i in detail ) {
-	            	dealers[i] = detail[i].code;
+	            for (var i=0; i<detail.length; i++) {
+						dealers[i] = detail[i].code;
 	            	currentData.series.allocation[i] = detail[i].allocation.amount;
 	            };
 	            

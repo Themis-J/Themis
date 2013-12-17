@@ -32,8 +32,8 @@ angular.module('overallNonSalesProfit.controllers', [])
 	            	
 					chartCategories[0].categories = dealers;
 					var currentDetail = data.detail[0].detail;
-					for ( var i in currentDetail ) {
-	            		chartData.series.current[i] = currentDetail[i].revenue.amount;
+					for (var i=0; i<currentDetail.length; i++) {
+						chartData.series.current[i] = currentDetail[i].revenue.amount;
 	            		chartData.series.currentPercentage[i] = currentDetail[i].revenue.percentage * 100;
 	            		chartData.series.currentReference[i] = currentDetail[i].revenue.reference;
 	            		chartData.gridData[i] = {id:null, name:null, amount:null};

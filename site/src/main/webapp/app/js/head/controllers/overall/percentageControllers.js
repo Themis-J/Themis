@@ -80,8 +80,8 @@ angular.module('overallPercentage.controllers', [])
             	var chartCategories = [{ categories: null }];
             	var dealers = [];
             	var previousDetail = data.detail[0].detail;
-	            for ( var i in previousDetail ) {
-	            		dealers[i] = previousDetail[i].code;
+	            for (var i=0; i<previousDetail.length; i++) {
+							dealers[i] = previousDetail[i].code;
 	            		
 	            		chartData[0].series.previous[i] = previousDetail[i].margin.amount * 100;
 	            		chartData[0].series.previousReference[i] = previousDetail[i].margin.reference * 100;
@@ -98,8 +98,8 @@ angular.module('overallPercentage.controllers', [])
 	            	
 				chartCategories[0].categories = dealers;
 				var currentDetail = data.detail[1].detail;
-				for ( var i in currentDetail ) {
-	            		chartData[0].series.current[i] = currentDetail[i].margin.amount * 100;
+				for (var i=0; i<currentDetail.length; i++) {
+							chartData[0].series.current[i] = currentDetail[i].margin.amount * 100;
 	            		chartData[0].series.currentReference[i] = currentDetail[i].margin.reference * 100;
 		            
 		            	chartData[1].series.current[i] = currentDetail[i].expense.amount * 100;

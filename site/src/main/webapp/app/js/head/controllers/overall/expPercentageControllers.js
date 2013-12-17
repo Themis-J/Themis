@@ -63,8 +63,8 @@ angular.module('overallExpPercentage.controllers', [])
             	var dealers = [];
             	var detail = data.detail[0].detail;
             	
-	            for ( var i in detail ) {
-	            	dealers[i] = detail[i].code;
+	           for (var i=0; i<detail.length; i++) {
+					 	dealers[i] = detail[i].code;
 	            	currentData.series.amount[i] = detail[i].amount.amount;
 	            	currentData.series.currentMargin[i] = detail[i].currentMargin.amount;
 	            	currentData.series.previousMargin[i] = detail[i].previousMargin.amount;

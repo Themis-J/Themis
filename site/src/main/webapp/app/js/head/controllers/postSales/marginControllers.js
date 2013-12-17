@@ -38,21 +38,26 @@ angular.module('postSalesMargin.controllers', [])
 				chartCategories[0].categories = dealers;
 				var currentDetail = data.detail[0].detail;
 				var j = 0;
-				for ( var i in currentDetail ) {
-            		chartData.series.current[i] = currentDetail[i].margin.amount;
-            		chartData.series.currentPercentage[i] = currentDetail[i].margin.percentage * 100;
-            		chartData.series.currentReference[i] = currentDetail[i].margin.reference;
-            		
-            		for ( var k in currentDetail[i].detail ) {
-            			chartData.gridData[j] = {id:null, departmentName:null, name:null, amount:null, totalAmount:null};
-		            	chartData.gridData[j].id = currentDetail[i].code;
-		            	chartData.gridData[j].name = currentDetail[i].name;
-		            	chartData.gridData[j].departmentName = currentDetail[i].detail[k].name;
-		            	chartData.gridData[j].amount = currentDetail[i].detail[k].margin.amount;
-		            	chartData.gridData[j].totalAmount = currentDetail[i].margin.amount;
-		            	j++;
-            		}
-            	};
+				for (var i = 0; i < currentDetail.length; i++) {
+					chartData.series.current[i] = currentDetail[i].margin.amount;
+					chartData.series.currentPercentage[i] = currentDetail[i].margin.percentage * 100;
+					chartData.series.currentReference[i] = currentDetail[i].margin.reference;
+					for (var k = 0; k < currentDetail[i].detail.length; k++) {
+						chartData.gridData[j] = {
+							id : null,
+							departmentName : null,
+							name : null,
+							amount : null,
+							totalAmount : null
+						};
+						chartData.gridData[j].id = currentDetail[i].code;
+						chartData.gridData[j].name = currentDetail[i].name;
+						chartData.gridData[j].departmentName = currentDetail[i].detail[k].name;
+						chartData.gridData[j].amount = currentDetail[i].detail[k].margin.amount;
+						chartData.gridData[j].totalAmount = currentDetail[i].margin.amount;
+						j++;
+					}
+				}
             	var chartSubtitle = '月均对比';
             	var chartColumnCurrent = '月均';
             	var chartColumnCurrentRef = '参考值';
@@ -74,7 +79,7 @@ angular.module('postSalesMargin.controllers', [])
 					   		{name:'amount',index:'amount', width:80, formatter:"number", align:"right", sorttype:"float", summaryType: "sum"},
 					   		{name:'totalAmount',index:'totalAmount', width:80, formatter:"number", sorttype:"float", align:"right"}
 					   	],
-					   	rowNum:30,
+					   	rowNum:300,
 					   	pager: '#report_pager',
 					   	loadError: function(xhr,status, err) { 
 					   		try {
