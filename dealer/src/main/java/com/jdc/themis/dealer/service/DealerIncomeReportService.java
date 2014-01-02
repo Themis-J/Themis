@@ -8,10 +8,13 @@ import com.jdc.themis.dealer.web.domain.QueryDealerAccountReceivableResponse;
 import com.jdc.themis.dealer.web.domain.QueryDealerExpensePercentageResponse;
 import com.jdc.themis.dealer.web.domain.QueryDealerHRAllocationResponse;
 import com.jdc.themis.dealer.web.domain.QueryDealerIncomeResponse;
+import com.jdc.themis.dealer.web.domain.QueryDealerMaintenanceIncomeResponse;
 import com.jdc.themis.dealer.web.domain.QueryDealerPostSalesExpenseResponse;
 import com.jdc.themis.dealer.web.domain.QueryDealerPostSalesIncomeResponse;
 import com.jdc.themis.dealer.web.domain.QueryDealerSalesIncomeResponse;
 import com.jdc.themis.dealer.web.domain.QueryDealerSalesResponse;
+import com.jdc.themis.dealer.web.domain.QueryDealerSheetSprayIncomeResponse;
+import com.jdc.themis.dealer.web.domain.QueryDealerSparePartIncomeResponse;
 import com.jdc.themis.dealer.web.domain.QueryDepartmentIncomeResponse;
 
 import fj.data.Option;
@@ -71,5 +74,17 @@ public interface DealerIncomeReportService {
 	QueryDealerPostSalesExpenseResponse queryDealerPostSalesExpenseReport(
 			Integer year, Integer monthOfYear, Option<Integer> groupBy,
 			Option<String> itemCategory);
+
+	@Transactional(readOnly = true)
+	QueryDealerMaintenanceIncomeResponse queryDealerMaintenanceIncomeReport(
+			Integer year, Integer monthOfYear, String itemName);
+
+	@Transactional(readOnly = true)
+	QueryDealerSparePartIncomeResponse queryDealerSparePartIncomeReport(
+			Integer year, Integer monthOfYear, String itemName);
+
+	@Transactional(readOnly = true)
+	QueryDealerSheetSprayIncomeResponse queryDealerSheetSprayIncomeReport(
+			Integer year, Integer monthOfYear, String itemName);
 	
 }

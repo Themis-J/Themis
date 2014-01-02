@@ -1,0 +1,32 @@
+<div id="report_div" class="span9 row-fluid" style="padding-left: 60px" ng-controller="sparePartIncomeCtrl">
+	<div class="span11">
+		<div>
+			<div id="date_div" style="padding-bottom: 10px">
+				<div>
+					<select ng-options="o.name for o in yearOptions" ng-model="selectedYearOption" ng-change="selectReportYear()"></select>
+					<select ng-options="o.name for o in monthOptions" ng-model="selectedMonthOption" ng-change="selectReportMonth()"></select>
+					<select ng-options="o.name for o in categoryOptions" ng-model="selectedCategoryOption" ng-change="selectReportCategory()"></select>
+				</div>
+			</div>
+			<div style="padding-bottom: 10px">
+				<span ng-repeat="chart in charts">
+					<input type="checkbox" ng-model="chart.display" ng-click="showReport()"><span>{{chart.text}}</span>
+				</span>
+			</div>
+			<div style="padding-bottom: 10px">
+				<button class="btn btn-success" type="button" ng-click="toggleFullScreen()">全屏</button>
+				<button class="btn btn-success" type="button" ng-click="showChart()">{{report_chart_button_text}}</button>
+			</div>
+		</div>
+		
+		<div id="chartsDisplay">
+			<div id="report_chart" ng-show="report_chart_display">
+			</div>
+		</div>
+		
+		<div>
+			<table id="report_list" ></table>
+			<div id="report_pager" ></div>
+		</div>
+	</div>  
+</div>

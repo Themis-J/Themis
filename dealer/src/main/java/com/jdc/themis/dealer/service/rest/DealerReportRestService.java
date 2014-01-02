@@ -283,7 +283,7 @@ public class DealerReportRestService {
 	 * @param year
 	 * @param monthOfYear
 	 * @param groupBy
-	 * @param itemName
+	 * @param itemCategory
 	 * @return
 	 */
 	@GET
@@ -299,6 +299,69 @@ public class DealerReportRestService {
 				dealerIncomeReportService.queryDealerPostSalesExpenseReport(
 						year, monthOfYear, Option.fromNull(groupBy),
 						Option.fromNull(itemCategory))).build();
+	}
+	
+	/**
+	 * Query maintenance department income report.
+	 * 
+	 * @param year
+	 * @param monthOfYear
+	 * @param itemName
+	 * @return
+	 */
+	@GET
+	@Path("/query/maintenanceIncomeReport")
+	@Produces({ "application/json", "application/xml" })
+	@RestServiceErrorHandler
+	public Response queryDealerMaintenanceIncomeReport(
+			@QueryParam("year") Integer year,
+			@QueryParam("monthOfYear") Integer monthOfYear,
+			@QueryParam("itemName") String itemName) {
+		return Response.ok(
+				dealerIncomeReportService.queryDealerMaintenanceIncomeReport(
+						year, monthOfYear, itemName)).build();
+	}
+
+	/**
+	 * Query spare part department income report.
+	 * 
+	 * @param year
+	 * @param monthOfYear
+	 * @param itemName
+	 * @return
+	 */
+	@GET
+	@Path("/query/sparePartIncomeReport")
+	@Produces({ "application/json", "application/xml" })
+	@RestServiceErrorHandler
+	public Response queryDealerSparePartIncomeReport(
+			@QueryParam("year") Integer year,
+			@QueryParam("monthOfYear") Integer monthOfYear,
+			@QueryParam("itemName") String itemName) {
+		return Response.ok(
+				dealerIncomeReportService.queryDealerSparePartIncomeReport(
+						year, monthOfYear, itemName)).build();
+	}
+
+	/**
+	 * Query sheet spray department income report.
+	 * 
+	 * @param year
+	 * @param monthOfYear
+	 * @param itemName
+	 * @return
+	 */
+	@GET
+	@Path("/query/sheetSprayIncomeReport")
+	@Produces({ "application/json", "application/xml" })
+	@RestServiceErrorHandler
+	public Response queryDealerSheetSprayIncomeReport(
+			@QueryParam("year") Integer year,
+			@QueryParam("monthOfYear") Integer monthOfYear,
+			@QueryParam("itemName") String itemName) {
+		return Response.ok(
+				dealerIncomeReportService.queryDealerSheetSprayIncomeReport(
+						year, monthOfYear, itemName)).build();
 	}
 	
 }

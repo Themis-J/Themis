@@ -38,26 +38,26 @@ angular.module('postSalesMargin.controllers', [])
 				chartCategories[0].categories = dealers;
 				var currentDetail = data.detail[0].detail;
 				var j = 0;
-				for (var i=0; i<currentDetail.length; i++) {
+				for (var i = 0; i < currentDetail.length; i++) {
 					chartData.series.current[i] = currentDetail[i].margin.amount;
-            		chartData.series.currentPercentage[i] = currentDetail[i].margin.percentage * 100;
-            		chartData.series.currentReference[i] = currentDetail[i].margin.reference;
-            		
-            		for (var k=0; k<currentDetail[i].detail.length; k++) {
-						if ( currentDetail[i].detail[k].name != 'NA' &&  
-            					currentDetail[i].detail[k].name != '二手车部' && 
-            						currentDetail[i].detail[k].name != '其它部' &&
-            						currentDetail[i].detail[k].name != '租赁事业部' ) {
-		            		chartData.gridData[j] = {id:null, departmentName:null, name:null, amount:null, totalAmount:null};
-		            		chartData.gridData[j].id = currentDetail[i].code;
-		            		chartData.gridData[j].name = currentDetail[i].name;
-		            		chartData.gridData[j].departmentName = currentDetail[i].detail[k].name;
-		            		chartData.gridData[j].amount = currentDetail[i].detail[k].margin.amount;
-		            		chartData.gridData[j].totalAmount = currentDetail[i].margin.amount;
-		            		j++;
-	            		}
-            		}
-            	};
+					chartData.series.currentPercentage[i] = currentDetail[i].margin.percentage * 100;
+					chartData.series.currentReference[i] = currentDetail[i].margin.reference;
+					for (var k = 0; k < currentDetail[i].detail.length; k++) {
+						chartData.gridData[j] = {
+							id : null,
+							departmentName : null,
+							name : null,
+							amount : null,
+							totalAmount : null
+						};
+						chartData.gridData[j].id = currentDetail[i].code;
+						chartData.gridData[j].name = currentDetail[i].name;
+						chartData.gridData[j].departmentName = currentDetail[i].detail[k].name;
+						chartData.gridData[j].amount = currentDetail[i].detail[k].margin.amount;
+						chartData.gridData[j].totalAmount = currentDetail[i].margin.amount;
+						j++;
+					}
+				}
             	var chartSubtitle = '月均对比';
             	var chartColumnCurrent = '月均';
             	var chartColumnCurrentRef = '参考值';
@@ -198,9 +198,9 @@ angular.module('postSalesMargin.controllers', [])
 	$scope.report_chart_display = reportService.getShowChart();
 	$scope.report_chart_button_text = "显示图表";
 	var currentDate = new Date();
-		reportService.setCurrentYear(currentDate.getFullYear());
+	reportService.setCurrentYear(currentDate.getFullYear());
 	reportService.setMonthOfYear(currentDate.getMonth());
-		$scope.yearOptions = reportService.getYearList();
+	$scope.yearOptions = reportService.getYearList();
 	$scope.selectedYearOption = $scope.yearOptions[0];
 	$scope.monthOptions = reportService.getMonthList();
 	$scope.selectedMonthOption = $scope.monthOptions[reportService.getMonthOfYear()-1];

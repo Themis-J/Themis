@@ -1,9 +1,12 @@
 package com.jdc.themis.dealer.service.impl;
 
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Calendar;
 import java.util.Collection;
 import java.util.Date;
 import java.util.GregorianCalendar;
+import java.util.List;
 
 import javax.time.calendar.LocalDate;
 
@@ -20,12 +23,14 @@ import com.jdc.themis.dealer.domain.DealerAccountReceivableFact;
 import com.jdc.themis.dealer.domain.DealerHRAllocationFact;
 import com.jdc.themis.dealer.domain.DealerIncomeExpenseFact;
 import com.jdc.themis.dealer.domain.DealerIncomeRevenueFact;
+import com.jdc.themis.dealer.domain.ReportItem;
 import com.jdc.themis.dealer.report.DealerAccountReceivableReportCalculator;
-import com.jdc.themis.dealer.report.DealerPostSalesExpenseReportCalculator;
-import com.jdc.themis.dealer.report.DealerPostSalesIncomeReportCalculator;
 import com.jdc.themis.dealer.report.DealerExpensePercentageReportCalculator;
 import com.jdc.themis.dealer.report.DealerHRAllocationReportCalculator;
 import com.jdc.themis.dealer.report.DealerIncomeReportCalculator;
+import com.jdc.themis.dealer.report.DealerPostSalesDepartmentIncomeReportCalculator;
+import com.jdc.themis.dealer.report.DealerPostSalesExpenseReportCalculator;
+import com.jdc.themis.dealer.report.DealerPostSalesIncomeReportCalculator;
 import com.jdc.themis.dealer.report.DealerReportCalculator;
 import com.jdc.themis.dealer.report.DealerSalesIncomeReportCalculator;
 import com.jdc.themis.dealer.report.DealerSalesReportCalculator;
@@ -36,13 +41,16 @@ import com.jdc.themis.dealer.service.RefDataQueryService;
 import com.jdc.themis.dealer.utils.Performance;
 import com.jdc.themis.dealer.web.domain.ImportReportDataRequest;
 import com.jdc.themis.dealer.web.domain.QueryDealerAccountReceivableResponse;
-import com.jdc.themis.dealer.web.domain.QueryDealerPostSalesExpenseResponse;
-import com.jdc.themis.dealer.web.domain.QueryDealerPostSalesIncomeResponse;
 import com.jdc.themis.dealer.web.domain.QueryDealerExpensePercentageResponse;
 import com.jdc.themis.dealer.web.domain.QueryDealerHRAllocationResponse;
 import com.jdc.themis.dealer.web.domain.QueryDealerIncomeResponse;
+import com.jdc.themis.dealer.web.domain.QueryDealerMaintenanceIncomeResponse;
+import com.jdc.themis.dealer.web.domain.QueryDealerPostSalesExpenseResponse;
+import com.jdc.themis.dealer.web.domain.QueryDealerPostSalesIncomeResponse;
 import com.jdc.themis.dealer.web.domain.QueryDealerSalesIncomeResponse;
 import com.jdc.themis.dealer.web.domain.QueryDealerSalesResponse;
+import com.jdc.themis.dealer.web.domain.QueryDealerSheetSprayIncomeResponse;
+import com.jdc.themis.dealer.web.domain.QueryDealerSparePartIncomeResponse;
 import com.jdc.themis.dealer.web.domain.QueryDepartmentIncomeResponse;
 import com.jdc.themis.dealer.web.domain.ReportDealerDataList;
 import com.jdc.themis.dealer.web.domain.ReportDealerExpensePercentageDataList;
@@ -548,7 +556,7 @@ public class DealerIncomeReportServiceImpl implements DealerIncomeReportService 
 		response.getDetail().add(calculator.getReportDetail());
 		return response;
 	}
-	
+
 	@Override
 	@Performance
 	public QueryDealerPostSalesIncomeResponse queryDealerPostSalesIncomeReport(
@@ -581,8 +589,115 @@ public class DealerIncomeReportServiceImpl implements DealerIncomeReportService 
 		final ImmutableListMultimap<Integer, DealerIncomeRevenueFact> dealerRevenueFacts = Multimaps
 				.index(revenueFacts, GetDealerIDFromRevenueFunction.INSTANCE);
 
+		calculator.calcRevenues(dealerRevenueFacts, refDataDAL).calcMargins(
+				dealerRevenueFacts, refDataDAL);
+
+		response.getDetail().add(calculator.getReportDetail());
+		return response;
+	}
+
+	@Override
+	@Performance
+	public QueryDealerMaintenanceIncomeResponse queryDealerMaintenanceIncomeReport(
+			final Integer year, final Integer monthOfYear, final String itemName) {
+		Preconditions.checkNotNull(year, "year can't be null");
+		Preconditions.checkNotNull(monthOfYear, "month can't be null");
+		Preconditions.checkNotNull(itemName, "item name can't be null");
+		final QueryDealerMaintenanceIncomeResponse response = new QueryDealerMaintenanceIncomeResponse();
+		response.setReportName("MaintenanceIncomeReport");
+
+		DealerPostSalesDepartmentIncomeReportCalculator calculator = new DealerPostSalesDepartmentIncomeReportCalculator(
+				refDataDAL.getDealers().getItems(), year, monthOfYear);
+
+		// Get all revenues
+		final DealerIncomeFactsQueryBuilder queryBuilder = new DealerIncomeFactsQueryBuilder(
+				reportDAL).withYear(year);
+
+		List<ReportItem> reportItems = new ArrayList<ReportItem>(
+				reportDAL.getReportItem(
+						new ArrayList<String>(Arrays.asList("维修收入", "维修其它收入")),
+						new ArrayList<String>(Arrays.asList(itemName)),
+						new ArrayList<Integer>()));
+		final Collection<DealerIncomeRevenueFact> revenueFacts = queryBuilder
+				.withDepartmentID(refDataDAL.getDepartment("维修部").getId())
+				.withItemID(reportItems.get(0).getId()).queryRevenues();
+		final ImmutableListMultimap<Integer, DealerIncomeRevenueFact> dealerRevenueFacts = Multimaps
+				.index(revenueFacts, GetDealerIDFromRevenueFunction.INSTANCE);
+
 		calculator.calcRevenues(dealerRevenueFacts, refDataDAL)
-				.calcMargins(dealerRevenueFacts, refDataDAL);
+				.calcMargins(dealerRevenueFacts, refDataDAL)
+				.calcCount(dealerRevenueFacts, refDataDAL);
+
+		response.getDetail().add(calculator.getReportDetail());
+		return response;
+	}
+
+	@Override
+	@Performance
+	public QueryDealerSparePartIncomeResponse queryDealerSparePartIncomeReport(
+			final Integer year, final Integer monthOfYear, final String itemName) {
+		Preconditions.checkNotNull(year, "year can't be null");
+		Preconditions.checkNotNull(monthOfYear, "month can't be null");
+		Preconditions.checkNotNull(itemName, "item name can't be null");
+		final QueryDealerSparePartIncomeResponse response = new QueryDealerSparePartIncomeResponse();
+		response.setReportName("SparePartIncomeReport");
+
+		DealerPostSalesDepartmentIncomeReportCalculator calculator = new DealerPostSalesDepartmentIncomeReportCalculator(
+				refDataDAL.getDealers().getItems(), year, monthOfYear);
+
+		// Get all revenues
+		final DealerIncomeFactsQueryBuilder queryBuilder = new DealerIncomeFactsQueryBuilder(
+				reportDAL).withYear(year);
+
+		List<ReportItem> reportItems = new ArrayList<ReportItem>(
+				reportDAL.getReportItem(
+						new ArrayList<String>(Arrays.asList("配件收入")),
+						new ArrayList<String>(Arrays.asList(itemName)),
+						new ArrayList<Integer>()));
+		final Collection<DealerIncomeRevenueFact> revenueFacts = queryBuilder
+				.withDepartmentID(refDataDAL.getDepartment("备件部").getId())
+				.withItemID(reportItems.get(0).getId()).queryRevenues();
+		final ImmutableListMultimap<Integer, DealerIncomeRevenueFact> dealerRevenueFacts = Multimaps
+				.index(revenueFacts, GetDealerIDFromRevenueFunction.INSTANCE);
+
+		calculator.calcRevenues(dealerRevenueFacts, refDataDAL).calcMargins(
+				dealerRevenueFacts, refDataDAL);
+
+		response.getDetail().add(calculator.getReportDetail());
+		return response;
+	}
+
+	@Override
+	@Performance
+	public QueryDealerSheetSprayIncomeResponse queryDealerSheetSprayIncomeReport(
+			final Integer year, final Integer monthOfYear, final String itemName) {
+		Preconditions.checkNotNull(year, "year can't be null");
+		Preconditions.checkNotNull(monthOfYear, "month can't be null");
+		Preconditions.checkNotNull(itemName, "item name can't be null");
+		final QueryDealerSheetSprayIncomeResponse response = new QueryDealerSheetSprayIncomeResponse();
+		response.setReportName("SheetSprayIncomeReport");
+
+		DealerPostSalesDepartmentIncomeReportCalculator calculator = new DealerPostSalesDepartmentIncomeReportCalculator(
+				refDataDAL.getDealers().getItems(), year, monthOfYear);
+
+		// Get all revenues
+		final DealerIncomeFactsQueryBuilder queryBuilder = new DealerIncomeFactsQueryBuilder(
+				reportDAL).withYear(year);
+
+		List<ReportItem> reportItems = new ArrayList<ReportItem>(
+				reportDAL.getReportItem(
+						new ArrayList<String>(Arrays.asList("钣喷收入", "钣喷其它收入")),
+						new ArrayList<String>(Arrays.asList(itemName)),
+						new ArrayList<Integer>()));
+		final Collection<DealerIncomeRevenueFact> revenueFacts = queryBuilder
+				.withDepartmentID(refDataDAL.getDepartment("钣喷部").getId())
+				.withItemID(reportItems.get(0).getId()).queryRevenues();
+		final ImmutableListMultimap<Integer, DealerIncomeRevenueFact> dealerRevenueFacts = Multimaps
+				.index(revenueFacts, GetDealerIDFromRevenueFunction.INSTANCE);
+
+		calculator.calcRevenues(dealerRevenueFacts, refDataDAL)
+				.calcMargins(dealerRevenueFacts, refDataDAL)
+				.calcCount(dealerRevenueFacts, refDataDAL);
 
 		response.getDetail().add(calculator.getReportDetail());
 		return response;
