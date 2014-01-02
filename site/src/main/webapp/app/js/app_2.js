@@ -35,6 +35,10 @@ angular.module('themis', ['ngRoute', 'themis.directives', 'themis.controllers', 
 		'ardFactory.controllers',
 		'postSalesRevenue.controllers',
 		'postSalesMargin.controllers',
+		'postSalesExpense.controllers',
+		'maintenanceIncome.controllers',
+		'sparePartIncome.controllers',
+		'sheetSprayIncome.controllers',
         'admin.controllers']).
     config(['$routeProvider', function($routeProvider) {
     	$routeProvider.when('/head/report', {templateUrl: 'partials/head/edit.html', controller: 'headEditCtrl'});
