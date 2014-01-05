@@ -43,11 +43,9 @@ angular.module('postSalesExpense.controllers', []).controller('postSalesExpenseC
 				gridData : []
 			}
 			
-			var chartCategories = [
-			    {
+			var chartCategories = [{
 			    	categories : null
-			    }
-			];
+			}];
 			var dealers = [];
 			chartCategories[0].categories = dealers;
 			var currentDetail = data.detail[0].detail;
@@ -149,7 +147,7 @@ angular.module('postSalesExpense.controllers', []).controller('postSalesExpenseC
 					],
 					rowNum : 30,
 					pager : '#report_pager',
-					loadError : function(xhr,status, err) { 
+					loadError : function(xhr, status, err) { 
 					   	try {
 					   		jQuery.jgrid.info_dialog(jQuery.jgrid.errors.errcap,'<div class="ui-state-error">'+ xhr.responseText +'</div>', jQuery.jgrid.edit.bClose,{buttonalign:'right'});
 					   	} catch(e) { 
@@ -258,11 +256,11 @@ angular.module('postSalesExpense.controllers', []).controller('postSalesExpenseC
 	$scope.report_chart_button_text = "显示图表";
 	var currentDate = new Date();
 	reportService.setCurrentYear(currentDate.getFullYear());
-	reportService.setMonthOfYear(currentDate.getMonth());
+	reportService.setMonthOfYear(currentDate.getMonth() + 1);
 	$scope.yearOptions = reportService.getYearList();
 	$scope.selectedYearOption = $scope.yearOptions[0];
 	$scope.monthOptions = reportService.getMonthList();
-	$scope.selectedMonthOption = $scope.monthOptions[reportService.getMonthOfYear()-1];
+	$scope.selectedMonthOption = $scope.monthOptions[reportService.getMonthOfYear() - 1];
 	$scope.categoryOptions = [
  	    {
  	    	name : '销售费用',

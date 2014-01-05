@@ -224,11 +224,11 @@ angular.module('sparePartIncome.controllers', []).controller('sparePartIncomeCtr
 	$scope.report_chart_button_text = "显示图表";
 	var currentDate = new Date();
 	reportService.setCurrentYear(currentDate.getFullYear());
-	reportService.setMonthOfYear(currentDate.getMonth());
+	reportService.setMonthOfYear(currentDate.getMonth() + 1);
 	$scope.yearOptions = reportService.getYearList();
 	$scope.selectedYearOption = $scope.yearOptions[0];
 	$scope.monthOptions = reportService.getMonthList();
-	$scope.selectedMonthOption = $scope.monthOptions[reportService.getMonthOfYear()-1];
+	$scope.selectedMonthOption = $scope.monthOptions[reportService.getMonthOfYear() - 1];
 	$scope.categoryOptions = [
  	    {
  	    	name : '客户－维修部',

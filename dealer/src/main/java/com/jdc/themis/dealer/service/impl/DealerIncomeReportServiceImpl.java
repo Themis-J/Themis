@@ -29,7 +29,6 @@ import com.jdc.themis.dealer.report.DealerExpensePercentageReportCalculator;
 import com.jdc.themis.dealer.report.DealerHRAllocationReportCalculator;
 import com.jdc.themis.dealer.report.DealerIncomeReportCalculator;
 import com.jdc.themis.dealer.report.DealerPostSalesDepartmentIncomeReportCalculator;
-import com.jdc.themis.dealer.report.DealerPostSalesExpenseReportCalculator;
 import com.jdc.themis.dealer.report.DealerPostSalesIncomeReportCalculator;
 import com.jdc.themis.dealer.report.DealerReportCalculator;
 import com.jdc.themis.dealer.report.DealerSalesIncomeReportCalculator;
@@ -45,8 +44,7 @@ import com.jdc.themis.dealer.web.domain.QueryDealerExpensePercentageResponse;
 import com.jdc.themis.dealer.web.domain.QueryDealerHRAllocationResponse;
 import com.jdc.themis.dealer.web.domain.QueryDealerIncomeResponse;
 import com.jdc.themis.dealer.web.domain.QueryDealerMaintenanceIncomeResponse;
-import com.jdc.themis.dealer.web.domain.QueryDealerPostSalesExpenseResponse;
-import com.jdc.themis.dealer.web.domain.QueryDealerPostSalesIncomeResponse;
+import com.jdc.themis.dealer.web.domain.QueryDealerPostSalesResponse;
 import com.jdc.themis.dealer.web.domain.QueryDealerSalesIncomeResponse;
 import com.jdc.themis.dealer.web.domain.QueryDealerSalesResponse;
 import com.jdc.themis.dealer.web.domain.QueryDealerSheetSprayIncomeResponse;
@@ -515,56 +513,15 @@ public class DealerIncomeReportServiceImpl implements DealerIncomeReportService 
 		response.getDetail().add(calculator.calcPercentage(excludingFactsMap, factsMap).getReportDetail());
 		return response;
 	}
-	
-	@Override
-	@Performance
-	public QueryDealerPostSalesExpenseResponse queryDealerPostSalesExpenseReport(
-			final Integer year, final Integer monthOfYear,
-			final Option<Integer> groupBy, final Option<String> itemCategory) {
-		Preconditions.checkNotNull(year, "year can't be null");
-		Preconditions.checkNotNull(monthOfYear, "month can't be null");
-		final QueryDealerPostSalesExpenseResponse response = new QueryDealerPostSalesExpenseResponse();
-		response.setReportName("PostSalesExpenseReport");
-
-		DealerPostSalesExpenseReportCalculator calculator = new DealerPostSalesExpenseReportCalculator(
-				refDataDAL.getDealers().getItems(), refDataDAL
-						.getPostSalesDepartments().getItems(), year,
-				monthOfYear);
-		if (groupBy.isSome()) {
-			calculator = calculator.withGroupBy(groupBy);
-		}
-
-		// Get all revenues
-		final DealerIncomeFactsQueryBuilder queryBuilder = new DealerIncomeFactsQueryBuilder(
-				reportDAL).withYear(year);
-
-		if (itemCategory.isSome()) {
-			queryBuilder.withItemCategory(itemCategory.some());
-		}
-
-		// Get all expenses
-		final Collection<DealerIncomeExpenseFact> expenseFacts = queryBuilder
-				.withDepartmentID(refDataDAL.getDepartment("维修部").getId())
-				.withDepartmentID(refDataDAL.getDepartment("备件部").getId())
-				.withDepartmentID(refDataDAL.getDepartment("钣喷部").getId())
-				.queryExpenses();
-		final ImmutableListMultimap<Integer, DealerIncomeExpenseFact> dealerExpenseFacts = Multimaps
-				.index(expenseFacts, GetDealerIDFromExpenseFunction.INSTANCE);
-
-		calculator.calcExpenses(dealerExpenseFacts, refDataDAL);
-
-		response.getDetail().add(calculator.getReportDetail());
-		return response;
-	}
 
 	@Override
 	@Performance
-	public QueryDealerPostSalesIncomeResponse queryDealerPostSalesIncomeReport(
+	public QueryDealerPostSalesResponse queryDealerPostSalesIncomeReport(
 			final Integer year, final Integer monthOfYear,
 			final Option<Integer> groupBy) {
 		Preconditions.checkNotNull(year, "year can't be null");
 		Preconditions.checkNotNull(monthOfYear, "month can't be null");
-		final QueryDealerPostSalesIncomeResponse response = new QueryDealerPostSalesIncomeResponse();
+		final QueryDealerPostSalesResponse response = new QueryDealerPostSalesResponse();
 		response.setReportName("PostSalesIncomeReport");
 
 		DealerPostSalesIncomeReportCalculator calculator = new DealerPostSalesIncomeReportCalculator(
@@ -591,6 +548,96 @@ public class DealerIncomeReportServiceImpl implements DealerIncomeReportService 
 
 		calculator.calcRevenues(dealerRevenueFacts, refDataDAL).calcMargins(
 				dealerRevenueFacts, refDataDAL);
+
+		response.getDetail().add(calculator.getReportDetail());
+		return response;
+	}
+	
+	@Override
+	@Performance
+	public QueryDealerPostSalesResponse queryDealerPostSalesExpenseReport(
+			final Integer year, final Integer monthOfYear,
+			final Option<Integer> groupBy, final Option<String> itemCategory) {
+		Preconditions.checkNotNull(year, "year can't be null");
+		Preconditions.checkNotNull(monthOfYear, "month can't be null");
+		final QueryDealerPostSalesResponse response = new QueryDealerPostSalesResponse();
+		response.setReportName("PostSalesExpenseReport");
+
+		DealerPostSalesIncomeReportCalculator calculator = new DealerPostSalesIncomeReportCalculator(
+				refDataDAL.getDealers().getItems(), refDataDAL
+						.getPostSalesDepartments().getItems(), year,
+				monthOfYear);
+		if (groupBy.isSome()) {
+			calculator = calculator.withGroupBy(groupBy);
+		}
+
+		final DealerIncomeFactsQueryBuilder queryBuilder = new DealerIncomeFactsQueryBuilder(
+				reportDAL).withYear(year);
+
+		if (itemCategory.isSome()) {
+			queryBuilder.withItemCategory(itemCategory.some());
+		}
+
+		// Get all expenses
+		final Collection<DealerIncomeExpenseFact> expenseFacts = queryBuilder
+				.withDepartmentID(refDataDAL.getDepartment("维修部").getId())
+				.withDepartmentID(refDataDAL.getDepartment("备件部").getId())
+				.withDepartmentID(refDataDAL.getDepartment("钣喷部").getId())
+				.queryExpenses();
+		final ImmutableListMultimap<Integer, DealerIncomeExpenseFact> dealerExpenseFacts = Multimaps
+				.index(expenseFacts, GetDealerIDFromExpenseFunction.INSTANCE);
+
+		calculator.calcExpenses(dealerExpenseFacts, refDataDAL);
+
+		response.getDetail().add(calculator.getReportDetail());
+		return response;
+	}
+
+	@Override
+	@Performance
+	public QueryDealerPostSalesResponse queryDealerPostSalesOpProfitReport(
+			final Integer year, final Integer monthOfYear,
+			final Option<Integer> groupBy) {
+		Preconditions.checkNotNull(year, "year can't be null");
+		Preconditions.checkNotNull(monthOfYear, "month can't be null");
+		final QueryDealerPostSalesResponse response = new QueryDealerPostSalesResponse();
+		response.setReportName("PostSalesOpProfitReport");
+
+		DealerPostSalesIncomeReportCalculator calculator = new DealerPostSalesIncomeReportCalculator(
+				refDataDAL.getDealers().getItems(), refDataDAL
+						.getPostSalesDepartments().getItems(), year,
+				monthOfYear);
+		if (groupBy.isSome()) {
+			calculator = calculator.withGroupBy(groupBy);
+		}
+
+		// Get all revenues
+		final DealerIncomeFactsQueryBuilder queryBuilder = new DealerIncomeFactsQueryBuilder(
+				reportDAL).withYear(year);
+
+		final Collection<DealerIncomeRevenueFact> revenueFacts = queryBuilder
+				.withDepartmentID(refDataDAL.getDepartment("维修部").getId())
+				.withDepartmentID(refDataDAL.getDepartment("备件部").getId())
+				.withDepartmentID(refDataDAL.getDepartment("钣喷部").getId())
+				.withItemCategory("维修收入").withItemCategory("配件收入")
+				.withItemCategory("钣喷收入").withItemCategory("维修其它收入")
+				.withItemCategory("钣喷其它收入").queryRevenues();
+		final ImmutableListMultimap<Integer, DealerIncomeRevenueFact> dealerRevenueFacts = Multimaps
+				.index(revenueFacts, GetDealerIDFromRevenueFunction.INSTANCE);
+
+		// Get all expenses
+		final Collection<DealerIncomeExpenseFact> expenseFacts = queryBuilder
+				.clear()
+				.withDepartmentID(refDataDAL.getDepartment("维修部").getId())
+				.withDepartmentID(refDataDAL.getDepartment("备件部").getId())
+				.withDepartmentID(refDataDAL.getDepartment("钣喷部").getId())
+				.queryExpenses();
+		final ImmutableListMultimap<Integer, DealerIncomeExpenseFact> dealerExpenseFacts = Multimaps
+				.index(expenseFacts, GetDealerIDFromExpenseFunction.INSTANCE);
+
+		calculator.calcRevenues(dealerRevenueFacts, refDataDAL)
+				.calcMargins(dealerRevenueFacts, refDataDAL)
+				.calcExpenses(dealerExpenseFacts, refDataDAL).calcOpProfit();
 
 		response.getDetail().add(calculator.getReportDetail());
 		return response;

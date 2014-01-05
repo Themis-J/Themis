@@ -27,6 +27,7 @@ angular.module('masterApp.services', ['ngResource'])
 		            queryNonSalesProfitReport: {method: 'GET', params: {root:'report', path: 'query', subpath:'nonSalesProfitReport', subpath2:''}, isArray: false},
 		            queryPostSalesIncomeReport: {method: 'GET', params: {root: 'report', path: 'query', subpath: 'postSalesIncomeReport', subpath2: ''}, isArray: false},
 		            queryPostSalesExpenseReport: {method: 'GET', params: {root: 'report', path: 'query', subpath: 'postSalesExpenseReport', subpath2: ''}, isArray: false},
+		            queryPostSalesOpProfitReport: {method: 'GET', params: {root: 'report', path: 'query', subpath: 'postSalesOpProfitReport', subpath2: ''}, isArray: false},
 		            queryMaintenanceIncomeReport: {method: 'GET', params: {root: 'report', path: 'query', subpath: 'maintenanceIncomeReport', subpath2: ''}, isArray: false},
 		            querySparePartIncomeReport: {method: 'GET', params: {root: 'report', path: 'query', subpath: 'sparePartIncomeReport', subpath2: ''}, isArray: false},
 		            querySheetSprayIncomeReport: {method: 'GET', params: {root: 'report', path: 'query', subpath: 'sheetSprayIncomeReport', subpath2: ''}, isArray: false}
@@ -54,6 +55,7 @@ angular.module('masterApp.services', ['ngResource'])
 		            queryNonSalesProfitReport: {method: 'GET', params: {path: '', subpath:'queryNonSalesProfitReport.json'}, isArray: false},
 		            queryPostSalesIncomeReport: {method: 'GET', params: {path: '', subpath: 'queryMonthlyPostSalesIncomeReport.json'}, isArray: false},
 		            queryPostSalesExpenseReport: {method: 'GET', params: {path: '', subpath: 'queryMonthlyPostSalesExpenseReport.json'}, isArray: false},
+		            queryPostSalesOpProfitReport: {method: 'GET', params: {path: '', subpath: 'queryMonthlyPostSalesOpProfitReport.json'}, isArray: false},
 		            queryMaintenanceIncomeReport: {method: 'GET', params: {path: '', subpath: 'queryMonthlyMaintenanceIncomeReport.json'}, isArray: false},
 		            querySparePartIncomeReport: {method: 'GET', params: {path: '', subpath: 'queryMonthlySparePartIncomeReport.json'}, isArray: false},
 		            querySheetSprayIncomeReport: {method: 'GET', params: {path: '', subpath: 'queryMonthlySheetSprayIncomeReport.json'}, isArray: false}
