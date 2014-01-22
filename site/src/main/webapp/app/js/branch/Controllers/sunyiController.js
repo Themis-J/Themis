@@ -1,7 +1,5 @@
 angular.module('sunyi.controller', [])
     .controller('sunyiCtrl', ['$scope', 'Dealer', 'DealerService', '$filter', function ($scope, Dealer, DealerService, $filter) {
-        $scope.isDone = ($scope.$parent.$parent.doneMenus.indexOf(parseInt(DealerService.getSelectedMenu())) !== -1);
-
         $scope.isJinxiangActive = true;
         $scope.isXiaoxiangActive = true;
 
@@ -89,6 +87,7 @@ angular.module('sunyi.controller', [])
                     var currentDate = new Date();
                     $scope.autoSaveTime = "上次自动保存于" + currentDate.getHours() + "点" + currentDate.getMinutes() + "分" + currentDate.getSeconds() + "秒";
                     $scope.autoSaveClass = "text-success";
+                    $scope.toggleEdit();
                 };
 
                 var failed = function () {
@@ -101,7 +100,7 @@ angular.module('sunyi.controller', [])
             }
         }
 
-        $scope.toggleMark = function () {
+        $scope.toggleEdit = function () {
             var postData = {};
             postData.dealerID = DealerService.getDealerId();
             postData.itemID = DealerService.getSelectedMenu();
@@ -111,16 +110,8 @@ angular.module('sunyi.controller', [])
             Dealer.saveStatus({}, postData, function () {
                 var navLink = $("#" + DealerService.getSelectedMenu());
                 navLink.children().remove();
-                if (!$scope.isDone) {
-                    $scope.$parent.$parent.doneMenus.push(parseInt(DealerService.getSelectedMenu()));
-                    navLink.append($('<i class="icon-check-sign" style="color:green;display:inline"></i>'));
-                }
-                else {
-                    $scope.$parent.$parent.doneMenus = jQuery.grep($scope.$parent.$parent.doneMenus, function (value) {
-                        return value != parseInt(DealerService.getSelectedMenu());
-                    });
-                }
-                $scope.isDone = !$scope.isDone;
+                $scope.$parent.$parent.editMenus.push(parseInt(DealerService.getSelectedMenu()));
+                navLink.append($('<i class="icon-edit" style="color:green;display:inline"></i>'));
             });
         }
     }]);

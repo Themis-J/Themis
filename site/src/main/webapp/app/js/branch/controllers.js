@@ -4,7 +4,7 @@ angular.module('branch.controllers', []).
     controller('editCtrl', ['$scope', '$route', '$location', 'DealerService', 'Dealer', function ($scope, $route, $location, DealerService, Dealer) {
         $scope.items = ['lirun', 'jingying', 'sunyi', 'zhangkuan', 'kucun', 'renyuan', 'shui', 'fenhong', 'welcome'];
         $scope.itemNames = ['收入与毛利润', '经营费用', '非经营性损益', '应收账款', '库存', '人员管理', '所得税',"员工分红", "欢迎使用"];
-        $scope.doneMenus = [];
+        $scope.editMenus = [];
 
         var datepicker = $("#datepicker").datepicker({
             changeMonth: true,
@@ -77,31 +77,31 @@ angular.module('branch.controllers', []).
         intEditPage();
 
         function intEditPage() {
-            $('a i.icon-check-sign').remove();
-            $scope.doneMenus = [];
+            $('a i.icon-edit').remove();
+            $scope.editMenus = [];
 
             var results = Dealer.getStatus({dealerID: DealerService.getDealerId(), validDate: DealerService.getValidDate()}, function () {
                 $.each(results.detail, function (index, result) {
-                    $scope.doneMenus.push(result.id);
+                    $scope.editMenus.push(result.id);
                     var navLink = jQuery("#" + result.id);
                     navLink.children().remove();
-                    var checkSign = '<i class="icon-check-sign" style="color:green;"></i>';
+                    var checkSign = '<i class="icon-edit" style="color:green;"></i>';
                     navLink.append(checkSign);
                 });
 
-                if ($('#collapseOne').find('i.icon-check-sign').size() == 7) {
-                    $('#one').append($('<i class="icon-check-sign" style="color:green;display:inline"></i>'));
+                if ($('#collapseOne').find('i.icon-edit').size() == 7) {
+                    $('#one').append($('<i class="icon-edit" style="color:green;display:inline"></i>'));
                 }
 
-                if ($('#collapseTwo').find('i.icon-check-sign').size() == 8) {
-                    $('#two').append($('<i class="icon-check-sign" style="color:green;display:inline"></i>'));
+                if ($('#collapseTwo').find('i.icon-edit').size() == 7) {
+                    $('#two').append($('<i class="icon-edit" style="color:green;display:inline"></i>'));
                 }
 
-                if ($('#collapsFive').find('i.icon-check-sign').size() == 3) {
-                    $('#five').append($('<i class="icon-check-sign" style="color:green;display:inline"></i>'));
+                if ($('#collapsFive').find('i.icon-edit').size() == 3) {
+                    $('#five').append($('<i class="icon-edit" style="color:green;display:inline"></i>'));
                 }
-                if ($('#collapsSix').find('i.icon-check-sign').size() == 2) {
-                    $('#six').append($('<i class="icon-check-sign" style="color:green;display:inline"></i>'));
+                if ($('#collapsSix').find('i.icon-edit').size() == 2) {
+                    $('#six').append($('<i class="icon-edit" style="color:green;display:inline"></i>'));
                 }
 
                 $scope.goto(DealerService.getSelectedItem(), DealerService.getSelectedDept(), DealerService.getSelectedDeptString(), DealerService.getSelectedMenu());

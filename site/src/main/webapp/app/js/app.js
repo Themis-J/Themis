@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('themis', ['ngRoute', 'themis.directives', 'themis.controllers', 'themis.services', 'themis.config', 'guest.controllers', 'ngSanitize',
+angular.module('themis', ['ngRoute', 'themis.directives', 'themis.services', 'themis.config', 'guest.controllers', 'ngSanitize',
         'branch.services', 'branch.controllers', 'branch.tool.controllers', 'lirun.controller', 'jingying.controller','fenhong.controller', 'sunyi.controller', 'kucun.controller', 'zhangkuan.controller', 'renyuan.controller', 'tax.controller',
         'masterApp.config', 'masterApp.services','masterApp.controllers',  'head.tool.controllers',
         'keyNetProfit.controllers', 

@@ -25,9 +25,17 @@ angular.module('branch.tool.controllers', [])
             User.resetPass({}, user, function(){
                 $scope.msg = "密码修改成功！";
                 $scope.msgClass = "text-success";
-            }, function(data){
-                $scope.msg = "密码修改失败，请稍后再试或联系管理员。";
-                $scope.msgClass = "text-error";
+            }, function(error){
+                if (error.data.errorMsg == 'old password equals to the new password')
+                {
+                    $scope.msg = "密码修改失败，新旧密码不能相同。";
+                    $scope.msgClass = "text-error";
+                }
+                else
+                {
+                    $scope.msg = "密码修改失败，请稍后再试或联系管理员。";
+                    $scope.msgClass = "text-error";
+                }
             });
         }
 
