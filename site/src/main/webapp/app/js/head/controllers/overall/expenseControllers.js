@@ -37,7 +37,7 @@ angular.module('overallExpense.controllers', [])
 	            		chartData.series.currentPercentage[i] = currentDetail[i].expense.percentage * 100;
 	            		chartData.series.currentReference[i] = currentDetail[i].expense.reference;
 	            		
-	            		for ( var k in currentDetail[i].detail ) {
+	            		for ( var k=0; k< currentDetail[i].detail.length; k++ ) {
 	            			if ( currentDetail[i].detail[k].name != 'NA' &&  
 	            					currentDetail[i].detail[k].name != '二手车部' && 
 	            						currentDetail[i].detail[k].name != '其它部' &&

@@ -13,6 +13,7 @@ angular.module('themis.services', ['ngResource', 'ngCookies'])
     }])
     .factory('UserService', ['$cookies', function ($cookies) {
         var currentUser = {userAlias: '', role: 'Guest'};
+        var superAdminRoles = ["Super"];
         var adminRoles = ["Admin", "Super"];
         var dealerRoles = ["Dealer"];
         var headRoles = ["HeadQuater"];
@@ -32,6 +33,9 @@ angular.module('themis.services', ['ngResource', 'ngCookies'])
                     $cookies.userAlias =   '';
                     currentUser.role = 'guest';
                 }
+            },
+            validateRoleSuperAdmin: function () {
+                return superAdminRoles.indexOf(currentUser.role) != -1;
             },
             validateRoleAdmin: function () {
                 return adminRoles.indexOf(currentUser.role) != -1;

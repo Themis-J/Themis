@@ -41,7 +41,9 @@ angular.module('branch.services', ['ngResource', 'ngCookies'])
     .factory('User', ['$resource', 'config', function ($resource, config) {
         return $resource(config.service.url + '/user/:path', {}, {
             addUser: {method: 'POST', params: {path: 'add'}, isArray: false},
-            resetPass: {method: 'POST', params: {path: 'resetpwd'}, isArray: false}
+            resetPass: {method: 'POST', params: {path: 'resetpwd'}, isArray: false},
+            disableUser: {method: 'POST', params: {path: 'disable'}, isArray:false},
+            enableUser: {method: 'POST', params: {path: 'enable'}, isArray:false}
         });
     }])
     .factory('DealerService', ['$cookieStore', function ($cookieStore) {
