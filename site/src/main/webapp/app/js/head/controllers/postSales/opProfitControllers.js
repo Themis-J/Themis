@@ -1,61 +1,48 @@
 'use strict';
 
-angular.module('postSalesRevenue.controllers', []).controller('postSalesRevenueCtrl', ['$scope', 'ReportRestClient', 'ReportService', 'config', function($scope, restClient, reportService, config) {
-	/**
-	 * Global functions
-	 */
-	$scope.selectReportYear = function() {
-		reportService.setCurrentYear($scope.selectedYearOption.id);
-		$scope.showReport();
-	};
-	$scope.selectReportMonth = function() {
-		reportService.setMonthOfYear($scope.selectedMonthOption.id);
-		$scope.showReport();
-	};
-	
-	$scope.showReport = function() {
-		var params = {
-			year : reportService.getCurrentYear(),
-			monthOfYear : reportService.getMonthOfYear(),
-			groupBy : 0
-		};
-		$scope.draw(restClient(config.currentMode).queryPostSalesIncomeReport, params);
-	};
-	
-	$scope.draw = function (restClient, params) {
-		Highcharts.theme = config.highChartsTheme;
-		Highcharts.setOptions(Highcharts.theme);
-		
-		restClient(params, function(data) {
-			var chartData = {
-				id : 'report_chart',
-				title : '售后销售额',
-				yAxisTitle : '售后销售额',
-				series : {
-					current : [],
-					currentReference : [],
-					currentPercentage : []
-				},
-				gridData : []
-			};
-			
-			var chartCategories = [{
-				categories : null
-			}];
-			var dealers = [];
-			chartCategories[0].categories = dealers;
-			var currentDetail = data.detail[0].detail;
-			var j = 0;
-			for (var i=0; i<currentDetail.length; i++) {
-				chartData.series.current[i] = currentDetail[i].revenue.amount;
-				chartData.series.currentPercentage[i] = currentDetail[i].revenue.percentage * 100;
-				chartData.series.currentReference[i] = currentDetail[i].revenue.reference;
-				
-				for ( var k = 0; k < currentDetail[i].detail.length; k++) {
-					if (currentDetail[i].detail[k].name != 'NA'
-						&& currentDetail[i].detail[k].name != '二手车部'
-							&& currentDetail[i].detail[k].name != '其它部'
-								&& currentDetail[i].detail[k].name != '租赁事业部') {
+angular.module('postSalesOpProfit.controllers', [])
+	.controller('postSalesOpProfitCtrl', ['$scope', 'ReportRestClient', 'ReportService', 'config', function($scope, restClient, reportService, config) {
+		/**
+		 * Global functions
+		 */
+		$scope.selectReportYear = function() {
+    		reportService.setCurrentYear($scope.selectedYearOption.id);
+    		$scope.showReport();
+    	};
+    	
+		$scope.selectReportMonth = function() {
+    		reportService.setMonthOfYear($scope.selectedMonthOption.id);
+    		$scope.showReport();
+    	};
+    	
+        $scope.showReport = function() {
+        	var params = {year: reportService.getCurrentYear(), monthOfYear: reportService.getMonthOfYear(), groupBy: 0};
+        	$scope.draw(restClient(config.currentMode).queryPostSalesOpProfitReport, params);
+        };
+        
+        $scope.draw = function (restClient, params) {
+        	Highcharts.theme = config.highChartsTheme;
+			Highcharts.setOptions(Highcharts.theme); 
+ 			
+            restClient(params, function(data) {
+            	var chartData = {
+			        		id: 'report_chart',
+			        		title: '售后运营利润',
+			        		yAxisTitle: '售后运营利润',
+			        		series: { current:[], currentReference:[], currentPercentage:[] },
+			        		gridData:[]
+			        	}; 
+            	var chartCategories = [{ categories: null }];
+            	var dealers = [];
+            	
+				chartCategories[0].categories = dealers;
+				var currentDetail = data.detail[0].detail;
+				var j = 0;
+				for (var i = 0; i < currentDetail.length; i++) {
+					chartData.series.current[i] = currentDetail[i].opProfit.amount;
+					chartData.series.currentPercentage[i] = currentDetail[i].opProfit.percentage * 100;
+					chartData.series.currentReference[i] = currentDetail[i].opProfit.reference;
+					for (var k = 0; k < currentDetail[i].detail.length; k++) {
 						chartData.gridData[j] = {
 							id : null,
 							departmentName : null,
@@ -66,12 +53,11 @@ angular.module('postSalesRevenue.controllers', []).controller('postSalesRevenueC
 						chartData.gridData[j].id = currentDetail[i].code;
 						chartData.gridData[j].name = currentDetail[i].name;
 						chartData.gridData[j].departmentName = currentDetail[i].detail[k].name;
-						chartData.gridData[j].amount = currentDetail[i].detail[k].revenue.amount;
-						chartData.gridData[j].totalAmount = currentDetail[i].revenue.amount;
+						chartData.gridData[j].amount = currentDetail[i].detail[k].opProfit.amount;
+						chartData.gridData[j].totalAmount = currentDetail[i].opProfit.amount;
 						j++;
 					}
 				}
-			}
             	var chartSubtitle = '月均对比';
             	var chartColumnCurrent = '月均';
             	var chartColumnCurrentRef = '参考值';
@@ -85,7 +71,7 @@ angular.module('postSalesRevenue.controllers', []).controller('postSalesRevenueC
 		        jQuery("#report_list").jqGrid({
 					   	data:chartData.gridData,
 						datatype: "local",
-					   	colNames:['部门', '经销商代码', '名称', '部门售后销售额', '经销商售后销售额'],
+					   	colNames:['部门', '经销商代码', '名称', '部门售后运营利润', '经销商售后运营利润'],
 					   	colModel:[
 					   	    {name:'departmentName',index:'departmentName', width:55},
 					   		{name:'id',index:'id', width:55},
@@ -117,7 +103,7 @@ angular.module('postSalesRevenue.controllers', []).controller('postSalesRevenueC
 					   		groupOrder: 'desc',
 					   		groupDataSorted : true
 					   	},
-						caption : "月均售后销售额",
+						caption: "月均售后运营利润",
 						sortname : "departmentName"
 					});
 				jQuery("#report_list").jqGrid('navGrid','#report_pager',{"edit":false,"add":false,"del":false,"search":true,"refresh":true,"view":false,"excel":false,"pdf":false,"csv":false,"columns":false});
@@ -181,6 +167,7 @@ angular.module('postSalesRevenue.controllers', []).controller('postSalesRevenueC
             $("#report_div").addClass('span9');
             reportService.setFullScreen(false);
             $scope.showReport();
+            
         } else {
             $('#container_div').removeClass('container');
             $('#container_div').addClass('row-fluid');
@@ -190,6 +177,7 @@ angular.module('postSalesRevenue.controllers', []).controller('postSalesRevenueC
             $("#report_div").addClass('span12');
             reportService.setFullScreen(true);
             $scope.showReport();
+           
         }
     };
     

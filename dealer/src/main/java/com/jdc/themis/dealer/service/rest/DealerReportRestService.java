@@ -300,7 +300,28 @@ public class DealerReportRestService {
 						year, monthOfYear, Option.fromNull(groupBy),
 						Option.fromNull(itemCategory))).build();
 	}
-	
+
+	/**
+	 * Query post sales op profit report.
+	 * 
+	 * @param year
+	 * @param monthOfYear
+	 * @param groupBy
+	 * @return
+	 */
+	@GET
+	@Path("/query/postSalesOpProfitReport")
+	@Produces({ "application/json", "application/xml" })
+	@RestServiceErrorHandler
+	public Response queryDealerPostSalesOpProfitReport(
+			@QueryParam("year") Integer year,
+			@QueryParam("monthOfYear") Integer monthOfYear,
+			@QueryParam("groupBy") Integer groupBy) {
+		return Response.ok(
+				dealerIncomeReportService.queryDealerPostSalesOpProfitReport(
+						year, monthOfYear, Option.fromNull(groupBy))).build();
+	}
+
 	/**
 	 * Query maintenance department income report.
 	 * 

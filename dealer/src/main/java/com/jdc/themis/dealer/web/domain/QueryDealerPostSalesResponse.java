@@ -15,15 +15,14 @@ import com.google.common.collect.Lists;
 
 @XmlRootElement
 @XmlAccessorType(XmlAccessType.FIELD)
-public class QueryDealerPostSalesExpenseResponse implements Serializable {
+public class QueryDealerPostSalesResponse implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 
 	private String reportName;
 
 	@XmlElement(name = "report")
-	private List<ReportDealerPostSalesExpenseDataList> detail = Lists
-			.newArrayList();
+	private List<ReportDealerPostSalesDataList> detail = Lists.newArrayList();
 
 	public String getReportName() {
 		return reportName;
@@ -33,7 +32,7 @@ public class QueryDealerPostSalesExpenseResponse implements Serializable {
 		this.reportName = reportName;
 	}
 
-	public List<ReportDealerPostSalesExpenseDataList> getDetail() {
+	public List<ReportDealerPostSalesDataList> getDetail() {
 		return detail;
 	}
 

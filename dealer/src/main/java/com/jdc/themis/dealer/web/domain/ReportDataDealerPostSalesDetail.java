@@ -11,7 +11,7 @@ import com.google.common.collect.Lists;
 
 @XmlRootElement
 @XmlAccessorType(XmlAccessType.FIELD)
-public class ReportDataDealerPostSalesIncomeDetail implements Serializable {
+public class ReportDataDealerPostSalesDetail implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 	private Integer id;
@@ -20,6 +20,8 @@ public class ReportDataDealerPostSalesIncomeDetail implements Serializable {
 	private String brand;
 	private ReportDataDetailAmount revenue = new ReportDataDetailAmount();
 	private ReportDataDetailAmount margin = new ReportDataDetailAmount();
+	private ReportDataDetailAmount expense = new ReportDataDetailAmount();
+	private ReportDataDetailAmount opProfit = new ReportDataDetailAmount();
 	private List<ReportDataDepartmentDetail> detail = Lists.newArrayList();
 
 	public Integer getId() {
@@ -68,6 +70,22 @@ public class ReportDataDealerPostSalesIncomeDetail implements Serializable {
 
 	public void setMargin(ReportDataDetailAmount margin) {
 		this.margin = margin;
+	}
+
+	public ReportDataDetailAmount getExpense() {
+		return expense;
+	}
+
+	public void setExpense(ReportDataDetailAmount expense) {
+		this.expense = expense;
+	}
+
+	public ReportDataDetailAmount getOpProfit() {
+		return opProfit;
+	}
+
+	public void setOpProfit(ReportDataDetailAmount opProfit) {
+		this.opProfit = opProfit;
 	}
 
 	public List<ReportDataDepartmentDetail> getDetail() {
