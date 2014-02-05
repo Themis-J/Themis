@@ -19,9 +19,13 @@ angular.module('admin.controllers', [])
         $scope.roles = [
             {name: '分销商', id: 2},
             {name: '总部', id: 3},
-            {name: '管理员', id: 3},
-            {name: '超级管理员', id: 0}
+            {name: '管理员', id: 1}
         ];
+
+        if (UserService.validateRoleSuperAdmin())
+        {
+            $scope.roles.push({name: '超级管理员', id: 0});
+        }
 
         $scope.role = $scope.roles[0];
 
@@ -49,6 +53,52 @@ angular.module('admin.controllers', [])
             });
         }
 
+    }])
+    .controller('disableUserCtrl', ['$scope', '$location', 'Auth', 'UserService', 'Dealer', 'User', function ($scope, $location, Auth, UserService, Dealer, User) {
+        $scope.username = '';
+
+        $scope.msg = "";
+        $scope.msgClass = "";
+
+        $scope.disableUser = function(){
+            User.disableUser({username: $scope.username}, {}, function(){
+                $scope.msg = "success";
+                $scope.msgClass = "text-success";
+            }, function(error){
+                if (error.data.errorMsg)
+                {
+                    $scope.msg = error.data.errorMsg;
+                }
+                else
+                {
+                    $scope.msg = "failed";
+                }
+                $scope.msgClass = "text-error";
+            });
+        }
+    }])
+    .controller('enableUserCtrl', ['$scope', '$location', 'Auth', 'UserService', 'Dealer', 'User', function ($scope, $location, Auth, UserService, Dealer, User) {
+        $scope.username = '';
+
+        $scope.msg = "";
+        $scope.msgClass = "";
+
+        $scope.enableUser = function(){
+            User.enableUser({username: $scope.username}, {}, function(){
+                $scope.msg = "success";
+                $scope.msgClass = "text-success";
+            }, function(error){
+                if (error.data.errorMsg)
+                {
+                    $scope.msg = error.data.errorMsg;
+                }
+                else
+                {
+                    $scope.msg = "failed";
+                }
+                $scope.msgClass = "text-error";
+            });
+        }
     }])
     .controller('adminHeadCtrl', ['$scope', '$location', 'Auth', 'UserService', function ($scope, $location, Auth, UserService) {
         $scope.signout = function() {

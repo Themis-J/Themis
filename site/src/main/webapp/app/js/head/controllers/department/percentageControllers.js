@@ -259,7 +259,8 @@ angular.module('departmentPercentage.controllers', [])
     		{id: 'report_expense', text:'费用', display:true},
     		{id: 'report_opProfit', text:'运营利润', display:true}
     		];
-    		
+    	
+    	$scope.selectedTime = 0;
     	var currentDate = new Date();
   		reportService.setCurrentYear(currentDate.getFullYear());
   		$scope.yearOptions = reportService.getYearList();

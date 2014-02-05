@@ -30,7 +30,7 @@ angular.module('keyNetProfit.controllers', [])
 	            	var chartCategories = [{ categories: null }];
 	            	var dealers = [];
 	            	var previousDetail = data.detail[0].detail;
-	            	for ( var i in previousDetail ) {
+	            	for (var i=0; i<previousDetail.length; i++) {
 	            		dealers[i] = previousDetail[i].code;
 	            		chartData.series.previous[i] = previousDetail[i].netProfit.amount;
 	            		chartData.series.previousReference[i] = previousDetail[i].netProfit.reference;

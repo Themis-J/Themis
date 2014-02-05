@@ -20,7 +20,6 @@ import com.jdc.themis.dealer.utils.Constant;
 import com.jdc.themis.dealer.web.domain.GetUserInfoResponse;
 import com.jdc.themis.dealer.web.domain.LoginRequest;
 
-@Path("/")
 @Produces("application/json")
 @RolesAllowed({Constant.GUEST_ROLE, Constant.DEALER_ROLE, Constant.HEAD_ROLE, Constant.ADMIN_ROLE,
     Constant.SUPER_ROLE})

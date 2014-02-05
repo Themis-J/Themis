@@ -2,7 +2,6 @@ package com.jdc.themis.dealer.service.rest;
 
 import javax.annotation.security.RolesAllowed;
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpSession;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
@@ -10,11 +9,10 @@ import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
 import javax.ws.rs.QueryParam;
 import javax.ws.rs.core.Context;
+import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
-import javax.ws.rs.core.Response.Status;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
 
 import com.jdc.themis.dealer.service.UserService;
 import com.jdc.themis.dealer.utils.Constant;
@@ -25,15 +23,12 @@ import com.jdc.themis.dealer.web.domain.GeneralResponse;
 import com.jdc.themis.dealer.web.domain.GetUserInfoResponse;
 import com.jdc.themis.dealer.web.domain.ResetPasswordRequest;
 
-@Service
+@Produces("application/json")
 @RolesAllowed({Constant.DEALER_ROLE, Constant.HEAD_ROLE, Constant.ADMIN_ROLE, Constant.SUPER_ROLE})
 public class UserRestService {
 
 	@Autowired
 	private UserService userService;
-
-	@Context
-	private HttpServletRequest req;
 
 	/**
 	 * Query user information.
@@ -43,7 +38,6 @@ public class UserRestService {
 	 */
 	@GET
 	@Path("/roles")
-	@Produces({ "application/json", "application/xml" })
 	@RestServiceErrorHandler
 	public Response getUserRoles() {
 		return Response.ok(userService.getUserRoles()).build();
@@ -57,31 +51,89 @@ public class UserRestService {
 	 */
 	@GET
 	@Path("/info")
-	@Produces({ "application/json", "application/xml" })
 	@RestServiceErrorHandler
 	public Response getUser(@QueryParam("username") String username) {
 		return Response.ok(userService.getUser(username)).build();
 	}
 
 	@POST
-	@RolesAllowed({Constant.ADMIN_ROLE, Constant.SUPER_ROLE})
-	@Produces({ "application/json", "application/xml" })
-	@Consumes({ "application/json", "application/xml" })
 	@Path("/add")
+	@RolesAllowed({Constant.ADMIN_ROLE, Constant.SUPER_ROLE})
 	@RestServiceErrorHandler
-	public Response addNewUser(final AddNewUserRequest request) {
+	public Response addNewUser(final AddNewUserRequest request,
+			@Context HttpServletRequest req) {
 		final GeneralResponse response = new GeneralResponse();
 		response.setErrorMsg("");
 		response.setSuccess(true);
+		GetUserInfoResponse curUser = userService.getCurrentUser(req);
+		
+		if (!Constant.SUPER_ROLE.equals(curUser.getRole()) &&
+				(request.getUserRole()==0))
+		{
+			response.setSuccess(false);
+			response.setErrorMsg("PERMISSION_DENIED");
+			return Response.status(500).entity(response).build();
+		}
 		userService.addNewUser(request);
+		response.setTimestamp(Utils.currentTimestamp());
+		return Response.ok(response).build();
+	}
+	
+	@POST
+	@Path("/disable")
+	@RolesAllowed({Constant.ADMIN_ROLE, Constant.SUPER_ROLE})
+	@Consumes({MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML})
+	@RestServiceErrorHandler
+	public Response disableUser(@QueryParam("username") String username,
+			@Context HttpServletRequest req) {
+		final GeneralResponse response = new GeneralResponse();
+		response.setErrorMsg("");
+		response.setSuccess(true);
+		GetUserInfoResponse curUser = userService.getCurrentUser(req);
+		GetUserInfoResponse userToDisable = userService.getUser(username);
+		
+		if (Constant.SUPER_ROLE.equals(userToDisable.getRole()) &&
+				!Constant.SUPER_ROLE.equals(curUser.getRole()))
+		{
+			response.setSuccess(false);
+			response.setErrorMsg("PERMISSION_DENIED");
+			return Response.status(500).entity(response).build();
+		}
+		
+		userService.disableUser(username);
+		response.setTimestamp(Utils.currentTimestamp());
+		return Response.ok(response).build();
+	}
+	
+	@POST
+	@Path("/enable")
+	@RolesAllowed({Constant.ADMIN_ROLE, Constant.SUPER_ROLE})
+	@Consumes({MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML})
+	@RestServiceErrorHandler
+	public Response enableUser(@QueryParam("username") String username,
+			@Context HttpServletRequest req) {
+		final GeneralResponse response = new GeneralResponse();
+		response.setErrorMsg("");
+		response.setSuccess(true);
+		GetUserInfoResponse curUser = userService.getCurrentUser(req);
+		GetUserInfoResponse userToDisable = userService.getUser(username);
+		
+		if (Constant.SUPER_ROLE.equals(userToDisable.getRole()) &&
+				!Constant.SUPER_ROLE.equals(curUser.getRole()))
+		{
+			response.setSuccess(false);
+			response.setErrorMsg("PERMISSION_DENIED");
+			return Response.status(500).entity(response).build();
+		}
+		
+		userService.enableUser(username);
 		response.setTimestamp(Utils.currentTimestamp());
 		return Response.ok(response).build();
 	}
 
 	@POST
-	@Produces({ "application/json", "application/xml" })
-	@Consumes({ "application/json", "application/xml" })
 	@Path("/resetpwd")
+	@Consumes({MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML})
 	@RestServiceErrorHandler
 	public Response resetPassword(final ResetPasswordRequest request) {
 		final GeneralResponse response = new GeneralResponse();
@@ -90,27 +142,5 @@ public class UserRestService {
 		userService.resetPassword(request);
 		response.setTimestamp(Utils.currentTimestamp());
 		return Response.ok(response).build();
-	}
-
-	@POST
-	@Path("/logout")
-	public Response logout() {
-	  GetUserInfoResponse user = null;
-	    try {
-	      user = userService.getCurrentUser(req);
-
-	      if (null == user) {
-            return Response.status(Status.FORBIDDEN).build();
-	      }
-	      HttpSession session = req.getSession(false);
-
-	      if (null != session) {
-	        session.invalidate();
-	      }
-	    } catch (Exception e) {
-	      return Response.status(Status.FORBIDDEN).entity(e.getMessage()).build();
-	    }
-
-	    return Response.status(Status.OK).build();
 	}
 }
