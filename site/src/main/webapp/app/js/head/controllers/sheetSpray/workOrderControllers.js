@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('sheetSprayIncome.controllers', []).controller('sheetSprayIncomeCtrl', ['$scope', 'ReportRestClient', 'ReportService', 'config', function($scope, restClient, reportService, config) {
+angular.module('sheetSprayWorkOrder.controllers', []).controller('sheetSprayWorkOrderCtrl', ['$scope', 'ReportRestClient', 'ReportService', 'config', function($scope, restClient, reportService, config) {
 	/**
 	 * Global functions
 	 */
@@ -19,10 +19,9 @@ angular.module('sheetSprayIncome.controllers', []).controller('sheetSprayIncomeC
 	$scope.showReport = function() {
 		var params = {
 			year: reportService.getCurrentYear(),
-			monthOfYear: reportService.getMonthOfYear(),
-			itemName : $scope.selectedCategoryOption.name
+			monthOfYear: reportService.getMonthOfYear()
 		};
-		$scope.draw(restClient(config.currentMode).querySheetSprayIncomeReport, params);
+		$scope.draw(restClient(config.currentMode).querySheetSprayWorkOrderReport, params);
 	};
 	
 	$scope.draw = function (restClient, params) {
@@ -30,11 +29,10 @@ angular.module('sheetSprayIncome.controllers', []).controller('sheetSprayIncomeC
 		Highcharts.setOptions(Highcharts.theme);
 		
 		restClient(params, function(data) {
-			var otherIncome = (params["itemName"] == "外修" || params["itemName"] == "钣喷材料收入") ? true : false;
 			var chartData = {
-				id : 'report_sheet_spray_income',
-				title : $scope.selectedCategoryOption.name,
-				yAxisTitle : $scope.selectedCategoryOption.name,
+				id : 'report_sheet_spray_work_order',
+				title : '客户付费工时',
+				yAxisTitle : '客户付费工时',
 				series : {
 					current : [],
 					currentReference : [],
@@ -55,17 +53,15 @@ angular.module('sheetSprayIncome.controllers', []).controller('sheetSprayIncomeC
 				chartData.gridData[i] = {
 					id : null,
 					name : null,
-					revenue : null,
-					marginRate : null,
-					manHour : null
+					count : null,
+					manHour : null,
+					manHourPerWorkOrder : null
 				};
 				chartData.gridData[i].id = currentDetail[i].code;
 				chartData.gridData[i].name = currentDetail[i].name;
-				chartData.gridData[i].revenue = currentDetail[i].revenue.amount;
-				chartData.gridData[i].marginRate = currentDetail[i].margin.amount / currentDetail[i].revenue.amount * 100;
-				if (!otherIncome) {
-					chartData.gridData[i].manHour = currentDetail[i].manHour.amount;
-				}
+				chartData.gridData[i].count = currentDetail[i].count.amount;
+				chartData.gridData[i].manHour = currentDetail[i].manHour.amount;
+				chartData.gridData[i].manHourPerWorkOrder = currentDetail[i].manHourPerWorkOrder.amount;
 				
 				var chartSubtitle = '月均对比';
 				var chartColumnCurrent = '月均';
@@ -75,49 +71,48 @@ angular.module('sheetSprayIncome.controllers', []).controller('sheetSprayIncomeC
 					chartWidth = $(window).width() * 0.90;
 				}
 				var currentData = chartData;
-				var colNames;
-				if (otherIncome) {
-					colNames = [
-						'经销商代码',
-						'名称',
-						$scope.selectedCategoryOption.name + "销售",
-						$scope.selectedCategoryOption.name + "毛利率"
-					];
-				} else {
-					colNames = [
-					    '经销商代码',
-						'名称',
-						$scope.selectedCategoryOption.name + "销售",
-						$scope.selectedCategoryOption.name + "毛利率",
-						'售出' + $scope.selectedCategoryOption.name + "数"
-					];
-				}
+				var colNames = [
+				    '经销商代码',
+				    '名称',
+					'客户付费钣喷工单',
+					'售出客户工时',
+					'每钣喷工单售出客户工时'
+				];
 				var colModel = [
 				    {
 				    	name : 'id',
 				    	index : 'id',
 				    	width : 55
-					},
-					{
-						name : 'name',
-						index : 'name',
-						sorttype : function(cellValues, rowData) {
-							return rowData.totalAmount;
-						},
-						width : 100
-					},
-					{
-						name : 'revenue',
-						index : 'revenue',
-						width : 80,
-						formatter : "number",
-						align : "right",
-						sorttype : "float",
-						summaryType : "sum"
-					},
-					{
-						name : 'marginRate',
-						index : 'marginRate',
+				    },
+				    {
+				    	name : 'name',
+				    	index : 'name',
+				    	sorttype : function(cellValues, rowData) {
+				    		return rowData.totalAmount;
+				    	},
+				    	width : 100
+				    },
+				    {
+				    	name : 'count',
+				    	index : 'count',
+				    	width : 80,
+				    	formatter : "number",
+				    	align : "right",
+				    	sorttype : "float",
+				    	summaryType : "sum"
+				    },
+				    {
+				    	name : 'manHour',
+				    	index : 'manHour',
+				    	width : 80,
+				    	formatter : "number",
+				    	align : "right",
+				    	sorttype : "float",
+				    	summaryType : "sum"
+				    },
+				    {
+						name : 'manHourPerWorkOrder',
+						index : 'manHourPerWorkOrder',
 						width : 80,
 						formatter : "number",
 						align : "right",
@@ -125,17 +120,6 @@ angular.module('sheetSprayIncome.controllers', []).controller('sheetSprayIncomeC
 						summaryType : "sum"
 					}
 				];
-				if (!otherIncome) {
-					colModel.push({
-						name : 'manHour',
-						index : 'manHour',
-						width : 80,
-						formatter : "number",
-						align : "right",
-						sorttype : "float",
-						summaryType : "sum"
-					});
-				}
 				jQuery("#report_list").jqGrid("GridUnload");
 				jQuery("#report_list").jqGrid({
 					data : chartData.gridData,
@@ -144,7 +128,7 @@ angular.module('sheetSprayIncome.controllers', []).controller('sheetSprayIncomeC
 					colModel : colModel,
 					rowNum : 30,
 					pager : '#report_pager',
-					loadError : function(xhr,status, err) { 
+					loadError : function(xhr, status, err) { 
 					   	try {
 					   		jQuery.jgrid.info_dialog(jQuery.jgrid.errors.errcap,'<div class="ui-state-error">'+ xhr.responseText +'</div>', jQuery.jgrid.edit.bClose,{buttonalign:'right'});
 					   	} catch(e) { 
@@ -156,7 +140,7 @@ angular.module('sheetSprayIncome.controllers', []).controller('sheetSprayIncomeC
 					multiselect : false,
 					width : chartWidth,
 					height : "100%",
-					caption : "月均钣喷部收入"
+					caption : "月均钣喷部工单"
 				});
 				jQuery("#report_list").jqGrid('navGrid','#report_pager',{"edit":false,"add":false,"del":false,"search":true,"refresh":true,"view":false,"excel":false,"pdf":false,"csv":false,"columns":false});
 				if ($scope.report_chart_display) {
@@ -257,29 +241,6 @@ angular.module('sheetSprayIncome.controllers', []).controller('sheetSprayIncomeC
 	$scope.yearOptions = reportService.getYearList();
 	$scope.selectedYearOption = $scope.yearOptions[0];
 	$scope.monthOptions = reportService.getMonthList();
-	$scope.selectedMonthOption = $scope.monthOptions[reportService.getMonthOfYear() -  1];
-	$scope.categoryOptions = [
- 	    {
- 	    	name : '客户付费工时',
- 	    	id : 1
-		},
-		{
-			name : '保修工时',
-			id : 2
-		},
-		{
-			name : '内部工时',
-			id : 3
-		},
-		{
-			name : '外修',
-			id : 4
-		},
-		{
-			name : '钣喷材料收入',
-			id : 5
-		}
-	];
-	$scope.selectedCategoryOption = $scope.categoryOptions[0];
+	$scope.selectedMonthOption = $scope.monthOptions[reportService.getMonthOfYear() - 1];
 	$scope.showReport();
 }]);

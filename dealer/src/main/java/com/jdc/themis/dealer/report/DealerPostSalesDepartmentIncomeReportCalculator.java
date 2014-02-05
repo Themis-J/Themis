@@ -4,14 +4,20 @@ import static com.jdc.themis.dealer.report.ReportUtils.calcReference;
 
 import java.math.BigDecimal;
 import java.util.Collection;
+import java.util.List;
 import java.util.Map;
 
 import ch.lambdaj.Lambda;
 
 import com.google.common.collect.ImmutableListMultimap;
+import com.google.common.collect.Lists;
 import com.google.common.collect.Maps;
+import com.google.common.collect.Multimaps;
+import com.jdc.themis.dealer.domain.DealerEmployeeFeeFact;
 import com.jdc.themis.dealer.domain.DealerIncomeRevenueFact;
 import com.jdc.themis.dealer.service.RefDataQueryService;
+import com.jdc.themis.dealer.service.impl.GetTimeIDFromEmployeeFeeFunction;
+import com.jdc.themis.dealer.service.impl.GetTimeIDFromRevenueFunction;
 import com.jdc.themis.dealer.web.domain.DealerDetail;
 import com.jdc.themis.dealer.web.domain.ReportDataDealerPostSalesDepartmentIncomeDetail;
 import com.jdc.themis.dealer.web.domain.ReportDataDetailAmount;
@@ -72,7 +78,8 @@ public class DealerPostSalesDepartmentIncomeReportCalculator {
 					dealerRevenueFacts.get(dealerID),
 					DealerIncomeRevenueFact.class).getAmount();
 			final ReportDataDetailAmount amount = new ReportDataDetailAmount();
-			amount.setAmount(totalAmount.doubleValue() / (monthOfYear * 1.0));
+			amount.setAmount(totalAmount.doubleValue()
+					/ monthOfYear.doubleValue());
 
 			dealerDetails.get(dealerID).setRevenue(amount);
 		}
@@ -95,7 +102,8 @@ public class DealerPostSalesDepartmentIncomeReportCalculator {
 					dealerRevenueFacts.get(dealerID),
 					DealerIncomeRevenueFact.class).getMargin();
 			final ReportDataDetailAmount amount = new ReportDataDetailAmount();
-			amount.setAmount(totalMargin.doubleValue() / (monthOfYear * 1.0));
+			amount.setAmount(totalMargin.doubleValue()
+					/ monthOfYear.doubleValue());
 
 			dealerDetails.get(dealerID).setMargin(amount);
 		}
@@ -119,7 +127,7 @@ public class DealerPostSalesDepartmentIncomeReportCalculator {
 					DealerIncomeRevenueFact.class).getCount();
 			final ReportDataDetailAmount amount = new ReportDataDetailAmount();
 			amount.setAmount(Math.round(totalCount.doubleValue()
-					/ (monthOfYear * 1.0)) * 1.0);
+					/ monthOfYear.doubleValue()) * 1.0);
 
 			dealerDetails.get(dealerID).setCount(amount);
 		}
@@ -131,6 +139,68 @@ public class DealerPostSalesDepartmentIncomeReportCalculator {
 								.getCount().getAmount()));
 		Lambda.forEach(dealerDetails.values()).getCount()
 				.setReference(reference);
+		return this;
+	}
+
+	public DealerPostSalesDepartmentIncomeReportCalculator calcManHour(
+			final ImmutableListMultimap<Integer, DealerIncomeRevenueFact> dealerRevenueFacts,
+			final ImmutableListMultimap<Integer, DealerEmployeeFeeFact> dealerEmployeeFeeFacts,
+			final RefDataQueryService refDataDAL) {
+		for (final Integer dealerID : dealerRevenueFacts.keySet()) {
+			List<Double> manHourList = Lists.newArrayList();
+			final ImmutableListMultimap<Long, DealerIncomeRevenueFact> dealerRevenueFactsByTimeID = Multimaps
+					.index(dealerRevenueFacts.get(dealerID),
+							GetTimeIDFromRevenueFunction.INSTANCE);
+			final ImmutableListMultimap<Long, DealerEmployeeFeeFact> dealerEmployeeFeeFactsByTimeID = Multimaps
+					.index(dealerEmployeeFeeFacts.get(dealerID),
+							GetTimeIDFromEmployeeFeeFunction.INSTANCE);
+			for (final Long timeID : dealerRevenueFactsByTimeID.keySet()) {
+				final BigDecimal totalAmount = Lambda.sumFrom(
+						dealerRevenueFactsByTimeID.get(timeID),
+						DealerIncomeRevenueFact.class).getAmount();
+				Double manHour = totalAmount.doubleValue()
+						/ dealerEmployeeFeeFactsByTimeID.get(timeID).get(0)
+								.getAmount().doubleValue();
+				manHourList.add(manHour);
+			}
+			final ReportDataDetailAmount amount = new ReportDataDetailAmount();
+			amount.setAmount(Math.round(Lambda.sum(manHourList).doubleValue()
+					/ monthOfYear.doubleValue()) * 1.0);
+			dealerDetails.get(dealerID).setManHour(amount);
+		}
+		return this;
+	}
+
+	public DealerPostSalesDepartmentIncomeReportCalculator calcManHourPerWorkOrder(
+			final ImmutableListMultimap<Integer, DealerIncomeRevenueFact> dealerRevenueFacts,
+			final ImmutableListMultimap<Integer, DealerEmployeeFeeFact> dealerEmployeeFeeFacts,
+			final RefDataQueryService refDataDAL) {
+		for (final Integer dealerID : dealerRevenueFacts.keySet()) {
+			List<Double> manHourPerWorkOrderList = Lists.newArrayList();
+			final ImmutableListMultimap<Long, DealerIncomeRevenueFact> dealerRevenueFactsByTimeID = Multimaps
+					.index(dealerRevenueFacts.get(dealerID),
+							GetTimeIDFromRevenueFunction.INSTANCE);
+			final ImmutableListMultimap<Long, DealerEmployeeFeeFact> dealerEmployeeFeeFactsByTimeID = Multimaps
+					.index(dealerEmployeeFeeFacts.get(dealerID),
+							GetTimeIDFromEmployeeFeeFunction.INSTANCE);
+			for (final Long timeID : dealerRevenueFactsByTimeID.keySet()) {
+				final BigDecimal totalAmount = Lambda.sumFrom(
+						dealerRevenueFactsByTimeID.get(timeID),
+						DealerIncomeRevenueFact.class).getAmount();
+				final Integer totalCount = Lambda.sumFrom(
+						dealerRevenueFactsByTimeID.get(timeID),
+						DealerIncomeRevenueFact.class).getCount();
+				Double manHourPerWorkOrder = totalAmount.doubleValue()
+						/ dealerEmployeeFeeFactsByTimeID.get(timeID).get(0)
+								.getAmount().doubleValue()
+						/ totalCount.doubleValue();
+				manHourPerWorkOrderList.add(manHourPerWorkOrder);
+			}
+			final ReportDataDetailAmount amount = new ReportDataDetailAmount();
+			amount.setAmount(Math.round(Lambda.sum(manHourPerWorkOrderList)
+					.doubleValue() / monthOfYear.doubleValue()) * 1.0);
+			dealerDetails.get(dealerID).setManHourPerWorkOrder(amount);
+		}
 		return this;
 	}
 

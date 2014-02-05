@@ -33,13 +33,20 @@ angular.module('themis', ['ngRoute', 'themis.directives', 'themis.services', 'th
 		'ardSales.controllers',
 		'ardPostSales.controllers',
 		'ardFactory.controllers',
+		'ardLease.controllers',
+		'ardWarranty.controllers',
+		'ardInsurance.controllers',
+		'ardFee.controllers',
+		'ardOther.controllers',
 		'postSalesRevenue.controllers',
 		'postSalesMargin.controllers',
 		'postSalesExpense.controllers',
 		'postSalesOpProfit.controllers',
 		'maintenanceIncome.controllers',
+		'maintenanceWorkOrder.controllers',
 		'sparePartIncome.controllers',
 		'sheetSprayIncome.controllers',
+		'sheetSprayWorkOrder.controllers',
         'admin.controllers']).
     config(['$routeProvider', '$httpProvider', function ($routeProvider, $httpProvider) {
         $routeProvider.when('/branch', {templateUrl: 'partials/branch/edit.html', controller: 'editCtrl'})

@@ -83,11 +83,19 @@ public interface DealerIncomeReportService {
 			Integer year, Integer monthOfYear, String itemName);
 
 	@Transactional(readOnly = true)
+	QueryDealerMaintenanceIncomeResponse queryDealerMaintenanceWorkOrderReport(
+			Integer year, Integer monthOfYear);
+
+	@Transactional(readOnly = true)
 	QueryDealerSparePartIncomeResponse queryDealerSparePartIncomeReport(
 			Integer year, Integer monthOfYear, String itemName);
 
 	@Transactional(readOnly = true)
 	QueryDealerSheetSprayIncomeResponse queryDealerSheetSprayIncomeReport(
 			Integer year, Integer monthOfYear, String itemName);
+
+	@Transactional(readOnly = true)
+	QueryDealerSheetSprayIncomeResponse queryDealerSheetSprayWorkOrderReport(
+			Integer year, Integer monthOfYear);
 	
 }

@@ -344,6 +344,26 @@ public class DealerReportRestService {
 	}
 
 	/**
+	 * Query maintenance department work order report.
+	 * 
+	 * @param year
+	 * @param monthOfYear
+	 * @return
+	 */
+	@GET
+	@Path("/query/maintenanceWorkOrderReport")
+	@Produces({ "application/json", "application/xml" })
+	@RestServiceErrorHandler
+	public Response queryDealerMaintenanceWorkOrderReport(
+			@QueryParam("year") Integer year,
+			@QueryParam("monthOfYear") Integer monthOfYear) {
+		return Response.ok(
+				dealerIncomeReportService
+						.queryDealerMaintenanceWorkOrderReport(year,
+								monthOfYear)).build();
+	}
+
+	/**
 	 * Query spare part department income report.
 	 * 
 	 * @param year
@@ -383,6 +403,25 @@ public class DealerReportRestService {
 		return Response.ok(
 				dealerIncomeReportService.queryDealerSheetSprayIncomeReport(
 						year, monthOfYear, itemName)).build();
+	}
+
+	/**
+	 * Query sheet spray department work order report.
+	 * 
+	 * @param year
+	 * @param monthOfYear
+	 * @return
+	 */
+	@GET
+	@Path("/query/sheetSprayWorkOrderReport")
+	@Produces({ "application/json", "application/xml" })
+	@RestServiceErrorHandler
+	public Response queryDealerSheetSprayWorkOrderReport(
+			@QueryParam("year") Integer year,
+			@QueryParam("monthOfYear") Integer monthOfYear) {
+		return Response.ok(
+				dealerIncomeReportService.queryDealerSheetSprayWorkOrderReport(
+						year, monthOfYear)).build();
 	}
 	
 }

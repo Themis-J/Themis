@@ -28,6 +28,10 @@ import com.jdc.themis.dealer.data.hibernate.type.PersistentTimestamp;
 					@org.hibernate.annotations.ParamDef(name="referenceDate", type="com.jdc.themis.dealer.data.hibernate.type.PersistentLocalDate"), 
 					@org.hibernate.annotations.ParamDef(name="departmentID", type="integer"), 
 					@org.hibernate.annotations.ParamDef(name="dealerID", type="integer")}), 
+			@org.hibernate.annotations.FilterDef(name="efDateFilter", 
+					parameters = {
+					@org.hibernate.annotations.ParamDef(name="referenceTime", type="com.jdc.themis.dealer.data.hibernate.type.PersistentTimestamp"), 
+					@org.hibernate.annotations.ParamDef(name="referenceDate", type="com.jdc.themis.dealer.data.hibernate.type.PersistentLocalDate")}),
 			@org.hibernate.annotations.FilterDef(name="efFilterSingleItem", 
 					parameters = {
 					@org.hibernate.annotations.ParamDef(name="referenceTime", type="com.jdc.themis.dealer.data.hibernate.type.PersistentTimestamp"), 
@@ -40,7 +44,8 @@ import com.jdc.themis.dealer.data.hibernate.type.PersistentTimestamp;
 		)
 @Filters( {
     @Filter(name="efFilterSingleItem", condition="validDate = :referenceDate and feeTypeID = :feeTypeID and id = :id and departmentID = :departmentID and dealerID = :dealerID and timestamp < :referenceTime and timeEnd >= :referenceTime"), 
-    @Filter(name="efFilter", condition="validDate = :referenceDate and departmentID = :departmentID and dealerID = :dealerID and timestamp < :referenceTime and timeEnd >= :referenceTime")
+    @Filter(name="efFilter", condition="validDate = :referenceDate and departmentID = :departmentID and dealerID = :dealerID and timestamp < :referenceTime and timeEnd >= :referenceTime"),
+    @Filter(name="efDateFilter", condition="validDate = :referenceDate and timestamp < :referenceTime and timeEnd >= :referenceTime")
 } )
 @TypeDefs({ @TypeDef(name = "datetime", typeClass = PersistentTimestamp.class),
 	@TypeDef(name = "localdate", typeClass = PersistentLocalDate.class)})
@@ -50,6 +55,7 @@ public class EmployeeFee implements TemporalEntity, Serializable {
 	private static final long serialVersionUID = 1L;
 	public static final String FILTER = "efFilter";
 	public static final String FILTER_SINGLEITEM = "efFilterSingleItem";
+	public static final String FILTER_VALIDATE = "efDateFilter";
 
 	@Id
 	private Integer id;
@@ -168,4 +174,5 @@ public class EmployeeFee implements TemporalEntity, Serializable {
 				.append("timeEnd", timeEnd)
 				.append("validDate", validDate).getStringBuffer().toString();
 	}
+	
 }

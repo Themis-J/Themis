@@ -74,6 +74,8 @@ public interface IncomeJournalDAO {
 	
 	Collection<EmployeeFee> getEmployeeFee(Integer dealerID, Integer departmentID, LocalDate validDate);
 	
+	Collection<EmployeeFee> getEmployeeFee(LocalDate validDate, Instant timestamp);
+	
 	Instant saveEmployeeFeeSummary(Integer dealerID, Integer departmentID, Collection<EmployeeFeeSummary> journals);
 	
 	Collection<EmployeeFeeSummary> getEmployeeFeeSummary(Integer dealerID, Integer departmentID, LocalDate validDate);

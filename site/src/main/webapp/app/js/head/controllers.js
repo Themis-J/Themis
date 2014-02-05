@@ -33,13 +33,20 @@ angular.module('masterApp.controllers', [])
 						{name: '应收账款－售前应收总额', page:'ard/sales'},
 						{name: '应收账款－售后应收总额', page:'ard/postSales'},
 						{name: '应收账款－厂家应收总额', page:'ard/factory'},
+						{name: '应收账款－租赁应收总额', page:'ard/lease'},
+						{name: '应收账款－保修应收总额', page:'ard/warranty'},
+						{name: '应收账款－保险理赔应收总额', page:'ard/insurance'},
+						{name: '应收账款－分期与保险应收总额', page:'ard/fee'},
+						{name: '应收账款－其它应收总额', page:'ard/other'},
 						{name: '售后总览-月均经销商售后销售额', page:'postSales/revenue'},
 						{name: '售后总览-月均经销商售后毛利', page:'postSales/margin'},
 						{name: '售后总览-月均经销商售后费用', page:'postSales/expense'},
 						{name: '售后总览-月均经销商售后运营利润', page:'postSales/opProfit'},
 						{name: '维修部-月均经销商维修部收入', page:'maintenance/income'},
+						{name: '维修部-月均经销商维修部工单', page:'maintenance/workOrder'},
 						{name: '备件部-月均经销商备件部收入', page:'sparePart/income'},
-						{name: '钣喷部-月均经销商钣喷部收入', page:'sheetSpray/income'}
+						{name: '钣喷部-月均经销商钣喷部收入', page:'sheetSpray/income'},
+						{name: '钣喷部-月均经销商钣喷部工单', page:'sheetSpray/workOrder'},
 						];
         
 		$scope.goto = function(item)

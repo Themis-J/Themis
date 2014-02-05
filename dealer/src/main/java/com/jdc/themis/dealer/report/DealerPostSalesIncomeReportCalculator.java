@@ -98,7 +98,8 @@ public class DealerPostSalesIncomeReportCalculator {
 					dealerRevenueFacts.get(dealerID),
 					DealerIncomeRevenueFact.class).getAmount();
 			final ReportDataDetailAmount amount = new ReportDataDetailAmount();
-			amount.setAmount(totalAmount.doubleValue() / (monthOfYear * 1.0));
+			amount.setAmount(totalAmount.doubleValue()
+					/ monthOfYear.doubleValue());
 
 			dealerDetails.get(dealerID).setRevenue(amount);
 		}
@@ -126,7 +127,7 @@ public class DealerPostSalesIncomeReportCalculator {
 								DealerIncomeRevenueFact.class).getAmount();
 						final ReportDataDetailAmount departmentAmount = new ReportDataDetailAmount();
 						departmentAmount.setAmount(departmentRevenue
-								.doubleValue() / (monthOfYear * 1.0));
+								.doubleValue() / monthOfYear.doubleValue());
 						for (final ReportDataDepartmentDetail departmentDetail : dealerDetails
 								.get(dealerID).getDetail()) {
 							if (departmentDetail.getId().equals(
@@ -151,7 +152,8 @@ public class DealerPostSalesIncomeReportCalculator {
 					dealerRevenueFacts.get(dealerID),
 					DealerIncomeRevenueFact.class).getMargin();
 			final ReportDataDetailAmount amount = new ReportDataDetailAmount();
-			amount.setAmount(totalMargin.doubleValue() / (monthOfYear * 1.0));
+			amount.setAmount(totalMargin.doubleValue()
+					/ monthOfYear.doubleValue());
 
 			dealerDetails.get(dealerID).setMargin(amount);
 		}
@@ -179,7 +181,7 @@ public class DealerPostSalesIncomeReportCalculator {
 								DealerIncomeRevenueFact.class).getMargin();
 						final ReportDataDetailAmount departmentAmount = new ReportDataDetailAmount();
 						departmentAmount.setAmount(departmentMargin
-								.doubleValue() / (monthOfYear * 1.0));
+								.doubleValue() / monthOfYear.doubleValue());
 						for (final ReportDataDepartmentDetail departmentDetail : dealerDetails
 								.get(dealerID).getDetail()) {
 							if (departmentDetail.getId().equals(
@@ -204,7 +206,8 @@ public class DealerPostSalesIncomeReportCalculator {
 					dealerExpenseFacts.get(dealerID),
 					DealerIncomeExpenseFact.class).getAmount();
 			final ReportDataDetailAmount amount = new ReportDataDetailAmount();
-			amount.setAmount(totalAmount.doubleValue() / (monthOfYear * 1.0));
+			amount.setAmount(totalAmount.doubleValue()
+					/ monthOfYear.doubleValue());
 
 			dealerDetails.get(dealerID).setExpense(amount);
 		}
@@ -232,7 +235,7 @@ public class DealerPostSalesIncomeReportCalculator {
 								DealerIncomeExpenseFact.class).getAmount();
 						final ReportDataDetailAmount departmentAmount = new ReportDataDetailAmount();
 						departmentAmount.setAmount(departmentExpense
-								.doubleValue() / (monthOfYear * 1.0));
+								.doubleValue() / monthOfYear.doubleValue());
 						for (final ReportDataDepartmentDetail departmentDetail : dealerDetails
 								.get(dealerID).getDetail()) {
 							if (departmentDetail.getId().equals(

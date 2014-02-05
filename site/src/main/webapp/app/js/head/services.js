@@ -29,8 +29,10 @@ angular.module('masterApp.services', ['ngResource'])
 		            queryPostSalesExpenseReport: {method: 'GET', params: {root: 'report', path: 'query', subpath: 'postSalesExpenseReport', subpath2: ''}, isArray: false},
 		            queryPostSalesOpProfitReport: {method: 'GET', params: {root: 'report', path: 'query', subpath: 'postSalesOpProfitReport', subpath2: ''}, isArray: false},
 		            queryMaintenanceIncomeReport: {method: 'GET', params: {root: 'report', path: 'query', subpath: 'maintenanceIncomeReport', subpath2: ''}, isArray: false},
+		            queryMaintenanceWorkOrderReport: {method: 'GET', params: {root: 'report', path: 'query', subpath: 'maintenanceWorkOrderReport', subpath2: ''}, isArray: false},
 		            querySparePartIncomeReport: {method: 'GET', params: {root: 'report', path: 'query', subpath: 'sparePartIncomeReport', subpath2: ''}, isArray: false},
-		            querySheetSprayIncomeReport: {method: 'GET', params: {root: 'report', path: 'query', subpath: 'sheetSprayIncomeReport', subpath2: ''}, isArray: false}
+		            querySheetSprayIncomeReport: {method: 'GET', params: {root: 'report', path: 'query', subpath: 'sheetSprayIncomeReport', subpath2: ''}, isArray: false},
+		            querySheetSprayWorkOrderReport: {method: 'GET', params: {root: 'report', path: 'query', subpath: 'sheetSprayWorkOrderReport', subpath2: ''}, isArray: false}
 		        }),
 	        	local: $resource(
 		        	config.service.localUrl + '/:path/:subpath', {}, {
@@ -57,8 +59,10 @@ angular.module('masterApp.services', ['ngResource'])
 		            queryPostSalesExpenseReport: {method: 'GET', params: {path: '', subpath: 'queryMonthlyPostSalesExpenseReport.json'}, isArray: false},
 		            queryPostSalesOpProfitReport: {method: 'GET', params: {path: '', subpath: 'queryMonthlyPostSalesOpProfitReport.json'}, isArray: false},
 		            queryMaintenanceIncomeReport: {method: 'GET', params: {path: '', subpath: 'queryMonthlyMaintenanceIncomeReport.json'}, isArray: false},
+		            queryMaintenanceWorkOrderReport: {method: 'GET', params: {path: '', subpath: 'queryMonthlyMaintenanceWorkOrderReport.json'}, isArray: false},
 		            querySparePartIncomeReport: {method: 'GET', params: {path: '', subpath: 'queryMonthlySparePartIncomeReport.json'}, isArray: false},
-		            querySheetSprayIncomeReport: {method: 'GET', params: {path: '', subpath: 'queryMonthlySheetSprayIncomeReport.json'}, isArray: false}
+		            querySheetSprayIncomeReport: {method: 'GET', params: {path: '', subpath: 'queryMonthlySheetSprayIncomeReport.json'}, isArray: false},
+		            querySheetSprayWorkOrderReport: {method: 'GET', params: {path: '', subpath: 'queryMonthlySheetSprayWorkOrderReport.json'}, isArray: false}
 		        })
 	        };
 	        if ( mode == 'local' ) {

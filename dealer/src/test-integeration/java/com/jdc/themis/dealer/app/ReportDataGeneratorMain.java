@@ -19,6 +19,7 @@ public class ReportDataGeneratorMain {
 		client.generateExpenses();
 		client.generateHRAllocations();
 		client.generateAccountReceivables();
+		client.generateEmployeeFees();
 		testDealerEntryItemStatus(client);
 
 		System.exit(0);

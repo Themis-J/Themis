@@ -737,5 +737,19 @@ public class IncomeJournalDAOImpl implements IncomeJournalDAO {
 		session.disableFilter(InventoryDuration.FILTER_VALIDATE);
 		return list;
 	}
+	
+	@Override
+	public Collection<EmployeeFee> getEmployeeFee(LocalDate validDate,
+			Instant timestamp) {
+		final Session session = sessionFactory.getCurrentSession();
+		session.enableFilter(EmployeeFee.FILTER_VALIDATE)
+				.setParameter("referenceDate", validDate)
+				.setParameter("referenceTime", timestamp);
+		@SuppressWarnings("unchecked")
+		final List<EmployeeFee> list = session
+				.createCriteria(EmployeeFee.class).list();
+		session.disableFilter(EmployeeFee.FILTER_VALIDATE);
+		return list;
+	}
 
 }

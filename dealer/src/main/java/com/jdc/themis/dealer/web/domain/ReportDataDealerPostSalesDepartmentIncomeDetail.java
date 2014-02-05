@@ -19,6 +19,8 @@ public class ReportDataDealerPostSalesDepartmentIncomeDetail implements
 	private ReportDataDetailAmount revenue = new ReportDataDetailAmount();
 	private ReportDataDetailAmount margin = new ReportDataDetailAmount();
 	private ReportDataDetailAmount count = new ReportDataDetailAmount();
+	private ReportDataDetailAmount manHour = new ReportDataDetailAmount();
+	private ReportDataDetailAmount manHourPerWorkOrder = new ReportDataDetailAmount();
 
 	public Integer getId() {
 		return id;
@@ -74,6 +76,23 @@ public class ReportDataDealerPostSalesDepartmentIncomeDetail implements
 
 	public void setCount(ReportDataDetailAmount count) {
 		this.count = count;
+	}
+
+	public ReportDataDetailAmount getManHour() {
+		return manHour;
+	}
+
+	public void setManHour(ReportDataDetailAmount manHour) {
+		this.manHour = manHour;
+	}
+
+	public ReportDataDetailAmount getManHourPerWorkOrder() {
+		return manHourPerWorkOrder;
+	}
+
+	public void setManHourPerWorkOrder(
+			ReportDataDetailAmount manHourPerWorkOrder) {
+		this.manHourPerWorkOrder = manHourPerWorkOrder;
 	}
 
 }
