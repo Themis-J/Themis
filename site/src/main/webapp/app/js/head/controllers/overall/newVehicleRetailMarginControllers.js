@@ -1,7 +1,6 @@
 'use strict';
 
-angular.module('overallNewVehicleSales.controllers', [])
-	.controller('overallNewVehicleSalesCtrl', ['$scope', 'ReportRestClient', 'ReportService', 'config', function($scope, restClient, reportService, config) {
+angular.module('overallNewVehicleRetailMargin.controllers', []).controller('overallNewVehicleRetailMarginCtrl', ['$scope', 'ReportRestClient', 'ReportService', 'config', function($scope, restClient, reportService, config) {
 		/**
 		 * Global functions
 		 */
@@ -12,7 +11,7 @@ angular.module('overallNewVehicleSales.controllers', [])
     	
     	$scope.showReport = function() {
         	var params = {year: reportService.getCurrentYear()};
-        	$scope.draw(restClient(config.currentMode).queryNewVehicleSalesReport, params);
+        	$scope.draw(restClient(config.currentMode).queryNewVehicleRetailMarginReport, params);
         };
         
         $scope.draw = function (restClient, params) {
@@ -22,8 +21,8 @@ angular.module('overallNewVehicleSales.controllers', [])
 	            restClient(params, function(data) {
 	            	var chartData = {
 				        		id: 'report_chart',
-				        		title: '新车总销量',
-				        		yAxisTitle: '新车总销量',
+				        		title: '新车零售平均毛利',
+				        		yAxisTitle: '新车零售平均毛利',
 				        		series: { previous:[], current:[], previousReference:[], currentReference:[], currentPercentage:[] },
 				        		gridData:[]
 				        	}; 
@@ -37,7 +36,7 @@ angular.module('overallNewVehicleSales.controllers', [])
 	            		chartData.gridData[i].id = currentDetail[i].code;
 	            		chartData.gridData[i].name = currentDetail[i].name;
 	            		chartData.gridData[i].brand = currentDetail[i].brand;
-	            		chartData.gridData[i].amount = currentDetail[i].count.amount;
+	            		chartData.gridData[i].amount = currentDetail[i].revenue.amount / currentDetail[i].count.amount;
 	            	};
 	            	var chartSubtitle = '年度对比';
 	            	var chartColumnCurrent = '今年';
@@ -51,7 +50,7 @@ angular.module('overallNewVehicleSales.controllers', [])
 			        jQuery("#report_list").jqGrid({
 					   	data:chartData.gridData,
 						datatype: "local",
-					   	colNames:['经销商代码','名称', '品牌', '新车总销量'],
+					   	colNames:['经销商代码','名称', '品牌', '新车零售平均毛利'],
 					   	colModel:[
 					   		{name:'id',index:'id', width:55},
 					   		{name:'name',index:'name', width:100},
@@ -66,7 +65,7 @@ angular.module('overallNewVehicleSales.controllers', [])
 						multiselect: false,
 						width: chartWidth,
 						height: "100%",
-						caption: "本年新车总销量"
+						caption: "本年新车零售平均毛利"
 					});
 					jQuery("#report_list").jqGrid('navGrid','#report_pager',{"edit":false,"add":false,"del":false,"search":true,"refresh":true,"view":false,"excel":false,"pdf":false,"csv":false,"columns":false});
 					if (  $scope.report_chart_display ) {

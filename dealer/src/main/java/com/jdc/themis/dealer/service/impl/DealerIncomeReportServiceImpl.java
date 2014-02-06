@@ -339,7 +339,41 @@ public class DealerIncomeReportServiceImpl implements DealerIncomeReportService 
 		response.getDetail().add(calculator.getReportDetail());
 		return response;
 	}
-	
+
+	@Override
+	public QueryDealerIncomeResponse queryNewVehicleRetailMarginReport(
+			Integer year) {
+		Preconditions.checkNotNull(year, "year can't be null");
+		final QueryDealerIncomeResponse response = new QueryDealerIncomeResponse();
+		response.setReportName("NewVehicleRetailMarginReport");
+
+		DealerReportCalculator calculator = new DealerReportCalculator(
+				refDataDAL.getDealers().getItems(), year);
+
+		// Get all revenues
+		final DealerIncomeFactsQueryBuilder queryBuilder = new DealerIncomeFactsQueryBuilder(
+				reportDAL).withYear(year);
+
+		final Collection<DealerIncomeRevenueFact> revenueFacts = queryBuilder
+				.withDepartmentID(refDataDAL.getDepartment("新车销售部").getId())
+				.withItemCategory("新轿车零售").withItemCategory("新货车零售")
+				.queryRevenues();
+		final Collection<DealerIncomeRevenueFact> kaRevenueFacts = queryBuilder
+				.clear()
+				.withDepartmentID(refDataDAL.getDepartment("新车销售部").getId())
+				.withItemCategory("新车其它收入").withItemName("零售销售返利")
+				.queryRevenues();
+		revenueFacts.addAll(kaRevenueFacts);
+		final ImmutableListMultimap<Integer, DealerIncomeRevenueFact> dealerRevenueFacts = Multimaps
+				.index(revenueFacts, GetDealerIDFromRevenueFunction.INSTANCE);
+
+		calculator.calcRevenues(dealerRevenueFacts, JournalOp.SUM).calcCount(
+				dealerRevenueFacts);
+
+		response.getDetail().add(calculator.getReportDetail());
+		return response;
+	}
+
 	@Override
 	public QueryDealerSalesIncomeResponse queryDealerSalesIncomeReport(
 			Integer year, Integer monthOfYear) {

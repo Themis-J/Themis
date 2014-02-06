@@ -18,6 +18,7 @@ angular.module('themis', ['ngRoute', 'themis.directives', 'themis.services', 'th
         'overallNonSalesProfit.controllers',
         'overallNewVehicleRetailSales.controllers',
         'overallNewVehicleSales.controllers',
+        'overallNewVehicleRetailMargin.controllers',
         'overallMargin.controllers',  
         'overallExpense.controllers', 
 		'overallPercentage.controllers', 

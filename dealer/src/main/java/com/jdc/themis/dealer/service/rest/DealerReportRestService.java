@@ -149,7 +149,18 @@ public class DealerReportRestService {
 				dealerIncomeReportService.queryNewVehicleSalesReport(year))
 				.build();
 	}
-	
+
+	@GET
+	@Path("/query/newVehicleRetailMarginReport")
+	@Produces({ "application/json", "application/xml" })
+	@RestServiceErrorHandler
+	public Response queryDealerNewVehicleRetailMarginReport(
+			@QueryParam("year") Integer year) {
+		return Response.ok(
+				dealerIncomeReportService
+						.queryNewVehicleRetailMarginReport(year)).build();
+	}
+
 	@GET
 	@Path("/query/overallExpensePercentageReport")
 	@Produces({ "application/json", "application/xml" })

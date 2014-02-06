@@ -19,6 +19,7 @@ angular.module('masterApp.controllers', [])
 						{name: '总运营－(本年度)非经营性损益', page:'overall/nonRecurrentPNL'},
 						{name: '总运营－(本年度)新车零售销量', page:'overall/newVehicleRetailSales'},
 						{name: '总运营－(本年度)新车总销量', page:'overall/newVehicleSales'},
+						{name: '总运营－(本年度)新车零售平均毛利', page:'overall/newVehicleRetailMargin'},
 						{name: '总运营－营业额、毛利、费用、运营利润、税前净利润', page:'overall/abs'},
 						{name: '总运营－销售、毛利占百分比', page:'overall/percentage'},
 						{name: '总运营－费用占百分比', page:'overall/expPercentage'},

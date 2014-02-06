@@ -32,9 +32,6 @@ angular.module('overallNewVehicleRetailSales.controllers', []).controller('overa
 					chartCategories[0].categories = dealers;
 					var currentDetail = data.detail[0].detail;
 					for (var i=0; i<currentDetail.length; i++) {
-						chartData.series.current[i] = currentDetail[i].count.amount;
-	            		chartData.series.currentPercentage[i] = currentDetail[i].count.percentage * 100;
-	            		chartData.series.currentReference[i] = currentDetail[i].count.reference;
 	            		chartData.gridData[i] = {id:null, name:null, amount:null};
 	            		chartData.gridData[i].id = currentDetail[i].code;
 	            		chartData.gridData[i].name = currentDetail[i].name;
