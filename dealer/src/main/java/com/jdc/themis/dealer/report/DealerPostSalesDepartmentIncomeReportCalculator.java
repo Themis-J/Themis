@@ -15,7 +15,6 @@ import com.google.common.collect.Maps;
 import com.google.common.collect.Multimaps;
 import com.jdc.themis.dealer.domain.DealerEmployeeFeeFact;
 import com.jdc.themis.dealer.domain.DealerIncomeRevenueFact;
-import com.jdc.themis.dealer.service.RefDataQueryService;
 import com.jdc.themis.dealer.service.impl.GetTimeIDFromEmployeeFeeFunction;
 import com.jdc.themis.dealer.service.impl.GetTimeIDFromRevenueFunction;
 import com.jdc.themis.dealer.web.domain.DealerDetail;
@@ -71,8 +70,7 @@ public class DealerPostSalesDepartmentIncomeReportCalculator {
 	 * @return
 	 */
 	public DealerPostSalesDepartmentIncomeReportCalculator calcRevenues(
-			final ImmutableListMultimap<Integer, DealerIncomeRevenueFact> dealerRevenueFacts,
-			final RefDataQueryService refDataDAL) {
+			final ImmutableListMultimap<Integer, DealerIncomeRevenueFact> dealerRevenueFacts) {
 		for (final Integer dealerID : dealerRevenueFacts.keySet()) {
 			final BigDecimal totalAmount = Lambda.sumFrom(
 					dealerRevenueFacts.get(dealerID),
@@ -95,8 +93,7 @@ public class DealerPostSalesDepartmentIncomeReportCalculator {
 	}
 
 	public DealerPostSalesDepartmentIncomeReportCalculator calcMargins(
-			final ImmutableListMultimap<Integer, DealerIncomeRevenueFact> dealerRevenueFacts,
-			final RefDataQueryService refDataDAL) {
+			final ImmutableListMultimap<Integer, DealerIncomeRevenueFact> dealerRevenueFacts) {
 		for (final Integer dealerID : dealerRevenueFacts.keySet()) {
 			final BigDecimal totalMargin = Lambda.sumFrom(
 					dealerRevenueFacts.get(dealerID),
@@ -119,8 +116,7 @@ public class DealerPostSalesDepartmentIncomeReportCalculator {
 	}
 
 	public DealerPostSalesDepartmentIncomeReportCalculator calcCount(
-			final ImmutableListMultimap<Integer, DealerIncomeRevenueFact> dealerRevenueFacts,
-			final RefDataQueryService refDataDAL) {
+			final ImmutableListMultimap<Integer, DealerIncomeRevenueFact> dealerRevenueFacts) {
 		for (final Integer dealerID : dealerRevenueFacts.keySet()) {
 			final Integer totalCount = Lambda.sumFrom(
 					dealerRevenueFacts.get(dealerID),
@@ -144,8 +140,7 @@ public class DealerPostSalesDepartmentIncomeReportCalculator {
 
 	public DealerPostSalesDepartmentIncomeReportCalculator calcManHour(
 			final ImmutableListMultimap<Integer, DealerIncomeRevenueFact> dealerRevenueFacts,
-			final ImmutableListMultimap<Integer, DealerEmployeeFeeFact> dealerEmployeeFeeFacts,
-			final RefDataQueryService refDataDAL) {
+			final ImmutableListMultimap<Integer, DealerEmployeeFeeFact> dealerEmployeeFeeFacts) {
 		for (final Integer dealerID : dealerRevenueFacts.keySet()) {
 			List<Double> manHourList = Lists.newArrayList();
 			final ImmutableListMultimap<Long, DealerIncomeRevenueFact> dealerRevenueFactsByTimeID = Multimaps
@@ -173,8 +168,7 @@ public class DealerPostSalesDepartmentIncomeReportCalculator {
 
 	public DealerPostSalesDepartmentIncomeReportCalculator calcManHourPerWorkOrder(
 			final ImmutableListMultimap<Integer, DealerIncomeRevenueFact> dealerRevenueFacts,
-			final ImmutableListMultimap<Integer, DealerEmployeeFeeFact> dealerEmployeeFeeFacts,
-			final RefDataQueryService refDataDAL) {
+			final ImmutableListMultimap<Integer, DealerEmployeeFeeFact> dealerEmployeeFeeFacts) {
 		for (final Integer dealerID : dealerRevenueFacts.keySet()) {
 			List<Double> manHourPerWorkOrderList = Lists.newArrayList();
 			final ImmutableListMultimap<Long, DealerIncomeRevenueFact> dealerRevenueFactsByTimeID = Multimaps

@@ -282,6 +282,65 @@ public class DealerIncomeReportServiceImpl implements DealerIncomeReportService 
 	}
 	
 	@Override
+	public QueryDealerIncomeResponse queryNewVehicleRetailSalesReport(
+			Integer year) {
+		Preconditions.checkNotNull(year, "year can't be null");
+		final QueryDealerIncomeResponse response = new QueryDealerIncomeResponse();
+		response.setReportName("NewVehicleRetailSalesReport");
+
+		DealerReportCalculator calculator = new DealerReportCalculator(
+				refDataDAL.getDealers().getItems(), year);
+
+		// Get all revenues
+		final DealerIncomeFactsQueryBuilder queryBuilder = new DealerIncomeFactsQueryBuilder(
+				reportDAL).withYear(year);
+
+		final Collection<DealerIncomeRevenueFact> revenueFacts = queryBuilder
+				.withDepartmentID(refDataDAL.getDepartment("新车销售部").getId())
+				.withItemCategory("新轿车零售").withItemCategory("新货车零售")
+				.queryRevenues();
+		final ImmutableListMultimap<Integer, DealerIncomeRevenueFact> dealerRevenueFacts = Multimaps
+				.index(revenueFacts, GetDealerIDFromRevenueFunction.INSTANCE);
+
+		calculator.calcCount(dealerRevenueFacts);
+
+		response.getDetail().add(calculator.getReportDetail());
+		return response;
+	}
+
+	@Override
+	public QueryDealerIncomeResponse queryNewVehicleSalesReport(Integer year) {
+		Preconditions.checkNotNull(year, "year can't be null");
+		final QueryDealerIncomeResponse response = new QueryDealerIncomeResponse();
+		response.setReportName("NewVehicleSalesReport");
+
+		DealerReportCalculator calculator = new DealerReportCalculator(
+				refDataDAL.getDealers().getItems(), year);
+
+		// Get all revenues
+		final DealerIncomeFactsQueryBuilder queryBuilder = new DealerIncomeFactsQueryBuilder(
+				reportDAL).withYear(year);
+
+		final Collection<DealerIncomeRevenueFact> revenueFacts = queryBuilder
+				.withDepartmentID(refDataDAL.getDepartment("新车销售部").getId())
+				.withItemCategory("新轿车零售").withItemCategory("新货车零售")
+				.queryRevenues();
+		final Collection<DealerIncomeRevenueFact> kaRevenueFacts = queryBuilder
+				.clear()
+				.withDepartmentID(refDataDAL.getDepartment("新车销售部").getId())
+				.withItemCategory("新车其它收入").withItemName("大客户采购（租车公司，政府机关）")
+				.queryRevenues();
+		revenueFacts.addAll(kaRevenueFacts);
+		final ImmutableListMultimap<Integer, DealerIncomeRevenueFact> dealerRevenueFacts = Multimaps
+				.index(revenueFacts, GetDealerIDFromRevenueFunction.INSTANCE);
+
+		calculator.calcCount(dealerRevenueFacts);
+
+		response.getDetail().add(calculator.getReportDetail());
+		return response;
+	}
+	
+	@Override
 	public QueryDealerSalesIncomeResponse queryDealerSalesIncomeReport(
 			Integer year, Integer monthOfYear) {
 		final DealerSalesIncomeReportCalculator calculator = new DealerSalesIncomeReportCalculator(
@@ -666,8 +725,8 @@ public class DealerIncomeReportServiceImpl implements DealerIncomeReportService 
 				.withItemName(itemName).queryRevenues();
 		final ImmutableListMultimap<Integer, DealerIncomeRevenueFact> dealerRevenueFacts = Multimaps
 				.index(revenueFacts, GetDealerIDFromRevenueFunction.INSTANCE);
-		calculator.calcRevenues(dealerRevenueFacts, refDataDAL).calcMargins(
-				dealerRevenueFacts, refDataDAL);
+		calculator.calcRevenues(dealerRevenueFacts).calcMargins(
+				dealerRevenueFacts);
 
 		if (!itemName.equalsIgnoreCase("外修")
 				&& !itemName.equalsIgnoreCase("延保")
@@ -679,8 +738,7 @@ public class DealerIncomeReportServiceImpl implements DealerIncomeReportService 
 			final ImmutableListMultimap<Integer, DealerEmployeeFeeFact> dealerEmployeeFeeFacts = Multimaps
 					.index(employeeFeeFacts,
 							GetDealerIDFromEmployeeFeeFunction.INSTANCE);
-			calculator.calcManHour(dealerRevenueFacts, dealerEmployeeFeeFacts,
-					refDataDAL);
+			calculator.calcManHour(dealerRevenueFacts, dealerEmployeeFeeFacts);
 		}
 
 		response.getDetail().add(calculator.getReportDetail());
@@ -715,11 +773,10 @@ public class DealerIncomeReportServiceImpl implements DealerIncomeReportService 
 				.index(employeeFeeFacts,
 						GetDealerIDFromEmployeeFeeFunction.INSTANCE);
 		calculator
-				.calcRevenues(dealerRevenueFacts, refDataDAL)
-				.calcManHour(dealerRevenueFacts, dealerEmployeeFeeFacts,
-						refDataDAL)
+				.calcRevenues(dealerRevenueFacts)
+				.calcManHour(dealerRevenueFacts, dealerEmployeeFeeFacts)
 				.calcManHourPerWorkOrder(dealerRevenueFacts,
-						dealerEmployeeFeeFacts, refDataDAL);
+						dealerEmployeeFeeFacts);
 
 		response.getDetail().add(calculator.getReportDetail());
 		return response;
@@ -752,8 +809,8 @@ public class DealerIncomeReportServiceImpl implements DealerIncomeReportService 
 		final ImmutableListMultimap<Integer, DealerIncomeRevenueFact> dealerRevenueFacts = Multimaps
 				.index(revenueFacts, GetDealerIDFromRevenueFunction.INSTANCE);
 
-		calculator.calcRevenues(dealerRevenueFacts, refDataDAL).calcMargins(
-				dealerRevenueFacts, refDataDAL);
+		calculator.calcRevenues(dealerRevenueFacts).calcMargins(
+				dealerRevenueFacts);
 
 		response.getDetail().add(calculator.getReportDetail());
 		return response;
@@ -781,8 +838,8 @@ public class DealerIncomeReportServiceImpl implements DealerIncomeReportService 
 		final ImmutableListMultimap<Integer, DealerIncomeRevenueFact> dealerRevenueFacts = Multimaps
 				.index(revenueFacts, GetDealerIDFromRevenueFunction.INSTANCE);
 
-		calculator.calcRevenues(dealerRevenueFacts, refDataDAL).calcMargins(
-				dealerRevenueFacts, refDataDAL);
+		calculator.calcRevenues(dealerRevenueFacts).calcMargins(
+				dealerRevenueFacts);
 
 		if (!itemName.equalsIgnoreCase("外修")
 				&& !itemName.equalsIgnoreCase("钣喷材料收入")) {
@@ -793,8 +850,7 @@ public class DealerIncomeReportServiceImpl implements DealerIncomeReportService 
 			final ImmutableListMultimap<Integer, DealerEmployeeFeeFact> dealerEmployeeFeeFacts = Multimaps
 					.index(employeeFeeFacts,
 							GetDealerIDFromEmployeeFeeFunction.INSTANCE);
-			calculator.calcManHour(dealerRevenueFacts, dealerEmployeeFeeFacts,
-					refDataDAL);
+			calculator.calcManHour(dealerRevenueFacts, dealerEmployeeFeeFacts);
 		}
 
 		response.getDetail().add(calculator.getReportDetail());
@@ -829,11 +885,10 @@ public class DealerIncomeReportServiceImpl implements DealerIncomeReportService 
 				.index(employeeFeeFacts,
 						GetDealerIDFromEmployeeFeeFunction.INSTANCE);
 		calculator
-				.calcRevenues(dealerRevenueFacts, refDataDAL)
-				.calcManHour(dealerRevenueFacts, dealerEmployeeFeeFacts,
-						refDataDAL)
+				.calcRevenues(dealerRevenueFacts)
+				.calcManHour(dealerRevenueFacts, dealerEmployeeFeeFacts)
 				.calcManHourPerWorkOrder(dealerRevenueFacts,
-						dealerEmployeeFeeFacts, refDataDAL);
+						dealerEmployeeFeeFacts);
 
 		response.getDetail().add(calculator.getReportDetail());
 		return response;
