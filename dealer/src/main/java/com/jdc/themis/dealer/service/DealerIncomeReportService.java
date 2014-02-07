@@ -36,7 +36,16 @@ public interface DealerIncomeReportService {
 	
 	@Transactional(readOnly=true)
 	QueryDealerIncomeResponse queryNonSalesProfitReport(Integer year);
-	
+
+	@Transactional(readOnly = true)
+	QueryDealerIncomeResponse queryNewVehicleRetailSalesReport(Integer year);
+
+	@Transactional(readOnly = true)
+	QueryDealerIncomeResponse queryNewVehicleSalesReport(Integer year);
+
+	@Transactional(readOnly = true)
+	QueryDealerIncomeResponse queryNewVehicleRetailMarginReport(Integer year);
+
 	@Transactional(readOnly=true)
 	QueryDealerExpensePercentageResponse queryOverallExpensePercentageReport(
 			Integer year, Integer monthOfYear, Integer denominator, Option<String> category, Option<String> itemName);
@@ -83,11 +92,19 @@ public interface DealerIncomeReportService {
 			Integer year, Integer monthOfYear, String itemName);
 
 	@Transactional(readOnly = true)
+	QueryDealerMaintenanceIncomeResponse queryDealerMaintenanceWorkOrderReport(
+			Integer year, Integer monthOfYear);
+
+	@Transactional(readOnly = true)
 	QueryDealerSparePartIncomeResponse queryDealerSparePartIncomeReport(
 			Integer year, Integer monthOfYear, String itemName);
 
 	@Transactional(readOnly = true)
 	QueryDealerSheetSprayIncomeResponse queryDealerSheetSprayIncomeReport(
 			Integer year, Integer monthOfYear, String itemName);
+
+	@Transactional(readOnly = true)
+	QueryDealerSheetSprayIncomeResponse queryDealerSheetSprayWorkOrderReport(
+			Integer year, Integer monthOfYear);
 	
 }

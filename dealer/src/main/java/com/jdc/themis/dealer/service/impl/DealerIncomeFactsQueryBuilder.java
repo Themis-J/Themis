@@ -5,6 +5,7 @@ import java.util.Collection;
 import com.google.common.collect.Lists;
 import com.jdc.themis.dealer.data.dao.ReportDAO;
 import com.jdc.themis.dealer.domain.DealerAccountReceivableFact;
+import com.jdc.themis.dealer.domain.DealerEmployeeFeeFact;
 import com.jdc.themis.dealer.domain.DealerHRAllocationFact;
 import com.jdc.themis.dealer.domain.DealerIncomeExpenseFact;
 import com.jdc.themis.dealer.domain.DealerIncomeRevenueFact;
@@ -90,6 +91,8 @@ public class DealerIncomeFactsQueryBuilder {
 		this.itemSource.clear();
 		this.itemName.clear();
 		this.itemID.clear();
+		this.dealerID.clear();
+		this.departmentID.clear();
 		this.positionID = Option.<Integer>none();
 		this.durationID = Option.<Integer>none();
 		return this;
@@ -127,4 +130,10 @@ public class DealerIncomeFactsQueryBuilder {
 		return this.reportDAL.getDealerInventoryFacts(year,
 				monthOfYear.iterator().next(), departmentID.isEmpty() ? Option.<Integer>none() : Option.fromNull(departmentID.iterator().next()), durationID, itemName, dealerID);
 	}
+	
+	public Collection<DealerEmployeeFeeFact> queryEmployeeFees() {
+		return this.reportDAL.getDealerEmployeeFeeFacts(year,
+				lessThanMonthOfYear, departmentID.isEmpty() ? Option.<Integer>none() : Option.fromNull(departmentID.iterator().next()), itemName, dealerID);
+	}
+	
 }

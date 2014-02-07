@@ -466,5 +466,19 @@ public class DealerReportCalculator {
 		Lambda.forEach(dealerDetails.values()).getRevenue().setReference(reference);
 		return this;
 	}
+	
+	public DealerReportCalculator calcCount(
+			final ImmutableListMultimap<Integer, DealerIncomeRevenueFact> dealerRevenueFacts) {
+		for (final Integer dealerID : dealerRevenueFacts.keySet()) {
+			final Integer totalCount = Lambda.sumFrom(
+					dealerRevenueFacts.get(dealerID),
+					DealerIncomeRevenueFact.class).getCount();
+			final ReportDataDetailAmount amount = new ReportDataDetailAmount();
+			amount.setAmount(totalCount.doubleValue());
+
+			dealerDetails.get(dealerID).setCount(amount);
+		}
+		return this;
+	}
 
 }

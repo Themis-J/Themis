@@ -11,6 +11,7 @@ INSERT INTO EnumValue VALUES (2, 'TaxJournal', 3);
 INSERT INTO EnumValue VALUES (2, 'HumanResourceAllocation', 4);
 INSERT INTO EnumValue VALUES (2, 'AccountReceivableDuration', 5);
 INSERT INTO EnumValue VALUES (2, 'InventoryDuration', 6);
+INSERT INTO EnumValue VALUES (2, 'EmployeeFee', 7);
 INSERT INTO EnumValue VALUES (3, 'Days', 0);
 INSERT INTO EnumValue VALUES (3, 'Months', 1);
 INSERT INTO EnumValue VALUES (4, '标准工时收费', 0);
@@ -101,7 +102,6 @@ INSERT INTO UserInfo SELECT 'guangfeng', '+LcTilpinvsERvRYtxdzMjuPLh/p2soRXubVD3
 INSERT INTO UserInfo SELECT 'changning', 'HjKdle7RVUwmO6gKJ7p+yetENq6jyJRRPa6HbRMVkLY=', 2, 11, true, 0, current_timestamp, '9999-01-01 08:00:00', 'admin';
 INSERT INTO UserInfo SELECT 'changkai', 'k61GgrDxhb+pqifYsGUCkEq0iez/Q4BkMkL5LHbggQs=', 2, 11, true, 0, current_timestamp, '9999-01-01 08:00:00', 'admin';
 INSERT INTO UserInfo SELECT 'changjing', '43pVjB9MgXs0Uc6xcR+u+fKNPZawKxcGCLhmmcweB4o=', 2, 11, true, 0, current_timestamp, '9999-01-01 08:00:00', 'admin';
-INSERT INTO UserInfo SELECT 'changyi', 'aFOX4zD+sddnQNggoVmIbUQmmp+2UJko5PaKUnet/80=', 2, 11, true, 0, current_timestamp, '9999-01-01 08:00:00', 'admin';
 INSERT INTO UserInfo SELECT 'changjun', 'er6oVLQ8BA9o/r6PE8V1JfZ6QDNZ01OMSCpyoHd3jaM=', 2, 11, true, 0, current_timestamp, '9999-01-01 08:00:00', 'admin';
 INSERT INTO UserInfo SELECT 'changwei', 'JlSGTcIovTnWOSXzQie2I+Y8nQz2mVHpqWlT5fltUt0=', 2, 11, true, 0, current_timestamp, '9999-01-01 08:00:00', 'admin';
 INSERT INTO UserInfo SELECT 'changyue', 'FoS+KlCqxnMcI8sYHXdVf+2aWnFFStBwmd5+ygBR3gM=', 2, 11, true, 0, current_timestamp, '9999-01-01 08:00:00', 'admin';
@@ -132,13 +132,13 @@ INSERT INTO Menu SELECT 10, 'HumanResource', '人员管理';
 INSERT INTO Menu SELECT 11, 'Tax', '所得税';
 INSERT INTO Menu SELECT 12, 'OperationIncomeAndMargin_NewVehicle', '新车销售部';
 INSERT INTO Menu SELECT 13, 'OperationIncomeAndMargin_UsedVehicle', '二手车部';
-INSERT INTO Menu SELECT 14, 'OperationIncomeAndMargin_Rent', '租恁事业部';
+INSERT INTO Menu SELECT 14, 'OperationIncomeAndMargin_Rent', '租赁事业部';
 INSERT INTO Menu SELECT 15, 'OperationIncomeAndMargin_Repair', '维修部';
 INSERT INTO Menu SELECT 16, 'OperationIncomeAndMargin_Parts', '配件部';
 INSERT INTO Menu SELECT 17, 'OperationIncomeAndMargin_SheetMetalSpray', '钣喷部';
 INSERT INTO Menu SELECT 18, 'OperationExpense_NewVehicle', '新车销售部';
 INSERT INTO Menu SELECT 19, 'OperationExpense_UsedVehicle', '二手车部';
-INSERT INTO Menu SELECT 20, 'OperationExpense_Rent', '租恁事业部';
+INSERT INTO Menu SELECT 20, 'OperationExpense_Rent', '租赁事业部';
 INSERT INTO Menu SELECT 21, 'OperationExpense_Repair', '维修部';
 INSERT INTO Menu SELECT 22, 'OperationExpense_Parts', '配件部';
 INSERT INTO Menu SELECT 23, 'OperationExpense_SheetMetalSpray', '钣喷部';
@@ -206,7 +206,7 @@ INSERT INTO SalesServiceJournalCategory SELECT 8, '新车其它收入', current_
 INSERT INTO SalesServiceJournalCategory SELECT 9, '二手车其它收入', current_timestamp;
 INSERT INTO SalesServiceJournalCategory SELECT 10, '维修其它收入', current_timestamp;
 INSERT INTO SalesServiceJournalCategory SELECT 11, '钣喷其它收入', current_timestamp;
-INSERT INTO SalesServiceJournalCategory SELECT 12, '租恁收入', current_timestamp;
+INSERT INTO SalesServiceJournalCategory SELECT 12, '租赁收入', current_timestamp;
 INSERT INTO SalesServiceJournalCategory SELECT 13, '税收', current_timestamp;
 
 INSERT INTO SalesServiceJournalItem SELECT 1, '大客户销售返利', 8, 0, '', current_timestamp;
@@ -255,7 +255,7 @@ INSERT INTO SalesServiceJournalItem SELECT 43, '其它工时', 7, 0, '', current
 INSERT INTO SalesServiceJournalItem SELECT 44, '未使用工时', 7, 0, '', current_timestamp;
 INSERT INTO SalesServiceJournalItem SELECT 45, '外修', 11, 0, '', current_timestamp;
 INSERT INTO SalesServiceJournalItem SELECT 46, '钣喷材料收入', 11, 0, '', current_timestamp;
-INSERT INTO SalesServiceJournalItem SELECT 47, '汽车租恁', 12, 0, '', current_timestamp;
+INSERT INTO SalesServiceJournalItem SELECT 47, '汽车租赁', 12, 0, '', current_timestamp;
 
 INSERT INTO Vehicle SELECT 1, '微型车 Mini', 1, 0, current_timestamp;
 INSERT INTO Vehicle SELECT 2, '小型车 Sub Compact - 雅力士1.6', 1, 0, current_timestamp;
@@ -323,7 +323,7 @@ INSERT INTO Duration SELECT 8, 1, 13, null;
 INSERT INTO AccountReceivableDurationItem SELECT 1, '客户-维修、钣喷与备件', current_timestamp;
 INSERT INTO AccountReceivableDurationItem SELECT 2, '销售应收帐款', current_timestamp;
 INSERT INTO AccountReceivableDurationItem SELECT 3, '原厂', current_timestamp;
-INSERT INTO AccountReceivableDurationItem SELECT 4, '租恁', current_timestamp;
+INSERT INTO AccountReceivableDurationItem SELECT 4, '租赁', current_timestamp;
 INSERT INTO AccountReceivableDurationItem SELECT 5, '保修索赔', current_timestamp;
 INSERT INTO AccountReceivableDurationItem SELECT 6, '保险理赔应收款', current_timestamp;
 INSERT INTO AccountReceivableDurationItem SELECT 7, '分期与保险手续费', current_timestamp;

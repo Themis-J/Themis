@@ -57,14 +57,14 @@ angular.module('maintenanceIncome.controllers', []).controller('maintenanceIncom
 					name : null,
 					revenue : null,
 					marginRate : null,
-					sales : null
+					manHour : null
 				};
 				chartData.gridData[i].id = currentDetail[i].code;
 				chartData.gridData[i].name = currentDetail[i].name;
 				chartData.gridData[i].revenue = currentDetail[i].revenue.amount;
 				chartData.gridData[i].marginRate = currentDetail[i].margin.amount / currentDetail[i].revenue.amount * 100;
 				if (!otherIncome) {
-					chartData.gridData[i].sales = currentDetail[i].count.amount;
+					chartData.gridData[i].manHour = currentDetail[i].manHour.amount;
 				}
 				
 				var chartSubtitle = '月均对比';
@@ -127,8 +127,8 @@ angular.module('maintenanceIncome.controllers', []).controller('maintenanceIncom
 				];
 				if (!otherIncome) {
 					colModel.push({
-						name : 'sales',
-						index : 'sales',
+						name : 'manHour',
+						index : 'manHour',
 						width : 80,
 						formatter : "number",
 						align : "right",
@@ -146,7 +146,7 @@ angular.module('maintenanceIncome.controllers', []).controller('maintenanceIncom
 					pager : '#report_pager',
 					loadError : function(xhr, status, err) { 
 					   	try {
-					   		jQuery.jgrid.info_dialog(jQuery.jgrid.errors.errcap,'<div class="ui-state-error">'+ xhr.responseText +'</div>', jQuery.jgrid.edit.bClose,{buttonalign:'right'});
+					   		jQuery.jgrid.info_dialog(jQuery.jgrid.errors.errcap, '<div class="ui-state-error">'+ xhr.responseText +'</div>', jQuery.jgrid.edit.bClose, {buttonalign :'right'});
 					   	} catch(e) { 
 					   		alert(xhr.responseText);
 					   	}
@@ -280,7 +280,7 @@ angular.module('maintenanceIncome.controllers', []).controller('maintenanceIncom
 			id : 5
 		},
 		{
-			name : '其他工时',
+			name : '其它工时',
 			id : 6
 		},
 		{
