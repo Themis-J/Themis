@@ -1,4 +1,4 @@
-﻿INSERT INTO EnumType VALUES (2, 'ReportItemSource');
+INSERT INTO EnumType VALUES (2, 'ReportItemSource');
 INSERT INTO EnumType VALUES (3, 'DurationUnit');
 INSERT INTO EnumType VALUES (4, 'FeeType');
 INSERT INTO EnumType VALUES (5, 'JournalType');
@@ -93,7 +93,6 @@ INSERT INTO UserInfo SELECT 'changjin', 'n6CquLgvsJjmslyrMMJ/EuoeYq7GapTkdloc+TO
 INSERT INTO UserInfo SELECT 'changyao', 'eKlYt6bOE5ZBFvThjICSNkSX1Pw5v0qNVYe9LnbxPs4=', 2, 11, true, 0, current_timestamp, '9999-01-01 08:00:00', 'admin';
 INSERT INTO UserInfo SELECT 'guangben', 'R7Z+52irSlMTt9IUyiqgiXOq7vtvrQpnAXfYoQczdZU=', 2, 11, true, 0, current_timestamp, '9999-01-01 08:00:00', 'admin';
 INSERT INTO UserInfo SELECT 'changsheng', 'j7wMAHzrcz38LFtBveS8yf/R6DSb4UjBU8MpDavmz3M=', 2, 11, true, 0, current_timestamp, '9999-01-01 08:00:00', 'admin';
-INSERT INTO UserInfo SELECT 'changyi', 'aFOX4zD+sddnQNggoVmIbUQmmp+2UJko5PaKUnet/80=', 2, 11, true, 0, current_timestamp, '9999-01-01 08:00:00', 'admin';
 INSERT INTO UserInfo SELECT 'changhao', 'iR+IxOJvJqDunHM3g3++ck6lckZEQY1W+rTsYSHl9II=', 2, 11, true, 0, current_timestamp, '9999-01-01 08:00:00', 'admin';
 INSERT INTO UserInfo SELECT 'changjie', 'SR6sw3fNoAB+kIcCK3hk1hPQ2cqTwem6obyhejnFM9A=', 2, 11, true, 0, current_timestamp, '9999-01-01 08:00:00', 'admin';
 INSERT INTO UserInfo SELECT 'changli', '9ZxOeqTtCzzLDNtSKPTyTcpn90eG8hiD3yJyftCKzZA=', 2, 11, true, 0, current_timestamp, '9999-01-01 08:00:00', 'admin';
