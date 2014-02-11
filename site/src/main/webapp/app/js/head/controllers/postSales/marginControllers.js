@@ -62,8 +62,8 @@ angular.module('postSalesMargin.controllers', []).controller('postSalesMarginCtr
 					chartData.gridData[j].id = currentDetail[i].code;
 					chartData.gridData[j].name = currentDetail[i].name;
 					chartData.gridData[j].departmentName = currentDetail[i].detail[k].name;
-					chartData.gridData[j].amount = currentDetail[i].detail[k].margin.amount;
-					chartData.gridData[j].totalAmount = currentDetail[i].margin.amount;
+					chartData.gridData[j].amount = currentDetail[i].detail[k].margin.amount.toFixed(2);
+					chartData.gridData[j].totalAmount = currentDetail[i].margin.amount.toFixed(2);
 					j++;
 				}
 			}
@@ -98,11 +98,7 @@ angular.module('postSalesMargin.controllers', []).controller('postSalesMarginCtr
 				    	index : 'id',
 				    	width : 55
 				    },
-				    {
-				    	name : 'name',
-				    	index : 'name',
-				    	width : 100
-				    },
+				    {name:'name',index:'name', sorttype: function (cellValus, rowData) {return (rowData.totalAmount + rowData.id).lpad('0', 100);}, width:100},
 				    {
 				    	name : 'amount',
 				    	index : 'amount',

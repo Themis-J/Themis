@@ -1,5 +1,13 @@
 'use strict';
 
+
+String.prototype.lpad = function(padString, length) {
+    var str = this;
+    while (str.length < length)
+        str = padString + str;
+    return str;
+};
+
 angular.module('masterApp.services', ['ngResource'])
 	.factory('ReportRestClient', ['$resource', 'config', function ($resource, config) {		
 		return function(mode) {

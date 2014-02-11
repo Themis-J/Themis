@@ -46,8 +46,8 @@ angular.module('overallMargin.controllers', [])
 			            		chartData.gridData[j].id = currentDetail[i].code;
 			            		chartData.gridData[j].name = currentDetail[i].name;
 			            		chartData.gridData[j].departmentName = currentDetail[i].detail[k].name;
-			            		chartData.gridData[j].amount = currentDetail[i].detail[k].margin.amount;
-			            		chartData.gridData[j].totalAmount = currentDetail[i].margin.amount;
+			            		chartData.gridData[j].amount = currentDetail[i].detail[k].margin.amount.toFixed(2);
+			            		chartData.gridData[j].totalAmount = currentDetail[i].margin.amount.toFixed(2);
 			            		j++;
 		            		}
 	            		}
@@ -69,7 +69,7 @@ angular.module('overallMargin.controllers', [])
 					   	colModel:[
 					   		{name:'departmentName',index:'departmentName', width:55},
 					   		{name:'id',index:'id', width:55},
-					   		{name:'name',index:'name', sorttype: function (cellValus, rowData) {return rowData.totalAmount + rowData.name;}, width:100},
+					   		{name:'name',index:'name', sorttype: function (cellValus, rowData) {return (rowData.totalAmount + rowData.id).lpad('0', 100);}, width:100},
 					   		{name:'amount',index:'amount', width:80, formatter:"number", align:"right", sorttype:"float", summaryType: "sum"},
 					   		{name:'totalAmount',index:'totalAmount', width:80, formatter:"number", sorttype:"float", align:"right"}		
 					   	],
@@ -96,7 +96,8 @@ angular.module('overallMargin.controllers', [])
 					   		showSummaryOnHide: true,
 					   		groupOrder: 'desc'
 					   	},
-						caption: "本年总毛利"
+						caption: "本年总毛利",
+						sortname : "departmentName"
 					});
 					jQuery("#report_list").jqGrid('navGrid','#report_pager',{"edit":false,"add":false,"del":false,"search":true,"refresh":true,"view":false,"excel":false,"pdf":false,"csv":false,"columns":false});
 					

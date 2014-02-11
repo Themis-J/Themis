@@ -56,18 +56,12 @@ angular.module('postSalesRevenue.controllers', []).controller('postSalesRevenueC
 						&& currentDetail[i].detail[k].name != '二手车部'
 							&& currentDetail[i].detail[k].name != '其它部'
 								&& currentDetail[i].detail[k].name != '租赁事业部') {
-						chartData.gridData[j] = {
-							id : null,
-							departmentName : null,
-							name : null,
-							amount : null,
-							totalAmount : null
-						};
+						chartData.gridData[j] = {id:null, departmentName:null, name:null, amount:null, totalAmount:null};
 						chartData.gridData[j].id = currentDetail[i].code;
 						chartData.gridData[j].name = currentDetail[i].name;
 						chartData.gridData[j].departmentName = currentDetail[i].detail[k].name;
-						chartData.gridData[j].amount = currentDetail[i].detail[k].revenue.amount;
-						chartData.gridData[j].totalAmount = currentDetail[i].revenue.amount;
+						chartData.gridData[j].amount = currentDetail[i].detail[k].revenue.amount.toFixed(2);
+						chartData.gridData[j].totalAmount = currentDetail[i].revenue.amount.toFixed(2);
 						j++;
 					}
 				}
@@ -87,11 +81,11 @@ angular.module('postSalesRevenue.controllers', []).controller('postSalesRevenueC
 						datatype: "local",
 					   	colNames:['部门', '经销商代码', '名称', '部门售后销售额', '经销商售后销售额'],
 					   	colModel:[
-					   	    {name:'departmentName',index:'departmentName', width:55},
+					   		{name:'departmentName',index:'departmentName', width:55},
 					   		{name:'id',index:'id', width:55},
-					   		{name:'name',index:'name', width:100},
-					   		{name:'amount',index:'amount', width:80, formatter:"number", align:"right", sorttype:"float", summaryType: "sum"},
-					   		{name:'totalAmount',index:'totalAmount', width:80, formatter:"number", sorttype:"float", align:"right"}
+					   		{name:'name',index:'name', sorttype: function (cellValus, rowData) {return (rowData.totalAmount + rowData.id).lpad('0', 100);}, width:100},
+					   		{name:'amount',index:'amount', width:80, formatter:"number", sorttype:"float", align:"right", summaryType: "sum"},
+					   		{name:'totalAmount',index:'totalAmount', formatter:"number", width:80, sorttype:"float", align:"right"}		
 					   	],
 					   	rowNum:300,
 					   	pager: '#report_pager',
@@ -102,7 +96,7 @@ angular.module('postSalesRevenue.controllers', []).controller('postSalesRevenueC
 					   			alert(xhr.responseText);
 					   		}},
 					    viewrecords: true,
-					    sortable: false,  
+					    sortable: false,
 						multiselect: false,
 						width: chartWidth,
 						height: "100%",
@@ -114,8 +108,7 @@ angular.module('postSalesRevenue.controllers', []).controller('postSalesRevenueC
 					   		groupText : ['<b>{0}</b>'],
 					   		groupCollapse : false,
 					   		showSummaryOnHide: true,
-					   		groupOrder: 'desc',
-					   		groupDataSorted : true
+							groupOrder: 'desc'
 					   	},
 						caption : "月均售后销售额",
 						sortname : "departmentName"

@@ -46,8 +46,8 @@ angular.module('overallExpense.controllers', [])
 			            		chartData.gridData[j].id = currentDetail[i].code;
 			            		chartData.gridData[j].name = currentDetail[i].name;
 			            		chartData.gridData[j].departmentName = currentDetail[i].detail[k].name;
-			            		chartData.gridData[j].amount = currentDetail[i].detail[k].expense.amount;
-			            		chartData.gridData[j].totalAmount = currentDetail[i].expense.amount;
+			            		chartData.gridData[j].amount = currentDetail[i].detail[k].expense.amount.toFixed(2);
+			            		chartData.gridData[j].totalAmount = currentDetail[i].expense.amount.toFixed(2);
 			            		j++;
 		            		}
 	            		}
@@ -69,9 +69,9 @@ angular.module('overallExpense.controllers', [])
 					   	colModel:[
 					   		{name:'departmentName',index:'departmentName', width:55},
 					   		{name:'id',index:'id', width:55},
-					   		{name:'name',index:'name', sorttype: function (cellValus, rowData) {return rowData.totalAmount + rowData.name;}, width:100},
+					   		{name:'name',index:'name', sorttype: function (cellValus, rowData) {return (rowData.totalAmount + rowData.id).lpad('0', 100);}, width:100},
 					   		{name:'amount',index:'amount', width:80, formatter:"number", sorttype:"float", align:"right", summaryType: "sum"},
-					   		{name:'totalAmount',index:'totalAmount', width:80, formatter:"number", sorttype:"float", align:"right"}		
+					   		{name:'totalAmount',index:'totalAmount', formatter:"number", width:80, sorttype:"float", align:"right"}		
 					   	],
 					   	rowNum:300,
 					   	pager: '#report_pager',
@@ -96,7 +96,8 @@ angular.module('overallExpense.controllers', [])
 					   		showSummaryOnHide: true,
 							groupOrder: ['desc']
 					   	},
-						caption: "本年总费用"
+						caption: "本年总费用",
+						sortname : "departmentName"
 					});
 					jQuery("#report_list").jqGrid('navGrid','#report_pager',{"edit":false,"add":false,"del":false,"search":true,"refresh":true,"view":false,"excel":false,"pdf":false,"csv":false,"columns":false});
 					
