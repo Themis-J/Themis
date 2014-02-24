@@ -10,7 +10,7 @@ angular.module('keyPostSalesAllOpProfitPerMargin.controllers', [])
     		$scope.showReport();
     	};
     	$scope.selectReportMonth = function() {
-    		reportService.setCurrentMonth($scope.selectedMonthOption.id);
+    		reportService.setMonthOfYear($scope.selectedMonthOption.id);
     		$scope.showReport();
     	};
     	$scope.showReport = function() {
@@ -167,13 +167,7 @@ angular.module('keyPostSalesAllOpProfitPerMargin.controllers', [])
 		reportService.setShowChart(false);
 		$scope.report_chart_display = reportService.getShowChart();
 		$scope.report_chart_button_text = "显示图表";
-    	var currentDate = new Date();
-  		reportService.setCurrentYear(currentDate.getFullYear());
-		reportService.setMonthOfYear(currentDate.getMonth());
-  		$scope.yearOptions = reportService.getYearList();
-		$scope.selectedYearOption = $scope.yearOptions[0];
-		$scope.monthOptions = reportService.getMonthList();
-		$scope.selectedMonthOption = $scope.monthOptions[reportService.getMonthOfYear()-1];
+        $scope.setupReportDate();
 
 		$scope.showReport();
   }]);

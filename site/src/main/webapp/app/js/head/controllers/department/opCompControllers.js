@@ -191,20 +191,13 @@ angular.module('departmentOpComp.controllers', [])
     		{id: 'report_margin', display:false}
     		];
 		
-    	var currentDate = new Date();
-  		reportService.setCurrentYear(currentDate.getFullYear());
-  		$scope.yearOptions = reportService.getYearList();
-		$scope.selectedYearOption = $scope.yearOptions[0];
-		
-		reportService.setMonthOfYear(currentDate.getMonth());
-		$scope.monthOptions = reportService.getMonthList();
-		$scope.selectedMonthOption = $scope.monthOptions[reportService.getMonthOfYear()-1];
-    	
     	$scope.denominatorOptions = [
     		{name:'部门毛利分析', id:1},
     		{name:'运营利润分析', id:0}];
     	$scope.selectedDenominatorOption = $scope.denominatorOptions[1];
-    	
+
+        $scope.setupReportDate();
+
     	$scope.departmentOptions = [];
     	reportService.getDepartments(restClient(config.currentMode).queryDepartments, {}, function(departments) {
     		$scope.departmentOptions = departments;

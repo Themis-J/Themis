@@ -400,15 +400,8 @@ angular.module('departmentAbs.controllers', [])
     		{id: 'report_expense', text:'费用', display:false},
     		{id: 'report_opProfit', text:'运营利润', display:true},
     		];
-    	var currentDate = new Date();
-  		reportService.setCurrentYear(currentDate.getFullYear());
-  		$scope.yearOptions = reportService.getYearList();
-  		$scope.selectedYearOption = $scope.yearOptions[0];
-		
-		reportService.setMonthOfYear(currentDate.getMonth());
-		$scope.monthOptions = reportService.getMonthList();
-		$scope.selectedMonthOption = $scope.monthOptions[reportService.getMonthOfYear()-1];
-    	
+        $scope.setupReportDate();
+
     	$scope.selectedTime = 0;
     	$scope.departmentOptions = [];
     	reportService.getDepartments(restClient(config.currentMode).queryDepartments, {}, function(departments) {

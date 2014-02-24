@@ -1,8 +1,8 @@
 'use strict';
 
 angular.module('masterApp.controllers', [])
-	.controller('headEditCtrl', ['$scope',
-	function($scope) {
+	.controller('headEditCtrl', ['$scope', '$rootScope', 'ReportService',
+	function($scope, $rootScope, reportService) {
 		$scope.items = [{name: '关键指标总览－本年度税前净利润', page:'key/netProfit'},
 						{name: '关键指标总览－本年度总运营利润', page:'key/opProfit'},
 						{name: '关键指标总览－月均运营利润占销售金额百分比', page:'key/opProfitPerRevenue'},
@@ -49,7 +49,7 @@ angular.module('masterApp.controllers', [])
 						{name: '维修部-月均经销商维修部工单', page:'maintenance/workOrder'},
 						{name: '备件部-月均经销商备件部收入', page:'sparePart/income'},
 						{name: '钣喷部-月均经销商钣喷部收入', page:'sheetSpray/income'},
-						{name: '钣喷部-月均经销商钣喷部工单', page:'sheetSpray/workOrder'},
+						{name: '钣喷部-月均经销商钣喷部工单', page:'sheetSpray/workOrder'}
 						];
         
 		$scope.goto = function(item)
@@ -67,6 +67,25 @@ angular.module('masterApp.controllers', [])
             	$(this).parent().addClass('active').siblings().removeClass('active');
             });
         };
+
+        $rootScope.setupReportDate = function()
+        {
+            // Global date setting
+            $rootScope.yearOptions = reportService.getYearList();
+            var selectedYearIndex = 0;
+            $.each($rootScope.yearOptions, function(index, item){
+                if (item.id && item.id == reportService.getCurrentYear())
+                {
+                    selectedYearIndex = index;
+                }
+            });
+            $rootScope.selectedYearOption = $scope.yearOptions[selectedYearIndex];
+
+            $rootScope.monthOptions = reportService.getMonthList();
+            $rootScope.selectedMonthOption = $scope.monthOptions[reportService.getMonthOfYear() - 1];
+        }
+
+
         $scope.subpage = 'partials/head/' + $scope.items[0].page + '.html';
   	}])
     .controller('headHeaderCtrl', [ '$scope', '$route', '$location', 'DealerService','UserService','Auth', function($scope, $route,$location,DealerService,UserService,Auth)

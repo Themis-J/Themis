@@ -86,7 +86,8 @@ angular.module('masterApp.services', ['ngResource'])
         };
     }
     ]).
-    factory('ReportService', [function(){
+    factory('ReportService', ['$cookieStore', function ($cookieStore) {
+        var currentDate = new Date();
     	var monthOfYear = -1;
     	var currentYear = -1;
     	var charts = [];
@@ -95,15 +96,45 @@ angular.module('masterApp.services', ['ngResource'])
         return {
         	setCurrentYear: function(year) {
         		currentYear = year;
+                $cookieStore.put('currentMonth', year.toString());
         	},
         	getCurrentYear: function() {
-        		return currentYear;
+                if (currentYear && currentYear != -1)
+                {
+                    return currentYear;
+                }
+                else
+                {
+                    if ($cookieStore.get('currentMonth'))
+                    {
+                        return $cookieStore.get('currentMonth');
+                    }
+                    else
+                    {
+                        return currentDate.getCurrentYear();
+                    }
+                }
         	},
         	setMonthOfYear: function(month){
         		monthOfYear = month;
+                $cookieStore.put('monthOfYear', month.toString());
         	},
         	getMonthOfYear: function() {
-        		return monthOfYear;
+                if (monthOfYear && monthOfYear != -1)
+                {
+                    return monthOfYear;
+                }
+                else
+                {
+                    if ($cookieStore.get('monthOfYear'))
+                    {
+                        return $cookieStore.get('monthOfYear');
+                    }
+                    else
+                    {
+                        return currentDate.getMonth();
+                    }
+                }
         	},
         	setFullScreen: function(flag){
         		isFullScreen = flag;

@@ -241,17 +241,9 @@ angular.module('salesAbs.controllers', [])
     		{id: 'report_other', text:'他店调车量', display:true}];
     	
     	reportService.setFullScreen(false);
-		var currentDate = new Date();
-  		reportService.setCurrentYear(currentDate.getFullYear());
-  		$scope.yearOptions = reportService.getYearList();
-		$scope.selectedYearOption = $scope.yearOptions[0];
-		
-		reportService.setMonthOfYear(currentDate.getMonth());
-		$scope.monthOptions = reportService.getMonthList();
-  		
-		$scope.selectedMonthOption = $scope.monthOptions[reportService.getMonthOfYear()-1];
-    	
+        $scope.setupReportDate();
     	$scope.selectedTime = 0;
+
 		// called on page is loaded
 		$scope.showReport();
   }]);

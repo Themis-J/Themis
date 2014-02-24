@@ -132,12 +132,8 @@ angular.module('overallOpProfit.controllers', [])
 		 * Global variables
 		 */
 		reportService.setFullScreen(false);
-    	var currentDate = new Date();
-  		reportService.setCurrentYear(currentDate.getFullYear());
-		reportService.setMonthOfYear(currentDate.getMonth());
-  		$scope.yearOptions = reportService.getYearList();
-		$scope.selectedYearOption = $scope.yearOptions[0];
-		
+        $scope.setupReportDate();
+
 		// called on page is loaded
 		$scope.showReport();
   }]);

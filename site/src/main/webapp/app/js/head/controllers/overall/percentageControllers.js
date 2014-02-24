@@ -211,15 +211,7 @@ angular.module('overallPercentage.controllers', [])
     	];
     	
     	reportService.setFullScreen(false);
-    	var currentDate = new Date();
-  		reportService.setCurrentYear(currentDate.getFullYear());
-  		reportService.setMonthOfYear(currentDate.getMonth());
-		$scope.yearOptions = reportService.getYearList();
-		$scope.selectedYearOption = $scope.yearOptions[0];
-		
-		$scope.monthOptions = reportService.getMonthList();
-		$scope.selectedMonthOption = $scope.monthOptions[reportService.getMonthOfYear()-1];
-    	
+        $scope.setupReportDate();
     	$scope.currentDenominator = 0;
     	$scope.denominatorOptions = [
     		{name:'营业额', id:0},

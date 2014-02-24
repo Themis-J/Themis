@@ -180,14 +180,8 @@ angular.module('overallExpPercentage.controllers', [])
         };
 
     	reportService.setFullScreen(false);
-    	var currentDate = new Date();
-  		reportService.setCurrentYear(currentDate.getFullYear());
-  		reportService.setMonthOfYear(currentDate.getMonth());
-		$scope.yearOptions = reportService.getYearList();
-		$scope.selectedYearOption = $scope.yearOptions[0];
-		$scope.monthOptions = reportService.getMonthList();
-		$scope.selectedMonthOption = $scope.monthOptions[reportService.getMonthOfYear()-1];
-    	
+        $scope.setupReportDate();
+
     	$scope.denominatorOptions = [
     		{name:'新车及二手车零售毛利', id:0},
     		{name:'经销商总毛利', id:1}];

@@ -238,18 +238,9 @@ angular.module('departmentOp.controllers', [])
     		{id: 'report_expense', text:'费用', display:false},
     		{id: 'report_margin', text:'毛利', display:false}
     		];
-		
-    	var currentDate = new Date();
-  		reportService.setCurrentYear(currentDate.getFullYear());
-  		$scope.yearOptions = reportService.getYearList();
-		$scope.selectedYearOption = $scope.yearOptions[0];
-		
-		reportService.setMonthOfYear(currentDate.getMonth());
-		$scope.monthOptions = reportService.getMonthList();
-  		
-		$scope.selectedMonthOption = $scope.monthOptions[reportService.getMonthOfYear()-1];
-    	
+        $scope.setupReportDate();
     	$scope.selectedTime = 0;
+
 		// called on page is loaded
 		$scope.showReport();
   }]);

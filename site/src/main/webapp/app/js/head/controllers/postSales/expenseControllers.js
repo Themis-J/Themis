@@ -254,13 +254,8 @@ angular.module('postSalesExpense.controllers', []).controller('postSalesExpenseC
 	reportService.setShowChart(false);
 	$scope.report_chart_display = reportService.getShowChart();
 	$scope.report_chart_button_text = "显示图表";
-	var currentDate = new Date();
-	reportService.setCurrentYear(currentDate.getFullYear());
-	reportService.setMonthOfYear(currentDate.getMonth() + 1);
-	$scope.yearOptions = reportService.getYearList();
-	$scope.selectedYearOption = $scope.yearOptions[0];
-	$scope.monthOptions = reportService.getMonthList();
-	$scope.selectedMonthOption = $scope.monthOptions[reportService.getMonthOfYear() - 1];
+    $scope.setupReportDate();
+
 	$scope.categoryOptions = [
  	    {
  	    	name : '销售费用',

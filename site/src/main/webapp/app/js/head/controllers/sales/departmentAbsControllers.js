@@ -282,17 +282,7 @@ angular.module('salesDepartmentAbs.controllers', [])
 		    		{id: 'report_newVanRetail', index:3, text:'零售销量（货车）', display:true},
 		    		{id: 'report_wholesale', index:0, text:'批发销量', display:false},
 		    		{id: 'report_other', index:1, text:'他店调车量', display:false}];
-    	
-    	var currentDate = new Date();
-  		reportService.setCurrentYear(currentDate.getFullYear());
-  		$scope.yearOptions = reportService.getYearList();
-		$scope.selectedYearOption = $scope.yearOptions[0];
-		
-		reportService.setMonthOfYear(currentDate.getMonth());
-		$scope.monthOptions = reportService.getMonthList();
-  		
-		$scope.selectedMonthOption = $scope.monthOptions[reportService.getMonthOfYear()-1];
-    	
+        $scope.setupReportDate();
     	$scope.selectedTime = 0;
 
 		// called on page is loaded

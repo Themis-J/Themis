@@ -157,14 +157,8 @@ angular.module('overallHRAnalysis.controllers', [])
         };
 
     	reportService.setFullScreen(false);
-    	var currentDate = new Date();
-  		reportService.setCurrentYear(currentDate.getFullYear());
-  		reportService.setMonthOfYear(currentDate.getMonth());
-		$scope.yearOptions = reportService.getYearList();
-		$scope.selectedYearOption = $scope.yearOptions[0];
-		$scope.monthOptions = reportService.getMonthList();
-		$scope.selectedMonthOption = $scope.monthOptions[reportService.getMonthOfYear()-1];
-    	
+        $scope.setupReportDate();
+
     	$scope.departmentOptions = [];
     	$scope.selectedDepartmentOption = null;
     	$scope.selectedPositionOption = null;
