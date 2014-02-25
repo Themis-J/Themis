@@ -55,13 +55,40 @@ angular.module('admin.controllers', [])
 
     }])
     .controller('disableUserCtrl', ['$scope', '$location', 'Auth', 'UserService', 'Dealer', 'User', function ($scope, $location, Auth, UserService, Dealer, User) {
-        $scope.username = '';
+        $scope.reset = function() {
+            $scope.username = '';
+            $scope.msg = "";
+            $scope.msgClass = "";
+            $scope.loading = false;
+            $scope.targetUser = null;
+        }
 
-        $scope.msg = "";
-        $scope.msgClass = "";
+        $scope.checkUser = function() {
+            $scope.msg = "";
+            $scope.msgClass = "";
+            $scope.loading = true;
+            $scope.targetUser = null;
+
+            User.info({username: $scope.username}, function(user){
+                $scope.targetUser = user;
+                $scope.loading = false;
+            }, function(error){
+                $scope.msgClass = "text-error";
+                if (error.data.errorMsg)
+                {
+                    $scope.msg = error.data.errorMsg;
+                }
+                else
+                {
+                    $scope.msg = "failed";
+                }
+            });
+        }
 
         $scope.disableUser = function(){
             User.disableUser({username: $scope.username}, {}, function(){
+                $scope.reset();
+
                 $scope.msg = "success";
                 $scope.msgClass = "text-success";
             }, function(error){
@@ -76,15 +103,44 @@ angular.module('admin.controllers', [])
                 $scope.msgClass = "text-error";
             });
         }
+
+        $scope.reset();
     }])
     .controller('enableUserCtrl', ['$scope', '$location', 'Auth', 'UserService', 'Dealer', 'User', function ($scope, $location, Auth, UserService, Dealer, User) {
-        $scope.username = '';
+        $scope.reset = function() {
+            $scope.username = '';
+            $scope.msg = "";
+            $scope.msgClass = "";
+            $scope.loading = false;
+            $scope.targetUser = null;
+        }
 
-        $scope.msg = "";
-        $scope.msgClass = "";
+        $scope.checkUser = function() {
+            $scope.msg = "";
+            $scope.msgClass = "";
+            $scope.loading = true;
+            $scope.targetUser = null;
+
+            User.info({username: $scope.username}, function(user){
+                $scope.targetUser = user;
+                $scope.loading = false;
+            }, function(error){
+                $scope.msgClass = "text-error";
+                if (error.data.errorMsg)
+                {
+                    $scope.msg = error.data.errorMsg;
+                }
+                else
+                {
+                    $scope.msg = "failed";
+                }
+            });
+        }
 
         $scope.enableUser = function(){
             User.enableUser({username: $scope.username}, {}, function(){
+                $scope.reset();
+
                 $scope.msg = "success";
                 $scope.msgClass = "text-success";
             }, function(error){
@@ -99,6 +155,8 @@ angular.module('admin.controllers', [])
                 $scope.msgClass = "text-error";
             });
         }
+
+        $scope.reset();
     }])
     .controller('adminHeadCtrl', ['$scope', '$location', 'Auth', 'UserService', function ($scope, $location, Auth, UserService) {
         $scope.signout = function() {

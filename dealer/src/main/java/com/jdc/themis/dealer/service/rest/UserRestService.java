@@ -100,7 +100,17 @@ public class UserRestService {
 			return Response.status(500).entity(response).build();
 		}
 		
-		userService.disableUser(username);
+		try
+		{
+			userService.disableUser(username);
+		}
+		catch(Exception e)
+		{
+			response.setSuccess(false);
+			response.setErrorMsg("failed");
+			return Response.status(500).entity(response).build();
+		}
+		
 		response.setTimestamp(Utils.currentTimestamp());
 		return Response.ok(response).build();
 	}
@@ -126,7 +136,17 @@ public class UserRestService {
 			return Response.status(500).entity(response).build();
 		}
 		
-		userService.enableUser(username);
+		try
+		{
+			userService.enableUser(username);
+		}
+		catch(Exception e)
+		{
+			response.setSuccess(false);
+			response.setErrorMsg("failed");
+			return Response.status(500).entity(response).build();
+		}
+		
 		response.setTimestamp(Utils.currentTimestamp());
 		return Response.ok(response).build();
 	}

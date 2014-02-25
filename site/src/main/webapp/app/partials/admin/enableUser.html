@@ -1,15 +1,44 @@
 <div class="row-fluid" ng-controller="enableUserCtrl">
 
     <div class="span9">
-        <div class="msgClass">
-            <span ng-show="msg=='success'">激活用户成功！</span>
-            <span ng-show="msg=='PERMISSION_DENIED'">对不起，您没有权限激活此用户</span>
-            <span ng-show="msg=='unknown user name'">对不起，您激活的用户不存在</span>
-            <span ng-show="msg=='failed'">激活用户失败</span>
-        </div>
         <form name="the_form" class="form-horizontal" style="padding-top: 20px">
             <div class="control-group">
-                <label class="control-label" for="username">用户角色</label>
+                <div class="msgClass" style="padding-left: 20%">
+                    <span ng-if="msg=='success'">激活用户成功！</span>
+                    <span ng-if="msg=='PERMISSION_DENIED'">对不起，您没有权限激活此用户</span>
+                    <span ng-if="msg=='unknown user name'">对不起，您激活的用户不存在</span>
+                    <span ng-if="msg=='failed'">激活用户失败</span>
+                </div>
+            </div>
+            <div class="control-group">
+                <div ng-if="!loading && targetUser" style="padding-left: 20%">
+                    <table>
+                        <tr>
+                            <td style="width: 150px">用户名</td>
+                            <td>{{targetUser.username}}</td>
+                        </tr>
+                        <tr>
+                            <td>用户角色</td>
+                            <td>
+                                <span ng-if="targetUser.role=='Dealer'">分销售</span>
+                                <span ng-if="targetUser.role=='Admin'">管理员</span>
+                                <span ng-if="targetUser.role=='Super'">超级管理员</span>
+                                <span ng-if="targetUser.role=='HeadQuater'">总部</span>
+                            </td>
+                        </tr>
+                        <tr ng-if="targetUser.dealer">
+                            <td>分销售名称</td>
+                            <td>{{targetUser.dealer.fullName}}</td>
+                        </tr>
+                        <tr>
+                            <td>当前状态</td>
+                            <td>{{targetUser.active? '激活': '已注销'}}</td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+            <div class="control-group">
+                <label class="control-label" for="username">用户名</label>
                 <div class="controls">
                     <div class="text-warning"
                          ng-show="the_form.role.$dirty && the_form.role.$invalid">
@@ -18,12 +47,17 @@
                             用户名不能为空
                         </small>
                     </div>
-                    <input  type="text" name="role" id="username" ng-model="username" required placeholder="请输入用户名...">
+                    <input  type="text" name="role" id="username" ng-model="username" required placeholder="请输入激活用户名...">
                 </div>
             </div>
             <div class="control-group">
-                <div class="controls" style="padding-left: 165px">
-                    <button type="submit" ng-disabled="the_form.$invalid"  class="btn" ng-click="enableUser()">提交</button>
+                <div class="controls" style="padding-left: 165px" ng-if="!targetUser">
+                    <button type="submit" ng-disabled="the_form.$invalid"  class="btn" ng-click="reset()">取消</button>
+                    <button type="submit" ng-disabled="the_form.$invalid"  class="btn" ng-click="checkUser()">提交</button>
+                </div>
+                <div class="controls" style="padding-left: 165px" ng-if="targetUser">
+                    <button type="submit" ng-disabled="the_form.$invalid"  class="btn" ng-click="reset()">取消</button>
+                    <button type="submit" ng-disabled="the_form.$invalid"  class="btn" ng-click="enableUser()">确定激活</button>
                 </div>
             </div>
         </form>

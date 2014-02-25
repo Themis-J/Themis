@@ -111,7 +111,7 @@ angular.module('masterApp.services', ['ngResource'])
                     }
                     else
                     {
-                        return currentDate.getCurrentYear();
+                        return currentDate.getFullYear();
                     }
                 }
         	},
