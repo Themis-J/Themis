@@ -10,8 +10,10 @@ import java.util.List;
 import javax.time.Instant;
 import javax.time.calendar.LocalDate;
 
+import org.hibernate.Criteria;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
+import org.hibernate.criterion.Restrictions;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,6 +24,9 @@ import com.google.common.collect.ImmutableList;
 import com.jdc.themis.dealer.data.dao.IncomeJournalDAO;
 import com.jdc.themis.dealer.domain.AccountReceivableDuration;
 import com.jdc.themis.dealer.domain.DealerEntryItemStatus;
+import com.jdc.themis.dealer.domain.DealerLedgerMetadata;
+import com.jdc.themis.dealer.domain.DealerPostSalesLedger;
+import com.jdc.themis.dealer.domain.DealerVehicleSalesLedger;
 import com.jdc.themis.dealer.domain.EmployeeFee;
 import com.jdc.themis.dealer.domain.EmployeeFeeSummary;
 import com.jdc.themis.dealer.domain.GeneralJournal;
@@ -32,6 +37,7 @@ import com.jdc.themis.dealer.domain.TaxJournal;
 import com.jdc.themis.dealer.domain.VehicleSalesJournal;
 import com.jdc.themis.dealer.utils.Performance;
 import com.jdc.themis.dealer.utils.Utils;
+
 /**
  * Data access layer for income journal items. 
  * 
@@ -751,5 +757,207 @@ public class IncomeJournalDAOImpl implements IncomeJournalDAO {
 		session.disableFilter(EmployeeFee.FILTER_VALIDATE);
 		return list;
 	}
+	
+    @Override
+    public Collection<DealerLedgerMetadata> getDealerLedgerMetadata(final Integer dealerID,
+            final Integer dealerLedgerMetadataCategoryID) {
+        final Session session = sessionFactory.getCurrentSession();
+        session.enableFilter(DealerLedgerMetadata.FILTER).setParameter("dealerID", dealerID)
+                .setParameter("categoryID", dealerLedgerMetadataCategoryID);
+        @SuppressWarnings("unchecked")
+        final List<DealerLedgerMetadata> list = session.createCriteria(DealerLedgerMetadata.class).list();
+        session.disableFilter(DealerLedgerMetadata.FILTER);
+        return list;
+    }
+
+    @Override
+    public Instant saveDealerVehicleSalesLedger(DealerVehicleSalesLedger ledger) {
+        final Session session = sessionFactory.getCurrentSession();
+        Instant currentTimestamp = Utils.currentTimestamp();
+
+        // check whether this journal has been inserted before
+        session.enableFilter(DealerVehicleSalesLedger.FILTER_SINGLEITEM)
+                .setParameter("contractNo", ledger.getContractNo()).setParameter("referenceTime", currentTimestamp);
+        @SuppressWarnings("unchecked")
+        final List<DealerVehicleSalesLedger> list = session.createCriteria(DealerVehicleSalesLedger.class).list();
+        for (final DealerVehicleSalesLedger oldLedger : list) {
+            if (oldLedger.getTimeEnd().isBefore(INFINITE_TIMEEND)) {
+                logger.warn("TimeEnd of the one in database is closed already. {}, {}", oldLedger, currentTimestamp);
+            } else {
+                oldLedger.setTimeEnd(currentTimestamp);
+                session.saveOrUpdate(oldLedger);
+            }
+        }
+        session.flush();
+        session.disableFilter(DealerVehicleSalesLedger.FILTER_SINGLEITEM);
+        ledger.setTimestamp(currentTimestamp);
+        ledger.setTimeEnd(INFINITE_TIMEEND);
+        session.save(ledger);
+        session.flush();
+        return currentTimestamp;
+    }
+
+    @SuppressWarnings("unchecked")
+    @Override
+    public Collection<DealerVehicleSalesLedger> queryDealerVehicleSalesLedger(Integer contractNo, String model,
+            String type, String color, String lpNumber, String frameNo, String manufacturerDebitDate,
+            String warehousingDate, String salesDate, Double guidingPrice, String customerName,
+            String identificationNo, String salesConsultant, String customerType) {
+        final Session session = sessionFactory.getCurrentSession();
+        Instant currentTimestamp = Utils.currentTimestamp();
+        final Criteria criteria = session.createCriteria(DealerVehicleSalesLedger.class);
+        if (contractNo != null) {
+            criteria.add(Restrictions.eq("contractNo", contractNo));
+        }
+        if (model != null) {
+            criteria.add(Restrictions.eq("model", model));
+        }
+        if (type != null) {
+            criteria.add(Restrictions.eq("type", type));
+        }
+        if (color != null) {
+            criteria.add(Restrictions.eq("color", color));
+        }
+        if (lpNumber != null) {
+            criteria.add(Restrictions.eq("lpNumber", lpNumber));
+        }
+        if (frameNo != null) {
+            criteria.add(Restrictions.eq("frameNo", frameNo));
+        }
+        if (manufacturerDebitDate != null) {
+            criteria.add(Restrictions.eq("manufacturerDebitDate", LocalDate.parse(manufacturerDebitDate)));
+        }
+        if (warehousingDate != null) {
+            criteria.add(Restrictions.eq("warehousingDate", LocalDate.parse(warehousingDate)));
+        }
+        if (salesDate != null) {
+            criteria.add(Restrictions.eq("salesDate", LocalDate.parse(salesDate)));
+        }
+        if (guidingPrice != null) {
+            criteria.add(Restrictions.eq("guidingPrice", guidingPrice));
+        }
+        if (customerName != null) {
+            criteria.add(Restrictions.eq("customerName", customerName));
+        }
+        if (identificationNo != null) {
+            criteria.add(Restrictions.eq("identificationNo", identificationNo));
+        }
+        if (salesConsultant != null) {
+            criteria.add(Restrictions.eq("salesConsultant", salesConsultant));
+        }
+        if (customerType != null) {
+            criteria.add(Restrictions.eq("customerType", customerType));
+        }
+        criteria.add(Restrictions.lt("timestamp", currentTimestamp));
+        criteria.add(Restrictions.ge("timeEnd", currentTimestamp));
+        return criteria.list();
+    }
+
+    @Override
+    public Collection<DealerVehicleSalesLedger> getDealerVehicleSalesLedger(Integer contractNo) {
+        final Session session = sessionFactory.getCurrentSession();
+        Instant currentTimestamp = Utils.currentTimestamp();
+        session.enableFilter(DealerVehicleSalesLedger.FILTER_SINGLEITEM).setParameter("contractNo", contractNo)
+                .setParameter("referenceTime", currentTimestamp);
+        @SuppressWarnings("unchecked")
+        final List<DealerVehicleSalesLedger> list = session.createCriteria(DealerVehicleSalesLedger.class).list();
+        session.disableFilter(DealerVehicleSalesLedger.FILTER_SINGLEITEM);
+        return list;
+    }
+
+    @Override
+    public Instant saveDealerPostSalesLedger(DealerPostSalesLedger ledger) {
+        final Session session = sessionFactory.getCurrentSession();
+        Instant currentTimestamp = Utils.currentTimestamp();
+
+        // check whether this journal has been inserted before
+        session.enableFilter(DealerPostSalesLedger.FILTER_SINGLEITEM)
+                .setParameter("workOrderNo", ledger.getWorkOrderNo()).setParameter("referenceTime", currentTimestamp);
+        @SuppressWarnings("unchecked")
+        final List<DealerPostSalesLedger> list = session.createCriteria(DealerPostSalesLedger.class).list();
+        for (final DealerPostSalesLedger oldLedger : list) {
+            if (oldLedger.getTimeEnd().isBefore(INFINITE_TIMEEND)) {
+                logger.warn("TimeEnd of the one in database is closed already. {}, {}", oldLedger, currentTimestamp);
+            } else {
+                oldLedger.setTimeEnd(currentTimestamp);
+                session.saveOrUpdate(oldLedger);
+            }
+        }
+        session.flush();
+        session.disableFilter(DealerPostSalesLedger.FILTER_SINGLEITEM);
+        ledger.setTimestamp(currentTimestamp);
+        ledger.setTimeEnd(INFINITE_TIMEEND);
+        session.save(ledger);
+        session.flush();
+        return currentTimestamp;
+    }
+
+    @SuppressWarnings("unchecked")
+    @Override
+    public Collection<DealerPostSalesLedger> queryDealerPostSalesLedger(Integer workOrderNo, String salesDate,
+            Double mileage, String lpNumber, String customerName, String color, String frameNo, String model,
+            String enterFactoryDate, String exitFactoryDate, String customerType, String insuranceAgengcy,
+            String insuranceDueDate, Integer insuranceClaimNumber) {
+        final Session session = sessionFactory.getCurrentSession();
+        Instant currentTimestamp = Utils.currentTimestamp();
+        final Criteria criteria = session.createCriteria(DealerPostSalesLedger.class);
+        if (workOrderNo != null) {
+            criteria.add(Restrictions.eq("workOrderNo", workOrderNo));
+        }
+        if (salesDate != null) {
+            criteria.add(Restrictions.eq("salesDate", LocalDate.parse(salesDate)));
+        }
+        if (mileage != null) {
+            criteria.add(Restrictions.eq("mileage", mileage));
+        }
+        if (lpNumber != null) {
+            criteria.add(Restrictions.eq("lpNumber", lpNumber));
+        }
+        if (customerName != null) {
+            criteria.add(Restrictions.eq("customerName", customerName));
+        }
+        if (color != null) {
+            criteria.add(Restrictions.eq("color", color));
+        }
+        if (frameNo != null) {
+            criteria.add(Restrictions.eq("frameNo", frameNo));
+        }
+        if (model != null) {
+            criteria.add(Restrictions.eq("model", model));
+        }
+        if (enterFactoryDate != null) {
+            criteria.add(Restrictions.eq("enterFactoryDate", LocalDate.parse(enterFactoryDate)));
+        }
+        if (exitFactoryDate != null) {
+            criteria.add(Restrictions.eq("exitFactoryDate", LocalDate.parse(exitFactoryDate)));
+        }
+        if (customerType != null) {
+            criteria.add(Restrictions.eq("customerType", customerType));
+        }
+        if (insuranceAgengcy != null) {
+            criteria.add(Restrictions.eq("insuranceAgengcy", insuranceAgengcy));
+        }
+        if (insuranceDueDate != null) {
+            criteria.add(Restrictions.eq("insuranceDueDate", LocalDate.parse(insuranceDueDate)));
+        }
+        if (insuranceClaimNumber != null) {
+            criteria.add(Restrictions.eq("insuranceClaimNumber", insuranceClaimNumber));
+        }
+        criteria.add(Restrictions.lt("timestamp", currentTimestamp));
+        criteria.add(Restrictions.ge("timeEnd", currentTimestamp));
+        return criteria.list();
+    }
+
+    @Override
+    public Collection<DealerPostSalesLedger> getDealerPostSalesLedger(Integer workOrderNo) {
+        final Session session = sessionFactory.getCurrentSession();
+        Instant currentTimestamp = Utils.currentTimestamp();
+        session.enableFilter(DealerPostSalesLedger.FILTER_SINGLEITEM).setParameter("workOrderNo", workOrderNo)
+                .setParameter("referenceTime", currentTimestamp);
+        @SuppressWarnings("unchecked")
+        final List<DealerPostSalesLedger> list = session.createCriteria(DealerPostSalesLedger.class).list();
+        session.disableFilter(DealerPostSalesLedger.FILTER_SINGLEITEM);
+        return list;
+    }
 
 }
