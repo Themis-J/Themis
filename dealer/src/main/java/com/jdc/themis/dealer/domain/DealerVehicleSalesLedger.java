@@ -106,8 +106,6 @@ public class DealerVehicleSalesLedger implements Serializable, TemporalEntity {
 
 	private Double vehicleSalesCost = 0D;
 
-	private Double vehicleSalesMargin = 0D;
-
 	private Double usedVehicleCharge = 0D;
 
 	private Double usedVehicleCost = 0D;
@@ -116,11 +114,7 @@ public class DealerVehicleSalesLedger implements Serializable, TemporalEntity {
 
 	private String distributor;
 
-	private Double usedVehicleMargin = 0D;
-
 	private Double usedVehicleManufacturerSubsidy = 0D;
-
-	private Double tradeInMargin = 0D;
 
 	private Double accessorySalesRevenue = 0D;
 
@@ -128,21 +122,15 @@ public class DealerVehicleSalesLedger implements Serializable, TemporalEntity {
 
 	private Double accessorySalesCostGiftPart = 0D;
 
-	private Double accessorySalesMargin = 0D;
-
 	private Double insuranceRebateMargin = 0D;
 
 	private Double insuranceCost = 0D;
-
-	private Double insuranceMargin = 0D;
 
 	private String insuranceAgengcy;
 
 	private Double lpRevenue = 0D;
 
 	private Double lpCost = 0D;
-
-	private Double lpMargin = 0D;
 
 	private Double installmentCharge = 0D;
 
@@ -152,15 +140,11 @@ public class DealerVehicleSalesLedger implements Serializable, TemporalEntity {
 
 	private Double installmentOthers = 0D;
 
-	private Double installmentMargin = 0D;
-
 	private String installmentAgency;
 
 	private Double extendedWarrantyRevenue = 0D;
 
 	private Double extendedWarrantyCost = 0D;
-
-	private Double extendedWarrantyMargin = 0D;
 
 	private Double financialLeasingMargin = 0D;
 
@@ -171,8 +155,6 @@ public class DealerVehicleSalesLedger implements Serializable, TemporalEntity {
 	private Double memberCardRevenue = 0D;
 
 	private Double memberCardCost = 0D;
-
-	private Double memberCardMargin = 0D;
 
 	private Double otherMargin = 0D;
 
@@ -188,17 +170,11 @@ public class DealerVehicleSalesLedger implements Serializable, TemporalEntity {
 
 	private Double otherGift = 0D;
 
-	private Double giftAmount = 0D;
-
 	private Double inventoryDays = 0D;
 
 	private Double financingRate = 0D;
 
-	private Double interests = 0D;
-
 	private Double managementFee = 0D;
-
-	private Double inventoryFinancingAmount = 0D;
 
 	private Double monthlyRebate = 0D;
 
@@ -215,8 +191,6 @@ public class DealerVehicleSalesLedger implements Serializable, TemporalEntity {
 	private Double otherRebate = 0D;
 
 	private Double rebateAdjustment = 0D;
-
-	private Double rebateAmount = 0D;
 
 	private Double vehiclePushMoney = 0D;
 
@@ -239,8 +213,6 @@ public class DealerVehicleSalesLedger implements Serializable, TemporalEntity {
 	private Double otherPushMoney = 0D;
 
 	private Double pushMoneyDeduction = 0D;
-
-	private Double pushMoneyAmount = 0D;
 
 	@Version
 	private Integer version;
@@ -511,14 +483,6 @@ public class DealerVehicleSalesLedger implements Serializable, TemporalEntity {
 		this.vehicleSalesCost = vehicleSalesCost;
 	}
 
-	public Double getVehicleSalesMargin() {
-		return vehicleSalesMargin;
-	}
-
-	public void setVehicleSalesMargin(Double vehicleSalesMargin) {
-		this.vehicleSalesMargin = vehicleSalesMargin;
-	}
-
 	public Double getUsedVehicleCharge() {
 		return usedVehicleCharge;
 	}
@@ -551,14 +515,6 @@ public class DealerVehicleSalesLedger implements Serializable, TemporalEntity {
 		this.distributor = distributor;
 	}
 
-	public Double getUsedVehicleMargin() {
-		return usedVehicleMargin;
-	}
-
-	public void setUsedVehicleMargin(Double usedVehicleMargin) {
-		this.usedVehicleMargin = usedVehicleMargin;
-	}
-
 	public Double getUsedVehicleManufacturerSubsidy() {
 		return usedVehicleManufacturerSubsidy;
 	}
@@ -566,14 +522,6 @@ public class DealerVehicleSalesLedger implements Serializable, TemporalEntity {
 	public void setUsedVehicleManufacturerSubsidy(
 			Double usedVehicleManufacturerSubsidy) {
 		this.usedVehicleManufacturerSubsidy = usedVehicleManufacturerSubsidy;
-	}
-
-	public Double getTradeInMargin() {
-		return tradeInMargin;
-	}
-
-	public void setTradeInMargin(Double tradeInMargin) {
-		this.tradeInMargin = tradeInMargin;
 	}
 
 	public Double getAccessorySalesRevenue() {
@@ -601,14 +549,6 @@ public class DealerVehicleSalesLedger implements Serializable, TemporalEntity {
 		this.accessorySalesCostGiftPart = accessorySalesCostGiftPart;
 	}
 
-	public Double getAccessorySalesMargin() {
-		return accessorySalesMargin;
-	}
-
-	public void setAccessorySalesMargin(Double accessorySalesMargin) {
-		this.accessorySalesMargin = accessorySalesMargin;
-	}
-
 	public Double getInsuranceRebateMargin() {
 		return insuranceRebateMargin;
 	}
@@ -623,14 +563,6 @@ public class DealerVehicleSalesLedger implements Serializable, TemporalEntity {
 
 	public void setInsuranceCost(Double insuranceCost) {
 		this.insuranceCost = insuranceCost;
-	}
-
-	public Double getInsuranceMargin() {
-		return insuranceMargin;
-	}
-
-	public void setInsuranceMargin(Double insuranceMargin) {
-		this.insuranceMargin = insuranceMargin;
 	}
 
 	public String getInsuranceAgengcy() {
@@ -655,14 +587,6 @@ public class DealerVehicleSalesLedger implements Serializable, TemporalEntity {
 
 	public void setLpCost(Double lpCost) {
 		this.lpCost = lpCost;
-	}
-
-	public Double getLpMargin() {
-		return lpMargin;
-	}
-
-	public void setLpMargin(Double lpMargin) {
-		this.lpMargin = lpMargin;
 	}
 
 	public Double getInstallmentCharge() {
@@ -698,14 +622,6 @@ public class DealerVehicleSalesLedger implements Serializable, TemporalEntity {
 		this.installmentOthers = installmentOthers;
 	}
 
-	public Double getInstallmentMargin() {
-		return installmentMargin;
-	}
-
-	public void setInstallmentMargin(Double installmentMargin) {
-		this.installmentMargin = installmentMargin;
-	}
-
 	public String getInstallmentAgency() {
 		return installmentAgency;
 	}
@@ -728,14 +644,6 @@ public class DealerVehicleSalesLedger implements Serializable, TemporalEntity {
 
 	public void setExtendedWarrantyCost(Double extendedWarrantyCost) {
 		this.extendedWarrantyCost = extendedWarrantyCost;
-	}
-
-	public Double getExtendedWarrantyMargin() {
-		return extendedWarrantyMargin;
-	}
-
-	public void setExtendedWarrantyMargin(Double extendedWarrantyMargin) {
-		this.extendedWarrantyMargin = extendedWarrantyMargin;
 	}
 
 	public Double getFinancialLeasingMargin() {
@@ -776,14 +684,6 @@ public class DealerVehicleSalesLedger implements Serializable, TemporalEntity {
 
 	public void setMemberCardCost(Double memberCardCost) {
 		this.memberCardCost = memberCardCost;
-	}
-
-	public Double getMemberCardMargin() {
-		return memberCardMargin;
-	}
-
-	public void setMemberCardMargin(Double memberCardMargin) {
-		this.memberCardMargin = memberCardMargin;
 	}
 
 	public Double getOtherMargin() {
@@ -845,14 +745,6 @@ public class DealerVehicleSalesLedger implements Serializable, TemporalEntity {
 		this.otherGift = otherGift;
 	}
 
-	public Double getGiftAmount() {
-		return giftAmount;
-	}
-
-	public void setGiftAmount(Double giftAmount) {
-		this.giftAmount = giftAmount;
-	}
-
 	public Double getInventoryDays() {
 		return inventoryDays;
 	}
@@ -869,28 +761,12 @@ public class DealerVehicleSalesLedger implements Serializable, TemporalEntity {
 		this.financingRate = financingRate;
 	}
 
-	public Double getInterests() {
-		return interests;
-	}
-
-	public void setInterests(Double interests) {
-		this.interests = interests;
-	}
-
 	public Double getManagementFee() {
 		return managementFee;
 	}
 
 	public void setManagementFee(Double managementFee) {
 		this.managementFee = managementFee;
-	}
-
-	public Double getInventoryFinancingAmount() {
-		return inventoryFinancingAmount;
-	}
-
-	public void setInventoryFinancingAmount(Double inventoryFinancingAmount) {
-		this.inventoryFinancingAmount = inventoryFinancingAmount;
 	}
 
 	public Double getMonthlyRebate() {
@@ -955,14 +831,6 @@ public class DealerVehicleSalesLedger implements Serializable, TemporalEntity {
 
 	public void setRebateAdjustment(Double rebateAdjustment) {
 		this.rebateAdjustment = rebateAdjustment;
-	}
-
-	public Double getRebateAmount() {
-		return rebateAmount;
-	}
-
-	public void setRebateAmount(Double rebateAmount) {
-		this.rebateAmount = rebateAmount;
 	}
 
 	public Double getVehiclePushMoney() {
@@ -1051,14 +919,6 @@ public class DealerVehicleSalesLedger implements Serializable, TemporalEntity {
 
 	public void setPushMoneyDeduction(Double pushMoneyDeduction) {
 		this.pushMoneyDeduction = pushMoneyDeduction;
-	}
-
-	public Double getPushMoneyAmount() {
-		return pushMoneyAmount;
-	}
-
-	public void setPushMoneyAmount(Double pushMoneyAmount) {
-		this.pushMoneyAmount = pushMoneyAmount;
 	}
 
 	public Integer getVersion() {

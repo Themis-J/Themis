@@ -145,13 +145,9 @@ public class DealerPostSalesLedger implements Serializable, TemporalEntity {
 
 	private Double maintenanceManHourCostPaidPart = 0D;
 
-	private Double maintenanceManHourMarginPaidPart = 0D;
-
 	private Double maintenanceManHourRevenueUnpaidPart = 0D;
 
 	private Double maintenanceManHourCostUnpaidPart = 0D;
-
-	private Double maintenanceManHourMarginUnpaidPart = 0D;
 
 	private Double sheetMetalManHourRevenue = 0D;
 
@@ -163,8 +159,6 @@ public class DealerPostSalesLedger implements Serializable, TemporalEntity {
 
 	private Double bodyShopManHourCost = 0D;
 
-	private Double bodyShopManHourMargin = 0D;
-
 	private Double accessoryManHourRevenue = 0D;
 
 	private Double accessoryManHourDiscount = 0D;
@@ -172,8 +166,6 @@ public class DealerPostSalesLedger implements Serializable, TemporalEntity {
 	private Double accessoryManHourCoupon = 0D;
 
 	private Double accessoryManHourCost = 0D;
-
-	private Double accessoryManHourMargin = 0D;
 
 	private Double otherManHourRevenue = 0D;
 
@@ -183,12 +175,6 @@ public class DealerPostSalesLedger implements Serializable, TemporalEntity {
 
 	private Double otherManHourCost = 0D;
 
-	private Double otherManHourMargin = 0D;
-
-	private Double discountedManHourRevenue = 0D;
-
-	private Double manHourMargin = 0D;
-
 	private Double maintenancePartsRevenue = 0D;
 
 	private Double maintenancePartsDiscount = 0D;
@@ -197,17 +183,13 @@ public class DealerPostSalesLedger implements Serializable, TemporalEntity {
 
 	private Double maintenancePartsCost = 0D;
 
-	private Double maintenancePartsMargin = 0D;
-
-	private Double accessoryPargsRevenue = 0D;
+	private Double accessoryPartsRevenue = 0D;
 
 	private Double accessoryPartsDiscount = 0D;
 
 	private Double accessoryPartsCoupon = 0D;
 
 	private Double accessoryPartsCost = 0D;
-
-	private Double accessoryPartsMargin = 0D;
 
 	private Double maintenanceProductRevenue = 0D;
 
@@ -217,12 +199,6 @@ public class DealerPostSalesLedger implements Serializable, TemporalEntity {
 
 	private Double maintenanceProductCost = 0D;
 
-	private Double maintenanceProductMargin = 0D;
-
-	private Double discountedPartsRevenue = 0D;
-
-	private Double partsMargin = 0D;
-
 	private Double vehicleDecorationRevenue = 0D;
 
 	private Double vehicleDecorationDiscount = 0D;
@@ -230,10 +206,6 @@ public class DealerPostSalesLedger implements Serializable, TemporalEntity {
 	private Double vehicleDecorationCoupon = 0D;
 
 	private Double vehicleDecorationCost = 0D;
-
-	private Double vehicleDecorationMargin = 0D;
-
-	private Double postSalesMargin = 0D;
 
 	@Version
 	private Integer version;
@@ -663,15 +635,6 @@ public class DealerPostSalesLedger implements Serializable, TemporalEntity {
 		this.maintenanceManHourCostPaidPart = maintenanceManHourCostPaidPart;
 	}
 
-	public Double getMaintenanceManHourMarginPaidPart() {
-		return maintenanceManHourMarginPaidPart;
-	}
-
-	public void setMaintenanceManHourMarginPaidPart(
-			Double maintenanceManHourMarginPaidPart) {
-		this.maintenanceManHourMarginPaidPart = maintenanceManHourMarginPaidPart;
-	}
-
 	public Double getMaintenanceManHourRevenueUnpaidPart() {
 		return maintenanceManHourRevenueUnpaidPart;
 	}
@@ -688,15 +651,6 @@ public class DealerPostSalesLedger implements Serializable, TemporalEntity {
 	public void setMaintenanceManHourCostUnpaidPart(
 			Double maintenanceManHourCostUnpaidPart) {
 		this.maintenanceManHourCostUnpaidPart = maintenanceManHourCostUnpaidPart;
-	}
-
-	public Double getMaintenanceManHourMarginUnpaidPart() {
-		return maintenanceManHourMarginUnpaidPart;
-	}
-
-	public void setMaintenanceManHourMarginUnpaidPart(
-			Double maintenanceManHourMarginUnpaidPart) {
-		this.maintenanceManHourMarginUnpaidPart = maintenanceManHourMarginUnpaidPart;
 	}
 
 	public Double getSheetMetalManHourRevenue() {
@@ -739,14 +693,6 @@ public class DealerPostSalesLedger implements Serializable, TemporalEntity {
 		this.bodyShopManHourCost = bodyShopManHourCost;
 	}
 
-	public Double getBodyShopManHourMargin() {
-		return bodyShopManHourMargin;
-	}
-
-	public void setBodyShopManHourMargin(Double bodyShopManHourMargin) {
-		this.bodyShopManHourMargin = bodyShopManHourMargin;
-	}
-
 	public Double getAccessoryManHourRevenue() {
 		return accessoryManHourRevenue;
 	}
@@ -777,14 +723,6 @@ public class DealerPostSalesLedger implements Serializable, TemporalEntity {
 
 	public void setAccessoryManHourCost(Double accessoryManHourCost) {
 		this.accessoryManHourCost = accessoryManHourCost;
-	}
-
-	public Double getAccessoryManHourMargin() {
-		return accessoryManHourMargin;
-	}
-
-	public void setAccessoryManHourMargin(Double accessoryManHourMargin) {
-		this.accessoryManHourMargin = accessoryManHourMargin;
 	}
 
 	public Double getOtherManHourRevenue() {
@@ -819,30 +757,6 @@ public class DealerPostSalesLedger implements Serializable, TemporalEntity {
 		this.otherManHourCost = otherManHourCost;
 	}
 
-	public Double getOtherManHourMargin() {
-		return otherManHourMargin;
-	}
-
-	public void setOtherManHourMargin(Double otherManHourMargin) {
-		this.otherManHourMargin = otherManHourMargin;
-	}
-
-	public Double getDiscountedManHourRevenue() {
-		return discountedManHourRevenue;
-	}
-
-	public void setDiscountedManHourRevenue(Double discountedManHourRevenue) {
-		this.discountedManHourRevenue = discountedManHourRevenue;
-	}
-
-	public Double getManHourMargin() {
-		return manHourMargin;
-	}
-
-	public void setManHourMargin(Double manHourMargin) {
-		this.manHourMargin = manHourMargin;
-	}
-
 	public Double getMaintenancePartsRevenue() {
 		return maintenancePartsRevenue;
 	}
@@ -875,20 +789,12 @@ public class DealerPostSalesLedger implements Serializable, TemporalEntity {
 		this.maintenancePartsCost = maintenancePartsCost;
 	}
 
-	public Double getMaintenancePartsMargin() {
-		return maintenancePartsMargin;
+	public Double getAccessoryPartsRevenue() {
+		return accessoryPartsRevenue;
 	}
 
-	public void setMaintenancePartsMargin(Double maintenancePartsMargin) {
-		this.maintenancePartsMargin = maintenancePartsMargin;
-	}
-
-	public Double getAccessoryPargsRevenue() {
-		return accessoryPargsRevenue;
-	}
-
-	public void setAccessoryPargsRevenue(Double accessoryPargsRevenue) {
-		this.accessoryPargsRevenue = accessoryPargsRevenue;
+	public void setAccessoryPartsRevenue(Double accessoryPartsRevenue) {
+		this.accessoryPartsRevenue = accessoryPartsRevenue;
 	}
 
 	public Double getAccessoryPartsDiscount() {
@@ -913,14 +819,6 @@ public class DealerPostSalesLedger implements Serializable, TemporalEntity {
 
 	public void setAccessoryPartsCost(Double accessoryPartsCost) {
 		this.accessoryPartsCost = accessoryPartsCost;
-	}
-
-	public Double getAccessoryPartsMargin() {
-		return accessoryPartsMargin;
-	}
-
-	public void setAccessoryPartsMargin(Double accessoryPartsMargin) {
-		this.accessoryPartsMargin = accessoryPartsMargin;
 	}
 
 	public Double getMaintenanceProductRevenue() {
@@ -955,30 +853,6 @@ public class DealerPostSalesLedger implements Serializable, TemporalEntity {
 		this.maintenanceProductCost = maintenanceProductCost;
 	}
 
-	public Double getMaintenanceProductMargin() {
-		return maintenanceProductMargin;
-	}
-
-	public void setMaintenanceProductMargin(Double maintenanceProductMargin) {
-		this.maintenanceProductMargin = maintenanceProductMargin;
-	}
-
-	public Double getDiscountedPartsRevenue() {
-		return discountedPartsRevenue;
-	}
-
-	public void setDiscountedPartsRevenue(Double discountedPartsRevenue) {
-		this.discountedPartsRevenue = discountedPartsRevenue;
-	}
-
-	public Double getPartsMargin() {
-		return partsMargin;
-	}
-
-	public void setPartsMargin(Double partsMargin) {
-		this.partsMargin = partsMargin;
-	}
-
 	public Double getVehicleDecorationRevenue() {
 		return vehicleDecorationRevenue;
 	}
@@ -1009,22 +883,6 @@ public class DealerPostSalesLedger implements Serializable, TemporalEntity {
 
 	public void setVehicleDecorationCost(Double vehicleDecorationCost) {
 		this.vehicleDecorationCost = vehicleDecorationCost;
-	}
-
-	public Double getVehicleDecorationMargin() {
-		return vehicleDecorationMargin;
-	}
-
-	public void setVehicleDecorationMargin(Double vehicleDecorationMargin) {
-		this.vehicleDecorationMargin = vehicleDecorationMargin;
-	}
-
-	public Double getPostSalesMargin() {
-		return postSalesMargin;
-	}
-
-	public void setPostSalesMargin(Double postSalesMargin) {
-		this.postSalesMargin = postSalesMargin;
 	}
 
 	public Integer getVersion() {

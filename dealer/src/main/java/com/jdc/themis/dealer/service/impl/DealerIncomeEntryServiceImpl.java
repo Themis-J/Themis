@@ -921,8 +921,6 @@ public class DealerIncomeEntryServiceImpl implements DealerIncomeEntryService {
                 : Double.valueOf(0));
         ledger.setVehicleSalesCost(request.getVehicleSalesCost() != null ? request.getVehicleSalesCost() : Double
                 .valueOf(0));
-        ledger.setVehicleSalesMargin(request.getVehicleSalesMargin() != null ? request.getVehicleSalesMargin() : Double
-                .valueOf(0));
         ledger.setUsedVehicleCharge(request.getUsedVehicleCharge() != null ? request.getUsedVehicleCharge() : Double
                 .valueOf(0));
         ledger.setUsedVehicleCost(request.getUsedVehicleCost() != null ? request.getUsedVehicleCost() : Double
@@ -930,28 +928,20 @@ public class DealerIncomeEntryServiceImpl implements DealerIncomeEntryService {
         ledger.setUsedVehicleSellingPrice(request.getUsedVehicleSellingPrice() != null ? request
                 .getUsedVehicleSellingPrice() : Double.valueOf(0));
         ledger.setDistributor(request.getDistributor());
-        ledger.setUsedVehicleMargin(request.getUsedVehicleMargin() != null ? request.getUsedVehicleMargin() : Double
-                .valueOf(0));
         ledger.setUsedVehicleManufacturerSubsidy(request.getUsedVehicleManufacturerSubsidy() != null ? request
                 .getUsedVehicleManufacturerSubsidy() : Double.valueOf(0));
-        ledger.setTradeInMargin(request.getTradeInMargin() != null ? request.getTradeInMargin() : Double.valueOf(0));
         ledger.setAccessorySalesRevenue(request.getAccessorySalesRevenue() != null ? request.getAccessorySalesRevenue()
                 : Double.valueOf(0));
         ledger.setAccessorySalesCostBuyerPart(request.getAccessorySalesCostBuyerPart() != null ? request
                 .getAccessorySalesCostBuyerPart() : Double.valueOf(0));
         ledger.setAccessorySalesCostGiftPart(request.getAccessorySalesCostGiftPart() != null ? request
                 .getAccessorySalesCostGiftPart() : Double.valueOf(0));
-        ledger.setAccessorySalesMargin(request.getAccessorySalesMargin() != null ? request.getAccessorySalesMargin()
-                : Double.valueOf(0));
         ledger.setInsuranceRebateMargin(request.getInsuranceRebateMargin() != null ? request.getInsuranceRebateMargin()
                 : Double.valueOf(0));
         ledger.setInsuranceCost(request.getInsuranceCost() != null ? request.getInsuranceCost() : Double.valueOf(0));
-        ledger.setInsuranceMargin(request.getInsuranceMargin() != null ? request.getInsuranceMargin() : Double
-                .valueOf(0));
         ledger.setInsuranceAgengcy(request.getInsuranceAgengcy());
         ledger.setLpRevenue(request.getLpRevenue() != null ? request.getLpRevenue() : Double.valueOf(0));
         ledger.setLpCost(request.getLpCost() != null ? request.getLpCost() : Double.valueOf(0));
-        ledger.setLpMargin(request.getLpMargin() != null ? request.getLpMargin() : Double.valueOf(0));
         ledger.setInstallmentCharge(request.getInstallmentCharge() != null ? request.getInstallmentCharge() : Double
                 .valueOf(0));
         ledger.setFcCommission(request.getFcCommission() != null ? request.getFcCommission() : Double.valueOf(0));
@@ -959,15 +949,11 @@ public class DealerIncomeEntryServiceImpl implements DealerIncomeEntryService {
                 .getInstallmentManufacturerSubsidy() : Double.valueOf(0));
         ledger.setInstallmentOthers(request.getInstallmentOthers() != null ? request.getInstallmentOthers() : Double
                 .valueOf(0));
-        ledger.setInstallmentMargin(request.getInstallmentMargin() != null ? request.getInstallmentMargin() : Double
-                .valueOf(0));
         ledger.setInstallmentAgency(request.getInstallmentAgency());
         ledger.setExtendedWarrantyRevenue(request.getExtendedWarrantyRevenue() != null ? request
                 .getExtendedWarrantyRevenue() : Double.valueOf(0));
         ledger.setExtendedWarrantyCost(request.getExtendedWarrantyCost() != null ? request.getExtendedWarrantyCost()
                 : Double.valueOf(0));
-        ledger.setExtendedWarrantyMargin(request.getExtendedWarrantyMargin() != null ? request
-                .getExtendedWarrantyMargin() : Double.valueOf(0));
         ledger.setFinancialLeasingMargin(request.getFinancialLeasingMargin() != null ? request
                 .getFinancialLeasingMargin() : Double.valueOf(0));
         ledger.setExitWarehouseMargin(request.getExitWarehouseMargin() != null ? request.getExitWarehouseMargin()
@@ -977,8 +963,6 @@ public class DealerIncomeEntryServiceImpl implements DealerIncomeEntryService {
         ledger.setMemberCardRevenue(request.getMemberCardRevenue() != null ? request.getMemberCardRevenue() : Double
                 .valueOf(0));
         ledger.setMemberCardCost(request.getMemberCardCost() != null ? request.getMemberCardCost() : Double.valueOf(0));
-        ledger.setMemberCardMargin(request.getMemberCardMargin() != null ? request.getMemberCardMargin() : Double
-                .valueOf(0));
         ledger.setOtherMargin(request.getOtherMargin() != null ? request.getOtherMargin() : Double.valueOf(0));
         ledger.setPostSalesVoucherManHourPart(request.getPostSalesVoucherManHourPart() != null ? request
                 .getPostSalesVoucherManHourPart() : Double.valueOf(0));
@@ -989,13 +973,9 @@ public class DealerIncomeEntryServiceImpl implements DealerIncomeEntryService {
         ledger.setFuelCard(request.getFuelCard() != null ? request.getFuelCard() : Double.valueOf(0));
         ledger.setGasoline(request.getGasoline() != null ? request.getGasoline() : Double.valueOf(0));
         ledger.setOtherGift(request.getOtherGift() != null ? request.getOtherGift() : Double.valueOf(0));
-        ledger.setGiftAmount(request.getGiftAmount() != null ? request.getGiftAmount() : Double.valueOf(0));
         ledger.setInventoryDays(request.getInventoryDays() != null ? request.getInventoryDays() : Double.valueOf(0));
         ledger.setFinancingRate(request.getFinancingRate() != null ? request.getFinancingRate() : Double.valueOf(0));
-        ledger.setInterests(request.getInterests() != null ? request.getInterests() : Double.valueOf(0));
         ledger.setManagementFee(request.getManagementFee() != null ? request.getManagementFee() : Double.valueOf(0));
-        ledger.setInventoryFinancingAmount(request.getInventoryFinancingAmount() != null ? request
-                .getInventoryFinancingAmount() : Double.valueOf(0));
         ledger.setMonthlyRebate(request.getMonthlyRebate() != null ? request.getMonthlyRebate() : Double.valueOf(0));
         ledger.setQuarterlyRebate(request.getQuarterlyRebate() != null ? request.getQuarterlyRebate() : Double
                 .valueOf(0));
@@ -1008,7 +988,6 @@ public class DealerIncomeEntryServiceImpl implements DealerIncomeEntryService {
         ledger.setOtherRebate(request.getOtherRebate() != null ? request.getOtherRebate() : Double.valueOf(0));
         ledger.setRebateAdjustment(request.getRebateAdjustment() != null ? request.getRebateAdjustment() : Double
                 .valueOf(0));
-        ledger.setRebateAmount(request.getRebateAmount() != null ? request.getRebateAmount() : Double.valueOf(0));
         ledger.setVehiclePushMoney(request.getVehiclePushMoney() != null ? request.getVehiclePushMoney() : Double
                 .valueOf(0));
         ledger.setAccessoryPushMoney(request.getAccessoryPushMoney() != null ? request.getAccessoryPushMoney() : Double
@@ -1028,8 +1007,6 @@ public class DealerIncomeEntryServiceImpl implements DealerIncomeEntryService {
                 .valueOf(0));
         ledger.setOtherPushMoney(request.getOtherPushMoney() != null ? request.getOtherPushMoney() : Double.valueOf(0));
         ledger.setPushMoneyDeduction(request.getPushMoneyDeduction() != null ? request.getPushMoneyDeduction() : Double
-                .valueOf(0));
-        ledger.setPushMoneyAmount(request.getPushMoneyAmount() != null ? request.getPushMoneyAmount() : Double
                 .valueOf(0));
 
         ledger.setValidDate(LocalDate.parse(request.getValidDate()));
@@ -1116,40 +1093,31 @@ public class DealerIncomeEntryServiceImpl implements DealerIncomeEntryService {
             item.setRefund(ledger.getRefund());
             item.setVehicleSalesRevenue(ledger.getVehicleSalesRevenue());
             item.setVehicleSalesCost(ledger.getVehicleSalesCost());
-            item.setVehicleSalesMargin(ledger.getVehicleSalesMargin());
             item.setUsedVehicleCharge(ledger.getUsedVehicleCharge());
             item.setUsedVehicleCost(ledger.getUsedVehicleCost());
             item.setUsedVehicleSellingPrice(ledger.getUsedVehicleSellingPrice());
             item.setDistributor(ledger.getDistributor());
-            item.setUsedVehicleMargin(ledger.getUsedVehicleMargin());
             item.setUsedVehicleManufacturerSubsidy(ledger.getUsedVehicleManufacturerSubsidy());
-            item.setTradeInMargin(ledger.getTradeInMargin());
             item.setAccessorySalesRevenue(ledger.getAccessorySalesRevenue());
             item.setAccessorySalesCostBuyerPart(ledger.getAccessorySalesCostBuyerPart());
             item.setAccessorySalesCostGiftPart(ledger.getAccessorySalesCostGiftPart());
-            item.setAccessorySalesMargin(ledger.getAccessorySalesMargin());
             item.setInsuranceRebateMargin(ledger.getInsuranceRebateMargin());
             item.setInsuranceCost(ledger.getInsuranceCost());
-            item.setInsuranceMargin(ledger.getInsuranceMargin());
             item.setInsuranceAgengcy(ledger.getInsuranceAgengcy());
             item.setLpRevenue(ledger.getLpRevenue());
             item.setLpCost(ledger.getLpCost());
-            item.setLpMargin(ledger.getLpMargin());
             item.setInstallmentCharge(ledger.getInstallmentCharge());
             item.setFcCommission(ledger.getFcCommission());
             item.setInstallmentManufacturerSubsidy(ledger.getInstallmentManufacturerSubsidy());
             item.setInstallmentOthers(ledger.getInstallmentOthers());
-            item.setInstallmentMargin(ledger.getInstallmentMargin());
             item.setInstallmentAgency(ledger.getInstallmentAgency());
             item.setExtendedWarrantyRevenue(ledger.getExtendedWarrantyRevenue());
             item.setExtendedWarrantyCost(ledger.getExtendedWarrantyCost());
-            item.setExtendedWarrantyMargin(ledger.getExtendedWarrantyMargin());
             item.setFinancialLeasingMargin(ledger.getFinancialLeasingMargin());
             item.setExitWarehouseMargin(ledger.getExitWarehouseMargin());
             item.setInspectionMargin(ledger.getInspectionMargin());
             item.setMemberCardRevenue(ledger.getMemberCardRevenue());
             item.setMemberCardCost(ledger.getMemberCardCost());
-            item.setMemberCardMargin(ledger.getMemberCardMargin());
             item.setOtherMargin(ledger.getOtherMargin());
             item.setPostSalesVoucherManHourPart(ledger.getPostSalesVoucherManHourPart());
             item.setPostSalesVoucherDecorationPart(ledger.getPostSalesVoucherDecorationPart());
@@ -1157,12 +1125,9 @@ public class DealerIncomeEntryServiceImpl implements DealerIncomeEntryService {
             item.setFuelCard(ledger.getFuelCard());
             item.setGasoline(ledger.getGasoline());
             item.setOtherGift(ledger.getOtherGift());
-            item.setGiftAmount(ledger.getGiftAmount());
             item.setInventoryDays(ledger.getInventoryDays());
             item.setFinancingRate(ledger.getFinancingRate());
-            item.setInterests(ledger.getInterests());
             item.setManagementFee(ledger.getManagementFee());
-            item.setInventoryFinancingAmount(ledger.getInventoryFinancingAmount());
             item.setMonthlyRebate(ledger.getMonthlyRebate());
             item.setQuarterlyRebate(ledger.getQuarterlyRebate());
             item.setSatisfactionRebate(ledger.getSatisfactionRebate());
@@ -1171,7 +1136,6 @@ public class DealerIncomeEntryServiceImpl implements DealerIncomeEntryService {
             item.setTerminalSalesBonus(ledger.getTerminalSalesBonus());
             item.setOtherRebate(ledger.getOtherRebate());
             item.setRebateAdjustment(ledger.getRebateAdjustment());
-            item.setRebateAmount(ledger.getRebateAmount());
             item.setVehiclePushMoney(ledger.getVehiclePushMoney());
             item.setAccessoryPushMoney(ledger.getAccessoryPushMoney());
             item.setInsurancePushMoney(ledger.getInsurancePushMoney());
@@ -1183,7 +1147,6 @@ public class DealerIncomeEntryServiceImpl implements DealerIncomeEntryService {
             item.setExchangePushMoney(ledger.getExchangePushMoney());
             item.setOtherPushMoney(ledger.getOtherPushMoney());
             item.setPushMoneyDeduction(ledger.getPushMoneyDeduction());
-            item.setPushMoneyAmount(ledger.getPushMoneyAmount());
             response.getVehicleSalesLedger().add(item);
         }
 
@@ -1279,14 +1242,10 @@ public class DealerIncomeEntryServiceImpl implements DealerIncomeEntryService {
                 .getMaintenanceManHourCouponPaidPart() : Double.valueOf(0));
         ledger.setMaintenanceManHourCostPaidPart(request.getMaintenanceManHourCostPaidPart() != null ? request
                 .getMaintenanceManHourCostPaidPart() : Double.valueOf(0));
-        ledger.setMaintenanceManHourMarginPaidPart(request.getMaintenanceManHourMarginPaidPart() != null ? request
-                .getMaintenanceManHourMarginPaidPart() : Double.valueOf(0));
         ledger.setMaintenanceManHourRevenueUnpaidPart(request.getMaintenanceManHourRevenueUnpaidPart() != null ? request
                 .getMaintenanceManHourRevenueUnpaidPart() : Double.valueOf(0));
         ledger.setMaintenanceManHourCostUnpaidPart(request.getMaintenanceManHourCostUnpaidPart() != null ? request
                 .getMaintenanceManHourCostUnpaidPart() : Double.valueOf(0));
-        ledger.setMaintenanceManHourMarginUnpaidPart(request.getMaintenanceManHourMarginUnpaidPart() != null ? request
-                .getMaintenanceManHourMarginUnpaidPart() : Double.valueOf(0));
         ledger.setSheetMetalManHourRevenue(request.getSheetMetalManHourRevenue() != null ? request
                 .getSheetMetalManHourRevenue() : Double.valueOf(0));
         ledger.setPaintSprayManHourRevenue(request.getPaintSprayManHourRevenue() != null ? request
@@ -1297,8 +1256,6 @@ public class DealerIncomeEntryServiceImpl implements DealerIncomeEntryService {
                 : Double.valueOf(0));
         ledger.setBodyShopManHourCost(request.getBodyShopManHourCost() != null ? request.getBodyShopManHourCost()
                 : Double.valueOf(0));
-        ledger.setBodyShopManHourMargin(request.getBodyShopManHourMargin() != null ? request.getBodyShopManHourMargin()
-                : Double.valueOf(0));
         ledger.setAccessoryManHourRevenue(request.getAccessoryManHourRevenue() != null ? request
                 .getAccessoryManHourRevenue() : Double.valueOf(0));
         ledger.setAccessoryManHourDiscount(request.getAccessoryManHourDiscount() != null ? request
@@ -1307,8 +1264,6 @@ public class DealerIncomeEntryServiceImpl implements DealerIncomeEntryService {
                 .getAccessoryManHourCoupon() : Double.valueOf(0));
         ledger.setAccessoryManHourCost(request.getAccessoryManHourCost() != null ? request.getAccessoryManHourCost()
                 : Double.valueOf(0));
-        ledger.setAccessoryManHourMargin(request.getAccessoryManHourMargin() != null ? request
-                .getAccessoryManHourMargin() : Double.valueOf(0));
         ledger.setOtherManHourRevenue(request.getOtherManHourRevenue() != null ? request.getOtherManHourRevenue()
                 : Double.valueOf(0));
         ledger.setOtherManHourDiscount(request.getOtherManHourDiscount() != null ? request.getOtherManHourDiscount()
@@ -1317,11 +1272,6 @@ public class DealerIncomeEntryServiceImpl implements DealerIncomeEntryService {
                 .valueOf(0));
         ledger.setOtherManHourCost(request.getOtherManHourCost() != null ? request.getOtherManHourCost() : Double
                 .valueOf(0));
-        ledger.setOtherManHourMargin(request.getOtherManHourMargin() != null ? request.getOtherManHourMargin() : Double
-                .valueOf(0));
-        ledger.setDiscountedManHourRevenue(request.getDiscountedManHourRevenue() != null ? request
-                .getDiscountedManHourRevenue() : Double.valueOf(0));
-        ledger.setManHourMargin(request.getManHourMargin() != null ? request.getManHourMargin() : Double.valueOf(0));
         ledger.setMaintenancePartsRevenue(request.getMaintenancePartsRevenue() != null ? request
                 .getMaintenancePartsRevenue() : Double.valueOf(0));
         ledger.setMaintenancePartsDiscount(request.getMaintenancePartsDiscount() != null ? request
@@ -1330,9 +1280,7 @@ public class DealerIncomeEntryServiceImpl implements DealerIncomeEntryService {
                 .getMaintenancePartsCoupon() : Double.valueOf(0));
         ledger.setMaintenancePartsCost(request.getMaintenancePartsCost() != null ? request.getMaintenancePartsCost()
                 : Double.valueOf(0));
-        ledger.setMaintenancePartsMargin(request.getMaintenancePartsMargin() != null ? request
-                .getMaintenancePartsMargin() : Double.valueOf(0));
-        ledger.setAccessoryPargsRevenue(request.getAccessoryPargsRevenue() != null ? request.getAccessoryPargsRevenue()
+        ledger.setAccessoryPartsRevenue(request.getAccessoryPartsRevenue() != null ? request.getAccessoryPartsRevenue()
                 : Double.valueOf(0));
         ledger.setAccessoryPartsDiscount(request.getAccessoryPartsDiscount() != null ? request
                 .getAccessoryPartsDiscount() : Double.valueOf(0));
@@ -1340,8 +1288,6 @@ public class DealerIncomeEntryServiceImpl implements DealerIncomeEntryService {
                 : Double.valueOf(0));
         ledger.setAccessoryPartsCost(request.getAccessoryPartsCost() != null ? request.getAccessoryPartsCost() : Double
                 .valueOf(0));
-        ledger.setAccessoryPartsMargin(request.getAccessoryPartsMargin() != null ? request.getAccessoryPartsMargin()
-                : Double.valueOf(0));
         ledger.setMaintenanceProductRevenue(request.getMaintenanceProductRevenue() != null ? request
                 .getMaintenanceProductRevenue() : Double.valueOf(0));
         ledger.setMaintenanceProductDiscount(request.getMaintenanceProductDiscount() != null ? request
@@ -1350,11 +1296,6 @@ public class DealerIncomeEntryServiceImpl implements DealerIncomeEntryService {
                 .getMaintenanceProductCoupon() : Double.valueOf(0));
         ledger.setMaintenanceProductCost(request.getMaintenanceProductCost() != null ? request
                 .getMaintenanceProductCost() : Double.valueOf(0));
-        ledger.setMaintenanceProductMargin(request.getMaintenanceProductMargin() != null ? request
-                .getMaintenanceProductMargin() : Double.valueOf(0));
-        ledger.setDiscountedPartsRevenue(request.getDiscountedPartsRevenue() != null ? request
-                .getDiscountedPartsRevenue() : Double.valueOf(0));
-        ledger.setPartsMargin(request.getPartsMargin() != null ? request.getPartsMargin() : Double.valueOf(0));
         ledger.setVehicleDecorationRevenue(request.getVehicleDecorationRevenue() != null ? request
                 .getVehicleDecorationRevenue() : Double.valueOf(0));
         ledger.setVehicleDecorationDiscount(request.getVehicleDecorationDiscount() != null ? request
@@ -1363,10 +1304,6 @@ public class DealerIncomeEntryServiceImpl implements DealerIncomeEntryService {
                 .getVehicleDecorationCoupon() : Double.valueOf(0));
         ledger.setVehicleDecorationCost(request.getVehicleDecorationCost() != null ? request.getVehicleDecorationCost()
                 : Double.valueOf(0));
-        ledger.setVehicleDecorationMargin(request.getVehicleDecorationMargin() != null ? request
-                .getVehicleDecorationMargin() : Double.valueOf(0));
-        ledger.setPostSalesMargin(request.getPostSalesMargin() != null ? request.getPostSalesMargin() : Double
-                .valueOf(0));
 
         ledger.setValidDate(LocalDate.parse(request.getValidDate()));
         ledger.setUpdatedBy(request.getUpdatedBy());
@@ -1470,51 +1407,37 @@ public class DealerIncomeEntryServiceImpl implements DealerIncomeEntryService {
             item.setMaintenanceManHourDiscountPaidPart(ledger.getMaintenanceManHourDiscountPaidPart());
             item.setMaintenanceManHourCouponPaidPart(ledger.getMaintenanceManHourCouponPaidPart());
             item.setMaintenanceManHourCostPaidPart(ledger.getMaintenanceManHourCostPaidPart());
-            item.setMaintenanceManHourMarginPaidPart(ledger.getMaintenanceManHourMarginPaidPart());
             item.setMaintenanceManHourRevenueUnpaidPart(ledger.getMaintenanceManHourRevenueUnpaidPart());
             item.setMaintenanceManHourCostUnpaidPart(ledger.getMaintenanceManHourCostUnpaidPart());
-            item.setMaintenanceManHourMarginUnpaidPart(ledger.getMaintenanceManHourMarginUnpaidPart());
             item.setSheetMetalManHourRevenue(ledger.getSheetMetalManHourRevenue());
             item.setPaintSprayManHourRevenue(ledger.getPaintSprayManHourRevenue());
             item.setBodyShopManHourDiscount(ledger.getBodyShopManHourDiscount());
             item.setBodyShopManHourCoupon(ledger.getBodyShopManHourCoupon());
             item.setBodyShopManHourCost(ledger.getBodyShopManHourCost());
-            item.setBodyShopManHourMargin(ledger.getBodyShopManHourMargin());
             item.setAccessoryManHourRevenue(ledger.getAccessoryManHourRevenue());
             item.setAccessoryManHourDiscount(ledger.getAccessoryManHourDiscount());
             item.setAccessoryManHourCoupon(ledger.getAccessoryManHourCoupon());
             item.setAccessoryManHourCost(ledger.getAccessoryManHourCost());
-            item.setAccessoryManHourMargin(ledger.getAccessoryManHourMargin());
             item.setOtherManHourRevenue(ledger.getOtherManHourRevenue());
             item.setOtherManHourDiscount(ledger.getOtherManHourDiscount());
             item.setOtherManHourCoupon(ledger.getOtherManHourCoupon());
             item.setOtherManHourCost(ledger.getOtherManHourCost());
-            item.setOtherManHourMargin(ledger.getOtherManHourMargin());
-            item.setDiscountedManHourRevenue(ledger.getDiscountedManHourRevenue());
-            item.setManHourMargin(ledger.getManHourMargin());
             item.setMaintenancePartsRevenue(ledger.getMaintenancePartsRevenue());
             item.setMaintenancePartsDiscount(ledger.getMaintenancePartsDiscount());
             item.setMaintenancePartsCoupon(ledger.getMaintenancePartsCoupon());
             item.setMaintenancePartsCost(ledger.getMaintenancePartsCost());
-            item.setMaintenancePartsMargin(ledger.getMaintenancePartsMargin());
-            item.setAccessoryPargsRevenue(ledger.getAccessoryPargsRevenue());
+            item.setAccessoryPartsRevenue(ledger.getAccessoryPartsRevenue());
             item.setAccessoryPartsDiscount(ledger.getAccessoryPartsDiscount());
             item.setAccessoryPartsCoupon(ledger.getAccessoryPartsCoupon());
             item.setAccessoryPartsCost(ledger.getAccessoryPartsCost());
-            item.setAccessoryPartsMargin(ledger.getAccessoryPartsMargin());
             item.setMaintenanceProductRevenue(ledger.getMaintenanceProductRevenue());
             item.setMaintenanceProductDiscount(ledger.getMaintenanceProductDiscount());
             item.setMaintenanceProductCoupon(ledger.getMaintenanceProductCoupon());
             item.setMaintenanceProductCost(ledger.getMaintenanceProductCost());
-            item.setMaintenanceProductMargin(ledger.getMaintenanceProductMargin());
-            item.setDiscountedPartsRevenue(ledger.getDiscountedPartsRevenue());
-            item.setPartsMargin(ledger.getPartsMargin());
             item.setVehicleDecorationRevenue(ledger.getVehicleDecorationRevenue());
             item.setVehicleDecorationDiscount(ledger.getVehicleDecorationDiscount());
             item.setVehicleDecorationCoupon(ledger.getVehicleDecorationCoupon());
             item.setVehicleDecorationCost(ledger.getVehicleDecorationCost());
-            item.setVehicleDecorationMargin(ledger.getVehicleDecorationMargin());
-            item.setPostSalesMargin(ledger.getPostSalesMargin());
             response.getPostSalesLedger().add(item);
         }
 

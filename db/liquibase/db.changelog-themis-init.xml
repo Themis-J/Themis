@@ -14,6 +14,7 @@
 		<sqlFile path="incremental/init/5_dealer_schema_change.sql" stripComments="true"/>
 		<sqlFile path="incremental/init/6_dealer_data_change.sql" stripComments="true"/>
 		<sqlFile path="incremental/init/7_dealer_report_item_schema_change.sql" stripComments="true"/>
-		
+		<sqlFile path="incremental/init/8_create_themis_ledger_tables.sql" stripComments="true"/>
+		<sqlFile path="incremental/init/9_insert_themis_ledger_data.sql" stripComments="true"/>
 	</changeSet>
 </databaseChangeLog>

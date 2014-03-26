@@ -110,13 +110,9 @@ public class SaveDealerPostSalesLedgerRequest implements Serializable {
 	
 	private Double maintenanceManHourCostPaidPart;
 	
-	private Double maintenanceManHourMarginPaidPart;
-	
 	private Double maintenanceManHourRevenueUnpaidPart;
 	
 	private Double maintenanceManHourCostUnpaidPart;
-	
-	private Double maintenanceManHourMarginUnpaidPart;
 	
 	private Double sheetMetalManHourRevenue;
 	
@@ -128,8 +124,6 @@ public class SaveDealerPostSalesLedgerRequest implements Serializable {
 	
 	private Double bodyShopManHourCost;
 	
-	private Double bodyShopManHourMargin;
-	
 	private Double accessoryManHourRevenue;
 	
 	private Double accessoryManHourDiscount;
@@ -137,8 +131,6 @@ public class SaveDealerPostSalesLedgerRequest implements Serializable {
 	private Double accessoryManHourCoupon;
 	
 	private Double accessoryManHourCost;
-	
-	private Double accessoryManHourMargin;
 	
 	private Double otherManHourRevenue;
 	
@@ -148,12 +140,6 @@ public class SaveDealerPostSalesLedgerRequest implements Serializable {
 	
 	private Double otherManHourCost;
 	
-	private Double otherManHourMargin;
-	
-	private Double discountedManHourRevenue;
-	
-	private Double manHourMargin;
-	
 	private Double maintenancePartsRevenue;
 	
 	private Double maintenancePartsDiscount;
@@ -162,17 +148,13 @@ public class SaveDealerPostSalesLedgerRequest implements Serializable {
 	
 	private Double maintenancePartsCost;
 	
-	private Double maintenancePartsMargin;
-	
-	private Double accessoryPargsRevenue;
+	private Double accessoryPartsRevenue;
 	
 	private Double accessoryPartsDiscount;
 	
 	private Double accessoryPartsCoupon;
 	
 	private Double accessoryPartsCost;
-	
-	private Double accessoryPartsMargin;
 	
 	private Double maintenanceProductRevenue;
 	
@@ -182,12 +164,6 @@ public class SaveDealerPostSalesLedgerRequest implements Serializable {
 	
 	private Double maintenanceProductCost;
 	
-	private Double maintenanceProductMargin;
-	
-	private Double discountedPartsRevenue;
-	
-	private Double partsMargin;
-	
 	private Double vehicleDecorationRevenue;
 	
 	private Double vehicleDecorationDiscount;
@@ -195,10 +171,6 @@ public class SaveDealerPostSalesLedgerRequest implements Serializable {
 	private Double vehicleDecorationCoupon;
 	
 	private Double vehicleDecorationCost;
-	
-	private Double vehicleDecorationMargin;
-	
-	private Double postSalesMargin;
 	
 	private String validDate;
 
@@ -601,15 +573,6 @@ public class SaveDealerPostSalesLedgerRequest implements Serializable {
 		this.maintenanceManHourCostPaidPart = maintenanceManHourCostPaidPart;
 	}
 
-	public Double getMaintenanceManHourMarginPaidPart() {
-		return maintenanceManHourMarginPaidPart;
-	}
-
-	public void setMaintenanceManHourMarginPaidPart(
-			Double maintenanceManHourMarginPaidPart) {
-		this.maintenanceManHourMarginPaidPart = maintenanceManHourMarginPaidPart;
-	}
-
 	public Double getMaintenanceManHourRevenueUnpaidPart() {
 		return maintenanceManHourRevenueUnpaidPart;
 	}
@@ -626,15 +589,6 @@ public class SaveDealerPostSalesLedgerRequest implements Serializable {
 	public void setMaintenanceManHourCostUnpaidPart(
 			Double maintenanceManHourCostUnpaidPart) {
 		this.maintenanceManHourCostUnpaidPart = maintenanceManHourCostUnpaidPart;
-	}
-
-	public Double getMaintenanceManHourMarginUnpaidPart() {
-		return maintenanceManHourMarginUnpaidPart;
-	}
-
-	public void setMaintenanceManHourMarginUnpaidPart(
-			Double maintenanceManHourMarginUnpaidPart) {
-		this.maintenanceManHourMarginUnpaidPart = maintenanceManHourMarginUnpaidPart;
 	}
 
 	public Double getSheetMetalManHourRevenue() {
@@ -677,14 +631,6 @@ public class SaveDealerPostSalesLedgerRequest implements Serializable {
 		this.bodyShopManHourCost = bodyShopManHourCost;
 	}
 
-	public Double getBodyShopManHourMargin() {
-		return bodyShopManHourMargin;
-	}
-
-	public void setBodyShopManHourMargin(Double bodyShopManHourMargin) {
-		this.bodyShopManHourMargin = bodyShopManHourMargin;
-	}
-
 	public Double getAccessoryManHourRevenue() {
 		return accessoryManHourRevenue;
 	}
@@ -715,14 +661,6 @@ public class SaveDealerPostSalesLedgerRequest implements Serializable {
 
 	public void setAccessoryManHourCost(Double accessoryManHourCost) {
 		this.accessoryManHourCost = accessoryManHourCost;
-	}
-
-	public Double getAccessoryManHourMargin() {
-		return accessoryManHourMargin;
-	}
-
-	public void setAccessoryManHourMargin(Double accessoryManHourMargin) {
-		this.accessoryManHourMargin = accessoryManHourMargin;
 	}
 
 	public Double getOtherManHourRevenue() {
@@ -757,30 +695,6 @@ public class SaveDealerPostSalesLedgerRequest implements Serializable {
 		this.otherManHourCost = otherManHourCost;
 	}
 
-	public Double getOtherManHourMargin() {
-		return otherManHourMargin;
-	}
-
-	public void setOtherManHourMargin(Double otherManHourMargin) {
-		this.otherManHourMargin = otherManHourMargin;
-	}
-
-	public Double getDiscountedManHourRevenue() {
-		return discountedManHourRevenue;
-	}
-
-	public void setDiscountedManHourRevenue(Double discountedManHourRevenue) {
-		this.discountedManHourRevenue = discountedManHourRevenue;
-	}
-
-	public Double getManHourMargin() {
-		return manHourMargin;
-	}
-
-	public void setManHourMargin(Double manHourMargin) {
-		this.manHourMargin = manHourMargin;
-	}
-
 	public Double getMaintenancePartsRevenue() {
 		return maintenancePartsRevenue;
 	}
@@ -813,20 +727,12 @@ public class SaveDealerPostSalesLedgerRequest implements Serializable {
 		this.maintenancePartsCost = maintenancePartsCost;
 	}
 
-	public Double getMaintenancePartsMargin() {
-		return maintenancePartsMargin;
+	public Double getAccessoryPartsRevenue() {
+		return accessoryPartsRevenue;
 	}
 
-	public void setMaintenancePartsMargin(Double maintenancePartsMargin) {
-		this.maintenancePartsMargin = maintenancePartsMargin;
-	}
-
-	public Double getAccessoryPargsRevenue() {
-		return accessoryPargsRevenue;
-	}
-
-	public void setAccessoryPargsRevenue(Double accessoryPargsRevenue) {
-		this.accessoryPargsRevenue = accessoryPargsRevenue;
+	public void setAccessoryPartsRevenue(Double accessoryPartsRevenue) {
+		this.accessoryPartsRevenue = accessoryPartsRevenue;
 	}
 
 	public Double getAccessoryPartsDiscount() {
@@ -851,14 +757,6 @@ public class SaveDealerPostSalesLedgerRequest implements Serializable {
 
 	public void setAccessoryPartsCost(Double accessoryPartsCost) {
 		this.accessoryPartsCost = accessoryPartsCost;
-	}
-
-	public Double getAccessoryPartsMargin() {
-		return accessoryPartsMargin;
-	}
-
-	public void setAccessoryPartsMargin(Double accessoryPartsMargin) {
-		this.accessoryPartsMargin = accessoryPartsMargin;
 	}
 
 	public Double getMaintenanceProductRevenue() {
@@ -893,30 +791,6 @@ public class SaveDealerPostSalesLedgerRequest implements Serializable {
 		this.maintenanceProductCost = maintenanceProductCost;
 	}
 
-	public Double getMaintenanceProductMargin() {
-		return maintenanceProductMargin;
-	}
-
-	public void setMaintenanceProductMargin(Double maintenanceProductMargin) {
-		this.maintenanceProductMargin = maintenanceProductMargin;
-	}
-
-	public Double getDiscountedPartsRevenue() {
-		return discountedPartsRevenue;
-	}
-
-	public void setDiscountedPartsRevenue(Double discountedPartsRevenue) {
-		this.discountedPartsRevenue = discountedPartsRevenue;
-	}
-
-	public Double getPartsMargin() {
-		return partsMargin;
-	}
-
-	public void setPartsMargin(Double partsMargin) {
-		this.partsMargin = partsMargin;
-	}
-
 	public Double getVehicleDecorationRevenue() {
 		return vehicleDecorationRevenue;
 	}
@@ -947,22 +821,6 @@ public class SaveDealerPostSalesLedgerRequest implements Serializable {
 
 	public void setVehicleDecorationCost(Double vehicleDecorationCost) {
 		this.vehicleDecorationCost = vehicleDecorationCost;
-	}
-
-	public Double getVehicleDecorationMargin() {
-		return vehicleDecorationMargin;
-	}
-
-	public void setVehicleDecorationMargin(Double vehicleDecorationMargin) {
-		this.vehicleDecorationMargin = vehicleDecorationMargin;
-	}
-
-	public Double getPostSalesMargin() {
-		return postSalesMargin;
-	}
-
-	public void setPostSalesMargin(Double postSalesMargin) {
-		this.postSalesMargin = postSalesMargin;
 	}
 
 	public String getValidDate() {

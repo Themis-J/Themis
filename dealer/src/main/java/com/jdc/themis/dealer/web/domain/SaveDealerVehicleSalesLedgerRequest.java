@@ -72,8 +72,6 @@ public class SaveDealerVehicleSalesLedgerRequest implements Serializable {
 
 	private Double vehicleSalesCost;
 
-	private Double vehicleSalesMargin;
-
 	private Double usedVehicleCharge;
 
 	private Double usedVehicleCost;
@@ -82,11 +80,7 @@ public class SaveDealerVehicleSalesLedgerRequest implements Serializable {
 
 	private String distributor;
 
-	private Double usedVehicleMargin;
-
 	private Double usedVehicleManufacturerSubsidy;
-
-	private Double tradeInMargin;
 
 	private Double accessorySalesRevenue;
 
@@ -94,21 +88,15 @@ public class SaveDealerVehicleSalesLedgerRequest implements Serializable {
 
 	private Double accessorySalesCostGiftPart;
 
-	private Double accessorySalesMargin;
-
 	private Double insuranceRebateMargin;
 
 	private Double insuranceCost;
-
-	private Double insuranceMargin;
 
 	private String insuranceAgengcy;
 
 	private Double lpRevenue;
 
 	private Double lpCost;
-
-	private Double lpMargin;
 
 	private Double installmentCharge;
 
@@ -118,15 +106,11 @@ public class SaveDealerVehicleSalesLedgerRequest implements Serializable {
 
 	private Double installmentOthers;
 
-	private Double installmentMargin;
-
 	private String installmentAgency;
 
 	private Double extendedWarrantyRevenue;
 
 	private Double extendedWarrantyCost;
-
-	private Double extendedWarrantyMargin;
 
 	private Double financialLeasingMargin;
 
@@ -137,8 +121,6 @@ public class SaveDealerVehicleSalesLedgerRequest implements Serializable {
 	private Double memberCardRevenue;
 
 	private Double memberCardCost;
-
-	private Double memberCardMargin;
 
 	private Double otherMargin;
 
@@ -154,17 +136,11 @@ public class SaveDealerVehicleSalesLedgerRequest implements Serializable {
 
 	private Double otherGift;
 
-	private Double giftAmount;
-
 	private Double inventoryDays;
 
 	private Double financingRate;
 
-	private Double interests;
-
 	private Double managementFee;
-
-	private Double inventoryFinancingAmount;
 
 	private Double monthlyRebate;
 
@@ -181,8 +157,6 @@ public class SaveDealerVehicleSalesLedgerRequest implements Serializable {
 	private Double otherRebate;
 
 	private Double rebateAdjustment;
-
-	private Double rebateAmount;
 
 	private Double vehiclePushMoney;
 
@@ -205,8 +179,6 @@ public class SaveDealerVehicleSalesLedgerRequest implements Serializable {
 	private Double otherPushMoney;
 
 	private Double pushMoneyDeduction;
-
-	private Double pushMoneyAmount;
 
 	private String validDate;
 
@@ -452,14 +424,6 @@ public class SaveDealerVehicleSalesLedgerRequest implements Serializable {
 		this.vehicleSalesCost = vehicleSalesCost;
 	}
 
-	public Double getVehicleSalesMargin() {
-		return vehicleSalesMargin;
-	}
-
-	public void setVehicleSalesMargin(Double vehicleSalesMargin) {
-		this.vehicleSalesMargin = vehicleSalesMargin;
-	}
-
 	public Double getUsedVehicleCharge() {
 		return usedVehicleCharge;
 	}
@@ -492,14 +456,6 @@ public class SaveDealerVehicleSalesLedgerRequest implements Serializable {
 		this.distributor = distributor;
 	}
 
-	public Double getUsedVehicleMargin() {
-		return usedVehicleMargin;
-	}
-
-	public void setUsedVehicleMargin(Double usedVehicleMargin) {
-		this.usedVehicleMargin = usedVehicleMargin;
-	}
-
 	public Double getUsedVehicleManufacturerSubsidy() {
 		return usedVehicleManufacturerSubsidy;
 	}
@@ -507,14 +463,6 @@ public class SaveDealerVehicleSalesLedgerRequest implements Serializable {
 	public void setUsedVehicleManufacturerSubsidy(
 			Double usedVehicleManufacturerSubsidy) {
 		this.usedVehicleManufacturerSubsidy = usedVehicleManufacturerSubsidy;
-	}
-
-	public Double getTradeInMargin() {
-		return tradeInMargin;
-	}
-
-	public void setTradeInMargin(Double tradeInMargin) {
-		this.tradeInMargin = tradeInMargin;
 	}
 
 	public Double getAccessorySalesRevenue() {
@@ -541,14 +489,6 @@ public class SaveDealerVehicleSalesLedgerRequest implements Serializable {
 		this.accessorySalesCostGiftPart = accessorySalesCostGiftPart;
 	}
 
-	public Double getAccessorySalesMargin() {
-		return accessorySalesMargin;
-	}
-
-	public void setAccessorySalesMargin(Double accessorySalesMargin) {
-		this.accessorySalesMargin = accessorySalesMargin;
-	}
-
 	public Double getInsuranceRebateMargin() {
 		return insuranceRebateMargin;
 	}
@@ -563,14 +503,6 @@ public class SaveDealerVehicleSalesLedgerRequest implements Serializable {
 
 	public void setInsuranceCost(Double insuranceCost) {
 		this.insuranceCost = insuranceCost;
-	}
-
-	public Double getInsuranceMargin() {
-		return insuranceMargin;
-	}
-
-	public void setInsuranceMargin(Double insuranceMargin) {
-		this.insuranceMargin = insuranceMargin;
 	}
 
 	public String getInsuranceAgengcy() {
@@ -595,14 +527,6 @@ public class SaveDealerVehicleSalesLedgerRequest implements Serializable {
 
 	public void setLpCost(Double lpCost) {
 		this.lpCost = lpCost;
-	}
-
-	public Double getLpMargin() {
-		return lpMargin;
-	}
-
-	public void setLpMargin(Double lpMargin) {
-		this.lpMargin = lpMargin;
 	}
 
 	public Double getInstallmentCharge() {
@@ -638,14 +562,6 @@ public class SaveDealerVehicleSalesLedgerRequest implements Serializable {
 		this.installmentOthers = installmentOthers;
 	}
 
-	public Double getInstallmentMargin() {
-		return installmentMargin;
-	}
-
-	public void setInstallmentMargin(Double installmentMargin) {
-		this.installmentMargin = installmentMargin;
-	}
-
 	public String getInstallmentAgency() {
 		return installmentAgency;
 	}
@@ -668,14 +584,6 @@ public class SaveDealerVehicleSalesLedgerRequest implements Serializable {
 
 	public void setExtendedWarrantyCost(Double extendedWarrantyCost) {
 		this.extendedWarrantyCost = extendedWarrantyCost;
-	}
-
-	public Double getExtendedWarrantyMargin() {
-		return extendedWarrantyMargin;
-	}
-
-	public void setExtendedWarrantyMargin(Double extendedWarrantyMargin) {
-		this.extendedWarrantyMargin = extendedWarrantyMargin;
 	}
 
 	public Double getFinancialLeasingMargin() {
@@ -716,14 +624,6 @@ public class SaveDealerVehicleSalesLedgerRequest implements Serializable {
 
 	public void setMemberCardCost(Double memberCardCost) {
 		this.memberCardCost = memberCardCost;
-	}
-
-	public Double getMemberCardMargin() {
-		return memberCardMargin;
-	}
-
-	public void setMemberCardMargin(Double memberCardMargin) {
-		this.memberCardMargin = memberCardMargin;
 	}
 
 	public Double getOtherMargin() {
@@ -784,14 +684,6 @@ public class SaveDealerVehicleSalesLedgerRequest implements Serializable {
 		this.otherGift = otherGift;
 	}
 
-	public Double getGiftAmount() {
-		return giftAmount;
-	}
-
-	public void setGiftAmount(Double giftAmount) {
-		this.giftAmount = giftAmount;
-	}
-
 	public Double getInventoryDays() {
 		return inventoryDays;
 	}
@@ -808,28 +700,12 @@ public class SaveDealerVehicleSalesLedgerRequest implements Serializable {
 		this.financingRate = financingRate;
 	}
 
-	public Double getInterests() {
-		return interests;
-	}
-
-	public void setInterests(Double interests) {
-		this.interests = interests;
-	}
-
 	public Double getManagementFee() {
 		return managementFee;
 	}
 
 	public void setManagementFee(Double managementFee) {
 		this.managementFee = managementFee;
-	}
-
-	public Double getInventoryFinancingAmount() {
-		return inventoryFinancingAmount;
-	}
-
-	public void setInventoryFinancingAmount(Double inventoryFinancingAmount) {
-		this.inventoryFinancingAmount = inventoryFinancingAmount;
 	}
 
 	public Double getMonthlyRebate() {
@@ -894,14 +770,6 @@ public class SaveDealerVehicleSalesLedgerRequest implements Serializable {
 
 	public void setRebateAdjustment(Double rebateAdjustment) {
 		this.rebateAdjustment = rebateAdjustment;
-	}
-
-	public Double getRebateAmount() {
-		return rebateAmount;
-	}
-
-	public void setRebateAmount(Double rebateAmount) {
-		this.rebateAmount = rebateAmount;
 	}
 
 	public Double getVehiclePushMoney() {
@@ -990,14 +858,6 @@ public class SaveDealerVehicleSalesLedgerRequest implements Serializable {
 
 	public void setPushMoneyDeduction(Double pushMoneyDeduction) {
 		this.pushMoneyDeduction = pushMoneyDeduction;
-	}
-
-	public Double getPushMoneyAmount() {
-		return pushMoneyAmount;
-	}
-
-	public void setPushMoneyAmount(Double pushMoneyAmount) {
-		this.pushMoneyAmount = pushMoneyAmount;
 	}
 
 	public String getValidDate() {
