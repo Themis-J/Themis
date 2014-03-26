@@ -20,6 +20,8 @@ import com.jdc.themis.dealer.utils.RestServiceErrorHandler;
 import com.jdc.themis.dealer.web.domain.GeneralResponse;
 import com.jdc.themis.dealer.web.domain.SaveAccountReceivableDurationRequest;
 import com.jdc.themis.dealer.web.domain.SaveDealerEntryItemStatusRequest;
+import com.jdc.themis.dealer.web.domain.SaveDealerPostSalesLedgerRequest;
+import com.jdc.themis.dealer.web.domain.SaveDealerVehicleSalesLedgerRequest;
 import com.jdc.themis.dealer.web.domain.SaveEmployeeFeeRequest;
 import com.jdc.themis.dealer.web.domain.SaveEmployeeFeeSummaryRequest;
 import com.jdc.themis.dealer.web.domain.SaveGeneralJournalRequest;
@@ -604,7 +606,6 @@ public class DealerIncomeSystemRestService {
 		response.setTimestamp(dealerIncomeEntryService
 				.saveHumanResourceAllocation(request));
 		return Response.ok(response).status(Status.CREATED).build();
-
 	}
 
 	/**
@@ -640,5 +641,103 @@ public class DealerIncomeSystemRestService {
 		return Response.ok(this.refDataQueryService.getHumanResourceAllocationItems())
 				.build();
 	}
+	
+    @GET
+    @Path("/ledgerMetadata")
+    @Produces({ "application/json", "application/xml" })
+    @RolesAllowed({ Constant.DEALER_ROLE, Constant.HEAD_ROLE })
+    @RestServiceErrorHandler
+    public Response getDealerLedgerMetadata(@QueryParam("dealerID") Integer dealerID) {
+        return Response.ok(dealerIncomeEntryService.getDealerLedgerMetadata(dealerID)).build();
+    }
+
+    @POST
+    @Produces({ "application/json", "application/xml" })
+    @Consumes({ "application/json", "application/xml" })
+    @RolesAllowed({ Constant.DEALER_ROLE, Constant.HEAD_ROLE })
+    @Path("/vehicleSalesLedger")
+    @RestServiceErrorHandler
+    public Response saveDealerVehicleSalesLedger(final SaveDealerVehicleSalesLedgerRequest request) {
+        final GeneralResponse response = new GeneralResponse();
+        response.setErrorMsg("");
+        response.setSuccess(true);
+        response.setTimestamp(dealerIncomeEntryService.saveDealerVehicleSalesLedger(request));
+        return Response.ok(response).status(Status.CREATED).build();
+    }
+
+    @GET
+    @Produces({ "application/json", "application/xml" })
+    @Consumes({ "application/json", "application/xml" })
+    @RolesAllowed({ Constant.DEALER_ROLE, Constant.HEAD_ROLE })
+    @Path("/vehicleSalesLedgers")
+    @RestServiceErrorHandler
+    public Response queryDealerVehicleSalesLedger(@QueryParam("contractNo") Integer contractNo,
+            @QueryParam("model") String model, @QueryParam("type") String type, @QueryParam("color") String color,
+            @QueryParam("lpNumber") String lpNumber, @QueryParam("frameNo") String frameNo,
+            @QueryParam("manufacturerDebitDate") String manufacturerDebitDate,
+            @QueryParam("warehousingDate") String warehousingDate, @QueryParam("salesDate") String salesDate,
+            @QueryParam("guidingPrice") Double guidingPrice, @QueryParam("customerName") String customerName,
+            @QueryParam("identificationNo") String identificationNo,
+            @QueryParam("salesConsultant") String salesConsultant, @QueryParam("customerType") String customerType) {
+        return Response.ok(
+                dealerIncomeEntryService.queryDealerVehicleSalesLedger(contractNo, model, type, color, lpNumber,
+                        frameNo, manufacturerDebitDate, warehousingDate, salesDate, guidingPrice, customerName,
+                        identificationNo, salesConsultant, customerType)).build();
+    }
+
+    @GET
+    @Produces({ "application/json", "application/xml" })
+    @Consumes({ "application/json", "application/xml" })
+    @RolesAllowed({ Constant.DEALER_ROLE, Constant.HEAD_ROLE })
+    @Path("/vehicleSalesLedger")
+    @RestServiceErrorHandler
+    public Response getDealerVehicleSalesLedger(@QueryParam("contractNo") Integer contractNo) {
+        return Response.ok(dealerIncomeEntryService.getDealerVehicleSalesLedger(contractNo)).build();
+    }
+
+    @POST
+    @Produces({ "application/json", "application/xml" })
+    @Consumes({ "application/json", "application/xml" })
+    @RolesAllowed({ Constant.DEALER_ROLE, Constant.HEAD_ROLE })
+    @Path("/postSalesLedger")
+    @RestServiceErrorHandler
+    public Response saveDealerPostSalesLedger(final SaveDealerPostSalesLedgerRequest request) {
+        final GeneralResponse response = new GeneralResponse();
+        response.setErrorMsg("");
+        response.setSuccess(true);
+        response.setTimestamp(dealerIncomeEntryService.saveDealerPostSalesLedger(request));
+        return Response.ok(response).status(Status.CREATED).build();
+    }
+
+    @GET
+    @Produces({ "application/json", "application/xml" })
+    @Consumes({ "application/json", "application/xml" })
+    @RolesAllowed({ Constant.DEALER_ROLE, Constant.HEAD_ROLE })
+    @Path("/postSalesLedgers")
+    @RestServiceErrorHandler
+    public Response queryDealerPostSalesLedger(@QueryParam("workOrderNo") Integer workOrderNo,
+            @QueryParam("salesDate") String salesDate, @QueryParam("mileage") Double mileage,
+            @QueryParam("lpNumber") String lpNumber, @QueryParam("customerName") String customerName,
+            @QueryParam("color") String color, @QueryParam("frameNo") String frameNo,
+            @QueryParam("model") String model, @QueryParam("enterFactoryDate") String enterFactoryDate,
+            @QueryParam("exitFactoryDate") String exitFactoryDate, @QueryParam("customerType") String customerType,
+            @QueryParam("insuranceAgengcy") String insuranceAgengcy,
+            @QueryParam("insuranceDueDate") String insuranceDueDate,
+            @QueryParam("insuranceClaimNumber") Integer insuranceClaimNumber) {
+        return Response.ok(
+                dealerIncomeEntryService.queryDealerPostSalesLedger(workOrderNo, salesDate, mileage, lpNumber,
+                        customerName, color, frameNo, model, enterFactoryDate, exitFactoryDate, customerType,
+                        insuranceAgengcy, insuranceDueDate, insuranceClaimNumber)).build();
+    }
+
+    @GET
+    @Produces({ "application/json", "application/xml" })
+    @Consumes({ "application/json", "application/xml" })
+    @RolesAllowed({ Constant.DEALER_ROLE, Constant.HEAD_ROLE })
+    @Path("/postSalesLedger")
+    @RestServiceErrorHandler
+    public Response getDealerPostSalesLedger(@QueryParam("workOrderNo") Integer workOrderNo) {
+        return Response.ok(dealerIncomeEntryService.getDealerPostSalesLedger(workOrderNo)).build();
+    }
 	
 }
