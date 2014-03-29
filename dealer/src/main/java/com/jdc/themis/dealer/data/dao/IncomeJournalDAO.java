@@ -91,7 +91,7 @@ public interface IncomeJournalDAO {
     Collection<DealerVehicleSalesLedger> queryDealerVehicleSalesLedger(Integer contractNo, String model, String type,
             String color, String lpNumber, String frameNo, String manufacturerDebitDate, String warehousingDate,
             String salesDate, Double guidingPrice, String customerName, String identificationNo,
-            String salesConsultant, String customerType);
+            String salesConsultant, String customerType, Integer dealerID);
 
     Collection<DealerVehicleSalesLedger> getDealerVehicleSalesLedger(Integer contractNo);
 
@@ -100,7 +100,7 @@ public interface IncomeJournalDAO {
     Collection<DealerPostSalesLedger> queryDealerPostSalesLedger(Integer workOrderNo, String salesDate, Double mileage,
             String lpNumber, String customerName, String color, String frameNo, String model, String enterFactoryDate,
             String exitFactoryDate, String customerType, String insuranceAgengcy, String insuranceDueDate,
-            Integer insuranceClaimNumber);
+            Integer insuranceClaimNumber, Integer dealerID);
 
     Collection<DealerPostSalesLedger> getDealerPostSalesLedger(Integer workOrderNo);
 

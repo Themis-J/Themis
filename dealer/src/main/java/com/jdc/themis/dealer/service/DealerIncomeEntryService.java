@@ -310,13 +310,14 @@ public interface DealerIncomeEntryService {
      * @param identificationNo
      * @param salesConsultant
      * @param customerType
+     * @param dealerID
      * @return
      */
     @Transactional(readOnly = true)
     GetDealerLedgerResponse queryDealerVehicleSalesLedger(Integer contractNo, String model, String type, String color,
             String lpNumber, String frameNo, String manufacturerDebitDate, String warehousingDate, String salesDate,
             Double guidingPrice, String customerName, String identificationNo, String salesConsultant,
-            String customerType);
+            String customerType, Integer dealerID);
 
     /**
      * @param workOrderNo
@@ -347,12 +348,13 @@ public interface DealerIncomeEntryService {
      * @param insuranceAgengcy
      * @param insuranceDueDate
      * @param insuranceClaimNumber
+     * @param dealerID
      * @return
      */
     @Transactional(readOnly = true)
     GetDealerLedgerResponse queryDealerPostSalesLedger(Integer workOrderNo, String salesDate, Double mileage,
             String lpNumber, String customerName, String color, String frameNo, String model, String enterFactoryDate,
             String exitFactoryDate, String customerType, String insuranceAgengcy, String insuranceDueDate,
-            Integer insuranceClaimNumber);
+            Integer insuranceClaimNumber, Integer dealerID);
 
 }
