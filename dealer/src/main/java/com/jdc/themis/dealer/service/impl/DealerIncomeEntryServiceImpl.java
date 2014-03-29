@@ -1,6 +1,7 @@
 package com.jdc.themis.dealer.service.impl;
 
 import java.math.BigDecimal;
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 
@@ -1036,8 +1037,56 @@ public class DealerIncomeEntryServiceImpl implements DealerIncomeEntryService {
         Collection<DealerVehicleSalesLedger> list = incomeJournalDAL.queryDealerVehicleSalesLedger(contractNo, model,
                 type, color, lpNumber, frameNo, manufacturerDebitDate, warehousingDate, salesDate, guidingPrice,
                 customerName, identificationNo, salesConsultant, customerType, dealerID);
+        
         for (DealerVehicleSalesLedger ledger : list) {
-            response.getPks().add(ledger.getContractNo());
+        	List<String> summary = new ArrayList<String>();
+        	summary.add(String.valueOf(ledger.getContractNo()));
+        	summary.add(ledger.getModel());
+        	summary.add(ledger.getType());
+        	summary.add(ledger.getColor());
+        	summary.add(ledger.getLpNumber());
+        	summary.add(ledger.getFrameNo());
+        	if (null != ledger.getManufacturerDebitDate())
+        	{
+        		summary.add(ledger.getManufacturerDebitDate().toString());
+        	}
+        	else
+        	{
+        		summary.add("");
+        	}
+        	
+        	if (null != ledger.getWarehousingDate())
+        	{
+        		summary.add(ledger.getWarehousingDate().toString());
+        	}
+        	else
+        	{
+        		summary.add("");
+        	}
+        	
+        	if (null != ledger.getSalesDate())
+        	{
+        		summary.add(ledger.getSalesDate().toString());
+        	}
+        	else
+        	{
+        		summary.add("");
+        	}
+        	
+        	if (null != ledger.getGuidingPrice())
+        	{
+        		summary.add(String.valueOf(ledger.getGuidingPrice()));
+        	}
+        	else
+        	{
+        		summary.add("");
+        	}
+        	
+        	summary.add(ledger.getCustomerName());
+        	summary.add(ledger.getIdentificationNo());
+        	summary.add(ledger.getSalesConsultant());
+        	summary.add(ledger.getCustomerType());
+            response.getSummaries().add(summary);
         }
 
         return response;
@@ -1334,8 +1383,57 @@ public class DealerIncomeEntryServiceImpl implements DealerIncomeEntryService {
                 salesDate, mileage, lpNumber, customerName, color, frameNo, model, enterFactoryDate, exitFactoryDate,
                 customerType, insuranceAgengcy, insuranceDueDate, insuranceClaimNumber, dealerID);
         for (DealerPostSalesLedger ledger : list) {
-            response.getPks().add(ledger.getWorkOrderNo());
+        	List<String> summary = new ArrayList<String>();
+        	summary.add(String.valueOf(ledger.getWorkOrderNo()));
+        	if (null != ledger.getSalesDate())
+        	{
+        		summary.add(ledger.getSalesDate().toString());
+        	}
+        	else
+        	{
+        		summary.add("");
+        	}
+        	
+        	summary.add(String.valueOf(ledger.getMileage()));
+        	summary.add(ledger.getLpNumber());
+        	summary.add(ledger.getCustomerName());
+        	summary.add(ledger.getColor());
+        	summary.add(ledger.getFrameNo());
+        	summary.add(ledger.getModel());
+        	if (null != ledger.getEnterFactoryDate())
+        	{
+        		summary.add(ledger.getEnterFactoryDate().toString());
+        	}
+        	else
+        	{
+        		summary.add("");
+        	}
+        	
+        	if (null != ledger.getExitFactoryDate())
+        	{
+        		summary.add(ledger.getExitFactoryDate().toString());
+        	}
+        	else
+        	{
+        		summary.add("");
+        	}
+        	
+        	summary.add(ledger.getCustomerType());
+        	summary.add(ledger.getInsuranceAgengcy());
+        	
+        	if (null != ledger.getInsuranceDueDate())
+        	{
+        		summary.add(ledger.getInsuranceDueDate().toString());
+        	}
+        	else
+        	{
+        		summary.add("");
+        	}
+        	
+        	summary.add(String.valueOf(ledger.getInsuranceClaimNumber()));
+            response.getSummaries().add(summary);
         }
+        
         return response;
     }
 
