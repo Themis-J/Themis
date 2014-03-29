@@ -679,11 +679,12 @@ public class DealerIncomeSystemRestService {
             @QueryParam("guidingPrice") Double guidingPrice, @QueryParam("customerName") String customerName,
             @QueryParam("identificationNo") String identificationNo,
             @QueryParam("salesConsultant") String salesConsultant, @QueryParam("customerType") String customerType,
-            @QueryParam("dealerID") Integer dealerID) {
+            @QueryParam("dealerID") Integer dealerID, @QueryParam("marker") Integer marker,
+            @QueryParam("limit") Integer limit) {
         return Response.ok(
                 dealerIncomeEntryService.queryDealerVehicleSalesLedger(contractNo, model, type, color, lpNumber,
                         frameNo, manufacturerDebitDate, warehousingDate, salesDate, guidingPrice, customerName,
-                        identificationNo, salesConsultant, customerType, dealerID)).build();
+                        identificationNo, salesConsultant, customerType, dealerID, marker, limit)).build();
     }
 
     @GET
@@ -724,11 +725,12 @@ public class DealerIncomeSystemRestService {
             @QueryParam("exitFactoryDate") String exitFactoryDate, @QueryParam("customerType") String customerType,
             @QueryParam("insuranceAgengcy") String insuranceAgengcy,
             @QueryParam("insuranceDueDate") String insuranceDueDate,
-            @QueryParam("insuranceClaimNumber") Integer insuranceClaimNumber, @QueryParam("dealerID") Integer dealerID) {
+            @QueryParam("insuranceClaimNumber") Integer insuranceClaimNumber, @QueryParam("dealerID") Integer dealerID,
+            @QueryParam("marker") Integer marker, @QueryParam("limit") Integer limit) {
         return Response.ok(
                 dealerIncomeEntryService.queryDealerPostSalesLedger(workOrderNo, salesDate, mileage, lpNumber,
                         customerName, color, frameNo, model, enterFactoryDate, exitFactoryDate, customerType,
-                        insuranceAgengcy, insuranceDueDate, insuranceClaimNumber, dealerID)).build();
+                        insuranceAgengcy, insuranceDueDate, insuranceClaimNumber, dealerID, marker, limit)).build();
     }
 
     @GET
