@@ -1026,66 +1026,54 @@ public class DealerIncomeEntryServiceImpl implements DealerIncomeEntryService {
      * java.lang.String, java.lang.String, java.lang.String, java.lang.String,
      * java.lang.String, java.lang.String, java.lang.String, java.lang.Double,
      * java.lang.String, java.lang.String, java.lang.String, java.lang.String,
-     * java.lang.Integer)
+     * java.lang.Integer, java.lang.Integer, java.lang.Integer)
      */
     @Override
     public GetDealerLedgerResponse queryDealerVehicleSalesLedger(Integer contractNo, String model, String type,
             String color, String lpNumber, String frameNo, String manufacturerDebitDate, String warehousingDate,
             String salesDate, Double guidingPrice, String customerName, String identificationNo,
-            String salesConsultant, String customerType, Integer dealerID) {
+            String salesConsultant, String customerType, Integer dealerID, Integer marker, Integer limit) {
         final GetDealerLedgerResponse response = new GetDealerLedgerResponse();
         Collection<DealerVehicleSalesLedger> list = incomeJournalDAL.queryDealerVehicleSalesLedger(contractNo, model,
                 type, color, lpNumber, frameNo, manufacturerDebitDate, warehousingDate, salesDate, guidingPrice,
-                customerName, identificationNo, salesConsultant, customerType, dealerID);
-        
+                customerName, identificationNo, salesConsultant, customerType, dealerID, marker, limit);
+
         for (DealerVehicleSalesLedger ledger : list) {
-        	List<String> summary = new ArrayList<String>();
-        	summary.add(String.valueOf(ledger.getContractNo()));
-        	summary.add(ledger.getModel());
-        	summary.add(ledger.getType());
-        	summary.add(ledger.getColor());
-        	summary.add(ledger.getLpNumber());
-        	summary.add(ledger.getFrameNo());
-        	if (null != ledger.getManufacturerDebitDate())
-        	{
-        		summary.add(ledger.getManufacturerDebitDate().toString());
-        	}
-        	else
-        	{
-        		summary.add("");
-        	}
-        	
-        	if (null != ledger.getWarehousingDate())
-        	{
-        		summary.add(ledger.getWarehousingDate().toString());
-        	}
-        	else
-        	{
-        		summary.add("");
-        	}
-        	
-        	if (null != ledger.getSalesDate())
-        	{
-        		summary.add(ledger.getSalesDate().toString());
-        	}
-        	else
-        	{
-        		summary.add("");
-        	}
-        	
-        	if (null != ledger.getGuidingPrice())
-        	{
-        		summary.add(String.valueOf(ledger.getGuidingPrice()));
-        	}
-        	else
-        	{
-        		summary.add("");
-        	}
-        	
-        	summary.add(ledger.getCustomerName());
-        	summary.add(ledger.getIdentificationNo());
-        	summary.add(ledger.getSalesConsultant());
-        	summary.add(ledger.getCustomerType());
+            List<String> summary = new ArrayList<String>();
+            summary.add(String.valueOf(ledger.getContractNo()));
+            summary.add(ledger.getModel());
+            summary.add(ledger.getType());
+            summary.add(ledger.getColor());
+            summary.add(ledger.getLpNumber());
+            summary.add(ledger.getFrameNo());
+            if (null != ledger.getManufacturerDebitDate()) {
+                summary.add(ledger.getManufacturerDebitDate().toString());
+            } else {
+                summary.add("");
+            }
+
+            if (null != ledger.getWarehousingDate()) {
+                summary.add(ledger.getWarehousingDate().toString());
+            } else {
+                summary.add("");
+            }
+
+            if (null != ledger.getSalesDate()) {
+                summary.add(ledger.getSalesDate().toString());
+            } else {
+                summary.add("");
+            }
+
+            if (null != ledger.getGuidingPrice()) {
+                summary.add(String.valueOf(ledger.getGuidingPrice()));
+            } else {
+                summary.add("");
+            }
+
+            summary.add(ledger.getCustomerName());
+            summary.add(ledger.getIdentificationNo());
+            summary.add(ledger.getSalesConsultant());
+            summary.add(ledger.getCustomerType());
             response.getSummaries().add(summary);
         }
 
@@ -1362,7 +1350,7 @@ public class DealerIncomeEntryServiceImpl implements DealerIncomeEntryService {
         final Instant timestamp = incomeJournalDAL.saveDealerPostSalesLedger(ledger);
         return timestamp;
     }
-    
+
     /*
      * (non-Javadoc)
      * 
@@ -1371,69 +1359,57 @@ public class DealerIncomeEntryServiceImpl implements DealerIncomeEntryService {
      * java.lang.Double, java.lang.String, java.lang.String, java.lang.String,
      * java.lang.String, java.lang.String, java.lang.String, java.lang.String,
      * java.lang.String, java.lang.String, java.lang.String, java.lang.Integer,
-     * java.lang.Integer)
+     * java.lang.Integer, java.lang.Integer, java.lang.Integer)
      */
     @Override
     public GetDealerLedgerResponse queryDealerPostSalesLedger(Integer workOrderNo, String salesDate, Double mileage,
             String lpNumber, String customerName, String color, String frameNo, String model, String enterFactoryDate,
             String exitFactoryDate, String customerType, String insuranceAgengcy, String insuranceDueDate,
-            Integer insuranceClaimNumber, Integer dealerID) {
+            Integer insuranceClaimNumber, Integer dealerID, Integer marker, Integer limit) {
         final GetDealerLedgerResponse response = new GetDealerLedgerResponse();
         final Collection<DealerPostSalesLedger> list = incomeJournalDAL.queryDealerPostSalesLedger(workOrderNo,
                 salesDate, mileage, lpNumber, customerName, color, frameNo, model, enterFactoryDate, exitFactoryDate,
-                customerType, insuranceAgengcy, insuranceDueDate, insuranceClaimNumber, dealerID);
+                customerType, insuranceAgengcy, insuranceDueDate, insuranceClaimNumber, dealerID, marker, limit);
         for (DealerPostSalesLedger ledger : list) {
-        	List<String> summary = new ArrayList<String>();
-        	summary.add(String.valueOf(ledger.getWorkOrderNo()));
-        	if (null != ledger.getSalesDate())
-        	{
-        		summary.add(ledger.getSalesDate().toString());
-        	}
-        	else
-        	{
-        		summary.add("");
-        	}
-        	
-        	summary.add(String.valueOf(ledger.getMileage()));
-        	summary.add(ledger.getLpNumber());
-        	summary.add(ledger.getCustomerName());
-        	summary.add(ledger.getColor());
-        	summary.add(ledger.getFrameNo());
-        	summary.add(ledger.getModel());
-        	if (null != ledger.getEnterFactoryDate())
-        	{
-        		summary.add(ledger.getEnterFactoryDate().toString());
-        	}
-        	else
-        	{
-        		summary.add("");
-        	}
-        	
-        	if (null != ledger.getExitFactoryDate())
-        	{
-        		summary.add(ledger.getExitFactoryDate().toString());
-        	}
-        	else
-        	{
-        		summary.add("");
-        	}
-        	
-        	summary.add(ledger.getCustomerType());
-        	summary.add(ledger.getInsuranceAgengcy());
-        	
-        	if (null != ledger.getInsuranceDueDate())
-        	{
-        		summary.add(ledger.getInsuranceDueDate().toString());
-        	}
-        	else
-        	{
-        		summary.add("");
-        	}
-        	
-        	summary.add(String.valueOf(ledger.getInsuranceClaimNumber()));
+            List<String> summary = new ArrayList<String>();
+            summary.add(String.valueOf(ledger.getWorkOrderNo()));
+            if (null != ledger.getSalesDate()) {
+                summary.add(ledger.getSalesDate().toString());
+            } else {
+                summary.add("");
+            }
+
+            summary.add(String.valueOf(ledger.getMileage()));
+            summary.add(ledger.getLpNumber());
+            summary.add(ledger.getCustomerName());
+            summary.add(ledger.getColor());
+            summary.add(ledger.getFrameNo());
+            summary.add(ledger.getModel());
+            if (null != ledger.getEnterFactoryDate()) {
+                summary.add(ledger.getEnterFactoryDate().toString());
+            } else {
+                summary.add("");
+            }
+
+            if (null != ledger.getExitFactoryDate()) {
+                summary.add(ledger.getExitFactoryDate().toString());
+            } else {
+                summary.add("");
+            }
+
+            summary.add(ledger.getCustomerType());
+            summary.add(ledger.getInsuranceAgengcy());
+
+            if (null != ledger.getInsuranceDueDate()) {
+                summary.add(ledger.getInsuranceDueDate().toString());
+            } else {
+                summary.add("");
+            }
+
+            summary.add(String.valueOf(ledger.getInsuranceClaimNumber()));
             response.getSummaries().add(summary);
         }
-        
+
         return response;
     }
 
