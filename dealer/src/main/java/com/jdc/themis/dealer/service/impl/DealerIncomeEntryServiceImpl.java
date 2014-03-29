@@ -1024,17 +1024,18 @@ public class DealerIncomeEntryServiceImpl implements DealerIncomeEntryService {
      * queryDealerVehicleSalesLedger(java.lang.Integer, java.lang.String,
      * java.lang.String, java.lang.String, java.lang.String, java.lang.String,
      * java.lang.String, java.lang.String, java.lang.String, java.lang.Double,
-     * java.lang.String, java.lang.String, java.lang.String, java.lang.String)
+     * java.lang.String, java.lang.String, java.lang.String, java.lang.String,
+     * java.lang.Integer)
      */
     @Override
     public GetDealerLedgerResponse queryDealerVehicleSalesLedger(Integer contractNo, String model, String type,
             String color, String lpNumber, String frameNo, String manufacturerDebitDate, String warehousingDate,
             String salesDate, Double guidingPrice, String customerName, String identificationNo,
-            String salesConsultant, String customerType) {
+            String salesConsultant, String customerType, Integer dealerID) {
         final GetDealerLedgerResponse response = new GetDealerLedgerResponse();
         Collection<DealerVehicleSalesLedger> list = incomeJournalDAL.queryDealerVehicleSalesLedger(contractNo, model,
                 type, color, lpNumber, frameNo, manufacturerDebitDate, warehousingDate, salesDate, guidingPrice,
-                customerName, identificationNo, salesConsultant, customerType);
+                customerName, identificationNo, salesConsultant, customerType, dealerID);
         for (DealerVehicleSalesLedger ledger : list) {
             response.getPks().add(ledger.getContractNo());
         }
@@ -1312,7 +1313,7 @@ public class DealerIncomeEntryServiceImpl implements DealerIncomeEntryService {
         final Instant timestamp = incomeJournalDAL.saveDealerPostSalesLedger(ledger);
         return timestamp;
     }
-
+    
     /*
      * (non-Javadoc)
      * 
@@ -1320,17 +1321,18 @@ public class DealerIncomeEntryServiceImpl implements DealerIncomeEntryService {
      * queryDealerPostSalesLedger(java.lang.Integer, java.lang.String,
      * java.lang.Double, java.lang.String, java.lang.String, java.lang.String,
      * java.lang.String, java.lang.String, java.lang.String, java.lang.String,
-     * java.lang.String, java.lang.String, java.lang.String, java.lang.Integer)
+     * java.lang.String, java.lang.String, java.lang.String, java.lang.Integer,
+     * java.lang.Integer)
      */
     @Override
     public GetDealerLedgerResponse queryDealerPostSalesLedger(Integer workOrderNo, String salesDate, Double mileage,
             String lpNumber, String customerName, String color, String frameNo, String model, String enterFactoryDate,
             String exitFactoryDate, String customerType, String insuranceAgengcy, String insuranceDueDate,
-            Integer insuranceClaimNumber) {
+            Integer insuranceClaimNumber, Integer dealerID) {
         final GetDealerLedgerResponse response = new GetDealerLedgerResponse();
         final Collection<DealerPostSalesLedger> list = incomeJournalDAL.queryDealerPostSalesLedger(workOrderNo,
                 salesDate, mileage, lpNumber, customerName, color, frameNo, model, enterFactoryDate, exitFactoryDate,
-                customerType, insuranceAgengcy, insuranceDueDate, insuranceClaimNumber);
+                customerType, insuranceAgengcy, insuranceDueDate, insuranceClaimNumber, dealerID);
         for (DealerPostSalesLedger ledger : list) {
             response.getPks().add(ledger.getWorkOrderNo());
         }
