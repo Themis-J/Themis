@@ -850,6 +850,7 @@ public class DealerIncomeEntryServiceImpl implements DealerIncomeEntryService {
         for (final DealerLedgerMetadata metadata : metadataList) {
             final DealerLedgerMetadataDetail item = new DealerLedgerMetadataDetail();
             item.setName(metadata.getName());
+            item.setDisplayName(metadata.getDisplayName());
             item.setType(metadata.getType());
             if ("select".equalsIgnoreCase(metadata.getType()) || "multiselect".equalsIgnoreCase(metadata.getType())) {
                 if (metadata.getOptions() != null) {
