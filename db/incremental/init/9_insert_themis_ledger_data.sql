@@ -2,9 +2,9 @@ INSERT INTO DealerLedgerMetadataCategory SELECT 1, '新车销售台账', current
 INSERT INTO DealerLedgerMetadataCategory SELECT 2, '售后台账', current_timestamp;
 
 INSERT INTO DealerLedgerMetadata SELECT 1, 'contractNo', '合同号', 'input', null, 1, 1;
-INSERT INTO DealerLedgerMetadata SELECT 2, 'model', '车型', 'select', null, 1, 1;
-INSERT INTO DealerLedgerMetadata SELECT 3, 'type', '型号', 'select', null, 1, 1;
-INSERT INTO DealerLedgerMetadata SELECT 4, 'color', '颜色', 'select', null, 1, 1;
+INSERT INTO DealerLedgerMetadata SELECT 2, 'model', '车型', 'select', '凯美瑞,雅阁,锋范', 1, 1;
+INSERT INTO DealerLedgerMetadata SELECT 3, 'type', '型号', 'select', '2.0舒适版,2.4豪华版', 1, 1;
+INSERT INTO DealerLedgerMetadata SELECT 4, 'color', '颜色', 'select', '沙漠雾,丝缎白', 1, 1;
 INSERT INTO DealerLedgerMetadata SELECT 5, 'lpNumber', '车牌号', 'input', null, 1, 1;
 INSERT INTO DealerLedgerMetadata SELECT 6, 'frameNo', '车架号', 'input', null, 1, 1;
 INSERT INTO DealerLedgerMetadata SELECT 7, 'manufacturerDebitDate', '主机厂扣款日期', 'input', null, 1, 1;
