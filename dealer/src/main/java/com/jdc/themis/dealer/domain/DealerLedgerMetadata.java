@@ -10,75 +10,85 @@ import org.hibernate.annotations.FilterDefs;
 import org.hibernate.annotations.Filters;
 
 @FilterDefs({ @org.hibernate.annotations.FilterDef(name = "dealerLedgerMetadataFilter", parameters = {
-		@org.hibernate.annotations.ParamDef(name = "categoryID", type = "integer"),
-		@org.hibernate.annotations.ParamDef(name = "dealerID", type = "integer") }), })
+        @org.hibernate.annotations.ParamDef(name = "categoryID", type = "integer"),
+        @org.hibernate.annotations.ParamDef(name = "dealerID", type = "integer") }), })
 @Filters({ @Filter(name = "dealerLedgerMetadataFilter", condition = "dealerID = :dealerID and categoryID = :categoryID") })
 @Entity
 public class DealerLedgerMetadata implements Serializable {
 
-	private static final long serialVersionUID = 1L;
-	
-	public static final String FILTER = "dealerLedgerMetadataFilter";
-	
-	@Id
-	private Integer id;
-	
-	private String name;
-	
-	private String type;
-	
-	private String options;
-	
-	private Integer dealerID;
-	
-	private Integer categoryID;
-	
-	public Integer getId() {
-		return id;
-	}
-	
-	public void setId(Integer id) {
-		this.id = id;
-	}
-	
-	public String getName() {
-		return name;
-	}
-	
-	public void setName(String name) {
-		this.name = name;
-	}
+    private static final long serialVersionUID = 1L;
 
-	public String getType() {
-		return type;
-	}
+    public static final String FILTER = "dealerLedgerMetadataFilter";
 
-	public void setType(String type) {
-		this.type = type;
-	}
+    @Id
+    private Integer id;
 
-	public String getOptions() {
-		return options;
-	}
+    private String name;
 
-	public void setOptions(String options) {
-		this.options = options;
-	}
+    private String displayName;
 
-	public Integer getDealerID() {
-		return dealerID;
-	}
+    private String type;
 
-	public void setDealerID(Integer dealerID) {
-		this.dealerID = dealerID;
-	}
+    private String options;
 
-	public Integer getCategoryID() {
-		return categoryID;
-	}
+    private Integer dealerID;
 
-	public void setCategoryID(Integer categoryID) {
-		this.categoryID = categoryID;
-	}
+    private Integer categoryID;
+
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getDisplayName() {
+        return displayName;
+    }
+
+    public void setDisplayName(String displayName) {
+        this.displayName = displayName;
+    }
+
+    public String getType() {
+        return type;
+    }
+
+    public void setType(String type) {
+        this.type = type;
+    }
+
+    public String getOptions() {
+        return options;
+    }
+
+    public void setOptions(String options) {
+        this.options = options;
+    }
+
+    public Integer getDealerID() {
+        return dealerID;
+    }
+
+    public void setDealerID(Integer dealerID) {
+        this.dealerID = dealerID;
+    }
+
+    public Integer getCategoryID() {
+        return categoryID;
+    }
+
+    public void setCategoryID(Integer categoryID) {
+        this.categoryID = categoryID;
+    }
 
 }
