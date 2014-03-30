@@ -137,7 +137,10 @@ public class UserInfo implements TemporalEntity, Serializable {
 				.append("active", active)
 				.append("updatedBy", updatedBy)
 				.append("timestamp", timestamp)
+				.append("timeend", timeEnd)
+				.append("version", version)
 				.getStringBuffer().toString();
+		
 	}
 	public boolean equals(Object other) {
 		return EqualsBuilder.reflectionEquals(this, other);
@@ -146,4 +149,14 @@ public class UserInfo implements TemporalEntity, Serializable {
 		return HashCodeBuilder.reflectionHashCode(this);
 	}
 
+	public static UserInfo clone(final UserInfo userInfo) {
+		final UserInfo newInfo = new UserInfo();
+		newInfo.setUsername(userInfo.getUsername());
+		newInfo.setDealerID(userInfo.getDealerID());
+		newInfo.setActive(userInfo.getActive());
+		newInfo.setPassword(userInfo.getPassword());
+		newInfo.setUpdatedBy(userInfo.getUpdatedBy());
+		newInfo.setUserRoleID(userInfo.getUserRoleID());
+		return newInfo;
+	}
 }

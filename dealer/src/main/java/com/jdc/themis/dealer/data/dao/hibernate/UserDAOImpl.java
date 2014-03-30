@@ -102,6 +102,7 @@ public class UserDAOImpl implements UserDAO {
 			} else {
 				oldJournal.setTimeEnd(currentTimestamp);
 				session.saveOrUpdate(oldJournal);
+				session.flush();
 			} 	
 		} 
 		session.disableFilter(UserInfo.FILTER);

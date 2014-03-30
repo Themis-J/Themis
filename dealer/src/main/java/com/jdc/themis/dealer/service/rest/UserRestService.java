@@ -12,8 +12,9 @@ import javax.ws.rs.core.Context;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-
 import com.jdc.themis.dealer.service.UserService;
 import com.jdc.themis.dealer.utils.Constant;
 import com.jdc.themis.dealer.utils.RestServiceErrorHandler;
@@ -26,7 +27,8 @@ import com.jdc.themis.dealer.web.domain.ResetPasswordRequest;
 @Produces("application/json")
 @RolesAllowed({Constant.DEALER_ROLE, Constant.HEAD_ROLE, Constant.ADMIN_ROLE, Constant.SUPER_ROLE})
 public class UserRestService {
-
+	private final static Logger logger = LoggerFactory.getLogger(UserRestService.class);
+	
 	@Autowired
 	private UserService userService;
 
@@ -106,6 +108,7 @@ public class UserRestService {
 		}
 		catch(Exception e)
 		{
+			logger.error("Fail to disable user", e);
 			response.setSuccess(false);
 			response.setErrorMsg("failed");
 			return Response.status(500).entity(response).build();
@@ -142,6 +145,7 @@ public class UserRestService {
 		}
 		catch(Exception e)
 		{
+			logger.error("Fail to enable user", e);
 			response.setSuccess(false);
 			response.setErrorMsg("failed");
 			return Response.status(500).entity(response).build();

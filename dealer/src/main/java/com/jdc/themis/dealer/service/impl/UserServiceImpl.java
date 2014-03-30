@@ -80,7 +80,7 @@ public class UserServiceImpl implements UserService {
 		Preconditions.checkNotNull(username, "username can't be null");
 		Preconditions.checkArgument(userDAL.getUser(username).isSome(), "unknown user name");
 
-		final UserInfo user = userDAL.getUser(username).some();
+		final UserInfo user = UserInfo.clone(userDAL.getUser(username).some());
 		user.setActive(Boolean.FALSE);
 		return userDAL.saveOrUpdateUser(user);
 	}
@@ -119,7 +119,7 @@ public class UserServiceImpl implements UserService {
 		Preconditions.checkNotNull(username, "username can't be null");
 		Preconditions.checkNotNull(userDAL.getUser(username).isSome(), "unknown user name");
 
-		final UserInfo user = userDAL.getUser(username).some();
+		final UserInfo user = UserInfo.clone(userDAL.getUser(username).some());
 		user.setActive(Boolean.TRUE);
 		return userDAL.saveOrUpdateUser(user);
 	}
@@ -135,7 +135,7 @@ public class UserServiceImpl implements UserService {
 		Preconditions.checkArgument(hashPassword(request.getOldPassword()).equals(userDAL.getUser(request.getUsername()).some().getPassword()), 
 				"password doesn't match");
 		
-		final UserInfo user = userDAL.getUser(request.getUsername()).some();
+		final UserInfo user = UserInfo.clone(userDAL.getUser(request.getUsername()).some());
 		user.setPassword(hashPassword(request.getNewPassword()));
 		return userDAL.saveOrUpdateUser(user);
 	}
@@ -149,7 +149,7 @@ public class UserServiceImpl implements UserService {
 		Preconditions.checkArgument(hashPassword(request.getPassword()).equals(userDAL.getUser(request.getUsername()).some().getPassword()), 
 				"password doesn't match");
 		
-		final UserInfo user = userDAL.getUser(request.getUsername()).some();
+		final UserInfo user = UserInfo.clone(userDAL.getUser(request.getUsername()).some());
 		user.setDealerID(request.getDealerID());
 		if ( request.getUserRole() != null ) {
 			user.setUserRoleID(request.getUserRole());
