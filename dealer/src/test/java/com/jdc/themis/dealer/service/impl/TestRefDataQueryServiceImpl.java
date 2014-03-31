@@ -135,7 +135,7 @@ public class TestRefDataQueryServiceImpl {
 		when(refDataDAL.getVehicles(Option.<Integer>none())).thenReturn(list);
 		when(refDataDAL.getVehicle(1)).thenReturn(Option.<Vehicle>some(v1));
 		when(refDataDAL.getSalesServiceJournalCategory(1)).thenReturn(Option.<SalesServiceJournalCategory>some(category));
-		final GetVehicleResponse response = refDataQueryService.getVehicles(Option.<Integer>none());
+		final GetVehicleResponse response = refDataQueryService.getVehicles(null);
 		Assert.assertNotNull(refDataQueryService.getVehicle(1));
 		Assert.assertEquals("v1", refDataQueryService.getVehicle(1).getName());
 		Assert.assertNotNull(response);
@@ -178,7 +178,7 @@ public class TestRefDataQueryServiceImpl {
 		when(refDataDAL.getEnumValue("JournalType", "Expense")).thenReturn(Option.<EnumValue>some(expense));
 		when(refDataDAL.getEnumValue("JournalType", "Revenue")).thenReturn(Option.<EnumValue>some(revenue));
 		
-		final GetSalesServiceJournalItemResponse response = refDataQueryService.getSalesServiceRevenueItems(Option.<Integer>none());
+		final GetSalesServiceJournalItemResponse response = refDataQueryService.getSalesServiceRevenueItems(null);
 		
 		Assert.assertNotNull(response);
 		Assert.assertEquals(2, response.getItems().size());
@@ -227,7 +227,7 @@ public class TestRefDataQueryServiceImpl {
 		when(refDataDAL.getEnumValue("JournalType", "Expense")).thenReturn(Option.<EnumValue>some(expense));
 		when(refDataDAL.getEnumValue("JournalType", "Revenue")).thenReturn(Option.<EnumValue>some(revenue));
 		
-		final GetGeneralJournalItemResponse response = refDataQueryService.getGeneralIncomeItems(Option.<Integer>none());
+		final GetGeneralJournalItemResponse response = refDataQueryService.getGeneralIncomeItems(null);
 		
 		Assert.assertNotNull(response);
 		Assert.assertEquals(2, response.getItems().size());

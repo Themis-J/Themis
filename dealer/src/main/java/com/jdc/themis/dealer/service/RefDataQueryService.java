@@ -61,14 +61,14 @@ public interface RefDataQueryService {
 	DepartmentDetail getDepartment(String name);
 	
 	@Transactional(readOnly=true)
-	GetVehicleResponse getVehicles(Option<Integer> categoryID);
+	GetVehicleResponse getVehicles(Integer categoryID);
 	
 	@Transactional(readOnly=true)
 	@Cacheable("vehicle")
 	VehicleDetail getVehicle(Integer id);
 	
 	@Transactional(readOnly=true)
-	GetSalesServiceJournalItemResponse getSalesServiceRevenueItems(Option<Integer> categoryID);
+	GetSalesServiceJournalItemResponse getSalesServiceRevenueItems(Integer categoryID);
 	
 	@Transactional(readOnly=true)
 	@Cacheable("salesServiceJournalItem")
@@ -79,7 +79,7 @@ public interface RefDataQueryService {
 	SalesServiceJournalItemDetail getSalesServiceRevenueItem(String name, String category);
 	
 	@Transactional(readOnly=true)
-	GetGeneralJournalItemResponse getGeneralIncomeItems(Option<Integer> categoryID);
+	GetGeneralJournalItemResponse getGeneralIncomeItems(Integer categoryID);
 	
 	@Transactional(readOnly=true)
 	@Cacheable("generalJournalItem")

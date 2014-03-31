@@ -15,11 +15,11 @@ public class GetDealerLedgerResponse implements Serializable {
 	
 	private static final long serialVersionUID = 1L;
 
-	private final List<List<String>> summaries = Lists
+	private final List<Integer> pks = Lists
 			.newArrayList();
 
-	public List<List<String>> getSummaries() {
-		return summaries;
+	public List<Integer> getPks() {
+		return pks;
 	}
 
 }

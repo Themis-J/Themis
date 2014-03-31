@@ -4,6 +4,7 @@ import java.util.Collection;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
 
 import com.google.common.base.Preconditions;
@@ -103,6 +104,7 @@ public class RefDataQueryServiceImpl implements RefDataQueryService {
 	 */
 	@Performance
 	@Override
+	@Cacheable(value="menu")
 	public GetMenuResponse getMenu() {
 		final GetMenuResponse response = new GetMenuResponse();
 
@@ -119,10 +121,11 @@ public class RefDataQueryServiceImpl implements RefDataQueryService {
 	 * @return
 	 */
 	@Performance
-	public GetVehicleResponse getVehicles(Option<Integer> categoryID) {
+	@Cacheable(value="vehicles")
+	public GetVehicleResponse getVehicles(Integer categoryID) {
 		final GetVehicleResponse response = new GetVehicleResponse();
 
-		for (final Vehicle vehicle : refDataDAL.getVehicles(categoryID)) {
+		for (final Vehicle vehicle : refDataDAL.getVehicles(Option.fromNull(categoryID))) {
 			final VehicleDetail item = new VehicleDetail();
 			item.setId(vehicle.getId());
 			item.setName(vehicle.getName());
@@ -141,11 +144,12 @@ public class RefDataQueryServiceImpl implements RefDataQueryService {
 	 * @return
 	 */
 	@Performance
-	public GetSalesServiceJournalItemResponse getSalesServiceRevenueItems(Option<Integer> categoryID) {
+	@Cacheable(value="salesServiceRevenueItems")
+	public GetSalesServiceJournalItemResponse getSalesServiceRevenueItems(Integer categoryID) {
 		final GetSalesServiceJournalItemResponse response = new GetSalesServiceJournalItemResponse();
 		final Integer expenseJournalType = refDataDAL.getEnumValue("JournalType", "Expense").some().getValue();
 		final Integer revenueJournalType = refDataDAL.getEnumValue("JournalType", "Revenue").some().getValue();
-		for (final SalesServiceJournalItem ssj : refDataDAL.getSalesServiceJournalItems(categoryID)) {
+		for (final SalesServiceJournalItem ssj : refDataDAL.getSalesServiceJournalItems(Option.fromNull(categoryID))) {
 			final SalesServiceJournalItemDetail item = new SalesServiceJournalItemDetail();
 			item.setId(ssj.getId());
 			item.setName(ssj.getName());
@@ -163,11 +167,12 @@ public class RefDataQueryServiceImpl implements RefDataQueryService {
 	}
 
 	@Override
-	public GetGeneralJournalItemResponse getGeneralIncomeItems(Option<Integer> categoryID) {
+	@Cacheable(value="generalIncomeItems")
+	public GetGeneralJournalItemResponse getGeneralIncomeItems(Integer categoryID) {
 		final GetGeneralJournalItemResponse response = new GetGeneralJournalItemResponse();
 		final Integer expenseJournalType = refDataDAL.getEnumValue("JournalType", "Expense").some().getValue();
 		final Integer revenueJournalType = refDataDAL.getEnumValue("JournalType", "Revenue").some().getValue();
-		for (final GeneralJournalItem gji : refDataDAL.getGeneralJournalItems(categoryID)) {
+		for (final GeneralJournalItem gji : refDataDAL.getGeneralJournalItems(Option.fromNull(categoryID))) {
 			final GeneralJournalItemDetail item = new GeneralJournalItemDetail();
 			item.setId(gji.getId());
 			item.setName(gji.getName());

@@ -142,6 +142,8 @@ public class DealerVehicleSalesLedgerDetail implements Serializable {
 
 	private Double managementFee;
 
+	private Double inventoryFinancingAmount;
+
 	private Double monthlyRebate;
 
 	private Double quarterlyRebate;
@@ -702,6 +704,14 @@ public class DealerVehicleSalesLedgerDetail implements Serializable {
 
 	public void setManagementFee(Double managementFee) {
 		this.managementFee = managementFee;
+	}
+
+	public Double getInventoryFinancingAmount() {
+		return inventoryFinancingAmount;
+	}
+
+	public void setInventoryFinancingAmount(Double inventoryFinancingAmount) {
+		this.inventoryFinancingAmount = inventoryFinancingAmount;
 	}
 
 	public Double getMonthlyRebate() {

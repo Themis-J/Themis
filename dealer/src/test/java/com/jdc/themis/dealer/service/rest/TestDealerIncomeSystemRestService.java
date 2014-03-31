@@ -9,7 +9,6 @@ import org.mockito.MockitoAnnotations;
 import static org.mockito.Mockito.*;
 import com.jdc.themis.dealer.service.RefDataQueryService;
 
-import fj.data.Option;
 
 public class TestDealerIncomeSystemRestService {
 
@@ -27,7 +26,7 @@ public class TestDealerIncomeSystemRestService {
 		final DealerIncomeSystemRestService service = new DealerIncomeSystemRestService();
 		service.setRefDataQueryService(refDataQueryService);
 		service.getVehicles(null);
-		verify(this.refDataQueryService).getVehicles(Option.<Integer>none());
+		verify(this.refDataQueryService).getVehicles(null);
 	}
 	
 	@Test
@@ -35,7 +34,7 @@ public class TestDealerIncomeSystemRestService {
 		final DealerIncomeSystemRestService service = new DealerIncomeSystemRestService();
 		service.setRefDataQueryService(refDataQueryService);
 		service.getVehicles(2);
-		verify(this.refDataQueryService).getVehicles(Option.<Integer>some(2));
+		verify(this.refDataQueryService).getVehicles(2);
 	}
 	
 	@Test

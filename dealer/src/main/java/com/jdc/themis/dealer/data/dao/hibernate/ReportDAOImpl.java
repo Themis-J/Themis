@@ -115,6 +115,7 @@ public class ReportDAOImpl implements ReportDAO {
 			fact.setTimeEnd(journal.getTimeEnd());
 			facts.add(fact);
 		}
+		logger.info("To persist facts: " + facts);
 		this.saveDealerIncomeRevenueFacts(facts);
 	}
 
@@ -362,6 +363,7 @@ public class ReportDAOImpl implements ReportDAO {
 			fact.setTimeEnd(journal.getTimeEnd());
 			revenueFacts.add(fact);
 		}
+		logger.info("To persist facts: " + facts);
 		this.saveDealerIncomeRevenueFacts(revenueFacts);
 	}
 
@@ -669,6 +671,7 @@ public class ReportDAOImpl implements ReportDAO {
 			fact.setTimeEnd(journal.getTimeEnd());
 			facts.add(fact);
 		}
+		logger.info("To persist facts: " + facts);
 		this.saveDealerIncomeExpenseFacts(facts);
 	}
 
@@ -919,6 +922,7 @@ public class ReportDAOImpl implements ReportDAO {
 			fact.setTimeEnd(journal.getTimeEnd());
 			facts.add(fact);
 		}
+		logger.info("To persist facts: " + facts);
 		this.saveDealerHRAllocationFacts(facts);
 	}
 
@@ -1104,6 +1108,7 @@ public class ReportDAOImpl implements ReportDAO {
 			fact.setTimeEnd(journal.getTimeEnd());
 			facts.add(fact);
 		}
+		logger.info("To persist facts: " + facts);
 		this.saveDealerAccountReceivableFacts(facts);
 	}
 
@@ -1200,6 +1205,7 @@ public class ReportDAOImpl implements ReportDAO {
 			fact.setTimeEnd(journal.getTimeEnd());
 			facts.add(fact);
 		}
+		logger.info("To persist facts: " + facts);
 		this.saveDealerInventoryFacts(facts);
 	}
 	
@@ -1344,6 +1350,7 @@ public class ReportDAOImpl implements ReportDAO {
 			fact.setTimeEnd(journal.getTimeEnd());
 			facts.add(fact);
 		}
+		logger.info("To persist facts: {}", facts);
 		this.saveDealerEmployeeFeeFacts(facts);
 	}
 

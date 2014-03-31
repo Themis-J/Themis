@@ -106,7 +106,7 @@ public class DealerIncomeSystemRestService {
 	@RestServiceErrorHandler
 	public Response getVehicles(@QueryParam("categoryID") Integer categoryID) {
 		return Response.ok(
-				this.refDataQueryService.getVehicles(Option.<Integer>fromNull(categoryID))).build();
+				this.refDataQueryService.getVehicles(categoryID)).build();
 	}
 
 	/**
@@ -121,7 +121,7 @@ public class DealerIncomeSystemRestService {
 	@RestServiceErrorHandler
 	public Response getSalesServiceRevenueItems(@QueryParam("categoryID") Integer categoryID) {
 		return Response.ok(
-				this.refDataQueryService.getSalesServiceRevenueItems(Option.fromNull(categoryID)))
+				this.refDataQueryService.getSalesServiceRevenueItems(categoryID))
 				.build();
 	}
 
@@ -314,7 +314,7 @@ public class DealerIncomeSystemRestService {
 	@RestServiceErrorHandler
 	public Response getGeneralIncomeItems(@QueryParam("categoryID") Integer categoryID) {
 		return Response.ok(this.refDataQueryService.getGeneralIncomeItems(
-				Option.fromNull(categoryID)))
+				categoryID))
 				.build();
 	}
 
@@ -678,13 +678,11 @@ public class DealerIncomeSystemRestService {
             @QueryParam("warehousingDate") String warehousingDate, @QueryParam("salesDate") String salesDate,
             @QueryParam("guidingPrice") Double guidingPrice, @QueryParam("customerName") String customerName,
             @QueryParam("identificationNo") String identificationNo,
-            @QueryParam("salesConsultant") String salesConsultant, @QueryParam("customerType") String customerType,
-            @QueryParam("dealerID") Integer dealerID, @QueryParam("marker") Integer marker,
-            @QueryParam("limit") Integer limit) {
+            @QueryParam("salesConsultant") String salesConsultant, @QueryParam("customerType") String customerType) {
         return Response.ok(
                 dealerIncomeEntryService.queryDealerVehicleSalesLedger(contractNo, model, type, color, lpNumber,
                         frameNo, manufacturerDebitDate, warehousingDate, salesDate, guidingPrice, customerName,
-                        identificationNo, salesConsultant, customerType, dealerID, marker, limit)).build();
+                        identificationNo, salesConsultant, customerType)).build();
     }
 
     @GET
@@ -725,12 +723,11 @@ public class DealerIncomeSystemRestService {
             @QueryParam("exitFactoryDate") String exitFactoryDate, @QueryParam("customerType") String customerType,
             @QueryParam("insuranceAgengcy") String insuranceAgengcy,
             @QueryParam("insuranceDueDate") String insuranceDueDate,
-            @QueryParam("insuranceClaimNumber") Integer insuranceClaimNumber, @QueryParam("dealerID") Integer dealerID,
-            @QueryParam("marker") Integer marker, @QueryParam("limit") Integer limit) {
+            @QueryParam("insuranceClaimNumber") Integer insuranceClaimNumber) {
         return Response.ok(
                 dealerIncomeEntryService.queryDealerPostSalesLedger(workOrderNo, salesDate, mileage, lpNumber,
                         customerName, color, frameNo, model, enterFactoryDate, exitFactoryDate, customerType,
-                        insuranceAgengcy, insuranceDueDate, insuranceClaimNumber, dealerID, marker, limit)).build();
+                        insuranceAgengcy, insuranceDueDate, insuranceClaimNumber)).build();
     }
 
     @GET

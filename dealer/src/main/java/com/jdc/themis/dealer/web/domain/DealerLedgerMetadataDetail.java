@@ -14,8 +14,6 @@ public class DealerLedgerMetadataDetail implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	private String name;
-	
-	private String displayName;
 
 	private String type;
 
@@ -29,15 +27,7 @@ public class DealerLedgerMetadataDetail implements Serializable {
 		this.name = name;
 	}
 
-	public String getDisplayName() {
-        return displayName;
-    }
-
-    public void setDisplayName(String displayName) {
-        this.displayName = displayName;
-    }
-
-    public String getType() {
+	public String getType() {
 		return type;
 	}
 
