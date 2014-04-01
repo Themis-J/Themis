@@ -8,7 +8,7 @@ angular.module('themis.services', ['ngResource', 'ngCookies'])
         return $resource(config.service.url + '/auth/:uri', {}, {
             login: {method: 'POST', params: {uri: "login"}, isArray: false},
             isAlive: {method: 'GET', params: {uri: "isAlive"}, isArray: false},
-            logout: {method:'POST', params: {uri: "logout"}, isArray:false}
+            logout: {method: 'POST', params: {uri: "logout"}, isArray: false}
         });
     }])
     .factory('UserService', ['$cookies', function ($cookies) {
@@ -21,16 +21,14 @@ angular.module('themis.services', ['ngResource', 'ngCookies'])
 
         return {
             setupUser: function (user) {
-                if (user)
-                {
+                if (user) {
                     currentUser.userAlias = user.userAlias;
-                    $cookies.userAlias =  user.userAlias;
+                    $cookies.userAlias = user.userAlias;
                     currentUser.role = user.role;
                 }
-                else
-                {
-                    currentUser.userAlias =  '';
-                    $cookies.userAlias =   '';
+                else {
+                    currentUser.userAlias = '';
+                    $cookies.userAlias = '';
                     currentUser.role = 'guest';
                 }
             },
@@ -50,12 +48,10 @@ angular.module('themis.services', ['ngResource', 'ngCookies'])
                 return guestRoles.indexOf(currentUser.role) != -1;
             },
             getCurUserAlias: function () {
-                if ($cookies.userAlias != '')
-                {
+                if ($cookies.userAlias != '') {
                     return $cookies.userAlias;
                 }
-                else
-                {
+                else {
                     return currentUser.userAlias;
                 }
             }

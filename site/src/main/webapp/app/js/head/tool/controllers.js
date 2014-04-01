@@ -17,15 +17,15 @@ angular.module('head.tool.controllers', [])
         $scope.msg = "";
         $scope.msgClass = "";
 
-        $scope.resetPass = function(){
+        $scope.resetPass = function () {
             var user = {};
             user.username = UserService.getCurUserAlias();
             user.oldPassword = $scope.curPassword;
             user.newPassword = $scope.password1;
-            User.resetPass({}, user, function(){
+            User.resetPass({}, user, function () {
                 $scope.msg = "密码修改成功！";
                 $scope.msgClass = "text-success";
-            }, function(data){
+            }, function (data) {
                 $scope.msg = "密码修改失败，请稍后再试或联系管理员。";
                 $scope.msgClass = "text-error";
             });

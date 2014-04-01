@@ -1,19 +1,29 @@
 <div ng-include src="'partials/branch/header.html'"></div>
 
-<div class="container" style="padding-top:95px">
+<div class="container" style="padding-top:95px" ng-controller="branchBaseCtrl">
     <div class="row-fluid">
+        <div class="span1"></div>
         <div class="span2">
             <div ng-include src="'partials/branch/nav.html'" onload="bindEvent()"></div>
         </div>
 
-        <div class="span9" style="padding-left: 65px">
-            <legend>{{itemName}} <i class="icon-angle-right" ng-show="depat"></i> {{depat}}
+        <div class="span7" style="padding-left: 25px">
+            <legend style="font-size: 19px;">
+                <b>
+                    {{itemName}}
+                    <i class="icon-angle-right" ng-show="depat"></i>
+                    <span style="font-size: 17px">{{depat}}</span>
+                </b>
                 <div class="pull-right">
-                    <input class="btn btn-info btn-small" id="datepicker" style="width: 100px">
+                    <input class="btn btn-default btn-small" id="datepicker" style="width: 100px">
                 </div>
             </legend>
-            <div ng-include src="subpage"></div>
-        </div>
 
+            <div id="edit_panel" ng-include src="subpage" style="padding-top: 5px"  class="animated fadeInRight"></div>
+        </div>
+        <div class="span1">
+            <div id="page_nav"></div>
+        </div>
+        <div class="span1"></div>
     </div>
 </div>

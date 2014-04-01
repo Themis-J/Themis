@@ -17,22 +17,20 @@ angular.module('branch.tool.controllers', [])
         $scope.msg = "";
         $scope.msgClass = "";
 
-        $scope.resetPass = function(){
+        $scope.resetPass = function () {
             var user = {};
             user.username = UserService.getCurUserAlias();
             user.oldPassword = $scope.curPassword;
             user.newPassword = $scope.password1;
-            User.resetPass({}, user, function(){
+            User.resetPass({}, user, function () {
                 $scope.msg = "密码修改成功！";
                 $scope.msgClass = "text-success";
-            }, function(error){
-                if (error.data.errorMsg == 'old password equals to the new password')
-                {
+            }, function (error) {
+                if (error.data.errorMsg == 'old password equals to the new password') {
                     $scope.msg = "密码修改失败，新旧密码不能相同。";
                     $scope.msgClass = "text-error";
                 }
-                else
-                {
+                else {
                     $scope.msg = "密码修改失败，请稍后再试或联系管理员。";
                     $scope.msgClass = "text-error";
                 }

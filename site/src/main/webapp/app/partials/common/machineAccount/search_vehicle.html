@@ -1,0 +1,120 @@
+<div class="modal hide fade" id="search_vehicle_modal" style="width: 80%;left: 10%;margin-left: 0px">
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+        <h3>新车销售台账搜索</h3>
+    </div>
+    <div class="modal-body">
+        <div class="row-fluid">
+            <table class="table machine_account_table">
+            <tr>
+                <td>合同号</td>
+                <td>
+                    <input  
+                           type="text" ng-pattern="/^(-?\d+)(\.\d+)?$/" ng-model="vehicleQuery['contractNo']"/>
+                </td>
+                <td>车型</td>
+
+                <td>
+                    <select 
+                             ng-model="vehicleQuery['model']"
+                            ng-options="model as model for model in metavehicleQuery['model']">
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <td>型号</td>
+
+                <td>
+                    <select 
+                             ng-model="vehicleQuery['type']"
+                            ng-options="type as type for type in metavehicleQuery['type']">
+                    </select>
+                </td>
+                <td>颜色</td>
+
+                <td>
+                    <select 
+                             ng-model="vehicleQuery['color']"
+                            ng-options="color as color for color in metavehicleQuery['color']">
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <td>车牌号</td>
+
+                <td>
+                    <input  
+                           type="text" ng-pattern="/^(-?\d+)(\.\d+)?$/" ng-model="vehicleQuery['lpNumber']"/>
+                </td>
+                <td>车架号</td>
+
+                <td>
+                    <input  
+                           type="text" ng-pattern="/^(-?\d+)(\.\d+)?$/" ng-model="vehicleQuery['frameNo']"/>
+                </td>
+            </tr>
+            <tr>
+                <td>主机厂扣款日期</td>
+
+                <td>
+                    <input placeholder="YYYY-MM-DD" ng-pattern="/^(\d{4})-(\d{2})-(\d{2})$/"
+                           type="text" ng-model="vehicleQuery['manufacturerDebitDate']"/>
+                </td>
+                <td>入库日期</td>
+                <td>
+                    <input placeholder="YYYY-MM-DD" ng-pattern="/^(\d{4})-(\d{2})-(\d{2})$/"
+                           type="text" ng-model="vehicleQuery['warehousingDate']"/>
+                </td>
+            </tr>
+            <tr>
+                <td>销售日期</td>
+
+                <td>
+                    <input placeholder="YYYY-MM-DD" ng-pattern="/^(\d{4})-(\d{2})-(\d{2})$/"
+                           type="text" ng-model="vehicleQuery['salesDate']"/>
+                </td>
+                <td>指导价格</td>
+
+                <td>
+                    <input  
+                           type="text" ng-pattern="/^(-?\d+)(\.\d+)?$/" ng-model="vehicleQuery['guidingPrice']"/>
+                </td>
+            </tr>
+            <tr>
+                <td>销售顾问</td>
+
+                <td>
+                    <input  
+                           type="text" ng-pattern="/^(-?\d+)(\.\d+)?$/" ng-model="vehicleQuery['salesConsultant']"/>
+                </td>
+                <td>客户性质</td>
+
+                <td>
+                    <select 
+                             ng-model="vehicleQuery['customerType']"
+                            ng-options="customerType as customerType for customerType in metavehicleQuery['customerType']">
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <td>客户姓名</td>
+
+                <td>
+                    <input  
+                           type="text" ng-pattern="/^(-?\d+)(\.\d+)?$/" ng-model="vehicleQuery['customerName']"/>
+                </td>
+                <td>身份证号或组织机构代码证号</td>
+
+                <td>
+                    <input  
+                           type="text" ng-pattern="/^(-?\d+)(\.\d+)?$/" ng-model="vehicleQuery['identificationNo']"/>
+                </td>
+            </tr>
+        </table>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button class="btn" data-dismiss="modal">关闭</button>
+        <button class="btn btn-primary" ng-click="queryVehices()">搜索</button>
+    </div>
+</div>

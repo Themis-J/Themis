@@ -1,55 +1,55 @@
 'use strict';
 
-angular.module('themis', ['ngRoute', 'themis.directives', 'themis.services', 'themis.config', 'guest.controllers', 'ngSanitize',
-        'branch.services', 'branch.controllers', 'branch.tool.controllers', 'lirun.controller', 'jingying.controller','fenhong.controller', 'sunyi.controller', 'kucun.controller', 'zhangkuan.controller', 'renyuan.controller', 'tax.controller',
-        'masterApp.config', 'masterApp.services','masterApp.controllers',  'head.tool.controllers',
-        'keyNetProfit.controllers', 
-        'keyOpProfit.controllers', 
-        'keyOpProfitPerRevenue.controllers', 
-        'keyOpProfitPerMargin.controllers', 
-        'keyAccountReceivablePercentage.controllers', 
-        'keyPostSalesOpProfitPerMargin.controllers', 
-        'keyPostSalesAllOpProfitPerMargin.controllers', 
-        'keyPostSalesRevenuePerMargin.controllers', 
+angular.module('themis', ['ngRoute', 'themis.directives', 'themis.services', 'themis.config', 'commonControllers', 'machineAccount.services', 'guest.controllers', 'ngSanitize',
+        'branch.services', 'branch.controllers', 'branch.base.controller', 'branch.tool.controllers', 'lirun.controller', 'jingying.controller', 'fenhong.controller', 'sunyi.controller', 'kucun.controller', 'zhangkuan.controller', 'renyuan.controller', 'tax.controller',
+        'masterApp.config', 'masterApp.services', 'masterApp.controllers', 'head.tool.controllers',
+        'keyNetProfit.controllers',
+        'keyOpProfit.controllers',
+        'keyOpProfitPerRevenue.controllers',
+        'keyOpProfitPerMargin.controllers',
+        'keyAccountReceivablePercentage.controllers',
+        'keyPostSalesOpProfitPerMargin.controllers',
+        'keyPostSalesAllOpProfitPerMargin.controllers',
+        'keyPostSalesRevenuePerMargin.controllers',
         'overallAbs.controllers',
-        'overallRevenue.controllers', 
-        'overallOpProfit.controllers', 
-        'overallNonRecurrentPNL.controllers', 
+        'overallRevenue.controllers',
+        'overallOpProfit.controllers',
+        'overallNonRecurrentPNL.controllers',
         'overallNonSalesProfit.controllers',
         'overallNewVehicleRetailSales.controllers',
         'overallNewVehicleSales.controllers',
         'overallNewVehicleRetailMargin.controllers',
-        'overallMargin.controllers',  
-        'overallExpense.controllers', 
-		'overallPercentage.controllers', 
-		'overallExpPercentage.controllers', 
-		'overallHRAnalysis.controllers', 
-		'departmentOp.controllers', 
-		'departmentAbs.controllers', 
-		'departmentOpComp.controllers', 
-		'departmentPercentage.controllers',
-		'salesAbs.controllers',
-		'salesDepartmentAbs.controllers',
-		'salesPercentage.controllers',
-		'salesDepartmentPercentage.controllers',
-		'ardOverall.controllers',
-		'ardSales.controllers',
-		'ardPostSales.controllers',
-		'ardFactory.controllers',
-		'ardLease.controllers',
-		'ardWarranty.controllers',
-		'ardInsurance.controllers',
-		'ardFee.controllers',
-		'ardOther.controllers',
-		'postSalesRevenue.controllers',
-		'postSalesMargin.controllers',
-		'postSalesExpense.controllers',
-		'postSalesOpProfit.controllers',
-		'maintenanceIncome.controllers',
-		'maintenanceWorkOrder.controllers',
-		'sparePartIncome.controllers',
-		'sheetSprayIncome.controllers',
-		'sheetSprayWorkOrder.controllers',
+        'overallMargin.controllers',
+        'overallExpense.controllers',
+        'overallPercentage.controllers',
+        'overallExpPercentage.controllers',
+        'overallHRAnalysis.controllers',
+        'departmentOp.controllers',
+        'departmentAbs.controllers',
+        'departmentOpComp.controllers',
+        'departmentPercentage.controllers',
+        'salesAbs.controllers',
+        'salesDepartmentAbs.controllers',
+        'salesPercentage.controllers',
+        'salesDepartmentPercentage.controllers',
+        'ardOverall.controllers',
+        'ardSales.controllers',
+        'ardPostSales.controllers',
+        'ardFactory.controllers',
+        'ardLease.controllers',
+        'ardWarranty.controllers',
+        'ardInsurance.controllers',
+        'ardFee.controllers',
+        'ardOther.controllers',
+        'postSalesRevenue.controllers',
+        'postSalesMargin.controllers',
+        'postSalesExpense.controllers',
+        'postSalesOpProfit.controllers',
+        'maintenanceIncome.controllers',
+        'maintenanceWorkOrder.controllers',
+        'sparePartIncome.controllers',
+        'sheetSprayIncome.controllers',
+        'sheetSprayWorkOrder.controllers',
         'admin.controllers']).
     config(['$routeProvider', '$httpProvider', function ($routeProvider, $httpProvider) {
         $routeProvider.when('/branch', {templateUrl: 'partials/branch/edit.html', controller: 'editCtrl'})
@@ -62,11 +62,14 @@ angular.module('themis', ['ngRoute', 'themis.directives', 'themis.services', 'th
             .when('/admin', {templateUrl: 'partials/admin/admin.html', controller: 'adminCtrl'})
             .when('/admin/addUser', {templateUrl: 'partials/admin/admin.html', controller: 'adminCtrl'})
             .when('/admin/changePass', {templateUrl: 'partials/admin/changePass.html', controller: 'adminCtrl'})
+            .when('/machineAccount', {templateUrl: 'partials/common/machineAccount/frame.html', controller: 'machineAccountCtrl'})
+            .when('/machineAccount/:id', {templateUrl: 'partials/common/machineAccount/frame.html', controller: 'machineAccountCtrl'})
+            .when('/machineAccount/:type/add', {templateUrl: 'partials/common/machineAccount/frame.html', controller: 'machineAccountCtrl'})
             .when('/forbidden', {templateUrl: 'forbidden.html'})
             .when('/notfound', {templateUrl: 'notfound.html'})
             .when('/error', {templateUrl: 'error.html'})
             .otherwise({redirectTo: 'guest/login'});
-			
+
         var actionsOnExceptions = ['$q', '$location', function ($q, $location) {
             var success = function (response) {
                 return response;
@@ -159,7 +162,7 @@ angular.module('themis', ['ngRoute', 'themis.directives', 'themis.services', 'th
             return isAminRoute;
         };
 
-        var isNoCheckRoutes = function(route) {
+        var isNoCheckRoutes = function (route) {
             var noCheck = false;
             $.each(routesNoCheck, function (index, freeRoutes) {
                 if (route.indexOf(freeRoutes) == 0) {
@@ -175,9 +178,8 @@ angular.module('themis', ['ngRoute', 'themis.directives', 'themis.services', 'th
                 return;
             }
 
-            if (isNoCheckRoutes($location.url()))
-            {
-              return;
+            if (isNoCheckRoutes($location.url())) {
+                return;
             }
 
             var curUser = Auth.isAlive({}, function () {

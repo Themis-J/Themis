@@ -1,9 +1,10 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <title></title>
-</head>
-<body>
+<div>
+    <div ng-include src="header"></div>
 
-</body>
-</html>
+    <div class="container-fluid" style="padding-top: 80px">
+        <div ng-include src="panel"></div>
+    </div>
+
+    <div ng-include="'partials/common/machineAccount/search_vehicle.html'"></div>
+    <div ng-include="'partials/common/machineAccount/search_post.html'"></div>
+</div>

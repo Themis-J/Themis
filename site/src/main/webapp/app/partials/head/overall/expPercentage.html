@@ -1,29 +1,36 @@
 <div id="report_div" class="span9 row-fluid" style="padding-left: 60px" ng-controller="overallExpPercentageCtrl">
-        <div class="span11">
-            <div>
-            	<div id="date_div" style="padding-bottom: 10px">
-		            <div>
-		                <select data-width="100px" ng-options="o.name for o in yearOptions" ng-model="selectedYearOption" ng-change="selectReportYear()"></select>
-		            	<select data-width="100px" ng-options="o.name for o in monthOptions" ng-model="selectedMonthOption" ng-change="selectReportMonth()"></select>
-		            </div>
-	            </div>
-				<div style="padding-bottom: 10px">
-					<select data-width="100px" ng-options="o.name for o in categoryOptions" ng-model="selectedCategoryOption" ng-change="selectReportCategory()"></select>
-		            <select data-width="100px" ng-options="o.name for o in itemOptions" ng-model="selectedItemOption" ng-change="selectReportItem()"></select>
-		            <input type="checkbox" ng-model="isQueryItem" ng-click="showReport()"> 查询子费用项
-				</div>
+    <div class="span11">
+        <div>
+            <div id="date_div" style="padding-bottom: 10px">
                 <div>
-		            <select data-width="100px" ng-options="o.name for o in denominatorOptions" ng-model="selectedDenominatorOption" ng-change="selectReportDenominotor()"></select>
-	            </div>
-           		
-                <div style="padding-bottom: 10px">
-		       	<button class="btn btn-success" type="button" ng-click="toggleFullScreen();isFullScrren=!isFullScrren">{{isFullScrren? '取消全屏': '全屏'}}</button>
-		       </div>
+                    <select data-width="100px" ng-options="o.name for o in yearOptions" ng-model="selectedYearOption"
+                            ng-change="selectReportYear()"></select>
+                    <select data-width="100px" ng-options="o.name for o in monthOptions" ng-model="selectedMonthOption"
+                            ng-change="selectReportMonth()"></select>
+                </div>
+            </div>
+            <div style="padding-bottom: 10px">
+                <select data-width="100px" ng-options="o.name for o in categoryOptions"
+                        ng-model="selectedCategoryOption" ng-change="selectReportCategory()"></select>
+                <select data-width="100px" ng-options="o.name for o in itemOptions" ng-model="selectedItemOption"
+                        ng-change="selectReportItem()"></select>
+                <input type="checkbox" ng-model="isQueryItem" ng-click="showReport()"> 查询子费用项
+            </div>
+            <div>
+                <select data-width="100px" ng-options="o.name for o in denominatorOptions"
+                        ng-model="selectedDenominatorOption" ng-change="selectReportDenominotor()"></select>
             </div>
 
-			<div id="chartsDisplay">
-				<div id="report_chart">
-	            </div>
-			</div>
+            <div style="padding-bottom: 10px">
+                <button class="btn btn-success" type="button" ng-click="toggleFullScreen();isFullScrren=!isFullScrren">
+                    {{isFullScrren? '取消全屏': '全屏'}}
+                </button>
+            </div>
         </div>
+
+        <div id="chartsDisplay">
+            <div id="report_chart">
+            </div>
+        </div>
+    </div>
 </div>

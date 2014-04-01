@@ -1,25 +1,31 @@
 <div id="report_div" class="span9 row-fluid" style="padding-left: 60px" ng-controller="overallHRAnalysisCtrl">
-        <div class="span11">
-            <div>
-            	<div id="date_div" style="padding-bottom: 10px">
-		            <div>
-		                <select data-width="100px" ng-options="o.name for o in yearOptions" ng-model="selectedYearOption" ng-change="selectReportYear()"></select>
-		            	<select data-width="100px" ng-options="o.name for o in monthOptions" ng-model="selectedMonthOption" ng-change="selectReportMonth()"></select>
-		            </div>
-	            </div>
-				<div style="padding-bottom: 10px">
-					<select data-width="100px" ng-options="o.name for o in departmentOptions" ng-model="selectedDepartmentOption" ng-change="selectReportDepartment()"></select>
-		            <select data-width="100px" ng-options="o.name for o in positionOptions" ng-model="selectedPositionOption" ng-change="selectReportPosition()"></select>
-		        </div>
-
-                <div style="padding-bottom: 10px">
-		       	<button class="btn btn-success" type="button" ng-click="toggleFullScreen();isFullScrren=!isFullScrren">{{isFullScrren? '取消全屏': '全屏'}}</button>
-		       </div>
+    <div class="span11">
+        <div>
+            <div id="date_div" style="padding-bottom: 10px">
+                <div>
+                    <select data-width="100px" ng-options="o.name for o in yearOptions" ng-model="selectedYearOption"
+                            ng-change="selectReportYear()"></select>
+                    <select data-width="100px" ng-options="o.name for o in monthOptions" ng-model="selectedMonthOption"
+                            ng-change="selectReportMonth()"></select>
+                </div>
+            </div>
+            <div style="padding-bottom: 10px">
+                <select data-width="100px" ng-options="o.name for o in departmentOptions"
+                        ng-model="selectedDepartmentOption" ng-change="selectReportDepartment()"></select>
+                <select data-width="100px" ng-options="o.name for o in positionOptions"
+                        ng-model="selectedPositionOption" ng-change="selectReportPosition()"></select>
             </div>
 
-			<div id="chartsDisplay">
-				<div id="report_chart">
-	            </div>
-			</div>
+            <div style="padding-bottom: 10px">
+                <button class="btn btn-success" type="button" ng-click="toggleFullScreen();isFullScrren=!isFullScrren">
+                    {{isFullScrren? '取消全屏': '全屏'}}
+                </button>
+            </div>
         </div>
+
+        <div id="chartsDisplay">
+            <div id="report_chart">
+            </div>
+        </div>
+    </div>
 </div>

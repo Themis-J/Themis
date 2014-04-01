@@ -1,0 +1,80 @@
+<div>
+    <div>
+        <h4 ng-click="data.hide = !data.hide"><b>{{title}}</b>
+
+            <i ng-show="data.hide" class="icon-double-angle-down"></i>
+            <i ng-show="!data.hide" class="icon-double-angle-right"></i></h4>
+
+        <div class="well" ng-show="!data.hide" style="width: 90%">
+            <table style="width: 95%" class="D20_table">
+                <tr>
+                    <th></th>
+                    <th>标准工时收费</th>
+                    <th>有效工时收费</th>
+                    <th>技工平均工资</th>
+                </tr>
+            </table>
+            <form name="form" ng-repeat="data in list | filter: {dept: category}">
+                <div style="padding-left: 35%">
+                    <div class="text-warning"
+                         ng-show="form.$dirty  && form.$invalid">
+                        <small class="text-warning"
+                               ng-show="form.$error.required">
+                            标准工时收费，有效工时收费，技工平均工资必须同时输入
+                        </small>
+                    </div>
+                    <div class="text-warning"
+                         ng-show="form.amount.$dirty && form.amount.$invalid">
+                        <small class="text-warning"
+                               ng-show="form.amount.$error.pattern">
+                            标准工时收费必须为正整数
+                        </small>
+                    </div>
+                    <div class="text-warning"
+                         ng-show="form.amount1.$dirty && form.amount1.$invalid">
+                        <small class="text-warning"
+                               ng-show="form.amount1.$error.pattern">
+                            有效工时收费必须为正整数
+                        </small>
+                    </div>
+                    <div class="text-warning"
+                         ng-show="form.amount2.$dirty && form.amount2.$invalid">
+                        <small class="text-warning"
+                               ng-show="form.amount2.$error.pattern">
+                            技工平均工资必须为正整数
+                        </small>
+                    </div>
+                </div>
+                <fieldset>
+                    <table class="D20_table" style="font-size: 12px">
+                        <tr>
+                            <td>
+                                <label>{{data.name}}</label>
+                            </td>
+                            <td>
+                                <input type="text" ng-pattern="/^\d+(\.\d+)?$/" class="input_1"
+                                       placeholder="0" name="amount1"
+                                       ng-model="data.data[0].amount" required
+                                       ng-blur="autoSaveFee(data)">
+                            </td>
+                            <td>
+                                <input type="text" ng-pattern="/^\d+(\.\d+)?$/" class="input_2"
+                                       placeholder="0" name="amount2"
+                                       ng-model="data.data[1].amount" required
+                                       ng-blur="autoSaveFee(data)">
+                            </td>
+                            <td>
+                                <input type="text" ng-pattern="/^\d+(\.\d+)?$/" class="input_3"
+                                       placeholder="0" name="amount3"
+                                       ng-model="data.data[2].amount" required
+                                       ng-blur="autoSaveFee(data)">
+                                <i
+                                        ng-class="data.sign"></i>
+                            </td>
+                        </tr>
+                    </table>
+                </fieldset>
+            </form>
+        </div>
+    </div>
+</div>

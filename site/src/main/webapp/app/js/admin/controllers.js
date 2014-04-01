@@ -22,32 +22,30 @@ angular.module('admin.controllers', [])
             {name: '管理员', id: 1}
         ];
 
-        if (UserService.validateRoleSuperAdmin())
-        {
+        if (UserService.validateRoleSuperAdmin()) {
             $scope.roles.push({name: '超级管理员', id: 0});
         }
 
         $scope.role = $scope.roles[0];
 
-        var dealers = Dealer.list({}, function(){
+        var dealers = Dealer.list({}, function () {
             $scope.dealers = dealers.items;
 
-            $scope.dealer =  $scope.dealers[0];
+            $scope.dealer = $scope.dealers[0];
         });
 
-        $scope.addUser = function(){
+        $scope.addUser = function () {
             var user = {};
             user.username = $scope.userAlias;
             user.password = $scope.password1;
             user.userRole = $scope.role.id;
-            if ($scope.dealer)
-            {
+            if ($scope.dealer) {
                 user.dealerID = $scope.dealer.id;
             }
-            User.addUser({}, user, function(){
+            User.addUser({}, user, function () {
                 $scope.msg = "新用户创建成功！";
                 $scope.msgClass = "text-success";
-            }, function(data){
+            }, function (data) {
                 $scope.msg = "新用户创建失败，请确认用户名是否唯一";
                 $scope.msgClass = "text-error";
             });
@@ -55,7 +53,7 @@ angular.module('admin.controllers', [])
 
     }])
     .controller('disableUserCtrl', ['$scope', '$location', 'Auth', 'UserService', 'Dealer', 'User', function ($scope, $location, Auth, UserService, Dealer, User) {
-        $scope.reset = function() {
+        $scope.reset = function () {
             $scope.username = '';
             $scope.msg = "";
             $scope.msgClass = "";
@@ -63,41 +61,37 @@ angular.module('admin.controllers', [])
             $scope.targetUser = null;
         }
 
-        $scope.checkUser = function() {
+        $scope.checkUser = function () {
             $scope.msg = "";
             $scope.msgClass = "";
             $scope.loading = true;
             $scope.targetUser = null;
 
-            User.info({username: $scope.username}, function(user){
+            User.info({username: $scope.username}, function (user) {
                 $scope.targetUser = user;
                 $scope.loading = false;
-            }, function(error){
+            }, function (error) {
                 $scope.msgClass = "text-error";
-                if (error.data.errorMsg)
-                {
+                if (error.data.errorMsg) {
                     $scope.msg = error.data.errorMsg;
                 }
-                else
-                {
+                else {
                     $scope.msg = "failed";
                 }
             });
         }
 
-        $scope.disableUser = function(){
-            User.disableUser({username: $scope.username}, {}, function(){
+        $scope.disableUser = function () {
+            User.disableUser({username: $scope.username}, {}, function () {
                 $scope.reset();
 
                 $scope.msg = "success";
                 $scope.msgClass = "text-success";
-            }, function(error){
-                if (error.data.errorMsg)
-                {
+            }, function (error) {
+                if (error.data.errorMsg) {
                     $scope.msg = error.data.errorMsg;
                 }
-                else
-                {
+                else {
                     $scope.msg = "failed";
                 }
                 $scope.msgClass = "text-error";
@@ -107,7 +101,7 @@ angular.module('admin.controllers', [])
         $scope.reset();
     }])
     .controller('enableUserCtrl', ['$scope', '$location', 'Auth', 'UserService', 'Dealer', 'User', function ($scope, $location, Auth, UserService, Dealer, User) {
-        $scope.reset = function() {
+        $scope.reset = function () {
             $scope.username = '';
             $scope.msg = "";
             $scope.msgClass = "";
@@ -115,41 +109,37 @@ angular.module('admin.controllers', [])
             $scope.targetUser = null;
         }
 
-        $scope.checkUser = function() {
+        $scope.checkUser = function () {
             $scope.msg = "";
             $scope.msgClass = "";
             $scope.loading = true;
             $scope.targetUser = null;
 
-            User.info({username: $scope.username}, function(user){
+            User.info({username: $scope.username}, function (user) {
                 $scope.targetUser = user;
                 $scope.loading = false;
-            }, function(error){
+            }, function (error) {
                 $scope.msgClass = "text-error";
-                if (error.data.errorMsg)
-                {
+                if (error.data.errorMsg) {
                     $scope.msg = error.data.errorMsg;
                 }
-                else
-                {
+                else {
                     $scope.msg = "failed";
                 }
             });
         }
 
-        $scope.enableUser = function(){
-            User.enableUser({username: $scope.username}, {}, function(){
+        $scope.enableUser = function () {
+            User.enableUser({username: $scope.username}, {}, function () {
                 $scope.reset();
 
                 $scope.msg = "success";
                 $scope.msgClass = "text-success";
-            }, function(error){
-                if (error.data.errorMsg)
-                {
+            }, function (error) {
+                if (error.data.errorMsg) {
                     $scope.msg = error.data.errorMsg;
                 }
-                else
-                {
+                else {
                     $scope.msg = "failed";
                 }
                 $scope.msgClass = "text-error";
@@ -159,7 +149,7 @@ angular.module('admin.controllers', [])
         $scope.reset();
     }])
     .controller('adminHeadCtrl', ['$scope', '$location', 'Auth', 'UserService', function ($scope, $location, Auth, UserService) {
-        $scope.signout = function() {
+        $scope.signout = function () {
             Auth.logout({}, function () {
                 UserService.setupUser(null);
                 $location.path('/guest/login');
@@ -175,15 +165,15 @@ angular.module('admin.controllers', [])
         $scope.msg = "";
         $scope.msgClass = "";
 
-        $scope.resetPass = function(){
+        $scope.resetPass = function () {
             var user = {};
             user.username = $scope.userAlias;
             user.oldPassword = $scope.curPassword;
             user.newPassword = $scope.password1;
-            User.resetPass({}, user, function(){
+            User.resetPass({}, user, function () {
                 $scope.msg = "密码修改成功！";
                 $scope.msgClass = "text-success";
-            }, function(data){
+            }, function (data) {
                 $scope.msg = "密码修改失败，请稍后再试或联系管理员。";
                 $scope.msgClass = "text-error";
             });
@@ -191,42 +181,42 @@ angular.module('admin.controllers', [])
 
     }])
     .controller('importDataCtrl', ['$scope', '$location', 'Auth', 'ReportRestClient', 'ReportService', 'config', function ($scope, $location, Auth, ReportRestClient, ReportService, config) {
-    	$scope.msg = "";
+        $scope.msg = "";
         $scope.msgClass = "";
-		var currentDate = new Date();
-  		ReportService.setCurrentYear(currentDate.getFullYear());
-  		$scope.yearOptions = ReportService.getYearList();
-  		$scope.selectedFromYearOption = $scope.yearOptions[0];
-		$scope.selectedToYearOption = $scope.yearOptions[0];
-		
-		ReportService.setMonthOfYear(currentDate.getMonth());
-		$scope.monthOptions = ReportService.getMonthList();
-		$scope.selectedFromMonthOption = $scope.monthOptions[ReportService.getMonthOfYear()-1];
-		$scope.selectedToMonthOption = $scope.monthOptions[ReportService.getMonthOfYear()-1];
-		
-        $scope.importData = function(){
-        	$scope.msg = "正在导入，请耐心等候......";
-        	$scope.msgClass = "text-success";
+        var currentDate = new Date();
+        ReportService.setCurrentYear(currentDate.getFullYear());
+        $scope.yearOptions = ReportService.getYearList();
+        $scope.selectedFromYearOption = $scope.yearOptions[0];
+        $scope.selectedToYearOption = $scope.yearOptions[0];
+
+        ReportService.setMonthOfYear(currentDate.getMonth());
+        $scope.monthOptions = ReportService.getMonthList();
+        $scope.selectedFromMonthOption = $scope.monthOptions[ReportService.getMonthOfYear() - 1];
+        $scope.selectedToMonthOption = $scope.monthOptions[ReportService.getMonthOfYear() - 1];
+
+        $scope.importData = function () {
+            $scope.msg = "正在导入，请耐心等候......";
+            $scope.msgClass = "text-success";
             var data = {};
-            if ( $scope.selectedFromMonthOption.id < 10 ) {
-            	data.fromDate = $scope.selectedFromYearOption.id + '-0' + $scope.selectedFromMonthOption.id + '-01';
+            if ($scope.selectedFromMonthOption.id < 10) {
+                data.fromDate = $scope.selectedFromYearOption.id + '-0' + $scope.selectedFromMonthOption.id + '-01';
             } else {
-            	data.fromDate = $scope.selectedFromYearOption.id + '-' + $scope.selectedFromMonthOption.id + '-01';
+                data.fromDate = $scope.selectedFromYearOption.id + '-' + $scope.selectedFromMonthOption.id + '-01';
             }
-            if ( $scope.selectedToMonthOption.id < 10 ) {
-            	data.toDate = $scope.selectedToYearOption.id + '-0' + $scope.selectedToMonthOption.id + '-01';
+            if ($scope.selectedToMonthOption.id < 10) {
+                data.toDate = $scope.selectedToYearOption.id + '-0' + $scope.selectedToMonthOption.id + '-01';
             } else {
-            	data.toDate = $scope.selectedToYearOption.id + '-' + $scope.selectedToMonthOption.id + '-01';
+                data.toDate = $scope.selectedToYearOption.id + '-' + $scope.selectedToMonthOption.id + '-01';
             }
-            
-            ReportRestClient(config.currentMode).importData({}, data, function(){
+
+            ReportRestClient(config.currentMode).importData({}, data, function () {
                 $scope.msg = "数据导入成功！";
                 $scope.msgClass = "text-success";
-            }, function(data){
+            }, function (data) {
                 $scope.msg = "数据导入失败";
                 $scope.msgClass = "text-error";
             });
-            
+
         };
 
     }])

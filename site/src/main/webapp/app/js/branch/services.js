@@ -8,30 +8,30 @@ angular.module('branch.services', ['ngResource', 'ngCookies'])
         return $resource(config.service.url + '/dealer/:path/:subpath/:item', {}, {
             getStatus: {method: 'GET', params: {path: 'menu', subpath: 'entrystatus'}, isArray: false},
             saveStatus: {method: 'POST', params: {path: 'menu', subpath: 'entrystatus'}, isArray: false},
-            getVehicles: {method: 'GET', params: {path: 'vehicle'}, isArray: false},
+            getVehicles: {method: 'GET', cache: true, params: {path: 'vehicle'}, isArray: false},
             getVehicleRevenue: {method: 'GET', params: {path: 'vehicleSalesRevenue'}, isArray: false},
             saveVehicleRevenue: {method: 'POST', params: {path: 'vehicleSalesRevenue'}, isArray: false},
             getTaxs: {method: 'GET', params: {path: 'tax'}, isArray: false},
             saveTax: {method: 'POST', params: {path: 'tax'}, isArray: false},
-            getSales: {method: 'GET', params: {path: 'salesServiceRevenue', subpath: 'items'}, isArray: false},
+            getSales: {method: 'GET', cache: true, params: {path: 'salesServiceRevenue', subpath: 'items'}, isArray: false},
             getSalesRevenue: {method: 'GET', params: {path: 'salesServiceRevenue'}, isArray: false},
             saveSalesRevenue: {method: 'POST', params: {path: 'salesServiceRevenue'}, isArray: false},
-            getGeneral: {method: 'GET', params: {path: 'generalJournal', subpath: 'items'}, isArray: false},
+            getGeneral: {method: 'GET', cache: true, params: {path: 'generalJournal', subpath: 'items'}, isArray: false},
             getGeneralJournal: {method: 'GET', params: {path: 'generalJournal'}, isArray: false},
             saveGeneralJournal: {method: 'POST', params: {path: 'generalJournal'}, isArray: false},
-            getInventory: {method: 'GET', params: {path: 'inventory', subpath: 'duration', item: 'items'}, isArray: false},
+            getInventory: {method: 'GET', cache: true, params: {path: 'inventory', subpath: 'duration', item: 'items'}, isArray: false},
             getInventoryDuration: {method: 'GET', params: {path: 'inventory', subpath: 'duration'}, isArray: false},
             saveInventoryDuration: {method: 'POST', params: {path: 'inventory', subpath: 'duration'}, isArray: false},
-            getAccountItems: {method: 'GET', params: {path: 'accountReceivable', subpath: 'duration', item: 'items'}, isArray: false},
+            getAccountItems: {method: 'GET', cache: true, params: {path: 'accountReceivable', subpath: 'duration', item: 'items'}, isArray: false},
             getAccountDuration: {method: 'GET', params: {path: 'accountReceivable', subpath: 'duration'}, isArray: false},
             saveAccountDuration: {method: 'POST', params: {path: 'accountReceivable', subpath: 'duration'}, isArray: false},
-            getEmployee: {method: 'GET', params: {path: 'employee', subpath: 'fee', item: 'items'}, isArray: false},
+            getEmployee: {method: 'GET', cache: true, params: {path: 'employee', subpath: 'fee', item: 'items'}, isArray: false},
             getEmployeeFee: {method: 'GET', params: {path: 'employee', subpath: 'fee'}, isArray: false},
             saveEmployeeFee: {method: 'POST', params: {path: 'employee', subpath: 'fee'}, isArray: false},
-            getEmployeeSunmmary: {method: 'GET', params: {path: 'employee', subpath: 'feeSummary', item: 'items'}, isArray: false},
+            getEmployeeSunmmary: {method: 'GET', cache: true, params: {path: 'employee', subpath: 'feeSummary', item: 'items'}, isArray: false},
             getEmployeeFeeSunmmary: {method: 'GET', params: {path: 'employee', subpath: 'feeSummary'}, isArray: false},
             saveEmployeeFeeSunmmary: {method: 'POST', params: {path: 'employee', subpath: 'feeSummary'}, isArray: false},
-            getHR: {method: 'GET', params: {path: 'hr', subpath: 'allocation', item: 'items'}, isArray: false},
+            getHR: {method: 'GET', params: {path: 'hr', cache: true, subpath: 'allocation', item: 'items'}, isArray: false},
             getHRAllocation: {method: 'GET', params: {path: 'hr', subpath: 'allocation'}, isArray: false},
             saveHRAllcation: {method: 'POST', params: {path: 'hr', subpath: 'allocation'}, isArray: false},
             list: {method: 'GET', params: {path: 'list'}, isArray: false}
@@ -40,11 +40,11 @@ angular.module('branch.services', ['ngResource', 'ngCookies'])
     ])
     .factory('User', ['$resource', 'config', function ($resource, config) {
         return $resource(config.service.url + '/user/:path', {}, {
-            info: {method: 'GET', params:{path: 'info'}, isArray:false},
+            info: {method: 'GET', params: {path: 'info'}, isArray: false},
             addUser: {method: 'POST', params: {path: 'add'}, isArray: false},
             resetPass: {method: 'POST', params: {path: 'resetpwd'}, isArray: false},
-            disableUser: {method: 'POST', params: {path: 'disable'}, isArray:false},
-            enableUser: {method: 'POST', params: {path: 'enable'}, isArray:false}
+            disableUser: {method: 'POST', params: {path: 'disable'}, isArray: false},
+            enableUser: {method: 'POST', params: {path: 'enable'}, isArray: false}
         });
     }])
     .factory('DealerService', ['$cookieStore', function ($cookieStore) {
@@ -208,8 +208,7 @@ angular.module('branch.services', ['ngResource', 'ngCookies'])
                 $cookieStore.put('dealerId', dealer.toString());
             },
 
-            setDealerFullName: function(fullName)
-            {
+            setDealerFullName: function (fullName) {
                 dealerFullName = fullName;
                 $cookieStore.put('dealerFullName', fullName.toString());
             },

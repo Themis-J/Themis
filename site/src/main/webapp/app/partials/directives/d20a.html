@@ -1,0 +1,83 @@
+<div>
+    <div style="margin-top:20px">
+        <div ng-repeat="data in list | filter:{id:category}">
+            <div>
+                <h4 class="hasTooltip" ng-click="data.hide= !data.hide"><b>{{data.name}}</b>
+                    <i ng-show="data.hide" class="icon-double-angle-down"></i>
+                    <i ng-show="!data.hide" class="icon-double-angle-right"></i></h4>
+
+                <div style="display: none;" bind-html-unsafe="data.tooltip"></div>
+
+                <div class="well row-fluid" ng-show="!data.hide" style="width: 90%">
+                    <div class="span6">
+                        <table class="D20_table" style="font-size: 12px">
+                            <tr ng-repeat="row in data.data | filter:{durationDesc: '天'}">
+                                <td ng-if="$even">
+                                    <label>{{row.durationDesc}}</label>
+                                </td>
+                                <td ng-if="$even">
+                                    <form name="form">
+                                        <div class="text-warning"
+                                             ng-show="form.amount.$dirty && form.amount.$invalid">
+                                            <small class="text-warning"
+                                                   ng-show="form.amount.$error.pattern">
+                                                账款必须为数字
+                                            </small>
+                                        </div>
+                                        <input type="text" ng-pattern="/^(-?\d+)(\.\d+)?$/" class="input-mini"
+                                               style="width: 55%;"
+                                               placeholder="0" ng-change="calSummary()" name="amount"
+                                               ng-model="row.amount" required ng-blur="autoSaveAccountReceivables(row)">
+                                        <i ng-class="row.sign"></i>
+                                    </form>
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+
+                    <div class="span6">
+                        <table class="D20_table" style="font-size: 12px">
+                            <tr ng-repeat="row in data.data | filter:{durationDesc: '天'}">
+                                <td ng-if="$odd">
+                                    <label>{{row.durationDesc}}</label>
+                                </td>
+                                <td ng-if="$odd">
+                                    <form name="form">
+                                        <div class="text-warning"
+                                             ng-show="form.amount.$dirty && form.amount.$invalid">
+                                            <small class="text-warning"
+                                                   ng-show="form.amount.$error.pattern">
+                                                账款必须为数字
+                                            </small>
+                                        </div>
+                                        <input type="text" ng-pattern="/^(-?\d+)(\.\d+)?$/" class="input-mini"
+                                               style="width: 55%;"
+                                               placeholder="0" ng-change="calSummary()" name="amount"
+                                               ng-model="row.amount" required ng-blur="autoSaveAccountReceivables(row)">
+                                        <i ng-class="row.sign"></i>
+                                    </form>
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+
+
+                    <table ng-if="data.summary" class="D20_table" style="font-size: 12px;width: 70%">
+                        <tr>
+                            <td>
+                                合计
+                            </td>
+                            <td>
+                            </td>
+                            <td>
+                                {{data.summary}}
+                            </td>
+                            <td>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

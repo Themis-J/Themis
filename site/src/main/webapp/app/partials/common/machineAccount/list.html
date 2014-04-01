@@ -1,290 +1,105 @@
-<div class="container-fluid">
-<div class="row-fluid">
-    <div class="span12">
-        <a></a>
-        <h4>
-            合同号： 123456
-        </h4>
-        <table class="table">
-            <thead>
-            <tr>
-                <th>
-                    车型
-                </th>
-                <th>
-                    型号
-                </th>
-                <th>
-                    颜色
-                </th>
-                <th>
-                    车牌号
-                </th>
-                <th>
-                    车架号
-                </th>
-                <th>
-                    主机厂扣款日期
-                </th>
-                <th>
-                    入库日期
-                </th>
-                <th>
-                    销售日期
-                </th>
-                <th>
-                    指导价格
-                </th>
-                <th>
-                    客户姓名
-                </th>
-                <th>
-                    身份证号或组织机构代码证号
-                </th>
-                <th>
-                    销售顾问
-                </th>
-                <th>
-                    客户性质
-                </th>
-            </tr>
-            </thead>
-            <tbody>
-            <tr class="info">
-                <td>
-                    凯美瑞
-                </td>
-                <td>
-                    2.0舒适版
-                </td>
-                <td>
-                    沙漠雾
-                </td>
-                <td>
-                    1234
-                </td>
-                <td>
-                    1234
-                </td>
-                <td>
-                    2014-1-1
-                </td>
-                <td>
-                    2014-1-1
-                </td>
-                <td>
-                    2014-1-1
-                </td>
-                <td>
-                    999
-                </td>
-                <td>
-                    客户
-                </td>
-                <td>
-                    12345
-                </td>
-                <td>
-                    顾问
-                </td>
-                <td>
-                    性质
-                </td>
-            </tr>
-            </tbody>
-        </table>
+<div class="row-fluid" style="padding-top: 10px">
+    <div class="span2">
     </div>
-</div>
-<div class="row-fluid">
-    <div class="span12">
-        <a></a>
-        <h4>
-            合同号： 123456
-        </h4>
-        <table class="table">
-            <thead>
-            <tr>
-                <th>
-                    车型
-                </th>
-                <th>
-                    型号
-                </th>
-                <th>
-                    颜色
-                </th>
-                <th>
-                    车牌号
-                </th>
-                <th>
-                    车架号
-                </th>
-                <th>
-                    主机厂扣款日期
-                </th>
-                <th>
-                    入库日期
-                </th>
-                <th>
-                    销售日期
-                </th>
-                <th>
-                    指导价格
-                </th>
-                <th>
-                    客户姓名
-                </th>
-                <th>
-                    身份证号或组织机构代码证号
-                </th>
-                <th>
-                    销售顾问
-                </th>
-                <th>
-                    客户性质
-                </th>
-            </tr>
-            </thead>
-            <tbody>
-            <tr class="info">
-                <td>
-                    凯美瑞
-                </td>
-                <td>
-                    2.0舒适版
-                </td>
-                <td>
-                    沙漠雾
-                </td>
-                <td>
-                    1234
-                </td>
-                <td>
-                    1234
-                </td>
-                <td>
-                    2014-1-1
-                </td>
-                <td>
-                    2014-1-1
-                </td>
-                <td>
-                    2014-1-1
-                </td>
-                <td>
-                    999
-                </td>
-                <td>
-                    客户
-                </td>
-                <td>
-                    12345
-                </td>
-                <td>
-                    顾问
-                </td>
-                <td>
-                    性质
-                </td>
-            </tr>
-            </tbody>
-        </table>
+
+    <div class="span8">
+        <div class="{{message.class}}">
+            {{message.text}}
+        </div>
+        <div class="row-fluid">
+            <div>
+                <div class="pull-left">
+                    <div class="btn-group">
+                        <button class="btn">{{typeString}}</button>
+                        <button data-toggle="dropdown" class="btn dropdown-toggle"><span class="caret"></span>
+                        </button>
+                        <ul class="dropdown-menu">
+                            <li>
+                                <a href="#"
+                                   onclick="event.preventDefault ? event.preventDefault() : event.returnValue = false;"
+                                   ng-click="typeString='新车销售台账';refreshList('vehicle')">新车销售台账</a>
+                            </li>
+                            <li>
+                                <a href="#"
+                                   onclick="event.preventDefault ? event.preventDefault() : event.returnValue = false;"
+                                   ng-click="typeString='售后台账';refreshList('postSales')">售后台账</a>
+                            </li>
+                        </ul>
+                    </div>
+                    <select style="margin-top: 10px" ng-model="dealer" ng-if="userService.validateRoleHead()"
+                            ng-options="d.name for d in dealers" ng-change="refreshList()">
+                    </select>
+                </div>
+
+                <div class="pull-right">
+                    <button class="btn btn-info" type="button" ng-click="showSearchForm()"><i class="icon-search"></i>
+                        高级查询
+                    </button>
+                    <a href="#/machineAccount/{{type}}/add" class="btn btn-primary" type="button"
+                       ng-click="showNewForm()"><i class="icon-plus"></i> 添加台账</a>
+                </div>
+            </div>
+        </div>
+
+        <div style="padding-top: 40px"  class="animated fadeIn">
+            <div class="row-fluid" ng-repeat="summary in list">
+                <div class="span12">
+                    <div style="padding-bottom: 3px">
+                    <a href="#/machineAccount/{{summary[0]}}" style="font-size: 15px;text-decoration: none;">
+                        <span ng-if="type == 'vehicle'">合同号：</span>
+                        <span ng-if="type == 'postSales'">工单号：</span>
+                        {{summary[0]}}</a>
+                    </div>
+                    <table class="table table-hover table-bordered" style="font-size: 12px">
+                        <tdead>
+                            <tr ng-if="type == 'vehicle'">
+                                <td>合同号</td>
+                                <td>车型</td>
+                                <td>型号</td>
+                                <td>颜色</td>
+                                <td>车牌号</td>
+                                <td>车架号</td>
+                                <td>主机厂扣款日期</td>
+                                <td>入库日期</td>
+                                <td>销售日期</td>
+                                <td>指导价格</td>
+                                <td>客户姓名</td>
+                                <td>身份证号或组织机构代码证号</td>
+                                <td>销售顾问</td>
+                                <td>客户性质</td>
+                            </tr>
+                            <tr ng-if="type == 'postSales'">
+                                <td>工单号</td>
+                                <td>购车日期</td>
+                                <td>行驶里程</td>
+                                <td>车牌号</td>
+                                <td>客户姓名或单位</td>
+                                <td>颜色</td>
+                                <td>车架号</td>
+                                <td>车型</td>
+                                <td>进厂日期</td>
+                                <td>出厂日期</td>
+                                <td>客户类型</td>
+                                <td>承保公司</td>
+                                <td>保险到期日期</td>
+                                <td>本保险年度出险次数</td>
+                            </tr>
+                        </tdead>
+                        <tbody>
+                        <tr class="success">
+                            <td ng-repeat="value in summary track by $index">{{value}}</td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <div ng-if="list.lengtd == 0" style="text-align: center;font-size: 15px;color: #808080;padding-top: 15%">
+                暂无台账
+            </div>
+        </div>
     </div>
-</div>
-<div class="row-fluid">
-    <div class="span12">
-        <a></a>
-        <h4>
-            合同号： 123456
-        </h4>
-        <table class="table">
-            <thead>
-            <tr>
-                <th>
-                    车型
-                </th>
-                <th>
-                    型号
-                </th>
-                <th>
-                    颜色
-                </th>
-                <th>
-                    车牌号
-                </th>
-                <th>
-                    车架号
-                </th>
-                <th>
-                    主机厂扣款日期
-                </th>
-                <th>
-                    入库日期
-                </th>
-                <th>
-                    销售日期
-                </th>
-                <th>
-                    指导价格
-                </th>
-                <th>
-                    客户姓名
-                </th>
-                <th>
-                    身份证号或组织机构代码证号
-                </th>
-                <th>
-                    销售顾问
-                </th>
-                <th>
-                    客户性质
-                </th>
-            </tr>
-            </thead>
-            <tbody>
-            <tr class="info">
-                <td>
-                    凯美瑞
-                </td>
-                <td>
-                    2.0舒适版
-                </td>
-                <td>
-                    沙漠雾
-                </td>
-                <td>
-                    1234
-                </td>
-                <td>
-                    1234
-                </td>
-                <td>
-                    2014-1-1
-                </td>
-                <td>
-                    2014-1-1
-                </td>
-                <td>
-                    2014-1-1
-                </td>
-                <td>
-                    999
-                </td>
-                <td>
-                    客户
-                </td>
-                <td>
-                    12345
-                </td>
-                <td>
-                    顾问
-                </td>
-                <td>
-                    性质
-                </td>
-            </tr>
-            </tbody>
-        </table>
+
+    <div class="span2">
     </div>
-</div>
 </div>

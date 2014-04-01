@@ -1,183 +1,22 @@
 <div ng-controller="kucunCtrl">
-    <div style="height: 30px">
+    <div >
         <span ng-class="autoSaveClass">{{autoSaveTime}}</span>
     </div>
 
-    <div class="row-fluid">
+    <div d20a list="accountReceivables" category=1
+         autoSaveAccountReceivables="autoSaveAccountReceivables"></div>
 
-        <div class="span6">
-            <div style="margin-top:20px">
-                <div ng-repeat="accountReceivable in accountReceivables | filter: {id:1}| filter:{name: '本品牌新车库存台次'}">
-                    <div>
-                        <label class="hasTooltip" ng-click="hide_1_$index = !hide_1_$index"><b>{{accountReceivable.name}}</b><i ng-show="hide_1_$index" class="icon-double-angle-down"></i><i ng-show="!hide_1_$index" class="icon-double-angle-right"></i></label>
-                        <div style="display: none;" bind-html-unsafe="accountReceivable.tooltip" ></div>
+    <div d20a list="accountReceivables" category=2
+         autoSaveAccountReceivables="autoSaveAccountReceivables"></div>
 
-                        <div class="well" ng-show="!hide_1_$index">
-                            <table style="font-size: 12px">
-                                <tr ng-repeat="accountInRange in accountReceivable.data | filter:{durationDesc: '天'}">
-                                    <td width="35%">
-                                        {{accountInRange.durationDesc}}
-                                    </td>
-                                    <td width="25%">
-                                        <form name="form">
-                                            <div class="text-warning"
-                                                 ng-show="form.amount.$dirty && form.amount.$invalid">
-                                                <small class="text-warning"
-                                                       ng-show="form.amount.$error.pattern">
-                                                    库存必须为正数
-                                                </small>
-                                            </div>
-                                            <input type="text" ng-pattern="/^[0-9]*$/" class="input-mini"
-                                                   style="width: 55%;" placeholder="0"  name="amount"
-                                                   ng-model="accountInRange.amount" required
-                                                   ng-blur="autoSaveAccountReceivables()">
-                                            <i ng-class="accountInRange.sign"></i>
-                                        </form>
-                                    </td>
-                                </tr>
-                            </table>
-                        </div>
-                    </div>
-                </div>
+    <div d20a list="accountReceivables" category=3
+         autoSaveAccountReceivables="autoSaveAccountReceivables"></div>
 
-                <div ng-repeat="accountReceivable in accountReceivables | filter:{id:2} | filter:{name: '非本品牌新车库存台次'}">
-                    <div>
-                        <label class="hasTooltip" ng-click="hide_2_$index = !hide_2_$index"><b>{{accountReceivable.name}}</b><i ng-show="hide_2_$index" class="icon-double-angle-down"></i><i ng-show="!hide_2_$index" class="icon-double-angle-right"></i></label>
-                        <div style="display: none;" bind-html-unsafe="accountReceivable.tooltip" ></div>
+    <div d20a list="accountReceivables" category=10
+         autoSaveAccountReceivables="autoSaveAccountReceivables"></div>
 
-                        <div class="well" ng-show="!hide_2_$index">
-                            <table style="font-size: 12px">
-                                <tr ng-repeat="accountInRange in accountReceivable.data | filter:{durationDesc: '天'}">
-                                    <td width="35%">
-                                        {{accountInRange.durationDesc}}
-                                    </td>
-                                    <td width="25%">
-                                        <form name="form">
-                                            <div class="text-warning"
-                                                 ng-show="form.amount.$dirty && form.amount.$invalid">
-                                                <small class="text-warning"
-                                                       ng-show="form.amount.$error.pattern">
-                                                    库存必须为正数
-                                                </small>
-                                            </div>
-                                            <input type="text" ng-pattern="/^[0-9]*$/" class="input-mini"
-                                                   style="width: 55%;" placeholder="0"    name="amount"
-                                                   ng-model="accountInRange.amount" required
-                                                   ng-blur="autoSaveAccountReceivables()">
-                                            <i ng-class="accountInRange.sign"></i>
-                                        </form>
-                                    </td>
-                                </tr>
-                            </table>
-                        </div>
-                    </div>
-                </div>
+    <div d20a list="accountReceivables" category=11
+         autoSaveAccountReceivables="autoSaveAccountReceivables"></div>
 
-                <div ng-repeat="accountReceivable in accountReceivables | filter:{id:3}">
-                    <div>
-                        <label class="hasTooltip" ng-click="hide_3_$index = !hide_3_$index"><b>{{accountReceivable.name}}</b><i ng-show="hide_3_$index" class="icon-double-angle-down"></i><i ng-show="!hide_3_$index" class="icon-double-angle-right"></i></label>
-                        <div style="display: none;" bind-html-unsafe="accountReceivable.tooltip" ></div>
-
-                        <div class="well" ng-show="!hide_3_$index">
-                            <table style="font-size: 12px">
-                                <tr ng-repeat="accountInRange in accountReceivable.data | filter:{durationDesc: '天'}">
-                                    <td width="35%">
-                                        {{accountInRange.durationDesc}}
-                                    </td>
-                                    <td width="25%">
-                                        <form name="form">
-                                            <div class="text-warning"
-                                                 ng-show="form.amount.$dirty && form.amount.$invalid">
-                                                <small class="text-warning"
-                                                       ng-show="form.amount.$error.pattern">
-                                                    库存必须为正数
-                                                </small>
-                                            </div>
-                                            <input type="text" ng-pattern="/^[0-9]*$/" class="input-mini"
-                                                   style="width: 55%;" placeholder="0"   name="amount"
-                                                   ng-model="accountInRange.amount" required
-                                                   ng-blur="autoSaveAccountReceivables()">
-                                            <i ng-class="accountInRange.sign"></i>
-                                        </form>
-                                    </td>
-                                </tr>
-                            </table>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <div class="span6">
-            <div style="margin-top:20px">
-                <div ng-repeat="accountReceivable in accountReceivables | filter:{id:10}">
-                    <div>
-                        <label class="hasTooltip" ng-click="hide_10_$index = !hide_10_$index"><b>{{accountReceivable.name}}</b><i ng-show="hide_10_$index" class="icon-double-angle-down"></i><i ng-show="!hide_10_$index" class="icon-double-angle-right"></i></label>
-                        <div style="display: none;" bind-html-unsafe="accountReceivable.tooltip" ></div>
-
-                        <div class="well" ng-show="!hide_10_$index">
-                            <table style="font-size: 12px">
-                                <tr ng-repeat="accountInRange in accountReceivable.data | filter:{durationDesc: '天'}">
-                                    <td width="35%">
-                                        {{accountInRange.durationDesc}}
-                                    </td>
-                                    <td width="25%">
-                                        <form name="form">
-                                            <div class="text-warning"
-                                                 ng-show="form.amount.$dirty && form.amount.$invalid">
-                                                <small class="text-warning"
-                                                       ng-show="form.amount.$error.pattern">
-                                                    库存必须为正数
-                                                </small>
-                                            </div>
-                                            <input type="text" ng-pattern="/^[0-9]*$/" class="input-mini"
-                                                   style="width: 55%;" placeholder="0"      name="amount"
-                                                   ng-model="accountInRange.amount" required
-                                                   ng-blur="autoSaveAccountReceivables()">
-                                            <i ng-class="accountInRange.sign"></i>
-                                        </form>
-                                    </td>
-                                </tr>
-                            </table>
-                        </div>
-                    </div>
-                </div>
-
-                <div ng-repeat="accountReceivable in accountReceivables | filter:{id:11}">
-                    <div>
-                        <label class="hasTooltip" ng-click="hide_11_$index = !hide_11_$index"><b>{{accountReceivable.name}}</b><i ng-show="hide_11_$index" class="icon-double-angle-down"></i><i ng-show="!hide_11_$index" class="icon-double-angle-right"></i></label>
-                        <div style="display: none;" bind-html-unsafe="accountReceivable.tooltip" ></div>
-
-                        <div class="well" ng-show="!hide_11_$index">
-                            <table style="font-size: 12px">
-                                <tr ng-repeat="accountInRange in accountReceivable.data | filter:{durationDesc: '天'}">
-                                    <td width="35%">
-                                        {{accountInRange.durationDesc}}
-                                    </td>
-                                    <td width="25%">
-                                        <form name="form">
-                                            <div class="text-warning"
-                                                 ng-show="form.amount.$dirty && form.amount.$invalid">
-                                                <small class="text-warning"
-                                                       ng-show="form.amount.$error.pattern">
-                                                    库存必须为正数
-                                                </small>
-                                            </div>
-                                            <input type="text" ng-pattern="/^[0-9]*$/" class="input-mini"
-                                                   style="width: 55%;" placeholder="0"   name="amount"
-                                                   ng-model="accountInRange.amount" required
-                                                   ng-blur="autoSaveAccountReceivables()">
-                                            <i ng-class="accountInRange.sign"></i>
-                                        </form>
-                                    </td>
-                                </tr>
-                            </table>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-    </div>
 </div>
 </div>

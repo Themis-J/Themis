@@ -1,30 +1,18 @@
 angular.module('tax.controller', [])
-    .controller('taxCtrl', ['$scope', 'Dealer', 'DealerService', function ($scope, Dealer, DealerService) {
+    .controller('taxCtrl', ['$scope', 'Dealer', 'DealerService', '$timeout', function ($scope, Dealer, DealerService, $timeout) {
+        $scope.$on('$destroy', function () {
+            $("#page_nav").empty();
+        });
+
         $scope.tax = null;
         $scope.active = false;
         var tax = Dealer.getTaxs({dealerID: DealerService.getDealerId(), validDate: DealerService.getValidDate(), departmentID: DealerService.getSelectedDept()}, function () {
             $scope.tax = tax.tax;
             $scope.tooltip = tax.tooltip;
 
-            $scope.$apply();
-
-            $('.hasTooltip').each(function () {
-                $(this).qtip({
-                    content: {
-                        text: $(this).next('div')
-                    },
-                    hide: {
-                        event: 'unfocus'
-                    },
-                    position: {
-                        at: 'bottom left',
-                        target: $(this)
-                    },
-                    style: {
-                        def: false,
-                        classes: 'tip qtip-rounded qtip-bootstrap'
-                    }
-                });
+            $timeout(function () {
+                $scope.setupTooltip();
+                $scope.setupNav();
             });
         });
 
@@ -53,20 +41,5 @@ angular.module('tax.controller', [])
             }
 
             Dealer.saveTax({}, postData, $.proxy(success, this), $.proxy(failed, this));
-        }
-
-        $scope.markEdit = function () {
-            var postData = {};
-            postData.dealerID = DealerService.getDealerId();
-            postData.itemID = DealerService.getSelectedMenu();
-            postData.validDate = DealerService.getValidDate();
-            postData.updateBy = DealerService.getUserName();
-
-            Dealer.saveStatus({}, postData, function () {
-                var navLink = $("#" + DealerService.getSelectedMenu());
-                navLink.children().remove();
-                $scope.$parent.$parent.editMenus.push(parseInt(DealerService.getSelectedMenu()));
-                navLink.append($('<i class="icon-edit" style="color:green;display:inline"></i>'));
-            });
         }
     }]);

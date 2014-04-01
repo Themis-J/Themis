@@ -3,7 +3,7 @@
 angular.module('branch.controllers', []).
     controller('editCtrl', ['$scope', '$route', '$location', 'DealerService', 'Dealer', function ($scope, $route, $location, DealerService, Dealer) {
         $scope.items = ['lirun', 'jingying', 'sunyi', 'zhangkuan', 'kucun', 'renyuan', 'shui', 'fenhong', 'welcome'];
-        $scope.itemNames = ['收入与毛利润', '经营费用', '非经营性损益', '应收账款', '库存', '人员管理', '所得税',"员工分红", "欢迎使用"];
+        $scope.itemNames = ['收入与毛利润', '经营费用', '非经营性损益', '应收账款', '库存', '人员管理', '所得税', "员工分红", "欢迎使用"];
         $scope.editMenus = [];
 
         var datepicker = $("#datepicker").datepicker({
@@ -90,17 +90,21 @@ angular.module('branch.controllers', []).
                 });
 
                 if ($('#collapseOne').find('i.icon-edit').size() == 7) {
+                    $('#one').children('i').remove();
                     $('#one').append($('<i class="icon-edit" style="color:green;display:inline"></i>'));
                 }
 
                 if ($('#collapseTwo').find('i.icon-edit').size() == 7) {
+                    $('#two').children('i').remove();
                     $('#two').append($('<i class="icon-edit" style="color:green;display:inline"></i>'));
                 }
 
                 if ($('#collapsFive').find('i.icon-edit').size() == 3) {
+                    $('#five').children('i').remove();
                     $('#five').append($('<i class="icon-edit" style="color:green;display:inline"></i>'));
                 }
                 if ($('#collapsSix').find('i.icon-edit').size() == 2) {
+                    $('#six').children('i').remove();
                     $('#six').append($('<i class="icon-edit" style="color:green;display:inline"></i>'));
                 }
 
@@ -111,15 +115,14 @@ angular.module('branch.controllers', []).
         $scope.$on('$includeContentLoaded', function () {
         });
     }])
-    .controller('branchHeaderCtrl', [ '$scope', '$route', '$location', 'DealerService','UserService','Auth', function($scope, $route,$location,DealerService,UserService,Auth)
-    {
-         $scope.dealerFullName = DealerService.getDealerFullName();
+    .controller('branchHeaderCtrl', [ '$scope', '$route', '$location', 'DealerService', 'UserService', 'Auth', function ($scope, $route, $location, DealerService, UserService, Auth) {
+        $scope.dealerFullName = DealerService.getDealerFullName();
 
-         $scope.signout = function() {
-             Auth.logout({}, function () {
-                 UserService.setupUser(null);
-                 $location.path('/guest/login');
-             })
-         }
+        $scope.signout = function () {
+            Auth.logout({}, function () {
+                UserService.setupUser(null);
+                $location.path('/guest/login');
+            })
+        }
     }
     ]);

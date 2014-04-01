@@ -7,21 +7,24 @@
         <form name="the_form" class="form-horizontal" style="padding-top: 20px">
             <div class="control-group">
                 <label class="control-label" for="inputPassword2">开始月份</label>
+
                 <div class="controls">
-                    <select ng-options="o.name for o in yearOptions" ng-model="selectedFromYearOption" ></select>
-		            <select ng-options="o.name for o in monthOptions" ng-model="selectedFromMonthOption" ></select>
+                    <select ng-options="o.name for o in yearOptions" ng-model="selectedFromYearOption"></select>
+                    <select ng-options="o.name for o in monthOptions" ng-model="selectedFromMonthOption"></select>
                 </div>
             </div>
             <div class="control-group">
                 <label class="control-label" for="inputPassword2">结束月份</label>
+
                 <div class="controls">
-                    <select ng-options="o.name for o in yearOptions" ng-model="selectedToYearOption" ></select>
-		            <select ng-options="o.name for o in monthOptions" ng-model="selectedToMonthOption" ></select>
+                    <select ng-options="o.name for o in yearOptions" ng-model="selectedToYearOption"></select>
+                    <select ng-options="o.name for o in monthOptions" ng-model="selectedToMonthOption"></select>
                 </div>
             </div>
             <div class="control-group">
                 <div class="controls" style="padding-left: 165px">
-                    <button type="submit" ng-disabled="the_form.$invalid"  class="btn" ng-click="importData()">提交</button>
+                    <button type="submit" ng-disabled="the_form.$invalid" class="btn" ng-click="importData()">提交
+                    </button>
                 </div>
             </div>
         </form>

@@ -39,6 +39,7 @@
             </div>
             <div class="control-group">
                 <label class="control-label" for="username">用户名</label>
+
                 <div class="controls">
                     <div class="text-warning"
                          ng-show="the_form.role.$dirty && the_form.role.$invalid">
@@ -47,17 +48,18 @@
                             用户名不能为空
                         </small>
                     </div>
-                    <input  type="text" name="role" id="username" ng-model="username" required placeholder="请输入激活用户名...">
+                    <input type="text" name="role" id="username" ng-model="username" required placeholder="请输入激活用户名...">
                 </div>
             </div>
             <div class="control-group">
                 <div class="controls" style="padding-left: 165px" ng-if="!targetUser">
-                    <button type="submit" ng-disabled="the_form.$invalid"  class="btn" ng-click="reset()">取消</button>
-                    <button type="submit" ng-disabled="the_form.$invalid"  class="btn" ng-click="checkUser()">提交</button>
+                    <button type="submit" ng-disabled="the_form.$invalid" class="btn" ng-click="reset()">取消</button>
+                    <button type="submit" ng-disabled="the_form.$invalid" class="btn" ng-click="checkUser()">提交</button>
                 </div>
                 <div class="controls" style="padding-left: 165px" ng-if="targetUser">
-                    <button type="submit" ng-disabled="the_form.$invalid"  class="btn" ng-click="reset()">取消</button>
-                    <button type="submit" ng-disabled="the_form.$invalid"  class="btn" ng-click="enableUser()">确定激活</button>
+                    <button type="submit" ng-disabled="the_form.$invalid" class="btn" ng-click="reset()">取消</button>
+                    <button type="submit" ng-disabled="the_form.$invalid" class="btn" ng-click="enableUser()">确定激活
+                    </button>
                 </div>
             </div>
         </form>

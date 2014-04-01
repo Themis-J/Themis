@@ -1,0 +1,89 @@
+<div>
+    <div>
+        <h4 ng-click="data.hide = !data.hide" style="cursor: pointer"><b>{{title}}</b><i ng-show="data.hide"
+                                                                                         class="icon-double-angle-down"></i><i
+                ng-show="!data.hide" class="icon-double-angle-right"></i></h4>
+
+        <div class="well row-fluid" ng-show="!data.hide" style="width: 90%">
+            <div class="span6">
+                <form name="form" ng-repeat="data in list | filter: {categoryID: category} ">
+                    <div ng-if="$even">
+                        <div class="text-warning" style="padding-left: 60%"
+                             ng-show="form.amount.$dirty && form.amount.$invalid">
+                            <small class="text-warning"
+                                   ng-show="form.amount.$error.pattern">
+                                费用必须为正数
+                            </small>
+                        </div>
+
+                        <table class="D20_table" style="font-size: 12px">
+                            <tr>
+                                <td>
+                                    <label class="hasTooltip">{{data.name}}</label>
+
+                                    <div style="display: none;" bind-html-unsafe="data.tooltip"></div>
+                                </td>
+                                <td>
+                                    <input type="text" ng-pattern="/^\d+(\.\d+)?$/" class="input-mini" name="amount"
+                                           ng-change="amountChange(summary, list, data)"
+                                           style="width: 55%;" placeholder="0"
+                                           ng-model="data.amount" required
+                                           ng-blur="autoSaveGeneralRevenue(data)">
+                                    <i ng-class="data.sign"></i>
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+                </form>
+
+                <form>
+                    <table class="D20_table" style="font-size: 12px;width: 90%">
+                        <tr>
+                            <td>
+                                合计
+                            </td>
+                            <td>
+                            </td>
+                            <td style="text-align: center">
+                                {{summary[category]}}
+                            </td>
+                            <td>
+                            </td>
+                        </tr>
+                    </table>
+                </form>
+            </div>
+            <div class="span6">
+                <form name="form" ng-repeat="data in list | filter: {categoryID: category} ">
+                    <div ng-if="$odd">
+                        <div class="text-warning" style="padding-left: 60%"
+                             ng-show="form.amount.$dirty && form.amount.$invalid">
+                            <small class="text-warning"
+                                   ng-show="form.amount.$error.pattern">
+                                费用必须为正数
+                            </small>
+                        </div>
+
+                        <table class="D20_table" style="font-size: 12px">
+                            <tr>
+                                <td>
+                                    <label class="hasTooltip">{{data.name}}</label>
+
+                                    <div style="display: none;" bind-html-unsafe="data.tooltip"></div>
+                                </td>
+                                <td>
+                                    <input type="text" ng-pattern="/^\d+(\.\d+)?$/" class="input-mini" name="amount"
+                                           ng-change="amountChange(summary, list, data)"
+                                           style="width: 55%;" placeholder="0"
+                                           ng-model="data.amount" required
+                                           ng-blur="autoSaveGeneralRevenue(data)">
+                                    <i ng-class="data.sign"></i>
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,14 +1,21 @@
-<div class="navbar navbar-inverse navbar-fixed-top" style="font-size: 13px"  ng-controller="headHeaderCtrl">
+<div class="navbar navbar-inverse navbar-fixed-top" style="font-size: 13px" ng-controller="headHeaderCtrl">
     <div class="navbar-inner">
         <div class="container">
             <div class="fluid-container navbar-sub">
-                <a class="brand" href="#" style="font-size: 23px;color:white">广汽集团</a>
+                <a class="brand" href="#/head" style="font-size: 23px;color:white">广汽集团</a>
+            </div>
+
+            <div class="pull-left" style="font-size: 18px;padding-top: 10px;padding-left: 25px">
+                <a href="#/head">报表</a>
+                <a href="#/machineAccount" style="padding-left: 15px">台账</a>
             </div>
 
             <div class="pull-right" style="font-size: 18px;padding-top: 10px">
                 <span style="color:gray"><b>报表系统</b></span>
-                <a  href="#/head/tool"  style="text-decoration: none;padding-right: 20px"><i class="icon-cog" style="color: white"></i></a>
-                <a href="#" title="退出登录" ng-click="signout()" onclick="return false;" style="text-decoration: none"><i class="icon-signout" style="color: white"></i></a>
+                <a href="#/head/tool" style="text-decoration: none;padding-right: 20px"><i class="icon-cog"
+                                                                                           style="color: white"></i></a>
+                <a href="#" title="退出登录" ng-click="signout()" onclick="return false;" style="text-decoration: none"><i
+                        class="icon-signout" style="color: white"></i></a>
             </div>
         </div>
     </div>

@@ -1,5 +1,5 @@
 <div ng-controller="taxCtrl">
-    <div style="height: 30px">
+    <div >
         <span ng-class="autoSaveClass">{{autoSaveTime}}</span>
     </div>
 
@@ -9,12 +9,14 @@
             <div style="margin-top:20px">
                 <div>
                     <div>
+                        <h4>当月所得税</h4>
                         <div class="well">
                             <table style="font-size: 12px">
                                 <tr>
                                     <td width="35%">
                                         <label class="hasTooltip">当月所得税</label>
-                                        <div style="display: none;" bind-html-unsafe="tooltip" ></div>
+
+                                        <div style="display: none;" bind-html-unsafe="tooltip"></div>
                                     </td>
                                     <td width="25%">
                                         <form name="form">
@@ -26,7 +28,7 @@
                                                 </small>
                                             </div>
                                             <input type="text" ng-pattern="/^\d+(\.\d+)?$/" class="input-mini"
-                                                   style="width: 55%;" placeholder="0"    name="tax"
+                                                   style="width: 55%;" placeholder="0" name="tax"
                                                    ng-model="tax" required ng-blur="autoSaveTax()">
                                             <i ng-class="sign"></i>
                                         </form>

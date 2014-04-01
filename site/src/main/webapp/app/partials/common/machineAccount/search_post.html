@@ -1,0 +1,125 @@
+<div class="modal hide fade" id="search_post_modal" style="width: 80%;left: 10%;margin-left: 0px">
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+        <h3>售后台账搜索</h3>
+    </div>
+    <div class="modal-body">
+        <div class="row-fluid">
+        <table class="table machine_account_table">
+            <tr>
+                <td>工单号</td>
+                <td>
+                    <input  type="text"
+                           ng-pattern="/^(-?\d+)(\.\d+)?$/" ng-pattern="/^(-?\d+)(\.\d+)?$/"
+                           ng-model="postQuery['workOrderNo']"/>
+                </td>
+                <td>购车日期</td>
+
+                <td>
+                    <input placeholder="YYYY-MM-DD" ng-pattern="/^(\d{4})-(\d{2})-(\d{2})$/"
+                            type="text" ng-model="postQuery['salesDate']"/>
+                </td>
+            </tr>
+            <tr>
+                <td>行驶里程</td>
+
+                <td>
+                    <input  type="text" ng-pattern="/^(-?\d+)(\.\d+)?$/"
+                           ng-model="postQuery['mileage']"/>
+                </td>
+                <td>车辆号</td>
+
+                <td>
+                    <input  type="text" ng-pattern="/^(-?\d+)(\.\d+)?$/"
+                           ng-model="postQuery['lpNumber']"/>
+                </td>
+            </tr>
+            <tr>
+                <td>客户姓名或单位</td>
+
+                <td>
+                    <input  type="text" ng-pattern="/^(-?\d+)(\.\d+)?$/"
+                           ng-model="postQuery['customerName']"/>
+                </td>
+                <td>颜色</td>
+
+                <td>
+                    <input  type="text" ng-pattern="/^(-?\d+)(\.\d+)?$/"
+                           ng-model="postQuery['color']"/>
+                </td>
+            </tr>
+            <tr>
+                <td>车架号</td>
+
+                <td>
+                    <input  type="text" ng-pattern="/^(-?\d+)(\.\d+)?$/"
+                           ng-model="postQuery['frameNo']"/>
+                </td>
+                <td>选择车辆</td>
+                <td>
+                    <select  ng-model="postQuery['model']"
+                            ng-options="model as model for model in metapostQuery['model']">
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <td>非选择车辆</td>
+
+                <td>
+                    <input  type="text" ng-pattern="/^(-?\d+)(\.\d+)?$/"
+                           ng-model="postQuery['model']"/>
+                </td>
+                <td>进厂日期</td>
+
+                <td>
+                    <input placeholder="YYYY-MM-DD" ng-disabng-pattern="/^(\d{4})-(\d{2})-(\d{2})$/"
+                           led="userService.validateRoleHead()" type="text" ng-model="postQuery['enterFactoryDate']"/>
+                </td>
+            </tr>
+            <tr>
+                <td>出厂日期</td>
+
+                <td>
+                    <input placeholder="YYYY-MM-DD" ng-pattern="/^(\d{4})-(\d{2})-(\d{2})$/"
+                            type="text" ng-model="postQuery['exitFactoryDate']"/>
+                </td>
+                <td>客户类型</td>
+
+                <td>
+                    <select  ng-model="postQuery['customerType']"
+                            ng-options="customerType as customerType for customerType in metapostQuery['customerType']">
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <td>承保公司</td>
+
+                <td>
+                    <select  ng-model="postQuery['insuranceAgengcy']"
+                            ng-options="insuranceAgengcy as insuranceAgengcy for insuranceAgengcy in metapostQuery['insuranceAgengcy']">
+                    </select>
+                </td>
+                <td>保险到期日期</td>
+
+                <td>
+                    <input placeholder="YYYY-MM-DD" ng-pattern="/^(\d{4})-(\d{2})-(\d{2})$/"
+                            type="text"
+                           ng-model="postQuery['insuranceDueDate']"/>
+                </td>
+            </tr>
+            <tr>
+                <td>本保险年度出险次数</td>
+
+                <td>
+                    <input  type="text" ng-pattern="/^(-?\d+)(\.\d+)?$/"
+                           ng-model="postQuery['insuranceClaimNumber']"/>
+                </td>
+            </tr>
+        </table>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button class="btn" data-dismiss="modal">关闭</button>
+        <button class="btn btn-primary" ng-click="queryPosts()">搜索</button>
+    </div>
+</div>

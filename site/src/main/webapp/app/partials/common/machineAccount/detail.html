@@ -1,220 +1,24 @@
-<div class="container-fluid">
-<div class="row-fluid">
-    <div class="span12">
-        <div class="row-fluid">
-            <div class="span2">
-            </div>
-            <div class="span8">
-                <div class="row-fluid">
-                    <div class="span10">
-                        <div class="row-fluid">
-                            <div class="span3">
-                                <div class="btn-group">
-                                    <button class="btn">新车销售台账</button> <button data-toggle="dropdown" class="btn dropdown-toggle"><span class="caret"></span></button>
-                                    <ul class="dropdown-menu">
-                                        <li>
-                                            <a href="#">新车销售台账</a>
-                                        </li>
-                                        <li>
-                                            <a href="#">售后台账</a>
-                                        </li>
-                                    </ul>
-                                </div>
-                            </div>
-                            <div class="span3">
-                                <select> <option>分销商</option></select>
-                            </div>
-                            <div class="span4">
-                                <form class="form-search">
-                                    <input class="input-medium search-query" type="text" />
-                                </form>
-                            </div>
-                            <div class="span2">
-                                <button class="btn btn-info" type="button">查询</button>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="span2">
-                        <button class="btn btn-primary" type="button">＋添加台账</button>
-                    </div>
-                </div>
-            </div>
-            <div class="span2">
-            </div>
-        </div>
-    </div>
-</div>
-<div class="row-fluid">
+<div class="row-fluid" style="padding-top: 10px">
     <div class="span2">
     </div>
+
     <div class="span8">
+        <div class="{{message.class}}">
+            {{message.text}}
+        </div>
+        <div style="padding-bottom: 15px">
+            <a href="#/machineAccount"><i class="icon-chevron-sign-left"></i> 返回台账列表</a>
+        </div>
         <div class="row-fluid">
-            <div class="span2">
-                <ul class="nav nav-tabs nav-stacked">
-                    <li class="active">
-                        <a href="#"><span class="s1">车辆资料</span></a>
-                    </li>
-                    <li>
-                        <a href="#"><span class="s1">付款资料</span></a>
-                    </li>
-                    <li>
-                        <a href="#"><span class="s1">新车裸车利润</span></a>
-                    </li>
-                    <li>
-                        <a href="#"><span class="s1">二手车利润</span></a>
-                    </li>
-                    <li>
-                        <a href="#"><span class="s1">汽车精品（含改装）</span></a>
-                    </li>
-                    <li>
-                        <a href="#"><span class="s1">新车保险</span></a>
-                    </li>
-                    <li>
-                        <a href="#"><span class="s1">汽车上牌</span></a>
-                    </li>
-                    <li>
-                        <a href="#"><span class="s1">分期付款</span></a>
-                    </li>
-                    <li>
-                        <a href="#"><span class="s1">延保</span></a>
-                    </li>
-                    <li>
-                        <a href="#"><span class="s1">融资租赁</span></a>
-                    </li>
-                    <li>
-                        <a href="#"><span class="s1">出库费</span></a>
-                    </li>
-                    <li>
-                        <a href="#"><span class="s1">检查费</span></a>
-                    </li>
-                    <li>
-                        <a href="#"><span class="s1">收费会员卡</span></a>
-                    </li>
-                    <li>
-                        <a href="#"><span class="s1">其他赠送礼包方面</span></a>
-                    </li>
-                    <li>
-                        <a href="#"><span class="s1">库存及融资信贷成本</span></a>
-                    </li>
-                    <li>
-                        <a href="#"><span class="s1">销售返利</span></a>
-                    </li>
-                    <li>
-                        <a href="#"><span class="s1">销售顾问提成</span></a>
-                    </li>
-                    <li>
-                        <a href="#"><span class="s1">最终利润构成</span></a>
-                    </li>
-                </ul>
-                <p class="nav-stacked">
-                </p>
-            </div>
             <div class="span10">
-                <div class="row-fluid">
-                    <div class="span6">
-                        <form class="form-horizontal">
-                            <div class="control-group">
-                                <label class="control-label" >合同号</label>
-                                <div class="controls">
-                                    <input  type="text" />
-                                </div>
-                            </div>
-                            <div class="control-group">
-                                <label class="control-label">车型</label>
-                                <div class="controls">
-                                    <select> <option>车型</option></select>
-                                </div>
-                            </div>
-                            <div class="control-group">
-                                <label class="control-label">型号</label>
-                                <div class="controls">
-                                    <select> <option>型号</option></select>
-                                </div>
-                            </div>
-                            <div class="control-group">
-                                <label class="control-label">颜色</label>
-                                <div class="controls">
-                                    <select> <option>颜色</option></select>
-                                </div>
-                            </div>
-                            <div class="control-group">
-                                <label class="control-label">车牌号</label>
-                                <div class="controls">
-                                    <input  type="text" />
-                                </div>
-                            </div>
-                            <div class="control-group">
-                                <label class="control-label">车架号</label>
-                                <div class="controls">
-                                    <input  type="password" />
-                                </div>
-                            </div>
-                            <div class="control-group">
-                                <label class="control-label">主机厂扣款日期</label>
-                                <div class="controls">
-                                    <input  type="password" />
-                                </div>
-                            </div>
-                        </form>
-                    </div>
-                    <div class="span6">
-                        <form class="form-horizontal">
-                            <div class="control-group">
-                                <label class="control-label">入库日期</label>
-                                <div class="controls">
-                                    <input  type="text" />
-                                </div>
-                            </div>
-                            <div class="control-group">
-                                <label class="control-label">销售日期</label>
-                                <div class="controls">
-                                    <input  type="password" />
-                                </div>
-                            </div>
-                            <div class="control-group">
-                                <label class="control-label">指导价格</label>
-                                <div class="controls">
-                                    <input  type="password" />
-                                </div>
-                            </div>
-                            <div class="control-group">
-                                <label class="control-label">销售顾问</label>
-                                <div class="controls">
-                                    <input  type="password" />
-                                </div>
-                            </div>
-                            <div class="control-group">
-                                <label class="control-label">客户性质</label>
-                                <div class="controls">
-                                    <select> <option>客户</option></select>
-                                </div>
-                            </div>
-                            <div class="control-group">
-                                <label class="control-label" >客户姓名</label>
-                                <div class="controls">
-                                    <input  type="text" />
-                                </div>
-                            </div>
-                            <div class="control-group">
-                                <label class="control-label">身份证号或组织机构代码证号</label>
-                                <div class="controls">
-                                    <input  type="password" />
-                                </div>
-                            </div>
-                        </form>
-                    </div>
-                </div>
-                <div class="row-fluid">
-                    <div class="span6">
-                    </div>
-                    <div class="span6">
-                        <button class="btn btn-danger" type="button">删除本条台账</button> <button class="btn btn-success" type="button">保存本条台账</button>
-                    </div>
-                </div>
+                <div ng-include src="contentPath"  class="animated fadeIn"></div>
+            </div>
+            <div class="span2">
+                <div id="page_nav"></div>
             </div>
         </div>
     </div>
+
     <div class="span2">
     </div>
-</div>
 </div>

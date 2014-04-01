@@ -1,0 +1,98 @@
+<div>
+    <div style="margin-top:20px">
+        <h4 ng-click="data.hide = !data.hide" style="cursor: pointer"><b>{{title}}</b><i ng-show="data.hide"
+                                                                                         class="icon-double-angle-down"></i><i
+                ng-show="!data.hide" class="icon-double-angle-right"></i></h4>
+
+        <div class="well" ng-show="!data.hide" style="width: 90%">
+            <div>
+                <table style="width: 90%" class="D20_table">
+                    <tr>
+                        <th>业务</th>
+                        <th>数量</th>
+                        <th>收入</th>
+                        <th>毛利润</th>
+                    </tr>
+                </table>
+                <form name="form" ng-repeat="data in list | filter: {categoryID: category}">
+                    <div>
+                        <div style="padding-left: 35%">
+                            <div class="text-warning"
+                                 ng-show="form.$dirty  && form.$invalid">
+                                <small class="text-warning"
+                                       ng-show="form.$error.required">
+                                    数量，收入，毛利必须同时输入
+                                </small>
+                            </div>
+                            <div class="text-warning"
+                                 ng-show="form.count.$dirty && form.count.$invalid">
+                                <small class="text-warning"
+                                       ng-show="form.count.$error.pattern">
+                                    数量必须为正整数
+                                </small>
+                            </div>
+                            <div class="text-warning"
+                                 ng-show="form.amount.$dirty && form.amount.$invalid">
+                                <small class="text-warning"
+                                       ng-show="form.amount.$error.pattern">
+                                    收入必须为正数
+                                </small>
+                            </div>
+                            <div class="text-warning"
+                                 ng-show="form.margin.$dirty && form.margin.$invalid">
+                                <small class="text-warning"
+                                       ng-show="form.margin.$error.pattern">
+                                    毛利润必须为数字
+                                </small>
+                            </div>
+                        </div>
+                        <table class="D20_table">
+                            <tr>
+                                <td>
+                                    <label>{{data.name}}</label>
+                                </td>
+                                <td>
+                                    <input type="text" ng-pattern="/^[0-9]*$/" class="input_1"
+                                           placeholder="0" name="count"
+                                           ng-model="data.count" required
+                                           ng-blur="autoSaveVehivleRevenue(data)">
+                                </td>
+                                <td>
+                                    <input type="text" ng-pattern="/^\d+(\.\d+)?$/" class="input_2" name="amount"
+                                           placeholder="0"
+                                           ng-model="data.amount" required
+                                           ng-change="amountChange(summary, list, data)"
+                                           ng-blur="autoSaveVehivleRevenue(data)">
+                                </td>
+                                <td>
+                                    <input type="text" ng-pattern="/^(-?\d+)(\.\d+)?$/" class="input_3"
+                                           placeholder="0" name="margin"
+                                           ng-model="data.margin" required
+                                           ng-blur="autoSaveVehivleRevenue(data)">
+                                    <i ng-class="data.sign"></i>
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+                </form>
+
+                <form>
+                    <table class="D20_table" style="font-size: 12px;width: 90%">
+                        <tr>
+                            <td>
+                                合计
+                            </td>
+                            <td>
+                            </td>
+                            <td style="text-align: center">
+                                {{summary[category]}}
+                            </td>
+                            <td>
+                            </td>
+                        </tr>
+                    </table>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
