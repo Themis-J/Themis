@@ -5,8 +5,8 @@ DROP TABLE IF EXISTS DealerPostSalesLedger CASCADE;
 
 CREATE TABLE DealerLedgerMetadataCategory
 (
-   id integer,
-   name varchar(100),
+   id integer, 
+   name varchar(100), 
    timestamp timestamp without time zone, 
    CONSTRAINT DLMC_PK PRIMARY KEY (id)
 ) 
@@ -19,7 +19,6 @@ CREATE TABLE DealerLedgerMetadata
 (
    id integer NOT NULL,
    name varchar(100) NOT NULL,
-   displayName varchar(100) NOT NULL,
    type varchar(25) NOT NULL,
    options varchar,
    dealerID integer NOT NULL,
