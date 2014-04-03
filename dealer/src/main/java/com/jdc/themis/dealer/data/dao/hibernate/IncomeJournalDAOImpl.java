@@ -802,7 +802,8 @@ public class IncomeJournalDAOImpl implements IncomeJournalDAO {
     public Collection<DealerVehicleSalesLedger> queryDealerVehicleSalesLedger(Integer contractNo, String model,
             String type, String color, String lpNumber, String frameNo, String manufacturerDebitDate,
             String warehousingDate, String salesDate, Double guidingPrice, String customerName,
-            String identificationNo, String salesConsultant, String customerType) {
+            String identificationNo, String salesConsultant, String customerType, Integer dealerID, Integer marker,
+            Integer limit) {
         final Session session = sessionFactory.getCurrentSession();
         Instant currentTimestamp = Utils.currentTimestamp();
         final Criteria criteria = session.createCriteria(DealerVehicleSalesLedger.class);
@@ -848,8 +849,17 @@ public class IncomeJournalDAOImpl implements IncomeJournalDAO {
         if (customerType != null) {
             criteria.add(Restrictions.eq("customerType", customerType));
         }
+        if (dealerID != null) {
+            criteria.add(Restrictions.eq("dealerID", dealerID));
+        }
         criteria.add(Restrictions.lt("timestamp", currentTimestamp));
         criteria.add(Restrictions.ge("timeEnd", currentTimestamp));
+        if (marker != null) {
+            criteria.setFirstResult(marker);
+        }
+        if (limit != null) {
+            criteria.setMaxResults(limit);
+        }
         return criteria.list();
     }
 
@@ -897,7 +907,7 @@ public class IncomeJournalDAOImpl implements IncomeJournalDAO {
     public Collection<DealerPostSalesLedger> queryDealerPostSalesLedger(Integer workOrderNo, String salesDate,
             Double mileage, String lpNumber, String customerName, String color, String frameNo, String model,
             String enterFactoryDate, String exitFactoryDate, String customerType, String insuranceAgengcy,
-            String insuranceDueDate, Integer insuranceClaimNumber) {
+            String insuranceDueDate, Integer insuranceClaimNumber, Integer dealerID, Integer marker, Integer limit) {
         final Session session = sessionFactory.getCurrentSession();
         Instant currentTimestamp = Utils.currentTimestamp();
         final Criteria criteria = session.createCriteria(DealerPostSalesLedger.class);
@@ -943,8 +953,17 @@ public class IncomeJournalDAOImpl implements IncomeJournalDAO {
         if (insuranceClaimNumber != null) {
             criteria.add(Restrictions.eq("insuranceClaimNumber", insuranceClaimNumber));
         }
+        if (dealerID != null) {
+            criteria.add(Restrictions.eq("dealerID", dealerID));
+        }
         criteria.add(Restrictions.lt("timestamp", currentTimestamp));
         criteria.add(Restrictions.ge("timeEnd", currentTimestamp));
+        if (marker != null) {
+            criteria.setFirstResult(marker);
+        }
+        if (limit != null) {
+            criteria.setMaxResults(limit);
+        }
         return criteria.list();
     }
 
