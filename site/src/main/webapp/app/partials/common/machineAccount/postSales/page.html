@@ -560,7 +560,8 @@
                 </td>
                 <td>毛利总工时</td>
                 <td>
-                    {{summary[BV6'] = parseNumber(data['maintenanceManHourMarginPaidPart'])
+                    {{
+                    summary['BV6'] = parseNumber(data['maintenanceManHourMarginPaidPart'])
                     + parseNumber(summary['BD6'])
                     + parseNumber(summary['BJ6'])
                     + parseNumber(summary['BO6'])
@@ -640,7 +641,8 @@
             <tr>
                 <td>毛利</td>
                 <td>
-                    {{summary['CF6'] = data['accessoryPargsRevenu']*data['accessoryPartsDiscount'] - data['accessoryPartsCost']}}
+                    {{summary['CF6'] = parseNumber(data['accessoryPargsRevenue'])
+                    *parseNumber(data['accessoryPartsDiscount']) - parseNumber(data['accessoryPartsCost'])}}
                 </td>
             </tr>
         </table>
@@ -674,7 +676,8 @@
             <tr>
                 <td>毛利</td>
                 <td>
-                    {{summary['CK6'] = data['maintenanceProductRevenue']*data['maintenanceProductDiscount'] - data['maintenanceProductCost']}}
+                    {{summary['CK6'] = parseNumber(data['maintenanceProductRevenue'])
+                    *parseNumber(data['maintenanceProductDiscount']) - parseNumber(data['maintenanceProductCost'])}}
                 </td>
             </tr>
         </table>
@@ -683,13 +686,13 @@
             <tr>
                 <td>折后配件总收入</td>
                 <td>
-                    {{summary['CL6'] = data['maintenancePartsRevenue']*data['maintenancePartsDiscount']
-                    + data['accessoryPargsRevenu']*data['accessoryPartsDiscount']
-                    + data['maintenanceProductRevenue']*data['maintenanceProductDiscount']}}
+                    {{summary['CL6'] = parseNumber(data['maintenancePartsRevenue'])*parseNumber(data['maintenancePartsDiscount'])
+                    + parseNumber(data['accessoryPargsRevenu'])*parseNumber(data['accessoryPartsDiscount'])
+                    + parseNumber(data['maintenanceProductRevenue'])*parseNumber(data['maintenanceProductDiscount'])}}
                 </td>
                 <td>配件总毛利</td>
                 <td>
-                    {{summary['CM6'] = summary['CA6']*summary['CF6'] - summary['CK6']}}
+                    {{summary['CM6'] = parseNumber(summary['CA6'])*parseNumber(summary['CF6']) - summary['CK6']}}
                 </td>
             </tr>
         </table>
@@ -728,7 +731,8 @@
             <tr>
                 <td>汽车美容毛利</td>
                 <td>
-                    {{summary['CR6'] = data['vehicleDecorationRevenue']*data['vehicleDecorationDiscount'] - data['vehicleDecorationCost']}}
+                    {{summary['CR6'] = parseNumber(data['vehicleDecorationRevenue'])
+                    *parseNumber(data['vehicleDecorationDiscount']) - parseNumber(data['vehicleDecorationCost'])}}
                 </td>
             </tr>
         </table>
@@ -749,6 +753,10 @@
         </table>
     </div>
 </section>
+
+<div class="{{message.class}}">
+    {{message.text}}
+</div>
 
 <div class="pull-right">
     <button class="btn btn-success" type="button" ng-click="save()"

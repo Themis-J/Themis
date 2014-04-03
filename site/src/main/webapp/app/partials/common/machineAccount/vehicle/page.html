@@ -847,7 +847,7 @@
 
                 <td>出库与检测利润</td>
                 <td>
-                    {{data['chukuMargin'] =
+                    {{summary['chukuMargin'] =
                     parseNumber(data['exitWarehouseMargin']) + parseNumber(data['inspectionMargin'])}}
                 </td>
             </tr>
@@ -905,6 +905,10 @@
         </table>
     </div>
 </section>
+
+<div class="{{message.class}}">
+    {{message.text}}
+</div>
 
 <div class="pull-right">
     <button class="btn btn-success" type="button" ng-click="save()"

@@ -49,10 +49,7 @@ angular.module('themis.directives', []).
                 var _this = this;
                 scope.data = $parse(attrs.data)(scope.$parent);
                 scope.loadFunc = $parse(attrs.loadFunc)(scope.$parent);
-                scope.countAllFunc = $parse(attrs.countAllFunc)(scope.$parent);
-                scope.countAllFunc().then(function (data) {
-                    return scope.allNum = data;
-                });
+
                 scope.loadFunc(1).then(function () {
                     return scope.data = $parse(attrs.data)(scope.$parent);
                 });
@@ -69,10 +66,8 @@ angular.module('themis.directives', []).
                     loadPromise = scope.loadFunc(scope.data.length + 1).then(function () {
                         return scope.data = $parse(attrs.data)(scope.$parent);
                     });
-                    countPromise = scope.countAllFunc().then(function (data) {
-                        return scope.allNum = data;
-                    });
-                    return $q.all([loadPromise, countPromise]).then(function () {
+
+                    return $q.all([loadPromise]).then(function () {
                         return scope.loaded = true;
                     });
                 };

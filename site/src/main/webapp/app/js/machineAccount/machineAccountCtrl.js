@@ -11,6 +11,7 @@ angular.module('commonControllers', []).
             $scope.type = "vehicle";
             $scope.typeString = "新车销售台账";
 
+            $scope.loadingList = false;
             $scope.metadataStore = {};
             $scope.metadata = {};
             $scope.data = {};
@@ -48,15 +49,19 @@ angular.module('commonControllers', []).
 
                 if ($scope.type == "vehicle") {
                     $scope.list = [];
+                    $scope.loadingList = true;
                     machineAccountService.queryVehicleSalesLedgerData({dealerID: dealderId},
                         function (data) {
+                            $scope.loadingList = false;
                             $scope.list = data.summaries;
                         });
                 }
                 if ($scope.type == "postSales") {
                     $scope.list = [];
+                    $scope.loadingList = false;
                     machineAccountService.queryPostSalesLedgerData({dealerID: dealderId},
                         function (data) {
+                            $scope.loadingList = false;
                             $scope.list = data.summaries;
                         });
                 }
@@ -101,28 +106,6 @@ angular.module('commonControllers', []).
                 }
             }
 
-//            $scope.list = function (page) {
-//                var defer = $q.defer();
-//                $scope.loading = true;
-//
-//                UserMessage.listMessages({pageNum: page, perPage: $scope.perPage, status: null}, function (messages) {
-//                    for (var i = 0; i < messages.length; i++) {
-//                        if (messages[i].lastReply) {
-//                            messages[i].viewMessage = messages[i].lastReply;
-//                        }
-//                        else {
-//                            messages[i].viewMessage = messages[i];
-//                        }
-//                    }
-//
-//                    $scope.messages = $scope.messages.concat(messages);
-//                    $scope.loading = false;
-//                    defer.resolve();
-//                });
-//
-//                return defer.promise;
-//            }
-
             machineAccountService.getLedgerMetadata({dealerID: DealerService.getDealerId()}, function (metadata) {
                 $scope.metadataStore = metadata;
 
@@ -152,9 +135,6 @@ angular.module('commonControllers', []).
                         $scope.list = data.summaries;
                     });
 
-                $scope.data = {};
-                $scope.summary = {};
-                $scope.newData = {};
                 $scope.vehicleQuery = {};
                 $('#search_vehicle_modal').modal('hide');
                 $scope.panel = "partials/common/machineAccount/list.html";
@@ -162,7 +142,7 @@ angular.module('commonControllers', []).
 
             $scope.queryPosts = function () {
                 $scope.list = [];
-                machineAccountService.getPostSalesLedgerData({workOrderNo: $scope.postQuery.workOrderNo, salesDate: $scope.postQuery.salesDate,
+                machineAccountService.queryPostSalesLedgerData({workOrderNo: $scope.postQuery.workOrderNo, salesDate: $scope.postQuery.salesDate,
                         mileage: $scope.postQuery.mileage, lpNumber: $scope.postQuery.lpNumber, customerName: $scope.postQuery.customerName,
                         color: $scope.postQuery.color, frameNo: $scope.postQuery.frameNo, model: $scope.postQuery.model, enterFactoryDate: $scope.postQuery.enterFactoryDate,
                         exitFactoryDate: $scope.postQuery.exitFactoryDate, customerType: $scope.postQuery.customerType, insuranceAgengcy: $scope.postQuery.insuranceAgengcy,
@@ -232,11 +212,15 @@ angular.module('commonControllers', []).
 
             $scope.showSearchForm = function () {
                 if ($scope.type == 'vehicle') {
-                    $("#search_vehicle_modal").modal();
+                    $("#search_vehicle_modal").modal({
+                        'backdrop': false
+                    });
                 }
 
                 if ($scope.type == 'postSales') {
-                    $("#search_post_modal").modal();
+                    $("#search_post_modal").modal({
+                        'backdrop': false
+                    });
                 }
             }
 
