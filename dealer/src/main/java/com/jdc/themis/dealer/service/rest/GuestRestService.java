@@ -46,7 +46,7 @@ public class GuestRestService {
         return Response.status(Status.FORBIDDEN).build();
       }
 
-      if (user.getActive()) {
+      if (!user.getActive()) {
           return Response.status(Status.FORBIDDEN).build();
       }
       
