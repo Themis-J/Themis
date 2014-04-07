@@ -46,6 +46,10 @@ public class GuestRestService {
         return Response.status(Status.FORBIDDEN).build();
       }
 
+      if (user.getActive()) {
+          return Response.status(Status.FORBIDDEN).build();
+      }
+      
       HttpSession session = req.getSession(true);
       session.setAttribute("userAlias", user.getUsername());
       session.setAttribute("userRole", user.getRole());
