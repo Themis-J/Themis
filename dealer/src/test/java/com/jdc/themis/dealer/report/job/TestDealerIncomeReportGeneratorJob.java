@@ -12,6 +12,7 @@ import org.junit.Before;
 import org.junit.Test;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
+import org.quartz.JobExecutionException;
 
 import static org.mockito.Mockito.*;
 import com.jdc.themis.dealer.service.DealerIncomeReportService;
@@ -29,10 +30,10 @@ public class TestDealerIncomeReportGeneratorJob {
 	}
 	
 	@Test
-	public void executeSuccessfully() {
+	public void executeSuccessfully() throws JobExecutionException {
 		final DealerIncomeReportGeneratorJob job = new DealerIncomeReportGeneratorJob();
 		job.setService(service);
-		job.execute();
+		job.executeInternal(null);
 		final Calendar c = new GregorianCalendar();
 		c.setTime(new Date());
 		final LocalDate value = LocalDate.of(c.get(Calendar.YEAR),

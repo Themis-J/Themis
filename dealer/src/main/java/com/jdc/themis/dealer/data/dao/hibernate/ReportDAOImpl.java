@@ -708,7 +708,11 @@ public class ReportDAOImpl implements ReportDAO {
 		}
 		if (!itemCategory.isEmpty() || !itemSource.isEmpty() || !itemName.isEmpty()) {
 			final Collection<ReportItem> items = getReportItem(itemCategory, itemName, itemSource);
-			criteria.add(Restrictions.in("itemID", Lambda.extractProperty(items, "id")));
+			if ( items.isEmpty() ) {
+				criteria.add(Restrictions.in("itemID", Lists.newArrayList(new Long[]{-9999L})));
+			} else {
+				criteria.add(Restrictions.in("itemID", Lambda.extractProperty(items, "id")));
+			}
 		}
 
 		@SuppressWarnings("unchecked")
@@ -751,7 +755,11 @@ public class ReportDAOImpl implements ReportDAO {
 		}
 		if (!itemCategory.isEmpty() || !itemSource.isEmpty() || !itemName.isEmpty()) {
 			final Collection<ReportItem> items = getReportItem(itemCategory, itemName, itemSource);
-			criteria.add(Restrictions.in("itemID", Lambda.extractProperty(items, "id")));
+			if ( items.isEmpty() ) {
+				criteria.add(Restrictions.in("itemID", Lists.newArrayList(new Long[]{-9999L})));
+			} else {
+				criteria.add(Restrictions.in("itemID", Lambda.extractProperty(items, "id")));
+			}
 		}
 		
 		@SuppressWarnings("unchecked")
@@ -795,7 +803,11 @@ public class ReportDAOImpl implements ReportDAO {
 		if (!itemCategory.isEmpty() || !itemSource.isEmpty()) {
 			final Collection<String> itemName = Lists.newArrayList();
 			final Collection<ReportItem> items = getReportItem(itemCategory, itemName, itemSource);
-			criteria.add(Restrictions.in("itemID", Lambda.extractProperty(items, "id")));
+			if ( items.isEmpty() ) {
+				criteria.add(Restrictions.in("itemID", Lists.newArrayList(new Long[]{-9999L})));
+			} else {
+				criteria.add(Restrictions.in("itemID", Lambda.extractProperty(items, "id")));
+			}
 		}
 		
 		@SuppressWarnings("unchecked")
