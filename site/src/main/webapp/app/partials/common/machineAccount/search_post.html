@@ -1,4 +1,5 @@
-<div class="modal hide fade" id="search_post_modal" style="width: 80%;left: 10%;margin-left: 0px">
+<div class="modal hide fade" id="search_post_modal" style="width: 80%;left: 10%;margin-left: 0px"
+        ng-controller="searchMachineAccountCtrl">
     <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
         <h3>售后台账搜索</h3>
@@ -58,7 +59,8 @@
                 <td>选择车辆</td>
                 <td>
                     <select  ng-model="postQuery['model']"
-                            ng-options="model as model for model in metapostQuery['model']">
+                            ng-options="model as model for model in metadata['model']">
+                        <option value="">－选择车辆－</option>
                     </select>
                 </td>
             </tr>
@@ -87,7 +89,8 @@
 
                 <td>
                     <select  ng-model="postQuery['customerType']"
-                            ng-options="customerType as customerType for customerType in metapostQuery['customerType']">
+                            ng-options="customerType as customerType for customerType in metadata['customerType']">
+                        <option value="">－选择客户类型－</option>
                     </select>
                 </td>
             </tr>
@@ -96,7 +99,8 @@
 
                 <td>
                     <select  ng-model="postQuery['insuranceAgengcy']"
-                            ng-options="insuranceAgengcy as insuranceAgengcy for insuranceAgengcy in metapostQuery['insuranceAgengcy']">
+                            ng-options="insuranceAgengcy as insuranceAgengcy for insuranceAgengcy in metadata['insuranceAgengcy']">
+                        <option value="">－选择承保公司－</option>
                     </select>
                 </td>
                 <td>保险到期日期</td>

@@ -41,14 +41,14 @@
             </div>
         </div>
 
-        <div style="padding-top: 40px"  class="animated fadeIn">
+        <div style="padding-top: 40px" class="animated fadeIn">
             <div class="row-fluid" ng-repeat="summary in list">
                 <div class="span12">
                     <div style="padding-bottom: 3px">
-                    <a href="#/machineAccount/{{summary[0]}}" style="font-size: 15px;text-decoration: none;">
-                        <span ng-if="type == 'vehicle'">合同号：</span>
-                        <span ng-if="type == 'postSales'">工单号：</span>
-                        {{summary[0]}}</a>
+                        <a href="#/machineAccount/{{summary[0]}}" style="font-size: 15px;text-decoration: none;">
+                            <span ng-if="type == 'vehicle'">合同号：</span>
+                            <span ng-if="type == 'postSales'">工单号：</span>
+                            {{summary[0]}}</a>
                     </div>
                     <table class="table table-hover table-bordered" style="font-size: 12px">
                         <tdead>
@@ -94,21 +94,21 @@
                 </div>
             </div>
 
-            <div ng-if="list.lengtd == 0" style="text-align: center;font-size: 15px;color: #808080;padding-top: 15%">
-                暂无台账
+            <div ng-if="!state.loading && list.length == 0" style="text-align: center;font-size: 15px;color: #808080;padding-top: 15%">
+                查无台账
             </div>
 
-            <div style="margin: 5px;width: 100%" ng-if="allNum > 0">
+            <div style="margin: 5px;width: 100%" ng-if="list.length > 0">
                 <div>
                     <div>
-                        <button ng-if="has_more()" class="btn btn-primary btn-sm" style="float: none;width: 100%"
-                                ng-click="show_more()" ng-disabled="!loaded">
-                            <i class="icon-plus icon-white"></i> <span>{{ loadingList ? '加载等多' : 'Loading...' }}</span>
+                        <button ng-if="state.hasMore" class="btn btn-primary btn-sm" style="float: none;width: 100%"
+                                ng-click="showMore()" ng-disabled="state.loading">
+                            <i class="icon-plus icon-white"></i> <span>{{ !state.loading ? '加载等多' : '加载中...' }}</span>
                         </button>
                     </div>
                     <div class="clearfix" style="margin: 5px"></div>
                     <div class="pull-right" style="padding-right: 3%">
-            <span style="vertical-align:middle;color: grey;font-size: 15px"><strong>{{data.length}}</strong></span>
+                        <span style="vertical-align:middle;color: grey;font-size: 15px"><strong>当前数量：{{list.length}}</strong></span>
                     </div>
                 </div>
             </div>
