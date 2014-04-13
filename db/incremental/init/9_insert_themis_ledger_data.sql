@@ -9,7 +9,7 @@ INSERT INTO DealerLedgerMetadata SELECT 5, 'lpNumber', '车牌号', 'input', nul
 INSERT INTO DealerLedgerMetadata SELECT 6, 'frameNo', '车架号', 'input', null, 1, 1;
 INSERT INTO DealerLedgerMetadata SELECT 7, 'manufacturerDebitDate', '主机厂扣款日期', 'input', null, 1, 1;
 INSERT INTO DealerLedgerMetadata SELECT 8, 'warehousingDate', '入库日期', 'input', null, 1, 1;
-INSERT INTO DealerLedgerMetadata SELECT 9, 'salesDate', '销售日期', 'input', null, 1, 1;
+INSERT INTO DealerLedgerMetadata SELECT 9, 'saleDate', '销售日期', 'input', null, 1, 1;
 INSERT INTO DealerLedgerMetadata SELECT 10, 'guidingPrice', '指导价格', 'input', null, 1, 1;
 INSERT INTO DealerLedgerMetadata SELECT 11, 'customerName', '客户姓名', 'input', null, 1, 1;
 INSERT INTO DealerLedgerMetadata SELECT 12, 'identificationNo', '身份证号或组织机构代码证号', 'input', null, 1, 1;
@@ -86,7 +86,7 @@ INSERT INTO DealerLedgerMetadata SELECT 82, 'otherPushMoney', '其他提成', 'i
 INSERT INTO DealerLedgerMetadata SELECT 83, 'pushMoneyDeduction', '销售顾问因流程或过失的扣减部分', 'input', null, 1, 1;
 
 INSERT INTO DealerLedgerMetadata SELECT 84, 'workOrderNo', '工单号', 'input', null, 1, 2;
-INSERT INTO DealerLedgerMetadata SELECT 85, 'salesDate', '购车日期', 'input', null, 1, 2;
+INSERT INTO DealerLedgerMetadata SELECT 85, 'saleDate', '购车日期', 'input', null, 1, 2;
 INSERT INTO DealerLedgerMetadata SELECT 86, 'mileage', '行驶里程', 'input', null, 1, 2;
 INSERT INTO DealerLedgerMetadata SELECT 87, 'lpNumber', '车牌号', 'input', null, 1, 2;
 INSERT INTO DealerLedgerMetadata SELECT 88, 'customerName', '客户姓名或单位', 'input', null, 1, 2;
@@ -103,7 +103,7 @@ INSERT INTO DealerLedgerMetadata SELECT 98, 'maintenancePostSalesConsultant', '�
 INSERT INTO DealerLedgerMetadata SELECT 99, 'maintenanceTechnician', '保养、机修、保修维修技师', 'select', '快修一组,机修二班', 1, 2;
 INSERT INTO DealerLedgerMetadata SELECT 100, 'maintenanceType', '维修类型', 'multiselect', '首保,定期保养,一般维修,保修,钣喷,美容', 1, 2;
 INSERT INTO DealerLedgerMetadata SELECT 101, 'insuranceType', '定保类型', 'select', '5K,10K,15K', 1, 2;
-INSERT INTO DealerLedgerMetadata SELECT 102, 'bodyShopPostSalesConsultant', '钣喷售后顾问', 'input', null, 1, 2;
+INSERT INTO DealerLedgerMetadata SELECT 102, 'bodyShopPostSalesConsultant', '钣喷售后顾问', 'select', '小李,小王', 1, 2;
 INSERT INTO DealerLedgerMetadata SELECT 103, 'sheetMetalTechinician', '钣金技师', 'select', '小李,小王,快修一组,机修二班', 1, 2;
 INSERT INTO DealerLedgerMetadata SELECT 104, 'paintSprayTechinician', '喷漆技师', 'select', '小李,小王,快修一组,机修二班', 1, 2;
 INSERT INTO DealerLedgerMetadata SELECT 105, 'mineralEngineOil', '矿物机油', 'input', null, 1, 2;

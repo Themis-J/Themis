@@ -30,7 +30,7 @@ public class DealerVehicleSalesLedgerDetail implements Serializable {
 
 	private String warehousingDate;
 
-	private String salesDate;
+	private String saleDate;
 
 	private Double guidingPrice;
 
@@ -92,7 +92,7 @@ public class DealerVehicleSalesLedgerDetail implements Serializable {
 
 	private Double insuranceCost;
 
-	private String insuranceAgengcy;
+	private String insuranceAgency;
 
 	private Double lpRevenue;
 
@@ -252,12 +252,12 @@ public class DealerVehicleSalesLedgerDetail implements Serializable {
 		this.warehousingDate = warehousingDate;
 	}
 
-	public String getSalesDate() {
-		return salesDate;
+	public String getSaleDate() {
+		return saleDate;
 	}
 
-	public void setSalesDate(String salesDate) {
-		this.salesDate = salesDate;
+	public void setSaleDate(String saleDate) {
+		this.saleDate = saleDate;
 	}
 
 	public Double getGuidingPrice() {
@@ -501,12 +501,12 @@ public class DealerVehicleSalesLedgerDetail implements Serializable {
 		this.insuranceCost = insuranceCost;
 	}
 
-	public String getInsuranceAgengcy() {
-		return insuranceAgengcy;
+	public String getInsuranceAgency() {
+		return insuranceAgency;
 	}
 
-	public void setInsuranceAgengcy(String insuranceAgengcy) {
-		this.insuranceAgengcy = insuranceAgengcy;
+	public void setInsuranceAgency(String insuranceAgency) {
+		this.insuranceAgency = insuranceAgency;
 	}
 
 	public Double getLpRevenue() {

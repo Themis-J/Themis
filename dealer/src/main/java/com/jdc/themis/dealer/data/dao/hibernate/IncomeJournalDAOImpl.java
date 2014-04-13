@@ -801,7 +801,7 @@ public class IncomeJournalDAOImpl implements IncomeJournalDAO {
     @Override
     public Collection<DealerVehicleSalesLedger> queryDealerVehicleSalesLedger(Integer contractNo, String model,
             String type, String color, String lpNumber, String frameNo, String manufacturerDebitDate,
-            String warehousingDate, String salesDate, Double guidingPrice, String customerName,
+            String warehousingDate, String saleDate, Double guidingPrice, String customerName,
             String identificationNo, String salesConsultant, String customerType, Integer dealerID, Integer marker,
             Integer limit) {
         final Session session = sessionFactory.getCurrentSession();
@@ -831,8 +831,8 @@ public class IncomeJournalDAOImpl implements IncomeJournalDAO {
         if (warehousingDate != null) {
             criteria.add(Restrictions.eq("warehousingDate", LocalDate.parse(warehousingDate)));
         }
-        if (salesDate != null) {
-            criteria.add(Restrictions.eq("salesDate", LocalDate.parse(salesDate)));
+        if (saleDate != null) {
+            criteria.add(Restrictions.eq("saleDate", LocalDate.parse(saleDate)));
         }
         if (guidingPrice != null) {
             criteria.add(Restrictions.eq("guidingPrice", guidingPrice));
@@ -904,9 +904,9 @@ public class IncomeJournalDAOImpl implements IncomeJournalDAO {
 
     @SuppressWarnings("unchecked")
     @Override
-    public Collection<DealerPostSalesLedger> queryDealerPostSalesLedger(Integer workOrderNo, String salesDate,
+    public Collection<DealerPostSalesLedger> queryDealerPostSalesLedger(Integer workOrderNo, String saleDate,
             Double mileage, String lpNumber, String customerName, String color, String frameNo, String model,
-            String enterFactoryDate, String exitFactoryDate, String customerType, String insuranceAgengcy,
+            String enterFactoryDate, String exitFactoryDate, String customerType, String insuranceAgency,
             String insuranceDueDate, Integer insuranceClaimNumber, Integer dealerID, Integer marker, Integer limit) {
         final Session session = sessionFactory.getCurrentSession();
         Instant currentTimestamp = Utils.currentTimestamp();
@@ -914,8 +914,8 @@ public class IncomeJournalDAOImpl implements IncomeJournalDAO {
         if (workOrderNo != null) {
             criteria.add(Restrictions.eq("workOrderNo", workOrderNo));
         }
-        if (salesDate != null) {
-            criteria.add(Restrictions.eq("salesDate", LocalDate.parse(salesDate)));
+        if (saleDate != null) {
+            criteria.add(Restrictions.eq("saleDate", LocalDate.parse(saleDate)));
         }
         if (mileage != null) {
             criteria.add(Restrictions.eq("mileage", mileage));
@@ -944,8 +944,8 @@ public class IncomeJournalDAOImpl implements IncomeJournalDAO {
         if (customerType != null) {
             criteria.add(Restrictions.eq("customerType", customerType));
         }
-        if (insuranceAgengcy != null) {
-            criteria.add(Restrictions.eq("insuranceAgengcy", insuranceAgengcy));
+        if (insuranceAgency != null) {
+            criteria.add(Restrictions.eq("insuranceAgency", insuranceAgency));
         }
         if (insuranceDueDate != null) {
             criteria.add(Restrictions.eq("insuranceDueDate", LocalDate.parse(insuranceDueDate)));

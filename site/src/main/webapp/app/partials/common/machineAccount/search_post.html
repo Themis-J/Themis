@@ -18,7 +18,7 @@
 
                 <td>
                     <input placeholder="YYYY-MM-DD" ng-pattern="/^(\d{4})-(\d{2})-(\d{2})$/"
-                            type="text" ng-model="postQuery['salesDate']"/>
+                            type="text" ng-model="postQuery['saleDate']"/>
                 </td>
             </tr>
             <tr>
@@ -98,8 +98,8 @@
                 <td>承保公司</td>
 
                 <td>
-                    <select  ng-model="postQuery['insuranceAgengcy']"
-                            ng-options="insuranceAgengcy as insuranceAgengcy for insuranceAgengcy in metadata['insuranceAgengcy']">
+                    <select  ng-model="postQuery['insuranceAgency']"
+                            ng-options="insuranceAgency as insuranceAgency for insuranceAgency in metadata['insuranceAgency']">
                         <option value="">－选择承保公司－</option>
                     </select>
                 </td>

@@ -304,7 +304,7 @@ public interface DealerIncomeEntryService {
      * @param frameNo
      * @param manufacturerDebitDate
      * @param warehousingDate
-     * @param salesDate
+     * @param saleDate
      * @param guidingPrice
      * @param customerName
      * @param identificationNo
@@ -317,7 +317,7 @@ public interface DealerIncomeEntryService {
      */
     @Transactional(readOnly = true)
     GetDealerLedgerResponse queryDealerVehicleSalesLedger(Integer contractNo, String model, String type, String color,
-            String lpNumber, String frameNo, String manufacturerDebitDate, String warehousingDate, String salesDate,
+            String lpNumber, String frameNo, String manufacturerDebitDate, String warehousingDate, String saleDate,
             Double guidingPrice, String customerName, String identificationNo, String salesConsultant,
             String customerType, Integer dealerID, Integer marker, Integer limit);
 
@@ -337,7 +337,7 @@ public interface DealerIncomeEntryService {
 
     /**
      * @param workOrderNo
-     * @param salesDate
+     * @param saleDate
      * @param mileage
      * @param lpNumber
      * @param customerName
@@ -347,7 +347,7 @@ public interface DealerIncomeEntryService {
      * @param enterFactoryDate
      * @param exitFactoryDate
      * @param customerType
-     * @param insuranceAgengcy
+     * @param insuranceAgency
      * @param insuranceDueDate
      * @param insuranceClaimNumber
      * @param dealerID
@@ -356,9 +356,9 @@ public interface DealerIncomeEntryService {
      * @return
      */
     @Transactional(readOnly = true)
-    GetDealerLedgerResponse queryDealerPostSalesLedger(Integer workOrderNo, String salesDate, Double mileage,
+    GetDealerLedgerResponse queryDealerPostSalesLedger(Integer workOrderNo, String saleDate, Double mileage,
             String lpNumber, String customerName, String color, String frameNo, String model, String enterFactoryDate,
-            String exitFactoryDate, String customerType, String insuranceAgengcy, String insuranceDueDate,
+            String exitFactoryDate, String customerType, String insuranceAgency, String insuranceDueDate,
             Integer insuranceClaimNumber, Integer dealerID, Integer marker, Integer limit);
 
 }
