@@ -9,13 +9,13 @@
                 <td>*工单号</td>
                 <td>
                     <input ng-disabled="userService.validateRoleHead()" type="text" required
-                           ng-pattern="/^(-?\d+)(\.\d+)?$/" ng-pattern="/^(-?\d+)(\.\d+)?$/"
+                            
                            ng-model="data['workOrderNo']"/>
                 </td>
                 <td>*购车日期</td>
 
                 <td>
-                    <input placeholder="YYYY-MM-DD" ng-pattern="/^(\d{4})-(\d{2})-(\d{2})$/" required
+                    <input placeholder="YYYY-MM-DD, 例：2014-01-02" ng-pattern="/^(\d{4})-(\d{2})-(\d{2})$/" required
                            ng-disabled="userService.validateRoleHead()" type="text" ng-model="data['saleDate']"/>
                 </td>
             </tr>
@@ -23,13 +23,13 @@
                 <td>行驶里程</td>
 
                 <td>
-                    <input ng-disabled="userService.validateRoleHead()" type="text" ng-pattern="/^(-?\d+)(\.\d+)?$/"
+                    <input ng-disabled="userService.validateRoleHead()" type="text" 
                            ng-model="data['mileage']"/>
                 </td>
-                <td>车辆号</td>
+                <td>车牌号</td>
 
                 <td>
-                    <input ng-disabled="userService.validateRoleHead()" type="text" ng-pattern="/^(-?\d+)(\.\d+)?$/"
+                    <input ng-disabled="userService.validateRoleHead()" type="text" 
                            ng-model="data['lpNumber']"/>
                 </td>
             </tr>
@@ -37,13 +37,13 @@
                 <td>客户姓名或单位</td>
 
                 <td>
-                    <input ng-disabled="userService.validateRoleHead()" type="text" ng-pattern="/^(-?\d+)(\.\d+)?$/"
+                    <input ng-disabled="userService.validateRoleHead()" type="text"
                            ng-model="data['customerName']"/>
                 </td>
                 <td>颜色</td>
 
                 <td>
-                    <input ng-disabled="userService.validateRoleHead()" type="text" ng-pattern="/^(-?\d+)(\.\d+)?$/"
+                    <input ng-disabled="userService.validateRoleHead()" type="text"
                            ng-model="data['color']"/>
                 </td>
             </tr>
@@ -51,10 +51,10 @@
                 <td>车架号</td>
 
                 <td>
-                    <input ng-disabled="userService.validateRoleHead()" type="text" ng-pattern="/^(-?\d+)(\.\d+)?$/"
+                    <input ng-disabled="userService.validateRoleHead()" type="text"
                            ng-model="data['frameNo']"/>
                 </td>
-                <td>选择车辆</td>
+                <td>选择车型</td>
                 <td>
                     <select ng-disabled="userService.validateRoleHead()" ng-model="data['model']"
                             ng-options="model as model for model in metadata['model']">
@@ -62,16 +62,16 @@
                 </td>
             </tr>
             <tr>
-                <td>非选择车辆</td>
+                <td>选择车型</td>
 
                 <td>
-                    <input ng-disabled="userService.validateRoleHead()" type="text" ng-pattern="/^(-?\d+)(\.\d+)?$/"
+                    <input ng-disabled="userService.validateRoleHead()" type="text"
                            ng-model="data['model']"/>
                 </td>
                 <td>进厂日期</td>
 
                 <td>
-                    <input placeholder="YYYY-MM-DD" ng-disabng-pattern="/^(\d{4})-(\d{2})-(\d{2})$/"
+                    <input placeholder="YYYY-MM-DD, 例：2014-01-02" ng-disabng-pattern="/^(\d{4})-(\d{2})-(\d{2})$/"
                            led="userService.validateRoleHead()" type="text" ng-model="data['enterFactoryDate']"/>
                 </td>
             </tr>
@@ -79,7 +79,7 @@
                 <td>出厂日期</td>
 
                 <td>
-                    <input placeholder="YYYY-MM-DD" ng-pattern="/^(\d{4})-(\d{2})-(\d{2})$/"
+                    <input placeholder="YYYY-MM-DD, 例：2014-01-02" ng-pattern="/^(\d{4})-(\d{2})-(\d{2})$/"
                            ng-disabled="userService.validateRoleHead()" type="text" ng-model="data['exitFactoryDate']"/>
                 </td>
                 <td>客户类型</td>
@@ -101,16 +101,15 @@
                 <td>保险到期日期</td>
 
                 <td>
-                    <input placeholder="YYYY-MM-DD" ng-pattern="/^(\d{4})-(\d{2})-(\d{2})$/"
+                    <input placeholder="YYYY-MM-DD, 例：2014-01-02" ng-pattern="/^(\d{4})-(\d{2})-(\d{2})$/"
                            ng-disabled="userService.validateRoleHead()" type="text"
                            ng-model="data['insuranceDueDate']"/>
                 </td>
             </tr>
             <tr>
                 <td>本保险年度出险次数</td>
-
                 <td>
-                    <input ng-disabled="userService.validateRoleHead()" type="text" ng-pattern="/^(-?\d+)(\.\d+)?$/"
+                    <input ng-disabled="userService.validateRoleHead()" type="text" 
                            ng-model="data['insuranceClaimNumber']"/>
                 </td>
             </tr>
@@ -134,7 +133,7 @@
                 <td>维修技师</td>
 
                 <td>
-                    <input ng-disabled="userService.validateRoleHead()" type="text" ng-pattern="/^(-?\d+)(\.\d+)?$/"
+                    <input ng-disabled="userService.validateRoleHead()" type="text"
                            ng-model="data['maintenanceTechnician']"/>
                 </td>
             </tr>
@@ -142,29 +141,20 @@
                 <td>维修类型</td>
 
                 <td>
-                    <select ng-disabled="userService.validateRoleHead()" ng-model="data['maintenanceType']"
-                            ng-options="maintenanceType as maintenanceType for maintenanceType in metadata['maintenanceType']">
-                    </select>
+                    <label ng-repeat="maintenanceType in metadata['maintenanceType']">
+                        <input type="checkbox"
+                               ng-checked="data['maintenanceType'].indexOf(maintenanceType) > -1"
+                               ng-click="toggleRepairTypes(maintenanceType)"
+                               ng-disabled="userService.validateRoleHead()"/>{{ maintenanceType }}
+                    </label>
                 </td>
                 <td>定保类型</td>
 
                 <td>
-                    <input ng-disabled="userService.validateRoleHead()" type="text" ng-pattern="/^(-?\d+)(\.\d+)?$/"
+                    <input ng-disabled="userService.validateRoleHead()" type="text"
                            ng-model="data['insuranceType']"/>
                 </td>
             </tr>
-            <tr>
-                <td>开票日期</td>
-
-                <td>
-                    <input placeholder="YYYY-MM-DD" ng-pattern="/^(\d{4})-(\d{2})-(\d{2})$/"
-                           ng-disabled="userService.validateRoleHead()" type="text" ng-model="data['invoiceDate']"/>
-                </td>
-                <td>已付订金</td>
-                <td>
-                    <input ng-disabled="userService.validateRoleHead()" type="text" ng-pattern="/^(-?\d+)(\.\d+)?$/"
-                           ng-model="data['paidSubscription']"/>
-                </td>
         </table>
     </div>
 </section>
@@ -211,13 +201,13 @@
             <tr>
                 <td>矿物机油</td>
                 <td>
-                    <input ng-disabled="userService.validateRoleHead()" type="text" ng-pattern="/^(-?\d+)(\.\d+)?$/"
+                    <input ng-disabled="userService.validateRoleHead()" type="text"
                            ng-model="data['mineralEngineOil']"/>
                 </td>
                 <td>合成机油</td>
 
                 <td>
-                    <input ng-disabled="userService.validateRoleHead()" type="text" ng-pattern="/^(-?\d+)(\.\d+)?$/"
+                    <input ng-disabled="userService.validateRoleHead()" type="text"
                            ng-model="data['synthesizedEngineOil']"/>
                 </td>
             </tr>
@@ -225,12 +215,12 @@
                 <td>空气滤芯</td>
 
                 <td>
-                    <input ng-disabled="userService.validateRoleHead()" type="text" ng-pattern="/^(-?\d+)(\.\d+)?$/"
+                    <input ng-disabled="userService.validateRoleHead()" type="text"
                            ng-model="data['airFilterElement']"/>
                 </td>
                 <td>空调滤芯</td>
                 <td>
-                    <input ng-disabled="userService.validateRoleHead()" type="text" ng-pattern="/^(-?\d+)(\.\d+)?$/"
+                    <input ng-disabled="userService.validateRoleHead()" type="text"
                            ng-model="data['airConditionerFilterElement']"/>
                 </td>
             </tr>
@@ -238,13 +228,13 @@
                 <td>汽油滤芯</td>
 
                 <td>
-                    <input ng-disabled="userService.validateRoleHead()" type="text" ng-pattern="/^(-?\d+)(\.\d+)?$/"
+                    <input ng-disabled="userService.validateRoleHead()" type="text"
                            ng-model="data['gasolineFilterElement']"/>
                 </td>
                 <td>刹车油</td>
 
                 <td>
-                    <input ng-disabled="userService.validateRoleHead()" type="text" ng-pattern="/^(-?\d+)(\.\d+)?$/"
+                    <input ng-disabled="userService.validateRoleHead()" type="text"
                            ng-model="data['brakeFluid']"/>
                 </td>
             </tr>
@@ -252,13 +242,13 @@
                 <td>火花塞</td>
 
                 <td>
-                    <input ng-disabled="userService.validateRoleHead()" type="text" ng-pattern="/^(-?\d+)(\.\d+)?$/"
+                    <input ng-disabled="userService.validateRoleHead()" type="text"
                            ng-model="data['sparkPlug']"/>
                 </td>
                 <td>方向机油</td>
 
                 <td>
-                    <input ng-disabled="userService.validateRoleHead()" type="text" ng-pattern="/^(-?\d+)(\.\d+)?$/"
+                    <input ng-disabled="userService.validateRoleHead()" type="text"
                            ng-model="data['directionEngineOil']"/>
                 </td>
             </tr>
@@ -266,13 +256,13 @@
                 <td>变速箱油</td>
 
                 <td>
-                    <input ng-disabled="userService.validateRoleHead()" type="text" ng-pattern="/^(-?\d+)(\.\d+)?$/"
+                    <input ng-disabled="userService.validateRoleHead()" type="text"
                            ng-model="data['transmissionOil']"/>
                 </td>
                 <td>冷却液</td>
 
                 <td>
-                    <input ng-disabled="userService.validateRoleHead()" type="text" ng-pattern="/^(-?\d+)(\.\d+)?$/"
+                    <input ng-disabled="userService.validateRoleHead()" type="text"
                            ng-model="data['coolingFluid']"/>
                 </td>
             </tr>
@@ -280,13 +270,13 @@
                 <td>正时链/皮带</td>
 
                 <td>
-                    <input ng-disabled="userService.validateRoleHead()" type="text" ng-pattern="/^(-?\d+)(\.\d+)?$/"
+                    <input ng-disabled="userService.validateRoleHead()" type="text"
                            ng-model="data['timingChain']"/>
                 </td>
                 <td>润滑系统清洗</td>
 
                 <td>
-                    <input ng-disabled="userService.validateRoleHead()" type="text" ng-pattern="/^(-?\d+)(\.\d+)?$/"
+                    <input ng-disabled="userService.validateRoleHead()" type="text"
                            ng-model="data['lubricationSystemClean']"/>
                 </td>
             </tr>
@@ -294,13 +284,13 @@
                 <td>变速箱系统清洗</td>
 
                 <td>
-                    <input ng-disabled="userService.validateRoleHead()" type="text" ng-pattern="/^(-?\d+)(\.\d+)?$/"
+                    <input ng-disabled="userService.validateRoleHead()" type="text"
                            ng-model="data['transmissionClean']"/>
                 </td>
                 <td>动力转向清洗</td>
 
                 <td>
-                    <input ng-disabled="userService.validateRoleHead()" type="text" ng-pattern="/^(-?\d+)(\.\d+)?$/"
+                    <input ng-disabled="userService.validateRoleHead()" type="text"
                            ng-model="data['directionSystemClean']"/>
                 </td>
             </tr>
@@ -308,13 +298,13 @@
                 <td>冷却系统清洗</td>
 
                 <td>
-                    <input ng-disabled="userService.validateRoleHead()" type="text" ng-pattern="/^(-?\d+)(\.\d+)?$/"
+                    <input ng-disabled="userService.validateRoleHead()" type="text"
                            ng-model="data['coolingSystemClean']"/>
                 </td>
                 <td>空调系统清洗</td>
 
                 <td>
-                    <input ng-disabled="userService.validateRoleHead()" type="text" ng-pattern="/^(-?\d+)(\.\d+)?$/"
+                    <input ng-disabled="userService.validateRoleHead()" type="text"
                            ng-model="data['airConditionerClean']"/>
                 </td>
             </tr>
@@ -322,13 +312,13 @@
                 <td>燃油系统清洗</td>
 
                 <td>
-                    <input ng-disabled="userService.validateRoleHead()" type="text" ng-pattern="/^(-?\d+)(\.\d+)?$/"
+                    <input ng-disabled="userService.validateRoleHead()" type="text"
                            ng-model="data['fuelSystemClean']"/>
                 </td>
                 <td>其它系统养护</td>
 
                 <td>
-                    <input ng-disabled="userService.validateRoleHead()" type="text" ng-pattern="/^(-?\d+)(\.\d+)?$/"
+                    <input ng-disabled="userService.validateRoleHead()" type="text"
                            ng-model="data['otherSystemClean']"/>
                 </td>
             </tr>
@@ -336,13 +326,13 @@
                 <td>养护类产品总数</td>
 
                 <td>
-                    <input ng-disabled="userService.validateRoleHead()" type="text" ng-pattern="/^(-?\d+)(\.\d+)?$/"
+                    <input ng-disabled="userService.validateRoleHead()" type="text"
                            ng-model="data['maintenanceProductAmount']"/>
                 </td>
                 <td>轮胎</td>
 
                 <td>
-                    <input ng-disabled="userService.validateRoleHead()" type="text" ng-pattern="/^(-?\d+)(\.\d+)?$/"
+                    <input ng-disabled="userService.validateRoleHead()" type="text"
                            ng-model="data['tyreCount']"/>
                 </td>
             </tr>
@@ -350,13 +340,13 @@
                 <td>电池</td>
 
                 <td>
-                    <input ng-disabled="userService.validateRoleHead()" type="text" ng-pattern="/^(-?\d+)(\.\d+)?$/"
+                    <input ng-disabled="userService.validateRoleHead()" type="text"
                            ng-model="data['batteryCount']"/>
                 </td>
                 <td>火花塞</td>
 
                 <td>
-                    <input ng-disabled="userService.validateRoleHead()" type="text" ng-pattern="/^(-?\d+)(\.\d+)?$/"
+                    <input ng-disabled="userService.validateRoleHead()" type="text"
                            ng-model="data['sparkPlugCount']"/>
                 </td>
             </tr>
@@ -364,7 +354,7 @@
                 <td>雨刮片</td>
 
                 <td>
-                    <input ng-disabled="userService.validateRoleHead()" type="text" ng-pattern="/^(-?\d+)(\.\d+)?$/"
+                    <input ng-disabled="userService.validateRoleHead()" type="text"
                            ng-model="data['wiperBladeCount']"/>
                 </td>
             </tr>
@@ -381,24 +371,24 @@
             <tr>
                 <td>收入</td>
                 <td>
-                    <input ng-disabled="userService.validateRoleHead()" type="text" ng-pattern="/^(-?\d+)(\.\d+)?$/"
+                    <input ng-disabled="userService.validateRoleHead()" type="text" 
                            ng-model="data['maintenanceManHourRevenuePaidPart']"/>
                 </td>
                 <td>打折</td>
                 <td>
-                    <input ng-disabled="userService.validateRoleHead()" type="text" ng-pattern="/^(-?\d+)(\.\d+)?$/"
+                    <input ng-disabled="userService.validateRoleHead()" type="text" 
                            ng-model="data['maintenanceManHourDiscountPaidPart']"/>
                 </td>
             </tr>
             <tr>
                 <td>代金券</td>
                 <td>
-                    <input ng-disabled="userService.validateRoleHead()" type="text" ng-pattern="/^(-?\d+)(\.\d+)?$/"
+                    <input ng-disabled="userService.validateRoleHead()" type="text" 
                            ng-model="data['maintenanceManHourCouponPaidPart']"/>
                 </td>
                 <td>成本</td>
                 <td>
-                    <input ng-disabled="userService.validateRoleHead()" type="text" ng-pattern="/^(-?\d+)(\.\d+)?$/"
+                    <input ng-disabled="userService.validateRoleHead()" type="text" 
                            ng-model="data['maintenanceManHourCostPaidPart']"/>
                 </td>
             </tr>
@@ -417,12 +407,12 @@
             <tr>
                 <td>收入</td>
                 <td>
-                    <input ng-disabled="userService.validateRoleHead()" type="text" ng-pattern="/^(-?\d+)(\.\d+)?$/"
+                    <input ng-disabled="userService.validateRoleHead()" type="text" 
                            ng-model="data['maintenanceManHourRevenueUnpaidPart']"/>
                 </td>
                 <td>成本</td>
                 <td>
-                    <input ng-disabled="userService.validateRoleHead()" type="text" ng-pattern="/^(-?\d+)(\.\d+)?$/"
+                    <input ng-disabled="userService.validateRoleHead()" type="text" 
                            ng-model="data['maintenanceManHourCostUnpaidPart']"/>
                 </td>
             </tr>
@@ -439,31 +429,31 @@
             <tr>
                 <td>钣金工时收入</td>
                 <td>
-                    <input ng-disabled="userService.validateRoleHead()" type="text" ng-pattern="/^(-?\d+)(\.\d+)?$/"
+                    <input ng-disabled="userService.validateRoleHead()" type="text" 
                            ng-model="data['sheetMetalManHourRevenue']"/>
                 </td>
                 <td>喷漆工时收入</td>
                 <td>
-                    <input ng-disabled="userService.validateRoleHead()" type="text" ng-pattern="/^(-?\d+)(\.\d+)?$/"
+                    <input ng-disabled="userService.validateRoleHead()" type="text" 
                            ng-model="data['paintSprayManHourRevenue']"/>
                 </td>
             </tr>
             <tr>
                 <td>打折</td>
                 <td>
-                    <input ng-disabled="userService.validateRoleHead()" type="text" ng-pattern="/^(-?\d+)(\.\d+)?$/"
+                    <input ng-disabled="userService.validateRoleHead()" type="text" 
                            ng-model="data['bodyShopManHourDiscount']"/>
                 </td>
                 <td>代金券</td>
                 <td>
-                    <input ng-disabled="userService.validateRoleHead()" type="text" ng-pattern="/^(-?\d+)(\.\d+)?$/"
+                    <input ng-disabled="userService.validateRoleHead()" type="text" 
                            ng-model="data['bodyShopManHourCoupon']"/>
                 </td>
             </tr>
             <tr>
                 <td>成本</td>
                 <td>
-                    <input ng-disabled="userService.validateRoleHead()" type="text" ng-pattern="/^(-?\d+)(\.\d+)?$/"
+                    <input ng-disabled="userService.validateRoleHead()" type="text" 
                            ng-model="data['bodyShopManHourCost']"/>
                 </td>
                 <td>工时毛利</td>
@@ -480,24 +470,24 @@
             <tr>
                 <td>收入</td>
                 <td>
-                    <input ng-disabled="userService.validateRoleHead()" type="text" ng-pattern="/^(-?\d+)(\.\d+)?$/"
+                    <input ng-disabled="userService.validateRoleHead()" type="text" 
                            ng-model="data['accessoryManHourRevenue']"/>
                 </td>
                 <td>打折</td>
                 <td>
-                    <input ng-disabled="userService.validateRoleHead()" type="text" ng-pattern="/^(-?\d+)(\.\d+)?$/"
+                    <input ng-disabled="userService.validateRoleHead()" type="text" 
                            ng-model="data['accessoryManHourDiscount']"/>
                 </td>
             </tr>
             <tr>
                 <td>代金券</td>
                 <td>
-                    <input ng-disabled="userService.validateRoleHead()" type="text" ng-pattern="/^(-?\d+)(\.\d+)?$/"
+                    <input ng-disabled="userService.validateRoleHead()" type="text" 
                            ng-model="data['accessoryManHourCoupon']"/>
                 </td>
                 <td>成本</td>
                 <td>
-                    <input ng-disabled="userService.validateRoleHead()" type="text" ng-pattern="/^(-?\d+)(\.\d+)?$/"
+                    <input ng-disabled="userService.validateRoleHead()" type="text" 
                            ng-model="data['accessoryManHourCost']"/>
                 </td>
             </tr>
@@ -515,24 +505,24 @@
             <tr>
                 <td>收入</td>
                 <td>
-                    <input ng-disabled="userService.validateRoleHead()" type="text" ng-pattern="/^(-?\d+)(\.\d+)?$/"
+                    <input ng-disabled="userService.validateRoleHead()" type="text" 
                            ng-model="data['otherManHourRevenue']"/>
                 </td>
                 <td>打折</td>
                 <td>
-                    <input ng-disabled="userService.validateRoleHead()" type="text" ng-pattern="/^(-?\d+)(\.\d+)?$/"
+                    <input ng-disabled="userService.validateRoleHead()" type="text" 
                            ng-model="data['otherManHourDiscount']"/>
                 </td>
             </tr>
             <tr>
                 <td>代金券</td>
                 <td>
-                    <input ng-disabled="userService.validateRoleHead()" type="text" ng-pattern="/^(-?\d+)(\.\d+)?$/"
+                    <input ng-disabled="userService.validateRoleHead()" type="text" 
                            ng-model="data['otherManHourCoupon']"/>
                 </td>
                 <td>成本</td>
                 <td>
-                    <input ng-disabled="userService.validateRoleHead()" type="text" ng-pattern="/^(-?\d+)(\.\d+)?$/"
+                    <input ng-disabled="userService.validateRoleHead()" type="text" 
                            ng-model="data['otherManHourCost']"/>
                 </td>
             </tr>
@@ -558,7 +548,7 @@
                     + parseNumber(data['otherManHourRevenue'])*parseNumber(data['otherManHourDiscount'])
                     }}
                 </td>
-                <td>毛利总工时</td>
+                <td>工时总毛利</td>
                 <td>
                     {{
                     summary['BV6'] = parseNumber(data['maintenanceManHourMarginPaidPart'])
@@ -582,24 +572,24 @@
             <tr>
                 <td>收入</td>
                 <td>
-                    <input ng-disabled="userService.validateRoleHead()" type="text" ng-pattern="/^(-?\d+)(\.\d+)?$/"
+                    <input ng-disabled="userService.validateRoleHead()" type="text" 
                            ng-model="data['maintenancePartsRevenue']"/>
                 </td>
                 <td>打折</td>
                 <td>
-                    <input ng-disabled="userService.validateRoleHead()" type="text" ng-pattern="/^(-?\d+)(\.\d+)?$/"
+                    <input ng-disabled="userService.validateRoleHead()" type="text" 
                            ng-model="data['maintenancePartsDiscount']"/>
                 </td>
             </tr>
             <tr>
                 <td>代金券</td>
                 <td>
-                    <input ng-disabled="userService.validateRoleHead()" type="text" ng-pattern="/^(-?\d+)(\.\d+)?$/"
+                    <input ng-disabled="userService.validateRoleHead()" type="text" 
                            ng-model="data['maintenancePartsCoupon']"/>
                 </td>
                 <td>成本</td>
                 <td>
-                    <input ng-disabled="userService.validateRoleHead()" type="text" ng-pattern="/^(-?\d+)(\.\d+)?$/"
+                    <input ng-disabled="userService.validateRoleHead()" type="text" 
                            ng-model="data['maintenancePartsCost']"/>
                 </td>
             </tr>
@@ -617,24 +607,24 @@
             <tr>
                 <td>收入</td>
                 <td>
-                    <input ng-disabled="userService.validateRoleHead()" type="text" ng-pattern="/^(-?\d+)(\.\d+)?$/"
+                    <input ng-disabled="userService.validateRoleHead()" type="text" 
                            ng-model="data['maintenanceProductRevenue']"/>
                 </td>
                 <td>打折</td>
                 <td>
-                    <input ng-disabled="userService.validateRoleHead()" type="text" ng-pattern="/^(-?\d+)(\.\d+)?$/"
+                    <input ng-disabled="userService.validateRoleHead()" type="text" 
                            ng-model="data['maintenanceProductDiscount']"/>
                 </td>
             </tr>
             <tr>
                 <td>代金券</td>
                 <td>
-                    <input ng-disabled="userService.validateRoleHead()" type="text" ng-pattern="/^(-?\d+)(\.\d+)?$/"
+                    <input ng-disabled="userService.validateRoleHead()" type="text" 
                            ng-model="data['maintenanceProductCoupon']"/>
                 </td>
                 <td>成本</td>
                 <td>
-                    <input ng-disabled="userService.validateRoleHead()" type="text" ng-pattern="/^(-?\d+)(\.\d+)?$/"
+                    <input ng-disabled="userService.validateRoleHead()" type="text" 
                            ng-model="data['maintenanceProductCost']"/>
                 </td>
             </tr>
@@ -652,24 +642,24 @@
             <tr>
                 <td>收入</td>
                 <td>
-                    <input ng-disabled="userService.validateRoleHead()" type="text" ng-pattern="/^(-?\d+)(\.\d+)?$/"
+                    <input ng-disabled="userService.validateRoleHead()" type="text" 
                            ng-model="data['maintenanceProductRevenue']"/>
                 </td>
                 <td>打折</td>
                 <td>
-                    <input ng-disabled="userService.validateRoleHead()" type="text" ng-pattern="/^(-?\d+)(\.\d+)?$/"
+                    <input ng-disabled="userService.validateRoleHead()" type="text" 
                            ng-model="data['maintenanceProductDiscount']"/>
                 </td>
             </tr>
             <tr>
                 <td>代金券</td>
                 <td>
-                    <input ng-disabled="userService.validateRoleHead()" type="text" ng-pattern="/^(-?\d+)(\.\d+)?$/"
+                    <input ng-disabled="userService.validateRoleHead()" type="text" 
                            ng-model="data['maintenanceProductCoupon']"/>
                 </td>
                 <td>成本</td>
                 <td>
-                    <input ng-disabled="userService.validateRoleHead()" type="text" ng-pattern="/^(-?\d+)(\.\d+)?$/"
+                    <input ng-disabled="userService.validateRoleHead()" type="text" 
                            ng-model="data['maintenanceProductCost']"/>
                 </td>
             </tr>
@@ -707,24 +697,24 @@
             <tr>
                 <td>收入</td>
                 <td>
-                    <input ng-disabled="userService.validateRoleHead()" type="text" ng-pattern="/^(-?\d+)(\.\d+)?$/"
+                    <input ng-disabled="userService.validateRoleHead()" type="text" 
                            ng-model="data['vehicleDecorationRevenue']"/>
                 </td>
                 <td>打折</td>
                 <td>
-                    <input ng-disabled="userService.validateRoleHead()" type="text" ng-pattern="/^(-?\d+)(\.\d+)?$/"
+                    <input ng-disabled="userService.validateRoleHead()" type="text" 
                            ng-model="data['vehicleDecorationDiscount']"/>
                 </td>
             </tr>
             <tr>
                 <td>汽车美容代金券</td>
                 <td>
-                    <input ng-disabled="userService.validateRoleHead()" type="text" ng-pattern="/^(-?\d+)(\.\d+)?$/"
+                    <input ng-disabled="userService.validateRoleHead()" type="text" 
                            ng-model="data['vehicleDecorationCoupon']"/>
                 </td>
                 <td>成本</td>
                 <td>
-                    <input ng-disabled="userService.validateRoleHead()" type="text" ng-pattern="/^(-?\d+)(\.\d+)?$/"
+                    <input ng-disabled="userService.validateRoleHead()" type="text" 
                            ng-model="data['vehicleDecorationCost']"/>
                 </td>
             </tr>
@@ -753,10 +743,6 @@
         </table>
     </div>
 </section>
-
-<div class="{{message.class}}">
-    {{message.text}}
-</div>
 
 <div class="pull-right">
     <button class="btn btn-success" type="button" ng-click="save()"

@@ -1,6 +1,6 @@
 angular.module('sunyi.controller', [])
-    .controller('sunyiCtrl', ['$scope', 'Dealer', 'DealerService', '$filter', '$timeout',
-        function ($scope, Dealer, DealerService, $filter, $timeout) {
+    .controller('sunyiCtrl', ['$scope', 'Dealer', 'DealerService', '$filter', '$timeout', 'UserService',
+        function ($scope, Dealer, DealerService, $filter, $timeout, UserService) {
             $scope.$on('$destroy', function () {
                 $("#page_nav").empty();
             });
@@ -47,7 +47,7 @@ angular.module('sunyi.controller', [])
                 postData.dealerID = DealerService.getDealerId();
                 postData.itemID = DealerService.getSelectedMenu();
                 postData.validDate = DealerService.getValidDate();
-                postData.updateBy = DealerService.getUserName();
+                postData.updateBy = UserService.getCurUserAlias();
 
                 Dealer.saveStatus({}, postData, function () {
                     var navLink = $("#" + DealerService.getSelectedMenu());

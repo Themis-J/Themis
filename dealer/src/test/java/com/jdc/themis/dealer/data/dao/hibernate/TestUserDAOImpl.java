@@ -71,9 +71,24 @@ public class TestUserDAOImpl {
 		
 		final UserInfo existingUserInfo = userDAL.getUser("test").some();
 		existingUserInfo.setActive(false);
-		userDAL.saveOrUpdateUser(existingUserInfo);
+		userDAL.saveOrUpdateUser(UserInfo.clone(existingUserInfo));
 		
 		Assert.assertEquals(false, userDAL.getUser("test").some().getActive().booleanValue());
+	}
+	
+	@Test
+	public void userClone() {
+		final UserInfo userInfo = new UserInfo();
+		userInfo.setActive(true);
+		userInfo.setDealerID(null);
+		userInfo.setPassword("xxx");
+		userInfo.setUsername("test");
+		userInfo.setUserRoleID(2);
+		userDAL.saveOrUpdateUser(userInfo);
+		
+		Assert.assertNotNull(UserInfo.clone(userInfo));
+		Assert.assertEquals("xxx", UserInfo.clone(userInfo).getPassword());
+		
 	}
 
 }

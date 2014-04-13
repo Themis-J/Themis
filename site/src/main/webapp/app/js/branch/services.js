@@ -175,20 +175,6 @@ angular.module('branch.services', ['ngResource', 'ngCookies'])
                 }
             },
 
-            getUserName: function () {
-                if (userName) {
-                    return userName;
-                }
-                else {
-                    if ($cookieStore.get('userName')) {
-                        return $cookieStore.get('userName');
-                    }
-                    else {
-                        return defaultUser;
-                    }
-                }
-            },
-
             getSelectedItem: function () {
                 if (selectedItem) {
                     return selectedItem;
@@ -231,11 +217,6 @@ angular.module('branch.services', ['ngResource', 'ngCookies'])
             setSelectedDeptString: function (deptString) {
                 selectedDeptString = deptString;
                 $cookieStore.put('selectedDeptString', deptString.toString());
-            },
-
-            setUserName: function (user) {
-                userName = user;
-                $cookieStore.put('userName', user);
             },
 
             setSelectedItem: function (item) {

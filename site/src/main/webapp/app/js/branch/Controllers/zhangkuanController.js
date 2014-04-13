@@ -1,6 +1,6 @@
 angular.module('zhangkuan.controller', [])
-    .controller('zhangkuanCtrl', ['$scope', 'Dealer', 'DealerService', '$filter', '$timeout',
-        function ($scope, Dealer, DealerService, $filter, $timeout) {
+    .controller('zhangkuanCtrl', ['$scope', 'Dealer', 'DealerService', '$filter', '$timeout', 'UserService',
+        function ($scope, Dealer, DealerService, $filter, $timeout, UserService) {
             $scope.$on('$destroy', function () {
                 $("#page_nav").empty();
             });
@@ -24,7 +24,7 @@ angular.module('zhangkuan.controller', [])
                 var postData = {};
                 postData.dealerID = DealerService.getDealerId();
                 postData.validDate = DealerService.getValidDate();
-                postData.updateBy = DealerService.getUserName();
+                postData.updateBy = UserService.getCurUserAlias();
                 postData.detail = [];
                 postData.detail.push({
                     itemID: accountInRange.id,

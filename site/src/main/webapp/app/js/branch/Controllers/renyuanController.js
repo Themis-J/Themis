@@ -1,6 +1,6 @@
 angular.module('renyuan.controller', [])
-    .controller('renyuanCtrl', ['$scope', 'Dealer', 'DealerService', '$q', '$timeout',
-        function ($scope, Dealer, DealerService, $q, $timeout) {
+    .controller('renyuanCtrl', ['$scope', 'Dealer', 'DealerService', '$q', '$timeout', 'UserService',
+        function ($scope, Dealer, DealerService, $q, $timeout, UserService) {
             $scope.$on('$destroy', function () {
                 $("#page_nav").empty();
             });
@@ -125,7 +125,7 @@ angular.module('renyuan.controller', [])
                         postData.dealerID = DealerService.getDealerId();
                         postData.departmentID = employeeFee.dept;
                         postData.validDate = DealerService.getValidDate();
-                        postData.updateBy = DealerService.getUserName();
+                        postData.updateBy = UserService.getCurUserAlias();
                         postData.detail = [];
                         postData.detail.push({
                             itemID: employeeFee.id,
@@ -182,7 +182,7 @@ angular.module('renyuan.controller', [])
                     postData.dealerID = DealerService.getDealerId();
                     postData.departmentID = this.hrAllocation.dept;
                     postData.validDate = DealerService.getValidDate();
-                    postData.updateBy = DealerService.getUserName();
+                    postData.updateBy = UserService.getCurUserAlias();
                     postData.detail = [];
                     postData.detail.push({
                         itemID: this.hrAllocation.id,
@@ -212,7 +212,7 @@ angular.module('renyuan.controller', [])
                     postData.dealerID = DealerService.getDealerId();
                     postData.departmentID = employeeSummary.dept;
                     postData.validDate = DealerService.getValidDate();
-                    postData.updateBy = DealerService.getUserName();
+                    postData.updateBy = UserService.getCurUserAlias();
                     postData.detail = [];
                     postData.detail.push({
                         itemID: employeeSummary.id,

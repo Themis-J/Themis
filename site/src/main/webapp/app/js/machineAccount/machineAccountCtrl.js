@@ -137,9 +137,12 @@ angular.module('commonControllers', []).
                 }
             }
 
+            $scope.type = $routeParams.type;
+            $scope.typeString = ($routeParams.type == "vehicle")? "新车销售台账": "售后台账";
+
             if ($routeParams.id) {
 
-                if ($scope.type == "vehicle") {
+                if ($routeParams.type == "vehicle") {
                     $scope.data = {};
                     machineAccountService.getVehicleSalesLedgerData({contractNo: $routeParams.id},
                         function (data) {
@@ -150,12 +153,12 @@ angular.module('commonControllers', []).
                             }
                         });
                 }
-                if ($scope.type == "postSales") {
+                if ($routeParams.type == "postSales") {
                     $scope.data = {};
                     machineAccountService.getPostSalesLedgerData({workOrderNo: $routeParams.id},
                         function (data) {
-                            if (data.postSalesLedgerData && data.postSalesLedgerData.length > 0) {
-                                angular.forEach(data.postSalesLedgerData[0], function (value, key) {
+                            if (data.postSalesLedger && data.postSalesLedger.length > 0) {
+                                angular.forEach(data.postSalesLedger[0], function (value, key) {
                                     $scope.data[key] = value;
                                 });
                             }
@@ -165,13 +168,15 @@ angular.module('commonControllers', []).
                 $scope.panel = "partials/common/machineAccount/detail.html";
             }
             else {
-                if ($routeParams.type) {
-                    $scope.type = $routeParams.type;
+                if ($routeParams.action == 'add') {
                     $scope.data = {};
                     $scope.panel = "partials/common/machineAccount/detail.html";
                 }
                 else {
-                    $scope.refreshList();
+                    if ($routeParams.action == 'list')
+                    {
+                        $scope.refreshList();
+                    }
                 }
             }
 
@@ -318,6 +323,31 @@ angular.module('commonControllers', []).
                 }
                 return parseFloat(str.replace(/[^\d\.\-]/g, ""));
             }
+
+            $scope.toggleRepairTypes = function(maintenanceType) {
+                if ($scope.data['maintenanceType'])
+                {
+                    $scope.data['maintenanceType'] = $scope.data['maintenanceType'].split(",");
+                }
+                else
+                {
+                    $scope.data['maintenanceType'] = [];
+                }
+
+                var idx = $scope.data['maintenanceType'].indexOf(maintenanceType);
+
+                // is currently selected
+                if (idx > -1) {
+                    $scope.data['maintenanceType'].splice(idx, 1);
+                }
+
+                // is newly selected
+                else {
+                    $scope.data['maintenanceType'].push(maintenanceType);
+                }
+
+                $scope.data['maintenanceType'] += "";
+            };
         }])
     .controller('searchMachineAccountCtrl', ['$scope', '$route', '$location', '$routeParams', 'DealerService', 'Dealer', 'machineAccountService', 'UserService', '$timeout',
         function ($scope, $route, $location, $routeParams, DealerService, Dealer, machineAccountService, UserService, $timeout) {
