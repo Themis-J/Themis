@@ -90,16 +90,16 @@ public interface IncomeJournalDAO {
 
     Collection<DealerVehicleSalesLedger> queryDealerVehicleSalesLedger(Integer contractNo, String model, String type,
             String color, String lpNumber, String frameNo, String manufacturerDebitDate, String warehousingDate,
-            String salesDate, Double guidingPrice, String customerName, String identificationNo,
+            String saleDate, Double guidingPrice, String customerName, String identificationNo,
             String salesConsultant, String customerType, Integer dealerID, Integer marker, Integer limit);
 
     Collection<DealerVehicleSalesLedger> getDealerVehicleSalesLedger(Integer contractNo);
 
     Instant saveDealerPostSalesLedger(DealerPostSalesLedger dealerPostSalesLedger);
 
-    Collection<DealerPostSalesLedger> queryDealerPostSalesLedger(Integer workOrderNo, String salesDate, Double mileage,
+    Collection<DealerPostSalesLedger> queryDealerPostSalesLedger(Integer workOrderNo, String saleDate, Double mileage,
             String lpNumber, String customerName, String color, String frameNo, String model, String enterFactoryDate,
-            String exitFactoryDate, String customerType, String insuranceAgengcy, String insuranceDueDate,
+            String exitFactoryDate, String customerType, String insuranceAgency, String insuranceDueDate,
             Integer insuranceClaimNumber, Integer dealerID, Integer marker, Integer limit);
 
     Collection<DealerPostSalesLedger> getDealerPostSalesLedger(Integer workOrderNo);

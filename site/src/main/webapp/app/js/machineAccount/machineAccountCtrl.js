@@ -110,7 +110,7 @@ angular.module('commonControllers', []).
                         machineAccountService.queryVehicleSalesLedgerData({contractNo: $scope.vehicleQuery.contractNo,
                                 model: $scope.vehicleQuery.model, type: $scope.vehicleQuery.type, color: $scope.vehicleQuery.color,
                                 lpNumber: $scope.vehicleQuery.lpNumber, frameNo: $scope.vehicleQuery.frameNo, manufacturerDebitDate: $scope.vehicleQuery.manufacturerDebitDate,
-                                warehousingDate: $scope.vehicleQuery.warehousingDate, salesDate: $scope.vehicleQuery.salesDate, guidingPrice: $scope.vehicleQuery.guidingPrice,
+                                warehousingDate: $scope.vehicleQuery.warehousingDate, saleDate: $scope.vehicleQuery.saleDate, guidingPrice: $scope.vehicleQuery.guidingPrice,
                                 customerName: $scope.vehicleQuery.customerName, identificationNo: $scope.vehicleQuery.identificationNo, salesConsultant: $scope.vehicleQuery.salesConsultant,
                                 customerType: $scope.vehicleQuery.customerType, dealerID: dealerID, marker: $scope.list.length, limit: $scope.state.perPage},
                             function (data) {
@@ -122,10 +122,10 @@ angular.module('commonControllers', []).
 
                     if ('queryP' == $scope.state.listType) {
                         $scope.state.loading = true;
-                        machineAccountService.queryPostSalesLedgerData({workOrderNo: $scope.postQuery.workOrderNo, salesDate: $scope.postQuery.salesDate,
+                        machineAccountService.queryPostSalesLedgerData({workOrderNo: $scope.postQuery.workOrderNo, saleDate: $scope.postQuery.saleDate,
                                 mileage: $scope.postQuery.mileage, lpNumber: $scope.postQuery.lpNumber, customerName: $scope.postQuery.customerName,
                                 color: $scope.postQuery.color, frameNo: $scope.postQuery.frameNo, model: $scope.postQuery.model, enterFactoryDate: $scope.postQuery.enterFactoryDate,
-                                exitFactoryDate: $scope.postQuery.exitFactoryDate, customerType: $scope.postQuery.customerType, insuranceAgengcy: $scope.postQuery.insuranceAgengcy,
+                                exitFactoryDate: $scope.postQuery.exitFactoryDate, customerType: $scope.postQuery.customerType, insuranceAgency: $scope.postQuery.insuranceAgency,
                                 insuranceDueDate: $scope.postQuery.insuranceDueDate, insuranceClaimNumber: $scope.postQuery.insuranceClaimNumber, dealerID: dealerID,
                                 marker: $scope.list.length, limit: $scope.state.perPage},
                             function (data) {
@@ -206,7 +206,7 @@ angular.module('commonControllers', []).
                 machineAccountService.queryVehicleSalesLedgerData({contractNo: $scope.vehicleQuery.contractNo,
                         model: $scope.vehicleQuery.model, type: $scope.vehicleQuery.type, color: $scope.vehicleQuery.color,
                         lpNumber: $scope.vehicleQuery.lpNumber, frameNo: $scope.vehicleQuery.frameNo, manufacturerDebitDate: $scope.vehicleQuery.manufacturerDebitDate,
-                        warehousingDate: $scope.vehicleQuery.warehousingDate, salesDate: $scope.vehicleQuery.salesDate, guidingPrice: $scope.vehicleQuery.guidingPrice,
+                        warehousingDate: $scope.vehicleQuery.warehousingDate, saleDate: $scope.vehicleQuery.saleDate, guidingPrice: $scope.vehicleQuery.guidingPrice,
                         customerName: $scope.vehicleQuery.customerName, identificationNo: $scope.vehicleQuery.identificationNo, salesConsultant: $scope.vehicleQuery.salesConsultant,
                         customerType: $scope.vehicleQuery.customerType, dealerID: dealerID, marker: $scope.list.length, limit: $scope.state.perPage},
                     function (data) {
@@ -230,10 +230,10 @@ angular.module('commonControllers', []).
                 $scope.state.loading = true;
                 $scope.state.listType = 'queryP';
                 $scope.list = [];
-                machineAccountService.queryPostSalesLedgerData({workOrderNo: $scope.postQuery.workOrderNo, salesDate: $scope.postQuery.salesDate,
+                machineAccountService.queryPostSalesLedgerData({workOrderNo: $scope.postQuery.workOrderNo, saleDate: $scope.postQuery.saleDate,
                         mileage: $scope.postQuery.mileage, lpNumber: $scope.postQuery.lpNumber, customerName: $scope.postQuery.customerName,
                         color: $scope.postQuery.color, frameNo: $scope.postQuery.frameNo, model: $scope.postQuery.model, enterFactoryDate: $scope.postQuery.enterFactoryDate,
-                        exitFactoryDate: $scope.postQuery.exitFactoryDate, customerType: $scope.postQuery.customerType, insuranceAgengcy: $scope.postQuery.insuranceAgengcy,
+                        exitFactoryDate: $scope.postQuery.exitFactoryDate, customerType: $scope.postQuery.customerType, insuranceAgency: $scope.postQuery.insuranceAgency,
                         insuranceDueDate: $scope.postQuery.insuranceDueDate, insuranceClaimNumber: $scope.postQuery.insuranceClaimNumber, dealerID: dealerID,
                         marker: $scope.list.length, limit: $scope.state.perPage},
                     function (data) {

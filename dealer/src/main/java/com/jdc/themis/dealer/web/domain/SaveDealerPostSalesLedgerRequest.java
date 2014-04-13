@@ -16,7 +16,7 @@ public class SaveDealerPostSalesLedgerRequest implements Serializable {
 	
 	private Integer dealerID;
 	
-	private String salesDate;
+	private String saleDate;
 	
 	private Double mileage;
 	
@@ -36,7 +36,7 @@ public class SaveDealerPostSalesLedgerRequest implements Serializable {
 	
 	private String customerType;
 	
-	private String insuranceAgengcy;
+	private String insuranceAgency;
 	
 	private String insuranceDueDate;
 	
@@ -192,12 +192,12 @@ public class SaveDealerPostSalesLedgerRequest implements Serializable {
 		this.dealerID = dealerID;
 	}
 
-	public String getSalesDate() {
-		return salesDate;
+	public String getSaleDate() {
+		return saleDate;
 	}
 
-	public void setSalesDate(String salesDate) {
-		this.salesDate = salesDate;
+	public void setSaleDate(String saleDate) {
+		this.saleDate = saleDate;
 	}
 
 	public Double getMileage() {
@@ -272,12 +272,12 @@ public class SaveDealerPostSalesLedgerRequest implements Serializable {
 		this.customerType = customerType;
 	}
 
-	public String getInsuranceAgengcy() {
-		return insuranceAgengcy;
+	public String getInsuranceAgency() {
+		return insuranceAgency;
 	}
 
-	public void setInsuranceAgengcy(String insuranceAgengcy) {
-		this.insuranceAgengcy = insuranceAgengcy;
+	public void setInsuranceAgency(String insuranceAgency) {
+		this.insuranceAgency = insuranceAgency;
 	}
 
 	public String getInsuranceDueDate() {

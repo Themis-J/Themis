@@ -16,7 +16,7 @@
 
                 <td>
                     <input placeholder="YYYY-MM-DD" ng-pattern="/^(\d{4})-(\d{2})-(\d{2})$/" required
-                           ng-disabled="userService.validateRoleHead()" type="text" ng-model="data['salesDate']"/>
+                           ng-disabled="userService.validateRoleHead()" type="text" ng-model="data['saleDate']"/>
                 </td>
             </tr>
             <tr>
@@ -94,8 +94,8 @@
                 <td>承保公司</td>
 
                 <td>
-                    <select ng-disabled="userService.validateRoleHead()" ng-model="data['insuranceAgengcy']"
-                            ng-options="insuranceAgengcy as insuranceAgengcy for insuranceAgengcy in metadata['insuranceAgengcy']">
+                    <select ng-disabled="userService.validateRoleHead()" ng-model="data['insuranceAgency']"
+                            ng-options="insuranceAgency as insuranceAgency for insuranceAgency in metadata['insuranceAgency']">
                     </select>
                 </td>
                 <td>保险到期日期</td>

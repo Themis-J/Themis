@@ -893,8 +893,8 @@ public class DealerIncomeEntryServiceImpl implements DealerIncomeEntryService {
         if (request.getWarehousingDate() != null) {
             ledger.setWarehousingDate(LocalDate.parse(request.getWarehousingDate()));
         }
-        if (request.getSalesDate() != null) {
-            ledger.setSalesDate(LocalDate.parse(request.getSalesDate()));
+        if (request.getSaleDate() != null) {
+            ledger.setSaleDate(LocalDate.parse(request.getSaleDate()));
         }
         ledger.setGuidingPrice(request.getGuidingPrice() != null ? request.getGuidingPrice() : Double.valueOf(0));
         ledger.setCustomerName(request.getCustomerName());
@@ -941,7 +941,7 @@ public class DealerIncomeEntryServiceImpl implements DealerIncomeEntryService {
         ledger.setInsuranceRebateMargin(request.getInsuranceRebateMargin() != null ? request.getInsuranceRebateMargin()
                 : Double.valueOf(0));
         ledger.setInsuranceCost(request.getInsuranceCost() != null ? request.getInsuranceCost() : Double.valueOf(0));
-        ledger.setInsuranceAgengcy(request.getInsuranceAgengcy());
+        ledger.setInsuranceAgency(request.getInsuranceAgency());
         ledger.setLpRevenue(request.getLpRevenue() != null ? request.getLpRevenue() : Double.valueOf(0));
         ledger.setLpCost(request.getLpCost() != null ? request.getLpCost() : Double.valueOf(0));
         ledger.setInstallmentCharge(request.getInstallmentCharge() != null ? request.getInstallmentCharge() : Double
@@ -1031,11 +1031,11 @@ public class DealerIncomeEntryServiceImpl implements DealerIncomeEntryService {
     @Override
     public GetDealerLedgerResponse queryDealerVehicleSalesLedger(Integer contractNo, String model, String type,
             String color, String lpNumber, String frameNo, String manufacturerDebitDate, String warehousingDate,
-            String salesDate, Double guidingPrice, String customerName, String identificationNo,
+            String saleDate, Double guidingPrice, String customerName, String identificationNo,
             String salesConsultant, String customerType, Integer dealerID, Integer marker, Integer limit) {
         final GetDealerLedgerResponse response = new GetDealerLedgerResponse();
         Collection<DealerVehicleSalesLedger> list = incomeJournalDAL.queryDealerVehicleSalesLedger(contractNo, model,
-                type, color, lpNumber, frameNo, manufacturerDebitDate, warehousingDate, salesDate, guidingPrice,
+                type, color, lpNumber, frameNo, manufacturerDebitDate, warehousingDate, saleDate, guidingPrice,
                 customerName, identificationNo, salesConsultant, customerType, dealerID, marker, limit);
 
         for (DealerVehicleSalesLedger ledger : list) {
@@ -1058,8 +1058,8 @@ public class DealerIncomeEntryServiceImpl implements DealerIncomeEntryService {
                 summary.add("");
             }
 
-            if (null != ledger.getSalesDate()) {
-                summary.add(ledger.getSalesDate().toString());
+            if (null != ledger.getSaleDate()) {
+                summary.add(ledger.getSaleDate().toString());
             } else {
                 summary.add("");
             }
@@ -1107,8 +1107,8 @@ public class DealerIncomeEntryServiceImpl implements DealerIncomeEntryService {
             if (ledger.getWarehousingDate() != null) {
                 item.setWarehousingDate(ledger.getWarehousingDate().toString());
             }
-            if (ledger.getSalesDate() != null) {
-                item.setSalesDate(ledger.getSalesDate().toString());
+            if (ledger.getSaleDate() != null) {
+                item.setSaleDate(ledger.getSaleDate().toString());
             }
             item.setGuidingPrice(ledger.getGuidingPrice());
             item.setCustomerName(ledger.getCustomerName());
@@ -1142,7 +1142,7 @@ public class DealerIncomeEntryServiceImpl implements DealerIncomeEntryService {
             item.setAccessorySalesCostGiftPart(ledger.getAccessorySalesCostGiftPart());
             item.setInsuranceRebateMargin(ledger.getInsuranceRebateMargin());
             item.setInsuranceCost(ledger.getInsuranceCost());
-            item.setInsuranceAgengcy(ledger.getInsuranceAgengcy());
+            item.setInsuranceAgency(ledger.getInsuranceAgency());
             item.setLpRevenue(ledger.getLpRevenue());
             item.setLpCost(ledger.getLpCost());
             item.setInstallmentCharge(ledger.getInstallmentCharge());
@@ -1207,8 +1207,8 @@ public class DealerIncomeEntryServiceImpl implements DealerIncomeEntryService {
         final DealerPostSalesLedger ledger = new DealerPostSalesLedger();
         ledger.setWorkOrderNo(request.getWorkOrderNo());
         ledger.setDealerID(request.getDealerID());
-        if (request.getSalesDate() != null) {
-            ledger.setSalesDate(LocalDate.parse(request.getSalesDate()));
+        if (request.getSaleDate() != null) {
+            ledger.setSaleDate(LocalDate.parse(request.getSaleDate()));
         }
         ledger.setMileage(request.getMileage() != null ? request.getMileage() : Double.valueOf(0));
         ledger.setLpNumber(request.getLpNumber());
@@ -1223,7 +1223,7 @@ public class DealerIncomeEntryServiceImpl implements DealerIncomeEntryService {
             ledger.setExitFactoryDate(LocalDate.parse(request.getExitFactoryDate()));
         }
         ledger.setCustomerType(request.getCustomerType());
-        ledger.setInsuranceAgengcy(request.getInsuranceAgengcy());
+        ledger.setInsuranceAgency(request.getInsuranceAgency());
         if (request.getInsuranceDueDate() != null) {
             ledger.setInsuranceDueDate(LocalDate.parse(request.getInsuranceDueDate()));
         }
@@ -1362,19 +1362,19 @@ public class DealerIncomeEntryServiceImpl implements DealerIncomeEntryService {
      * java.lang.Integer, java.lang.Integer, java.lang.Integer)
      */
     @Override
-    public GetDealerLedgerResponse queryDealerPostSalesLedger(Integer workOrderNo, String salesDate, Double mileage,
+    public GetDealerLedgerResponse queryDealerPostSalesLedger(Integer workOrderNo, String saleDate, Double mileage,
             String lpNumber, String customerName, String color, String frameNo, String model, String enterFactoryDate,
-            String exitFactoryDate, String customerType, String insuranceAgengcy, String insuranceDueDate,
+            String exitFactoryDate, String customerType, String insuranceAgency, String insuranceDueDate,
             Integer insuranceClaimNumber, Integer dealerID, Integer marker, Integer limit) {
         final GetDealerLedgerResponse response = new GetDealerLedgerResponse();
         final Collection<DealerPostSalesLedger> list = incomeJournalDAL.queryDealerPostSalesLedger(workOrderNo,
-                salesDate, mileage, lpNumber, customerName, color, frameNo, model, enterFactoryDate, exitFactoryDate,
-                customerType, insuranceAgengcy, insuranceDueDate, insuranceClaimNumber, dealerID, marker, limit);
+                saleDate, mileage, lpNumber, customerName, color, frameNo, model, enterFactoryDate, exitFactoryDate,
+                customerType, insuranceAgency, insuranceDueDate, insuranceClaimNumber, dealerID, marker, limit);
         for (DealerPostSalesLedger ledger : list) {
             List<String> summary = new ArrayList<String>();
             summary.add(String.valueOf(ledger.getWorkOrderNo()));
-            if (null != ledger.getSalesDate()) {
-                summary.add(ledger.getSalesDate().toString());
+            if (null != ledger.getSaleDate()) {
+                summary.add(ledger.getSaleDate().toString());
             } else {
                 summary.add("");
             }
@@ -1398,7 +1398,7 @@ public class DealerIncomeEntryServiceImpl implements DealerIncomeEntryService {
             }
 
             summary.add(ledger.getCustomerType());
-            summary.add(ledger.getInsuranceAgengcy());
+            summary.add(ledger.getInsuranceAgency());
 
             if (null != ledger.getInsuranceDueDate()) {
                 summary.add(ledger.getInsuranceDueDate().toString());
@@ -1429,8 +1429,8 @@ public class DealerIncomeEntryServiceImpl implements DealerIncomeEntryService {
             final DealerPostSalesLedgerDetail item = new DealerPostSalesLedgerDetail();
             item.setWorkOrderNo(ledger.getWorkOrderNo());
             item.setDealerID(ledger.getDealerID());
-            if (ledger.getSalesDate() != null) {
-                item.setSalesDate(ledger.getSalesDate().toString());
+            if (ledger.getSaleDate() != null) {
+                item.setSaleDate(ledger.getSaleDate().toString());
             }
             item.setMileage(ledger.getMileage());
             item.setLpNumber(ledger.getLpNumber());
@@ -1445,7 +1445,7 @@ public class DealerIncomeEntryServiceImpl implements DealerIncomeEntryService {
                 item.setExitFactoryDate(ledger.getExitFactoryDate().toString());
             }
             item.setCustomerType(ledger.getCustomerType());
-            item.setInsuranceAgengcy(ledger.getInsuranceAgengcy());
+            item.setInsuranceAgency(ledger.getInsuranceAgency());
             if (ledger.getInsuranceDueDate() != null) {
                 item.setInsuranceDueDate(ledger.getInsuranceDueDate().toString());
             }

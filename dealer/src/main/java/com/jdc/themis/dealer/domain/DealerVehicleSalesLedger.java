@@ -63,7 +63,7 @@ public class DealerVehicleSalesLedger implements Serializable, TemporalEntity {
 	private LocalDate warehousingDate;
 
 	@Type(type = "localdate")
-	private LocalDate salesDate;
+	private LocalDate saleDate;
 
 	private Double guidingPrice = 0D;
 
@@ -126,7 +126,7 @@ public class DealerVehicleSalesLedger implements Serializable, TemporalEntity {
 
 	private Double insuranceCost = 0D;
 
-	private String insuranceAgengcy;
+	private String insuranceAgency;
 
 	private Double lpRevenue = 0D;
 
@@ -315,12 +315,12 @@ public class DealerVehicleSalesLedger implements Serializable, TemporalEntity {
 		this.warehousingDate = warehousingDate;
 	}
 
-	public LocalDate getSalesDate() {
-		return salesDate;
+	public LocalDate getSaleDate() {
+		return saleDate;
 	}
 
-	public void setSalesDate(LocalDate salesDate) {
-		this.salesDate = salesDate;
+	public void setSaleDate(LocalDate saleDate) {
+		this.saleDate = saleDate;
 	}
 
 	public Double getGuidingPrice() {
@@ -565,12 +565,12 @@ public class DealerVehicleSalesLedger implements Serializable, TemporalEntity {
 		this.insuranceCost = insuranceCost;
 	}
 
-	public String getInsuranceAgengcy() {
-		return insuranceAgengcy;
+	public String getInsuranceAgency() {
+		return insuranceAgency;
 	}
 
-	public void setInsuranceAgengcy(String insuranceAgengcy) {
-		this.insuranceAgengcy = insuranceAgengcy;
+	public void setInsuranceAgency(String insuranceAgency) {
+		this.insuranceAgency = insuranceAgency;
 	}
 
 	public Double getLpRevenue() {

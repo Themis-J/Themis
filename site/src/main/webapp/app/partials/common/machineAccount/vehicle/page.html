@@ -74,7 +74,7 @@
                 <td>
                     <input placeholder="YYYY-MM-DD" ng-pattern="/^(\d{4})-(\d{2})-(\d{2})$/" required
                            ng-disabled="userService.validateRoleHead()"
-                           type="text" ng-model="data['salesDate']"/>
+                           type="text" ng-model="data['saleDate']"/>
                 </td>
                 <td>指导价格</td>
 
@@ -324,7 +324,7 @@
                 <td>主机厂补贴</td>
                 <td>
                     <input ng-disabled="userService.validateRoleHead()" type="text" ng-pattern="/^(-?\d+)(\.\d+)?$/"
-                           ng-model="data['insuranceAgengcy']"/>
+                           ng-model="data['insuranceAgency']"/>
                 </td>
                 <td>毛利（含赠送）</td>
                 <td>
