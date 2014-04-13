@@ -2,9 +2,9 @@ INSERT INTO DealerLedgerMetadataCategory SELECT 1, '新车销售台账', current
 INSERT INTO DealerLedgerMetadataCategory SELECT 2, '售后台账', current_timestamp;
 
 INSERT INTO DealerLedgerMetadata SELECT 1, 'contractNo', '合同号', 'input', null, 1, 1;
-INSERT INTO DealerLedgerMetadata SELECT 2, 'model', '车型', 'select', null, 1, 1;
-INSERT INTO DealerLedgerMetadata SELECT 3, 'type', '型号', 'select', null, 1, 1;
-INSERT INTO DealerLedgerMetadata SELECT 4, 'color', '颜色', 'select', null, 1, 1;
+INSERT INTO DealerLedgerMetadata SELECT 2, 'model', '车型', 'select', '凯美瑞,雅阁,锋范', 1, 1;
+INSERT INTO DealerLedgerMetadata SELECT 3, 'type', '型号', 'select', '2.0舒适版,2.4豪华版', 1, 1;
+INSERT INTO DealerLedgerMetadata SELECT 4, 'color', '颜色', 'select', '沙漠雾,丝缎白', 1, 1;
 INSERT INTO DealerLedgerMetadata SELECT 5, 'lpNumber', '车牌号', 'input', null, 1, 1;
 INSERT INTO DealerLedgerMetadata SELECT 6, 'frameNo', '车架号', 'input', null, 1, 1;
 INSERT INTO DealerLedgerMetadata SELECT 7, 'manufacturerDebitDate', '主机厂扣款日期', 'input', null, 1, 1;
@@ -40,7 +40,7 @@ INSERT INTO DealerLedgerMetadata SELECT 36, 'accessorySalesCostBuyerPart', '精�
 INSERT INTO DealerLedgerMetadata SELECT 37, 'accessorySalesCostGiftPart', '精品成本赠送精品部分', 'input', null, 1, 1;
 INSERT INTO DealerLedgerMetadata SELECT 38, 'insuranceRebateMargin', '保险返点利润', 'input', null, 1, 1;
 INSERT INTO DealerLedgerMetadata SELECT 39, 'insuranceCost', '保险成本', 'input', null, 1, 1;
-INSERT INTO DealerLedgerMetadata SELECT 40, 'insuranceAgengcy', '保险机构', 'select', '众诚,中保,平安,太保,其他', 1, 1;
+INSERT INTO DealerLedgerMetadata SELECT 40, 'insuranceAgency', '保险机构', 'select', '众诚,中保,平安,太保,其他', 1, 1;
 INSERT INTO DealerLedgerMetadata SELECT 41, 'lpRevenue', '上牌收入', 'input', null, 1, 1;
 INSERT INTO DealerLedgerMetadata SELECT 42, 'lpCost', '上牌成本', 'input', null, 1, 1;
 INSERT INTO DealerLedgerMetadata SELECT 43, 'installmentCharge', '分期付款手续费', 'input', null, 1, 1;
@@ -96,7 +96,7 @@ INSERT INTO DealerLedgerMetadata SELECT 91, 'model', '选择车型', 'select', '
 INSERT INTO DealerLedgerMetadata SELECT 92, 'enterFactoryDate', '进厂日期', 'input', null, 1, 2;
 INSERT INTO DealerLedgerMetadata SELECT 93, 'exitFactoryDate', '出厂日期', 'input', null, 1, 2;
 INSERT INTO DealerLedgerMetadata SELECT 94, 'customerType', '客户类型', 'select', '自店客户,新增客户,政府定点,内部维修,本单位员工,集团内员工,VIP,企业单位定点', 1, 2;
-INSERT INTO DealerLedgerMetadata SELECT 95, 'insuranceAgengcy', '承保公司', 'select', '众诚,中保,平安,太保,其他', 1, 2;
+INSERT INTO DealerLedgerMetadata SELECT 95, 'insuranceAgency', '承保公司', 'select', '众诚,中保,平安,太保,其他', 1, 2;
 INSERT INTO DealerLedgerMetadata SELECT 96, 'insuranceDueDate', '保险到期日期', 'input', null, 1, 2;
 INSERT INTO DealerLedgerMetadata SELECT 97, 'insuranceClaimNumber', '本保险年度出险次数', 'input', null, 1, 2;
 INSERT INTO DealerLedgerMetadata SELECT 98, 'maintenancePostSalesConsultant', '保养、机修、保修售后顾问（SA）', 'select', '小李,小王', 1, 2;

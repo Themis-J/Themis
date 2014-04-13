@@ -94,7 +94,7 @@ public class DealerEntryRestServiceTest {
 		final VechicleItems items = mapper.readValue(output.getBytes(),
 				VechicleItems.class);
 
-		Assert.assertEquals(22, items.getItems().size());
+		Assert.assertEquals(44, items.getItems().size());
 		Assert.assertEquals(0, items.getItems().get(0).getTypeID().intValue());
 	}
 

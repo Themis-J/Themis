@@ -190,6 +190,7 @@ public class RefDataQueryServiceImpl implements RefDataQueryService {
 	}
 
 	@Override
+	@Cacheable(value="departments")
 	public GetDepartmentResponse getDepartments() {
 		final GetDepartmentResponse response = new GetDepartmentResponse();
 
@@ -203,6 +204,7 @@ public class RefDataQueryServiceImpl implements RefDataQueryService {
 	}
 	
 	@Override
+	@Cacheable(value="postSalesDepartments")
 	public GetDepartmentResponse getPostSalesDepartments() {
 		final GetDepartmentResponse response = new GetDepartmentResponse();
 
@@ -225,6 +227,7 @@ public class RefDataQueryServiceImpl implements RefDataQueryService {
 	}
 
 	@Override
+	@Cacheable(value="departmentByID")
 	public DepartmentDetail getDepartment(Integer id) {
 		Preconditions.checkArgument(refDataDAL.getDepartment(id).isSome(), "unknown department id " + id);
 		final Department department = refDataDAL.getDepartment(id).some();
@@ -235,6 +238,7 @@ public class RefDataQueryServiceImpl implements RefDataQueryService {
 	}
 
 	@Override
+	@Cacheable(value="departmentByName")
 	public DepartmentDetail getDepartment(String name) {
 		Preconditions.checkArgument(refDataDAL.getDepartment(name).isSome(), "unknown department name " + name);
 		final Department department = refDataDAL.getDepartment(name).some();
@@ -245,6 +249,7 @@ public class RefDataQueryServiceImpl implements RefDataQueryService {
 	}
 
 	@Override
+	@Cacheable(value="vehicleByID")
 	public VehicleDetail getVehicle(Integer id) {
 		Preconditions.checkArgument(refDataDAL.getVehicle(id).isSome(), "unknown vehicle id");
 		final Vehicle vehicle = refDataDAL.getVehicle(id).some();
@@ -257,6 +262,7 @@ public class RefDataQueryServiceImpl implements RefDataQueryService {
 	}
 
 	@Override
+	@Cacheable(value="salesServiceRevenueItemByID")
 	public SalesServiceJournalItemDetail getSalesServiceRevenueItem(Integer id) {
 		Preconditions.checkArgument(refDataDAL.getSalesServiceJournalItem(id).isSome(), "unknown item id");
 		final SalesServiceJournalItem ssj = refDataDAL.getSalesServiceJournalItem(id).some();
@@ -281,6 +287,7 @@ public class RefDataQueryServiceImpl implements RefDataQueryService {
 	}
 
 	@Override
+	@Cacheable(value="generalIncomeItemByID")
 	public GeneralJournalItemDetail getGeneralIncomeItem(Integer id) {
 		Preconditions.checkArgument(refDataDAL.getGeneralJournalItem(id).isSome(), "unknown item id");
 		final GeneralJournalItem gji = refDataDAL.getGeneralJournalItem(id).some();
@@ -293,6 +300,7 @@ public class RefDataQueryServiceImpl implements RefDataQueryService {
 	}
 
 	@Override
+	@Cacheable(value="inventoryDurationItemByID")
 	public InventoryDurationItemDetail getInventoryDurationItem(Integer id) {
 		Preconditions.checkArgument(refDataDAL.getInventoryDurationItem(id).isSome(), "unknown item id");
 		final InventoryDurationItem gji = refDataDAL.getInventoryDurationItem(id).some();
@@ -303,8 +311,8 @@ public class RefDataQueryServiceImpl implements RefDataQueryService {
 	}
 
 	@Override
-	public AccountReceivableDurationItemDetail getAccountReceivableDurationItem(
-			Integer id) {
+	@Cacheable(value="accountReceivableDurationItemByID")
+	public AccountReceivableDurationItemDetail getAccountReceivableDurationItem(Integer id) {
 		Preconditions.checkArgument(refDataDAL.getAccountReceivableDurationItem(id).isSome(), "unknown item id");
 		final AccountReceivableDurationItem gji = refDataDAL.getAccountReceivableDurationItem(id).some();
 		final AccountReceivableDurationItemDetail item = new AccountReceivableDurationItemDetail();
@@ -314,6 +322,7 @@ public class RefDataQueryServiceImpl implements RefDataQueryService {
 	}
 
 	@Override
+	@Cacheable(value="employeeFeeItemByID")
 	public EmployeeFeeItemDetail getEmployeeFeeItem(Integer id) {
 		Preconditions.checkArgument(refDataDAL.getEmployeeFeeItem(id).isSome(), "unknown item id");
 		final EmployeeFeeItem gji = refDataDAL.getEmployeeFeeItem(id).some();
@@ -324,6 +333,7 @@ public class RefDataQueryServiceImpl implements RefDataQueryService {
 	}
 
 	@Override
+	@Cacheable(value="employeeFeeSummaryItemByID")
 	public EmployeeFeeSummaryItemDetail getEmployeeFeeSummaryItem(Integer id) {
 		Preconditions.checkArgument(refDataDAL.getEmployeeFeeSummaryItem(id).isSome(), "unknown item id");
 		final EmployeeFeeSummaryItem gji = refDataDAL.getEmployeeFeeSummaryItem(id).some();
@@ -334,8 +344,8 @@ public class RefDataQueryServiceImpl implements RefDataQueryService {
 	}
 
 	@Override
-	public HumanResourceAllocationItemDetail getHumanResourceAllocationItem(
-			Integer id) {
+	@Cacheable(value="hrAllocItemByID")
+	public HumanResourceAllocationItemDetail getHumanResourceAllocationItem(Integer id) {
 		Preconditions.checkArgument(
 				refDataDAL.getJobPosition(id).isSome(),
 				"unknown job position id " + id);
@@ -348,6 +358,7 @@ public class RefDataQueryServiceImpl implements RefDataQueryService {
 	}
 
 	@Override
+	@Cacheable(value="durationByID")
 	public DurationDetail getDuration(Integer id) {
 		Preconditions.checkArgument(refDataDAL.getDuration(id).isSome(), "unknown duration id");
 		final Duration gji = refDataDAL.getDuration(id).some();
@@ -360,6 +371,7 @@ public class RefDataQueryServiceImpl implements RefDataQueryService {
 	}
 
 	@Override
+	@Cacheable(value="dealerByID")
 	public DealerDetail getDealer(Integer id) {
 		Preconditions.checkArgument(refDataDAL.getDealer(id).isSome(), "unknown dealer id");
 		final Dealer dealer = refDataDAL.getDealer(id).some();
@@ -373,6 +385,7 @@ public class RefDataQueryServiceImpl implements RefDataQueryService {
 	}
 
 	@Override
+	@Cacheable(value="inventoryDurationItems")
 	public GetInventoryDurationItemResponse getInventoryDurationItems() {
 		final GetInventoryDurationItemResponse response = new GetInventoryDurationItemResponse();
 
@@ -387,6 +400,7 @@ public class RefDataQueryServiceImpl implements RefDataQueryService {
 	}
 
 	@Override
+	@Cacheable(value="accountReceivableDurationItems")
 	public GetAccountReceivableDurationItemResponse getAccountReceivableDurationItems() {
 		final GetAccountReceivableDurationItemResponse response = new GetAccountReceivableDurationItemResponse();
 
@@ -402,6 +416,7 @@ public class RefDataQueryServiceImpl implements RefDataQueryService {
 	}
 
 	@Override
+	@Cacheable(value="employeeFeeItems")
 	public GetEmployeeFeeItemResponse getEmployeeFeeItems() {
 		final GetEmployeeFeeItemResponse response = new GetEmployeeFeeItemResponse();
 
@@ -415,6 +430,7 @@ public class RefDataQueryServiceImpl implements RefDataQueryService {
 	}
 
 	@Override
+	@Cacheable(value="employeeFeeSummaryItems")
 	public GetEmployeeFeeSummaryItemResponse getEmployeeFeeSummaryItems() {
 		final GetEmployeeFeeSummaryItemResponse response = new GetEmployeeFeeSummaryItemResponse();
 
@@ -429,6 +445,7 @@ public class RefDataQueryServiceImpl implements RefDataQueryService {
 	}
 
 	@Override
+	@Cacheable(value="hrAllocItems")
 	public GetHumanResourceAllocationItemResponse getHumanResourceAllocationItems() {
 		final GetHumanResourceAllocationItemResponse response = new GetHumanResourceAllocationItemResponse();
 
@@ -452,6 +469,7 @@ public class RefDataQueryServiceImpl implements RefDataQueryService {
 	}
 
 	@Override
+	@Cacheable(value="dealers")
 	public GetDealerResponse getDealers() {
 		final GetDealerResponse response = new GetDealerResponse();
 		for (final Dealer dealer : refDataDAL.getDealers()) {
