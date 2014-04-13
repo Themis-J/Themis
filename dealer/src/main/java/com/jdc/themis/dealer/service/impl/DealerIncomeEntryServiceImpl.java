@@ -1223,7 +1223,7 @@ public class DealerIncomeEntryServiceImpl implements DealerIncomeEntryService {
             ledger.setExitFactoryDate(LocalDate.parse(request.getExitFactoryDate()));
         }
         ledger.setCustomerType(request.getCustomerType());
-        ledger.setInsuranceAgengcy(request.getInsuranceAgengcy());
+        ledger.setInsuranceAgengcy(request.getInsuranceAgency());
         if (request.getInsuranceDueDate() != null) {
             ledger.setInsuranceDueDate(LocalDate.parse(request.getInsuranceDueDate()));
         }

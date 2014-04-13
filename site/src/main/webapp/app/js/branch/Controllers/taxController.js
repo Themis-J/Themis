@@ -1,5 +1,6 @@
 angular.module('tax.controller', [])
-    .controller('taxCtrl', ['$scope', 'Dealer', 'DealerService', '$timeout', function ($scope, Dealer, DealerService, $timeout) {
+    .controller('taxCtrl', ['$scope', 'Dealer', 'DealerService', '$timeout', 'UserService',
+        function ($scope, Dealer, DealerService, $timeout, UserService) {
         $scope.$on('$destroy', function () {
             $("#page_nav").empty();
         });
@@ -23,7 +24,7 @@ angular.module('tax.controller', [])
             var postData = {};
             postData.dealerID = DealerService.getDealerId();
             postData.validDate = DealerService.getValidDate();
-            postData.updateBy = DealerService.getUserName();
+            postData.updateBy = UserService.getCurUserAlias();
             postData.tax = $scope.tax;
 
             var success = function () {

@@ -1,5 +1,6 @@
 angular.module('branch.base.controller', [])
-    .controller('branchBaseCtrl', ['$scope', 'Dealer', 'DealerService', '$filter', function ($scope, Dealer, DealerService, $filter) {
+    .controller('branchBaseCtrl', ['$scope', '$filter', 'Dealer', 'DealerService', 'UserService',
+        function ($scope, $filter, Dealer, DealerService, UserService) {
 
         $scope.autoSaveGeneralRevenue = function (generalSale) {
             if (!this.form.$invalid) {
@@ -7,7 +8,7 @@ angular.module('branch.base.controller', [])
                 postData.dealerID = DealerService.getDealerId();
                 postData.departmentID = DealerService.getSelectedDept();
                 postData.validDate = DealerService.getValidDate();
-                postData.updateBy = DealerService.getUserName();
+                postData.updateBy = UserService.getCurUserAlias();
                 postData.detail = [];
                 postData.detail.push({
                     itemID: generalSale.id,
@@ -53,7 +54,7 @@ angular.module('branch.base.controller', [])
             postData.dealerID = DealerService.getDealerId();
             postData.itemID = DealerService.getSelectedMenu();
             postData.validDate = DealerService.getValidDate();
-            postData.updateBy = DealerService.getUserName();
+            postData.updateBy = UserService.getCurUserAlias();
 
             Dealer.saveStatus({}, postData, function () {
                 var navLink = $("#" + DealerService.getSelectedMenu());

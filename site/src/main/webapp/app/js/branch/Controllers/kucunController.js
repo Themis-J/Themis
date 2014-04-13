@@ -1,6 +1,6 @@
 angular.module('kucun.controller', [])
-    .controller('kucunCtrl', ['$scope', 'Dealer', 'DealerService', '$filter', '$timeout',
-        function ($scope, Dealer, DealerService, $filter, $timeout) {
+    .controller('kucunCtrl', ['$scope', 'Dealer', 'DealerService', '$filter', '$timeout', 'UserService',
+        function ($scope, Dealer, DealerService, $filter, $timeout, UserService) {
 
             $scope.$on('$destroy', function () {
                 $("#page_nav").empty();
@@ -63,7 +63,7 @@ angular.module('kucun.controller', [])
                 postData.dealerID = DealerService.getDealerId();
                 postData.departmentID = DealerService.getSelectedDept();
                 postData.validDate = DealerService.getValidDate();
-                postData.updateBy = DealerService.getUserName();
+                postData.updateBy = UserService.getCurUserAlias();
                 postData.detail = [];
                 postData.detail.push({
                     itemID: accountInRange.id,

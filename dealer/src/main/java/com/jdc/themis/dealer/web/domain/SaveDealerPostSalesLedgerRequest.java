@@ -36,7 +36,7 @@ public class SaveDealerPostSalesLedgerRequest implements Serializable {
 	
 	private String customerType;
 	
-	private String insuranceAgengcy;
+	private String insuranceAgency;
 	
 	private String insuranceDueDate;
 	
@@ -272,12 +272,12 @@ public class SaveDealerPostSalesLedgerRequest implements Serializable {
 		this.customerType = customerType;
 	}
 
-	public String getInsuranceAgengcy() {
-		return insuranceAgengcy;
+	public String getInsuranceAgency() {
+		return insuranceAgency;
 	}
 
-	public void setInsuranceAgengcy(String insuranceAgengcy) {
-		this.insuranceAgengcy = insuranceAgengcy;
+	public void setInsuranceAgency(String insuranceAgency) {
+		this.insuranceAgency = insuranceAgency;
 	}
 
 	public String getInsuranceDueDate() {

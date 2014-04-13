@@ -15,14 +15,10 @@
                         </button>
                         <ul class="dropdown-menu">
                             <li>
-                                <a href="#"
-                                   onclick="event.preventDefault ? event.preventDefault() : event.returnValue = false;"
-                                   ng-click="typeString='新车销售台账';refreshList('vehicle')">新车销售台账</a>
+                                <a href="#/machineAccount/vehicle/list">新车销售台账</a>
                             </li>
                             <li>
-                                <a href="#"
-                                   onclick="event.preventDefault ? event.preventDefault() : event.returnValue = false;"
-                                   ng-click="typeString='售后台账';refreshList('postSales')">售后台账</a>
+                                <a href="#/machineAccount/postSales/list">售后台账</a>
                             </li>
                         </ul>
                     </div>
@@ -45,7 +41,7 @@
             <div class="row-fluid" ng-repeat="summary in list">
                 <div class="span12">
                     <div style="padding-bottom: 3px">
-                        <a href="#/machineAccount/{{summary[0]}}" style="font-size: 15px;text-decoration: none;">
+                        <a href="#/machineAccount/{{type}}/id/{{summary[0]}}" style="font-size: 15px;text-decoration: none;">
                             <span ng-if="type == 'vehicle'">合同号：</span>
                             <span ng-if="type == 'postSales'">工单号：</span>
                             {{summary[0]}}</a>

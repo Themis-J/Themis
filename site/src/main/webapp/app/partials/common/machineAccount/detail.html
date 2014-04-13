@@ -3,12 +3,13 @@
     </div>
 
     <div class="span8">
+        <div style="padding-bottom: 15px">
+            <a href="#/machineAccount/{{type}}/list"><i class="icon-chevron-sign-left"></i> 返回台账列表</a>
+        </div>
         <div class="{{message.class}}">
             {{message.text}}
         </div>
-        <div style="padding-bottom: 15px">
-            <a href="#/machineAccount"><i class="icon-chevron-sign-left"></i> 返回台账列表</a>
-        </div>
+
         <div class="row-fluid">
             <div class="span10">
                 <div ng-include src="contentPath"  class="animated fadeIn"></div>
@@ -16,6 +17,13 @@
             <div class="span2">
                 <div id="page_nav"></div>
             </div>
+        </div>
+
+        <div class="{{message.class}}">
+            {{message.text}}
+        </div>
+        <div style="padding-bottom: 15px">
+            <a href="#/machineAccount/{{type}}/list"><i class="icon-chevron-sign-left"></i> 返回台账列表</a>
         </div>
     </div>
 

@@ -1,6 +1,6 @@
 angular.module('lirun.controller', [])
-    .controller('lirunCtrl', ['$scope', 'Dealer', 'DealerService', '$filter', '$q', '$timeout',
-        function ($scope, Dealer, DealerService, $filter, $q, $timeout) {
+    .controller('lirunCtrl', ['$scope', 'Dealer', 'DealerService', '$filter', '$q', '$timeout', 'UserService',
+        function ($scope, Dealer, DealerService, $filter, $q, $timeout, UserService) {
             $scope.$on('$destroy', function () {
                 $("#page_nav").empty();
             });
@@ -15,7 +15,7 @@ angular.module('lirun.controller', [])
                     postData.dealerID = DealerService.getDealerId();
                     postData.departmentID = DealerService.getSelectedDept();
                     postData.validDate = DealerService.getValidDate();
-                    postData.updateBy = DealerService.getUserName();
+                    postData.updateBy = UserService.getCurUserAlias();
                     postData.detail = [];
                     postData.detail.push({
                         vehicleID: vehivleRevenue.id,
@@ -48,7 +48,7 @@ angular.module('lirun.controller', [])
                     postData.dealerID = DealerService.getDealerId();
                     postData.departmentID = DealerService.getSelectedDept();
                     postData.validDate = DealerService.getValidDate();
-                    postData.updateBy = DealerService.getUserName();
+                    postData.updateBy = UserService.getCurUserAlias();
                     postData.detail = [];
                     postData.detail.push({
                         itemID: sale.id,
