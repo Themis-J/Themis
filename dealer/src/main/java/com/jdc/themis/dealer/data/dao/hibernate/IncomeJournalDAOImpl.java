@@ -876,7 +876,7 @@ public class IncomeJournalDAOImpl implements IncomeJournalDAO {
     }
 
     @Override
-    public Instant saveDealerPostSalesLedger(DealerPostSalesLedger ledger) {
+    public Instant saveDealerPostSalesLedger(final DealerPostSalesLedger ledger) {
         final Session session = sessionFactory.getCurrentSession();
         Instant currentTimestamp = Utils.currentTimestamp();
 
@@ -889,7 +889,7 @@ public class IncomeJournalDAOImpl implements IncomeJournalDAO {
             if (oldLedger.getTimeEnd().isBefore(INFINITE_TIMEEND)) {
                 logger.warn("TimeEnd of the one in database is closed already. {}, {}", oldLedger, currentTimestamp);
             } else {
-                oldLedger.setTimeEnd(currentTimestamp);
+            	oldLedger.setTimeEnd(currentTimestamp);
                 session.saveOrUpdate(oldLedger);
             }
         }

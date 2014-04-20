@@ -1,241 +1,176 @@
-package com.jdc.themis.dealer.domain;
+package com.jdc.themis.dealer.service.rest;
 
 import java.io.Serializable;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Version;
-import javax.time.Instant;
-import javax.time.calendar.LocalDate;
+import javax.xml.bind.annotation.XmlAccessType;
+import javax.xml.bind.annotation.XmlAccessorType;
+import javax.xml.bind.annotation.XmlRootElement;
 
-import org.apache.commons.lang.builder.ToStringBuilder;
-import org.hibernate.annotations.Filter;
-import org.hibernate.annotations.FilterDefs;
-import org.hibernate.annotations.Filters;
-import org.hibernate.annotations.Type;
-import org.hibernate.annotations.TypeDef;
-import org.hibernate.annotations.TypeDefs;
-
-import com.jdc.themis.dealer.data.hibernate.type.PersistentLocalDate;
-import com.jdc.themis.dealer.data.hibernate.type.PersistentTimestamp;
-
-@FilterDefs({ @org.hibernate.annotations.FilterDef(name = "dealerPostSalesLedgerFilterSingleItem", parameters = {
-		@org.hibernate.annotations.ParamDef(name = "referenceTime", type = "com.jdc.themis.dealer.data.hibernate.type.PersistentTimestamp"),
-		@org.hibernate.annotations.ParamDef(name = "workOrderNo", type = "integer") }), })
-@Filters({ @Filter(name = "dealerPostSalesLedgerFilterSingleItem", condition = "workOrderNo = :workOrderNo and timestamp < :referenceTime and timeEnd >= :referenceTime") })
-@TypeDefs({ @TypeDef(name = "datetime", typeClass = PersistentTimestamp.class),
-		@TypeDef(name = "localdate", typeClass = PersistentLocalDate.class) })
-@Entity
-public class DealerPostSalesLedger implements Serializable, TemporalEntity {
+@XmlRootElement
+@XmlAccessorType(XmlAccessType.FIELD)
+public class DealerPostSalesLedgerDetail implements Serializable {
 
 	private static final long serialVersionUID = 1L;
-
-	public static final String FILTER_SINGLEITEM = "dealerPostSalesLedgerFilterSingleItem";
-
-	@Id
-	@Type(type = "datetime")
-	private Instant timestamp;
-
-	@Type(type = "datetime")
-	private Instant timeEnd;
-
-	@Type(type = "localdate")
-	private LocalDate validDate;
-
-	@Id
+	
 	private Integer workOrderNo;
-
-	@Id
+	
 	private Integer dealerID;
-
-	@Type(type = "localdate")
-	private LocalDate saleDate;
-
-	private Double mileage = 0D;
-
+	
+	private String saleDate;
+	
+	private Double mileage;
+	
 	private String lpNumber;
-
+	
 	private String customerName;
-
+	
 	private String color;
-
+	
 	private String frameNo;
-
+	
 	private String model;
+	
+	private String enterFactoryDate;
 
-	@Type(type = "localdate")
-	private LocalDate enterFactoryDate;
-
-	@Type(type = "localdate")
-	private LocalDate exitFactoryDate;
-
+	private String exitFactoryDate;
+	
 	private String customerType;
-
+	
 	private String insuranceAgency;
-
-	@Type(type = "localdate")
-	private LocalDate insuranceDueDate;
-
-	private Integer insuranceClaimNumber = 0;
-
+	
+	private String insuranceDueDate;
+	
+	private Integer insuranceClaimNumber;
+	
 	private String maintenancePostSalesConsultant;
-
+	
 	private String maintenanceTechnician;
-
+	
 	private String maintenanceType;
-
+	
 	private String insuranceType;
-
+	
 	private String bodyShopPostSalesConsultant;
-
+	
 	private String sheetMetalTechinician;
-
+	
 	private String paintSprayTechinician;
-
-	private Boolean mineralEngineOil = Boolean.FALSE;
-
-	private Boolean synthesizedEngineOil = Boolean.FALSE;
-
-	private Boolean airFilterElement = Boolean.FALSE;
-
-	private Boolean airConditionerFilterElement = Boolean.FALSE;
-
-	private Boolean gasolineFilterElement = Boolean.FALSE;
-
-	private Boolean brakeFluid = Boolean.FALSE;
-
-	private Boolean sparkPlug = Boolean.FALSE;
-
-	private Boolean directionEngineOil = Boolean.FALSE;
-
-	private Boolean transmissionOil = Boolean.FALSE;
-
-	private Boolean coolingFluid = Boolean.FALSE;
-
-	private Boolean timingChain = Boolean.FALSE;
-
-	private Boolean lubricationSystemClean = Boolean.FALSE;
-
-	private Boolean transmissionClean = Boolean.FALSE;
-
-	private Boolean directionSystemClean = Boolean.FALSE;
-
-	private Boolean coolingSystemClean = Boolean.FALSE;
-
-	private Boolean airConditionerClean = Boolean.FALSE;
-
-	private Boolean fuelSystemClean = Boolean.FALSE;
-
-	private Boolean otherSystemClean = Boolean.FALSE;
-
-	private Integer maintenanceProductAmount = 0;
-
-	private Integer tyreCount = 0;
-
-	private Integer batteryCount = 0;
-
-	private Integer sparkPlugCount = 0;
-
-	private Integer wiperBladeCount = 0;
-
-	private Double maintenanceManHourRevenuePaidPart = 0D;
-
-	private Double maintenanceManHourDiscountPaidPart = 0D;
-
-	private Double maintenanceManHourCouponPaidPart = 0D;
-
-	private Double maintenanceManHourCostPaidPart = 0D;
-
-	private Double maintenanceManHourRevenueUnpaidPart = 0D;
-
-	private Double maintenanceManHourCostUnpaidPart = 0D;
-
-	private Double sheetMetalManHourRevenue = 0D;
-
-	private Double paintSprayManHourRevenue = 0D;
-
-	private Double bodyShopManHourDiscount = 0D;
-
-	private Double bodyShopManHourCoupon = 0D;
-
-	private Double bodyShopManHourCost = 0D;
-
-	private Double accessoryManHourRevenue = 0D;
-
-	private Double accessoryManHourDiscount = 0D;
-
-	private Double accessoryManHourCoupon = 0D;
-
-	private Double accessoryManHourCost = 0D;
-
-	private Double otherManHourRevenue = 0D;
-
-	private Double otherManHourDiscount = 0D;
-
-	private Double otherManHourCoupon = 0D;
-
-	private Double otherManHourCost = 0D;
-
-	private Double maintenancePartsRevenue = 0D;
-
-	private Double maintenancePartsDiscount = 0D;
-
-	private Double maintenancePartsCoupon = 0D;
-
-	private Double maintenancePartsCost = 0D;
-
-	private Double accessoryPartsRevenue = 0D;
-
-	private Double accessoryPartsDiscount = 0D;
-
-	private Double accessoryPartsCoupon = 0D;
-
-	private Double accessoryPartsCost = 0D;
-
-	private Double maintenanceProductRevenue = 0D;
-
-	private Double maintenanceProductDiscount = 0D;
-
-	private Double maintenanceProductCoupon = 0D;
-
-	private Double maintenanceProductCost = 0D;
-
-	private Double vehicleDecorationRevenue = 0D;
-
-	private Double vehicleDecorationDiscount = 0D;
-
-	private Double vehicleDecorationCoupon = 0D;
-
-	private Double vehicleDecorationCost = 0D;
-
-	@Version
-	private Integer version;
-
-	private String updatedBy;
-
-	public Instant getTimestamp() {
-		return timestamp;
-	}
-
-	public void setTimestamp(Instant timestamp) {
-		this.timestamp = timestamp;
-	}
-
-	public Instant getTimeEnd() {
-		return timeEnd;
-	}
-
-	public void setTimeEnd(Instant timeEnd) {
-		this.timeEnd = timeEnd;
-	}
-
-	public LocalDate getValidDate() {
-		return validDate;
-	}
-
-	public void setValidDate(LocalDate validDate) {
-		this.validDate = validDate;
-	}
+	
+	private Boolean mineralEngineOil;
+	
+	private Boolean synthesizedEngineOil;
+	   
+	private Boolean airFilterElement;
+	
+	private Boolean airConditionerFilterElement;
+	
+	private Boolean gasolineFilterElement;
+	
+	private Boolean brakeFluid;
+	
+	private Boolean sparkPlug;
+	
+	private Boolean directionEngineOil;
+	
+	private Boolean transmissionOil;
+	
+	private Boolean coolingFluid;
+	
+	private Boolean timingChain;
+	
+	private Boolean lubricationSystemClean;
+	
+	private Boolean transmissionClean;
+	
+	private Boolean directionSystemClean;
+	
+	private Boolean coolingSystemClean;
+	   
+	private Boolean airConditionerClean;
+	
+	private Boolean fuelSystemClean;
+	
+	private Boolean otherSystemClean;
+	
+	private Integer maintenanceProductAmount;
+	
+	private Integer tyreCount;
+	
+	private Integer batteryCount;
+	
+	private Integer sparkPlugCount;
+	
+	private Integer wiperBladeCount;
+
+	private Double maintenanceManHourRevenuePaidPart;
+	
+	private Double maintenanceManHourDiscountPaidPart;
+	
+	private Double maintenanceManHourCouponPaidPart;
+	
+	private Double maintenanceManHourCostPaidPart;
+	
+	private Double maintenanceManHourRevenueUnpaidPart;
+	
+	private Double maintenanceManHourCostUnpaidPart;
+	
+	private Double sheetMetalManHourRevenue;
+	
+	private Double paintSprayManHourRevenue;
+	
+	private Double bodyShopManHourDiscount;
+	
+	private Double bodyShopManHourCoupon;
+	
+	private Double bodyShopManHourCost;
+	
+	private Double accessoryManHourRevenue;
+	
+	private Double accessoryManHourDiscount;
+	
+	private Double accessoryManHourCoupon;
+	
+	private Double accessoryManHourCost;
+	
+	private Double otherManHourRevenue;
+	
+	private Double otherManHourDiscount;
+	
+	private Double otherManHourCoupon;
+	
+	private Double otherManHourCost;
+	
+	private Double maintenancePartsRevenue;
+	
+	private Double maintenancePartsDiscount;
+	
+	private Double maintenancePartsCoupon;
+	
+	private Double maintenancePartsCost;
+	
+	private Double accessoryPartsRevenue;
+	
+	private Double accessoryPartsDiscount;
+	
+	private Double accessoryPartsCoupon;
+	
+	private Double accessoryPartsCost;
+	
+	private Double maintenanceProductRevenue;
+	
+	private Double maintenanceProductDiscount;
+	
+	private Double maintenanceProductCoupon;
+	
+	private Double maintenanceProductCost;
+	
+	private Double vehicleDecorationRevenue;
+	
+	private Double vehicleDecorationDiscount;
+	
+	private Double vehicleDecorationCoupon;
+	
+	private Double vehicleDecorationCost;
 
 	public Integer getWorkOrderNo() {
 		return workOrderNo;
@@ -252,12 +187,12 @@ public class DealerPostSalesLedger implements Serializable, TemporalEntity {
 	public void setDealerID(Integer dealerID) {
 		this.dealerID = dealerID;
 	}
-	@Type(type = "localdate")
-	public LocalDate getSaleDate() {
+
+	public String getSaleDate() {
 		return saleDate;
 	}
 
-	public void setSaleDate(LocalDate saleDate) {
+	public void setSaleDate(String saleDate) {
 		this.saleDate = saleDate;
 	}
 
@@ -309,19 +244,19 @@ public class DealerPostSalesLedger implements Serializable, TemporalEntity {
 		this.model = model;
 	}
 
-	public LocalDate getEnterFactoryDate() {
+	public String getEnterFactoryDate() {
 		return enterFactoryDate;
 	}
 
-	public void setEnterFactoryDate(LocalDate enterFactoryDate) {
+	public void setEnterFactoryDate(String enterFactoryDate) {
 		this.enterFactoryDate = enterFactoryDate;
 	}
 
-	public LocalDate getExitFactoryDate() {
+	public String getExitFactoryDate() {
 		return exitFactoryDate;
 	}
 
-	public void setExitFactoryDate(LocalDate exitFactoryDate) {
+	public void setExitFactoryDate(String exitFactoryDate) {
 		this.exitFactoryDate = exitFactoryDate;
 	}
 
@@ -341,11 +276,11 @@ public class DealerPostSalesLedger implements Serializable, TemporalEntity {
 		this.insuranceAgency = insuranceAgency;
 	}
 
-	public LocalDate getInsuranceDueDate() {
+	public String getInsuranceDueDate() {
 		return insuranceDueDate;
 	}
 
-	public void setInsuranceDueDate(LocalDate insuranceDueDate) {
+	public void setInsuranceDueDate(String insuranceDueDate) {
 		this.insuranceDueDate = insuranceDueDate;
 	}
 
@@ -394,8 +329,7 @@ public class DealerPostSalesLedger implements Serializable, TemporalEntity {
 		return bodyShopPostSalesConsultant;
 	}
 
-	public void setBodyShopPostSalesConsultant(
-			String bodyShopPostSalesConsultant) {
+	public void setBodyShopPostSalesConsultant(String bodyShopPostSalesConsultant) {
 		this.bodyShopPostSalesConsultant = bodyShopPostSalesConsultant;
 	}
 
@@ -443,8 +377,7 @@ public class DealerPostSalesLedger implements Serializable, TemporalEntity {
 		return airConditionerFilterElement;
 	}
 
-	public void setAirConditionerFilterElement(
-			Boolean airConditionerFilterElement) {
+	public void setAirConditionerFilterElement(Boolean airConditionerFilterElement) {
 		this.airConditionerFilterElement = airConditionerFilterElement;
 	}
 
@@ -886,32 +819,4 @@ public class DealerPostSalesLedger implements Serializable, TemporalEntity {
 		this.vehicleDecorationCost = vehicleDecorationCost;
 	}
 
-	@Version
-	public Integer getVersion() {
-		return version;
-	}
-
-	public void setVersion(Integer version) {
-		this.version = version;
-	}
-
-	public String getUpdatedBy() {
-		return updatedBy;
-	}
-
-	public void setUpdatedBy(String updatedBy) {
-		this.updatedBy = updatedBy;
-	}
-
-	public String toString() {
-		return new ToStringBuilder(this).append("workOrderNo", this.workOrderNo)
-				.append("dealerID", dealerID)
-				.append("validDate", validDate)
-				.append("saleDate", saleDate)
-				.append("version", version)
-				.append("updatedBy", updatedBy)
-				.append("timestamp", timestamp)
-				.append("timeEnd", timeEnd)
-				.getStringBuffer().toString();
-	}
 }

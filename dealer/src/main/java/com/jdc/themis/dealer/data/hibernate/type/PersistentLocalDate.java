@@ -47,10 +47,10 @@ public class PersistentLocalDate implements EnhancedUserType, Serializable {
 	public Object nullSafeGet(ResultSet rs, String[] names, Object owner)
 			throws HibernateException, SQLException {
 		final String name = names[0];
+		final Date date = rs.getDate(name);
 		if ( rs.wasNull() ) {
 			return null;
 		}
-		final Date date = rs.getDate(name);
 		if ( date == null ) {
 			return null;
 		}
