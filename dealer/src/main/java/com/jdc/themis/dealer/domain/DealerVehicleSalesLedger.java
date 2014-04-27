@@ -63,7 +63,7 @@ public class DealerVehicleSalesLedger implements Serializable, TemporalEntity {
 	private LocalDate warehousingDate;
 
 	@Type(type = "localdate")
-	private LocalDate saleDate;
+	private LocalDate salesDate;
 
 	private Double guidingPrice = 0D;
 
@@ -315,12 +315,12 @@ public class DealerVehicleSalesLedger implements Serializable, TemporalEntity {
 		this.warehousingDate = warehousingDate;
 	}
 
-	public LocalDate getSaleDate() {
-		return saleDate;
+	public LocalDate getSalesDate() {
+		return salesDate;
 	}
 
-	public void setSaleDate(LocalDate saleDate) {
-		this.saleDate = saleDate;
+	public void setSalesDate(LocalDate salesDate) {
+		this.salesDate = salesDate;
 	}
 
 	public Double getGuidingPrice() {

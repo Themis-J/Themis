@@ -771,7 +771,7 @@ public class IncomeJournalDAOImpl implements IncomeJournalDAO {
     }
 
     @Override
-    public Instant saveDealerVehicleSalesLedger(DealerVehicleSalesLedger ledger) {
+    public Instant saveDealerVehicleSalesLedger(final DealerVehicleSalesLedger ledger) {
         final Session session = sessionFactory.getCurrentSession();
         Instant currentTimestamp = Utils.currentTimestamp();
 
@@ -801,9 +801,8 @@ public class IncomeJournalDAOImpl implements IncomeJournalDAO {
     @Override
     public Collection<DealerVehicleSalesLedger> queryDealerVehicleSalesLedger(Integer contractNo, String model,
             String type, String color, String lpNumber, String frameNo, String manufacturerDebitDate,
-            String warehousingDate, String saleDate, Double guidingPrice, String customerName,
-            String identificationNo, String salesConsultant, String customerType, Integer dealerID, Integer marker,
-            Integer limit) {
+            String warehousingDate, String salesDate, Double guidingPrice, String customerName, String identificationNo,
+            String salesConsultant, String customerType, Integer dealerID, Integer marker, Integer limit) {
         final Session session = sessionFactory.getCurrentSession();
         Instant currentTimestamp = Utils.currentTimestamp();
         final Criteria criteria = session.createCriteria(DealerVehicleSalesLedger.class);
@@ -831,8 +830,8 @@ public class IncomeJournalDAOImpl implements IncomeJournalDAO {
         if (warehousingDate != null) {
             criteria.add(Restrictions.eq("warehousingDate", LocalDate.parse(warehousingDate)));
         }
-        if (saleDate != null) {
-            criteria.add(Restrictions.eq("saleDate", LocalDate.parse(saleDate)));
+        if (salesDate != null) {
+            criteria.add(Restrictions.eq("salesDate", LocalDate.parse(salesDate)));
         }
         if (guidingPrice != null) {
             criteria.add(Restrictions.eq("guidingPrice", guidingPrice));
@@ -889,7 +888,7 @@ public class IncomeJournalDAOImpl implements IncomeJournalDAO {
             if (oldLedger.getTimeEnd().isBefore(INFINITE_TIMEEND)) {
                 logger.warn("TimeEnd of the one in database is closed already. {}, {}", oldLedger, currentTimestamp);
             } else {
-            	oldLedger.setTimeEnd(currentTimestamp);
+                oldLedger.setTimeEnd(currentTimestamp);
                 session.saveOrUpdate(oldLedger);
             }
         }
@@ -904,7 +903,7 @@ public class IncomeJournalDAOImpl implements IncomeJournalDAO {
 
     @SuppressWarnings("unchecked")
     @Override
-    public Collection<DealerPostSalesLedger> queryDealerPostSalesLedger(Integer workOrderNo, String saleDate,
+    public Collection<DealerPostSalesLedger> queryDealerPostSalesLedger(Integer workOrderNo, String purchaseDate,
             Double mileage, String lpNumber, String customerName, String color, String frameNo, String model,
             String enterFactoryDate, String exitFactoryDate, String customerType, String insuranceAgency,
             String insuranceDueDate, Integer insuranceClaimNumber, Integer dealerID, Integer marker, Integer limit) {
@@ -914,8 +913,8 @@ public class IncomeJournalDAOImpl implements IncomeJournalDAO {
         if (workOrderNo != null) {
             criteria.add(Restrictions.eq("workOrderNo", workOrderNo));
         }
-        if (saleDate != null) {
-            criteria.add(Restrictions.eq("saleDate", LocalDate.parse(saleDate)));
+        if (purchaseDate != null) {
+            criteria.add(Restrictions.eq("purchaseDate", LocalDate.parse(purchaseDate)));
         }
         if (mileage != null) {
             criteria.add(Restrictions.eq("mileage", mileage));

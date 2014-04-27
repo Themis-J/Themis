@@ -30,7 +30,7 @@ public class DealerVehicleSalesLedgerDetail implements Serializable {
 
 	private String warehousingDate;
 
-	private String saleDate;
+	private String salesDate;
 
 	private Double guidingPrice;
 
@@ -252,12 +252,12 @@ public class DealerVehicleSalesLedgerDetail implements Serializable {
 		this.warehousingDate = warehousingDate;
 	}
 
-	public String getSaleDate() {
-		return saleDate;
+	public String getSalesDate() {
+		return salesDate;
 	}
 
-	public void setSaleDate(String saleDate) {
-		this.saleDate = saleDate;
+	public void setSalesDate(String salesDate) {
+		this.salesDate = salesDate;
 	}
 
 	public Double getGuidingPrice() {

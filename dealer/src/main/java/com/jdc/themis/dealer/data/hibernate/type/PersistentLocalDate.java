@@ -16,11 +16,9 @@ import org.hibernate.usertype.EnhancedUserType;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import com.jdc.themis.dealer.data.dao.hibernate.RefDataDAOImpl;
-
 public class PersistentLocalDate implements EnhancedUserType, Serializable {
 
-	private final static Logger logger = LoggerFactory.getLogger(RefDataDAOImpl.class);
+	private final static Logger logger = LoggerFactory.getLogger(PersistentLocalDate.class);
 	private static final long serialVersionUID = 1L;
 
 	@Override

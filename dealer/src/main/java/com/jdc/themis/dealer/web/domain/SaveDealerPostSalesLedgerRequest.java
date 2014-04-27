@@ -16,7 +16,7 @@ public class SaveDealerPostSalesLedgerRequest implements Serializable {
 	
 	private Integer dealerID;
 	
-	private String saleDate;
+	private String purchaseDate;
 	
 	private Double mileage;
 	
@@ -192,12 +192,12 @@ public class SaveDealerPostSalesLedgerRequest implements Serializable {
 		this.dealerID = dealerID;
 	}
 
-	public String getSaleDate() {
-		return saleDate;
+	public String getPurchaseDate() {
+		return purchaseDate;
 	}
 
-	public void setSaleDate(String saleDate) {
-		this.saleDate = saleDate;
+	public void setPurchaseDate(String purchaseDate) {
+		this.purchaseDate = purchaseDate;
 	}
 
 	public Double getMileage() {
