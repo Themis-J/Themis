@@ -21,7 +21,7 @@ import com.jdc.themis.dealer.data.hibernate.type.PersistentTimestamp;
 
 @FilterDefs({ @org.hibernate.annotations.FilterDef(name = "dealerPostSalesLedgerFilterSingleItem", parameters = {
         @org.hibernate.annotations.ParamDef(name = "referenceTime", type = "com.jdc.themis.dealer.data.hibernate.type.PersistentTimestamp"),
-        @org.hibernate.annotations.ParamDef(name = "workOrderNo", type = "integer") }), })
+        @org.hibernate.annotations.ParamDef(name = "workOrderNo", type = "string") }), })
 @Filters({ @Filter(name = "dealerPostSalesLedgerFilterSingleItem", condition = "workOrderNo = :workOrderNo and timestamp < :referenceTime and timeEnd >= :referenceTime") })
 @TypeDefs({ @TypeDef(name = "datetime", typeClass = PersistentTimestamp.class),
         @TypeDef(name = "localdate", typeClass = PersistentLocalDate.class) })
@@ -43,7 +43,7 @@ public class DealerPostSalesLedger implements Serializable, TemporalEntity {
     private LocalDate validDate;
 
     @Id
-    private Integer workOrderNo;
+    private String workOrderNo;
 
     @Id
     private Integer dealerID;
@@ -81,6 +81,8 @@ public class DealerPostSalesLedger implements Serializable, TemporalEntity {
     private String maintenancePostSalesConsultant;
 
     private String maintenanceTechnician;
+
+    private String repairTechnician;
 
     private String maintenanceType;
 
@@ -237,11 +239,11 @@ public class DealerPostSalesLedger implements Serializable, TemporalEntity {
         this.validDate = validDate;
     }
 
-    public Integer getWorkOrderNo() {
+    public String getWorkOrderNo() {
         return workOrderNo;
     }
 
-    public void setWorkOrderNo(Integer workOrderNo) {
+    public void setWorkOrderNo(String workOrderNo) {
         this.workOrderNo = workOrderNo;
     }
 
@@ -371,6 +373,14 @@ public class DealerPostSalesLedger implements Serializable, TemporalEntity {
 
     public void setMaintenanceTechnician(String maintenanceTechnician) {
         this.maintenanceTechnician = maintenanceTechnician;
+    }
+
+    public String getRepairTechnician() {
+        return repairTechnician;
+    }
+
+    public void setRepairTechnician(String repairTechnician) {
+        this.repairTechnician = repairTechnician;
     }
 
     public String getMaintenanceType() {

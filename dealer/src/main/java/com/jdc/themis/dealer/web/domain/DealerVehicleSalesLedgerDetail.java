@@ -12,7 +12,7 @@ public class DealerVehicleSalesLedgerDetail implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 
-	private Integer contractNo;
+	private String contractNo;
 
 	private Integer dealerID;
 
@@ -180,11 +180,11 @@ public class DealerVehicleSalesLedgerDetail implements Serializable {
 
 	private Double pushMoneyDeduction;
 
-	public Integer getContractNo() {
+	public String getContractNo() {
 		return contractNo;
 	}
 
-	public void setContractNo(Integer contractNo) {
+	public void setContractNo(String contractNo) {
 		this.contractNo = contractNo;
 	}
 

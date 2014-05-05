@@ -799,7 +799,7 @@ public class IncomeJournalDAOImpl implements IncomeJournalDAO {
 
     @SuppressWarnings("unchecked")
     @Override
-    public Collection<DealerVehicleSalesLedger> queryDealerVehicleSalesLedger(Integer contractNo, String model,
+    public Collection<DealerVehicleSalesLedger> queryDealerVehicleSalesLedger(String contractNo, String model,
             String type, String color, String lpNumber, String frameNo, String manufacturerDebitDate,
             String warehousingDate, String salesDate, Double guidingPrice, String customerName, String identificationNo,
             String salesConsultant, String customerType, Integer dealerID, Integer marker, Integer limit) {
@@ -863,7 +863,7 @@ public class IncomeJournalDAOImpl implements IncomeJournalDAO {
     }
 
     @Override
-    public Collection<DealerVehicleSalesLedger> getDealerVehicleSalesLedger(Integer contractNo) {
+    public Collection<DealerVehicleSalesLedger> getDealerVehicleSalesLedger(String contractNo) {
         final Session session = sessionFactory.getCurrentSession();
         Instant currentTimestamp = Utils.currentTimestamp();
         session.enableFilter(DealerVehicleSalesLedger.FILTER_SINGLEITEM).setParameter("contractNo", contractNo)
@@ -903,7 +903,7 @@ public class IncomeJournalDAOImpl implements IncomeJournalDAO {
 
     @SuppressWarnings("unchecked")
     @Override
-    public Collection<DealerPostSalesLedger> queryDealerPostSalesLedger(Integer workOrderNo, String purchaseDate,
+    public Collection<DealerPostSalesLedger> queryDealerPostSalesLedger(String workOrderNo, String purchaseDate,
             Double mileage, String lpNumber, String customerName, String color, String frameNo, String model,
             String enterFactoryDate, String exitFactoryDate, String customerType, String insuranceAgency,
             String insuranceDueDate, Integer insuranceClaimNumber, Integer dealerID, Integer marker, Integer limit) {
@@ -967,7 +967,7 @@ public class IncomeJournalDAOImpl implements IncomeJournalDAO {
     }
 
     @Override
-    public Collection<DealerPostSalesLedger> getDealerPostSalesLedger(Integer workOrderNo) {
+    public Collection<DealerPostSalesLedger> getDealerPostSalesLedger(String workOrderNo) {
         final Session session = sessionFactory.getCurrentSession();
         Instant currentTimestamp = Utils.currentTimestamp();
         session.enableFilter(DealerPostSalesLedger.FILTER_SINGLEITEM).setParameter("workOrderNo", workOrderNo)

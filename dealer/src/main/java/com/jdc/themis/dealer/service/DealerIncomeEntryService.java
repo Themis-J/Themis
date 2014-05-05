@@ -286,7 +286,7 @@ public interface DealerIncomeEntryService {
      * @return
      */
     @Transactional(readOnly = true)
-    GetDealerVehicleSalesLedgerResponse getDealerVehicleSalesLedger(final Integer contractNo);
+    GetDealerVehicleSalesLedgerResponse getDealerVehicleSalesLedger(final String contractNo);
 
     /**
      * @param request
@@ -316,7 +316,7 @@ public interface DealerIncomeEntryService {
      * @return
      */
     @Transactional(readOnly = true)
-    GetDealerLedgerResponse queryDealerVehicleSalesLedger(Integer contractNo, String model, String type, String color,
+    GetDealerLedgerResponse queryDealerVehicleSalesLedger(String contractNo, String model, String type, String color,
             String lpNumber, String frameNo, String manufacturerDebitDate, String warehousingDate, String salesDate,
             Double guidingPrice, String customerName, String identificationNo, String salesConsultant,
             String customerType, Integer dealerID, Integer marker, Integer limit);
@@ -326,7 +326,7 @@ public interface DealerIncomeEntryService {
      * @return
      */
     @Transactional(readOnly = true)
-    GetDealerPostSalesLedgerResponse getDealerPostSalesLedger(final Integer workOrderNo);
+    GetDealerPostSalesLedgerResponse getDealerPostSalesLedger(final String workOrderNo);
 
     /**
      * @param request
@@ -356,7 +356,7 @@ public interface DealerIncomeEntryService {
      * @return
      */
     @Transactional(readOnly = true)
-    GetDealerLedgerResponse queryDealerPostSalesLedger(Integer workOrderNo, String purchaseDate, Double mileage,
+    GetDealerLedgerResponse queryDealerPostSalesLedger(String workOrderNo, String purchaseDate, Double mileage,
             String lpNumber, String customerName, String color, String frameNo, String model, String enterFactoryDate,
             String exitFactoryDate, String customerType, String insuranceAgency, String insuranceDueDate,
             Integer insuranceClaimNumber, Integer dealerID, Integer marker, Integer limit);

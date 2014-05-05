@@ -1029,7 +1029,7 @@ public class DealerIncomeEntryServiceImpl implements DealerIncomeEntryService {
      * java.lang.Integer, java.lang.Integer, java.lang.Integer)
      */
     @Override
-    public GetDealerLedgerResponse queryDealerVehicleSalesLedger(Integer contractNo, String model, String type,
+    public GetDealerLedgerResponse queryDealerVehicleSalesLedger(String contractNo, String model, String type,
             String color, String lpNumber, String frameNo, String manufacturerDebitDate, String warehousingDate,
             String salesDate, Double guidingPrice, String customerName, String identificationNo,
             String salesConsultant, String customerType, Integer dealerID, Integer marker, Integer limit) {
@@ -1087,7 +1087,7 @@ public class DealerIncomeEntryServiceImpl implements DealerIncomeEntryService {
      * getDealerVehicleSalesLedger(java.lang.Integer)
      */
     @Override
-    public GetDealerVehicleSalesLedgerResponse getDealerVehicleSalesLedger(final Integer contractNo) {
+    public GetDealerVehicleSalesLedgerResponse getDealerVehicleSalesLedger(final String contractNo) {
         Preconditions.checkNotNull(contractNo, "contract number can't be null");
 
         final GetDealerVehicleSalesLedgerResponse response = new GetDealerVehicleSalesLedgerResponse();
@@ -1231,6 +1231,7 @@ public class DealerIncomeEntryServiceImpl implements DealerIncomeEntryService {
                 : Integer.valueOf(0));
         ledger.setMaintenancePostSalesConsultant(request.getMaintenancePostSalesConsultant());
         ledger.setMaintenanceTechnician(request.getMaintenanceTechnician());
+        ledger.setRepairTechnician(request.getRepairTechnician());
         ledger.setMaintenanceType(request.getMaintenanceType());
         ledger.setInsuranceType(request.getInsuranceType());
         ledger.setBodyShopPostSalesConsultant(request.getBodyShopPostSalesConsultant());
@@ -1362,7 +1363,7 @@ public class DealerIncomeEntryServiceImpl implements DealerIncomeEntryService {
      * java.lang.Integer, java.lang.Integer, java.lang.Integer)
      */
     @Override
-    public GetDealerLedgerResponse queryDealerPostSalesLedger(Integer workOrderNo, String purchaseDate, Double mileage,
+    public GetDealerLedgerResponse queryDealerPostSalesLedger(String workOrderNo, String purchaseDate, Double mileage,
             String lpNumber, String customerName, String color, String frameNo, String model, String enterFactoryDate,
             String exitFactoryDate, String customerType, String insuranceAgency, String insuranceDueDate,
             Integer insuranceClaimNumber, Integer dealerID, Integer marker, Integer limit) {
@@ -1420,7 +1421,7 @@ public class DealerIncomeEntryServiceImpl implements DealerIncomeEntryService {
      * getDealerPostSalesLedger(java.lang.Integer)
      */
     @Override
-    public GetDealerPostSalesLedgerResponse getDealerPostSalesLedger(Integer workOrderNo) {
+    public GetDealerPostSalesLedgerResponse getDealerPostSalesLedger(String workOrderNo) {
         Preconditions.checkNotNull(workOrderNo, "work order number can't be null");
 
         final GetDealerPostSalesLedgerResponse response = new GetDealerPostSalesLedgerResponse();
@@ -1452,6 +1453,7 @@ public class DealerIncomeEntryServiceImpl implements DealerIncomeEntryService {
             item.setInsuranceClaimNumber(ledger.getInsuranceClaimNumber());
             item.setMaintenancePostSalesConsultant(ledger.getMaintenancePostSalesConsultant());
             item.setMaintenanceTechnician(ledger.getMaintenanceTechnician());
+            item.setRepairTechnician(ledger.getRepairTechnician());
             item.setMaintenanceType(ledger.getMaintenanceType());
             item.setInsuranceType(ledger.getInsuranceType());
             item.setBodyShopPostSalesConsultant(ledger.getBodyShopPostSalesConsultant());

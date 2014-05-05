@@ -671,7 +671,7 @@ public class DealerIncomeSystemRestService {
     @RolesAllowed({ Constant.DEALER_ROLE, Constant.HEAD_ROLE })
     @Path("/vehicleSalesLedgers")
     @RestServiceErrorHandler
-    public Response queryDealerVehicleSalesLedger(@QueryParam("contractNo") Integer contractNo,
+    public Response queryDealerVehicleSalesLedger(@QueryParam("contractNo") String contractNo,
             @QueryParam("model") String model, @QueryParam("type") String type, @QueryParam("color") String color,
             @QueryParam("lpNumber") String lpNumber, @QueryParam("frameNo") String frameNo,
             @QueryParam("manufacturerDebitDate") String manufacturerDebitDate,
@@ -693,7 +693,7 @@ public class DealerIncomeSystemRestService {
     @RolesAllowed({ Constant.DEALER_ROLE, Constant.HEAD_ROLE })
     @Path("/vehicleSalesLedger")
     @RestServiceErrorHandler
-    public Response getDealerVehicleSalesLedger(@QueryParam("contractNo") Integer contractNo) {
+    public Response getDealerVehicleSalesLedger(@QueryParam("contractNo") String contractNo) {
         return Response.ok(dealerIncomeEntryService.getDealerVehicleSalesLedger(contractNo)).build();
     }
 
@@ -717,7 +717,7 @@ public class DealerIncomeSystemRestService {
     @RolesAllowed({ Constant.DEALER_ROLE, Constant.HEAD_ROLE })
     @Path("/postSalesLedgers")
     @RestServiceErrorHandler
-    public Response queryDealerPostSalesLedger(@QueryParam("workOrderNo") Integer workOrderNo,
+    public Response queryDealerPostSalesLedger(@QueryParam("workOrderNo") String workOrderNo,
             @QueryParam("purchaseDate") String purchaseDate, @QueryParam("mileage") Double mileage,
             @QueryParam("lpNumber") String lpNumber, @QueryParam("customerName") String customerName,
             @QueryParam("color") String color, @QueryParam("frameNo") String frameNo,
@@ -739,7 +739,7 @@ public class DealerIncomeSystemRestService {
     @RolesAllowed({ Constant.DEALER_ROLE, Constant.HEAD_ROLE })
     @Path("/postSalesLedger")
     @RestServiceErrorHandler
-    public Response getDealerPostSalesLedger(@QueryParam("workOrderNo") Integer workOrderNo) {
+    public Response getDealerPostSalesLedger(@QueryParam("workOrderNo") String workOrderNo) {
         return Response.ok(dealerIncomeEntryService.getDealerPostSalesLedger(workOrderNo)).build();
     }
 	
