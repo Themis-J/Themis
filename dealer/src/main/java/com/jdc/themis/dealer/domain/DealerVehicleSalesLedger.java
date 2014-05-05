@@ -20,7 +20,7 @@ import com.jdc.themis.dealer.data.hibernate.type.PersistentTimestamp;
 
 @FilterDefs({ @org.hibernate.annotations.FilterDef(name = "dealerVehicleSalesLedgerFilterSingleItem", parameters = {
 		@org.hibernate.annotations.ParamDef(name = "referenceTime", type = "com.jdc.themis.dealer.data.hibernate.type.PersistentTimestamp"),
-		@org.hibernate.annotations.ParamDef(name = "contractNo", type = "integer") }), })
+		@org.hibernate.annotations.ParamDef(name = "contractNo", type = "string") }), })
 @Filters({ @Filter(name = "dealerVehicleSalesLedgerFilterSingleItem", condition = "contractNo = :contractNo and timestamp < :referenceTime and timeEnd >= :referenceTime") })
 @TypeDefs({ @TypeDef(name = "datetime", typeClass = PersistentTimestamp.class),
 		@TypeDef(name = "localdate", typeClass = PersistentLocalDate.class) })
@@ -42,7 +42,7 @@ public class DealerVehicleSalesLedger implements Serializable, TemporalEntity {
 	private LocalDate validDate;
 
 	@Id
-	private Integer contractNo;
+	private String contractNo;
 
 	private Integer dealerID;
 
@@ -63,7 +63,7 @@ public class DealerVehicleSalesLedger implements Serializable, TemporalEntity {
 	private LocalDate warehousingDate;
 
 	@Type(type = "localdate")
-	private LocalDate saleDate;
+	private LocalDate salesDate;
 
 	private Double guidingPrice = 0D;
 
@@ -243,11 +243,11 @@ public class DealerVehicleSalesLedger implements Serializable, TemporalEntity {
 		this.validDate = validDate;
 	}
 
-	public Integer getContractNo() {
+	public String getContractNo() {
 		return contractNo;
 	}
 
-	public void setContractNo(Integer contractNo) {
+	public void setContractNo(String contractNo) {
 		this.contractNo = contractNo;
 	}
 
@@ -315,12 +315,12 @@ public class DealerVehicleSalesLedger implements Serializable, TemporalEntity {
 		this.warehousingDate = warehousingDate;
 	}
 
-	public LocalDate getSaleDate() {
-		return saleDate;
+	public LocalDate getSalesDate() {
+		return salesDate;
 	}
 
-	public void setSaleDate(LocalDate saleDate) {
-		this.saleDate = saleDate;
+	public void setSalesDate(LocalDate salesDate) {
+		this.salesDate = salesDate;
 	}
 
 	public Double getGuidingPrice() {

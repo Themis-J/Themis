@@ -17,6 +17,9 @@
 		<sqlFile path="incremental/init/8_create_themis_ledger_tables.sql" stripComments="true"/>
 		<sqlFile path="incremental/init/9_insert_themis_ledger_data.sql" stripComments="true"/>
         <sqlFile path="incremental/init/10_quartz_tables_postgres.sql" stripComments="true"/>
-        
+	</changeSet>
+	<changeSet id="2" author="yihuwu">
+		<comment>Themis Ledger Data</comment>
+		<sqlFile path="incremental/init/11_insert_themis_ledger_data.sql" stripComments="true"/>
 	</changeSet>
 </databaseChangeLog>

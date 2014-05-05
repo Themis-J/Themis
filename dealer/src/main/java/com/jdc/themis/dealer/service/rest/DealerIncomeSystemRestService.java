@@ -671,11 +671,11 @@ public class DealerIncomeSystemRestService {
     @RolesAllowed({ Constant.DEALER_ROLE, Constant.HEAD_ROLE })
     @Path("/vehicleSalesLedgers")
     @RestServiceErrorHandler
-    public Response queryDealerVehicleSalesLedger(@QueryParam("contractNo") Integer contractNo,
+    public Response queryDealerVehicleSalesLedger(@QueryParam("contractNo") String contractNo,
             @QueryParam("model") String model, @QueryParam("type") String type, @QueryParam("color") String color,
             @QueryParam("lpNumber") String lpNumber, @QueryParam("frameNo") String frameNo,
             @QueryParam("manufacturerDebitDate") String manufacturerDebitDate,
-            @QueryParam("warehousingDate") String warehousingDate, @QueryParam("saleDate") String saleDate,
+            @QueryParam("warehousingDate") String warehousingDate, @QueryParam("salesDate") String salesDate,
             @QueryParam("guidingPrice") Double guidingPrice, @QueryParam("customerName") String customerName,
             @QueryParam("identificationNo") String identificationNo,
             @QueryParam("salesConsultant") String salesConsultant, @QueryParam("customerType") String customerType,
@@ -683,7 +683,7 @@ public class DealerIncomeSystemRestService {
             @QueryParam("limit") Integer limit) {
         return Response.ok(
                 dealerIncomeEntryService.queryDealerVehicleSalesLedger(contractNo, model, type, color, lpNumber,
-                        frameNo, manufacturerDebitDate, warehousingDate, saleDate, guidingPrice, customerName,
+                        frameNo, manufacturerDebitDate, warehousingDate, salesDate, guidingPrice, customerName,
                         identificationNo, salesConsultant, customerType, dealerID, marker, limit)).build();
     }
 
@@ -693,7 +693,7 @@ public class DealerIncomeSystemRestService {
     @RolesAllowed({ Constant.DEALER_ROLE, Constant.HEAD_ROLE })
     @Path("/vehicleSalesLedger")
     @RestServiceErrorHandler
-    public Response getDealerVehicleSalesLedger(@QueryParam("contractNo") Integer contractNo) {
+    public Response getDealerVehicleSalesLedger(@QueryParam("contractNo") String contractNo) {
         return Response.ok(dealerIncomeEntryService.getDealerVehicleSalesLedger(contractNo)).build();
     }
 
@@ -717,8 +717,8 @@ public class DealerIncomeSystemRestService {
     @RolesAllowed({ Constant.DEALER_ROLE, Constant.HEAD_ROLE })
     @Path("/postSalesLedgers")
     @RestServiceErrorHandler
-    public Response queryDealerPostSalesLedger(@QueryParam("workOrderNo") Integer workOrderNo,
-            @QueryParam("saleDate") String saleDate, @QueryParam("mileage") Double mileage,
+    public Response queryDealerPostSalesLedger(@QueryParam("workOrderNo") String workOrderNo,
+            @QueryParam("purchaseDate") String purchaseDate, @QueryParam("mileage") Double mileage,
             @QueryParam("lpNumber") String lpNumber, @QueryParam("customerName") String customerName,
             @QueryParam("color") String color, @QueryParam("frameNo") String frameNo,
             @QueryParam("model") String model, @QueryParam("enterFactoryDate") String enterFactoryDate,
@@ -728,7 +728,7 @@ public class DealerIncomeSystemRestService {
             @QueryParam("insuranceClaimNumber") Integer insuranceClaimNumber, @QueryParam("dealerID") Integer dealerID,
             @QueryParam("marker") Integer marker, @QueryParam("limit") Integer limit) {
         return Response.ok(
-                dealerIncomeEntryService.queryDealerPostSalesLedger(workOrderNo, saleDate, mileage, lpNumber,
+                dealerIncomeEntryService.queryDealerPostSalesLedger(workOrderNo, purchaseDate, mileage, lpNumber,
                         customerName, color, frameNo, model, enterFactoryDate, exitFactoryDate, customerType,
                         insuranceAgency, insuranceDueDate, insuranceClaimNumber, dealerID, marker, limit)).build();
     }
@@ -739,7 +739,7 @@ public class DealerIncomeSystemRestService {
     @RolesAllowed({ Constant.DEALER_ROLE, Constant.HEAD_ROLE })
     @Path("/postSalesLedger")
     @RestServiceErrorHandler
-    public Response getDealerPostSalesLedger(@QueryParam("workOrderNo") Integer workOrderNo) {
+    public Response getDealerPostSalesLedger(@QueryParam("workOrderNo") String workOrderNo) {
         return Response.ok(dealerIncomeEntryService.getDealerPostSalesLedger(workOrderNo)).build();
     }
 	

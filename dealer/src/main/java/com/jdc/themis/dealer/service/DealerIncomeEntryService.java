@@ -286,7 +286,7 @@ public interface DealerIncomeEntryService {
      * @return
      */
     @Transactional(readOnly = true)
-    GetDealerVehicleSalesLedgerResponse getDealerVehicleSalesLedger(final Integer contractNo);
+    GetDealerVehicleSalesLedgerResponse getDealerVehicleSalesLedger(final String contractNo);
 
     /**
      * @param request
@@ -304,7 +304,7 @@ public interface DealerIncomeEntryService {
      * @param frameNo
      * @param manufacturerDebitDate
      * @param warehousingDate
-     * @param saleDate
+     * @param salesDate
      * @param guidingPrice
      * @param customerName
      * @param identificationNo
@@ -316,8 +316,8 @@ public interface DealerIncomeEntryService {
      * @return
      */
     @Transactional(readOnly = true)
-    GetDealerLedgerResponse queryDealerVehicleSalesLedger(Integer contractNo, String model, String type, String color,
-            String lpNumber, String frameNo, String manufacturerDebitDate, String warehousingDate, String saleDate,
+    GetDealerLedgerResponse queryDealerVehicleSalesLedger(String contractNo, String model, String type, String color,
+            String lpNumber, String frameNo, String manufacturerDebitDate, String warehousingDate, String salesDate,
             Double guidingPrice, String customerName, String identificationNo, String salesConsultant,
             String customerType, Integer dealerID, Integer marker, Integer limit);
 
@@ -326,7 +326,7 @@ public interface DealerIncomeEntryService {
      * @return
      */
     @Transactional(readOnly = true)
-    GetDealerPostSalesLedgerResponse getDealerPostSalesLedger(final Integer workOrderNo);
+    GetDealerPostSalesLedgerResponse getDealerPostSalesLedger(final String workOrderNo);
 
     /**
      * @param request
@@ -337,7 +337,7 @@ public interface DealerIncomeEntryService {
 
     /**
      * @param workOrderNo
-     * @param saleDate
+     * @param purchaseDate
      * @param mileage
      * @param lpNumber
      * @param customerName
@@ -356,7 +356,7 @@ public interface DealerIncomeEntryService {
      * @return
      */
     @Transactional(readOnly = true)
-    GetDealerLedgerResponse queryDealerPostSalesLedger(Integer workOrderNo, String saleDate, Double mileage,
+    GetDealerLedgerResponse queryDealerPostSalesLedger(String workOrderNo, String purchaseDate, Double mileage,
             String lpNumber, String customerName, String color, String frameNo, String model, String enterFactoryDate,
             String exitFactoryDate, String customerType, String insuranceAgency, String insuranceDueDate,
             Integer insuranceClaimNumber, Integer dealerID, Integer marker, Integer limit);

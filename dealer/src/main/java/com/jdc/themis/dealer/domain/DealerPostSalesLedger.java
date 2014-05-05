@@ -20,898 +20,894 @@ import com.jdc.themis.dealer.data.hibernate.type.PersistentLocalDate;
 import com.jdc.themis.dealer.data.hibernate.type.PersistentTimestamp;
 
 @FilterDefs({ @org.hibernate.annotations.FilterDef(name = "dealerPostSalesLedgerFilterSingleItem", parameters = {
-		@org.hibernate.annotations.ParamDef(name = "referenceTime", type = "com.jdc.themis.dealer.data.hibernate.type.PersistentTimestamp"),
-		@org.hibernate.annotations.ParamDef(name = "workOrderNo", type = "integer") }), })
+        @org.hibernate.annotations.ParamDef(name = "referenceTime", type = "com.jdc.themis.dealer.data.hibernate.type.PersistentTimestamp"),
+        @org.hibernate.annotations.ParamDef(name = "workOrderNo", type = "string") }), })
 @Filters({ @Filter(name = "dealerPostSalesLedgerFilterSingleItem", condition = "workOrderNo = :workOrderNo and timestamp < :referenceTime and timeEnd >= :referenceTime") })
 @TypeDefs({ @TypeDef(name = "datetime", typeClass = PersistentTimestamp.class),
-		@TypeDef(name = "localdate", typeClass = PersistentLocalDate.class) })
+        @TypeDef(name = "localdate", typeClass = PersistentLocalDate.class) })
 @Entity
 public class DealerPostSalesLedger implements Serializable, TemporalEntity {
 
-	private static final long serialVersionUID = 1L;
+    private static final long serialVersionUID = 1L;
 
-	public static final String FILTER_SINGLEITEM = "dealerPostSalesLedgerFilterSingleItem";
+    public static final String FILTER_SINGLEITEM = "dealerPostSalesLedgerFilterSingleItem";
 
-	@Id
-	@Type(type = "datetime")
-	private Instant timestamp;
+    @Id
+    @Type(type = "datetime")
+    private Instant timestamp;
 
-	@Type(type = "datetime")
-	private Instant timeEnd;
+    @Type(type = "datetime")
+    private Instant timeEnd;
 
-	@Type(type = "localdate")
-	private LocalDate validDate;
+    @Type(type = "localdate")
+    private LocalDate validDate;
 
-	@Id
-	private Integer workOrderNo;
+    @Id
+    private String workOrderNo;
 
-	@Id
-	private Integer dealerID;
+    @Id
+    private Integer dealerID;
 
-	@Type(type = "localdate")
-	private LocalDate saleDate;
+    @Type(type = "localdate")
+    private LocalDate purchaseDate;
 
-	private Double mileage = 0D;
+    private Double mileage = 0D;
 
-	private String lpNumber;
+    private String lpNumber;
 
-	private String customerName;
+    private String customerName;
 
-	private String color;
+    private String color;
 
-	private String frameNo;
+    private String frameNo;
 
-	private String model;
+    private String model;
 
-	@Type(type = "localdate")
-	private LocalDate enterFactoryDate;
+    @Type(type = "localdate")
+    private LocalDate enterFactoryDate;
 
-	@Type(type = "localdate")
-	private LocalDate exitFactoryDate;
+    @Type(type = "localdate")
+    private LocalDate exitFactoryDate;
 
-	private String customerType;
+    private String customerType;
 
-	private String insuranceAgency;
+    private String insuranceAgency;
 
-	@Type(type = "localdate")
-	private LocalDate insuranceDueDate;
+    @Type(type = "localdate")
+    private LocalDate insuranceDueDate;
 
-	private Integer insuranceClaimNumber = 0;
+    private Integer insuranceClaimNumber = 0;
 
-	private String maintenancePostSalesConsultant;
+    private String maintenancePostSalesConsultant;
 
-	private String maintenanceTechnician;
+    private String maintenanceTechnician;
 
-	private String maintenanceType;
+    private String repairTechnician;
 
-	private String insuranceType;
+    private String maintenanceType;
 
-	private String bodyShopPostSalesConsultant;
+    private String insuranceType;
 
-	private String sheetMetalTechinician;
+    private String bodyShopPostSalesConsultant;
 
-	private String paintSprayTechinician;
+    private String sheetMetalTechinician;
 
-	private Boolean mineralEngineOil = Boolean.FALSE;
+    private String paintSprayTechinician;
 
-	private Boolean synthesizedEngineOil = Boolean.FALSE;
+    private Boolean mineralEngineOil = Boolean.FALSE;
 
-	private Boolean airFilterElement = Boolean.FALSE;
+    private Boolean synthesizedEngineOil = Boolean.FALSE;
 
-	private Boolean airConditionerFilterElement = Boolean.FALSE;
+    private Boolean airFilterElement = Boolean.FALSE;
 
-	private Boolean gasolineFilterElement = Boolean.FALSE;
+    private Boolean airConditionerFilterElement = Boolean.FALSE;
 
-	private Boolean brakeFluid = Boolean.FALSE;
+    private Boolean gasolineFilterElement = Boolean.FALSE;
 
-	private Boolean sparkPlug = Boolean.FALSE;
+    private Boolean brakeFluid = Boolean.FALSE;
 
-	private Boolean directionEngineOil = Boolean.FALSE;
+    private Boolean sparkPlug = Boolean.FALSE;
 
-	private Boolean transmissionOil = Boolean.FALSE;
+    private Boolean directionEngineOil = Boolean.FALSE;
 
-	private Boolean coolingFluid = Boolean.FALSE;
+    private Boolean transmissionOil = Boolean.FALSE;
 
-	private Boolean timingChain = Boolean.FALSE;
+    private Boolean coolingFluid = Boolean.FALSE;
 
-	private Boolean lubricationSystemClean = Boolean.FALSE;
+    private Boolean timingChain = Boolean.FALSE;
 
-	private Boolean transmissionClean = Boolean.FALSE;
+    private Boolean lubricationSystemClean = Boolean.FALSE;
 
-	private Boolean directionSystemClean = Boolean.FALSE;
+    private Boolean transmissionClean = Boolean.FALSE;
 
-	private Boolean coolingSystemClean = Boolean.FALSE;
+    private Boolean directionSystemClean = Boolean.FALSE;
 
-	private Boolean airConditionerClean = Boolean.FALSE;
+    private Boolean coolingSystemClean = Boolean.FALSE;
 
-	private Boolean fuelSystemClean = Boolean.FALSE;
+    private Boolean airConditionerClean = Boolean.FALSE;
 
-	private Boolean otherSystemClean = Boolean.FALSE;
+    private Boolean fuelSystemClean = Boolean.FALSE;
 
-	private Integer maintenanceProductAmount = 0;
+    private Boolean otherSystemClean = Boolean.FALSE;
 
-	private Integer tyreCount = 0;
+    private Integer maintenanceProductAmount = 0;
 
-	private Integer batteryCount = 0;
+    private Integer tyreCount = 0;
 
-	private Integer sparkPlugCount = 0;
+    private Integer batteryCount = 0;
 
-	private Integer wiperBladeCount = 0;
+    private Integer sparkPlugCount = 0;
 
-	private Double maintenanceManHourRevenuePaidPart = 0D;
+    private Integer wiperBladeCount = 0;
 
-	private Double maintenanceManHourDiscountPaidPart = 0D;
+    private Double maintenanceManHourRevenuePaidPart = 0D;
 
-	private Double maintenanceManHourCouponPaidPart = 0D;
+    private Double maintenanceManHourDiscountPaidPart = 0D;
 
-	private Double maintenanceManHourCostPaidPart = 0D;
+    private Double maintenanceManHourCouponPaidPart = 0D;
 
-	private Double maintenanceManHourRevenueUnpaidPart = 0D;
+    private Double maintenanceManHourCostPaidPart = 0D;
 
-	private Double maintenanceManHourCostUnpaidPart = 0D;
+    private Double maintenanceManHourRevenueUnpaidPart = 0D;
 
-	private Double sheetMetalManHourRevenue = 0D;
+    private Double maintenanceManHourCostUnpaidPart = 0D;
 
-	private Double paintSprayManHourRevenue = 0D;
+    private Double sheetMetalManHourRevenue = 0D;
 
-	private Double bodyShopManHourDiscount = 0D;
+    private Double paintSprayManHourRevenue = 0D;
 
-	private Double bodyShopManHourCoupon = 0D;
+    private Double bodyShopManHourDiscount = 0D;
 
-	private Double bodyShopManHourCost = 0D;
+    private Double bodyShopManHourCoupon = 0D;
 
-	private Double accessoryManHourRevenue = 0D;
+    private Double bodyShopManHourCost = 0D;
 
-	private Double accessoryManHourDiscount = 0D;
+    private Double accessoryManHourRevenue = 0D;
 
-	private Double accessoryManHourCoupon = 0D;
+    private Double accessoryManHourDiscount = 0D;
 
-	private Double accessoryManHourCost = 0D;
+    private Double accessoryManHourCoupon = 0D;
 
-	private Double otherManHourRevenue = 0D;
+    private Double accessoryManHourCost = 0D;
 
-	private Double otherManHourDiscount = 0D;
+    private Double otherManHourRevenue = 0D;
 
-	private Double otherManHourCoupon = 0D;
+    private Double otherManHourDiscount = 0D;
 
-	private Double otherManHourCost = 0D;
+    private Double otherManHourCoupon = 0D;
 
-	private Double maintenancePartsRevenue = 0D;
+    private Double otherManHourCost = 0D;
 
-	private Double maintenancePartsDiscount = 0D;
+    private Double maintenancePartsRevenue = 0D;
 
-	private Double maintenancePartsCoupon = 0D;
+    private Double maintenancePartsDiscount = 0D;
 
-	private Double maintenancePartsCost = 0D;
+    private Double maintenancePartsCoupon = 0D;
 
-	private Double accessoryPartsRevenue = 0D;
+    private Double maintenancePartsCost = 0D;
 
-	private Double accessoryPartsDiscount = 0D;
+    private Double accessoryPartsRevenue = 0D;
 
-	private Double accessoryPartsCoupon = 0D;
+    private Double accessoryPartsDiscount = 0D;
 
-	private Double accessoryPartsCost = 0D;
+    private Double accessoryPartsCoupon = 0D;
 
-	private Double maintenanceProductRevenue = 0D;
+    private Double accessoryPartsCost = 0D;
 
-	private Double maintenanceProductDiscount = 0D;
+    private Double maintenanceProductRevenue = 0D;
 
-	private Double maintenanceProductCoupon = 0D;
+    private Double maintenanceProductDiscount = 0D;
 
-	private Double maintenanceProductCost = 0D;
+    private Double maintenanceProductCoupon = 0D;
 
-	private Double vehicleDecorationRevenue = 0D;
+    private Double maintenanceProductCost = 0D;
 
-	private Double vehicleDecorationDiscount = 0D;
+    private Double vehicleDecorationRevenue = 0D;
 
-	private Double vehicleDecorationCoupon = 0D;
+    private Double vehicleDecorationDiscount = 0D;
 
-	private Double vehicleDecorationCost = 0D;
+    private Double vehicleDecorationCoupon = 0D;
 
-	@Version
-	private Integer version;
+    private Double vehicleDecorationCost = 0D;
 
-	private String updatedBy;
+    @Version
+    private Integer version;
 
-	public Instant getTimestamp() {
-		return timestamp;
-	}
+    private String updatedBy;
 
-	public void setTimestamp(Instant timestamp) {
-		this.timestamp = timestamp;
-	}
+    public Instant getTimestamp() {
+        return timestamp;
+    }
 
-	public Instant getTimeEnd() {
-		return timeEnd;
-	}
+    public void setTimestamp(Instant timestamp) {
+        this.timestamp = timestamp;
+    }
 
-	public void setTimeEnd(Instant timeEnd) {
-		this.timeEnd = timeEnd;
-	}
+    public Instant getTimeEnd() {
+        return timeEnd;
+    }
 
-	public LocalDate getValidDate() {
-		return validDate;
-	}
+    public void setTimeEnd(Instant timeEnd) {
+        this.timeEnd = timeEnd;
+    }
 
-	public void setValidDate(LocalDate validDate) {
-		this.validDate = validDate;
-	}
+    public LocalDate getValidDate() {
+        return validDate;
+    }
 
-	public Integer getWorkOrderNo() {
-		return workOrderNo;
-	}
+    public void setValidDate(LocalDate validDate) {
+        this.validDate = validDate;
+    }
 
-	public void setWorkOrderNo(Integer workOrderNo) {
-		this.workOrderNo = workOrderNo;
-	}
+    public String getWorkOrderNo() {
+        return workOrderNo;
+    }
 
-	public Integer getDealerID() {
-		return dealerID;
-	}
+    public void setWorkOrderNo(String workOrderNo) {
+        this.workOrderNo = workOrderNo;
+    }
 
-	public void setDealerID(Integer dealerID) {
-		this.dealerID = dealerID;
-	}
-	@Type(type = "localdate")
-	public LocalDate getSaleDate() {
-		return saleDate;
-	}
+    public Integer getDealerID() {
+        return dealerID;
+    }
 
-	public void setSaleDate(LocalDate saleDate) {
-		this.saleDate = saleDate;
-	}
+    public void setDealerID(Integer dealerID) {
+        this.dealerID = dealerID;
+    }
 
-	public Double getMileage() {
-		return mileage;
-	}
+    public LocalDate getPurchaseDate() {
+        return purchaseDate;
+    }
 
-	public void setMileage(Double mileage) {
-		this.mileage = mileage;
-	}
+    public void setPurchaseDate(LocalDate purchaseDate) {
+        this.purchaseDate = purchaseDate;
+    }
 
-	public String getLpNumber() {
-		return lpNumber;
-	}
+    public Double getMileage() {
+        return mileage;
+    }
 
-	public void setLpNumber(String lpNumber) {
-		this.lpNumber = lpNumber;
-	}
+    public void setMileage(Double mileage) {
+        this.mileage = mileage;
+    }
 
-	public String getCustomerName() {
-		return customerName;
-	}
+    public String getLpNumber() {
+        return lpNumber;
+    }
 
-	public void setCustomerName(String customerName) {
-		this.customerName = customerName;
-	}
+    public void setLpNumber(String lpNumber) {
+        this.lpNumber = lpNumber;
+    }
 
-	public String getColor() {
-		return color;
-	}
+    public String getCustomerName() {
+        return customerName;
+    }
 
-	public void setColor(String color) {
-		this.color = color;
-	}
+    public void setCustomerName(String customerName) {
+        this.customerName = customerName;
+    }
 
-	public String getFrameNo() {
-		return frameNo;
-	}
+    public String getColor() {
+        return color;
+    }
 
-	public void setFrameNo(String frameNo) {
-		this.frameNo = frameNo;
-	}
+    public void setColor(String color) {
+        this.color = color;
+    }
 
-	public String getModel() {
-		return model;
-	}
+    public String getFrameNo() {
+        return frameNo;
+    }
 
-	public void setModel(String model) {
-		this.model = model;
-	}
+    public void setFrameNo(String frameNo) {
+        this.frameNo = frameNo;
+    }
 
-	public LocalDate getEnterFactoryDate() {
-		return enterFactoryDate;
-	}
+    public String getModel() {
+        return model;
+    }
 
-	public void setEnterFactoryDate(LocalDate enterFactoryDate) {
-		this.enterFactoryDate = enterFactoryDate;
-	}
+    public void setModel(String model) {
+        this.model = model;
+    }
 
-	public LocalDate getExitFactoryDate() {
-		return exitFactoryDate;
-	}
+    public LocalDate getEnterFactoryDate() {
+        return enterFactoryDate;
+    }
 
-	public void setExitFactoryDate(LocalDate exitFactoryDate) {
-		this.exitFactoryDate = exitFactoryDate;
-	}
+    public void setEnterFactoryDate(LocalDate enterFactoryDate) {
+        this.enterFactoryDate = enterFactoryDate;
+    }
 
-	public String getCustomerType() {
-		return customerType;
-	}
+    public LocalDate getExitFactoryDate() {
+        return exitFactoryDate;
+    }
 
-	public void setCustomerType(String customerType) {
-		this.customerType = customerType;
-	}
+    public void setExitFactoryDate(LocalDate exitFactoryDate) {
+        this.exitFactoryDate = exitFactoryDate;
+    }
 
-	public String getInsuranceAgency() {
-		return insuranceAgency;
-	}
+    public String getCustomerType() {
+        return customerType;
+    }
 
-	public void setInsuranceAgency(String insuranceAgency) {
-		this.insuranceAgency = insuranceAgency;
-	}
+    public void setCustomerType(String customerType) {
+        this.customerType = customerType;
+    }
 
-	public LocalDate getInsuranceDueDate() {
-		return insuranceDueDate;
-	}
+    public String getInsuranceAgency() {
+        return insuranceAgency;
+    }
 
-	public void setInsuranceDueDate(LocalDate insuranceDueDate) {
-		this.insuranceDueDate = insuranceDueDate;
-	}
+    public void setInsuranceAgency(String insuranceAgency) {
+        this.insuranceAgency = insuranceAgency;
+    }
 
-	public Integer getInsuranceClaimNumber() {
-		return insuranceClaimNumber;
-	}
+    public LocalDate getInsuranceDueDate() {
+        return insuranceDueDate;
+    }
 
-	public void setInsuranceClaimNumber(Integer insuranceClaimNumber) {
-		this.insuranceClaimNumber = insuranceClaimNumber;
-	}
+    public void setInsuranceDueDate(LocalDate insuranceDueDate) {
+        this.insuranceDueDate = insuranceDueDate;
+    }
 
-	public String getMaintenancePostSalesConsultant() {
-		return maintenancePostSalesConsultant;
-	}
+    public Integer getInsuranceClaimNumber() {
+        return insuranceClaimNumber;
+    }
 
-	public void setMaintenancePostSalesConsultant(
-			String maintenancePostSalesConsultant) {
-		this.maintenancePostSalesConsultant = maintenancePostSalesConsultant;
-	}
+    public void setInsuranceClaimNumber(Integer insuranceClaimNumber) {
+        this.insuranceClaimNumber = insuranceClaimNumber;
+    }
 
-	public String getMaintenanceTechnician() {
-		return maintenanceTechnician;
-	}
+    public String getMaintenancePostSalesConsultant() {
+        return maintenancePostSalesConsultant;
+    }
 
-	public void setMaintenanceTechnician(String maintenanceTechnician) {
-		this.maintenanceTechnician = maintenanceTechnician;
-	}
+    public void setMaintenancePostSalesConsultant(String maintenancePostSalesConsultant) {
+        this.maintenancePostSalesConsultant = maintenancePostSalesConsultant;
+    }
 
-	public String getMaintenanceType() {
-		return maintenanceType;
-	}
+    public String getMaintenanceTechnician() {
+        return maintenanceTechnician;
+    }
 
-	public void setMaintenanceType(String maintenanceType) {
-		this.maintenanceType = maintenanceType;
-	}
+    public void setMaintenanceTechnician(String maintenanceTechnician) {
+        this.maintenanceTechnician = maintenanceTechnician;
+    }
 
-	public String getInsuranceType() {
-		return insuranceType;
-	}
+    public String getRepairTechnician() {
+        return repairTechnician;
+    }
 
-	public void setInsuranceType(String insuranceType) {
-		this.insuranceType = insuranceType;
-	}
+    public void setRepairTechnician(String repairTechnician) {
+        this.repairTechnician = repairTechnician;
+    }
 
-	public String getBodyShopPostSalesConsultant() {
-		return bodyShopPostSalesConsultant;
-	}
+    public String getMaintenanceType() {
+        return maintenanceType;
+    }
 
-	public void setBodyShopPostSalesConsultant(
-			String bodyShopPostSalesConsultant) {
-		this.bodyShopPostSalesConsultant = bodyShopPostSalesConsultant;
-	}
+    public void setMaintenanceType(String maintenanceType) {
+        this.maintenanceType = maintenanceType;
+    }
 
-	public String getSheetMetalTechinician() {
-		return sheetMetalTechinician;
-	}
+    public String getInsuranceType() {
+        return insuranceType;
+    }
 
-	public void setSheetMetalTechinician(String sheetMetalTechinician) {
-		this.sheetMetalTechinician = sheetMetalTechinician;
-	}
+    public void setInsuranceType(String insuranceType) {
+        this.insuranceType = insuranceType;
+    }
 
-	public String getPaintSprayTechinician() {
-		return paintSprayTechinician;
-	}
+    public String getBodyShopPostSalesConsultant() {
+        return bodyShopPostSalesConsultant;
+    }
 
-	public void setPaintSprayTechinician(String paintSprayTechinician) {
-		this.paintSprayTechinician = paintSprayTechinician;
-	}
+    public void setBodyShopPostSalesConsultant(String bodyShopPostSalesConsultant) {
+        this.bodyShopPostSalesConsultant = bodyShopPostSalesConsultant;
+    }
 
-	public Boolean getMineralEngineOil() {
-		return mineralEngineOil;
-	}
+    public String getSheetMetalTechinician() {
+        return sheetMetalTechinician;
+    }
 
-	public void setMineralEngineOil(Boolean mineralEngineOil) {
-		this.mineralEngineOil = mineralEngineOil;
-	}
+    public void setSheetMetalTechinician(String sheetMetalTechinician) {
+        this.sheetMetalTechinician = sheetMetalTechinician;
+    }
 
-	public Boolean getSynthesizedEngineOil() {
-		return synthesizedEngineOil;
-	}
+    public String getPaintSprayTechinician() {
+        return paintSprayTechinician;
+    }
 
-	public void setSynthesizedEngineOil(Boolean synthesizedEngineOil) {
-		this.synthesizedEngineOil = synthesizedEngineOil;
-	}
+    public void setPaintSprayTechinician(String paintSprayTechinician) {
+        this.paintSprayTechinician = paintSprayTechinician;
+    }
 
-	public Boolean getAirFilterElement() {
-		return airFilterElement;
-	}
+    public Boolean getMineralEngineOil() {
+        return mineralEngineOil;
+    }
 
-	public void setAirFilterElement(Boolean airFilterElement) {
-		this.airFilterElement = airFilterElement;
-	}
+    public void setMineralEngineOil(Boolean mineralEngineOil) {
+        this.mineralEngineOil = mineralEngineOil;
+    }
 
-	public Boolean getAirConditionerFilterElement() {
-		return airConditionerFilterElement;
-	}
+    public Boolean getSynthesizedEngineOil() {
+        return synthesizedEngineOil;
+    }
 
-	public void setAirConditionerFilterElement(
-			Boolean airConditionerFilterElement) {
-		this.airConditionerFilterElement = airConditionerFilterElement;
-	}
+    public void setSynthesizedEngineOil(Boolean synthesizedEngineOil) {
+        this.synthesizedEngineOil = synthesizedEngineOil;
+    }
 
-	public Boolean getGasolineFilterElement() {
-		return gasolineFilterElement;
-	}
+    public Boolean getAirFilterElement() {
+        return airFilterElement;
+    }
 
-	public void setGasolineFilterElement(Boolean gasolineFilterElement) {
-		this.gasolineFilterElement = gasolineFilterElement;
-	}
+    public void setAirFilterElement(Boolean airFilterElement) {
+        this.airFilterElement = airFilterElement;
+    }
 
-	public Boolean getBrakeFluid() {
-		return brakeFluid;
-	}
+    public Boolean getAirConditionerFilterElement() {
+        return airConditionerFilterElement;
+    }
 
-	public void setBrakeFluid(Boolean brakeFluid) {
-		this.brakeFluid = brakeFluid;
-	}
+    public void setAirConditionerFilterElement(Boolean airConditionerFilterElement) {
+        this.airConditionerFilterElement = airConditionerFilterElement;
+    }
 
-	public Boolean getSparkPlug() {
-		return sparkPlug;
-	}
+    public Boolean getGasolineFilterElement() {
+        return gasolineFilterElement;
+    }
 
-	public void setSparkPlug(Boolean sparkPlug) {
-		this.sparkPlug = sparkPlug;
-	}
+    public void setGasolineFilterElement(Boolean gasolineFilterElement) {
+        this.gasolineFilterElement = gasolineFilterElement;
+    }
 
-	public Boolean getDirectionEngineOil() {
-		return directionEngineOil;
-	}
+    public Boolean getBrakeFluid() {
+        return brakeFluid;
+    }
 
-	public void setDirectionEngineOil(Boolean directionEngineOil) {
-		this.directionEngineOil = directionEngineOil;
-	}
+    public void setBrakeFluid(Boolean brakeFluid) {
+        this.brakeFluid = brakeFluid;
+    }
 
-	public Boolean getTransmissionOil() {
-		return transmissionOil;
-	}
+    public Boolean getSparkPlug() {
+        return sparkPlug;
+    }
 
-	public void setTransmissionOil(Boolean transmissionOil) {
-		this.transmissionOil = transmissionOil;
-	}
+    public void setSparkPlug(Boolean sparkPlug) {
+        this.sparkPlug = sparkPlug;
+    }
 
-	public Boolean getCoolingFluid() {
-		return coolingFluid;
-	}
+    public Boolean getDirectionEngineOil() {
+        return directionEngineOil;
+    }
 
-	public void setCoolingFluid(Boolean coolingFluid) {
-		this.coolingFluid = coolingFluid;
-	}
+    public void setDirectionEngineOil(Boolean directionEngineOil) {
+        this.directionEngineOil = directionEngineOil;
+    }
 
-	public Boolean getTimingChain() {
-		return timingChain;
-	}
+    public Boolean getTransmissionOil() {
+        return transmissionOil;
+    }
 
-	public void setTimingChain(Boolean timingChain) {
-		this.timingChain = timingChain;
-	}
+    public void setTransmissionOil(Boolean transmissionOil) {
+        this.transmissionOil = transmissionOil;
+    }
 
-	public Boolean getLubricationSystemClean() {
-		return lubricationSystemClean;
-	}
+    public Boolean getCoolingFluid() {
+        return coolingFluid;
+    }
 
-	public void setLubricationSystemClean(Boolean lubricationSystemClean) {
-		this.lubricationSystemClean = lubricationSystemClean;
-	}
+    public void setCoolingFluid(Boolean coolingFluid) {
+        this.coolingFluid = coolingFluid;
+    }
 
-	public Boolean getTransmissionClean() {
-		return transmissionClean;
-	}
+    public Boolean getTimingChain() {
+        return timingChain;
+    }
 
-	public void setTransmissionClean(Boolean transmissionClean) {
-		this.transmissionClean = transmissionClean;
-	}
+    public void setTimingChain(Boolean timingChain) {
+        this.timingChain = timingChain;
+    }
 
-	public Boolean getDirectionSystemClean() {
-		return directionSystemClean;
-	}
+    public Boolean getLubricationSystemClean() {
+        return lubricationSystemClean;
+    }
 
-	public void setDirectionSystemClean(Boolean directionSystemClean) {
-		this.directionSystemClean = directionSystemClean;
-	}
+    public void setLubricationSystemClean(Boolean lubricationSystemClean) {
+        this.lubricationSystemClean = lubricationSystemClean;
+    }
 
-	public Boolean getCoolingSystemClean() {
-		return coolingSystemClean;
-	}
+    public Boolean getTransmissionClean() {
+        return transmissionClean;
+    }
 
-	public void setCoolingSystemClean(Boolean coolingSystemClean) {
-		this.coolingSystemClean = coolingSystemClean;
-	}
+    public void setTransmissionClean(Boolean transmissionClean) {
+        this.transmissionClean = transmissionClean;
+    }
 
-	public Boolean getAirConditionerClean() {
-		return airConditionerClean;
-	}
+    public Boolean getDirectionSystemClean() {
+        return directionSystemClean;
+    }
 
-	public void setAirConditionerClean(Boolean airConditionerClean) {
-		this.airConditionerClean = airConditionerClean;
-	}
+    public void setDirectionSystemClean(Boolean directionSystemClean) {
+        this.directionSystemClean = directionSystemClean;
+    }
 
-	public Boolean getFuelSystemClean() {
-		return fuelSystemClean;
-	}
+    public Boolean getCoolingSystemClean() {
+        return coolingSystemClean;
+    }
 
-	public void setFuelSystemClean(Boolean fuelSystemClean) {
-		this.fuelSystemClean = fuelSystemClean;
-	}
+    public void setCoolingSystemClean(Boolean coolingSystemClean) {
+        this.coolingSystemClean = coolingSystemClean;
+    }
 
-	public Boolean getOtherSystemClean() {
-		return otherSystemClean;
-	}
+    public Boolean getAirConditionerClean() {
+        return airConditionerClean;
+    }
 
-	public void setOtherSystemClean(Boolean otherSystemClean) {
-		this.otherSystemClean = otherSystemClean;
-	}
+    public void setAirConditionerClean(Boolean airConditionerClean) {
+        this.airConditionerClean = airConditionerClean;
+    }
 
-	public Integer getMaintenanceProductAmount() {
-		return maintenanceProductAmount;
-	}
+    public Boolean getFuelSystemClean() {
+        return fuelSystemClean;
+    }
 
-	public void setMaintenanceProductAmount(Integer maintenanceProductAmount) {
-		this.maintenanceProductAmount = maintenanceProductAmount;
-	}
+    public void setFuelSystemClean(Boolean fuelSystemClean) {
+        this.fuelSystemClean = fuelSystemClean;
+    }
 
-	public Integer getTyreCount() {
-		return tyreCount;
-	}
+    public Boolean getOtherSystemClean() {
+        return otherSystemClean;
+    }
 
-	public void setTyreCount(Integer tyreCount) {
-		this.tyreCount = tyreCount;
-	}
+    public void setOtherSystemClean(Boolean otherSystemClean) {
+        this.otherSystemClean = otherSystemClean;
+    }
 
-	public Integer getBatteryCount() {
-		return batteryCount;
-	}
+    public Integer getMaintenanceProductAmount() {
+        return maintenanceProductAmount;
+    }
 
-	public void setBatteryCount(Integer batteryCount) {
-		this.batteryCount = batteryCount;
-	}
+    public void setMaintenanceProductAmount(Integer maintenanceProductAmount) {
+        this.maintenanceProductAmount = maintenanceProductAmount;
+    }
 
-	public Integer getSparkPlugCount() {
-		return sparkPlugCount;
-	}
+    public Integer getTyreCount() {
+        return tyreCount;
+    }
 
-	public void setSparkPlugCount(Integer sparkPlugCount) {
-		this.sparkPlugCount = sparkPlugCount;
-	}
+    public void setTyreCount(Integer tyreCount) {
+        this.tyreCount = tyreCount;
+    }
 
-	public Integer getWiperBladeCount() {
-		return wiperBladeCount;
-	}
+    public Integer getBatteryCount() {
+        return batteryCount;
+    }
 
-	public void setWiperBladeCount(Integer wiperBladeCount) {
-		this.wiperBladeCount = wiperBladeCount;
-	}
+    public void setBatteryCount(Integer batteryCount) {
+        this.batteryCount = batteryCount;
+    }
 
-	public Double getMaintenanceManHourRevenuePaidPart() {
-		return maintenanceManHourRevenuePaidPart;
-	}
+    public Integer getSparkPlugCount() {
+        return sparkPlugCount;
+    }
 
-	public void setMaintenanceManHourRevenuePaidPart(
-			Double maintenanceManHourRevenuePaidPart) {
-		this.maintenanceManHourRevenuePaidPart = maintenanceManHourRevenuePaidPart;
-	}
+    public void setSparkPlugCount(Integer sparkPlugCount) {
+        this.sparkPlugCount = sparkPlugCount;
+    }
 
-	public Double getMaintenanceManHourDiscountPaidPart() {
-		return maintenanceManHourDiscountPaidPart;
-	}
+    public Integer getWiperBladeCount() {
+        return wiperBladeCount;
+    }
 
-	public void setMaintenanceManHourDiscountPaidPart(
-			Double maintenanceManHourDiscountPaidPart) {
-		this.maintenanceManHourDiscountPaidPart = maintenanceManHourDiscountPaidPart;
-	}
+    public void setWiperBladeCount(Integer wiperBladeCount) {
+        this.wiperBladeCount = wiperBladeCount;
+    }
 
-	public Double getMaintenanceManHourCouponPaidPart() {
-		return maintenanceManHourCouponPaidPart;
-	}
+    public Double getMaintenanceManHourRevenuePaidPart() {
+        return maintenanceManHourRevenuePaidPart;
+    }
 
-	public void setMaintenanceManHourCouponPaidPart(
-			Double maintenanceManHourCouponPaidPart) {
-		this.maintenanceManHourCouponPaidPart = maintenanceManHourCouponPaidPart;
-	}
+    public void setMaintenanceManHourRevenuePaidPart(Double maintenanceManHourRevenuePaidPart) {
+        this.maintenanceManHourRevenuePaidPart = maintenanceManHourRevenuePaidPart;
+    }
 
-	public Double getMaintenanceManHourCostPaidPart() {
-		return maintenanceManHourCostPaidPart;
-	}
+    public Double getMaintenanceManHourDiscountPaidPart() {
+        return maintenanceManHourDiscountPaidPart;
+    }
 
-	public void setMaintenanceManHourCostPaidPart(
-			Double maintenanceManHourCostPaidPart) {
-		this.maintenanceManHourCostPaidPart = maintenanceManHourCostPaidPart;
-	}
+    public void setMaintenanceManHourDiscountPaidPart(Double maintenanceManHourDiscountPaidPart) {
+        this.maintenanceManHourDiscountPaidPart = maintenanceManHourDiscountPaidPart;
+    }
 
-	public Double getMaintenanceManHourRevenueUnpaidPart() {
-		return maintenanceManHourRevenueUnpaidPart;
-	}
+    public Double getMaintenanceManHourCouponPaidPart() {
+        return maintenanceManHourCouponPaidPart;
+    }
 
-	public void setMaintenanceManHourRevenueUnpaidPart(
-			Double maintenanceManHourRevenueUnpaidPart) {
-		this.maintenanceManHourRevenueUnpaidPart = maintenanceManHourRevenueUnpaidPart;
-	}
+    public void setMaintenanceManHourCouponPaidPart(Double maintenanceManHourCouponPaidPart) {
+        this.maintenanceManHourCouponPaidPart = maintenanceManHourCouponPaidPart;
+    }
 
-	public Double getMaintenanceManHourCostUnpaidPart() {
-		return maintenanceManHourCostUnpaidPart;
-	}
+    public Double getMaintenanceManHourCostPaidPart() {
+        return maintenanceManHourCostPaidPart;
+    }
 
-	public void setMaintenanceManHourCostUnpaidPart(
-			Double maintenanceManHourCostUnpaidPart) {
-		this.maintenanceManHourCostUnpaidPart = maintenanceManHourCostUnpaidPart;
-	}
+    public void setMaintenanceManHourCostPaidPart(Double maintenanceManHourCostPaidPart) {
+        this.maintenanceManHourCostPaidPart = maintenanceManHourCostPaidPart;
+    }
 
-	public Double getSheetMetalManHourRevenue() {
-		return sheetMetalManHourRevenue;
-	}
+    public Double getMaintenanceManHourRevenueUnpaidPart() {
+        return maintenanceManHourRevenueUnpaidPart;
+    }
 
-	public void setSheetMetalManHourRevenue(Double sheetMetalManHourRevenue) {
-		this.sheetMetalManHourRevenue = sheetMetalManHourRevenue;
-	}
+    public void setMaintenanceManHourRevenueUnpaidPart(Double maintenanceManHourRevenueUnpaidPart) {
+        this.maintenanceManHourRevenueUnpaidPart = maintenanceManHourRevenueUnpaidPart;
+    }
 
-	public Double getPaintSprayManHourRevenue() {
-		return paintSprayManHourRevenue;
-	}
+    public Double getMaintenanceManHourCostUnpaidPart() {
+        return maintenanceManHourCostUnpaidPart;
+    }
 
-	public void setPaintSprayManHourRevenue(Double paintSprayManHourRevenue) {
-		this.paintSprayManHourRevenue = paintSprayManHourRevenue;
-	}
+    public void setMaintenanceManHourCostUnpaidPart(Double maintenanceManHourCostUnpaidPart) {
+        this.maintenanceManHourCostUnpaidPart = maintenanceManHourCostUnpaidPart;
+    }
 
-	public Double getBodyShopManHourDiscount() {
-		return bodyShopManHourDiscount;
-	}
+    public Double getSheetMetalManHourRevenue() {
+        return sheetMetalManHourRevenue;
+    }
 
-	public void setBodyShopManHourDiscount(Double bodyShopManHourDiscount) {
-		this.bodyShopManHourDiscount = bodyShopManHourDiscount;
-	}
+    public void setSheetMetalManHourRevenue(Double sheetMetalManHourRevenue) {
+        this.sheetMetalManHourRevenue = sheetMetalManHourRevenue;
+    }
 
-	public Double getBodyShopManHourCoupon() {
-		return bodyShopManHourCoupon;
-	}
+    public Double getPaintSprayManHourRevenue() {
+        return paintSprayManHourRevenue;
+    }
 
-	public void setBodyShopManHourCoupon(Double bodyShopManHourCoupon) {
-		this.bodyShopManHourCoupon = bodyShopManHourCoupon;
-	}
+    public void setPaintSprayManHourRevenue(Double paintSprayManHourRevenue) {
+        this.paintSprayManHourRevenue = paintSprayManHourRevenue;
+    }
 
-	public Double getBodyShopManHourCost() {
-		return bodyShopManHourCost;
-	}
+    public Double getBodyShopManHourDiscount() {
+        return bodyShopManHourDiscount;
+    }
 
-	public void setBodyShopManHourCost(Double bodyShopManHourCost) {
-		this.bodyShopManHourCost = bodyShopManHourCost;
-	}
+    public void setBodyShopManHourDiscount(Double bodyShopManHourDiscount) {
+        this.bodyShopManHourDiscount = bodyShopManHourDiscount;
+    }
 
-	public Double getAccessoryManHourRevenue() {
-		return accessoryManHourRevenue;
-	}
+    public Double getBodyShopManHourCoupon() {
+        return bodyShopManHourCoupon;
+    }
 
-	public void setAccessoryManHourRevenue(Double accessoryManHourRevenue) {
-		this.accessoryManHourRevenue = accessoryManHourRevenue;
-	}
+    public void setBodyShopManHourCoupon(Double bodyShopManHourCoupon) {
+        this.bodyShopManHourCoupon = bodyShopManHourCoupon;
+    }
 
-	public Double getAccessoryManHourDiscount() {
-		return accessoryManHourDiscount;
-	}
+    public Double getBodyShopManHourCost() {
+        return bodyShopManHourCost;
+    }
 
-	public void setAccessoryManHourDiscount(Double accessoryManHourDiscount) {
-		this.accessoryManHourDiscount = accessoryManHourDiscount;
-	}
+    public void setBodyShopManHourCost(Double bodyShopManHourCost) {
+        this.bodyShopManHourCost = bodyShopManHourCost;
+    }
 
-	public Double getAccessoryManHourCoupon() {
-		return accessoryManHourCoupon;
-	}
+    public Double getAccessoryManHourRevenue() {
+        return accessoryManHourRevenue;
+    }
 
-	public void setAccessoryManHourCoupon(Double accessoryManHourCoupon) {
-		this.accessoryManHourCoupon = accessoryManHourCoupon;
-	}
+    public void setAccessoryManHourRevenue(Double accessoryManHourRevenue) {
+        this.accessoryManHourRevenue = accessoryManHourRevenue;
+    }
 
-	public Double getAccessoryManHourCost() {
-		return accessoryManHourCost;
-	}
+    public Double getAccessoryManHourDiscount() {
+        return accessoryManHourDiscount;
+    }
 
-	public void setAccessoryManHourCost(Double accessoryManHourCost) {
-		this.accessoryManHourCost = accessoryManHourCost;
-	}
+    public void setAccessoryManHourDiscount(Double accessoryManHourDiscount) {
+        this.accessoryManHourDiscount = accessoryManHourDiscount;
+    }
 
-	public Double getOtherManHourRevenue() {
-		return otherManHourRevenue;
-	}
+    public Double getAccessoryManHourCoupon() {
+        return accessoryManHourCoupon;
+    }
 
-	public void setOtherManHourRevenue(Double otherManHourRevenue) {
-		this.otherManHourRevenue = otherManHourRevenue;
-	}
+    public void setAccessoryManHourCoupon(Double accessoryManHourCoupon) {
+        this.accessoryManHourCoupon = accessoryManHourCoupon;
+    }
 
-	public Double getOtherManHourDiscount() {
-		return otherManHourDiscount;
-	}
+    public Double getAccessoryManHourCost() {
+        return accessoryManHourCost;
+    }
 
-	public void setOtherManHourDiscount(Double otherManHourDiscount) {
-		this.otherManHourDiscount = otherManHourDiscount;
-	}
+    public void setAccessoryManHourCost(Double accessoryManHourCost) {
+        this.accessoryManHourCost = accessoryManHourCost;
+    }
 
-	public Double getOtherManHourCoupon() {
-		return otherManHourCoupon;
-	}
+    public Double getOtherManHourRevenue() {
+        return otherManHourRevenue;
+    }
 
-	public void setOtherManHourCoupon(Double otherManHourCoupon) {
-		this.otherManHourCoupon = otherManHourCoupon;
-	}
+    public void setOtherManHourRevenue(Double otherManHourRevenue) {
+        this.otherManHourRevenue = otherManHourRevenue;
+    }
 
-	public Double getOtherManHourCost() {
-		return otherManHourCost;
-	}
+    public Double getOtherManHourDiscount() {
+        return otherManHourDiscount;
+    }
 
-	public void setOtherManHourCost(Double otherManHourCost) {
-		this.otherManHourCost = otherManHourCost;
-	}
+    public void setOtherManHourDiscount(Double otherManHourDiscount) {
+        this.otherManHourDiscount = otherManHourDiscount;
+    }
 
-	public Double getMaintenancePartsRevenue() {
-		return maintenancePartsRevenue;
-	}
+    public Double getOtherManHourCoupon() {
+        return otherManHourCoupon;
+    }
 
-	public void setMaintenancePartsRevenue(Double maintenancePartsRevenue) {
-		this.maintenancePartsRevenue = maintenancePartsRevenue;
-	}
+    public void setOtherManHourCoupon(Double otherManHourCoupon) {
+        this.otherManHourCoupon = otherManHourCoupon;
+    }
 
-	public Double getMaintenancePartsDiscount() {
-		return maintenancePartsDiscount;
-	}
+    public Double getOtherManHourCost() {
+        return otherManHourCost;
+    }
 
-	public void setMaintenancePartsDiscount(Double maintenancePartsDiscount) {
-		this.maintenancePartsDiscount = maintenancePartsDiscount;
-	}
+    public void setOtherManHourCost(Double otherManHourCost) {
+        this.otherManHourCost = otherManHourCost;
+    }
 
-	public Double getMaintenancePartsCoupon() {
-		return maintenancePartsCoupon;
-	}
+    public Double getMaintenancePartsRevenue() {
+        return maintenancePartsRevenue;
+    }
 
-	public void setMaintenancePartsCoupon(Double maintenancePartsCoupon) {
-		this.maintenancePartsCoupon = maintenancePartsCoupon;
-	}
+    public void setMaintenancePartsRevenue(Double maintenancePartsRevenue) {
+        this.maintenancePartsRevenue = maintenancePartsRevenue;
+    }
 
-	public Double getMaintenancePartsCost() {
-		return maintenancePartsCost;
-	}
+    public Double getMaintenancePartsDiscount() {
+        return maintenancePartsDiscount;
+    }
 
-	public void setMaintenancePartsCost(Double maintenancePartsCost) {
-		this.maintenancePartsCost = maintenancePartsCost;
-	}
+    public void setMaintenancePartsDiscount(Double maintenancePartsDiscount) {
+        this.maintenancePartsDiscount = maintenancePartsDiscount;
+    }
 
-	public Double getAccessoryPartsRevenue() {
-		return accessoryPartsRevenue;
-	}
+    public Double getMaintenancePartsCoupon() {
+        return maintenancePartsCoupon;
+    }
 
-	public void setAccessoryPartsRevenue(Double accessoryPartsRevenue) {
-		this.accessoryPartsRevenue = accessoryPartsRevenue;
-	}
+    public void setMaintenancePartsCoupon(Double maintenancePartsCoupon) {
+        this.maintenancePartsCoupon = maintenancePartsCoupon;
+    }
 
-	public Double getAccessoryPartsDiscount() {
-		return accessoryPartsDiscount;
-	}
+    public Double getMaintenancePartsCost() {
+        return maintenancePartsCost;
+    }
 
-	public void setAccessoryPartsDiscount(Double accessoryPartsDiscount) {
-		this.accessoryPartsDiscount = accessoryPartsDiscount;
-	}
+    public void setMaintenancePartsCost(Double maintenancePartsCost) {
+        this.maintenancePartsCost = maintenancePartsCost;
+    }
 
-	public Double getAccessoryPartsCoupon() {
-		return accessoryPartsCoupon;
-	}
+    public Double getAccessoryPartsRevenue() {
+        return accessoryPartsRevenue;
+    }
 
-	public void setAccessoryPartsCoupon(Double accessoryPartsCoupon) {
-		this.accessoryPartsCoupon = accessoryPartsCoupon;
-	}
+    public void setAccessoryPartsRevenue(Double accessoryPartsRevenue) {
+        this.accessoryPartsRevenue = accessoryPartsRevenue;
+    }
 
-	public Double getAccessoryPartsCost() {
-		return accessoryPartsCost;
-	}
+    public Double getAccessoryPartsDiscount() {
+        return accessoryPartsDiscount;
+    }
 
-	public void setAccessoryPartsCost(Double accessoryPartsCost) {
-		this.accessoryPartsCost = accessoryPartsCost;
-	}
+    public void setAccessoryPartsDiscount(Double accessoryPartsDiscount) {
+        this.accessoryPartsDiscount = accessoryPartsDiscount;
+    }
 
-	public Double getMaintenanceProductRevenue() {
-		return maintenanceProductRevenue;
-	}
+    public Double getAccessoryPartsCoupon() {
+        return accessoryPartsCoupon;
+    }
 
-	public void setMaintenanceProductRevenue(Double maintenanceProductRevenue) {
-		this.maintenanceProductRevenue = maintenanceProductRevenue;
-	}
+    public void setAccessoryPartsCoupon(Double accessoryPartsCoupon) {
+        this.accessoryPartsCoupon = accessoryPartsCoupon;
+    }
 
-	public Double getMaintenanceProductDiscount() {
-		return maintenanceProductDiscount;
-	}
+    public Double getAccessoryPartsCost() {
+        return accessoryPartsCost;
+    }
 
-	public void setMaintenanceProductDiscount(Double maintenanceProductDiscount) {
-		this.maintenanceProductDiscount = maintenanceProductDiscount;
-	}
+    public void setAccessoryPartsCost(Double accessoryPartsCost) {
+        this.accessoryPartsCost = accessoryPartsCost;
+    }
 
-	public Double getMaintenanceProductCoupon() {
-		return maintenanceProductCoupon;
-	}
+    public Double getMaintenanceProductRevenue() {
+        return maintenanceProductRevenue;
+    }
 
-	public void setMaintenanceProductCoupon(Double maintenanceProductCoupon) {
-		this.maintenanceProductCoupon = maintenanceProductCoupon;
-	}
+    public void setMaintenanceProductRevenue(Double maintenanceProductRevenue) {
+        this.maintenanceProductRevenue = maintenanceProductRevenue;
+    }
 
-	public Double getMaintenanceProductCost() {
-		return maintenanceProductCost;
-	}
+    public Double getMaintenanceProductDiscount() {
+        return maintenanceProductDiscount;
+    }
 
-	public void setMaintenanceProductCost(Double maintenanceProductCost) {
-		this.maintenanceProductCost = maintenanceProductCost;
-	}
+    public void setMaintenanceProductDiscount(Double maintenanceProductDiscount) {
+        this.maintenanceProductDiscount = maintenanceProductDiscount;
+    }
 
-	public Double getVehicleDecorationRevenue() {
-		return vehicleDecorationRevenue;
-	}
+    public Double getMaintenanceProductCoupon() {
+        return maintenanceProductCoupon;
+    }
 
-	public void setVehicleDecorationRevenue(Double vehicleDecorationRevenue) {
-		this.vehicleDecorationRevenue = vehicleDecorationRevenue;
-	}
+    public void setMaintenanceProductCoupon(Double maintenanceProductCoupon) {
+        this.maintenanceProductCoupon = maintenanceProductCoupon;
+    }
 
-	public Double getVehicleDecorationDiscount() {
-		return vehicleDecorationDiscount;
-	}
+    public Double getMaintenanceProductCost() {
+        return maintenanceProductCost;
+    }
 
-	public void setVehicleDecorationDiscount(Double vehicleDecorationDiscount) {
-		this.vehicleDecorationDiscount = vehicleDecorationDiscount;
-	}
+    public void setMaintenanceProductCost(Double maintenanceProductCost) {
+        this.maintenanceProductCost = maintenanceProductCost;
+    }
 
-	public Double getVehicleDecorationCoupon() {
-		return vehicleDecorationCoupon;
-	}
+    public Double getVehicleDecorationRevenue() {
+        return vehicleDecorationRevenue;
+    }
 
-	public void setVehicleDecorationCoupon(Double vehicleDecorationCoupon) {
-		this.vehicleDecorationCoupon = vehicleDecorationCoupon;
-	}
+    public void setVehicleDecorationRevenue(Double vehicleDecorationRevenue) {
+        this.vehicleDecorationRevenue = vehicleDecorationRevenue;
+    }
 
-	public Double getVehicleDecorationCost() {
-		return vehicleDecorationCost;
-	}
+    public Double getVehicleDecorationDiscount() {
+        return vehicleDecorationDiscount;
+    }
 
-	public void setVehicleDecorationCost(Double vehicleDecorationCost) {
-		this.vehicleDecorationCost = vehicleDecorationCost;
-	}
+    public void setVehicleDecorationDiscount(Double vehicleDecorationDiscount) {
+        this.vehicleDecorationDiscount = vehicleDecorationDiscount;
+    }
 
-	@Version
-	public Integer getVersion() {
-		return version;
-	}
+    public Double getVehicleDecorationCoupon() {
+        return vehicleDecorationCoupon;
+    }
 
-	public void setVersion(Integer version) {
-		this.version = version;
-	}
+    public void setVehicleDecorationCoupon(Double vehicleDecorationCoupon) {
+        this.vehicleDecorationCoupon = vehicleDecorationCoupon;
+    }
 
-	public String getUpdatedBy() {
-		return updatedBy;
-	}
+    public Double getVehicleDecorationCost() {
+        return vehicleDecorationCost;
+    }
 
-	public void setUpdatedBy(String updatedBy) {
-		this.updatedBy = updatedBy;
-	}
+    public void setVehicleDecorationCost(Double vehicleDecorationCost) {
+        this.vehicleDecorationCost = vehicleDecorationCost;
+    }
 
-	public String toString() {
-		return new ToStringBuilder(this).append("workOrderNo", this.workOrderNo)
-				.append("dealerID", dealerID)
-				.append("validDate", validDate)
-				.append("saleDate", saleDate)
-				.append("version", version)
-				.append("updatedBy", updatedBy)
-				.append("timestamp", timestamp)
-				.append("timeEnd", timeEnd)
-				.getStringBuffer().toString();
-	}
+    @Version
+    public Integer getVersion() {
+        return version;
+    }
+
+    public void setVersion(Integer version) {
+        this.version = version;
+    }
+
+    public String getUpdatedBy() {
+        return updatedBy;
+    }
+
+    public void setUpdatedBy(String updatedBy) {
+        this.updatedBy = updatedBy;
+    }
+
+    public String toString() {
+        return new ToStringBuilder(this).append("workOrderNo", this.workOrderNo).append("dealerID", dealerID)
+                .append("validDate", validDate).append("purchaseDate", purchaseDate).append("version", version)
+                .append("updatedBy", updatedBy).append("timestamp", timestamp).append("timeEnd", timeEnd)
+                .getStringBuffer().toString();
+    }
 }
