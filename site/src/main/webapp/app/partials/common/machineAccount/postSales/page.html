@@ -132,15 +132,19 @@
                 </td>
                 <td>保养技师</td>
                 <td>
-                    <input ng-disabled="userService.validateRoleHead()" type="text"
-                           ng-model="data['repairTechnician']"/>
+                    <select ng-disabled="userService.validateRoleHead()"
+                           ng-model="data['maintenanceTechnician']"
+                           ng-options="maintenanceTechnician as maintenanceTechnician for maintenanceTechnician in metadata['maintenanceTechnician']">
+                    </select>
                 </td>
             </tr>
             <tr>
             	<td>维修技师</td>
                 <td>
-                    <input ng-disabled="userService.validateRoleHead()" type="text"
-                           ng-model="data['maintenanceTechnician']"/>
+                    <select ng-disabled="userService.validateRoleHead()" type="text"
+                           ng-model="data['repairTechnician']"
+                           ng-options="repairTechnician as repairTechnician for repairTechnician in metadata['repairTechnician']">
+                    </select>
                 </td>
                 <td>维修类型</td>
                 <td>
@@ -155,8 +159,10 @@
             <tr>
             	<td>定保类型</td>
                 <td>
-                    <input ng-disabled="userService.validateRoleHead()" type="text"
-                           ng-model="data['insuranceType']"/>
+                    <select ng-disabled="userService.validateRoleHead()" type="text"
+                           ng-model="data['insuranceType']"
+                           ng-options="insuranceType as insuranceType for insuranceType in metadata['insuranceType']">
+                    </select>
                 </td>
              </tr>
         </table>
@@ -176,7 +182,6 @@
                     </select>
                 </td>
                 <td>钣金技师</td>
-
                 <td>
                     <select ng-disabled="userService.validateRoleHead()" ng-model="data['sheetMetalTechinician']"
                             ng-options="sheetMetalTechinician as sheetMetalTechinician for sheetMetalTechinician in metadata['sheetMetalTechinician']">
@@ -184,9 +189,7 @@
                 </td>
             </tr>
             <tr>
-
                 <td>喷漆技师</td>
-
                 <td>
                     <select ng-disabled="userService.validateRoleHead()" ng-model="data['paintSprayTechinician']"
                             ng-options="paintSprayTechinician as paintSprayTechinician for paintSprayTechinician in metadata['paintSprayTechinician']">
@@ -209,7 +212,6 @@
                            ng-model="data['mineralEngineOil']"/>
                 </td>
                 <td>合成机油</td>
-
                 <td>
                     <input ng-disabled="userService.validateRoleHead()" type="text"
                            ng-model="data['synthesizedEngineOil']"/>
@@ -217,7 +219,6 @@
             </tr>
             <tr>
                 <td>空气滤芯</td>
-
                 <td>
                     <input ng-disabled="userService.validateRoleHead()" type="text"
                            ng-model="data['airFilterElement']"/>
@@ -230,13 +231,11 @@
             </tr>
             <tr>
                 <td>汽油滤芯</td>
-
                 <td>
                     <input ng-disabled="userService.validateRoleHead()" type="text"
                            ng-model="data['gasolineFilterElement']"/>
                 </td>
                 <td>刹车油</td>
-
                 <td>
                     <input ng-disabled="userService.validateRoleHead()" type="text"
                            ng-model="data['brakeFluid']"/>
@@ -244,13 +243,11 @@
             </tr>
             <tr>
                 <td>火花塞</td>
-
                 <td>
                     <input ng-disabled="userService.validateRoleHead()" type="text"
                            ng-model="data['sparkPlug']"/>
                 </td>
                 <td>方向机油</td>
-
                 <td>
                     <input ng-disabled="userService.validateRoleHead()" type="text"
                            ng-model="data['directionEngineOil']"/>
@@ -258,13 +255,11 @@
             </tr>
             <tr>
                 <td>变速箱油</td>
-
                 <td>
                     <input ng-disabled="userService.validateRoleHead()" type="text"
                            ng-model="data['transmissionOil']"/>
                 </td>
                 <td>冷却液</td>
-
                 <td>
                     <input ng-disabled="userService.validateRoleHead()" type="text"
                            ng-model="data['coolingFluid']"/>
@@ -272,13 +267,11 @@
             </tr>
             <tr>
                 <td>正时链/皮带</td>
-
                 <td>
                     <input ng-disabled="userService.validateRoleHead()" type="text"
                            ng-model="data['timingChain']"/>
                 </td>
                 <td>润滑系统清洗</td>
-
                 <td>
                     <input ng-disabled="userService.validateRoleHead()" type="text"
                            ng-model="data['lubricationSystemClean']"/>
@@ -286,13 +279,11 @@
             </tr>
             <tr>
                 <td>变速箱系统清洗</td>
-
                 <td>
                     <input ng-disabled="userService.validateRoleHead()" type="text"
                            ng-model="data['transmissionClean']"/>
                 </td>
                 <td>动力转向清洗</td>
-
                 <td>
                     <input ng-disabled="userService.validateRoleHead()" type="text"
                            ng-model="data['directionSystemClean']"/>
@@ -300,13 +291,11 @@
             </tr>
             <tr>
                 <td>冷却系统清洗</td>
-
                 <td>
                     <input ng-disabled="userService.validateRoleHead()" type="text"
                            ng-model="data['coolingSystemClean']"/>
                 </td>
                 <td>空调系统清洗</td>
-
                 <td>
                     <input ng-disabled="userService.validateRoleHead()" type="text"
                            ng-model="data['airConditionerClean']"/>
@@ -314,13 +303,11 @@
             </tr>
             <tr>
                 <td>燃油系统清洗</td>
-
                 <td>
                     <input ng-disabled="userService.validateRoleHead()" type="text"
                            ng-model="data['fuelSystemClean']"/>
                 </td>
                 <td>其它系统养护</td>
-
                 <td>
                     <input ng-disabled="userService.validateRoleHead()" type="text"
                            ng-model="data['otherSystemClean']"/>
@@ -328,13 +315,11 @@
             </tr>
             <tr>
                 <td>养护类产品总数</td>
-
                 <td>
                     <input ng-disabled="userService.validateRoleHead()" type="text"
                            ng-model="data['maintenanceProductAmount']"/>
                 </td>
                 <td>轮胎</td>
-
                 <td>
                     <input ng-disabled="userService.validateRoleHead()" type="text"
                            ng-model="data['tyreCount']"/>
@@ -342,13 +327,11 @@
             </tr>
             <tr>
                 <td>电池</td>
-
                 <td>
                     <input ng-disabled="userService.validateRoleHead()" type="text"
                            ng-model="data['batteryCount']"/>
                 </td>
                 <td>火花塞</td>
-
                 <td>
                     <input ng-disabled="userService.validateRoleHead()" type="text"
                            ng-model="data['sparkPlugCount']"/>
@@ -356,7 +339,6 @@
             </tr>
             <tr>
                 <td>雨刮片</td>
-
                 <td>
                     <input ng-disabled="userService.validateRoleHead()" type="text"
                            ng-model="data['wiperBladeCount']"/>
