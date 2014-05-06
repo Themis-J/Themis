@@ -130,16 +130,19 @@
                             ng-options="maintenancePostSalesConsultant as maintenancePostSalesConsultant for maintenancePostSalesConsultant in metadata['maintenancePostSalesConsultant']">
                     </select>
                 </td>
-                <td>维修技师</td>
-
+                <td>保养技师</td>
+                <td>
+                    <input ng-disabled="userService.validateRoleHead()" type="text"
+                           ng-model="data['repairTechnician']"/>
+                </td>
+            </tr>
+            <tr>
+            	<td>维修技师</td>
                 <td>
                     <input ng-disabled="userService.validateRoleHead()" type="text"
                            ng-model="data['maintenanceTechnician']"/>
                 </td>
-            </tr>
-            <tr>
                 <td>维修类型</td>
-
                 <td>
                     <label ng-repeat="maintenanceType in metadata['maintenanceType']">
                         <input type="checkbox"
@@ -148,13 +151,14 @@
                                ng-disabled="userService.validateRoleHead()"/>{{ maintenanceType }}
                     </label>
                 </td>
-                <td>定保类型</td>
-
+            </tr>
+            <tr>
+            	<td>定保类型</td>
                 <td>
                     <input ng-disabled="userService.validateRoleHead()" type="text"
                            ng-model="data['insuranceType']"/>
                 </td>
-            </tr>
+             </tr>
         </table>
     </div>
 </section>
