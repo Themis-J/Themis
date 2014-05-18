@@ -839,7 +839,7 @@ public class DealerIncomeReportServiceImpl implements DealerIncomeReportService 
 						new ArrayList<Integer>()));
 		final Collection<DealerIncomeRevenueFact> revenueFacts = queryBuilder
 				.withDepartmentID(refDataDAL.getDepartment("备件部").getId())
-				.withItemID(reportItems.get(0).getId()).queryRevenues();
+				.withItemID(reportItems.size() > 0 ? reportItems.get(0).getId() : -9999L).queryRevenues();
 		final ImmutableListMultimap<Integer, DealerIncomeRevenueFact> dealerRevenueFacts = Multimaps
 				.index(revenueFacts, GetDealerIDFromRevenueFunction.INSTANCE);
 
