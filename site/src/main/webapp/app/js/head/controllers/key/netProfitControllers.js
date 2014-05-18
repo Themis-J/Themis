@@ -36,8 +36,7 @@ angular.module('keyNetProfit.controllers', [])
                     dealers[i] = previousDetail[i].code;
                     chartData.series.previous[i] = previousDetail[i].netProfit.amount;
                     chartData.series.previousReference[i] = previousDetail[i].netProfit.reference;
-                }
-                ;
+                };
 
                 chartCategories[0].categories = dealers;
                 var currentDetail = data.detail[1].detail;
@@ -50,8 +49,7 @@ angular.module('keyNetProfit.controllers', [])
                     chartData.gridData[i].name = currentDetail[i].name;
                     chartData.gridData[i].brand = currentDetail[i].brand;
                     chartData.gridData[i].amount = currentDetail[i].netProfit.amount;
-                }
-                ;
+                };
                 var chartSubtitle = '年度对比';
                 var chartColumnCurrent = '今年';
                 var chartColumnCurrentRef = '今年参考值';
@@ -115,7 +113,7 @@ angular.module('keyNetProfit.controllers', [])
                         tooltip: {
                             formatter: function () {
                                 var tooltip = this.series.name + ': ' + this.y + '<br/>';
-                                return  tooltip;
+                                return tooltip;
                             },
                             useHTML: true
                         },
@@ -151,7 +149,6 @@ angular.module('keyNetProfit.controllers', [])
                 $("#report_div").addClass('span9');
                 reportService.setFullScreen(false);
                 $scope.showReport();
-
             } else {
                 $('#container_div').removeClass('container');
                 $('#container_div').addClass('row-fluid');

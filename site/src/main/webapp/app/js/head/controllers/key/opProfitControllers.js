@@ -36,8 +36,7 @@ angular.module('keyOpProfit.controllers', [])
                     dealers[i] = previousDetail[i].code;
                     chartData.series.previous[i] = previousDetail[i].opProfit.amount;
                     chartData.series.previousReference[i] = previousDetail[i].opProfit.reference;
-                }
-                ;
+                };
 
                 chartCategories[0].categories = dealers;
                 var currentDetail = data.detail[1].detail;
@@ -50,8 +49,7 @@ angular.module('keyOpProfit.controllers', [])
                     chartData.gridData[i].name = currentDetail[i].name;
                     chartData.gridData[i].brand = currentDetail[i].brand;
                     chartData.gridData[i].amount = currentDetail[i].opProfit.amount;
-                }
-                ;
+                };
                 var chartSubtitle = '年度对比';
                 var chartColumnCurrent = '今年';
                 var chartColumnCurrentRef = '今年参考值';
