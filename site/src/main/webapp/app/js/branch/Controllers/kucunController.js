@@ -31,6 +31,27 @@ angular.module('kucun.controller', [])
                     accountItem.data[4].durationDesc = "超过90 天";
                     accountItem.data[4].durationID = 4;
                     accountItem.data[4].id = accountItem.id;
+                    accountItem.data[5] = {};
+                    accountItem.data[5].active = false;
+                    accountItem.data[5].durationDesc = "0-6 月";
+                    accountItem.data[5].durationID = 5;
+                    accountItem.data[5].id = accountItem.id;
+                    accountItem.data[6] = {};
+                    accountItem.data[6].active = false;
+                    accountItem.data[6].durationDesc = "7-9 月";
+                    accountItem.data[6].durationID = 6;
+                    accountItem.data[6].id = accountItem.id;
+                    accountItem.data[7] = {};
+                    accountItem.data[7].active = false;
+                    accountItem.data[7].durationDesc = "10-12 月";
+                    accountItem.data[7].durationID = 7;
+                    accountItem.data[7].id = accountItem.id;
+                    accountItem.data[8] = {};
+                    accountItem.data[8].active = false;
+                    accountItem.data[8].durationDesc = "超过12 月";
+                    accountItem.data[8].durationID = 8;
+                    accountItem.data[8].id = accountItem.id;
+
                     salesSet[accountItem.id] = accountItem;
                 });
 

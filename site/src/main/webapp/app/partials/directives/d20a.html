@@ -11,7 +11,7 @@
                 <div class="well row-fluid" ng-show="!data.hide" style="width: 90%">
                     <div class="span6">
                         <table class="D20_table" style="font-size: 12px">
-                            <tr ng-repeat="row in data.data | filter:{durationDesc: '天'}">
+                            <tr ng-repeat="row in data.data | filter: filterDurationType">
                                 <td ng-if="$even">
                                     <label>{{row.durationDesc}}</label>
                                 </td>
@@ -37,7 +37,7 @@
 
                     <div class="span6">
                         <table class="D20_table" style="font-size: 12px">
-                            <tr ng-repeat="row in data.data | filter:{durationDesc: '天'}">
+                            <tr ng-repeat="row in data.data | filter: filterDurationType">
                                 <td ng-if="$odd">
                                     <label>{{row.durationDesc}}</label>
                                 </td>

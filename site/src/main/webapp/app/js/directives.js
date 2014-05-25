@@ -131,8 +131,23 @@ angular.module('themis.directives', []).
                 var _this = this;
                 scope.list = $parse(attrs.list)(scope.$parent);
                 scope.category = attrs.category;
+
+                if (scope.category >= 5 && scope.category<=9)
+                {
+                    scope.durationIdStart = 5;
+                    scope.durationIdEnd = 8;
+                }
+                else
+                {
+                    scope.durationIdStart = 1;
+                    scope.durationIdEnd = 4;
+                }
+
                 scope.calSummary = $parse(attrs.calsummary)(scope.$parent);
                 scope.autoSaveAccountReceivables = $parse(attrs.autosaveaccountreceivables)(scope.$parent);
+                scope.filterDurationType = function(data){
+                     return data.id >= scope.durationIdStart && data.id <= scope.durationIdEnd;
+                }
             }
         };
     })
