@@ -146,7 +146,7 @@ angular.module('themis.directives', []).
                 scope.calSummary = $parse(attrs.calsummary)(scope.$parent);
                 scope.autoSaveAccountReceivables = $parse(attrs.autosaveaccountreceivables)(scope.$parent);
                 scope.filterDurationType = function(data){
-                     return data.id >= scope.durationIdStart && data.id <= scope.durationIdEnd;
+                     return data.durationID >= scope.durationIdStart && data.durationID <= scope.durationIdEnd;
                 }
             }
         };

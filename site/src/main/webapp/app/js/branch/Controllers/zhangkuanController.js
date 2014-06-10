@@ -53,26 +53,30 @@ angular.module('zhangkuan.controller', [])
             var accountItems = Dealer.getAccountItems({}, function () {
                 $.each(accountItems.items, function (index, accountItem) {
                     accountItem.data = [];
-                    accountItem.data[1] = {};
-                    accountItem.data[1].sign = "";
-                    accountItem.data[1].id = accountItem.id;
-                    accountItem.data[1].durationDesc = "0-30 天";
-                    accountItem.data[1].durationID = 1;
-                    accountItem.data[2] = {};
-                    accountItem.data[2].sign = "";
-                    accountItem.data[2].durationDesc = "31-60 天";
-                    accountItem.data[2].durationID = 2;
-                    accountItem.data[2].id = accountItem.id;
-                    accountItem.data[3] = {};
-                    accountItem.data[3].sign = "";
-                    accountItem.data[3].durationDesc = "61-90 天";
-                    accountItem.data[3].durationID = 3;
-                    accountItem.data[3].id = accountItem.id;
-                    accountItem.data[4] = {};
-                    accountItem.data[4].sign = "";
-                    accountItem.data[4].durationDesc = "超过90 天";
-                    accountItem.data[4].durationID = 4;
-                    accountItem.data[4].id = accountItem.id;
+                    accountItem.data.push({
+                        active : false,
+                        id : accountItem.id,
+                        durationDesc : "0-30 天",
+                        durationID : 1
+                    });
+                    accountItem.data.push({
+                        active : false,
+                        id : accountItem.id,
+                        durationDesc : "31-60 天",
+                        durationID : 2
+                    });
+                    accountItem.data.push({
+                        active : false,
+                        id : accountItem.id,
+                        durationDesc : "61-90 天",
+                        durationID : 3
+                    });
+                    accountItem.data.push({
+                        active : false,
+                        id : accountItem.id,
+                        durationDesc : "超过90 天",
+                        durationID : 4
+                    });
                     accountItem.summary = 0;
                     salesSet[accountItem.id] = accountItem;
                 });
@@ -81,8 +85,7 @@ angular.module('zhangkuan.controller', [])
                     function () {
                         $.each(accountReceivables.detail, function (index, accountReceivable) {
                             var oneSale = salesSet[accountReceivable.itemID];
-                            oneSale.data[accountReceivable.durationID].durationID = accountReceivable.durationID;
-                            oneSale.data[accountReceivable.durationID].amount = accountReceivable.amount;
+                            oneSale.data[accountReceivable.durationID - 1].amount = accountReceivable.amount;
                         });
 
                         $.each(salesSet, function (index, receivable) {
