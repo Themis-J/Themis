@@ -40,8 +40,8 @@ angular.module('salesPercentage.controllers', [])
                     },
                     {
                         id: 'report_other',
-                        title: '他店调车' + '/' + '销售总量',
-                        yAxisTitle: '他店调车',
+                        title: '他店销量' + '/' + '销售总量',
+                        yAxisTitle: '他店销量',
                         series: { previous: [], current: [], previousReference: [], currentReference: [], currentPercentage: [] }
                     }
 
@@ -151,7 +151,7 @@ angular.module('salesPercentage.controllers', [])
         $scope.charts = [
             {id: 'report_retail', text: '零售销量', display: true},
             {id: 'report_wholesale', text: '批发销量', display: false},
-            {id: 'report_other', text: '他店调车', display: false}
+            {id: 'report_other', text: '他店销量', display: false}
         ];
 
         reportService.setFullScreen(false);

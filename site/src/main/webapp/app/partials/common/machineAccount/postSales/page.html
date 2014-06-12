@@ -403,7 +403,7 @@
                 </td>
             </tr>
             <tr>
-                <td>保修工时毛利</td>
+                <td>工时毛利</td>
                 <td>
                     {{summary['BD6'] = data['maintenanceManHourRevenueUnpaidPart'] - data['maintenanceManHourCostUnpaidPart']}}
                 </td>
@@ -513,7 +513,7 @@
                 </td>
             </tr>
             <tr>
-                <td>其他维修工时毛利</td>
+                <td>工时毛利</td>
                 <td>
                     {{summary['BT6'] = parseNumber(data['otherManHourRevenue']) * parseNumber(data['otherManHourDiscount']) -
                     data['otherManHourCost']}}

@@ -224,15 +224,15 @@ angular.module('sparePartIncome.controllers', []).controller('sparePartIncomeCtr
     $scope.report_chart_button_text = "显示图表";
     $scope.categoryOptions = [
         {
-            name: '客户－维修部',
+            name: '客户付费工单备件',
             id: 1
         },
         {
-            name: '保修',
+            name: '保修工单备件',
             id: 2
         },
         {
-            name: '内部',
+            name: '内部工单备件',
             id: 3
         },
         {
@@ -240,7 +240,7 @@ angular.module('sparePartIncome.controllers', []).controller('sparePartIncomeCtr
             id: 4
         },
         {
-            name: '客户－钣喷部',
+            name: '客户付费钣喷工单备件',
             id: 5
         },
         {
@@ -252,7 +252,7 @@ angular.module('sparePartIncome.controllers', []).controller('sparePartIncomeCtr
             id: 7
         },
         {
-            name: '其它营业外收入',
+            name: '其它营业外收入（废旧件、废油收入）',
             id: 8
         },
         {

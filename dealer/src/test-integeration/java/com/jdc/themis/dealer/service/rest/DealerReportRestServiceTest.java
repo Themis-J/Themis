@@ -472,7 +472,7 @@ public class DealerReportRestServiceTest {
 		Assert.assertNotNull(response);
 		
 		final GetMethod mGet = createGetMethod(REPORT_ROOT_URL + "query/accountReceivableReport",
-				new String[] { "year:2006", "monthOfYear:6", "itemName:销售应收帐款" });
+				new String[] { "year:2006", "monthOfYear:6", "itemName:售前部门应收账款" });
 		final String getOutput = mGet.getResponseBodyAsString();
 		mGet.releaseConnection();
 		System.out.println("response : " + new String(getOutput.getBytes("ISO-8859-1")));

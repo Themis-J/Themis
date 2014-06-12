@@ -16,7 +16,7 @@ angular.module('salesDepartmentAbs.controllers', [])
                     {id: 'report_newCarRetail', index: 2, text: '零售销量（轿车）', display: true},
                     {id: 'report_newVanRetail', index: 3, text: '零售销量（货车）', display: true},
                     {id: 'report_wholesale', index: 0, text: '批发销量', display: false},
-                    {id: 'report_other', index: 1, text: '他店调车量', display: false}
+                    {id: 'report_other', index: 1, text: '他店销量', display: false}
                 ];
             } else {
                 $scope.charts = [
@@ -55,8 +55,8 @@ angular.module('salesDepartmentAbs.controllers', [])
                     },
                     {
                         id: 'report_other',
-                        title: '他店调车量',
-                        yAxisTitle: '他店调车量',
+                        title: '他店销量',
+                        yAxisTitle: '他店销量',
                         series: { previous: [], current: [], previousReference: [], currentReference: [], currentPercentage: [] }
                     },
                     {
@@ -285,7 +285,7 @@ angular.module('salesDepartmentAbs.controllers', [])
             {id: 'report_newCarRetail', index: 2, text: '零售销量（轿车）', display: true},
             {id: 'report_newVanRetail', index: 3, text: '零售销量（货车）', display: true},
             {id: 'report_wholesale', index: 0, text: '批发销量', display: false},
-            {id: 'report_other', index: 1, text: '他店调车量', display: false}
+            {id: 'report_other', index: 1, text: '他店销量', display: false}
         ];
         $scope.setupReportDate();
         $scope.selectedTime = 0;

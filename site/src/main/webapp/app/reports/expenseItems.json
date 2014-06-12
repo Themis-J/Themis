@@ -2,7 +2,7 @@
     "items": [
         {
             "id": 1,
-            "name": "销售顾问薪酬",
+            "name": "销售顾问佣金",
             "category": "变动费用",
             "categoryID": 1,
             "journalType": "Expense"

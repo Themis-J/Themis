@@ -22,4 +22,8 @@
 		<comment>Themis Ledger Data</comment>
 		<sqlFile path="incremental/init/11_insert_themis_ledger_data.sql" stripComments="true"/>
 	</changeSet>
+	<changeSet id="3" author="yihuwu">
+		<comment>Update Themis Data</comment>
+		<sqlFile path="incremental/init/12_update_themis_data.sql" stripComments="true"/>
+	</changeSet>
 </databaseChangeLog>
