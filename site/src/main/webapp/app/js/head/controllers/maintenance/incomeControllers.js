@@ -30,7 +30,7 @@ angular.module('maintenanceIncome.controllers', []).controller('maintenanceIncom
         Highcharts.setOptions(Highcharts.theme);
 
         restClient(params, function (data) {
-            var otherIncome = (params["itemName"] == "外修" || params["itemName"] == "延保") ? true : false;
+            var otherIncome = (params["itemName"] == "外修" || params["itemName"] == "延保+续保") ? true : false;
             var chartData = {
                 id: 'report_maintenance_income',
                 title: $scope.selectedCategoryOption.name,
@@ -271,7 +271,7 @@ angular.module('maintenanceIncome.controllers', []).controller('maintenanceIncom
             id: 4
         },
         {
-            name: '内外清洗、细节保养清洁工时',
+            name: '美容工时',
             id: 5
         },
         {
@@ -283,7 +283,7 @@ angular.module('maintenanceIncome.controllers', []).controller('maintenanceIncom
             id: 7
         },
         {
-            name: '延保',
+            name: '延保+续保',
             id: 8
         }
     ];

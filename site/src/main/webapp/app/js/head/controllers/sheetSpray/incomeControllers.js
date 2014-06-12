@@ -254,15 +254,15 @@ angular.module('sheetSprayIncome.controllers', []).controller('sheetSprayIncomeC
     $scope.setupReportDate();
     $scope.categoryOptions = [
         {
-            name: '客户付费工时',
+            name: '客户付费钣喷工单工时',
             id: 1
         },
         {
-            name: '保修工时',
+            name: '保修钣喷工单工时',
             id: 2
         },
         {
-            name: '内部工时',
+            name: '内部钣喷工单工时',
             id: 3
         },
         {

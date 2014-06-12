@@ -31,8 +31,8 @@ angular.module('sheetSprayWorkOrder.controllers', []).controller('sheetSprayWork
         restClient(params, function (data) {
             var chartData = {
                 id: 'report_sheet_spray_work_order',
-                title: '客户付费工时',
-                yAxisTitle: '客户付费工时',
+                title: '客户付费钣喷工单工时',
+                yAxisTitle: '客户付费钣喷工单工时',
                 series: {
                     current: [],
                     currentReference: [],

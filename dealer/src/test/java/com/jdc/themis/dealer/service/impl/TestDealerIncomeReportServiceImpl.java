@@ -934,7 +934,7 @@ public class TestDealerIncomeReportServiceImpl {
 		v1.setName("s1");
 		v1.setCategoryID(1);
 		when(refDataDAL.getSalesServiceRevenueItem("大客户采购（租车公司，政府机关）", "新车其它收入")).thenReturn(v1);
-		when(refDataDAL.getSalesServiceRevenueItem("他店调车", "新车其它收入")).thenReturn(v1);
+		when(refDataDAL.getSalesServiceRevenueItem("他店销售", "新车其它收入")).thenReturn(v1);
 		when(refDataDAL.getSalesServiceRevenueItem("批发销售", "二手车其它收入")).thenReturn(v1);
 		
 		final QueryDealerSalesResponse response = service.queryDealerSalesReport(2013, Option.<Integer>none(), Option.<Integer>none(), Option.<Integer>none());

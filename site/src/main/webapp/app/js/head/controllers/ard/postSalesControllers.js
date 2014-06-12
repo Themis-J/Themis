@@ -15,7 +15,7 @@ angular.module('ardPostSales.controllers', [])
         };
 
         $scope.showReport = function () {
-            var params = {year: reportService.getCurrentYear(), monthOfYear: reportService.getMonthOfYear(), itemName: '客户-维修、钣喷与备件'};
+            var params = {year: reportService.getCurrentYear(), monthOfYear: reportService.getMonthOfYear(), itemName: '售后部门应收账款'};
             $scope.draw(restClient(config.currentMode).queryAccountReceivableReport, params);
         };
 

@@ -251,7 +251,7 @@ public class DealerIncomeReportServiceImpl implements DealerIncomeReportService 
 		final Collection<DealerIncomeRevenueFact> otherRevenueFacts = otherQueryBuilder.withItemCategory("非经营性损益进项").queryRevenues();
 
 		final Collection<DealerIncomeExpenseFact> otherExpenseFacts = otherQueryBuilder.clear()// clear the builder for next query
-							.withItemCategory("非经营性损益削项").queryExpenses();
+							.withItemCategory("非经营性损益销项").queryExpenses();
 
 		calculator.calcNonRecurrentPNL(Multimaps.index(otherRevenueFacts,GetDealerIDFromRevenueFunction.INSTANCE),
 				Multimaps.index(otherExpenseFacts,GetDealerIDFromExpenseFunction.INSTANCE), JournalOp.SUM);
@@ -763,7 +763,7 @@ public class DealerIncomeReportServiceImpl implements DealerIncomeReportService 
 				dealerRevenueFacts);
 
 		if (!itemName.equalsIgnoreCase("外修")
-				&& !itemName.equalsIgnoreCase("延保")
+				&& !itemName.equalsIgnoreCase("延保+续保")
 				&& !itemName.equalsIgnoreCase("其它工时")) {
 			final Collection<DealerEmployeeFeeFact> employeeFeeFacts = queryBuilder
 					.clear()
@@ -908,13 +908,13 @@ public class DealerIncomeReportServiceImpl implements DealerIncomeReportService 
 
 		final Collection<DealerIncomeRevenueFact> revenueFacts = queryBuilder
 				.withDepartmentID(refDataDAL.getDepartment("钣喷部").getId())
-				.withItemName("客户付费工时").queryRevenues();
+				.withItemName("客户付费钣喷工单工时").queryRevenues();
 		final ImmutableListMultimap<Integer, DealerIncomeRevenueFact> dealerRevenueFacts = Multimaps
 				.index(revenueFacts, GetDealerIDFromRevenueFunction.INSTANCE);
 		final Collection<DealerEmployeeFeeFact> employeeFeeFacts = queryBuilder
 				.clear()
 				.withDepartmentID(refDataDAL.getDepartment("钣喷部").getId())
-				.withItemName("客户付费工时").queryEmployeeFees();
+				.withItemName("客户付费钣喷工单工时").queryEmployeeFees();
 		final ImmutableListMultimap<Integer, DealerEmployeeFeeFact> dealerEmployeeFeeFacts = Multimaps
 				.index(employeeFeeFacts,
 						GetDealerIDFromEmployeeFeeFunction.INSTANCE);
@@ -1046,7 +1046,7 @@ public class DealerIncomeReportServiceImpl implements DealerIncomeReportService 
 		final Collection<DealerIncomeRevenueFact> otherFacts = revenueFactsQueryBuilder.clear()
 								.withItemCategory("新车其它收入")
 								.withItemID(refDataDAL
-										.getSalesServiceRevenueItem("他店调车",
+										.getSalesServiceRevenueItem("他店销售",
 												"新车其它收入").getId().longValue()).queryRevenues();
 
 		calculator
@@ -1188,7 +1188,7 @@ public class DealerIncomeReportServiceImpl implements DealerIncomeReportService 
 									.withItemCategory("非销售类返利").queryRevenues();
 
 			final Collection<DealerIncomeExpenseFact> otherExpenseFacts = otherQueryBuilder.clear()// clear the builder for next query
-								.withItemCategory("非经营性损益削项")
+								.withItemCategory("非经营性损益销项")
 								.withItemCategory("员工分红").queryExpenses();
 			
 			calculator.calcNetProfit(Multimaps.index(otherRevenueFacts,GetDealerIDFromRevenueFunction.INSTANCE),

@@ -17,7 +17,7 @@ angular.module('ardLease.controllers', []).controller('ardLeaseCtrl', ['$scope',
         var params = {
             year: reportService.getCurrentYear(),
             monthOfYear: reportService.getMonthOfYear(),
-            itemName: '租赁'
+            itemName: '租赁部门应收账款'
         };
         $scope.draw(restClient(config.currentMode).queryAccountReceivableReport, params);
     };
