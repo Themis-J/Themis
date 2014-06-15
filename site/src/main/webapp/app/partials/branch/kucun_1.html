@@ -1,21 +1,21 @@
 <div ng-controller="kucunCtrl">
-    <div >
+    <div>
         <span ng-class="autoSaveClass">{{autoSaveTime}}</span>
     </div>
 
-    <div d20a list="accountReceivables" category=1
+    <div d20a list="accountReceivables" category=1 type="kucun"
+         autoSaveAccountReceivables="autoSaveAccount    Receivables"></div>
+
+    <div d20a list="accountReceivables" category=2 type="kucun"
          autoSaveAccountReceivables="autoSaveAccountReceivables"></div>
 
-    <div d20a list="accountReceivables" category=2
+    <div d20a list="accountReceivables" category=3 type="kucun"
          autoSaveAccountReceivables="autoSaveAccountReceivables"></div>
 
-    <div d20a list="accountReceivables" category=3
+    <div d20a list="accountReceivables" category=10 type="kucun"
          autoSaveAccountReceivables="autoSaveAccountReceivables"></div>
 
-    <div d20a list="accountReceivables" category=10
-         autoSaveAccountReceivables="autoSaveAccountReceivables"></div>
-
-    <div d20a list="accountReceivables" category=11
+    <div d20a list="accountReceivables" category=11 type="kucun"
          autoSaveAccountReceivables="autoSaveAccountReceivables"></div>
 
 </div>

@@ -131,6 +131,7 @@ angular.module('themis.directives', []).
                 var _this = this;
                 scope.list = $parse(attrs.list)(scope.$parent);
                 scope.category = attrs.category;
+                scope.type =  attrs.type;
 
                 if (scope.category >= 5 && scope.category<=9)
                 {
@@ -146,7 +147,14 @@ angular.module('themis.directives', []).
                 scope.calSummary = $parse(attrs.calsummary)(scope.$parent);
                 scope.autoSaveAccountReceivables = $parse(attrs.autosaveaccountreceivables)(scope.$parent);
                 scope.filterDurationType = function(data){
-                     return data.durationID >= scope.durationIdStart && data.durationID <= scope.durationIdEnd;
+                    if (scope.type && scope.type=="kucun")
+                    {
+                        return data.durationID >= scope.durationIdStart && data.durationID <= scope.durationIdEnd;
+                    }
+                    else
+                    {
+                        return true;
+                    }
                 }
             }
         };
