@@ -26,4 +26,8 @@
 		<comment>Update Themis Data</comment>
 		<sqlFile path="incremental/init/12_update_themis_data.sql" stripComments="true"/>
 	</changeSet>
+	<changeSet id="4" author="yihuwu">
+		<comment>Insert Themis Vehicle Data</comment>
+		<sqlFile path="incremental/init/13_insert_themis_vehicle_data.sql" stripComments="true"/>
+	</changeSet>
 </databaseChangeLog>
