@@ -156,6 +156,10 @@ angular.module('themis.directives', []).
                         return true;
                     }
                 }
+
+                scope.filterByCate = function(data){
+                    return  data.id == scope.category;
+                }
             }
         };
     })

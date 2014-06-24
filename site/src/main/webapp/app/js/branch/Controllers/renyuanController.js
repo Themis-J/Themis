@@ -29,7 +29,7 @@ angular.module('renyuan.controller', [])
                     {name: '--请选择待输入部门--', id: 0},
                     {name: '新车销售部', id: 1},
                     {name: '二手车部', id: 2},
-                    {name: '租赁事业部', id: 3},
+                    {name: '水平事业部', id: 3},
                     {name: '维修部', id: 4},
                     {name: '备件部', id: 5},
                     {name: '钣喷部', id: 6},
@@ -40,7 +40,7 @@ angular.module('renyuan.controller', [])
                 $scope.deptSummary = [
                     {name: '新车销售部', value: 1, sum: 0},
                     {name: '二手车部', value: 2, sum: 0},
-                    {name: '租赁事业部', value: 3, sum: 0},
+                    {name: '水平事业部', value: 3, sum: 0},
                     {name: '维修部', value: 4, sum: 0},
                     {name: '备件部', value: 5, sum: 0},
                     {name: '钣喷部', value: 6, sum: 0},

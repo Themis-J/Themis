@@ -1,6 +1,6 @@
 <div>
     <div style="margin-top:20px">
-        <div ng-repeat="data in list | filter:{id:category}">
+        <div ng-repeat="data in list | filter:filterByCate">
             <div>
                 <h4 class="hasTooltip" ng-click="data.hide= !data.hide"><b>{{data.name}}</b>
                     <i ng-show="data.hide" class="icon-double-angle-down"></i>
