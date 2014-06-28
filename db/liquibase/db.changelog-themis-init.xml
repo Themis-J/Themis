@@ -30,4 +30,12 @@
 		<comment>Insert Themis Vehicle Data</comment>
 		<sqlFile path="incremental/init/13_insert_themis_vehicle_data.sql" stripComments="true"/>
 	</changeSet>
+	<changeSet id="5" author="chenkai">
+        <comment>Insert Themis Vehicle Data</comment>
+        <sqlFile path="incremental/init/14_fix_themis_data.sql" stripComments="true"/>
+    </changeSet>
+    <changeSet id="6" author="chenkai">
+        <comment>Fix Sales Service Journal Data</comment>
+        <sqlFile path="incremental/init/15_fix_sales_service_journal_data.sql" stripComments="true"/>
+    </changeSet>
 </databaseChangeLog>
