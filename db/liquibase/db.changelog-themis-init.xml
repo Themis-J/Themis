@@ -30,8 +30,16 @@
 		<comment>Insert Themis Vehicle Data</comment>
 		<sqlFile path="incremental/init/13_insert_themis_vehicle_data.sql" stripComments="true"/>
 	</changeSet>
-	<changeSet id="5" author="yihuwu">
+	<changeSet id="5" author="chenkai">
+        <comment>Insert Themis Vehicle Data</comment>
+        <sqlFile path="incremental/init/14_fix_themis_data.sql" stripComments="true"/>
+    </changeSet>
+    <changeSet id="6" author="chenkai">
+        <comment>Fix Sales Service Journal Data</comment>
+        <sqlFile path="incremental/init/15_fix_sales_service_journal_data.sql" stripComments="true"/>
+    </changeSet>
+	<changeSet id="7" author="yihuwu">
 		<comment>Alter Table DealerEmployeeFeeFact</comment>
-		<sqlFile path="incremental/init/14_dealer_employee_fee_fact_schema_change.sql" stripComments="true"/>
+		<sqlFile path="incremental/init/16_dealer_employee_fee_fact_schema_change.sql" stripComments="true"/>
 	</changeSet>
 </databaseChangeLog>

@@ -1,6 +1,6 @@
 <div>
     <div style="margin-top:20px">
-        <div ng-repeat="data in list | filter:{id:category}">
+        <div ng-repeat="data in list | filter:filterByCate">
             <div>
                 <h4 class="hasTooltip" ng-click="data.hide= !data.hide"><b>{{data.name}}</b>
                     <i ng-show="data.hide" class="icon-double-angle-down"></i>
@@ -26,7 +26,7 @@
                                         </div>
                                         <input type="text" ng-pattern="/^(-?\d+)(\.\d+)?$/" class="input-mini"
                                                style="width: 55%;"
-                                               placeholder="0" ng-change="calSummary()" name="amount"
+                                               placeholder="0" ng-change="calSummary(data)" name="amount"
                                                ng-model="row.amount" required ng-blur="autoSaveAccountReceivables(row)">
                                         <i ng-class="row.sign"></i>
                                     </form>
@@ -52,7 +52,7 @@
                                         </div>
                                         <input type="text" ng-pattern="/^(-?\d+)(\.\d+)?$/" class="input-mini"
                                                style="width: 55%;"
-                                               placeholder="0" ng-change="calSummary()" name="amount"
+                                               placeholder="0" ng-change="calSummary(data)" name="amount"
                                                ng-model="row.amount" required ng-blur="autoSaveAccountReceivables(row)">
                                         <i ng-class="row.sign"></i>
                                     </form>

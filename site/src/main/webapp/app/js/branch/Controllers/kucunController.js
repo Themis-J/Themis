@@ -11,46 +11,54 @@ angular.module('kucun.controller', [])
             var accountItems = Dealer.getInventory({}, function () {
                 $.each(accountItems.items, function (index, accountItem) {
                     accountItem.data = [];
-                    accountItem.data[1] = {};
-                    accountItem.data[1].active = false;
-                    accountItem.data[1].id = accountItem.id;
-                    accountItem.data[1].durationDesc = "0-30 天";
-                    accountItem.data[1].durationID = 1;
-                    accountItem.data[2] = {};
-                    accountItem.data[2].active = false;
-                    accountItem.data[2].durationDesc = "31-60 天";
-                    accountItem.data[2].durationID = 2;
-                    accountItem.data[2].id = accountItem.id;
-                    accountItem.data[3] = {};
-                    accountItem.data[3].active = false;
-                    accountItem.data[3].durationDesc = "61-90 天";
-                    accountItem.data[3].durationID = 3;
-                    accountItem.data[3].id = accountItem.id;
-                    accountItem.data[4] = {};
-                    accountItem.data[4].active = false;
-                    accountItem.data[4].durationDesc = "超过90 天";
-                    accountItem.data[4].durationID = 4;
-                    accountItem.data[4].id = accountItem.id;
-                    accountItem.data[5] = {};
-                    accountItem.data[5].active = false;
-                    accountItem.data[5].durationDesc = "0-6 月";
-                    accountItem.data[5].durationID = 5;
-                    accountItem.data[5].id = accountItem.id;
-                    accountItem.data[6] = {};
-                    accountItem.data[6].active = false;
-                    accountItem.data[6].durationDesc = "7-9 月";
-                    accountItem.data[6].durationID = 6;
-                    accountItem.data[6].id = accountItem.id;
-                    accountItem.data[7] = {};
-                    accountItem.data[7].active = false;
-                    accountItem.data[7].durationDesc = "10-12 月";
-                    accountItem.data[7].durationID = 7;
-                    accountItem.data[7].id = accountItem.id;
-                    accountItem.data[8] = {};
-                    accountItem.data[8].active = false;
-                    accountItem.data[8].durationDesc = "超过12 月";
-                    accountItem.data[8].durationID = 8;
-                    accountItem.data[8].id = accountItem.id;
+                    accountItem.data.push({
+                        active : false,
+                        id : accountItem.id,
+                        durationDesc : "0-30 天",
+                        durationID : 1
+                    });
+                    accountItem.data.push({
+                        active : false,
+                        id : accountItem.id,
+                        durationDesc : "31-60 天",
+                        durationID : 2
+                    });
+                    accountItem.data.push({
+                        active : false,
+                        id : accountItem.id,
+                        durationDesc : "61-90 天",
+                        durationID : 3
+                    });
+                    accountItem.data.push({
+                        active : false,
+                        id : accountItem.id,
+                        durationDesc : "超过90 天",
+                        durationID : 4
+                    });
+                    accountItem.data.push({
+                        active : false,
+                        id : accountItem.id,
+                        durationDesc : "0-6 月",
+                        durationID : 5
+                    });
+                    accountItem.data.push({
+                        active : false,
+                        id : accountItem.id,
+                        durationDesc : "7-9 月",
+                        durationID : 6
+                    });
+                    accountItem.data.push({
+                        active : false,
+                        id : accountItem.id,
+                        durationDesc : "10-12 月",
+                        durationID : 7
+                    });
+                    accountItem.data.push({
+                        active : false,
+                        id : accountItem.id,
+                        durationDesc : "超过12 月",
+                        durationID : 8
+                    });
 
                     salesSet[accountItem.id] = accountItem;
                 });
@@ -59,8 +67,7 @@ angular.module('kucun.controller', [])
                     function () {
                         $.each(accountReceivables.detail, function (index, accountReceivable) {
                             var oneSale = salesSet[accountReceivable.itemID];
-                            oneSale.data[accountReceivable.durationID].durationID = accountReceivable.durationID;
-                            oneSale.data[accountReceivable.durationID].amount = accountReceivable.amount;
+                            oneSale.data[accountReceivable.durationID - 1].amount = accountReceivable.amount;
                         });
 
                         $.each(salesSet, function (index, sale) {
