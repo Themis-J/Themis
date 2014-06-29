@@ -1360,6 +1360,7 @@ public class ReportDAOImpl implements ReportDAO {
 			fact.setItemID(reportItem.some().getId());
 			fact.setTimestamp(journal.getTimestamp());
 			fact.setTimeEnd(journal.getTimeEnd());
+			fact.setFeeTypeID(journal.getFeeTypeID());
 			facts.add(fact);
 		}
 		logger.info("To persist facts: {}", facts);
