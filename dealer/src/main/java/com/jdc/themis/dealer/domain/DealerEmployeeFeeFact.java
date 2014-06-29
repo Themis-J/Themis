@@ -43,92 +43,114 @@ import org.hibernate.annotations.Type;
 } )
 @Entity
 public class DealerEmployeeFeeFact implements Serializable, TemporalEntity {
-	public static final String FILTER = "deffFilter";
-	public static final String FILTER_ALL = "deffAllFilter";
-	public static final String FILTER_REFTIME = "deffRefTimeFilter";
+    public static final String FILTER = "deffFilter";
+    public static final String FILTER_ALL = "deffAllFilter";
+    public static final String FILTER_REFTIME = "deffRefTimeFilter";
 
-	private static final long serialVersionUID = 1L;
+    private static final long serialVersionUID = 1L;
 
-	@Id
-	private Long timeID;
-	@Id
-	private Integer dealerID;
-	@Id
-	private Integer departmentID;
-	@Id
-	private Long itemID;
-	private BigDecimal amount;
-	@Id
-	@Type(type = "datetime")
-	private Instant timestamp;
-	@Type(type = "datetime")
-	private Instant timeEnd;
-	private Integer version;
+    @Id
+    private Long timeID;
+    @Id
+    private Integer dealerID;
+    @Id
+    private Integer departmentID;
+    @Id
+    private Long itemID;
+    private BigDecimal amount;
+    @Id
+    @Type(type = "datetime")
+    private Instant timestamp;
+    @Type(type = "datetime")
+    private Instant timeEnd;
+    @Id
+    private Integer feeTypeID;
 
-	 @Version
-	public Integer getVersion() {
-		return version;
-	}
+    private Integer version;
 
-	//DO NOT set this field manually, it is set by hibernate to achieve optimistic locking
-	protected void setVersion(Integer version) {
-		this.version = version;
-	}
-	
-	@Id
-	@Type(type="datetime")
-	public Instant getTimestamp() {
-		return timestamp;
-	}
+    @Version
+    public Integer getVersion() {
+        return version;
+    }
 
-	public void setTimestamp(Instant timestamp) {
-		this.timestamp = timestamp;
-	}
+    // DO NOT set this field manually, it is set by hibernate to achieve
+    // optimistic locking
+    protected void setVersion(Integer version) {
+        this.version = version;
+    }
 
-	@Type(type="datetime")
-	public Instant getTimeEnd() {
-		return timeEnd;
-	}
+    @Id
+    public Long getTimeID() {
+        return timeID;
+    }
 
-	public void setTimeEnd(Instant timeEnd) {
-		this.timeEnd = timeEnd;
-	}
-	
-	@Id
-	public Long getTimeID() {
-		return timeID;
-	}
-	public void setTimeID(Long timeID) {
-		this.timeID = timeID;
-	}
-	@Id
-	public Integer getDealerID() {
-		return dealerID;
-	}
-	public void setDealerID(Integer dealerID) {
-		this.dealerID = dealerID;
-	}
-	@Id
-	public Integer getDepartmentID() {
-		return departmentID;
-	}
-	public void setDepartmentID(Integer departmentID) {
-		this.departmentID = departmentID;
-	}
-	@Id
-	public Long getItemID() {
-		return itemID;
-	}
-	public void setItemID(Long itemID) {
-		this.itemID = itemID;
-	}
-	public BigDecimal getAmount() {
-		return amount;
-	}
-	public void setAmount(BigDecimal amount) {
-		this.amount = amount;
-	}
-	public String toString() {
+    public void setTimeID(Long timeID) {
+        this.timeID = timeID;
+    }
+
+    @Id
+    public Integer getDealerID() {
+        return dealerID;
+    }
+
+    public void setDealerID(Integer dealerID) {
+        this.dealerID = dealerID;
+    }
+
+    @Id
+    public Integer getDepartmentID() {
+        return departmentID;
+    }
+
+    public void setDepartmentID(Integer departmentID) {
+        this.departmentID = departmentID;
+    }
+
+    @Id
+    public Long getItemID() {
+        return itemID;
+    }
+
+    public void setItemID(Long itemID) {
+        this.itemID = itemID;
+    }
+
+    public BigDecimal getAmount() {
+        return amount;
+    }
+
+    public void setAmount(BigDecimal amount) {
+        this.amount = amount;
+    }
+
+    @Id
+    @Type(type = "datetime")
+    public Instant getTimestamp() {
+        return timestamp;
+    }
+
+    public void setTimestamp(Instant timestamp) {
+        this.timestamp = timestamp;
+    }
+
+    @Type(type = "datetime")
+    public Instant getTimeEnd() {
+        return timeEnd;
+    }
+
+    public void setTimeEnd(Instant timeEnd) {
+        this.timeEnd = timeEnd;
+    }
+
+    public Integer getFeeTypeID() {
+        return feeTypeID;
+    }
+
+    public void setFeeTypeID(Integer feeTypeID) {
+        this.feeTypeID = feeTypeID;
+    }
+
+    public String toString() {
 		return new ToStringBuilder(this).append("timeID", timeID)
 				.append("dealerID", dealerID)
 				.append("itemID", itemID)
@@ -136,19 +158,20 @@ public class DealerEmployeeFeeFact implements Serializable, TemporalEntity {
 				.append("amount", amount)
 				.append("timestamp", timestamp)
 				.append("timeEnd", timeEnd)
+				.append("feeTypeID", feeTypeID)
 				.getStringBuffer().toString();
 	}
 
-	@Override
-	@Transient
-	public LocalDate getValidDate() {
-		throw new UnsupportedOperationException();
-	}
+    @Override
+    @Transient
+    public LocalDate getValidDate() {
+        throw new UnsupportedOperationException();
+    }
 
-	@Override
-	@Transient
-	public void setValidDate(LocalDate validDate) {
-		throw new UnsupportedOperationException();
-	}
-	
+    @Override
+    @Transient
+    public void setValidDate(LocalDate validDate) {
+        throw new UnsupportedOperationException();
+    }
+
 }

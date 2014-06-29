@@ -234,68 +234,67 @@ public class ReportDataGenerator {
 		} 
 	}
 	
-	@Transactional
-	public void generateEmployeeFees() {
-		final int numberOfRecords = 100;
-		final int startYear = 2012;
-		final int maxYearOffset = 2;
-		final int maxMonth = 12;
-		final int maxDealerID = 20;
+    @Transactional
+    public void generateEmployeeFees() {
+        final int startYear = 2012;
+        final int maxYearOffset = 2;
+        final int maxMonth = 12;
+        final int maxDealerID = 20;
 
-		final Random r = new Random();
-		// int dayOfMonth = 1;
-		// int departmentID = 4;
-		// for (int i = 1; i <= maxDealerID; i++) {
-		// for (int j = 0; j <= maxYearOffset; j++) {
-		// for (int k = 1; k <= maxMonth; k++) {
-		// for (int l = 2; l <= 6; l++) {
-		// final EmployeeFee journal = new EmployeeFee();
-		// journal.setDepartmentID(departmentID);
-		// journal.setUpdatedBy("chenkai");
-		// journal.setDealerID(i);
-		// journal.setId(l);
-		// journal.setFeeTypeID(r.nextInt(3));
-		// journal.setAmount(new BigDecimal((r.nextInt(10) + 1) * 10));
-		// int year = startYear + j;
-		// journal.setValidDate(LocalDate.of(year, k, dayOfMonth));
-		// System.err.println(journal);
-		// this.incomeJournalDAL.saveEmployeeFee(journal.getDealerID(),
-		// journal.getDepartmentID(), Lists.newArrayList(journal));
-		// try {
-		// Thread.sleep(1000);
-		// } catch (InterruptedException e) {
-		// e.printStackTrace();
-		// }
-		// }
-		// }
-		// }
-		// }
+        final Random r = new Random();
+        int dayOfMonth = 1;
+        int departmentID = 4;
+        for (int i = 1; i <= maxDealerID; i++) {
+            for (int j = 0; j <= maxYearOffset; j++) {
+                for (int k = 1; k <= maxMonth; k++) {
+                    for (int l = 2; l <= 6; l++) {
+                        final EmployeeFee journal = new EmployeeFee();
+                        journal.setDepartmentID(departmentID);
+                        journal.setUpdatedBy("chenkai");
+                        journal.setDealerID(i);
+                        journal.setId(l);
+                        journal.setFeeTypeID(0);
+                        journal.setAmount(new BigDecimal((r.nextInt(10) + 1) * 10));
+                        int year = startYear + j;
+                        journal.setValidDate(LocalDate.of(year, k, dayOfMonth));
+                        System.err.println(journal);
+                        this.incomeJournalDAL.saveEmployeeFee(journal.getDealerID(), journal.getDepartmentID(),
+                                Lists.newArrayList(journal));
+                        try {
+                            Thread.sleep(1000);
+                        } catch (InterruptedException e) {
+                            e.printStackTrace();
+                        }
+                    }
+                }
+            }
+        }
 
-		for (int i = 0; i <= numberOfRecords; i++) {
-			final EmployeeFee journal = new EmployeeFee();
-			int departmentID = r.nextInt(8);
-			if (departmentID <= 1) {
-				departmentID = 7;
-			}
-			journal.setDepartmentID(departmentID);
-			journal.setUpdatedBy("chenkai");
-			journal.setDealerID(r.nextInt(maxDealerID) + 1);
-			journal.setId(r.nextInt(5) + 2);
-			journal.setFeeTypeID(r.nextInt(3));
-			journal.setAmount(new BigDecimal((r.nextInt(10) + 1) * 10));
-			int monthOfYear = r.nextInt(maxMonth) + 1;
-			int year = startYear + r.nextInt(maxYearOffset);
-			int dayOfMonth = 1;
-			journal.setValidDate(LocalDate.of(year, monthOfYear, dayOfMonth));
-			System.err.println(journal);
-			this.incomeJournalDAL.saveEmployeeFee(journal.getDealerID(),
-					journal.getDepartmentID(), Lists.newArrayList(journal));
-			try {
-				Thread.sleep(1000);
-			} catch (InterruptedException e) {
-				e.printStackTrace();
-			}
-		}
-	}
+        // for (int i = 0; i <= numberOfRecords; i++) {
+        // final EmployeeFee journal = new EmployeeFee();
+        // int departmentID = r.nextInt(8);
+        // if (departmentID <= 1) {
+        // departmentID = 7;
+        // }
+        // journal.setDepartmentID(departmentID);
+        // journal.setUpdatedBy("chenkai");
+        // journal.setDealerID(r.nextInt(maxDealerID) + 1);
+        // journal.setId(r.nextInt(5) + 2);
+        // journal.setFeeTypeID(r.nextInt(3));
+        // journal.setAmount(new BigDecimal((r.nextInt(10) + 1) * 10));
+        // int monthOfYear = r.nextInt(maxMonth) + 1;
+        // int year = startYear + r.nextInt(maxYearOffset);
+        // int dayOfMonth = 1;
+        // journal.setValidDate(LocalDate.of(year, monthOfYear, dayOfMonth));
+        // System.err.println(journal);
+        // this.incomeJournalDAL.saveEmployeeFee(journal.getDealerID(),
+        // journal.getDepartmentID(), Lists.newArrayList(journal));
+        // try {
+        // Thread.sleep(1000);
+        // } catch (InterruptedException e) {
+        // e.printStackTrace();
+        // }
+        // }
+    }
 
 }

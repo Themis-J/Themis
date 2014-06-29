@@ -38,4 +38,8 @@
         <comment>Fix Sales Service Journal Data</comment>
         <sqlFile path="incremental/init/15_fix_sales_service_journal_data.sql" stripComments="true"/>
     </changeSet>
+	<changeSet id="7" author="yihuwu">
+		<comment>Alter Table DealerEmployeeFeeFact</comment>
+		<sqlFile path="incremental/init/16_dealer_employee_fee_fact_schema_change.sql" stripComments="true"/>
+	</changeSet>
 </databaseChangeLog>

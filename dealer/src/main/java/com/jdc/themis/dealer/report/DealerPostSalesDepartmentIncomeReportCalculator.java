@@ -138,64 +138,63 @@ public class DealerPostSalesDepartmentIncomeReportCalculator {
 		return this;
 	}
 
-	public DealerPostSalesDepartmentIncomeReportCalculator calcManHour(
-			final ImmutableListMultimap<Integer, DealerIncomeRevenueFact> dealerRevenueFacts,
-			final ImmutableListMultimap<Integer, DealerEmployeeFeeFact> dealerEmployeeFeeFacts) {
-		for (final Integer dealerID : dealerRevenueFacts.keySet()) {
-			List<Double> manHourList = Lists.newArrayList();
-			final ImmutableListMultimap<Long, DealerIncomeRevenueFact> dealerRevenueFactsByTimeID = Multimaps
-					.index(dealerRevenueFacts.get(dealerID),
-							GetTimeIDFromRevenueFunction.INSTANCE);
-			final ImmutableListMultimap<Long, DealerEmployeeFeeFact> dealerEmployeeFeeFactsByTimeID = Multimaps
-					.index(dealerEmployeeFeeFacts.get(dealerID),
-							GetTimeIDFromEmployeeFeeFunction.INSTANCE);
-			for (final Long timeID : dealerRevenueFactsByTimeID.keySet()) {
-				final BigDecimal totalAmount = Lambda.sumFrom(
-						dealerRevenueFactsByTimeID.get(timeID),
-						DealerIncomeRevenueFact.class).getAmount();
-				Double manHour = totalAmount.doubleValue()
-						/ dealerEmployeeFeeFactsByTimeID.get(timeID).get(0)
-								.getAmount().doubleValue();
-				manHourList.add(manHour);
-			}
-			final ReportDataDetailAmount amount = new ReportDataDetailAmount();
-			amount.setAmount(Math.round(Lambda.sum(manHourList).doubleValue()
-					/ monthOfYear.doubleValue()) * 1.0);
-			dealerDetails.get(dealerID).setManHour(amount);
-		}
-		return this;
-	}
+    public DealerPostSalesDepartmentIncomeReportCalculator calcManHour(
+            final ImmutableListMultimap<Integer, DealerIncomeRevenueFact> dealerRevenueFacts,
+            final ImmutableListMultimap<Integer, DealerEmployeeFeeFact> dealerEmployeeFeeFacts) {
+        for (final Integer dealerID : dealerRevenueFacts.keySet()) {
+            List<Double> manHourList = Lists.newArrayList();
+            final ImmutableListMultimap<Long, DealerIncomeRevenueFact> dealerRevenueFactsByTimeID = Multimaps.index(
+                    dealerRevenueFacts.get(dealerID), GetTimeIDFromRevenueFunction.INSTANCE);
+            final ImmutableListMultimap<Long, DealerEmployeeFeeFact> dealerEmployeeFeeFactsByTimeID = Multimaps.index(
+                    dealerEmployeeFeeFacts.get(dealerID), GetTimeIDFromEmployeeFeeFunction.INSTANCE);
+            for (final Long timeID : dealerRevenueFactsByTimeID.keySet()) {
+                final BigDecimal totalAmount = Lambda.sumFrom(dealerRevenueFactsByTimeID.get(timeID),
+                        DealerIncomeRevenueFact.class).getAmount();
+                for (DealerEmployeeFeeFact dealerEmployeeFeeFactByTimeID : dealerEmployeeFeeFactsByTimeID.get(timeID)) {
+                    if (dealerEmployeeFeeFactByTimeID.getFeeTypeID().intValue() == 0) {
+                        Double manHour = totalAmount.doubleValue()
+                                / dealerEmployeeFeeFactByTimeID.getAmount().doubleValue();
+                        manHourList.add(manHour);
+                        break;
+                    }
+                }
 
-	public DealerPostSalesDepartmentIncomeReportCalculator calcManHourPerWorkOrder(
-			final ImmutableListMultimap<Integer, DealerIncomeRevenueFact> dealerRevenueFacts,
-			final ImmutableListMultimap<Integer, DealerEmployeeFeeFact> dealerEmployeeFeeFacts) {
-		for (final Integer dealerID : dealerRevenueFacts.keySet()) {
-			List<Double> manHourPerWorkOrderList = Lists.newArrayList();
-			final ImmutableListMultimap<Long, DealerIncomeRevenueFact> dealerRevenueFactsByTimeID = Multimaps
-					.index(dealerRevenueFacts.get(dealerID),
-							GetTimeIDFromRevenueFunction.INSTANCE);
-			final ImmutableListMultimap<Long, DealerEmployeeFeeFact> dealerEmployeeFeeFactsByTimeID = Multimaps
-					.index(dealerEmployeeFeeFacts.get(dealerID),
-							GetTimeIDFromEmployeeFeeFunction.INSTANCE);
-			for (final Long timeID : dealerRevenueFactsByTimeID.keySet()) {
-				final BigDecimal totalAmount = Lambda.sumFrom(
-						dealerRevenueFactsByTimeID.get(timeID),
-						DealerIncomeRevenueFact.class).getAmount();
-				final Integer totalCount = Lambda.sumFrom(
-						dealerRevenueFactsByTimeID.get(timeID),
-						DealerIncomeRevenueFact.class).getCount();
-				Double manHourPerWorkOrder = totalAmount.doubleValue()
-						/ dealerEmployeeFeeFactsByTimeID.get(timeID).get(0)
-								.getAmount().doubleValue()
-						/ totalCount.doubleValue();
-				manHourPerWorkOrderList.add(manHourPerWorkOrder);
-			}
-			final ReportDataDetailAmount amount = new ReportDataDetailAmount();
-			amount.setAmount(Math.round(Lambda.sum(manHourPerWorkOrderList)
-					.doubleValue() / monthOfYear.doubleValue()) * 1.0);
-			dealerDetails.get(dealerID).setManHourPerWorkOrder(amount);
-		}
-		return this;
-	}
+            }
+            final ReportDataDetailAmount amount = new ReportDataDetailAmount();
+            amount.setAmount(Math.round(Lambda.sum(manHourList).doubleValue() / monthOfYear.doubleValue()) * 1.0);
+            dealerDetails.get(dealerID).setManHour(amount);
+        }
+        return this;
+    }
+
+    public DealerPostSalesDepartmentIncomeReportCalculator calcManHourPerWorkOrder(
+            final ImmutableListMultimap<Integer, DealerIncomeRevenueFact> dealerRevenueFacts,
+            final ImmutableListMultimap<Integer, DealerEmployeeFeeFact> dealerEmployeeFeeFacts) {
+        for (final Integer dealerID : dealerRevenueFacts.keySet()) {
+            List<Double> manHourPerWorkOrderList = Lists.newArrayList();
+            final ImmutableListMultimap<Long, DealerIncomeRevenueFact> dealerRevenueFactsByTimeID = Multimaps.index(
+                    dealerRevenueFacts.get(dealerID), GetTimeIDFromRevenueFunction.INSTANCE);
+            final ImmutableListMultimap<Long, DealerEmployeeFeeFact> dealerEmployeeFeeFactsByTimeID = Multimaps.index(
+                    dealerEmployeeFeeFacts.get(dealerID), GetTimeIDFromEmployeeFeeFunction.INSTANCE);
+            for (final Long timeID : dealerRevenueFactsByTimeID.keySet()) {
+                final BigDecimal totalAmount = Lambda.sumFrom(dealerRevenueFactsByTimeID.get(timeID),
+                        DealerIncomeRevenueFact.class).getAmount();
+                final Integer totalCount = Lambda.sumFrom(dealerRevenueFactsByTimeID.get(timeID),
+                        DealerIncomeRevenueFact.class).getCount();
+                for (DealerEmployeeFeeFact dealerEmployeeFeeFactByTimeID : dealerEmployeeFeeFactsByTimeID.get(timeID)) {
+                    if (dealerEmployeeFeeFactByTimeID.getFeeTypeID().intValue() == 0) {
+                        Double manHourPerWorkOrder = totalAmount.doubleValue()
+                                / dealerEmployeeFeeFactByTimeID.getAmount().doubleValue() / totalCount.doubleValue();
+                        manHourPerWorkOrderList.add(manHourPerWorkOrder);
+                        break;
+                    }
+                }
+            }
+            final ReportDataDetailAmount amount = new ReportDataDetailAmount();
+            amount.setAmount(Math.round(Lambda.sum(manHourPerWorkOrderList).doubleValue() / monthOfYear.doubleValue()) * 1.0);
+            dealerDetails.get(dealerID).setManHourPerWorkOrder(amount);
+        }
+        return this;
+    }
 
 }
