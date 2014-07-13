@@ -1378,6 +1378,7 @@ public class ReportDAOImpl implements ReportDAO {
 					.setParameter("itemID", newJournal.getItemID())
 					.setParameter("dealerID", newJournal.getDealerID())
 					.setParameter("departmentID", newJournal.getDepartmentID())
+					.setParameter("feeTypeID", newJournal.getFeeTypeID())
 					.setParameter("referenceTime", Utils.currentTimestamp());
 			@SuppressWarnings("unchecked")
 			final List<DealerEmployeeFeeFact> list = session.createCriteria(

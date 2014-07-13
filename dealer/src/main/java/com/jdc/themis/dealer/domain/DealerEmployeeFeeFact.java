@@ -24,7 +24,8 @@ import org.hibernate.annotations.Type;
 					@org.hibernate.annotations.ParamDef(name="timeID", type="long"), 
 					@org.hibernate.annotations.ParamDef(name="dealerID", type="integer"), 
 					@org.hibernate.annotations.ParamDef(name="itemID", type="long"), 
-					@org.hibernate.annotations.ParamDef(name="departmentID", type="integer")}), 
+					@org.hibernate.annotations.ParamDef(name="departmentID", type="integer"),
+					@org.hibernate.annotations.ParamDef(name="feeTypeID", type="integer")}),
 			@org.hibernate.annotations.FilterDef(name="deffAllFilter", 
 					parameters = {
 					@org.hibernate.annotations.ParamDef(name="referenceTime", type="com.jdc.themis.dealer.data.hibernate.type.PersistentTimestamp"), 
@@ -37,7 +38,7 @@ import org.hibernate.annotations.Type;
 		}
 		)
 @Filters( {
-    @Filter(name="deffFilter", condition="timeID = :timeID and dealerID = :dealerID and itemID = :itemID and departmentID = :departmentID and timestamp < :referenceTime and timeEnd >= :referenceTime"), 
+    @Filter(name="deffFilter", condition="timeID = :timeID and dealerID = :dealerID and itemID = :itemID and departmentID = :departmentID and feeTypeID = :feeTypeID and timestamp < :referenceTime and timeEnd >= :referenceTime"), 
     @Filter(name="deffAllFilter", condition="timeID = :timeID and timestamp < :referenceTime and timeEnd >= :referenceTime"), 
     @Filter(name="deffRefTimeFilter", condition="timestamp < :referenceTime and timeEnd >= :referenceTime"), 
 } )
@@ -142,6 +143,7 @@ public class DealerEmployeeFeeFact implements Serializable, TemporalEntity {
         this.timeEnd = timeEnd;
     }
 
+    @Id
     public Integer getFeeTypeID() {
         return feeTypeID;
     }
